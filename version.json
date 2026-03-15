@@ -1,9 +1,9 @@
 {
-  "version": "v260315.04 5:47pm",
-  "release": 4,
-  "sha": "6d1140d",
-  "fullSha": "6d1140d8ba35a90683e97249b630a0f8e0196c8d",
+  "version": "v260315.05 6:44pm",
+  "release": 5,
+  "sha": "74c10d3",
+  "fullSha": "74c10d3d30efec5768f4dfd266bd515db243996e",
   "actor": "adimarie",
-  "pushedAt": "2026-03-15T22:47:29Z",
-  "commits": [{"sha": "6d1140d", "message": "Add Command Center admin backend + Client Portal", "author": "Adi"}]
+  "pushedAt": "2026-03-15T23:44:10Z",
+  "commits": [{"sha": "74c10d3", "message": "Configure Supabase credentials in shared/supabase.js", "author": "adimarie"}]
 }
