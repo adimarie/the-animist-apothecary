@@ -1,9 +1,9 @@
 {
-  "version": "v260315.03 5:20pm",
-  "release": 3,
-  "sha": "b3fcafc",
-  "fullSha": "b3fcafc084b419bf74b23ce4735ff22d4102fad3",
+  "version": "v260315.04 5:47pm",
+  "release": 4,
+  "sha": "6d1140d",
+  "fullSha": "6d1140d8ba35a90683e97249b630a0f8e0196c8d",
   "actor": "adimarie",
-  "pushedAt": "2026-03-15T22:20:46Z",
-  "commits": [{"sha": "b3fcafc", "message": "Rebuild site from scratch: new directory structure, all 10 pages", "author": "Adi"}]
+  "pushedAt": "2026-03-15T22:47:29Z",
+  "commits": [{"sha": "6d1140d", "message": "Add Command Center admin backend + Client Portal", "author": "Adi"}]
 }
