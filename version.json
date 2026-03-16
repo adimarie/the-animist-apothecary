@@ -1,9 +1,9 @@
 {
-  "version": "v260316.05 10:23pm",
-  "release": 5,
-  "sha": "e52486d",
-  "fullSha": "e52486d70eae8e77e82c432a0888b5a3c8f4aec9",
+  "version": "v260316.06 9:59am",
+  "release": 6,
+  "sha": "129fcd2",
+  "fullSha": "129fcd245523daad459cee0604c667e1eedcc47b",
   "actor": "adimarie",
-  "pushedAt": "2026-03-16T03:23:51Z",
-  "commits": [{"sha": "e52486d", "message": "Fix auth chain + restyle admin Command Center to match main site aesthetic", "author": "Adi"}]
+  "pushedAt": "2026-03-16T14:59:11Z",
+  "commits": [{"sha": "129fcd2", "message": "Document production redirect URLs in config.toml", "author": "Adi"}]
 }
