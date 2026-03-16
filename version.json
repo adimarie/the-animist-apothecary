@@ -1,9 +1,9 @@
 {
-  "version": "v260316.02 8:03pm",
-  "release": 2,
-  "sha": "3c758af",
-  "fullSha": "3c758af8028ced3756eb0c5feff2fa1a23d48fe5",
+  "version": "v260316.03 9:03pm",
+  "release": 3,
+  "sha": "62de010",
+  "fullSha": "62de01074dc4693a0c4f033cd373ca59235f5556",
   "actor": "adimarie",
-  "pushedAt": "2026-03-16T01:03:42Z",
-  "commits": [{"sha": "3c758af", "message": "Consolidate WorkHub into AdiMarie \u2014 single repo with all integrations", "author": "Adi"}]
+  "pushedAt": "2026-03-16T02:03:01Z",
+  "commits": [{"sha": "62de010", "message": "Fix portal login \u2014 add PKCE callback, fix Google OAuth redirect", "author": "Adi"}]
 }
