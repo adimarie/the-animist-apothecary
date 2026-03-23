@@ -1,9 +1,9 @@
 {
-  "version": "v260323.01 8:21pm",
-  "release": 1,
-  "sha": "b44f006",
-  "fullSha": "b44f006873d993633f58e6ac260b8869a991f33c",
+  "version": "v260323.02 8:55pm",
+  "release": 2,
+  "sha": "62cac5c",
+  "fullSha": "62cac5c673eaba360327ba81927ab3706f953a15",
   "actor": "adimarie",
-  "pushedAt": "2026-03-23T01:21:40Z",
-  "commits": [{"sha": "b44f006", "message": "Add Sacred Reciprocity sliding scale page and link across site nav/footer", "author": "Adi"}]
+  "pushedAt": "2026-03-23T01:55:31Z",
+  "commits": [{"sha": "62cac5c", "message": "Overhaul Sacred Reciprocity page with expanded content and four-tier model", "author": "Adi"}]
 }
