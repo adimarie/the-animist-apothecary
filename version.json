@@ -1,9 +1,9 @@
 {
-  "version": "v260323.04 10:02pm",
-  "release": 4,
-  "sha": "bfe4180",
-  "fullSha": "bfe4180ea59cae670827ad2cb8143d67a9db6f2e",
+  "version": "v260323.05 10:15pm",
+  "release": 5,
+  "sha": "9da3e17",
+  "fullSha": "9da3e175c3a8c68261a63e3bcbf0ef1a94b10649",
   "actor": "adimarie",
-  "pushedAt": "2026-03-23T03:02:28Z",
-  "commits": [{"sha": "bfe4180", "message": "Add standalone admin console with auth, clients, intake, and session notes", "author": "Adi"}]
+  "pushedAt": "2026-03-23T03:15:06Z",
+  "commits": [{"sha": "9da3e17", "message": "Add migration for clients, intake_forms, and session_notes tables", "author": "Adi"}]
 }
