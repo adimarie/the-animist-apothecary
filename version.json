@@ -1,9 +1,9 @@
 {
-  "version": "v260323.07 10:26pm",
-  "release": 7,
-  "sha": "cf316ec",
-  "fullSha": "cf316ece4c32882eebcf638110876e9e9c403e06",
+  "version": "v260323.08 10:25am",
+  "release": 8,
+  "sha": "62e5800",
+  "fullSha": "62e580085d0193a6412f6857925b20ad0c6d1c44",
   "actor": "adimarie",
-  "pushedAt": "2026-03-23T03:26:09Z",
-  "commits": [{"sha": "cf316ec", "message": "Fix supabase client init to use window.supabase in intake.html and admin.html", "author": "Adi"}]
+  "pushedAt": "2026-03-23T15:25:17Z",
+  "commits": [{"sha": "62e5800", "message": "Rewrite intake.html as 16-section Haven intake form with full Supabase integration", "author": "Adi"}]
 }
