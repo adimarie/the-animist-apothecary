@@ -1,9 +1,9 @@
 {
-  "version": "v260323.08 10:25am",
-  "release": 8,
-  "sha": "62e5800",
-  "fullSha": "62e580085d0193a6412f6857925b20ad0c6d1c44",
+  "version": "v260323.09 10:36am",
+  "release": 9,
+  "sha": "f53d1d0",
+  "fullSha": "f53d1d0391c028d356a567a437b8006966e77c92",
   "actor": "adimarie",
-  "pushedAt": "2026-03-23T15:25:17Z",
-  "commits": [{"sha": "62e5800", "message": "Rewrite intake.html as 16-section Haven intake form with full Supabase integration", "author": "Adi"}]
+  "pushedAt": "2026-03-23T15:36:40Z",
+  "commits": [{"sha": "f53d1d0", "message": "Fix intake form: generate client UUID client-side to avoid anon SELECT block", "author": "Adi"}]
 }
