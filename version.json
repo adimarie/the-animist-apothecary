@@ -1,9 +1,9 @@
 {
-  "version": "v260328.01 1:00am",
-  "release": 1,
-  "sha": "2b054c8",
-  "fullSha": "2b054c856701d0f98e822d9625ab900d739aa988",
+  "version": "v260328.02 1:07am",
+  "release": 2,
+  "sha": "dfd58ea",
+  "fullSha": "dfd58ea55b13c8516200bbc0228312753c14e757",
   "actor": "adimarie",
-  "pushedAt": "2026-03-28T06:00:40Z",
-  "commits": [{"sha": "2b054c8", "message": "Add 6 Google Sheets business views to admin portal", "author": "adimarie"}]
+  "pushedAt": "2026-03-28T06:07:01Z",
+  "commits": [{"sha": "dfd58ea", "message": "Fix UTF-8 encoding and integrate 6 Google Sheets business views", "author": "adimarie"}]
 }
