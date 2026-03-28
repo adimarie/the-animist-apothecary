@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=EB+Garamond:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         /* ============================================
@@ -27,27 +27,336 @@
         }
 
         body {
-            background: #1e1a14;
-            color: #e8dcc8;
-            font-family: 'EB Garamond', serif;
+            background: #F7F5F0;
+            color: #2D2A26;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 16px;
-            line-height: 1.7;
-            letter-spacing: 0.3px;
-        }            border-radius: 8px;
+            line-height: 1.6;
+            letter-spacing: 0;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .app-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            z-index: 3;
+        }
+
+        .sidebar {
+            width: 280px;
+            height: 100%;
+            background: #FAF9F5;
+            border-right: 1px solid rgba(158, 139, 110, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: hidden;
+            transition: transform 0.3s ease, width 0.3s ease;
+            z-index: 10;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(91, 117, 83, 0.2);
+            border-radius: 3px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: rgba(91, 117, 83, 0.4);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* ============================================
+           AUTH SCREEN
+           ============================================ */
+        .auth-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F7F5F0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 420px;
+            padding: 60px 40px;
+            background: #FFFFFF;
+            border: 1px solid rgba(158, 139, 110, 0.15);
+            border-radius: 8px;
+            box-shadow: 0 2px 20px rgba(45, 42, 38, 0.06);
+        }
+
+        .auth-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-icon svg {
+            fill: #5B7553;
+        }
+
+        .auth-heading {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 32px;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 12px;
+            color: #2D2A26;
+            letter-spacing: 1px;
+        }
+
+        .auth-subheading {
+            font-size: 13px;
+            color: #9E8B6E;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .auth-input-group {
+            margin-bottom: 24px;
+        }
+
+        .auth-label {
+            display: block;
+            font-size: 11px;
+            color: #9E8B6E;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .auth-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: #FFFFFF;
+            border: 1px solid rgba(91, 117, 83, 0.3);
+            border-radius: 6px;
+            color: #2D2A26;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .auth-input:focus {
+            outline: none;
+            border-color: #5B7553;
+            box-shadow: 0 0 12px rgba(91, 117, 83, 0.15);
+        }
+
+        .auth-button {
+            width: 100%;
+            padding: 14px;
+            background: #5B7553;
+            border: none;
+            border-radius: 6px;
+            color: #F7F5F0;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-button:hover:not(:disabled) {
+            background: #4a5d42;
+            transform: translateY(-1px);
+        }
+
+        .auth-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .auth-message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+        }
+
+        .auth-message.success {
+            display: block;
+            background: rgba(91, 117, 83, 0.1);
+            color: #5B7553;
+            border: 1px solid rgba(91, 117, 83, 0.2);
+        }
+
+        .auth-message.error {
+            display: block;
+            background: rgba(200, 100, 80, 0.1);
+            color: #c85040;
+            border: 1px solid rgba(200, 100, 80, 0.2);
+        }
+
+        /* ============================================
+           SIDEBAR SECTIONS
+           ============================================ */
+        .sidebar-logo {
+            padding: 24px;
+            border-bottom: 1px solid rgba(158, 139, 110, 0.15);
+            text-align: center;
+        }
+
+        .sidebar-logo-text {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #5B7553;
+            text-transform: uppercase;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: 24px 0;
+            overflow-y: auto;
+        }
+
+        .nav-section {
+            padding: 0 12px;
+            margin-bottom: 24px;
+        }
+
+        .nav-section-title {
+            font-size: 10px;
+            color: #9E8B6E;
+            margin: 0 12px 12px 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: #5A5650;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            margin: 0 8px;
+            border-radius: 0 6px 6px 0;
+            position: relative;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        .nav-item:hover {
+            background: rgba(91, 117, 83, 0.05);
+            color: #2D2A26;
+        }
+
+        .nav-item.active {
+            background: rgba(91, 117, 83, 0.08);
+            color: #5B7553;
+            border-left-color: #5B7553;
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .nav-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .nav-item.active .nav-icon svg {
+            fill: currentColor;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            flex: 1;
+            font-weight: 400;
+        }
+
+        .nav-badge {
+            background: #5B7553;
+            color: #F7F5F0;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-user {
+            padding: 24px;
+            border-top: 1px solid rgba(158, 139, 110, 0.15);
+            margin-top: auto;
+        }
+
+        .user-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(91, 117, 83, 0.08);
+            border: 1px solid rgba(158, 139, 110, 0.15);
+            border-radius: 8px;
         }
 
         .user-avatar {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #B85C35, #D4A574);
+            background: #5B7553;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #F7F5F0;
-            font-family: 'Playfair Display', serif;
-            font-size: 16px;
-            font-weight: 600;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 14px;
+            font-weight: 400;
             flex-shrink: 0;
         }
 
@@ -57,23 +366,24 @@
         }
 
         .user-name {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 14px;
-            font-weight: 600;
-            color: #e8dcc8;
+            font-weight: 400;
+            color: #2D2A26;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
         .user-stage {
-            font-family: 'Courier Prime', monospace;
             font-size: 11px;
-            color: #a08b6e;
+            color: #9E8B6E;
             margin-top: 4px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* ============================================
@@ -86,12 +396,12 @@
             right: 20px;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #B85C35, #d46f47);
+            background: #5B7553;
             border: none;
             border-radius: 50%;
             cursor: pointer;
             z-index: 11;
-            box-shadow: 0 8px 24px rgba(184, 92, 53, 0.4);
+            box-shadow: 0 2px 20px rgba(91, 117, 83, 0.2);
         }
 
         .sidebar-toggle svg {
@@ -107,8 +417,8 @@
            ============================================ */
         .header {
             padding: 24px 32px;
-            background: linear-gradient(90deg, rgba(42, 37, 32, 0.6) 0%, rgba(42, 37, 32, 0.3) 100%);
-            border-bottom: 1px solid rgba(58, 50, 40, 0.5);
+            background: #FFFFFF;
+            border-bottom: 1px solid rgba(158, 139, 110, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -119,18 +429,20 @@
         }
 
         .header-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 28px;
-            font-weight: 600;
-            color: #e8dcc8;
-            letter-spacing: 2px;
+            font-weight: 300;
+            color: #2D2A26;
+            letter-spacing: 1px;
             margin-bottom: 4px;
         }
 
         .header-subtitle {
-            font-size: 13px;
-            color: #a08b6e;
-            letter-spacing: 1px;
+            font-size: 12px;
+            color: #9E8B6E;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 500;
         }
 
         .header-actions {
@@ -141,19 +453,22 @@
 
         .logout-button {
             padding: 10px 16px;
-            background: rgba(184, 92, 53, 0.2);
-            border: 1px solid rgba(184, 92, 53, 0.4);
-            color: #e8dcc8;
+            background: transparent;
+            border: 1px solid rgba(158, 139, 110, 0.3);
+            color: #5B7553;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 13px;
-            font-family: 'Courier Prime', monospace;
+            font-size: 11px;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
         }
 
         .logout-button:hover {
-            background: rgba(184, 92, 53, 0.3);
-            border-color: rgba(184, 92, 53, 0.6);
+            background: rgba(91, 117, 83, 0.08);
+            border-color: rgba(91, 117, 83, 0.4);
         }
 
         /* ============================================
@@ -162,7 +477,8 @@
         .content {
             flex: 1;
             overflow-y: auto;
-            padding: 32px;
+            padding: 40px;
+            background: #F7F5F0;
             animation: fadeIn 0.5s ease;
         }
 
@@ -175,12 +491,12 @@
         }
 
         .content::-webkit-scrollbar-thumb {
-            background: rgba(184, 92, 53, 0.3);
+            background: rgba(91, 117, 83, 0.2);
             border-radius: 4px;
         }
 
         .content::-webkit-scrollbar-thumb:hover {
-            background: rgba(184, 92, 53, 0.5);
+            background: rgba(91, 117, 83, 0.4);
         }
 
         @keyframes fadeIn {
@@ -204,50 +520,53 @@
            WELCOME HOME SECTION
            ============================================ */
         .greeting {
-            margin-bottom: 40px;
+            margin-bottom: 48px;
         }
 
         .greeting-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 600;
-            color: #D4A574;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 36px;
+            font-weight: 300;
+            color: #2D2A26;
             letter-spacing: 1px;
             margin-bottom: 8px;
         }
 
         .moon-phase {
             font-size: 14px;
-            color: #a08b6e;
+            color: #9E8B6E;
             font-style: italic;
+            letter-spacing: 0.5px;
         }
 
         /* ============================================
            CHARACTER MAP (PERSONAL JOURNEY WHEEL)
            ============================================ */
         .character-map-container {
-            background: rgba(42, 37, 32, 0.5);
-            border: 1px solid rgba(212, 165, 116, 0.2);
-            border-radius: 12px;
-            padding: 40px;
-            margin-bottom: 40px;
+            background: #FFFFFF;
+            border: 1px solid rgba(158, 139, 110, 0.2);
+            border-radius: 8px;
+            padding: 48px 40px;
+            margin-bottom: 48px;
             text-align: center;
-            box-shadow: inset 0 0 40px rgba(184, 92, 53, 0.05);
+            box-shadow: 0 2px 20px rgba(45, 42, 38, 0.04);
         }
 
         .character-map-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            font-weight: 600;
-            color: #e8dcc8;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 24px;
+            font-weight: 300;
+            color: #2D2A26;
             margin-bottom: 8px;
             letter-spacing: 1px;
         }
 
         .character-map-subtitle {
-            font-size: 13px;
-            color: #a08b6e;
+            font-size: 12px;
+            color: #9E8B6E;
             margin-bottom: 32px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .character-map-svg {
@@ -255,7 +574,6 @@
             max-width: 400px;
             margin: 0 auto 32px;
             display: block;
-            filter: drop-shadow(0 0 30px rgba(184, 92, 53, 0.2));
         }
 
         /* ============================================
@@ -269,63 +587,51 @@
         }
 
         .card {
-            background: rgba(42, 37, 32, 0.6);
-            border: 1px solid rgba(58, 50, 40, 0.7);
-            border-radius: 12px;
-            padding: 24px;
+            background: #FFFFFF;
+            border: 1px solid rgba(158, 139, 110, 0.2);
+            border-radius: 8px;
+            padding: 28px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(212, 165, 116, 0.05) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
+            box-shadow: 0 2px 20px rgba(45, 42, 38, 0.04);
         }
 
         .card:hover {
-            border-color: rgba(184, 92, 53, 0.4);
-            box-shadow: 0 0 40px rgba(184, 92, 53, 0.15), inset 0 0 40px rgba(212, 165, 116, 0.05);
-            transform: translateY(-4px);
-        }
-
-        .card:hover::before {
-            opacity: 1;
+            border-color: rgba(91, 117, 83, 0.3);
+            box-shadow: 0 4px 28px rgba(45, 42, 38, 0.08);
+            transform: translateY(-2px);
         }
 
         .card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: #e8dcc8;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 20px;
+            font-weight: 300;
+            color: #2D2A26;
             margin-bottom: 12px;
             letter-spacing: 1px;
         }
 
         .card-subtitle {
-            font-size: 13px;
-            color: #a08b6e;
+            font-size: 12px;
+            color: #9E8B6E;
             margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .card-content {
             font-size: 14px;
-            line-height: 1.8;
-            color: #c4b8a6;
+            line-height: 1.7;
+            color: #5A5650;
         }
 
         .card-footer {
             margin-top: 16px;
             padding-top: 16px;
-            border-top: 1px solid rgba(58, 50, 40, 0.5);
+            border-top: 1px solid rgba(158, 139, 110, 0.15);
+            font-size: 12px;
+            color: #9E8B6E;
         }
 
         /* ============================================
@@ -336,28 +642,33 @@
             justify-content: space-between;
             align-items: flex-start;
             padding: 16px;
-            background: rgba(30, 26, 20, 0.5);
-            border-left: 3px solid #B85C35;
+            background: #FFFFFF;
+            border-left: 3px solid #5B7553;
             border-radius: 0 6px 6px 0;
             margin-bottom: 12px;
+            box-shadow: 0 2px 12px rgba(45, 42, 38, 0.04);
         }
 
         .appointment-time {
-            font-family: 'Courier Prime', monospace;
-            font-size: 12px;
-            color: #D4A574;
-            font-weight: 600;
+            font-size: 11px;
+            color: #9E8B6E;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .appointment-title {
             font-size: 14px;
-            color: #e8dcc8;
+            color: #2D2A26;
             margin-bottom: 4px;
+            margin-top: 4px;
+            font-weight: 500;
         }
 
         .appointment-notes {
             font-size: 13px;
-            color: #a08b6e;
+            color: #9E8B6E;
+            margin-top: 4px;
         }
 
         /* ============================================
@@ -374,15 +685,15 @@
             left: 12px;
             top: 0;
             bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #B85C35, #7A9E7E);
+            width: 1px;
+            background: rgba(158, 139, 110, 0.2);
         }
 
         .timeline-item {
             position: relative;
             margin-bottom: 32px;
             padding-bottom: 24px;
-            border-bottom: 1px solid rgba(58, 50, 40, 0.3);
+            border-bottom: 1px solid rgba(158, 139, 110, 0.1);
         }
 
         .timeline-item:last-child {
@@ -394,50 +705,52 @@
             position: absolute;
             left: -34px;
             top: 0;
-            width: 14px;
-            height: 14px;
-            background: #B85C35;
+            width: 12px;
+            height: 12px;
+            background: #5B7553;
             border-radius: 50%;
-            border: 3px solid rgba(42, 37, 32, 0.8);
-            box-shadow: 0 0 20px rgba(184, 92, 53, 0.3);
+            border: 2px solid #F7F5F0;
+            box-shadow: 0 0 0 1px rgba(158, 139, 110, 0.2);
         }
 
         .timeline-date {
-            font-family: 'Courier Prime', monospace;
-            font-size: 12px;
-            color: #D4A574;
+            font-size: 11px;
+            color: #9E8B6E;
             margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .timeline-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 16px;
-            font-weight: 600;
-            color: #e8dcc8;
+            font-weight: 300;
+            color: #2D2A26;
             margin-bottom: 6px;
         }
 
         .timeline-content {
             font-size: 14px;
-            color: #c4b8a6;
-            line-height: 1.6;
+            color: #5A5650;
+            line-height: 1.7;
         }
 
         /* ============================================
            JOURNAL ENTRY
            ============================================ */
         .journal-entry {
-            background: rgba(42, 37, 32, 0.5);
-            border: 1px solid rgba(58, 50, 40, 0.7);
+            background: #FFFFFF;
+            border: 1px solid rgba(158, 139, 110, 0.2);
             border-radius: 8px;
-            padding: 20px;
+            padding: 24px;
             margin-bottom: 20px;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 12px rgba(45, 42, 38, 0.04);
         }
 
         .journal-entry:hover {
-            border-color: rgba(184, 92, 53, 0.4);
-            box-shadow: 0 0 30px rgba(184, 92, 53, 0.1);
+            border-color: rgba(91, 117, 83, 0.3);
+            box-shadow: 0 4px 20px rgba(45, 42, 38, 0.08);
         }
 
         .journal-header {
@@ -448,36 +761,37 @@
         }
 
         .journal-date {
-            font-family: 'Courier Prime', monospace;
-            font-size: 12px;
-            color: #a08b6e;
+            font-size: 11px;
+            color: #9E8B6E;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .mood-indicator {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             align-items: center;
         }
 
         .mood-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            background: #B85C35;
+            background: #5B7553;
         }
 
         .mood-dot.sage {
-            background: #7A9E7E;
+            background: #5B7553;
         }
 
         .mood-dot.gold {
-            background: #D4A574;
+            background: #9E8B6E;
         }
 
         .journal-text {
             font-size: 14px;
-            color: #c4b8a6;
-            line-height: 1.8;
+            color: #5A5650;
+            line-height: 1.7;
             font-style: italic;
         }
 
@@ -508,11 +822,11 @@
         }
 
         .message.from-practitioner .message-avatar {
-            background: linear-gradient(135deg, #7A9E7E, #a08b6e);
+            background: #5B7553;
         }
 
         .message.from-client .message-avatar {
-            background: linear-gradient(135deg, #B85C35, #D4A574);
+            background: #9E8B6E;
         }
 
         .message-avatar {
@@ -524,7 +838,7 @@
             justify-content: center;
             color: #F7F5F0;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             flex-shrink: 0;
         }
 
@@ -533,28 +847,30 @@
         }
 
         .message-sender {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 13px;
-            font-weight: 600;
-            color: #e8dcc8;
+            font-weight: 400;
+            color: #2D2A26;
             margin-bottom: 4px;
         }
 
         .message-content {
-            background: rgba(30, 26, 20, 0.5);
-            border: 1px solid rgba(58, 50, 40, 0.5);
+            background: #FFFFFF;
+            border: 1px solid rgba(158, 139, 110, 0.2);
             border-radius: 8px;
             padding: 12px 16px;
             font-size: 14px;
-            color: #c4b8a6;
+            color: #5A5650;
             line-height: 1.6;
+            box-shadow: 0 2px 12px rgba(45, 42, 38, 0.04);
         }
 
         .message-time {
-            font-family: 'Courier Prime', monospace;
             font-size: 11px;
-            color: #a08b6e;
+            color: #9E8B6E;
             margin-top: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* ============================================
@@ -563,7 +879,7 @@
         .message-input-area {
             margin-top: 24px;
             padding-top: 24px;
-            border-top: 1px solid rgba(58, 50, 40, 0.5);
+            border-top: 1px solid rgba(158, 139, 110, 0.15);
             display: flex;
             gap: 12px;
         }
@@ -571,11 +887,11 @@
         .message-input {
             flex: 1;
             padding: 12px 16px;
-            background: rgba(30, 26, 20, 0.5);
-            border: 1px solid rgba(58, 50, 40, 0.5);
+            background: #FFFFFF;
+            border: 1px solid rgba(158, 139, 110, 0.2);
             border-radius: 6px;
-            color: #e8dcc8;
-            font-family: 'EB Garamond', serif;
+            color: #2D2A26;
+            font-family: 'Inter', sans-serif;
             font-size: 14px;
             transition: all 0.3s ease;
             resize: none;
@@ -585,30 +901,132 @@
 
         .message-input:focus {
             outline: none;
-            border-color: rgba(184, 92, 53, 0.4);
-            background: rgba(30, 26, 20, 0.7);
-            box-shadow: 0 0 20px rgba(184, 92, 53, 0.1);
+            border-color: #5B7553;
+            box-shadow: 0 0 12px rgba(91, 117, 83, 0.15);
         }
 
         .send-button {
             padding: 12px 24px;
-            background: linear-gradient(135deg, #B85C35, #d46f47);
+            background: #5B7553;
             border: none;
             border-radius: 6px;
             color: #F7F5F0;
             cursor: pointer;
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 400;
+            font-size: 14px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(184, 92, 53, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .send-button:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(184, 92, 53, 0.4);
+            background: #4a5d42;
+            transform: translateY(-1px);
         }
 
         .send-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* ============================================
+           JOURNAL FORM
+           ============================================ */
+        .journal-input-area {
+            background: #FFFFFF;
+            border: 1px solid rgba(158, 139, 110, 0.2);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 12px rgba(45, 42, 38, 0.04);
+        }
+
+        .journal-form-group {
+            margin-bottom: 16px;
+        }
+
+        .journal-form-label {
+            display: block;
+            font-size: 12px;
+            color: #9E8B6E;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .journal-mood-selector {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .mood-option {
+            padding: 8px 16px;
+            background: #F7F5F0;
+            border: 1px solid rgba(158, 139, 110, 0.2);
+            border-radius: 6px;
+            color: #5A5650;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .mood-option:hover {
+            border-color: rgba(91, 117, 83, 0.3);
+            background: rgba(91, 117, 83, 0.05);
+        }
+
+        .mood-option.selected {
+            background: #5B7553;
+            color: #F7F5F0;
+            border-color: #5B7553;
+        }
+
+        .journal-text-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: #FAF9F5;
+            border: 1px solid rgba(158, 139, 110, 0.2);
+            border-radius: 6px;
+            color: #2D2A26;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .journal-text-input:focus {
+            outline: none;
+            border-color: #5B7553;
+            box-shadow: 0 0 12px rgba(91, 117, 83, 0.15);
+            background: #FFFFFF;
+        }
+
+        .save-button {
+            padding: 12px 24px;
+            background: #5B7553;
+            border: none;
+            border-radius: 6px;
+            color: #F7F5F0;
+            cursor: pointer;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 400;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .save-button:hover:not(:disabled) {
+            background: #4a5d42;
+            transform: translateY(-1px);
+        }
+
+        .save-button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
         }
@@ -619,128 +1037,46 @@
         .empty-state {
             text-align: center;
             padding: 60px 24px;
-            background: rgba(42, 37, 32, 0.3);
-            border: 1px dashed rgba(58, 50, 40, 0.5);
-            border-radius: 12px;
+            background: #FFFFFF;
+            border: 1px solid rgba(158, 139, 110, 0.2);
+            border-radius: 8px;
             margin: 32px 0;
+            box-shadow: 0 2px 12px rgba(45, 42, 38, 0.04);
         }
 
         .empty-state-icon {
             font-size: 48px;
             margin-bottom: 16px;
-            opacity: 0.6;
+            opacity: 0.5;
         }
 
         .empty-state-text {
-            font-size: 16px;
-            color: #a08b6e;
-            font-style: italic;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 18px;
+            color: #2D2A26;
+            font-weight: 300;
             margin-bottom: 8px;
         }
 
         .empty-state-hint {
-            font-size: 13px;
-            color: #7a6e5f;
-        }
-
-        /* ============================================
-           SKELETON LOADING
-           ============================================ */
-        .skeleton {
-            background: linear-gradient(90deg, rgba(58, 50, 40, 0.3) 0%, rgba(58, 50, 40, 0.6) 50%, rgba(58, 50, 40, 0.3) 100%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 6px;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        .skeleton-line {
-            height: 12px;
-            margin-bottom: 8px;
-        }
-
-        .skeleton-block {
-            height: 100px;
-            margin-bottom: 12px;
-        }
-
-        /* ============================================
-           FORM ELEMENTS
-           ============================================ */
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            font-family: 'Courier Prime', monospace;
-            font-size: 12px;
-            color: #a08b6e;
-            margin-bottom: 8px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-
-        .form-input, .form-textarea, .form-select {
-            width: 100%;
-            padding: 12px 16px;
-            background: rgba(30, 26, 20, 0.5);
-            border: 1px solid rgba(58, 50, 40, 0.5);
-            border-radius: 6px;
-            color: #e8dcc8;
-            font-family: 'EB Garamond', serif;
             font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .form-textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-input:focus, .form-textarea:focus, .form-select:focus {
-            outline: none;
-            border-color: rgba(184, 92, 53, 0.4);
-            background: rgba(30, 26, 20, 0.7);
-            box-shadow: 0 0 20px rgba(184, 92, 53, 0.1);
-        }
-
-        .form-button {
-            padding: 14px 32px;
-            background: linear-gradient(135deg, #B85C35, #d46f47);
-            border: none;
-            border-radius: 6px;
-            color: #F7F5F0;
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(184, 92, 53, 0.3);
-            letter-spacing: 1px;
-        }
-
-        .form-button:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(184, 92, 53, 0.4);
+            color: #9E8B6E;
+            font-style: italic;
         }
 
         /* ============================================
-           RESPONSIVE
+           RESPONSIVE DESIGN
            ============================================ */
         @media (max-width: 768px) {
             .sidebar {
                 position: fixed;
                 left: 0;
                 top: 0;
-                width: 100%;
                 height: 100%;
+                width: 280px;
                 transform: translateX(-100%);
-                z-index: 20;
+                z-index: 100;
+                box-shadow: 4px 0 20px rgba(45, 42, 38, 0.1);
             }
 
             .sidebar.open {
@@ -753,73 +1089,52 @@
                 justify-content: center;
             }
 
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 16px;
-            }
-
-            .header-actions {
-                width: 100%;
-            }
-
             .content {
-                padding: 20px;
+                padding: 24px;
             }
 
             .card-grid {
                 grid-template-columns: 1fr;
             }
 
-            .character-map-container {
-                padding: 20px;
+            .header-title {
+                font-size: 22px;
             }
 
-            .message-input-area {
-                flex-direction: column;
+            .greeting-text {
+                font-size: 28px;
             }
-
-            .auth-card {
-                margin: 20px;
-                max-width: none;
-            }
-        }
-
-        /* ============================================
-           DIVIDER
-           ============================================ */
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #D4A574, transparent);
-            margin: 32px 0;
         }
     </style>
+
+    <!-- Supabase -->
+    <script async src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-    <!-- Firefly Canvas -->
-    <canvas id="fireflyCanvas"></canvas>
-
     <!-- Auth Screen -->
     <div id="authScreen" class="auth-container">
         <div class="auth-card">
             <div class="auth-icon">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Hearth Flame Icon -->
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="#D4A574" stroke-width="1.5" opacity="0.5"/>
-                    <path d="M 50 20 Q 40 35 40 50 Q 40 70 50 80 Q 60 70 60 50 Q 60 35 50 20" fill="none" stroke="#B85C35" stroke-width="2.5" stroke-linecap="round"/>
-                    <path d="M 50 35 Q 45 42 45 50 Q 45 60 50 68 Q 55 60 55 50 Q 55 42 50 35" fill="none" stroke="#D4A574" stroke-width="1.5" stroke-linecap="round"/>
+                <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="flameGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#9E8B6E;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#5B7553;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M50 20 Q60 35 60 50 Q60 70 50 85 Q40 70 40 50 Q40 35 50 20 Z" fill="url(#flameGradient)"/>
+                    <circle cx="50" cy="50" r="3" fill="#FFFFFF" opacity="0.6"/>
                 </svg>
             </div>
             <h1 class="auth-heading">The Community Hearth</h1>
-            <p class="auth-subheading">Sacred Portal</p>
+            <p class="auth-subheading">Welcome, Seeker</p>
 
             <div class="auth-input-group">
-                <label class="auth-label">Email</label>
-                <input type="email" id="authEmail" class="auth-input" placeholder="your@email.com" autocomplete="email">
+                <label class="auth-label">Email Address</label>
+                <input id="authEmail" type="email" class="auth-input" placeholder="your@email.com" />
             </div>
 
-            <button id="authSubmit" class="auth-button">Send Magic Link</button>
-
+            <button id="authSubmit" class="auth-button">Enter the Hearth</button>
             <div id="authMessage" class="auth-message"></div>
         </div>
     </div>
@@ -827,16 +1142,17 @@
     <!-- Main App -->
     <div id="appContainer" class="app-container" style="display: none;">
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <div class="sidebar">
             <div class="sidebar-logo">
-                <div class="sidebar-logo-text">✦ HEARTH ✦</div>
+                <div class="sidebar-logo-text">The Hearth</div>
             </div>
 
             <nav class="sidebar-nav">
                 <div class="nav-section">
+                    <div class="nav-section-title">Journey</div>
                     <div class="nav-item active" data-section="welcome-home">
                         <div class="nav-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg viewBox="0 0 24 24">
                                 <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
                             </svg>
                         </div>
@@ -844,192 +1160,124 @@
                     </div>
                     <div class="nav-item" data-section="journey">
                         <div class="nav-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M6 2h12v2H6V2zm0 4h12v2H6V6zm0 4h12v2H6v-2zm0 4h8v2H6v-2z"/>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
                             </svg>
                         </div>
                         <span class="nav-label">Your Journey</span>
                     </div>
-                </div>
-
-                <div class="nav-section">
-                    <div class="nav-section-title">Portal</div>
                     <div class="nav-item" data-section="inquiry">
                         <div class="nav-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-14c-3.32 0-6 2.68-6 6s2.68 6 6 6 6-2.68 6-6-2.68-6-6-6z"/>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"/>
                             </svg>
                         </div>
                         <span class="nav-label">Sacred Inquiry</span>
                     </div>
-                    <div class="nav-item" data-section="preparation">
-                        <div class="nav-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
-                        </div>
-                        <span class="nav-label">Ceremony Prep</span>
-                    </div>
-                    <div class="nav-item" data-section="integration">
-                        <div class="nav-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-                            </svg>
-                        </div>
-                        <span class="nav-label">Integration</span>
-                    </div>
                 </div>
 
                 <div class="nav-section">
-                    <div class="nav-section-title">Community</div>
-                    <div class="nav-item" data-section="library">
-                        <div class="nav-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-                            </svg>
-                        </div>
-                        <span class="nav-label">The Library</span>
-                    </div>
+                    <div class="nav-section-title">Connection</div>
                     <div class="nav-item" data-section="messages">
                         <div class="nav-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg viewBox="0 0 24 24">
                                 <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
                             </svg>
                         </div>
                         <span class="nav-label">Messages</span>
-                        <span id="messagesBadge" class="nav-badge" style="display: none;">0</span>
+                        <div id="messagesBadge" class="nav-badge" style="display: none;">0</div>
                     </div>
                     <div class="nav-item" data-section="journal">
                         <div class="nav-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 2H5c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5V4h14v16zm-4.5-6h-3V5h3v9zm-4.5-6h3v9h-3V8z"/>
+                            <svg viewBox="0 0 24 24">
+                                <path d="M19 2H5c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5V4h14v16z"/>
                             </svg>
                         </div>
-                        <span class="nav-label">Your Journal</span>
+                        <span class="nav-label">Journal</span>
+                    </div>
+                    <div class="nav-item" data-section="library">
+                        <div class="nav-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 6h16V4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4v-2H4V6zm16-2v16H8c-1.1 0-2 .9-2 2s.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+                            </svg>
+                        </div>
+                        <span class="nav-label">Library</span>
                     </div>
                 </div>
             </nav>
 
             <div class="sidebar-user">
                 <div class="user-card">
-                    <div id="userAvatar" class="user-avatar">A</div>
+                    <div id="userAvatar" class="user-avatar">—</div>
                     <div class="user-info">
-                        <div id="userName" class="user-name">Loading...</div>
-                        <div id="userStage" class="user-stage">Pipeline Stage</div>
+                        <div id="userName" class="user-name">—</div>
+                        <div id="userStage" class="user-stage">—</div>
                     </div>
                 </div>
             </div>
-        </aside>
+        </div>
 
         <!-- Main Content -->
         <div class="main-content">
             <!-- Header -->
-            <header class="header">
+            <div class="header">
                 <div class="header-content">
-                    <h1 class="header-title" id="headerTitle">Welcome Home</h1>
-                    <p class="header-subtitle" id="headerSubtitle">The Animist Apothecary</p>
+                    <h1 id="headerTitle" class="header-title">Welcome Home</h1>
+                    <p id="headerSubtitle" class="header-subtitle">The Animist Apothecary</p>
                 </div>
                 <div class="header-actions">
-                    <button id="logoutBtn" class="logout-button">Sign Out</button>
+                    <button id="logoutBtn" class="logout-button">Logout</button>
                 </div>
-            </header>
+            </div>
 
-            <!-- Content -->
+            <!-- Content Area -->
             <div class="content">
+
                 <!-- Welcome Home Section -->
-                <div id="welcomeSection" class="section active">
+                <div id="welcome-homeSectionSection" class="section active">
                     <div class="greeting">
-                        <div class="greeting-text" id="greetingText">Welcome back</div>
-                        <p class="moon-phase" id="moonPhase">Loading lunar wisdom...</p>
+                        <h2 id="greetingText" class="greeting-text">Welcome back</h2>
+                        <p id="moonPhase" class="moon-phase">—</p>
                     </div>
 
                     <div class="character-map-container">
-                        <h2 class="character-map-title">Your Personal Journey Wheel</h2>
-                        <p class="character-map-subtitle">A reflection of your healing path</p>
-                        <svg id="characterMap" class="character-map-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Will be populated by JavaScript -->
-                        </svg>
-                        <div id="journeyGlance" style="text-align: left; font-size: 14px; color: #c4b8a6; line-height: 1.8;">
-                            <!-- Summary will be populated -->
-                        </div>
+                        <h3 class="character-map-title">Your Journey Wheel</h3>
+                        <p class="character-map-subtitle">Personal Growth Across 8 Dimensions</p>
+                        <svg id="characterMap" class="character-map-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"></svg>
+                        <div id="journeyGlance" style="font-size: 13px; color: #5A5650; margin-top: 16px; line-height: 1.8;"></div>
                     </div>
-
-                    <div class="section-divider"></div>
 
                     <div class="card-grid">
                         <div class="card">
-                            <h3 class="card-title">Upcoming Appointments</h3>
-                            <div id="upcomingAppointments">
-                                <div class="skeleton skeleton-block"></div>
-                            </div>
+                            <h3 class="card-title">Next Session</h3>
+                            <div id="upcomingAppointments" style="font-size: 14px;"></div>
                         </div>
-                        <div class="card">
-                            <h3 class="card-title">Current Focus</h3>
-                            <div id="currentFocus" class="card-content">
-                                <div class="skeleton skeleton-line"></div>
-                                <div class="skeleton skeleton-line"></div>
-                            </div>
-                        </div>
+
                         <div class="card">
                             <h3 class="card-title">Recent Milestones</h3>
-                            <div id="recentMilestones">
-                                <div class="skeleton skeleton-line"></div>
-                                <div class="skeleton skeleton-line"></div>
-                            </div>
+                            <div id="recentMilestones" style="font-size: 14px;"></div>
+                        </div>
+
+                        <div class="card">
+                            <h3 class="card-title">Your Current Path</h3>
+                            <div id="currentFocus" style="font-size: 14px;"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Your Journey Section -->
-                <div id="journeySection" class="section">
-                    <div class="timeline" id="journeyTimeline">
-                        <div class="skeleton skeleton-block"></div>
-                    </div>
+                <!-- Journey Section -->
+                <div id="journeySectionSection" class="section">
+                    <div class="timeline" id="journeyTimeline"></div>
                 </div>
 
-                <!-- Sacred Inquiry Section -->
-                <div id="inquirySection" class="section">
-                    <div id="intakeForms">
-                        <div class="skeleton skeleton-block"></div>
-                    </div>
-                </div>
-
-                <!-- Ceremony Preparation Section -->
-                <div id="preparationSection" class="section">
-                    <div id="preparationContent">
-                        <div class="empty-state">
-                            <div class="empty-state-icon">✦</div>
-                            <div class="empty-state-text">Ceremony Preparation</div>
-                            <div class="empty-state-hint">Will appear when you enter the preparation stage</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Aftercare & Integration Section -->
-                <div id="integrationSection" class="section">
-                    <div id="integrationContent">
-                        <div class="empty-state">
-                            <div class="empty-state-icon">✧</div>
-                            <div class="empty-state-text">Integration & Aftercare</div>
-                            <div class="empty-state-hint">Your integration journey will be shared here</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Library Section -->
-                <div id="librarySection" class="section">
-                    <div id="libraryContent">
-                        <div class="card-grid" id="libraryGrid">
-                            <div class="skeleton skeleton-block"></div>
-                        </div>
-                    </div>
+                <!-- Inquiry Section -->
+                <div id="inquirySectionSection" class="section">
+                    <div class="card-grid" id="intakeForms"></div>
                 </div>
 
                 <!-- Messages Section -->
-                <div id="messagesSection" class="section">
-                    <div id="messageThread" class="message-list">
-                        <div class="skeleton skeleton-block"></div>
-                    </div>
+                <div id="messagesSectionSection" class="section">
+                    <div class="message-list" id="messageThread"></div>
                     <div class="message-input-area">
                         <textarea id="messageInput" class="message-input" placeholder="Share your thoughts..."></textarea>
                         <button id="sendButton" class="send-button">Send</button>
@@ -1037,141 +1285,72 @@
                 </div>
 
                 <!-- Journal Section -->
-                <div id="journalSection" class="section">
-                    <div style="margin-bottom: 32px;">
-                        <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: #e8dcc8; margin-bottom: 12px;">Add a Reflection</h3>
-                        <div class="form-group">
-                            <label class="form-label">Today's Mood</label>
-                            <select id="journalMood" class="form-select">
-                                <option value="">Select a mood...</option>
-                                <option value="peaceful">Peaceful</option>
-                                <option value="energized">Energized</option>
-                                <option value="contemplative">Contemplative</option>
-                                <option value="grateful">Grateful</option>
-                                <option value="vulnerable">Vulnerable</option>
-                                <option value="transforming">Transforming</option>
-                            </select>
+                <div id="journalSectionSection" class="section">
+                    <div class="journal-input-area">
+                        <div class="journal-form-group">
+                            <label class="journal-form-label">How are you feeling?</label>
+                            <div class="journal-mood-selector" id="moodSelector">
+                                <input type="hidden" id="journalMood" value="peaceful" />
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Your Reflection</label>
-                            <textarea id="journalText" class="form-textarea" placeholder="Write freely. This is your sacred space."></textarea>
+                        <div class="journal-form-group">
+                            <label class="journal-form-label">Your Reflection</label>
+                            <textarea id="journalText" class="journal-text-input" placeholder="What's on your heart today?"></textarea>
                         </div>
-                        <button id="saveJournalBtn" class="form-button">Save Reflection</button>
+                        <button id="saveJournalBtn" class="save-button">Save Reflection</button>
                     </div>
-
-                    <div class="section-divider"></div>
-
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 22px; color: #e8dcc8; margin: 32px 0 20px;">Your Reflections</h3>
-                    <div id="journalEntries">
-                        <div class="skeleton skeleton-block"></div>
-                    </div>
+                    <div id="journalEntries"></div>
                 </div>
+
+                <!-- Library Section -->
+                <div id="librarySectionSection" class="section">
+                    <div class="card-grid" id="libraryGrid"></div>
+                </div>
+
             </div>
         </div>
     </div>
 
-    <!-- Mobile Sidebar Toggle -->
-    <button class="sidebar-toggle" id="sidebarToggle">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <button id="sidebarToggle" class="sidebar-toggle">
+        <svg viewBox="0 0 24 24">
             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
         </svg>
     </button>
 
-    <!-- Supabase JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <script>
         // ============================================
-        // SUPABASE CONFIG
+        // SUPABASE INITIALIZATION
         // ============================================
         const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI3NzI1NjcsImV4cCI6MjA1ODM0ODU2N30.gZ4JpLLFfNFKwWdadSNJiRaPCMpOvy36WZKLglxFsEE';
-
         let supabase;
         let currentUser = null;
         let currentClient = null;
 
-        // Initialize Supabase
         async function initSupabase() {
-            const { createClient } = window.supabase;
-            supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         }
 
         // ============================================
-        // FIREFLY ANIMATION
+        // MOOD SELECTOR
         // ============================================
-        function initFireflies() {
-            const canvas = document.getElementById('fireflyCanvas');
-            const ctx = canvas.getContext('2d');
+        function initMoodSelector() {
+            const moods = ['peaceful', 'energized', 'contemplative', 'grateful', 'vulnerable', 'transforming'];
+            const container = document.getElementById('moodSelector');
+            const hiddenInput = document.getElementById('journalMood');
 
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            const fireflies = [];
-            const fireflyCount = 15;
-
-            class Firefly {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.vx = (Math.random() - 0.5) * 0.5;
-                    this.vy = (Math.random() - 0.5) * 0.5;
-                    this.brightness = Math.random() * 0.5 + 0.5;
-                    this.fadingIn = Math.random() > 0.5;
-                }
-
-                update() {
-                    this.x += this.vx;
-                    this.y += this.vy;
-
-                    if (this.x < 0) this.x = canvas.width;
-                    if (this.x > canvas.width) this.x = 0;
-                    if (this.y < 0) this.y = canvas.height;
-                    if (this.y > canvas.height) this.y = 0;
-
-                    if (this.fadingIn) {
-                        this.brightness += 0.01;
-                        if (this.brightness >= 1) this.fadingIn = false;
-                    } else {
-                        this.brightness -= 0.01;
-                        if (this.brightness <= 0.3) this.fadingIn = true;
-                    }
-                }
-
-                draw() {
-                    ctx.fillStyle = `rgba(212, 165, 116, ${this.brightness * 0.6})`;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    ctx.strokeStyle = `rgba(184, 92, 53, ${this.brightness * 0.3})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
-                    ctx.stroke();
-                }
-            }
-
-            for (let i = 0; i < fireflyCount; i++) {
-                fireflies.push(new Firefly());
-            }
-
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                fireflies.forEach(ff => {
-                    ff.update();
-                    ff.draw();
+            container.innerHTML = '';
+            moods.forEach(mood => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'mood-option' + (mood === 'peaceful' ? ' selected' : '');
+                button.textContent = mood.charAt(0).toUpperCase() + mood.slice(1);
+                button.addEventListener('click', () => {
+                    document.querySelectorAll('.mood-option').forEach(b => b.classList.remove('selected'));
+                    button.classList.add('selected');
+                    hiddenInput.value = mood;
                 });
-
-                requestAnimationFrame(animate);
-            }
-
-            animate();
-
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+                container.appendChild(button);
             });
         }
 
@@ -1245,17 +1424,13 @@
 
                 const pathElem = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                 pathElem.setAttribute('d', pathData);
-                pathElem.setAttribute('fill', isComplete ? '#B85C35' : 'none');
-                pathElem.setAttribute('stroke', isComplete ? '#B85C35' : '#7A9E7E');
+                pathElem.setAttribute('fill', isComplete ? '#5B7553' : 'none');
+                pathElem.setAttribute('stroke', isComplete ? '#5B7553' : '#9E8B6E');
                 pathElem.setAttribute('stroke-width', isComplete ? '2' : '1.5');
-                pathElem.setAttribute('opacity', isComplete ? '0.8' : '0.3');
+                pathElem.setAttribute('opacity', isComplete ? '0.8' : '0.4');
                 pathElem.setAttribute('stroke-dasharray', isComplete ? '0' : '5,3');
                 pathElem.style.transition = 'all 0.3s ease';
                 svg.appendChild(pathElem);
-
-                if (isComplete) {
-                    pathElem.style.filter = 'drop-shadow(0 0 10px rgba(184, 92, 53, 0.5))';
-                }
             });
 
             // Draw center circle
@@ -1264,9 +1439,9 @@
             centerCircle.setAttribute('cy', centerY);
             centerCircle.setAttribute('r', innerRadius - 10);
             centerCircle.setAttribute('fill', 'none');
-            centerCircle.setAttribute('stroke', '#D4A574');
-            centerCircle.setAttribute('stroke-width', '2');
-            centerCircle.setAttribute('opacity', '0.6');
+            centerCircle.setAttribute('stroke', '#9E8B6E');
+            centerCircle.setAttribute('stroke-width', '1.5');
+            centerCircle.setAttribute('opacity', '0.5');
             svg.appendChild(centerCircle);
 
             // Add labels
@@ -1280,9 +1455,9 @@
                 textElem.setAttribute('y', y);
                 textElem.setAttribute('text-anchor', 'middle');
                 textElem.setAttribute('dominant-baseline', 'middle');
-                textElem.setAttribute('font-size', '11');
-                textElem.setAttribute('fill', '#a08b6e');
-                textElem.setAttribute('font-family', 'EB Garamond, serif');
+                textElem.setAttribute('font-size', '10');
+                textElem.setAttribute('fill', '#9E8B6E');
+                textElem.setAttribute('font-family', 'Cormorant Garamond, serif');
                 textElem.textContent = segment.name.split(' ')[0];
                 svg.appendChild(textElem);
             });
@@ -1293,9 +1468,9 @@
             const progressPercent = Math.round((completedSegments / totalSegments) * 100);
 
             document.getElementById('journeyGlance').innerHTML = `
-                <strong style="color: #e8dcc8;">Your Progress</strong><br>
+                <strong style="color: #2D2A26;">Your Progress</strong><br>
                 ${completedSegments} of ${totalSegments} aspects illuminated<br>
-                <strong style="color: #D4A574;">${progressPercent}%</strong> of your journey complete
+                <strong style="color: #5B7553;">${progressPercent}%</strong> of your journey complete
             `;
         }
 
@@ -1374,7 +1549,7 @@
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
 
-            document.getElementById(sectionName + 'Section').classList.add('active');
+            document.getElementById(sectionName + 'SectionSection').classList.add('active');
             document.querySelector(`[data-section="${sectionName}"]`).classList.add('active');
 
             await loadSectionData(sectionName);
@@ -1454,7 +1629,7 @@
                         `;
                     }).join('');
                 } else {
-                    appointmentsHtml = '<p style="color: #a08b6e; font-style: italic;">No upcoming appointments scheduled. Reach out to book your next session.</p>';
+                    appointmentsHtml = '<p style="color: #9E8B6E; font-style: italic;">No upcoming appointments scheduled. Reach out to book your next session.</p>';
                 }
                 document.getElementById('upcomingAppointments').innerHTML = appointmentsHtml;
 
@@ -1496,14 +1671,14 @@
                         <p style="margin-bottom: 8px;">✓ ${note.title || 'Session attended'}</p>
                     `).join('');
                 } else {
-                    milestonesHtml = '<p style="color: #a08b6e; font-style: italic;">Your milestones will appear here</p>';
+                    milestonesHtml = '<p style="color: #9E8B6E; font-style: italic;">Your milestones will appear here</p>';
                 }
                 document.getElementById('recentMilestones').innerHTML = milestonesHtml;
 
                 // Current focus
                 document.getElementById('currentFocus').innerHTML = `
                     <p>You are in the <strong>${currentClient.pipeline_stage || 'beginning'}</strong> stage of your healing journey.</p>
-                    <p style="margin-top: 12px; color: #a08b6e; font-size: 13px;">Each step brings you closer to wholeness.</p>
+                    <p style="margin-top: 12px; color: #9E8B6E; font-size: 13px;">Each step brings you closer to wholeness.</p>
                 `;
             } catch (error) {
                 console.error('Error loading welcome data:', error);
@@ -1560,7 +1735,7 @@
                             <h3 class="card-title">${form.title || 'Intake Form'}</h3>
                             <div class="card-content">${form.content || 'Form response recorded'}</div>
                             <div class="card-footer">
-                                <span style="font-size: 12px; color: #a08b6e;">${new Date(form.created_at).toLocaleDateString()}</span>
+                                <span style="font-size: 12px; color: #9E8B6E;">${new Date(form.created_at).toLocaleDateString()}</span>
                             </div>
                         </div>
                     `).join('');
@@ -1592,7 +1767,7 @@
                         <div class="card">
                             <h3 class="card-title">${res.title}</h3>
                             <div class="card-content">${res.description || ''}</div>
-                            ${res.url ? `<div class="card-footer"><a href="${res.url}" target="_blank" style="color: #D4A574; text-decoration: none; font-weight: 600;">Read More →</a></div>` : ''}
+                            ${res.url ? `<div class="card-footer"><a href="${res.url}" target="_blank" style="color: #5B7553; text-decoration: none; font-weight: 500;">Read More →</a></div>` : ''}
                         </div>
                     `).join('');
                 } else {
@@ -1672,14 +1847,14 @@
                     entriesHtml = entries.map(entry => {
                         const date = new Date(entry.created_at);
                         const moodColors = {
-                            peaceful: '#7A9E7E',
-                            energized: '#D4A574',
-                            contemplative: '#B85C35',
-                            grateful: '#D4A574',
-                            vulnerable: '#B85C35',
-                            transforming: '#D4A574'
+                            peaceful: '#5B7553',
+                            energized: '#9E8B6E',
+                            contemplative: '#9E8B6E',
+                            grateful: '#5B7553',
+                            vulnerable: '#9E8B6E',
+                            transforming: '#5B7553'
                         };
-                        const moodColor = moodColors[entry.mood] || '#a08b6e';
+                        const moodColor = moodColors[entry.mood] || '#9E8B6E';
 
                         return `
                             <div class="journal-entry">
@@ -1687,7 +1862,7 @@
                                     <div class="journal-date">${date.toLocaleDateString()}</div>
                                     <div class="mood-indicator">
                                         <div class="mood-dot" style="background: ${moodColor};"></div>
-                                        <span style="font-size: 12px; color: #a08b6e; text-transform: capitalize;">${entry.mood || 'Unspecified'}</span>
+                                        <span style="font-size: 12px; color: #9E8B6E; text-transform: capitalize;">${entry.mood || 'Unspecified'}</span>
                                     </div>
                                 </div>
                                 <div class="journal-text">"${entry.content}"</div>
@@ -1732,8 +1907,9 @@
 
                 if (error) throw error;
 
-                document.getElementById('journalMood').value = '';
+                document.getElementById('journalMood').value = 'peaceful';
                 document.getElementById('journalText').value = '';
+                initMoodSelector();
                 await loadJournalData();
             } catch (error) {
                 console.error('Error saving journal:', error);
@@ -1776,6 +1952,7 @@
             document.getElementById('authScreen').style.display = 'none';
             document.getElementById('appContainer').style.display = 'flex';
             document.getElementById('sidebarToggle').style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+            initMoodSelector();
         }
 
         // ============================================
@@ -1830,7 +2007,6 @@
         // ============================================
         async function init() {
             await initSupabase();
-            initFireflies();
             await checkAuth();
 
             // Listen for auth changes
