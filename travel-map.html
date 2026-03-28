@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Journeys — The Animist Apothecary</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+
+    <style>
+        /* ==========================================
+           RESET & BASE
+           ========================================== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --linen: #F7F5F0;
+            --linen-warm: #F3EFE8;
+            --sage: #5B7553;
+            --sage-light: #7A9B70;
+            --sage-pastel: #C5D5BF;
+            --sage-mist: #E8EFE5;
+            --sage-whisper: #F0F5EE;
+            --earth-gold: #9E8B6E;
+            --earth-warm: #B8A48A;
+            --earth-light: #D4C9B8;
+            --text-dark: #2D2A26;
+            --text-medium: #5A554E;
+            --text-soft: #7A746C;
+            --white: #FFFFFF;
+            --card-border: rgba(158, 139, 110, 0.15);
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--linen);
+            line-height: 1.7;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        /* ==========================================
+           NAVIGATION
+           ========================================== */
+        .nav-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(247, 245, 240, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(158, 139, 110, 0.1);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.25rem;
+            color: var(--sage);
+            text-decoration: none;
+        }
+        .nav-brand em { font-style: italic; font-weight: 300; }
+
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+
+        .nav-link {
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-link:hover { color: var(--sage); }
+
+        /* ==========================================
+           HERO
+           ========================================== */
+        .hero {
+            padding: 140px 2rem 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(197, 213, 191, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(232, 239, 229, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 0.75rem;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.2s forwards;
+        }
+        .hero h1 em { font-style: italic; color: var(--sage); }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(1rem, 1.8vw, 1.25rem);
+            font-style: italic;
+            color: var(--sage);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.4s forwards;
+        }
+
+        .hero-description {
+            max-width: 580px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeUp 1s ease 0.6s forwards;
+        }
+
+        /* ==========================================
+           MAP SECTION
+           ========================================== */
+        .map-section {
+            padding: 0 2rem 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 500px;
+            border: 1px solid var(--card-border);
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Custom Leaflet styling */
+        .leaflet-popup-content-wrapper {
+            border-radius: 0 !important;
+            font-family: 'Inter', sans-serif !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+        }
+
+        .leaflet-popup-content {
+            margin: 16px 20px !important;
+            font-size: 0.85rem !important;
+            line-height: 1.6 !important;
+        }
+
+        .popup-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .popup-dates {
+            font-size: 0.75rem;
+            color: var(--sage);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .popup-desc {
+            font-size: 0.8rem;
+            color: var(--text-soft);
+        }
+
+        .popup-status {
+            display: inline-block;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            margin-top: 8px;
+        }
+
+        .popup-status.current {
+            background: var(--sage);
+            color: white;
+        }
+
+        .popup-status.upcoming {
+            background: var(--sage-mist);
+            color: var(--sage);
+        }
+
+        .popup-status.past {
+            background: var(--linen-warm);
+            color: var(--text-soft);
+        }
+
+        /* Custom map marker */
+        .custom-marker {
+            background: var(--sage);
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(91, 117, 83, 0.3);
+        }
+
+        .custom-marker.current {
+            background: var(--sage);
+            box-shadow: 0 0 0 4px rgba(91, 117, 83, 0.2), 0 2px 8px rgba(91, 117, 83, 0.3);
+        }
+
+        .custom-marker.upcoming {
+            background: var(--sage-pastel);
+        }
+
+        .custom-marker.past {
+            background: var(--earth-light);
+        }
+
+        /* Route line */
+        .leaflet-overlay-pane svg path {
+            stroke: var(--sage-pastel) !important;
+        }
+
+        /* ==========================================
+           JOURNEY TIMELINE
+           ========================================== */
+        .timeline-section {
+            padding: 80px 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 300;
+            color: var(--text-dark);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--sage-pastel), var(--earth-light));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .timeline-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -36px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid var(--white);
+        }
+
+        .timeline-dot.current {
+            background: var(--sage);
+            box-shadow: 0 0 0 4px rgba(91, 117, 83, 0.15);
+        }
+
+        .timeline-dot.upcoming { background: var(--sage-pastel); }
+        .timeline-dot.past { background: var(--earth-light); }
+
+        .timeline-date {
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-location {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.35rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            line-height: 1.7;
+        }
+
+        .timeline-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 2px 10px;
+            margin-top: 0.5rem;
+        }
+
+        .timeline-badge.current { background: var(--sage); color: white; }
+        .timeline-badge.upcoming { background: var(--sage-mist); color: var(--sage); }
+        .timeline-badge.past { background: var(--linen-warm); color: var(--text-soft); }
+
+        /* ==========================================
+           CLOSING
+           ========================================== */
+        .closing {
+            text-align: center;
+            padding: 40px 2rem 80px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .closing p {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--sage);
+            padding: 14px 44px;
+            border: 1px solid var(--sage-pastel);
+            text-decoration: none;
+            transition: all var(--transition);
+        }
+        .btn-secondary:hover {
+            background: var(--sage);
+            color: var(--white);
+            border-color: var(--sage);
+        }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(158, 139, 110, 0.1);
+        }
+        .footer p { font-size: 0.75rem; color: var(--text-soft); margin-bottom: 0.5rem; }
+        .footer a {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--sage);
+            text-decoration: none;
+        }
+
+        /* ==========================================
+           ANIMATIONS & RESPONSIVE
+           ========================================== */
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .map-container { height: 350px; }
+            .hero { padding: 120px 1.5rem 40px; }
+            .timeline-section { padding: 60px 1.5rem; }
+            .nav-links { gap: 1rem; }
+        }
+
+        @media (max-width: 480px) {
+            .map-container { height: 280px; }
+            .nav-links .nav-link:first-child { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <a href="/" class="nav-brand">The Animist <em>Apothecary</em></a>
+        <div class="nav-links">
+            <a href="/hearth.html" class="nav-link">Community Hearth</a>
+            <a href="/" class="nav-link">Back to Site</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Sacred <em>Journeys</em></h1>
+        <p class="hero-subtitle">Following the medicine path across the land</p>
+        <p class="hero-description">
+            Adi's practice is rooted in the land and moves with the seasons. This map traces the migratory path of The Animist Apothecary throughout the year, so you can see where ceremony, gatherings, and one-on-one sessions will be offered near you.
+        </p>
+    </section>
+
+    <!-- Map -->
+    <section class="map-section">
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section">
+        <div class="section-header">
+            <span class="section-label">2026 Migratory Path</span>
+            <h2 class="section-title">Where the Path Leads</h2>
+        </div>
+
+        <div class="timeline" id="timeline">
+            <!-- Populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="closing">
+        <p>The earth calls us to different places in different seasons. If our paths align, I would be honored to sit with you in ceremony or connection.</p>
+        <a href="/hearth.html" class="btn-secondary">Enter the Hearth</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>The Animist Apothecary &middot; Topanga Canyon, CA</p>
+        <a href="/">Back to main site</a>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+    <script>
+        // ==========================================
+        // JOURNEY DATA — Edit this to update stops
+        // ==========================================
+        const journeyStops = [
+            {
+                location: "Topanga Canyon, CA",
+                lat: 34.0382,
+                lng: -118.5980,
+                dates: "Home Base — Year-round",
+                description: "The heart and home of The Animist Apothecary. Nestled in the Santa Monica Mountains.",
+                status: "current"
+            },
+            {
+                location: "Ojai, CA",
+                lat: 34.4480,
+                lng: -119.2429,
+                dates: "April 2026",
+                description: "Spring retreat and ceremony work in the Ojai Valley.",
+                status: "upcoming"
+            },
+            {
+                location: "Sedona, AZ",
+                lat: 34.8697,
+                lng: -111.7610,
+                dates: "May 2026",
+                description: "Vortex ceremonies and land-based healing sessions among the red rocks.",
+                status: "upcoming"
+            },
+            {
+                location: "Taos, NM",
+                lat: 36.4072,
+                lng: -105.5731,
+                dates: "June 2026",
+                description: "Summer solstice ceremony and integration retreat in the high desert.",
+                status: "upcoming"
+            },
+            {
+                location: "Ashland, OR",
+                lat: 42.1946,
+                lng: -122.7095,
+                dates: "July — August 2026",
+                description: "Mountain ceremony, plant medicine walks, and community gatherings in the Rogue Valley.",
+                status: "upcoming"
+            },
+            {
+                location: "Big Island, HI",
+                lat: 19.8968,
+                lng: -155.5828,
+                dates: "September 2026",
+                description: "Volcanic land healing, ocean ceremony, and deep retreat work.",
+                status: "upcoming"
+            },
+            {
+                location: "Joshua Tree, CA",
+                lat: 34.1347,
+                lng: -116.3131,
+                dates: "October 2026",
+                description: "Desert ceremony and starlight meditation under the autumn sky.",
+                status: "upcoming"
+            },
+            {
+                location: "Topanga Canyon, CA",
+                lat: 34.0382,
+                lng: -118.5980,
+                dates: "November — December 2026",
+                description: "Return home for winter integration, reflection, and intimate fireside sessions.",
+                status: "upcoming"
+            }
+        ];
+
+        // ==========================================
+        // INITIALIZE MAP
+        // ==========================================
+        const map = L.map('map', {
+            scrollWheelZoom: false,
+            zoomControl: true
+        }).setView([36.5, -115.0], 5);
+
+        // Tile layer — muted, elegant style
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Draw route line
+        const routeCoords = journeyStops.map(s => [s.lat, s.lng]);
+        L.polyline(routeCoords, {
+            color: '#C5D5BF',
+            weight: 2,
+            opacity: 0.8,
+            dashArray: '8, 8',
+            smoothFactor: 2
+        }).addTo(map);
+
+        // Add markers
+        journeyStops.forEach(function(stop, i) {
+            const size = stop.status === 'current' ? 14 : 10;
+            const icon = L.divIcon({
+                className: 'custom-marker ' + stop.status,
+                iconSize: [size, size],
+                iconAnchor: [size/2, size/2]
+            });
+
+            const marker = L.marker([stop.lat, stop.lng], { icon: icon }).addTo(map);
+
+            const popupContent = '<div>' +
+                '<div class="popup-title">' + stop.location + '</div>' +
+                '<div class="popup-dates">' + stop.dates + '</div>' +
+                '<div class="popup-desc">' + stop.description + '</div>' +
+                '<span class="popup-status ' + stop.status + '">' + stop.status + '</span>' +
+                '</div>';
+
+            marker.bindPopup(popupContent, { maxWidth: 260 });
+
+            if (stop.status === 'current') {
+                marker.openPopup();
+            }
+        });
+
+        // Fit map to show all stops
+        const bounds = L.latLngBounds(routeCoords);
+        map.fitBounds(bounds.pad(0.15));
+
+        // ==========================================
+        // BUILD TIMELINE
+        // ==========================================
+        const timelineEl = document.getElementById('timeline');
+        journeyStops.forEach(function(stop, i) {
+            const item = document.createElement('div');
+            item.className = 'timeline-item';
+            item.style.transitionDelay = (i * 0.1) + 's';
+            item.innerHTML =
+                '<div class="timeline-dot ' + stop.status + '"></div>' +
+                '<div class="timeline-date">' + stop.dates + '</div>' +
+                '<div class="timeline-location">' + stop.location + '</div>' +
+                '<div class="timeline-desc">' + stop.description + '</div>' +
+                '<span class="timeline-badge ' + stop.status + '">' + stop.status + '</span>';
+            timelineEl.appendChild(item);
+        });
+
+        // ==========================================
+        // INTERSECTION OBSERVER
+        // ==========================================
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.timeline-item').forEach(function(item) {
+            obs.observe(item);
+        });
+    </script>
+</body>
+</html>
