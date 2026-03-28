@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Admin Console — The Animist Apothecary</title>
+  <title>Admin Console â The Animist Apothecary</title>
   <link rel="stylesheet" href="css/styles.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     body { margin: 0; font-family: 'Inter', sans-serif; background: #F7F5F0; color: #2D2A26; }
 
-    /* ─────────────────────────────────────────
+    /* âââââââââââââââââââââââââââââââââââââââââ
        LOGIN PAGE
-    ───────────────────────────────────────── */
+    âââââââââââââââââââââââââââââââââââââââââ */
     #loginPage {
       min-height: 100vh;
       display: flex;
@@ -95,9 +95,9 @@
     .login-btn:hover { background: #4a6344; }
     .login-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-    /* ─────────────────────────────────────────
+    /* âââââââââââââââââââââââââââââââââââââââââ
        ADMIN SHELL
-    ───────────────────────────────────────── */
+    âââââââââââââââââââââââââââââââââââââââââ */
     #adminApp { display: none; height: 100vh; overflow: hidden; }
     .admin-layout { display: flex; height: 100vh; }
 
@@ -203,9 +203,9 @@
     }
     .view-header p { font-size: 0.82rem; color: #aaa; margin: 0; }
 
-    /* ─────────────────────────────────────────
+    /* âââââââââââââââââââââââââââââââââââââââââ
        STAT CARDS
-    ───────────────────────────────────────── */
+    âââââââââââââââââââââââââââââââââââââââââ */
     .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
     .stat-card {
       background: #fff;
@@ -218,9 +218,9 @@
     .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; color: #2D2A26; line-height: 1; }
     .stat-sub { font-size: 0.76rem; color: #bbb; margin-top: 6px; }
 
-    /* ─────────────────────────────────────────
+    /* âââââââââââââââââââââââââââââââââââââââââ
        TABLES
-    ───────────────────────────────────────── */
+    âââââââââââââââââââââââââââââââââââââââââ */
     .table-card {
       background: #fff;
       border-radius: 8px;
@@ -272,9 +272,9 @@
     .td-name { font-weight: 500; color: #2D2A26; }
     .td-arrow { color: #9e8b6e; font-size: 0.75rem; }
 
-    /* ─────────────────────────────────────────
+    /* âââââââââââââââââââââââââââââââââââââââââ
        BADGES
-    ───────────────────────────────────────── */
+    âââââââââââââââââââââââââââââââââââââââââ */
     .badge {
       display: inline-block;
       padding: 3px 10px;
@@ -290,9 +290,9 @@
     .badge-completed { background: #e8f5f0; color: #2d7060; }
     .badge-default   { background: #f0ede8; color: #7a7270; }
 
-    /* ─────────────────────────────────────────
+    /* âââââââââââââââââââââââââââââââââââââââââ
        DOSSIER
-    ───────────────────────────────────────── */
+    âââââââââââââââââââââââââââââââââââââââââ */
     .dossier-back {
       display: inline-flex;
       align-items: center;
@@ -551,9 +551,9 @@
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════
+<!-- ââââââââââââââââââââââââââââââââââââââââââ
      LOGIN PAGE
-══════════════════════════════════════════ -->
+ââââââââââââââââââââââââââââââââââââââââââ -->
 <div id="loginPage">
   <div class="login-card">
     <a href="index.html" class="login-logo">The Animist <em>Apothecary</em></a>
@@ -566,15 +566,15 @@
     </div>
     <div class="login-field">
       <label>Password</label>
-      <input type="password" id="loginPassword" autocomplete="current-password" placeholder="••••••••">
+      <input type="password" id="loginPassword" autocomplete="current-password" placeholder="â¢â¢â¢â¢â¢â¢â¢â¢">
     </div>
     <button class="login-btn" id="loginBtn" onclick="handleLogin()">Sign In</button>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- ââââââââââââââââââââââââââââââââââââââââââ
      ADMIN APP
-══════════════════════════════════════════ -->
+ââââââââââââââââââââââââââââââââââââââââââ -->
 <div id="adminApp">
   <div class="admin-layout">
 
@@ -586,16 +586,36 @@
       <div class="sidebar-section-label">Navigation</div>
       <nav class="sidebar-nav">
         <div class="sidebar-item active" data-view="dashboard" onclick="navigateTo('dashboard')">
-          <span class="si-icon">◈</span> Dashboard
+          <span class="si-icon">â</span> Dashboard
         </div>
         <div class="sidebar-item" data-view="clients" onclick="navigateTo('clients')">
-          <span class="si-icon">◈</span> Clients
+          <span class="si-icon">â</span> Clients
         </div>
         <div class="sidebar-item" data-view="intakes" onclick="navigateTo('intakes')">
-          <span class="si-icon">◈</span> Intake Forms
+          <span class="si-icon">â</span> Intake Forms
         </div>
         <div class="sidebar-item" data-view="sessions" onclick="navigateTo('sessions')">
-          <span class="si-icon">◈</span> Session Notes
+          <span class="si-icon">â</span> Session Notes
+        </div>
+
+        <div style="margin:18px 0 8px 18px;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#a08b6e;font-weight:600;">Business Tools</div>
+        <div class="sidebar-item" data-view="pipeline" onclick="navigateTo('pipeline')">
+          <span class="si-icon">📈</span> Sales Pipeline
+        </div>
+        <div class="sidebar-item" data-view="offerings" onclick="navigateTo('offerings')">
+          <span class="si-icon">✨</span> Offerings
+        </div>
+        <div class="sidebar-item" data-view="bookkeeping" onclick="navigateTo('bookkeeping')">
+          <span class="si-icon">📒</span> Bookkeeping
+        </div>
+        <div class="sidebar-item" data-view="pricing" onclick="navigateTo('pricing')">
+          <span class="si-icon">💰</span> Pricing Calculator
+        </div>
+        <div class="sidebar-item" data-view="finance" onclick="navigateTo('finance')">
+          <span class="si-icon">📊</span> Financials
+        </div>
+        <div class="sidebar-item" data-view="tracker" onclick="navigateTo('tracker')">
+          <span class="si-icon">👤</span> Client Tracker
         </div>
       </nav>
     </aside>
@@ -615,9 +635,9 @@
       <!-- Main -->
       <main class="admin-main">
 
-        <!-- ────────────────────────────────
+        <!-- ââââââââââââââââââââââââââââââââ
              DASHBOARD VIEW
-        ──────────────────────────────── -->
+        ââââââââââââââââââââââââââââââââ -->
         <div class="admin-view active" id="view-dashboard">
           <div class="view-header">
             <h2>Dashboard</h2>
@@ -627,17 +647,17 @@
           <div class="stats-grid">
             <div class="stat-card">
               <div class="stat-label">Total Clients</div>
-              <div class="stat-value" id="stat-clients">—</div>
+              <div class="stat-value" id="stat-clients">â</div>
               <div class="stat-sub">all time</div>
             </div>
             <div class="stat-card">
               <div class="stat-label">Recent Intakes</div>
-              <div class="stat-value" id="stat-intakes">—</div>
+              <div class="stat-value" id="stat-intakes">â</div>
               <div class="stat-sub">last 7 days</div>
             </div>
             <div class="stat-card">
               <div class="stat-label">Session Notes</div>
-              <div class="stat-value" id="stat-notes">—</div>
+              <div class="stat-value" id="stat-notes">â</div>
               <div class="stat-sub">total recorded</div>
             </div>
           </div>
@@ -646,13 +666,13 @@
             <h2 style="font-size:1.3rem;">Recent Intake Activity</h2>
           </div>
           <div class="activity-list" id="recentActivity">
-            <div class="loading-state">Loading…</div>
+            <div class="loading-state">Loadingâ¦</div>
           </div>
         </div>
 
-        <!-- ────────────────────────────────
+        <!-- ââââââââââââââââââââââââââââââââ
              CLIENTS VIEW
-        ──────────────────────────────── -->
+        ââââââââââââââââââââââââââââââââ -->
         <div class="admin-view" id="view-clients">
           <div class="view-header">
             <h2>Clients</h2>
@@ -661,7 +681,7 @@
           <div class="table-card">
             <div class="table-toolbar">
               <input type="text" class="search-input" id="clientSearch"
-                placeholder="Search by name or email…" oninput="filterClients()">
+                placeholder="Search by name or emailâ¦" oninput="filterClients()">
             </div>
             <table class="admin-table">
               <thead>
@@ -674,21 +694,21 @@
                 </tr>
               </thead>
               <tbody id="clientsTableBody">
-                <tr><td colspan="5"><div class="loading-state">Loading…</div></td></tr>
+                <tr><td colspan="5"><div class="loading-state">Loadingâ¦</div></td></tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <!-- ────────────────────────────────
+        <!-- ââââââââââââââââââââââââââââââââ
              CLIENT DOSSIER VIEW
-        ──────────────────────────────── -->
+        ââââââââââââââââââââââââââââââââ -->
         <div class="admin-view" id="view-dossier">
-          <div class="dossier-back" onclick="navigateTo('clients')">← Back to Clients</div>
+          <div class="dossier-back" onclick="navigateTo('clients')">â Back to Clients</div>
 
           <div class="dossier-header">
             <div>
-              <h2 class="dossier-name" id="dossierName">—</h2>
+              <h2 class="dossier-name" id="dossierName">â</h2>
               <div class="dossier-meta" id="dossierMeta"></div>
             </div>
             <div id="dossierStageBadge"></div>
@@ -718,7 +738,7 @@
           <!-- Intake -->
           <div class="tab-panel" id="tab-intake">
             <div class="tab-body" id="intakeTabContent">
-              <div class="loading-state">Loading intake…</div>
+              <div class="loading-state">Loading intakeâ¦</div>
             </div>
           </div>
 
@@ -729,11 +749,11 @@
                 <h4>Add Session Note</h4>
                 <div class="note-fg">
                   <label>Practitioner Notes <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#aaa;">(private)</span></label>
-                  <textarea id="nPrivate" placeholder="Your private observations, reflections, and clinical notes…"></textarea>
+                  <textarea id="nPrivate" placeholder="Your private observations, reflections, and clinical notesâ¦"></textarea>
                 </div>
                 <div class="note-fg">
                   <label>Client-Visible Notes</label>
-                  <textarea id="nClient" placeholder="Notes you may share with the client…"></textarea>
+                  <textarea id="nClient" placeholder="Notes you may share with the clientâ¦"></textarea>
                 </div>
                 <div class="note-fg">
                   <label>Session Themes</label>
@@ -742,7 +762,7 @@
                 <div class="note-form-row">
                   <div class="note-fg">
                     <label>Integration Tasks</label>
-                    <textarea id="nIntegration" style="min-height:80px" placeholder="Practices, tasks, or intentions for integration…"></textarea>
+                    <textarea id="nIntegration" style="min-height:80px" placeholder="Practices, tasks, or intentions for integrationâ¦"></textarea>
                   </div>
                   <div class="note-fg">
                     <label>Follow-Up Date</label>
@@ -752,7 +772,7 @@
                 <button class="btn-save-note" id="saveNoteBtn" onclick="saveNote()">Save Note</button>
               </div>
               <div id="notesTabContent">
-                <div class="loading-state">Loading notes…</div>
+                <div class="loading-state">Loading notesâ¦</div>
               </div>
             </div>
           </div>
@@ -760,14 +780,14 @@
           <!-- Appointments -->
           <div class="tab-panel" id="tab-appts">
             <div class="tab-body" id="apptsTabContent">
-              <div class="loading-state">Loading appointments…</div>
+              <div class="loading-state">Loading appointmentsâ¦</div>
             </div>
           </div>
         </div>
 
-        <!-- ────────────────────────────────
+        <!-- ââââââââââââââââââââââââââââââââ
              INTAKE FORMS VIEW
-        ──────────────────────────────── -->
+        ââââââââââââââââââââââââââââââââ -->
         <div class="admin-view" id="view-intakes">
           <div class="view-header">
             <h2>Intake Forms</h2>
@@ -784,15 +804,15 @@
                 </tr>
               </thead>
               <tbody id="intakesTableBody">
-                <tr><td colspan="4"><div class="loading-state">Loading…</div></td></tr>
+                <tr><td colspan="4"><div class="loading-state">Loadingâ¦</div></td></tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        <!-- ────────────────────────────────
+        <!-- ââââââââââââââââââââââââââââââââ
              SESSION NOTES VIEW
-        ──────────────────────────────── -->
+        ââââââââââââââââââââââââââââââââ -->
         <div class="admin-view" id="view-sessions">
           <div class="view-header">
             <h2>Session Notes</h2>
@@ -809,12 +829,68 @@
                 </tr>
               </thead>
               <tbody id="sessionsTableBody">
-                <tr><td colspan="4"><div class="loading-state">Loading…</div></td></tr>
+                <tr><td colspan="4"><div class="loading-state">Loadingâ¦</div></td></tr>
               </tbody>
             </table>
           </div>
         </div>
 
+
+      <!-- Business Tools Views -->
+      <div id="view-pipeline" class="admin-view" style="display:none">
+        <div style="padding:24px 32px 12px;">
+          <h2 style="color:#e8dcc8;font-size:1.5rem;margin:0 0 4px;">Sales Pipeline</h2>
+          <p style="color:#a08b6e;font-size:0.9rem;margin:0 0 16px;">IAM Tracking &mdash; lead management and conversion tracking</p>
+        </div>
+        <div style="padding:0 32px 32px;">
+          <iframe src="https://docs.google.com/spreadsheets/d/19JtpbmSawbXvvLVxbGo9ZEYzDirIPrDFzm7E8RllXb8/edit?rm=minimal&gid=49407943#gid=49407943" style="width:100%;height:calc(100vh - 140px);border:none;border-radius:12px;background:#1a1410;"></iframe>
+        </div>
+      </div>
+      <div id="view-offerings" class="admin-view" style="display:none">
+        <div style="padding:24px 32px 12px;">
+          <h2 style="color:#e8dcc8;font-size:1.5rem;margin:0 0 4px;">Offerings Catalog</h2>
+          <p style="color:#a08b6e;font-size:0.9rem;margin:0 0 16px;">Open Container &mdash; services, modalities, pricing, and scheduling</p>
+        </div>
+        <div style="padding:0 32px 32px;">
+          <iframe src="https://docs.google.com/spreadsheets/d/1sT4fIf0q1WK6_f-bAqzFQgq3cbAv6CIFI5ZzZwB5nCE/edit?rm=minimal" style="width:100%;height:calc(100vh - 140px);border:none;border-radius:12px;background:#1a1410;"></iframe>
+        </div>
+      </div>
+      <div id="view-bookkeeping" class="admin-view" style="display:none">
+        <div style="padding:24px 32px 12px;">
+          <h2 style="color:#e8dcc8;font-size:1.5rem;margin:0 0 4px;">Bookkeeping</h2>
+          <p style="color:#a08b6e;font-size:0.9rem;margin:0 0 16px;">Ultimate Small Business Bookkeeping 4.2 &mdash; income, expenses, and accounts</p>
+        </div>
+        <div style="padding:0 32px 32px;">
+          <iframe src="https://docs.google.com/spreadsheets/d/11f_tODUujgp_-wMLGCWUzrCgcatdV3NwetI6VAcV2oI/edit?rm=minimal" style="width:100%;height:calc(100vh - 140px);border:none;border-radius:12px;background:#1a1410;"></iframe>
+        </div>
+      </div>
+      <div id="view-pricing" class="admin-view" style="display:none">
+        <div style="padding:24px 32px 12px;">
+          <h2 style="color:#e8dcc8;font-size:1.5rem;margin:0 0 4px;">Pricing Calculator</h2>
+          <p style="color:#a08b6e;font-size:0.9rem;margin:0 0 16px;">Service pricing model &mdash; rates, packages, and cost analysis</p>
+        </div>
+        <div style="padding:0 32px 32px;">
+          <iframe src="https://docs.google.com/spreadsheets/d/1V4fC4u3mZiB982JTWru3tU4cmB8fc319kktXO87wxzg/edit?rm=minimal" style="width:100%;height:calc(100vh - 140px);border:none;border-radius:12px;background:#1a1410;"></iframe>
+        </div>
+      </div>
+      <div id="view-finance" class="admin-view" style="display:none">
+        <div style="padding:24px 32px 12px;">
+          <h2 style="color:#e8dcc8;font-size:1.5rem;margin:0 0 4px;">Financials</h2>
+          <p style="color:#a08b6e;font-size:0.9rem;margin:0 0 16px;">Easy Bookkeeping (No Tax v3.0) &mdash; simplified financial overview</p>
+        </div>
+        <div style="padding:0 32px 32px;">
+          <iframe src="https://docs.google.com/spreadsheets/d/1xSeSY1ZJM1X4w9BV5JqYdjJePEO4Yma7Lhu4acaVD1w/edit?rm=minimal" style="width:100%;height:calc(100vh - 140px);border:none;border-radius:12px;background:#1a1410;"></iframe>
+        </div>
+      </div>
+      <div id="view-tracker" class="admin-view" style="display:none">
+        <div style="padding:24px 32px 12px;">
+          <h2 style="color:#e8dcc8;font-size:1.5rem;margin:0 0 4px;">Client Tracker</h2>
+          <p style="color:#a08b6e;font-size:0.9rem;margin:0 0 16px;">Track client relationships, sessions, follow-ups, and lifecycle</p>
+        </div>
+        <div style="padding:0 32px 32px;">
+          <iframe src="https://docs.google.com/spreadsheets/d/1bIG6SLood-UM9Q-WEY0f8fmSL15rgoxWqIS6xBcV1N4/edit?rm=minimal" style="width:100%;height:calc(100vh - 140px);border:none;border-radius:12px;background:#1a1410;"></iframe>
+        </div>
+      </div>
       </main>
     </div><!-- /admin-body -->
   </div><!-- /admin-layout -->
@@ -823,9 +899,9 @@
 <!-- Toast container -->
 <div class="toast-container" id="toastContainer"></div>
 
-<!-- ══════════════════════════════════════════
+<!-- ââââââââââââââââââââââââââââââââââââââââââ
      SCRIPTS
-══════════════════════════════════════════ -->
+ââââââââââââââââââââââââââââââââââââââââââ -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const SUPABASE_URL     = 'https://wdecjlrfulsdklqeetqb.supabase.co';
@@ -835,7 +911,7 @@
   let allClients      = [];
   let currentClientId = null;
 
-  /* ── Toast ─────────────────────────────── */
+  /* ââ Toast âââââââââââââââââââââââââââââââ */
   function showToast(msg, type = 'success') {
     const el = document.createElement('div');
     el.className = `toast ${type}`;
@@ -844,7 +920,7 @@
     setTimeout(() => el.remove(), 4000);
   }
 
-  /* ── Helpers ────────────────────────────── */
+  /* ââ Helpers ââââââââââââââââââââââââââââââ */
   function esc(str) {
     return String(str ?? '')
       .replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -852,13 +928,13 @@
   }
 
   function fmtDate(iso) {
-    if (!iso) return '—';
+    if (!iso) return 'â';
     return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   }
 
   function stageBadge(stage) {
     const map = { intake: 'badge-intake', active: 'badge-active', inquiry: 'badge-inquiry', completed: 'badge-completed' };
-    if (!stage) return '—';
+    if (!stage) return 'â';
     return `<span class="badge ${map[stage] || 'badge-default'}">${esc(stage)}</span>`;
   }
 
@@ -870,7 +946,7 @@
     </div>`;
   }
 
-  /* ── Auth ───────────────────────────────── */
+  /* ââ Auth âââââââââââââââââââââââââââââââââ */
   async function init() {
     const { data: { session } } = await sb.auth.getSession();
     if (session) showApp(session.user);
@@ -890,7 +966,7 @@
     const btn      = document.getElementById('loginBtn');
     errEl.textContent = '';
     if (!email || !password) { errEl.textContent = 'Please enter your email and password.'; return; }
-    btn.disabled = true; btn.textContent = 'Signing in…';
+    btn.disabled = true; btn.textContent = 'Signing inâ¦';
     const { data, error } = await sb.auth.signInWithPassword({ email, password });
     if (error) {
       errEl.textContent = error.message;
@@ -911,7 +987,7 @@
     if (e.key === 'Enter' && document.getElementById('loginPage').style.display !== 'none') handleLogin();
   });
 
-  /* ── Navigation ─────────────────────────── */
+  /* ââ Navigation âââââââââââââââââââââââââââ */
   function navigateTo(view) {
     document.querySelectorAll('.admin-view').forEach(v => v.classList.remove('active'));
     document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
@@ -922,7 +998,7 @@
     if (loaders[view]) loaders[view]();
   }
 
-  /* ── Dashboard ──────────────────────────── */
+  /* ââ Dashboard ââââââââââââââââââââââââââââ */
   async function loadDashboard() {
     const sevenDaysAgo = new Date(Date.now() - 7 * 86400000).toISOString();
     const [
@@ -937,9 +1013,9 @@
       sb.from('intake_forms').select('submitted_at, clients(full_name)').order('submitted_at', { ascending: false }).limit(12)
     ]);
 
-    document.getElementById('stat-clients').textContent = cCount ?? '—';
-    document.getElementById('stat-intakes').textContent = iCount ?? '—';
-    document.getElementById('stat-notes').textContent   = nCount ?? '—';
+    document.getElementById('stat-clients').textContent = cCount ?? 'â';
+    document.getElementById('stat-intakes').textContent = iCount ?? 'â';
+    document.getElementById('stat-notes').textContent   = nCount ?? 'â';
 
     const feed = document.getElementById('recentActivity');
     const items = recent || [];
@@ -955,7 +1031,7 @@
       </div>`).join('');
   }
 
-  /* ── Clients ────────────────────────────── */
+  /* ââ Clients ââââââââââââââââââââââââââââââ */
   async function loadClients() {
     const { data, error } = await sb.from('clients').select('*').order('created_at', { ascending: false });
     if (error) { showToast('Error loading clients', 'error'); return; }
@@ -971,10 +1047,10 @@
     }
     tbody.innerHTML = list.map(c => `
       <tr onclick="openDossier('${c.id}')">
-        <td class="td-name">${esc(c.full_name || '—')}</td>
-        <td>${esc(c.email || '—')}</td>
+        <td class="td-name">${esc(c.full_name || 'â')}</td>
+        <td>${esc(c.email || 'â')}</td>
         <td>${stageBadge(c.pipeline_stage)}</td>
-        <td>${esc(c.location || '—')}</td>
+        <td>${esc(c.location || 'â')}</td>
         <td>${fmtDate(c.created_at)}</td>
       </tr>`).join('');
   }
@@ -987,7 +1063,7 @@
     ));
   }
 
-  /* ── Client Dossier ─────────────────────── */
+  /* ââ Client Dossier âââââââââââââââââââââââ */
   async function openDossier(clientId) {
     currentClientId = clientId;
     navigateTo('dossier');
@@ -1011,13 +1087,13 @@
   }
 
   function renderDossierHeader(c) {
-    document.getElementById('dossierName').textContent = c.full_name || '—';
+    document.getElementById('dossierName').textContent = c.full_name || 'â';
     document.getElementById('dossierStageBadge').innerHTML = stageBadge(c.pipeline_stage);
     document.getElementById('dossierMeta').innerHTML = [
-      c.email    && `<span class="dossier-meta-item">✉ ${esc(c.email)}</span>`,
-      c.phone    && `<span class="dossier-meta-item">☎ ${esc(c.phone)}</span>`,
+      c.email    && `<span class="dossier-meta-item">â ${esc(c.email)}</span>`,
+      c.phone    && `<span class="dossier-meta-item">â ${esc(c.phone)}</span>`,
       c.pronouns && `<span class="dossier-meta-item">${esc(c.pronouns)}</span>`,
-      c.location && `<span class="dossier-meta-item">⌖ ${esc(c.location)}</span>`
+      c.location && `<span class="dossier-meta-item">â ${esc(c.location)}</span>`
     ].filter(Boolean).join('');
 
     document.getElementById('dossier-contact').innerHTML = [
@@ -1088,7 +1164,7 @@
 
     return `
       <div style="margin-bottom:8px; font-size:0.72rem; color:#9e8b6e; text-transform:uppercase; letter-spacing:0.14em;">
-        Submitted ${fmtDate(form.submitted_at)} · ${esc(form.form_type || 'initial_intake')}
+        Submitted ${fmtDate(form.submitted_at)} Â· ${esc(form.form_type || 'initial_intake')}
       </div>
       ${consentHTML}${sectionsHTML}
       <hr style="border:none;border-top:1px solid #f0ede8;margin:24px 0;">`;
@@ -1096,7 +1172,7 @@
 
   function consentRow(label, val) {
     return `<div class="consent-row">
-      <span class="${val ? 'consent-icon-yes' : 'consent-icon-no'}">${val ? '✓' : '✗'}</span>
+      <span class="${val ? 'consent-icon-yes' : 'consent-icon-no'}">${val ? 'â' : 'â'}</span>
       ${label}
     </div>`;
   }
@@ -1126,7 +1202,7 @@
 
   async function saveNote() {
     const btn = document.getElementById('saveNoteBtn');
-    btn.disabled = true; btn.textContent = 'Saving…';
+    btn.disabled = true; btn.textContent = 'Savingâ¦';
     const { error } = await sb.from('session_notes').insert({
       client_id:            currentClientId,
       practitioner_notes:   document.getElementById('nPrivate').value     || null,
@@ -1157,14 +1233,14 @@
       <thead><tr><th>Date &amp; Time</th><th>Service</th><th>Status</th><th>Notes</th></tr></thead>
       <tbody>${data.map(a => `<tr>
         <td>${fmtDate(a.start_time)}</td>
-        <td>${esc(a.service_name || a.service_id || '—')}</td>
+        <td>${esc(a.service_name || a.service_id || 'â')}</td>
         <td>${stageBadge(a.status)}</td>
-        <td>${esc(a.notes || '—')}</td>
+        <td>${esc(a.notes || 'â')}</td>
       </tr>`).join('')}</tbody>
     </table></div>`;
   }
 
-  /* ── Intake Forms view ──────────────────── */
+  /* ââ Intake Forms view ââââââââââââââââââââ */
   async function loadIntakesView() {
     const { data, error } = await sb.from('intake_forms')
       .select('*, clients(full_name)')
@@ -1176,14 +1252,14 @@
     }
     tbody.innerHTML = data.map(f => `
       <tr onclick="openDossier('${f.client_id}')">
-        <td class="td-name">${esc(f.clients?.full_name || '—')}</td>
+        <td class="td-name">${esc(f.clients?.full_name || 'â')}</td>
         <td>${esc(f.form_type || 'initial_intake')}</td>
         <td>${fmtDate(f.submitted_at)}</td>
-        <td class="td-arrow">View →</td>
+        <td class="td-arrow">View â</td>
       </tr>`).join('');
   }
 
-  /* ── Session Notes view ─────────────────── */
+  /* ââ Session Notes view âââââââââââââââââââ */
   async function loadSessionsView() {
     const { data, error } = await sb.from('session_notes')
       .select('*, clients(full_name)')
@@ -1196,16 +1272,33 @@
     tbody.innerHTML = data.map(n => {
       const themes = (n.session_themes || '').split(',').filter(Boolean);
       return `<tr onclick="openDossier('${n.client_id}')">
-        <td class="td-name">${esc(n.clients?.full_name || '—')}</td>
-        <td>${themes.map(t => `<span class="theme-tag">${esc(t.trim())}</span>`).join(' ') || '—'}</td>
-        <td>${n.follow_up_date || '—'}</td>
+        <td class="td-name">${esc(n.clients?.full_name || 'â')}</td>
+        <td>${themes.map(t => `<span class="theme-tag">${esc(t.trim())}</span>`).join(' ') || 'â'}</td>
+        <td>${n.follow_up_date || 'â'}</td>
         <td>${fmtDate(n.created_at)}</td>
       </tr>`;
     }).join('');
   }
 
-  /* ── Boot ───────────────────────────────── */
+  /* ââ Boot âââââââââââââââââââââââââââââââââ */
   init();
+</script>
+
+<script>
+(function() {
+  var origNav = window.navigateTo;
+  var extraViews = ['pipeline','offerings','bookkeeping','pricing','finance','tracker'];
+  window.navigateTo = function(view) {
+    if (extraViews.indexOf(view) !== -1) {
+      document.querySelectorAll('.admin-view').forEach(function(v) { v.style.display = 'none'; });
+      document.querySelectorAll('.sidebar-item').forEach(function(i) { i.classList.remove('active'); });
+      var target = document.getElementById('view-' + view);
+      if (target) target.style.display = 'block';
+      var navItem = document.querySelector('.sidebar-item[data-view="' + view + '"]');
+      if (navItem) navItem.classList.add('active');
+    } else { origNav(view); }
+  };
+})();
 </script>
 </body>
 </html>
