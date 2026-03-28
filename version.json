@@ -1,9 +1,9 @@
 {
-  "version": "v260328.09 6:07pm",
-  "release": 9,
-  "sha": "d21b322",
-  "fullSha": "d21b322575cb40a2c6dc1aa3a8bd195d3a3c8be5",
+  "version": "v260328.10 6:56pm",
+  "release": 10,
+  "sha": "010c240",
+  "fullSha": "010c240aa6b5801c7ba35ebfc9b4a493864dc853",
   "actor": "adimarie",
-  "pushedAt": "2026-03-28T23:07:27Z",
-  "commits": [{"sha": "d21b322", "message": "Add ceremony-prep.html \u2014 participant preparation checklist page", "author": "adimarie"}]
+  "pushedAt": "2026-03-28T23:56:38Z",
+  "commits": [{"sha": "010c240", "message": "Add practitioner-dashboard.html \u2014 ceremony readiness admin view", "author": "adimarie"}]
 }
