@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Community Hearth - The Animist Apothecary</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=EB+Garamond:wght@400;500&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'EB Garamond',serif;background-color:#1e1a14;color:#e8dcc8;line-height:1.7;letter-spacing:.3px}
+        h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',serif;font-weight:600;color:#e8dcc8;letter-spacing:.5px}
+        h1{font-size:clamp(2.5rem,8vw,4rem);line-height:1.2;margin-bottom:1.5rem}
+        h2{font-size:clamp(2rem,6vw,3rem);margin-bottom:1.5rem;color:#e8dcc8}
+        h3{font-size:clamp(1.25rem,4vw,1.75rem);margin-bottom:1rem;color:#e8dcc8}
+        p{font-size:1rem;color:#c4b8a6;margin-bottom:1.5rem}
+        .container{max-width:1200px;margin:0 auto;padding:0 2rem}
+        .section{padding:6rem 0;opacity:0;animation:fadeIn .8s ease-out forwards}
+        .section.is-visible{animation:fadeIn .8s ease-out forwards}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .hero{padding:8rem 2rem;text-align:center;position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-50%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(184,92,53,.08) 0%,transparent 70%);border-radius:50%;z-index:0}
+        .hero-content{position:relative;z-index:1}
+        .hearth-icon{width:80px;height:80px;margin:0 auto 2rem;display:block;opacity:0;animation:fadeIn 1s ease-out .2s forwards}
+        .hero h1{margin-bottom:1rem}
+        .hero-subheading{font-size:clamp(1.25rem,4vw,1.75rem);color:#B85C35;font-family:'EB Garamond',serif;font-weight:500;margin-bottom:2rem;letter-spacing:1px}
+        .hero-welcome{max-width:650px;margin:0 auto 3rem;font-size:1.05rem;color:#c4b8a6;line-height:1.8}
+        .btn{display:inline-block;padding:1rem 2.5rem;background-color:#B85C35;color:#f7f5f0;text-decoration:none;font-family:'Playfair Display',serif;font-size:1.1rem;border:2px solid #B85C35;border-radius:2px;transition:all .3s ease;cursor:pointer;position:relative;box-shadow:0 4px 15px rgba(184,92,53,.2)}
+        .btn:hover{background-color:transparent;color:#B85C35;box-shadow:0 8px 30px rgba(184,92,53,.4)}
+        .btn.pulse{animation:pulse-glow 2s ease-in-out infinite}
+        @keyframes pulse-glow{0%,100%{box-shadow:0 4px 15px rgba(184,92,53,.2)}50%{box-shadow:0 8px 30px rgba(184,92,53,.5)}}
+        .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;margin-bottom:4rem}
+        .card{background-color:#2a2520;border:1px solid #3a3228;border-radius:3px;padding:2.5rem;transition:all .4s ease;opacity:0;animation:fadeIn .8s ease-out forwards}
+        .card:nth-child(1){animation-delay:.1s}.card:nth-child(2){animation-delay:.2s}.card:nth-child(3){animation-delay:.3s}
+        .card:nth-child(4){animation-delay:.4s}.card:nth-child(5){animation-delay:.5s}.card:nth-child(6){animation-delay:.6s}
+        .card:hover{border-color:#B85C35;background-color:#312a1f;transform:translateY(-8px);box-shadow:0 12px 40px rgba(184,92,53,.15)}
+        .card h3{color:#e8dcc8;margin-bottom:1.25rem;font-size:1.5rem}
+        .card p{color:#a08b6e;font-size:.95rem;line-height:1.7}
+        .card-icon{display:flex;width:40px;height:40px;background-color:rgba(184,92,53,.2);border-radius:50%;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:1.5rem;color:#B85C35}
+        .how-it-works{background-color:rgba(42,37,32,.4);border-top:1px solid #3a3228;border-bottom:1px solid #3a3228;padding:6rem 2rem}
+        .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:3rem;max-width:900px;margin:0 auto}
+        .step{text-align:center;opacity:0;animation:fadeIn .8s ease-out forwards}
+        .step:nth-child(1){animation-delay:.2s}.step:nth-child(2){animation-delay:.4s}.step:nth-child(3){animation-delay:.6s}
+        .step-number{width:60px;height:60px;background:linear-gradient(135deg,#B85C35 0%,#a04a2a 100%);color:#f7f5f0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.75rem;font-weight:bold;margin:0 auto 1.5rem;font-family:'Playfair Display',serif}
+        .step h3{color:#e8dcc8;margin-bottom:1rem;font-size:1.25rem}
+        .step p{color:#a08b6e;font-size:.95rem}
+        .closing{background:linear-gradient(180deg,rgba(184,92,53,.05) 0%,transparent 100%);text-align:center;padding:6rem 2rem}
+        .closing-text{max-width:700px;margin:0 auto 3rem;font-size:1.1rem;color:#c4b8a6;line-height:1.9;font-style:italic}
+        .closing-text strong{color:#e8dcc8;font-weight:500;font-style:normal}
+        footer{border-top:1px solid #3a3228;padding:3rem 2rem;text-align:center;color:#a08b6e;font-size:.95rem}
+        footer a{color:#B85C35;text-decoration:none;transition:color .3s ease}
+        footer a:hover{color:#c4b8a6}
+        @media(max-width:768px){.hero{padding:4rem 1.5rem}.section{padding:3rem 0}.how-it-works{padding:3rem 1.5rem}.closing{padding:3rem 1.5rem}.card{padding:2rem}.cards-grid{gap:1.5rem}.steps-grid{gap:2rem}}
+    </style>
+</head>
+<body>
+    <section class="hero section">
+        <div class="hero-content">
+            <svg class="hearth-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 50 15 Q 35 35 35 50 Q 35 70 50 75 Q 65 70 65 50 Q 65 35 50 15 Z" fill="none" stroke="#B85C35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M 50 30 Q 45 40 45 50 Q 45 62 50 65 Q 55 62 55 50 Q 55 40 50 30 Z" fill="none" stroke="#B85C35" stroke-width="1.5" stroke-opacity="0.6" stroke-linecap="round"/>
+                <circle cx="50" cy="80" r="18" fill="none" stroke="#B85C35" stroke-width="2" stroke-linecap="round"/>
+                <line x1="35" y1="80" x2="65" y2="80" stroke="#B85C35" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <h1>The Community Hearth</h1>
+            <p class="hero-subheading">Your sacred space for healing, growth, and connection</p>
+            <p class="hero-welcome">Welcome to your personal sanctuary within The Animist Apothecary. This is more than a portal—it's your dedicated space to track your sacred journey, access guidance tailored to where you are, prepare for ceremony with intention and care, and stay deeply connected with Adi and our healing community.</p>
+            <a href="/portal" class="btn pulse">Enter Your Hearth</a>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align:center;margin-bottom:4rem">What Awaits You</h2>
+            <div class="cards-grid">
+                <div class="card"><div class="card-icon">🗺️</div><h3>Your Journey Map</h3><p>Track your progression through preparation, ceremony, and integration. See where you are in your path and what unfolds next, with guidance matched to each stage.</p></div>
+                <div class="card"><div class="card-icon">📝</div><h3>Intake &amp; Deep Inquiry</h3><p>Complete and revisit your intake forms and reflections from deep inquiry sessions. Your words are held safely here, building a sacred record of your inner work.</p></div>
+                <div class="card"><div class="card-icon">🌱</div><h3>Ceremony Preparation</h3><p>Stage-specific guidance, dietary protocols, intention-setting exercises, and preparation resources to help you arrive at ceremony grounded, clear, and ready.</p></div>
+                <div class="card"><div class="card-icon">☁️</div><h3>Aftercare &amp; Integration</h3><p>Post-ceremony support, integration practices, journaling prompts, and grounding resources to help you weave the medicine into your everyday life.</p></div>
+                <div class="card"><div class="card-icon">📚</div><h3>Resource Library</h3><p>Curated readings, audio guides, herbal protocols, and sacred practices for your path. A living collection to support your healing and personal evolution.</p></div>
+                <div class="card"><div class="card-icon">💬</div><h3>Connect with Adi</h3><p>Send messages, schedule sessions, ask questions, and stay in touch throughout your journey. Direct access to support and guidance when you need it most.</p></div>
+            </div>
+        </div>
+    </section>
+    <section class="how-it-works section">
+        <div class="container">
+            <h2 style="text-align:center;margin-bottom:4rem">How It Works</h2>
+            <div class="steps-grid">
+                <div class="step"><div class="step-number">1</div><h3>Log in with your invite code and email</h3><p>Use the unique invite code you received to create your account and enter the hearth.</p></div>
+                <div class="step"><div class="step-number">2</div><h3>Explore your personalized dashboard</h3><p>Your space unfolds with resources, guidance, and tools tailored to your journey and current stage.</p></div>
+                <div class="step"><div class="step-number">3</div><h3>Engage with your journey at your own pace</h3><p>Return anytime to prepare, reflect, integrate, and stay connected with the community and Adi.</p></div>
+            </div>
+        </div>
+    </section>
+    <section class="closing section">
+        <div class="container">
+            <p class="closing-text">A hearth is more than a fire—it's the gathering place, the warm center where we return to ourselves. It's where we are held, nurtured, and transformed. <strong>This portal is your hearth within the Apothecary:</strong> a sacred fire lit for you, a space where your healing matters, and a community that tends this flame together. You are welcome here. Always.</p>
+            <a href="/portal" class="btn pulse">Enter Your Hearth</a>
+        </div>
+    </section>
+    <footer>
+        <p>The Animist Apothecary · Topanga Canyon, CA</p>
+        <p style="margin-top:1rem;font-size:.85rem"><a href="/">Back to main site</a></p>
+    </footer>
+    <script>
+        var oo={threshold:0.1,rootMargin:'0px 0px -50px 0px'};
+        var obs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('is-visible')}})},oo);
+        document.querySelectorAll('.section').forEach(function(s){obs.observe(s)});
+        document.querySelectorAll('.card').forEach(function(c){obs.observe(c)});
+        document.querySelectorAll('.step').forEach(function(s){obs.observe(s)});
+    </script>
+</body>
+</html>
