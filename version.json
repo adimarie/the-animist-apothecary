@@ -1,9 +1,9 @@
 {
-  "version": "v260328.10 6:56pm",
-  "release": 10,
-  "sha": "010c240",
-  "fullSha": "010c240aa6b5801c7ba35ebfc9b4a493864dc853",
+  "version": "v260329.01 4:05pm",
+  "release": 1,
+  "sha": "3e364f9",
+  "fullSha": "3e364f97c3d7f1b83b55020322226b3735114991",
   "actor": "adimarie",
-  "pushedAt": "2026-03-28T23:56:38Z",
-  "commits": [{"sha": "010c240", "message": "Add practitioner-dashboard.html \u2014 ceremony readiness admin view", "author": "adimarie"}]
+  "pushedAt": "2026-03-29T21:05:43Z",
+  "commits": [{"sha": "3e364f9", "message": "Rewrite travel map \u2014 all data from Supabase, add mountains and volcanoes", "author": "adimarie"}]
 }
