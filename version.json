@@ -1,12 +1,12 @@
 {
-  "version": "v260331.09 11:15p",
-  "release": 9,
-  "sha": "08244c0",
-  "fullSha": "08244c09acd098a52c20b2eec34f0cb5126ace09",
+  "version": "v260331.10 11:41p",
+  "release": 10,
+  "sha": "4f7f69a",
+  "fullSha": "4f7f69a63b66d44be2b6d4fd4836d0a00cd56260",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-03-31T16:15:10-07:00",
-  "commits": [{"sha":"08244c0","message":"fix: restore correct Animist Apothecary home page from AdiMarie repo","author":"Adi Marie"}]
+  "pushedAt": "2026-03-31T16:41:15-07:00",
+  "commits": [{"sha":"4f7f69a","message":"feat: update nav (The Deep Work / Sacred Sessions / The Living Web), add Ceremonial Therapeutics, update intake flow","author":"Adi Marie"}]
 }
