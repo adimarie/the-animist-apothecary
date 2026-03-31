@@ -36,10 +36,39 @@ const BASE_PATH = '';
 // Logo clicks to Home, so Home is not in the nav
 const NAV_LINKS = [
   { text: 'The Practice', href: `${BASE_PATH}/practice/` },
-  { text: 'Offerings', href: `${BASE_PATH}/offerings/` },
+  { text: 'Offerings', href: `${BASE_PATH}/offerings/`, dropdown: true },
   { text: 'Book a Session', href: `${BASE_PATH}/book/` },
   { text: 'Sacred Reciprocity', href: `${BASE_PATH}/sacred-reciprocity/` },
   { text: 'Contact', href: `${BASE_PATH}/contact/` },
+];
+
+// Offerings dropdown structure — 3 columns
+const OFFERINGS_DROPDOWN = [
+  {
+    heading: 'Cornerstone',
+    links: [
+      { text: 'Mythopoetic Living', href: `${BASE_PATH}/offerings/mythopoetic-living/` },
+      { text: 'Deep Work \u00b7 3\u201324mo', href: `${BASE_PATH}/offerings/deep-work/` },
+    ],
+  },
+  {
+    heading: 'Solo Offerings',
+    links: [
+      { text: 'Pl\u00e1ticas \u2014 Guidance & Counsel', href: `${BASE_PATH}/offerings/platicas/` },
+      { text: 'Ancestral & Elemental Divinations', href: `${BASE_PATH}/offerings/divinations/` },
+      { text: 'Ceremonial Therapeutics', href: `${BASE_PATH}/offerings/ceremonial-therapeutics/` },
+      { text: 'Ceremonial Immersions', href: `${BASE_PATH}/offerings/ceremonial-immersions/` },
+      { text: 'Shamanic Bodywork', href: `${BASE_PATH}/offerings/shamanic-bodywork/` },
+    ],
+  },
+  {
+    heading: 'Collective',
+    links: [
+      { text: 'Ceremonial & Ritual Groups', href: `${BASE_PATH}/offerings/group-ceremony/` },
+      { text: 'Community Hubs', href: `${BASE_PATH}/community/` },
+      { text: 'Ceremonialist Training', href: `${BASE_PATH}/offerings/training/` },
+    ],
+  },
 ];
 
 // "Begin Here" CTA link for the header
@@ -72,6 +101,26 @@ function renderHeader(options = {}) {
     const activeClass = isActive ? 'aap-nav__link--active' : '';
     // Add ID to Portal link so initPublicHeaderAuth can find and hide it
     const portalId = link.text === 'Portal' ? ' id="aapSignInLink"' : '';
+
+    // Offerings link gets a dropdown
+    if (link.dropdown) {
+      const dropdownCols = OFFERINGS_DROPDOWN.map(col => {
+        const colLinks = col.links.map(cl =>
+          `<a href="${cl.href}" class="aap-nav__dropdown-link">${cl.text}</a>`
+        ).join('');
+        return `
+          <div class="aap-nav__dropdown-col">
+            <div class="aap-nav__dropdown-heading">${col.heading}</div>
+            ${colLinks}
+          </div>`;
+      }).join('');
+
+      return `<li class="aap-nav__item--has-dropdown">
+        <a href="${link.href}" class="aap-nav__link ${activeClass}">${link.text}</a>
+        <div class="aap-nav__dropdown">${dropdownCols}</div>
+      </li>`;
+    }
+
     return `<li><a href="${link.href}" class="aap-nav__link ${activeClass}"${portalId}>${link.text}</a></li>`;
   }).join('');
 
@@ -117,6 +166,31 @@ function renderMobileNav(activePage = '') {
     const isBeginHere = link.text === 'Begin Here';
     const beginClass = isBeginHere ? ' aap-mobile-nav__link--begin' : '';
     const portalId = link.text === 'Portal' ? ' id="aapMobileSignInLink"' : '';
+
+    // Offerings link gets an expandable sub-menu on mobile
+    if (link.dropdown) {
+      const subLinks = OFFERINGS_DROPDOWN.map(col => {
+        const heading = `<div class="aap-mobile-nav__sub-heading">${col.heading}</div>`;
+        const items = col.links.map(cl =>
+          `<a href="${cl.href}" class="aap-mobile-nav__sub-link">${cl.text}</a>`
+        ).join('');
+        return heading + items;
+      }).join('');
+
+      return `
+        <li class="aap-mobile-nav__item aap-mobile-nav__item--expandable">
+          <button class="aap-mobile-nav__link aap-mobile-nav__expand-toggle ${activeClass}" aria-expanded="false">
+            ${link.text}
+            <svg class="aap-mobile-nav__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="aap-mobile-nav__sub-menu" style="display:none;">
+            <a href="${link.href}" class="aap-mobile-nav__sub-link aap-mobile-nav__sub-link--overview">All Offerings</a>
+            ${subLinks}
+          </div>
+        </li>
+      `;
+    }
+
     return `
       <li class="aap-mobile-nav__item">
         <a href="${link.href}" class="aap-mobile-nav__link ${activeClass}${beginClass}"${portalId}>${link.text}</a>
@@ -126,7 +200,7 @@ function renderMobileNav(activePage = '') {
 
   return `
     <div class="aap-mobile-nav" id="aap-mobile-nav">
-      <button class="aap-mobile-nav__close" id="aap-mobile-nav-close" aria-label="Close menu">×</button>
+      <button class="aap-mobile-nav__close" id="aap-mobile-nav-close" aria-label="Close menu">\u00d7</button>
       <ul class="aap-mobile-nav__list">
         ${navItems}
       </ul>
@@ -332,6 +406,19 @@ function initSiteComponents() {
         document.body.style.overflow = '';
       });
     });
+
+    // Mobile expand toggles for Offerings sub-menu
+    mobileNav.querySelectorAll('.aap-mobile-nav__expand-toggle').forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const item = toggle.closest('.aap-mobile-nav__item--expandable');
+        const subMenu = item?.querySelector('.aap-mobile-nav__sub-menu');
+        if (!subMenu) return;
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', !isOpen);
+        subMenu.style.display = isOpen ? 'none' : 'block';
+        toggle.classList.toggle('aap-mobile-nav__expand-toggle--open', !isOpen);
+      });
+    });
   }
 
   // Initialize scroll reveal animations
@@ -479,6 +566,7 @@ export {
   IMAGES,
   BASE_PATH,
   NAV_LINKS,
+  OFFERINGS_DROPDOWN,
   MISTIQ_LINK,
   renderHeader,
   renderMobileNav,
@@ -495,6 +583,7 @@ if (typeof window !== 'undefined') {
     IMAGES,
     BASE_PATH,
     NAV_LINKS,
+    OFFERINGS_DROPDOWN,
     MISTIQ_LINK,
     renderHeader,
     renderMobileNav,

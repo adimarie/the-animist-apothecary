@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Group Experience — The Animist Apothecary</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/site.css">
+  <link rel="stylesheet" href="/styles/tailwind.out.css">
+</head>
+<body>
+  <span data-site-version style="display:none"></span>
+  <div id="siteHeader"></div>
+
+  <!-- Password Gate -->
+  <div id="passwordGate" style="display: flex; min-height: 80vh; align-items: center; justify-content: center; padding: 2rem;">
+    <div style="max-width: 420px; text-align: center;">
+      <h1 id="gateTitle" style="font-family: var(--aap-font-heading); font-size: 2rem; font-weight: 400; color: var(--aap-text-light); margin-bottom: 1rem;">Group Experience</h1>
+      <p style="color: var(--aap-text-muted); margin-bottom: 2rem;">This experience page is for invited participants. Please enter the password shared with your group.</p>
+      <form id="gateForm">
+        <input type="password" id="gatePassword" placeholder="Enter group password" autocomplete="off"
+          style="width: 100%; padding: 0.75rem 1rem; background: var(--aap-bg-muted); border: 1px solid var(--aap-border); border-radius: 4px; color: var(--aap-text); font-family: var(--aap-font-body); font-size: 1rem; margin-bottom: 1rem;">
+        <button type="submit" class="aap-btn aap-btn--primary" style="width: 100%;">Enter</button>
+        <p id="gateError" style="display: none; color: #c53030; margin-top: 1rem; font-size: 0.875rem;"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Experience Content (loaded dynamically from Supabase) -->
+  <div id="gatedContent" style="display: none;">
+    <div id="experienceContent">
+      <div style="text-align: center; padding: 4rem 2rem; color: var(--aap-text-muted);">Loading experience...</div>
+    </div>
+  </div>
+
+  <footer class="aap-footer">
+    <div class="aap-footer__content">
+      <div class="aap-footer__copyright">
+        &copy; 2026 The Animist Apothecary. All rights reserved.<br>
+        Topanga Canyon, Los Angeles, California
+      </div>
+    </div>
+  </footer>
+
+  <script src="/vendor/supabase-js-2.39.3.min.js"></script>
+  <script type="module">
+    import { initPublicPage } from '../shared/public-shell.js';
+    import { supabase } from '../shared/supabase.js';
+
+    initPublicPage({ transparent: false, light: true });
+
+    // Get experience ID from URL: /experiences/?id=XXXX or /experiences/XXXX/
+    const params = new URLSearchParams(window.location.search);
+    const expId = params.get('id') || window.location.pathname.split('/experiences/')[1]?.replace(/\//g, '');
+
+    if (!expId) {
+      document.getElementById('passwordGate').innerHTML = `
+        <div style="text-align: center; padding: 4rem 2rem;">
+          <h1 style="font-family: var(--aap-font-heading); font-size: 2rem; font-weight: 400; color: var(--aap-text-light);">Experience Not Found</h1>
+          <p style="color: var(--aap-text-muted); margin-top: 1rem;">Please use the link provided by your facilitator.</p>
+        </div>`;
+    } else {
+      loadExperience(expId);
+    }
+
+    async function loadExperience(id) {
+      try {
+        const { data, error } = await supabase
+          .from('group_experiences')
+          .select('*')
+          .eq('id', id)
+          .single();
+
+        if (error || !data) {
+          document.getElementById('passwordGate').innerHTML = `
+            <div style="text-align: center; padding: 4rem 2rem;">
+              <h1 style="font-family: var(--aap-font-heading); font-size: 2rem; font-weight: 400; color: var(--aap-text-light);">Experience Not Found</h1>
+              <p style="color: var(--aap-text-muted); margin-top: 1rem;">This experience may have been removed or the link is incorrect.</p>
+            </div>`;
+          return;
+        }
+
+        // Set the gate title
+        document.getElementById('gateTitle').textContent = data.title || 'Group Experience';
+
+        // Handle password gate
+        const form = document.getElementById('gateForm');
+        const storageKey = `aap-exp-${id}`;
+
+        if (sessionStorage.getItem(storageKey) === 'unlocked') {
+          renderExperience(data);
+          return;
+        }
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const input = document.getElementById('gatePassword');
+          const errorEl = document.getElementById('gateError');
+          const entered = input.value;
+
+          // Hash and compare
+          const encoder = new TextEncoder();
+          const hashBuffer = await crypto.subtle.digest('SHA-256', encoder.encode(entered));
+          const hashHex = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+
+          if (hashHex === data.password_hash) {
+            sessionStorage.setItem(storageKey, 'unlocked');
+            renderExperience(data);
+          } else {
+            errorEl.textContent = 'Incorrect password.';
+            errorEl.style.display = 'block';
+            input.value = '';
+            input.focus();
+          }
+        });
+      } catch (err) {
+        console.error('Failed to load experience:', err);
+      }
+    }
+
+    function renderExperience(exp) {
+      document.getElementById('passwordGate').style.display = 'none';
+      document.getElementById('gatedContent').style.display = 'block';
+
+      const steps = exp.journey_steps || [];
+      const stepsHtml = steps.map((step, i) => `
+        <details class="aap-accordion__item">
+          <summary class="aap-accordion__trigger">
+            <span style="display: flex; align-items: center; gap: 0.75rem;">
+              <span style="color: var(--aap-accent); font-size: 0.85rem; font-weight: 600; min-width: 1.5rem;">${String(i + 1).padStart(2, '0')}</span>
+              ${step.title}
+            </span>
+            <svg class="aap-accordion__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="aap-accordion__content">${step.content}</div>
+        </details>
+      `).join('');
+
+      const resources = exp.resources || [];
+      const resourcesHtml = resources.length ? `
+        <div style="margin-top: 2rem;">
+          <h3 style="font-family: var(--aap-font-heading); font-size: 1.25rem; font-weight: 500; color: var(--aap-text-light); margin-bottom: 1rem;">Resources</h3>
+          ${resources.map(r => `<a href="${r.url}" target="_blank" style="display: block; padding: 0.75rem 1rem; border: 1px solid var(--aap-border); border-radius: 4px; margin-bottom: 0.5rem; color: var(--aap-accent); text-decoration: none;">${r.title}</a>`).join('')}
+        </div>
+      ` : '';
+
+      document.getElementById('experienceContent').innerHTML = `
+        <section class="aap-content" style="padding-top: var(--aap-space-xl);">
+          <div style="text-align: center; margin-bottom: var(--aap-space-xl);">
+            <h1 style="font-family: var(--aap-font-heading); font-size: 2.5rem; font-weight: 400; letter-spacing: 0.03em; color: var(--aap-text-light); margin-bottom: 0.75rem;">${exp.title}</h1>
+            ${exp.date ? `<p style="color: var(--aap-text-muted);">${exp.date}</p>` : ''}
+            ${exp.location ? `<p style="color: var(--aap-text-muted); font-size: 0.9rem;">${exp.location}</p>` : ''}
+          </div>
+
+          ${exp.description ? `<p style="font-size: 1.1rem; line-height: 1.8; color: var(--aap-text); max-width: 65ch; margin: 0 auto 2rem; text-align: center; font-style: italic;">${exp.description}</p>` : ''}
+
+          ${exp.intentions ? `
+            <div style="background: var(--aap-bg-elevated); border: 1px solid var(--aap-border); border-radius: 4px; padding: 2rem; margin-bottom: 2rem;">
+              <h3 style="font-family: var(--aap-font-heading); font-size: 1.25rem; font-weight: 500; color: var(--aap-text-light); margin-bottom: 1rem;">Shared Intentions</h3>
+              <p style="color: var(--aap-text-muted); line-height: 1.75;">${exp.intentions}</p>
+            </div>
+          ` : ''}
+        </section>
+
+        ${steps.length ? `
+          <div style="width: 60px; height: 1px; background: var(--aap-accent); margin: 0 auto; opacity: 0.4;"></div>
+          <section class="aap-content">
+            <h2 style="font-family: var(--aap-font-heading); font-size: 2rem; font-weight: 400; text-align: center; margin-bottom: var(--aap-space-lg); color: var(--aap-text-light);">The Journey</h2>
+            <div class="aap-accordion">${stepsHtml}</div>
+          </section>
+        ` : ''}
+
+        ${resourcesHtml ? `<section class="aap-content">${resourcesHtml}</section>` : ''}
+
+        ${exp.agreements ? `
+          <section class="aap-content">
+            <div style="background: var(--aap-bg-elevated); border: 1px solid var(--aap-border); border-radius: 4px; padding: 2rem;">
+              <h3 style="font-family: var(--aap-font-heading); font-size: 1.25rem; font-weight: 500; color: var(--aap-text-light); margin-bottom: 1rem;">Participant Agreements</h3>
+              <div style="color: var(--aap-text-muted); line-height: 1.75;">${exp.agreements}</div>
+            </div>
+          </section>
+        ` : ''}
+      `;
+    }
+  </script>
+</body>
+</html>

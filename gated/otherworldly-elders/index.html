@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Otherworldly Elders — The Animist Apothecary</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/styles/site.css">
+  <link rel="stylesheet" href="/styles/tailwind.out.css">
+</head>
+<body>
+  <span data-site-version style="display:none"></span>
+  <div id="siteHeader"></div>
+
+  <!-- Password Gate -->
+  <div id="passwordGate" style="display: flex; min-height: 80vh; align-items: center; justify-content: center; padding: 2rem;">
+    <div style="max-width: 400px; text-align: center;">
+      <h1 style="font-family: var(--aap-font-heading); font-size: 2rem; font-weight: 400; color: var(--aap-text-light); margin-bottom: 1rem;">The Otherworldly Elders</h1>
+      <p style="color: var(--aap-text-muted); margin-bottom: 2rem;">This content is available by invitation only. Please enter the password provided to you.</p>
+      <form id="gateForm">
+        <input type="password" id="gatePassword" placeholder="Enter password" autocomplete="off"
+          style="width: 100%; padding: 0.75rem 1rem; background: var(--aap-bg-muted); border: 1px solid var(--aap-border); border-radius: 4px; color: var(--aap-text); font-family: var(--aap-font-body); font-size: 1rem; margin-bottom: 1rem;">
+        <button type="submit" class="aap-btn aap-btn--primary" style="width: 100%;">Enter</button>
+        <p id="gateError" style="display: none; color: var(--aap-error, #c53030); margin-top: 1rem; font-size: 0.875rem;"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Gated Content (hidden until password verified) -->
+  <div id="gatedContent" style="display: none;">
+    <section class="aap-content" style="padding-top: var(--aap-space-xl);">
+      <h1 style="font-family: var(--aap-font-heading); font-size: 2.5rem; font-weight: 400; text-align: center; color: var(--aap-text-light); margin-bottom: 2rem;">The Otherworldly Elders</h1>
+      <p style="text-align: center; color: var(--aap-text-muted); font-style: italic;">Content for this section is being prepared. Check back soon, or contact Adi for the latest materials.</p>
+    </section>
+  </div>
+
+  <footer class="aap-footer">
+    <div class="aap-footer__content">
+      <div class="aap-footer__copyright">
+        &copy; 2026 The Animist Apothecary. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initPublicPage } from '../../shared/public-shell.js';
+    import { initPasswordGate } from '../../shared/password-gate.js';
+    initPublicPage({ transparent: false, light: true });
+    // Replace with SHA-256 hash of your chosen password
+    initPasswordGate('otherworldly-elders', '1bc9a27c7aee40c1a80f1a0d3e2e96f7e6a4f9d5c3b2a1e8d7c6b5a4f3e2d1c0');
+  </script>
+</body>
+</html>
