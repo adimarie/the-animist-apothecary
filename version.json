@@ -1,12 +1,12 @@
 {
-  "version": "v260331.03 9:41p",
-  "release": 3,
-  "sha": "97c59d6",
-  "fullSha": "97c59d6a169bb076246c854e861f37655afcddca",
+  "version": "v260331.04 10:24p",
+  "release": 4,
+  "sha": "d6054c8",
+  "fullSha": "d6054c8bce18e52f6a362105b518d0eec483f3fd",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-03-31T14:41:14-07:00",
-  "commits": [{"sha":"97c59d6","message":"feat: retheme site for The Animist Apothecary — dark ceremonial aesthetic","author":"Adi Marie"}]
+  "pushedAt": "2026-03-31T15:24:03-07:00",
+  "commits": [{"sha":"d6054c8","message":"feat: add 5 offering detail pages, offerings hub, and book-a-session page","author":"Adi Marie"}]
 }
