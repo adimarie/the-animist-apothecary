@@ -1,12 +1,12 @@
 {
-  "version": "v260331.06 10:49p",
-  "release": 6,
-  "sha": "be7f04b",
-  "fullSha": "be7f04bc71efe9f652b65bd7889507f35b158415",
+  "version": "v260331.07 11:01p",
+  "release": 7,
+  "sha": "568c826",
+  "fullSha": "568c826cfdd719e47e144060c4e2e780a4eec305",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-03-31T15:48:53-07:00",
-  "commits": [{"sha":"be7f04b","message":"feat: rewrite home page, add Sacred Reciprocity + Practice pages, fix edge function","author":"Adi Marie"}]
+  "pushedAt": "2026-03-31T16:01:11-07:00",
+  "commits": [{"sha":"568c826","message":"Create CNAME","author":"adimarie"}]
 }
