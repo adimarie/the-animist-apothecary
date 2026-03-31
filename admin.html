@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Console — The Animist Apothecary</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: #F7F5F0; color: #2D2A26; }
+
+    /* ─────────────────────────────────────────
+       LOGIN PAGE
+    ───────────────────────────────────────── */
+    #loginPage {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #F7F5F0;
+    }
+    .login-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 52px 48px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 8px 48px rgba(45,42,38,0.1);
+      border: 1px solid #e8e5df;
+      text-align: center;
+    }
+    .login-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: #2D2A26;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .login-logo em { color: #5B7553; font-style: normal; }
+    .login-eyebrow {
+      display: block;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #9e8b6e;
+      margin-bottom: 36px;
+    }
+    .login-card h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.65rem;
+      font-weight: 400;
+      color: #2D2A26;
+      margin: 0 0 28px;
+    }
+    .login-field { margin-bottom: 18px; text-align: left; }
+    .login-field label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #2D2A26;
+      margin-bottom: 7px;
+    }
+    .login-field input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: #2D2A26;
+      transition: border-color 0.2s;
+    }
+    .login-field input:focus { outline: none; border-color: #5B7553; box-shadow: 0 0 0 3px rgba(91,117,83,0.1); }
+    .login-error { color: #c0392b; font-size: 0.8rem; min-height: 20px; margin-bottom: 14px; }
+    .login-btn {
+      width: 100%;
+      padding: 13px;
+      background: #5B7553;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .login-btn:hover { background: #4a6344; }
+    .login-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* ─────────────────────────────────────────
+       ADMIN SHELL
+    ───────────────────────────────────────── */
+    #adminApp { display: none; height: 100vh; overflow: hidden; }
+    .admin-layout { display: flex; height: 100vh; }
+
+    /* Sidebar */
+    .admin-sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      background: #2D2A26;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .sidebar-brand {
+      padding: 22px 20px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .sidebar-brand a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.88);
+      text-decoration: none;
+      line-height: 1.3;
+    }
+    .sidebar-brand a em { color: #7db872; font-style: normal; }
+    .sidebar-section-label {
+      font-size: 0.55rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      padding: 20px 20px 8px;
+    }
+    .sidebar-nav { flex: 1; padding: 0 10px 20px; }
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.84rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 2px;
+      user-select: none;
+    }
+    .sidebar-item:hover { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.88); }
+    .sidebar-item.active { background: rgba(91,117,83,0.22); color: #8fc584; }
+    .sidebar-item .si-icon { font-size: 0.9rem; width: 18px; text-align: center; opacity: 0.7; }
+
+    /* Top bar */
+    .admin-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+    .admin-topbar {
+      height: 54px;
+      background: #fff;
+      border-bottom: 1px solid #e8e5df;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      flex-shrink: 0;
+    }
+    .topbar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: #2D2A26;
+    }
+    .topbar-title span { color: #9e8b6e; font-style: italic; }
+    .topbar-right { display: flex; align-items: center; gap: 14px; }
+    .topbar-user { font-size: 0.78rem; color: #aaa; }
+    .btn-signout {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #888;
+      background: none;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 6px 14px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+    }
+    .btn-signout:hover { border-color: #2D2A26; color: #2D2A26; }
+
+    /* Main content area */
+    .admin-main { flex: 1; overflow-y: auto; padding: 28px 32px; background: #F7F5F0; }
+
+    /* Views */
+    .admin-view { display: none; }
+    .admin-view.active { display: block; }
+
+    /* View headers */
+    .view-header { margin-bottom: 22px; }
+    .view-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.85rem;
+      font-weight: 400;
+      color: #2D2A26;
+      margin: 0 0 3px;
+      line-height: 1.2;
+    }
+    .view-header p { font-size: 0.82rem; color: #aaa; margin: 0; }
+
+    /* ─────────────────────────────────────────
+       STAT CARDS
+    ───────────────────────────────────────── */
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+    .stat-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 22px 24px;
+      border: 1px solid #e8e5df;
+      box-shadow: 0 1px 6px rgba(45,42,38,0.04);
+    }
+    .stat-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #9e8b6e; margin-bottom: 8px; }
+    .stat-value { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-weight: 300; color: #2D2A26; line-height: 1; }
+    .stat-sub { font-size: 0.76rem; color: #bbb; margin-top: 6px; }
+
+    /* ─────────────────────────────────────────
+       TABLES
+    ───────────────────────────────────────── */
+    .table-card {
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #e8e5df;
+      box-shadow: 0 1px 6px rgba(45,42,38,0.04);
+      overflow: hidden;
+    }
+    .table-toolbar {
+      padding: 14px 20px;
+      border-bottom: 1px solid #f0ede8;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .search-input {
+      flex: 1;
+      max-width: 340px;
+      padding: 9px 13px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: #2D2A26;
+    }
+    .search-input:focus { outline: none; border-color: #5B7553; box-shadow: 0 0 0 3px rgba(91,117,83,0.1); }
+    .admin-table { width: 100%; border-collapse: collapse; }
+    .admin-table thead th {
+      text-align: left;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #9e8b6e;
+      padding: 12px 20px;
+      border-bottom: 1px solid #f0ede8;
+      background: #faf9f7;
+      white-space: nowrap;
+    }
+    .admin-table tbody td {
+      padding: 13px 20px;
+      font-size: 0.875rem;
+      color: #555;
+      border-bottom: 1px solid #f5f3ef;
+      vertical-align: middle;
+    }
+    .admin-table tbody tr:last-child td { border-bottom: none; }
+    .admin-table tbody tr { cursor: pointer; transition: background 0.15s; }
+    .admin-table tbody tr:hover { background: #faf9f7; }
+    .td-name { font-weight: 500; color: #2D2A26; }
+    .td-arrow { color: #9e8b6e; font-size: 0.75rem; }
+
+    /* ─────────────────────────────────────────
+       BADGES
+    ───────────────────────────────────────── */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .badge-intake    { background: #e6f0e4; color: #3d6835; }
+    .badge-active    { background: #e4eaf5; color: #3a5c90; }
+    .badge-inquiry   { background: #f5f0e8; color: #7a6040; }
+    .badge-completed { background: #e8f5f0; color: #2d7060; }
+    .badge-default   { background: #f0ede8; color: #7a7270; }
+
+    /* ─────────────────────────────────────────
+       DOSSIER
+    ───────────────────────────────────────── */
+    .dossier-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: #aaa;
+      cursor: pointer;
+      margin-bottom: 18px;
+      transition: color 0.2s;
+    }
+    .dossier-back:hover { color: #2D2A26; }
+    .dossier-header {
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px 28px;
+      border: 1px solid #e8e5df;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .dossier-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: #2D2A26;
+      margin: 0 0 10px;
+      line-height: 1.15;
+    }
+    .dossier-meta { display: flex; flex-wrap: wrap; gap: 16px; }
+    .dossier-meta-item { font-size: 0.82rem; color: #888; }
+
+    /* Tabs */
+    .tab-bar {
+      background: #fff;
+      border: 1px solid #e8e5df;
+      border-radius: 8px 8px 0 0;
+      border-bottom: none;
+      display: flex;
+      padding: 0 20px;
+      margin-bottom: 0;
+    }
+    .tab-btn {
+      padding: 14px 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #bbb;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .tab-btn:hover { color: #5B7553; }
+    .tab-btn.active { color: #5B7553; border-bottom-color: #5B7553; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .tab-body {
+      background: #fff;
+      border: 1px solid #e8e5df;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+
+    /* Detail grids */
+    .detail-section { margin-bottom: 28px; }
+    .detail-section:last-child { margin-bottom: 0; }
+    .detail-section-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9e8b6e;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f0ede8;
+    }
+    .detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 28px; }
+    .detail-field label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #ccc;
+      margin-bottom: 4px;
+    }
+    .detail-field p { font-size: 0.88rem; color: #2D2A26; margin: 0; line-height: 1.6; }
+    .detail-field p.empty { color: #ccc; font-style: italic; font-size: 0.82rem; }
+
+    /* Intake responses */
+    .intake-section { margin-bottom: 28px; }
+    .intake-section:last-child { margin-bottom: 0; }
+    .intake-section-title {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9e8b6e;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f0ede8;
+    }
+    .intake-field { margin-bottom: 16px; }
+    .intake-field label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 5px;
+    }
+    .intake-field p { font-size: 0.875rem; color: #2D2A26; margin: 0; line-height: 1.7; white-space: pre-wrap; }
+    .intake-field p.empty { color: #ccc; font-style: italic; font-size: 0.82rem; }
+    .consent-row { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: #555; margin-bottom: 8px; }
+    .consent-icon-yes { color: #5B7553; font-size: 1rem; }
+    .consent-icon-no  { color: #c0392b; font-size: 1rem; }
+
+    /* Session notes */
+    .note-card {
+      border: 1px solid #e8e5df;
+      border-radius: 6px;
+      padding: 18px 22px;
+      margin-bottom: 12px;
+    }
+    .note-card-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; gap: 12px; flex-wrap: wrap; }
+    .note-themes { display: flex; flex-wrap: wrap; gap: 6px; }
+    .theme-tag {
+      background: #eef4ec;
+      color: #3d6835;
+      font-size: 0.67rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+    }
+    .note-date { font-size: 0.74rem; color: #bbb; white-space: nowrap; }
+    .note-section-title {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #9e8b6e;
+      margin: 12px 0 5px;
+    }
+    .note-section-title:first-of-type { margin-top: 0; }
+    .note-body { font-size: 0.875rem; color: #444; line-height: 1.7; white-space: pre-wrap; }
+
+    /* Add note form */
+    .add-note-form {
+      border: 1px solid #e8e5df;
+      border-radius: 8px;
+      padding: 22px 26px;
+      margin-bottom: 24px;
+      background: #faf9f7;
+    }
+    .add-note-form h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: #2D2A26;
+      margin: 0 0 18px;
+    }
+    .note-fg { margin-bottom: 16px; }
+    .note-fg label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: #2D2A26;
+      margin-bottom: 6px;
+    }
+    .note-fg textarea, .note-fg input[type="text"], .note-fg input[type="date"] {
+      width: 100%;
+      padding: 10px 13px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #2D2A26;
+      background: #fff;
+      transition: border-color 0.2s;
+    }
+    .note-fg textarea { min-height: 90px; resize: vertical; line-height: 1.6; }
+    .note-fg textarea:focus, .note-fg input:focus { outline: none; border-color: #5B7553; box-shadow: 0 0 0 3px rgba(91,117,83,0.1); }
+    .note-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-save-note {
+      background: #5B7553;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 11px 28px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-save-note:hover { background: #4a6344; }
+    .btn-save-note:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* States */
+    .loading-state { padding: 40px; text-align: center; color: #bbb; font-size: 0.88rem; }
+    .empty-state { padding: 48px 24px; text-align: center; }
+    .empty-state p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #ccc; font-style: italic; margin: 0; }
+
+    /* Toast */
+    .toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+    .toast {
+      background: #2D2A26;
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 6px;
+      font-size: 0.84rem;
+      max-width: 320px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.22);
+      animation: toastIn 0.3s ease forwards;
+    }
+    .toast.success { border-left: 3px solid #5B7553; }
+    .toast.error   { border-left: 3px solid #c0392b; }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Activity feed */
+    .activity-list { background: #fff; border-radius: 8px; border: 1px solid #e8e5df; overflow: hidden; }
+    .activity-item { padding: 13px 20px; border-bottom: 1px solid #f5f3ef; display: flex; align-items: center; gap: 12px; }
+    .activity-item:last-child { border-bottom: none; }
+    .activity-dot { width: 7px; height: 7px; border-radius: 50%; background: #5B7553; flex-shrink: 0; }
+    .activity-text { font-size: 0.84rem; color: #555; flex: 1; }
+    .activity-text strong { color: #2D2A26; }
+    .activity-time { font-size: 0.74rem; color: #bbb; flex-shrink: 0; }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .admin-sidebar { display: none; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .detail-grid, .note-form-row { grid-template-columns: 1fr; }
+      .admin-main { padding: 20px 16px; }
+    }
+  </style>
+
+<style>
+  .bt-header{padding:30px 0 20px;border-bottom:1px solid #3a3228;margin-bottom:24px}
+  .bt-header h2{font-family:'Playfair Display',serif;font-size:28px;color:#e8dcc8;margin:0 0 6px}
+  .bt-header p{font-family:'EB Garamond',serif;font-size:15px;color:#a08b6e;margin:0}
+  .bt-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px}
+  .bt-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px}
+  .bt-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:24px}
+  .bt-card{background:#2a2520;border:1px solid #3a3228;border-radius:10px;padding:20px;transition:border-color .2s}
+  .bt-card:hover{border-color:#a08b6e}
+  .bt-card-title{font-family:'Playfair Display',serif;font-size:17px;color:#e8dcc8;margin:0 0 4px}
+  .bt-card-sub{font-family:'Courier Prime',monospace;font-size:11px;color:#a08b6e;text-transform:uppercase;letter-spacing:1px;margin:0 0 12px}
+  .bt-card-body{font-family:'EB Garamond',serif;font-size:14px;color:#c4b8a6;line-height:1.5}
+  .bt-badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-family:'Courier Prime',monospace}
+  .bt-badge-yes{background:rgba(122,199,122,.15);color:#7ac77a}
+  .bt-badge-no{background:rgba(199,122,122,.15);color:#c77a7a}
+  .bt-badge-maybe{background:rgba(199,180,122,.15);color:#c7b47a}
+  .bt-badge-feeling{background:rgba(122,160,199,.15);color:#7aa0c7}
+  .bt-stat-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #3a3228}
+  .bt-stat-row:last-child{border-bottom:none}
+  .bt-money{font-family:'Courier Prime',monospace;color:#7ac77a}
+  .bt-table{width:100%;border-collapse:collapse;font-family:'EB Garamond',serif;font-size:14px}
+  .bt-table th{text-align:left;padding:10px 12px;border-bottom:2px solid #3a3228;color:#a08b6e;font-family:'Courier Prime',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+  .bt-table td{padding:8px 12px;border-bottom:1px solid #2a2520;color:#c4b8a6}
+  .bt-table tr:hover td{background:#2a2520}
+  .bt-summary-cards{display:flex;gap:16px;margin-bottom:24px}
+  .bt-summary-card{flex:1;background:#2a2520;border:1px solid #3a3228;border-radius:10px;padding:16px;text-align:center}
+  .bt-summary-card .num{font-family:'Playfair Display',serif;font-size:28px;color:#e8dcc8;display:block}
+  .bt-summary-card .lbl{font-family:'Courier Prime',monospace;font-size:10px;color:#a08b6e;text-transform:uppercase;letter-spacing:1.5px}
+  .bt-launch-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:#B85C35;color:#F7F5F0;border-radius:8px;text-decoration:none;font-family:'Courier Prime',monospace;font-size:13px;letter-spacing:.5px;transition:background .2s;margin-top:12px}
+  .bt-launch-btn:hover{background:#9a4d2d}
+  .bt-actions{display:flex;gap:12px;margin-top:18px;padding-top:18px;border-top:1px solid #3a3228}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     LOGIN PAGE
+══════════════════════════════════════════ -->
+<div id="loginPage">
+  <div class="login-card">
+    <a href="index.html" class="login-logo">The Animist <em>Apothecary</em></a>
+    <span class="login-eyebrow">Admin Console</span>
+    <h1>Sign In</h1>
+    <div class="login-error" id="loginError"></div>
+    <div class="login-field">
+      <label>Email</label>
+      <input type="email" id="loginEmail" autocomplete="email" placeholder="you@example.com">
+    </div>
+    <div class="login-field">
+      <label>Password</label>
+      <input type="password" id="loginPassword" autocomplete="current-password" placeholder="••••••••">
+    </div>
+    <button class="login-btn" id="loginBtn" onclick="handleLogin()">Sign In</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ADMIN APP
+══════════════════════════════════════════ -->
+<div id="adminApp">
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <a href="index.html">The Animist <em>Apothecary</em></a>
+      </div>
+      <div class="sidebar-section-label">Navigation</div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-item active" data-view="dashboard" onclick="navigateTo('dashboard')">
+          <span class="si-icon">◈</span> Dashboard
+        </div>
+        <div class="sidebar-item" data-view="clients" onclick="navigateTo('clients')">
+          <span class="si-icon">◈</span> Clients
+        </div>
+        <div class="sidebar-item" data-view="intakes" onclick="navigateTo('intakes')">
+          <span class="si-icon">◈</span> Intake Forms
+        </div>
+        <div class="sidebar-item" data-view="sessions" onclick="navigateTo('sessions')">
+          <span class="si-icon">◈</span> Session Notes
+        </div>
+
+        <div style="margin:18px 0 8px 18px;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#a08b6e;font-weight:600;">Business Tools</div>
+        <div class="sidebar-item" data-view="pipeline" onclick="navigateTo('pipeline')">
+          <span class="si-icon">◈</span> Sales Pipeline
+        </div>
+        <div class="sidebar-item" data-view="offerings" onclick="navigateTo('offerings')">
+          <span class="si-icon">◈</span> Offerings
+        </div>
+        <div class="sidebar-item" data-view="bookkeeping" onclick="navigateTo('bookkeeping')">
+          <span class="si-icon">◈</span> Bookkeeping
+        </div>
+        <div class="sidebar-item" data-view="pricing" onclick="navigateTo('pricing')">
+          <span class="si-icon">◈</span> Pricing Calculator
+        </div>
+        <div class="sidebar-item" data-view="finance" onclick="navigateTo('finance')">
+          <span class="si-icon">◈</span> Financials
+        </div>
+        <div class="sidebar-item" data-view="tracker" onclick="navigateTo('tracker')">
+          <span class="si-icon">◈</span> Client Tracker
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Body -->
+    <div class="admin-body">
+
+      <!-- Top bar -->
+      <div class="admin-topbar">
+        <div class="topbar-title">Admin <span>Console</span></div>
+        <div class="topbar-right">
+          <span class="topbar-user" id="topbarUser"></span>
+          <button class="btn-signout" onclick="handleLogout()">Sign Out</button>
+        </div>
+      </div>
+
+      <!-- Main -->
+      <main class="admin-main">
+
+        <!-- ────────────────────────────────
+             DASHBOARD VIEW
+        ──────────────────────────────── -->
+        <div class="admin-view active" id="view-dashboard">
+          <div class="view-header">
+            <h2>Dashboard</h2>
+            <p>Overview of your practice</p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">Total Clients</div>
+              <div class="stat-value" id="stat-clients">—</div>
+              <div class="stat-sub">all time</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Recent Intakes</div>
+              <div class="stat-value" id="stat-intakes">—</div>
+              <div class="stat-sub">last 7 days</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Session Notes</div>
+              <div class="stat-value" id="stat-notes">—</div>
+              <div class="stat-sub">total recorded</div>
+            </div>
+          </div>
+
+          <div class="view-header" style="margin-bottom:14px;">
+            <h2 style="font-size:1.3rem;">Recent Intake Activity</h2>
+          </div>
+          <div class="activity-list" id="recentActivity">
+            <div class="loading-state">Loading…</div>
+          </div>
+        </div>
+
+        <!-- ────────────────────────────────
+             CLIENTS VIEW
+        ──────────────────────────────── -->
+        <div class="admin-view" id="view-clients">
+          <div class="view-header">
+            <h2>Clients</h2>
+            <p>All client records</p>
+          </div>
+          <div class="table-card">
+            <div class="table-toolbar">
+              <input type="text" class="search-input" id="clientSearch"
+                placeholder="Search by name or email…" oninput="filterClients()">
+            </div>
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Stage</th>
+                  <th>Location</th>
+                  <th>Created</th>
+                </tr>
+              </thead>
+              <tbody id="clientsTableBody">
+                <tr><td colspan="5"><div class="loading-state">Loading…</div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ────────────────────────────────
+             CLIENT DOSSIER VIEW
+        ──────────────────────────────── -->
+        <div class="admin-view" id="view-dossier">
+          <div class="dossier-back" onclick="navigateTo('clients')">← Back to Clients</div>
+
+          <div class="dossier-header">
+            <div>
+              <h2 class="dossier-name" id="dossierName">—</h2>
+              <div class="dossier-meta" id="dossierMeta"></div>
+            </div>
+            <div id="dossierStageBadge"></div>
+          </div>
+
+          <div class="tab-bar">
+            <button class="tab-btn active" data-tab="overview" onclick="switchTab(this,'tab-overview')">Overview</button>
+            <button class="tab-btn" data-tab="intake"   onclick="switchTab(this,'tab-intake')">Intake</button>
+            <button class="tab-btn" data-tab="notes"    onclick="switchTab(this,'tab-notes')">Session Notes</button>
+            <button class="tab-btn" data-tab="appts"    onclick="switchTab(this,'tab-appts')">Appointments</button>
+          </div>
+
+          <!-- Overview -->
+          <div class="tab-panel active" id="tab-overview">
+            <div class="tab-body">
+              <div class="detail-section">
+                <div class="detail-section-label">Contact Information</div>
+                <div class="detail-grid" id="dossier-contact"></div>
+              </div>
+              <div class="detail-section">
+                <div class="detail-section-label">Background &amp; Referral</div>
+                <div class="detail-grid" id="dossier-background"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Intake -->
+          <div class="tab-panel" id="tab-intake">
+            <div class="tab-body" id="intakeTabContent">
+              <div class="loading-state">Loading intake…</div>
+            </div>
+          </div>
+
+          <!-- Session Notes -->
+          <div class="tab-panel" id="tab-notes">
+            <div class="tab-body">
+              <div class="add-note-form">
+                <h4>Add Session Note</h4>
+                <div class="note-fg">
+                  <label>Practitioner Notes <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#aaa;">(private)</span></label>
+                  <textarea id="nPrivate" placeholder="Your private observations, reflections, and clinical notes…"></textarea>
+                </div>
+                <div class="note-fg">
+                  <label>Client-Visible Notes</label>
+                  <textarea id="nClient" placeholder="Notes you may share with the client…"></textarea>
+                </div>
+                <div class="note-fg">
+                  <label>Session Themes</label>
+                  <input type="text" id="nThemes" placeholder="e.g. grief, boundaries, ancestral healing (comma-separated)">
+                </div>
+                <div class="note-form-row">
+                  <div class="note-fg">
+                    <label>Integration Tasks</label>
+                    <textarea id="nIntegration" style="min-height:80px" placeholder="Practices, tasks, or intentions for integration…"></textarea>
+                  </div>
+                  <div class="note-fg">
+                    <label>Follow-Up Date</label>
+                    <input type="date" id="nFollowUp">
+                  </div>
+                </div>
+                <button class="btn-save-note" id="saveNoteBtn" onclick="saveNote()">Save Note</button>
+              </div>
+              <div id="notesTabContent">
+                <div class="loading-state">Loading notes…</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Appointments -->
+          <div class="tab-panel" id="tab-appts">
+            <div class="tab-body" id="apptsTabContent">
+              <div class="loading-state">Loading appointments…</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ────────────────────────────────
+             INTAKE FORMS VIEW
+        ──────────────────────────────── -->
+        <div class="admin-view" id="view-intakes">
+          <div class="view-header">
+            <h2>Intake Forms</h2>
+            <p>All submitted client intakes</p>
+          </div>
+          <div class="table-card">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Form Type</th>
+                  <th>Submitted</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="intakesTableBody">
+                <tr><td colspan="4"><div class="loading-state">Loading…</div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ────────────────────────────────
+             SESSION NOTES VIEW
+        ──────────────────────────────── -->
+        <div class="admin-view" id="view-sessions">
+          <div class="view-header">
+            <h2>Session Notes</h2>
+            <p>All recorded session notes</p>
+          </div>
+          <div class="table-card">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Client</th>
+                  <th>Themes</th>
+                  <th>Follow-Up</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="sessionsTableBody">
+                <tr><td colspan="4"><div class="loading-state">Loading…</div></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+      <!-- Business Tools Views -->
+            <div class="admin-view" id="view-pipeline" style="display:none">
+        <div class="bt-header">
+          <h2>Sales Pipeline</h2>
+          <p>Lead tracking from IAM Tracking — Adi tab</p>
+        </div>
+        <div class="bt-summary-cards">
+          <div class="bt-summary-card"><span class="num">16</span><span class="lbl">Total Leads</span></div>
+          <div class="bt-summary-card"><span class="num">$72,100</span><span class="lbl">Proposed</span></div>
+          <div class="bt-summary-card"><span class="num">$21,500</span><span class="lbl">Collected</span></div>
+          <div class="bt-summary-card"><span class="num">62.5%</span><span class="lbl">Conversion</span></div>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="bt-table">
+            <thead><tr><th>Name</th><th>Referral</th><th>Convos</th><th>Proposal</th><th>Answer</th><th>Collected</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td>George M.</td><td>Website</td><td>3</td><td>$8,500</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">$8,500</td><td>Ceremony booked May 2026</td></tr>
+              <tr><td>Rita K.</td><td>Referral — George</td><td>4</td><td>$6,200</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">$3,100</td><td>50% deposit, Apr ceremony</td></tr>
+              <tr><td>Samantha P.</td><td>Instagram</td><td>2</td><td>$4,500</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">$4,500</td><td>Paid in full</td></tr>
+              <tr><td>David L.</td><td>Workshop</td><td>5</td><td>$7,800</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">$2,600</td><td>Payment plan 3x</td></tr>
+              <tr><td>Mira T.</td><td>Referral — Samantha</td><td>1</td><td>$3,200</td><td><span class="bt-badge bt-badge-maybe">Maybe</span></td><td class="bt-money">—</td><td>Following up next week</td></tr>
+              <tr><td>Jason W.</td><td>Podcast</td><td>3</td><td>$5,500</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">$2,800</td><td>Half deposit received</td></tr>
+              <tr><td>Elena R.</td><td>Website</td><td>2</td><td>$4,200</td><td><span class="bt-badge bt-badge-no">No</span></td><td class="bt-money">—</td><td>Not ready, revisit in 6mo</td></tr>
+              <tr><td>Carlos F.</td><td>Referral — David</td><td>4</td><td>$6,800</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">—</td><td>Signed, awaiting deposit</td></tr>
+              <tr><td>Naomi B.</td><td>Instagram</td><td>1</td><td>$3,500</td><td><span class="bt-badge bt-badge-feeling">Feeling</span></td><td class="bt-money">—</td><td>Interested, needs time</td></tr>
+              <tr><td>Trevor H.</td><td>Workshop</td><td>6</td><td>$9,200</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">—</td><td>Extended program, starting June</td></tr>
+              <tr><td>Yuki S.</td><td>Referral — Rita</td><td>2</td><td>$3,800</td><td><span class="bt-badge bt-badge-maybe">Maybe</span></td><td class="bt-money">—</td><td>Considering group ceremony</td></tr>
+              <tr><td>Aisha D.</td><td>Website</td><td>3</td><td>$2,900</td><td><span class="bt-badge bt-badge-no">No</span></td><td class="bt-money">—</td><td>Budget constraints</td></tr>
+              <tr><td>Marcus J.</td><td>Podcast</td><td>1</td><td>—</td><td><span class="bt-badge bt-badge-feeling">Feeling</span></td><td class="bt-money">—</td><td>Initial inquiry only</td></tr>
+              <tr><td>Priya V.</td><td>Referral — Jason</td><td>2</td><td>$2,500</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">—</td><td>Micro-ceremony package</td></tr>
+              <tr><td>Liam O.</td><td>Workshop</td><td>4</td><td>$1,800</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">—</td><td>Herbal consult only</td></tr>
+              <tr><td>Zoe C.</td><td>Instagram</td><td>1</td><td>$1,700</td><td><span class="bt-badge bt-badge-maybe">Maybe</span></td><td class="bt-money">—</td><td>Wants more info</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="bt-actions">
+          <a href="https://docs.google.com/spreadsheets/d/19JtpbmSawbXvvLVxbGo9ZEYzDirIPrDFzm7E8RllXb8/edit#gid=49407943" target="_blank" class="bt-launch-btn">↗ Edit in Google Sheets</a>
+        </div>
+      </div>
+      <div class="admin-view" id="view-offerings" style="display:none">
+        <div class="bt-header">
+          <h2>Offerings</h2>
+          <p>Service catalog from Open Container Offerings</p>
+        </div>
+        <div class="bt-grid-3">
+          <div class="bt-card">
+            <h3 class="bt-card-title">Shamanic Journey</h3>
+            <div class="bt-card-sub">Ceremony • Single Session • Intake Required</div>
+            <div class="bt-card-body">Guided shamanic journey with drumming, breathwork, and plant ally support. Deep soul retrieval and energetic clearing.</div>
+            <div style="margin-top:12px;font-family:'Courier Prime',monospace;color:#7ac77a;font-size:14px">$850</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Plant Medicine Ceremony</h3>
+            <div class="bt-card-sub">Ceremony • Multi-Day • Full Screening</div>
+            <div class="bt-card-body">Sacred plant medicine ceremony with preparation, ceremony, and integration support. Includes dietary guidelines and follow-up.</div>
+            <div style="margin-top:12px;font-family:'Courier Prime',monospace;color:#7ac77a;font-size:14px">$3,200 – $8,500</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Herbal Consultation</h3>
+            <div class="bt-card-sub">Wellness • Ongoing • None</div>
+            <div class="bt-card-body">Personalized herbal protocol development based on constitutional assessment and current health picture.</div>
+            <div style="margin-top:12px;font-family:'Courier Prime',monospace;color:#7ac77a;font-size:14px">$175/session</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Energy Healing</h3>
+            <div class="bt-card-sub">Bodywork • Single Session • None</div>
+            <div class="bt-card-body">Hands-on and distance energy work combining Reiki, craniosacral techniques, and intuitive healing.</div>
+            <div style="margin-top:12px;font-family:'Courier Prime',monospace;color:#7ac77a;font-size:14px">$225</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Integration Sessions</h3>
+            <div class="bt-card-sub">Support • Package of 4 • Prior Ceremony</div>
+            <div class="bt-card-body">Post-ceremony integration support to help ground insights, navigate challenges, and sustain transformation.</div>
+            <div style="margin-top:12px;font-family:'Courier Prime',monospace;color:#7ac77a;font-size:14px">$600 (4-pack)</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Breathwork Journey</h3>
+            <div class="bt-card-sub">Ceremony • Single Session • Health Screen</div>
+            <div class="bt-card-body">Holotropic-style breathwork with sound healing, bodywork support, and integration circle.</div>
+            <div style="margin-top:12px;font-family:'Courier Prime',monospace;color:#7ac77a;font-size:14px">$350</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Soul Retrieval</h3>
+            <div class="bt-card-sub">Ceremony • 2 Sessions • Intake Required</div>
+            <div class="bt-card-body">Traditional soul retrieval work to reclaim fragmented aspects of self lost through trauma or life transitions.</div>
+            <div style="margin-top:12px;font-family:'Courier Prime',monospace;color:#7ac77a;font-size:14px">$1,200</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Group Ceremony</h3>
+            <div class="bt-card-sub">Ceremony • Weekend • Application</div>
+            <div class="bt-card-body">Small group ceremony experience (4–8 participants) with shared container, individual attention, and community integration.</div>
+            <div style="margin-top:12px;font-family:'Courier Prime',monospace;color:#7ac77a;font-size:14px">$2,400/person</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Apprenticeship Program</h3>
+            <div class="bt-card-sub">Training • 12 Months • Interview</div>
+            <div class="bt-card-body">Year-long immersive training in shamanic healing arts, herbalism, and ceremony facilitation.</div>
+            <div style="margin-top:12px;font-family:'Courier Prime',monospace;color:#7ac77a;font-size:14px">$12,000/year</div>
+          </div>
+        </div>
+        <div class="bt-actions">
+          <a href="https://docs.google.com/spreadsheets/d/1sT4fIf0q1WK6_f-bAqzFQgq3cbAv6CIFI5ZzZwB5nCE/edit" target="_blank" class="bt-launch-btn">↗ Edit in Google Sheets</a>
+        </div>
+      </div>
+      <div class="admin-view" id="view-bookkeeping" style="display:none">
+        <div class="bt-header">
+          <h2>Bookkeeping</h2>
+          <p>Easy Bookkeeping — income, expenses, and tax tracking</p>
+        </div>
+        <div class="bt-grid-3">
+          <div class="bt-card">
+            <h3 class="bt-card-title">Income Tracking</h3>
+            <div class="bt-card-sub">Revenue Logging</div>
+            <div class="bt-card-body">Log all incoming payments by client, service type, and payment method. Tracks deposits, full payments, and payment plans.</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Expense Categories</h3>
+            <div class="bt-card-sub">Cost Management</div>
+            <div class="bt-card-body">Categorize business expenses including supplies, rent, marketing, professional development, and plant materials.</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Tax Preparation</h3>
+            <div class="bt-card-sub">Quarterly Reports</div>
+            <div class="bt-card-body">Auto-calculated quarterly tax estimates, deduction tracking, and year-end summaries for Schedule C filing.</div>
+          </div>
+        </div>
+        <div class="bt-actions">
+          <a href="https://docs.google.com/spreadsheets/d/1xSeSY1ZJM1X4w9BV5JqYdjJePEO4Yma7Lhu4acaVD1w/edit" target="_blank" class="bt-launch-btn">↗ Open Bookkeeping Spreadsheet</a>
+        </div>
+      </div>
+      <div class="admin-view" id="view-pricing" style="display:none">
+        <div class="bt-header">
+          <h2>Pricing Calculator</h2>
+          <p>Dynamic pricing models for services and ceremonies</p>
+        </div>
+        <div class="bt-grid-3">
+          <div class="bt-card">
+            <h3 class="bt-card-title">Service Pricing</h3>
+            <div class="bt-card-sub">Rate Calculator</div>
+            <div class="bt-card-body">Calculate session rates based on time, materials, preparation, and market positioning. Includes sliding-scale formulas.</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Package Builder</h3>
+            <div class="bt-card-sub">Bundle Pricing</div>
+            <div class="bt-card-body">Create multi-session packages with automatic discount tiers. Models payment plans and deposit structures.</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Ceremony Costing</h3>
+            <div class="bt-card-sub">Event Budget</div>
+            <div class="bt-card-body">Full cost modeling for ceremonies including venue, supplies, food, assistants, and contingency reserves.</div>
+          </div>
+        </div>
+        <div class="bt-actions">
+          <a href="https://docs.google.com/spreadsheets/d/1V4fC4u3mZiB982JTWru3tU4cmB8fc319kktXO87wxzg/edit" target="_blank" class="bt-launch-btn">↗ Open Pricing Calculator</a>
+        </div>
+      </div>
+      <div class="admin-view" id="view-finance" style="display:none">
+        <div class="bt-header">
+          <h2>Financials</h2>
+          <p>Small Business Bookkeeping 4.2 — comprehensive financial overview</p>
+        </div>
+        <div class="bt-grid-2">
+          <div class="bt-card">
+            <h3 class="bt-card-title">Profit &amp; Loss</h3>
+            <div class="bt-card-sub">Monthly P&amp;L</div>
+            <div class="bt-card-body">Monthly and year-to-date profit and loss statements. Revenue vs. expenses breakdown with trend analysis and margin calculations.</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Cash Flow</h3>
+            <div class="bt-card-sub">Projections</div>
+            <div class="bt-card-body">12-month cash flow projections based on booked ceremonies, recurring clients, and anticipated expenses. Includes runway estimates.</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Balance Sheet</h3>
+            <div class="bt-card-sub">Assets &amp; Liabilities</div>
+            <div class="bt-card-body">Current business assets, outstanding receivables, prepaid deposits held, and any business liabilities or commitments.</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Tax Dashboard</h3>
+            <div class="bt-card-sub">Compliance</div>
+            <div class="bt-card-body">Estimated quarterly tax payments, deduction categories, mileage tracking, and home office calculations for tax preparation.</div>
+          </div>
+        </div>
+        <div class="bt-actions">
+          <a href="https://docs.google.com/spreadsheets/d/11f_tODUujgp_-wMLGCWUzrCgcatdV3NwetI6VAcV2oI/edit" target="_blank" class="bt-launch-btn">↗ Open Financials Spreadsheet</a>
+        </div>
+      </div>
+      <div class="admin-view" id="view-tracker" style="display:none">
+        <div class="bt-header">
+          <h2>Client Tracker</h2>
+          <p>Track client relationships, sessions, follow-ups, and lifecycle</p>
+        </div>
+        <div class="bt-grid-3">
+          <div class="bt-card">
+            <h3 class="bt-card-title">Active Clients</h3>
+            <div class="bt-card-sub">Current Roster</div>
+            <div class="bt-card-body">Complete view of all active clients with session history, next appointment dates, outstanding balances, and communication log.</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Follow-Up Queue</h3>
+            <div class="bt-card-sub">Action Items</div>
+            <div class="bt-card-body">Clients needing follow-up: post-ceremony check-ins, integration session scheduling, re-engagement outreach, and payment reminders.</div>
+          </div>
+          <div class="bt-card">
+            <h3 class="bt-card-title">Client Journey</h3>
+            <div class="bt-card-sub">Lifecycle View</div>
+            <div class="bt-card-body">Track each client’s progression from inquiry through intake, ceremony, integration, and ongoing relationship.</div>
+          </div>
+        </div>
+        <div class="bt-actions">
+          <a href="https://docs.google.com/spreadsheets/d/1bIG6SLood-UM9Q-WEY0f8fmSL15rgoxWqIS6xBcV1N4/edit" target="_blank" class="bt-launch-btn">↗ Open Client Tracker</a>
+        </div>
+      </div>
+    </main>
+    </div><!-- /admin-body -->
+  </div><!-- /admin-layout -->
+</div><!-- /adminApp -->
+
+<!-- Toast container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ══════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL     = 'https://wdecjlrfulsdklqeetqb.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  let allClients      = [];
+  let currentClientId = null;
+
+  /* ── Toast ─────────────────────────────── */
+  function showToast(msg, type = 'success') {
+    const el = document.createElement('div');
+    el.className = `toast ${type}`;
+    el.textContent = msg;
+    document.getElementById('toastContainer').appendChild(el);
+    setTimeout(() => el.remove(), 4000);
+  }
+
+  /* ── Helpers ────────────────────────────── */
+  function esc(str) {
+    return String(str ?? '')
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function fmtDate(iso) {
+    if (!iso) return '—';
+    return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function stageBadge(stage) {
+    const map = { intake: 'badge-intake', active: 'badge-active', inquiry: 'badge-inquiry', completed: 'badge-completed' };
+    if (!stage) return '—';
+    return `<span class="badge ${map[stage] || 'badge-default'}">${esc(stage)}</span>`;
+  }
+
+  function detailField(label, val) {
+    const empty = !val;
+    return `<div class="detail-field">
+      <label>${label}</label>
+      <p class="${empty ? 'empty' : ''}">${empty ? 'Not provided' : esc(String(val))}</p>
+    </div>`;
+  }
+
+  /* ── Auth ───────────────────────────────── */
+  async function init() {
+    const { data: { session } } = await sb.auth.getSession();
+    if (session) showApp(session.user);
+  }
+
+  function showApp(user) {
+    document.getElementById('loginPage').style.display  = 'none';
+    document.getElementById('adminApp').style.display   = 'block';
+    document.getElementById('topbarUser').textContent   = user.email;
+    loadDashboard();
+  }
+
+  async function handleLogin() {
+    const email    = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    const errEl    = document.getElementById('loginError');
+    const btn      = document.getElementById('loginBtn');
+    errEl.textContent = '';
+    if (!email || !password) { errEl.textContent = 'Please enter your email and password.'; return; }
+    btn.disabled = true; btn.textContent = 'Signing in…';
+    const { data, error } = await sb.auth.signInWithPassword({ email, password });
+    if (error) {
+      errEl.textContent = error.message;
+      btn.disabled = false; btn.textContent = 'Sign In';
+    } else {
+      showApp(data.user);
+    }
+  }
+
+  async function handleLogout() {
+    await sb.auth.signOut();
+    document.getElementById('adminApp').style.display  = 'none';
+    document.getElementById('loginPage').style.display = 'flex';
+    document.getElementById('loginPassword').value = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && document.getElementById('loginPage').style.display !== 'none') handleLogin();
+  });
+
+  /* ── Navigation ─────────────────────────── */
+  function navigateTo(view) {
+    document.querySelectorAll('.admin-view').forEach(v => v.classList.remove('active'));
+    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+    document.getElementById(`view-${view}`).classList.add('active');
+    const sidebarItem = document.querySelector(`[data-view="${view}"]`);
+    if (sidebarItem) sidebarItem.classList.add('active');
+    const loaders = { dashboard: loadDashboard, clients: loadClients, intakes: loadIntakesView, sessions: loadSessionsView };
+    if (loaders[view]) loaders[view]();
+  }
+
+  /* ── Dashboard ──────────────────────────── */
+  async function loadDashboard() {
+    const sevenDaysAgo = new Date(Date.now() - 7 * 86400000).toISOString();
+    const [
+      { count: cCount },
+      { count: iCount },
+      { count: nCount },
+      { data: recent }
+    ] = await Promise.all([
+      sb.from('clients').select('*', { count: 'exact', head: true }),
+      sb.from('intake_forms').select('*', { count: 'exact', head: true }).gte('submitted_at', sevenDaysAgo),
+      sb.from('session_notes').select('*', { count: 'exact', head: true }),
+      sb.from('intake_forms').select('submitted_at, clients(full_name)').order('submitted_at', { ascending: false }).limit(12)
+    ]);
+
+    document.getElementById('stat-clients').textContent = cCount ?? '—';
+    document.getElementById('stat-intakes').textContent = iCount ?? '—';
+    document.getElementById('stat-notes').textContent   = nCount ?? '—';
+
+    const feed = document.getElementById('recentActivity');
+    const items = recent || [];
+    if (!items.length) {
+      feed.innerHTML = '<div class="empty-state"><p>No recent activity yet</p></div>';
+      return;
+    }
+    feed.innerHTML = items.map(r => `
+      <div class="activity-item">
+        <div class="activity-dot"></div>
+        <div class="activity-text"><strong>${esc(r.clients?.full_name || 'Unknown')}</strong> submitted an intake form</div>
+        <div class="activity-time">${fmtDate(r.submitted_at)}</div>
+      </div>`).join('');
+  }
+
+  /* ── Clients ────────────────────────────── */
+  async function loadClients() {
+    const { data, error } = await sb.from('clients').select('*').order('created_at', { ascending: false });
+    if (error) { showToast('Error loading clients', 'error'); return; }
+    allClients = data || [];
+    renderClients(allClients);
+  }
+
+  function renderClients(list) {
+    const tbody = document.getElementById('clientsTableBody');
+    if (!list.length) {
+      tbody.innerHTML = '<tr><td colspan="5"><div class="empty-state"><p>No clients yet</p></div></td></tr>';
+      return;
+    }
+    tbody.innerHTML = list.map(c => `
+      <tr onclick="openDossier('${c.id}')">
+        <td class="td-name">${esc(c.full_name || '—')}</td>
+        <td>${esc(c.email || '—')}</td>
+        <td>${stageBadge(c.pipeline_stage)}</td>
+        <td>${esc(c.location || '—')}</td>
+        <td>${fmtDate(c.created_at)}</td>
+      </tr>`).join('');
+  }
+
+  function filterClients() {
+    const q = document.getElementById('clientSearch').value.toLowerCase();
+    renderClients(allClients.filter(c =>
+      (c.full_name || '').toLowerCase().includes(q) ||
+      (c.email || '').toLowerCase().includes(q)
+    ));
+  }
+
+  /* ── Client Dossier ─────────────────────── */
+  async function openDossier(clientId) {
+    currentClientId = clientId;
+    navigateTo('dossier');
+
+    // Reset tabs to Overview
+    document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
+    document.querySelectorAll('.tab-panel').forEach((p, i) => p.classList.toggle('active', i === 0));
+
+    // Find client (from cache or fetch)
+    let client = allClients.find(c => c.id === clientId);
+    if (!client) {
+      const { data } = await sb.from('clients').select('*').eq('id', clientId).single();
+      client = data;
+    }
+    if (client) renderDossierHeader(client);
+
+    // Load all tab data
+    loadIntakeTabData(clientId);
+    loadNotesTabData(clientId);
+    loadApptsTabData(clientId);
+  }
+
+  function renderDossierHeader(c) {
+    document.getElementById('dossierName').textContent = c.full_name || '—';
+    document.getElementById('dossierStageBadge').innerHTML = stageBadge(c.pipeline_stage);
+    document.getElementById('dossierMeta').innerHTML = [
+      c.email    && `<span class="dossier-meta-item">✉ ${esc(c.email)}</span>`,
+      c.phone    && `<span class="dossier-meta-item">☎ ${esc(c.phone)}</span>`,
+      c.pronouns && `<span class="dossier-meta-item">${esc(c.pronouns)}</span>`,
+      c.location && `<span class="dossier-meta-item">⌖ ${esc(c.location)}</span>`
+    ].filter(Boolean).join('');
+
+    document.getElementById('dossier-contact').innerHTML = [
+      detailField('Email', c.email),
+      detailField('Phone', c.phone),
+      detailField('Pronouns', c.pronouns),
+      detailField('Date of Birth', c.birth_date),
+      detailField('Location', c.location),
+      detailField('Timezone', c.timezone)
+    ].join('');
+
+    document.getElementById('dossier-background').innerHTML = [
+      detailField('Pipeline Stage', c.pipeline_stage),
+      detailField('Source', c.source),
+      detailField('Referral From', c.referral_source),
+      detailField('Emergency Contact', c.emergency_contact)
+    ].join('');
+  }
+
+  function switchTab(btn, panelId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(panelId).classList.add('active');
+  }
+
+  /* Intake tab */
+  async function loadIntakeTabData(clientId) {
+    const el = document.getElementById('intakeTabContent');
+    const { data, error } = await sb.from('intake_forms')
+      .select('*').eq('client_id', clientId).order('submitted_at', { ascending: false });
+    if (error || !data?.length) {
+      el.innerHTML = '<div class="empty-state"><p>No intake forms on file</p></div>';
+      return;
+    }
+    el.innerHTML = data.map(renderIntakeForm).join('');
+  }
+
+  function renderIntakeForm(form) {
+    const r = form.responses || {};
+
+    const consentHTML = `
+      <div class="intake-section">
+        <div class="intake-section-title">Consent</div>
+        ${consentRow('Informed Consent', r.consent?.informed_consent)}
+        ${consentRow('Confidentiality Agreement', r.consent?.confidentiality)}
+        ${consentRow('Honesty Commitment', r.consent?.honesty_commitment)}
+      </div>`;
+
+    const sectionDefs = [
+      { key: 'safety', label: 'Safety & Medical', fields: ['allergies','medications','medical_conditions'] },
+      { key: 'body',   label: 'Body & Physical Health', fields: ['physical_state','injuries','body_focus_areas','physical_sensitivities'] },
+      { key: 'mind',   label: 'Mind & Emotional Landscape', fields: ['emotional_landscape','mental_health_history','triggers','support_systems'] },
+      { key: 'spirit', label: 'Spirit & Intention', fields: ['spiritual_background','previous_experience','intention','anything_else'] }
+    ];
+
+    const sectionsHTML = sectionDefs.map(s => {
+      const src = r[s.key] || {};
+      const fieldsHTML = s.fields.map(f => {
+        const val = src[f];
+        return `<div class="intake-field">
+          <label>${f.replace(/_/g,' ')}</label>
+          <p class="${val ? '' : 'empty'}">${val ? esc(val) : 'Not provided'}</p>
+        </div>`;
+      }).join('');
+      return `<div class="intake-section"><div class="intake-section-title">${s.label}</div>${fieldsHTML}</div>`;
+    }).join('');
+
+    return `
+      <div style="margin-bottom:8px; font-size:0.72rem; color:#9e8b6e; text-transform:uppercase; letter-spacing:0.14em;">
+        Submitted ${fmtDate(form.submitted_at)} · ${esc(form.form_type || 'initial_intake')}
+      </div>
+      ${consentHTML}${sectionsHTML}
+      <hr style="border:none;border-top:1px solid #f0ede8;margin:24px 0;">`;
+  }
+
+  function consentRow(label, val) {
+    return `<div class="consent-row">
+      <span class="${val ? 'consent-icon-yes' : 'consent-icon-no'}">${val ? '✓' : '✗'}</span>
+      ${label}
+    </div>`;
+  }
+
+  /* Notes tab */
+  async function loadNotesTabData(clientId) {
+    const el = document.getElementById('notesTabContent');
+    const { data, error } = await sb.from('session_notes')
+      .select('*').eq('client_id', clientId).order('created_at', { ascending: false });
+    if (error) { el.innerHTML = '<div class="empty-state"><p>Error loading notes</p></div>'; return; }
+    if (!data?.length) { el.innerHTML = '<div class="empty-state"><p>No session notes yet</p></div>'; return; }
+
+    el.innerHTML = data.map(n => {
+      const themes = (n.session_themes || '').split(',').filter(Boolean);
+      return `<div class="note-card">
+        <div class="note-card-head">
+          <div class="note-themes">${themes.map(t => `<span class="theme-tag">${esc(t.trim())}</span>`).join('')}</div>
+          <div class="note-date">${fmtDate(n.created_at)}</div>
+        </div>
+        ${n.practitioner_notes   ? `<div class="note-section-title">Practitioner Notes</div><div class="note-body">${esc(n.practitioner_notes)}</div>` : ''}
+        ${n.client_visible_notes ? `<div class="note-section-title">Client Notes</div><div class="note-body">${esc(n.client_visible_notes)}</div>` : ''}
+        ${n.integration_tasks    ? `<div class="note-section-title">Integration Tasks</div><div class="note-body">${esc(n.integration_tasks)}</div>` : ''}
+        ${n.follow_up_date       ? `<div class="note-section-title">Follow-Up</div><div class="note-body">${n.follow_up_date}</div>` : ''}
+      </div>`;
+    }).join('');
+  }
+
+  async function saveNote() {
+    const btn = document.getElementById('saveNoteBtn');
+    btn.disabled = true; btn.textContent = 'Saving…';
+    const { error } = await sb.from('session_notes').insert({
+      client_id:            currentClientId,
+      practitioner_notes:   document.getElementById('nPrivate').value     || null,
+      client_visible_notes: document.getElementById('nClient').value      || null,
+      session_themes:       document.getElementById('nThemes').value      || null,
+      integration_tasks:    document.getElementById('nIntegration').value || null,
+      follow_up_date:       document.getElementById('nFollowUp').value    || null
+    });
+    btn.disabled = false; btn.textContent = 'Save Note';
+    if (error) { showToast('Error saving note', 'error'); return; }
+    showToast('Session note saved');
+    ['nPrivate','nClient','nThemes','nIntegration','nFollowUp'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    loadNotesTabData(currentClientId);
+  }
+
+  /* Appointments tab */
+  async function loadApptsTabData(clientId) {
+    const el = document.getElementById('apptsTabContent');
+    const { data, error } = await sb.from('appointments')
+      .select('*').eq('client_id', clientId).order('start_time', { ascending: false });
+    if (error || !data?.length) {
+      el.innerHTML = '<div class="empty-state"><p>No appointments on file</p></div>';
+      return;
+    }
+    el.innerHTML = `<div class="table-card"><table class="admin-table">
+      <thead><tr><th>Date &amp; Time</th><th>Service</th><th>Status</th><th>Notes</th></tr></thead>
+      <tbody>${data.map(a => `<tr>
+        <td>${fmtDate(a.start_time)}</td>
+        <td>${esc(a.service_name || a.service_id || '—')}</td>
+        <td>${stageBadge(a.status)}</td>
+        <td>${esc(a.notes || '—')}</td>
+      </tr>`).join('')}</tbody>
+    </table></div>`;
+  }
+
+  /* ── Intake Forms view ──────────────────── */
+  async function loadIntakesView() {
+    const { data, error } = await sb.from('intake_forms')
+      .select('*, clients(full_name)')
+      .order('submitted_at', { ascending: false });
+    const tbody = document.getElementById('intakesTableBody');
+    if (error || !data?.length) {
+      tbody.innerHTML = '<tr><td colspan="4"><div class="empty-state"><p>No intake forms yet</p></div></td></tr>';
+      return;
+    }
+    tbody.innerHTML = data.map(f => `
+      <tr onclick="openDossier('${f.client_id}')">
+        <td class="td-name">${esc(f.clients?.full_name || '—')}</td>
+        <td>${esc(f.form_type || 'initial_intake')}</td>
+        <td>${fmtDate(f.submitted_at)}</td>
+        <td class="td-arrow">View →</td>
+      </tr>`).join('');
+  }
+
+  /* ── Session Notes view ─────────────────── */
+  async function loadSessionsView() {
+    const { data, error } = await sb.from('session_notes')
+      .select('*, clients(full_name)')
+      .order('created_at', { ascending: false });
+    const tbody = document.getElementById('sessionsTableBody');
+    if (error || !data?.length) {
+      tbody.innerHTML = '<tr><td colspan="4"><div class="empty-state"><p>No session notes yet</p></div></td></tr>';
+      return;
+    }
+    tbody.innerHTML = data.map(n => {
+      const themes = (n.session_themes || '').split(',').filter(Boolean);
+      return `<tr onclick="openDossier('${n.client_id}')">
+        <td class="td-name">${esc(n.clients?.full_name || '—')}</td>
+        <td>${themes.map(t => `<span class="theme-tag">${esc(t.trim())}</span>`).join(' ') || '—'}</td>
+        <td>${n.follow_up_date || '—'}</td>
+        <td>${fmtDate(n.created_at)}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  /* ── Boot ───────────────────────────────── */
+  init();
+</script>
+
+<script>
+(function() {
+  var origNav = window.navigateTo;
+  var extraViews = ['pipeline','offerings','bookkeeping','pricing','finance','tracker'];
+  window.navigateTo = function(view) {
+    if (extraViews.indexOf(view) !== -1) {
+      document.querySelectorAll('.admin-view').forEach(function(v) { v.style.display = 'none'; });
+      document.querySelectorAll('.sidebar-item').forEach(function(i) { i.classList.remove('active'); });
+      var target = document.getElementById('view-' + view);
+      if (target) target.style.display = 'block';
+      var navItem = document.querySelector('.sidebar-item[data-view="' + view + '"]');
+      if (navItem) navItem.classList.add('active');
+    } else { origNav(view); }
+  };
+})();
+</script>
+</body>
+</html>

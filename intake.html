@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Haven Intake Form — The Animist Apothecary</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: #F7F5F0; color: #2D2A26; }
+
+    /* Hero */
+    .intake-hero {
+      background: linear-gradient(rgba(18,24,14,0.65), rgba(18,24,14,0.75)),
+        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&h=600&fit=crop&q=80') center/cover no-repeat;
+      min-height: 280px; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 80px 24px 50px;
+    }
+    .intake-hero h1 { font-family: 'Cormorant Garamond', serif; color: #fff; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300; margin: 0 0 8px; }
+    .intake-hero .hero-sub { font-family: 'Cormorant Garamond', serif; color: rgba(255,255,255,0.75); font-style: italic; font-size: 1.05rem; margin: 0; }
+
+    /* Container */
+    .intake-wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* Progress */
+    .progress-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .progress-label { font-size: 0.69rem; font-weight: 600; letter-spacing: 0.094em; text-transform: uppercase; color: #9e8b6e; }
+    .progress-track { height: 3px; background: #e8e5df; border-radius: 2px; margin-bottom: 36px; }
+    .progress-fill { height: 100%; background: #5B7553; border-radius: 2px; transition: width 0.4s ease; }
+
+    /* Section card */
+    .form-section { display: none; animation: fadeUp 0.4s ease; }
+    .form-section.active { display: block; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+
+    .section-card { background: #fff; border-radius: 10px; border: 1px solid #e8e5df; padding: 36px 40px; box-shadow: 0 2px 16px rgba(45,42,38,0.06); margin-bottom: 20px; }
+    .section-eyebrow { font-size: 0.69rem; font-weight: 600; letter-spacing: 0.094em; text-transform: uppercase; color: #9e8b6e; margin-bottom: 8px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 400; color: #2D2A26; margin: 0 0 20px; line-height: 1.2; }
+    .section-intro { font-size: 0.92rem; color: #666; line-height: 1.75; margin-bottom: 28px; }
+    .section-intro p { margin: 0 0 12px; }
+    .section-intro p:last-child { margin: 0; }
+
+    /* Form fields */
+    .fg { margin-bottom: 24px; }
+    .fg label { display: block; font-size: 0.9375rem; font-weight: 500; text-transform: none; letter-spacing: normal; color: #2D2A26; margin-bottom: 7px; }
+    .fg .helper { font-size: 0.8rem; color: #aaa; font-style: italic; margin-bottom: 7px; }
+    .fg input[type="text"], .fg input[type="email"], .fg input[type="date"], .fg input[type="tel"], .fg textarea, .fg select {
+      width: 100%; padding: 11px 14px; border: 1px solid #d4d0c8; border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: 0.9375rem; color: #2D2A26; background: #fff; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .fg input:focus, .fg textarea:focus, .fg select:focus { outline: none; border-color: #5B7553; box-shadow: 0 0 0 3px rgba(91,117,83,0.1); }
+    .fg textarea { min-height: 110px; resize: vertical; line-height: 1.65; padding: 14px; font-size: 0.9375rem; }
+    .fg.error input, .fg.error textarea, .fg.error select { border-color: #c0392b; }
+    .field-error-msg { color: #c0392b; font-size: 0.76rem; margin-top: 4px; display: none; }
+    .fg.error .field-error-msg { display: block; }
+
+    /* Two-col row */
+    .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media (max-width: 580px) { .fg-row { grid-template-columns: 1fr; } .section-card { padding: 24px 20px; } }
+
+    /* Custom radio */
+    .radio-group { display: flex; flex-direction: column; gap: 10px; }
+    .radio-option { display: flex; align-items: center; gap: 12px; padding: 11px 16px; border: 1px solid #e8e5df; border-radius: 5px; cursor: pointer; transition: border-color 0.2s; }
+    .radio-option:hover { border-color: #5B7553; }
+    .radio-option input[type="radio"] { appearance: none; -webkit-appearance: none; width: 20px; height: 20px; border: 2px solid #5B7553; border-radius: 50%; flex-shrink: 0; position: relative; cursor: pointer; transition: border-color 0.2s; }
+    .radio-option input[type="radio"]::after { content: ''; position: absolute; top: 50%; left: 50%; width: 10px; height: 10px; background: #5B7553; border-radius: 50%; transform: translate(-50%, -50%) scale(0); transition: transform 0.15s ease; }
+    .radio-option input[type="radio"]:checked::after { transform: translate(-50%, -50%) scale(1); }
+    .radio-option span { font-size: 0.9375rem; font-weight: 400; letter-spacing: normal; color: #444; }
+    .radio-option.selected { border-color: #5B7553; background: rgba(91,117,83,0.04); }
+
+    /* Custom checkboxes */
+    .checkbox-list { display: flex; flex-direction: column; gap: 8px; }
+    .cb-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 14px; border: 1px solid #e8e5df; border-radius: 5px; cursor: pointer; transition: border-color 0.2s; }
+    .cb-item:hover { border-color: #b8c9b4; }
+    .cb-item input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: 20px; height: 20px; min-width: 20px; border: 2px solid #5B7553; border-radius: 3px; cursor: pointer; position: relative; transition: background 0.15s, border-color 0.15s; margin-top: 1px; }
+    .cb-item input[type="checkbox"]:checked { background: #5B7553; }
+    .cb-item input[type="checkbox"]:checked::after { content: ''; position: absolute; top: 2px; left: 6px; width: 5px; height: 9px; border: 2px solid #fff; border-top: none; border-left: none; transform: rotate(45deg); }
+    .cb-item span { font-size: 0.9375rem; font-weight: 400; letter-spacing: normal; color: #444; line-height: 1.5; }
+    .cb-other-input { margin-top: 8px; display: none; }
+    .cb-other-input.visible { display: block; }
+
+    /* Consent items */
+    .consent-item { border: 1px solid #e8e5df; border-radius: 8px; padding: 22px 24px; margin-bottom: 16px; }
+    .consent-item:last-of-type { margin-bottom: 0; }
+    .consent-item h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: #2D2A26; margin: 0 0 10px; }
+    .consent-item p { font-size: 0.88rem; color: #666; line-height: 1.7; margin: 0 0 10px; }
+    .consent-item p:last-of-type { margin-bottom: 14px; }
+    .consent-check-row { display: flex; align-items: center; gap: 10px; }
+    .consent-check-row input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: 20px; height: 20px; min-width: 20px; border: 2px solid #5B7553; border-radius: 3px; cursor: pointer; position: relative; transition: background 0.15s; flex-shrink: 0; }
+    .consent-check-row input[type="checkbox"]:checked { background: #5B7553; }
+    .consent-check-row input[type="checkbox"]:checked::after { content: ''; position: absolute; top: 2px; left: 6px; width: 5px; height: 9px; border: 2px solid #fff; border-top: none; border-left: none; transform: rotate(45deg); }
+    .consent-check-row label { font-size: 0.85rem; font-weight: 500; color: #2D2A26; cursor: pointer; }
+    .consent-item.error { border-color: #c0392b; background: #fdf8f8; }
+    .consent-error-msg { color: #c0392b; font-size: 0.74rem; margin-top: 6px; display: none; }
+    .consent-item.error .consent-error-msg { display: block; }
+
+    /* Nav buttons */
+    .section-nav { display: flex; justify-content: space-between; align-items: center; padding-top: 8px; }
+    .btn-back { background: none; border: 1px solid #ccc; color: #888; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.03em; text-transform: none; padding: 12px 28px; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+    .btn-back:hover { border-color: #2D2A26; color: #2D2A26; }
+    .btn-continue { background: #5B7553; color: #fff; border: none; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.03em; text-transform: none; padding: 13px 36px; border-radius: 4px; cursor: pointer; transition: background 0.2s; margin-left: auto; }
+    .btn-continue:hover { background: #4a6344; }
+    .btn-continue:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-submit { background: #9e8b6e; color: #fff; border: none; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.03em; text-transform: none; padding: 13px 40px; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+    .btn-submit:hover { background: #8a7a60; }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* Welcome section special */
+    .welcome-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: #9e8b6e; margin: 0 0 20px; font-style: italic; text-align: center; }
+    .welcome-divider { width: 48px; height: 1px; background: linear-gradient(90deg, transparent, #9e8b6e, transparent); margin: 20px auto; }
+
+    /* Closing section */
+    .closing-text { font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; color: #5c5450; line-height: 1.8; text-align: center; }
+    .closing-text p { margin: 0 0 18px; }
+    .closing-text p:last-child { margin: 0; color: #5B7553; font-weight: 500; }
+
+    /* Success */
+    .intake-success { display: none; text-align: center; padding: 64px 24px; }
+    .intake-success.visible { display: block; }
+    .intake-success h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: #2D2A26; margin: 0 0 16px; }
+    .intake-success p { font-size: 0.92rem; color: #666; line-height: 1.7; max-width: 500px; margin: 0 auto 14px; }
+    .intake-success .cta-link { display: inline-block; margin-top: 24px; padding: 13px 36px; background: #5B7553; color: #fff; text-decoration: none; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.03em; text-transform: none; }
+
+    /* Privacy note */
+    .privacy-note { background: rgba(91,117,83,0.06); border-left: 3px solid #5B7553; border-radius: 0 6px 6px 0; padding: 16px 20px; margin-top: 16px; }
+    .privacy-note p { font-size: 0.8rem; color: #888; line-height: 1.6; margin: 0; }
+
+    /* Checkbox group error */
+    .checkbox-group-error { color: #c0392b; font-size: 0.76rem; margin-top: 6px; display: none; }
+    .checkbox-group-error.visible { display: block; }
+
+    /* Radio group error */
+    .radio-group-error { color: #c0392b; font-size: 0.76rem; margin-top: 6px; display: none; }
+    .radio-group-error.visible { display: block; }
+    .fg.error .radio-group-error { display: block; }
+
+    /* Footer */
+    .site-footer { background: #2D2A26; color: rgba(255,255,255,0.6); padding: 60px 24px 40px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: #fff; margin-bottom: 32px; display: block; text-decoration: none; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 12px 32px; margin-bottom: 40px; }
+    .footer-nav a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.05em; transition: color 0.2s; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">The Animist <em class="logo-accent">Apothecary</em></a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="nav-dropdown-parent">
+          <a href="#">Offerings <span class="nav-arrow">&#9662;</span></a>
+          <div class="nav-dropdown">
+            <div class="nav-dropdown-inner">
+              <div class="nav-drop-col">
+                <span class="nav-drop-label">Cornerstone</span>
+                <a href="mythopoetic.html" class="nav-drop-featured">Mythopoetic Living<span>Developmental Arcs · 3–24 months</span></a>
+              </div>
+              <div class="nav-drop-col">
+                <span class="nav-drop-label">Solo Offerings</span>
+                <a href="shamanic-bodywork.html">Shamanic Bodywork</a>
+                <a href="personal-immersions.html">Personal Immersions</a>
+                <a href="platicas.html">Plát icas — Guidance &amp; Counsel</a>
+                <a href="divinations.html">Ancestral &amp; Elemental Divinations</a>
+              </div>
+              <div class="nav-drop-col">
+                <span class="nav-drop-label">Collective</span>
+                <a href="ceremonial-groups.html">Ceremonial &amp; Ritual Groups</a>
+                <a href="community.html">Community Hubs</a>
+                <a href="community.html#training">Ceremonialist Training</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="community.html">Community</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+        <li><a href="book.html" class="nav-cta">Begin Here</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="intake-hero">
+  <div>
+    <h1>The Haven Intake Form</h1>
+    <p class="hero-sub">The Haven — Cultivating an Entheogenically Awakened Society</p>
+  </div>
+</section>
+
+<!-- MAIN FORM AREA -->
+<div class="intake-wrap">
+
+  <!-- Progress bar -->
+  <div class="progress-header" id="progressHeader">
+    <span class="progress-label" id="progressLabel">Section 1 of 16</span>
+  </div>
+  <div class="progress-track" id="progressTrack">
+    <div class="progress-fill" id="progressFill" style="width: 6.25%;"></div>
+  </div>
+
+  <!-- Success state -->
+  <div class="intake-success" id="intakeSuccess">
+    <h2>Thank you for sharing yourself so fully.</h2>
+    <p>Your intake has been received and will be reviewed with care. You will hear from me soon.</p>
+    <p>In the meantime, take a breath. The hardest part — the stepping forward — is already done.</p>
+    <a href="book.html" class="cta-link">Book an Introductory Call</a>
+  </div>
+
+  <!-- FORM -->
+  <form id="intakeForm" novalidate>
+
+    <!-- ============================================================
+         SECTION 1 — Welcome
+    ============================================================ -->
+    <div class="form-section active" data-section="1">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 1 of 16</p>
+        <p class="welcome-title">The Haven — Cultivating an Entheogenically Awakened Society</p>
+        <div class="welcome-divider"></div>
+        <div class="section-intro">
+          <p>Welcome. This intake form is an invitation to pause, to reflect, and to offer the information that allows us to work together with care, intention, and appropriate safety. It covers a wide range of territory — physical, emotional, psychological, spiritual, and practical — because the work we may do together touches all of these dimensions.</p>
+          <p>Take your time with each section. There are no correct answers. Your honest, unhurried responses are what matter most.</p>
+          <p>When you are ready, begin with your email address.</p>
+        </div>
+
+        <div class="fg" id="fg_welcome_email">
+          <label for="welcome_email">Email *</label>
+          <input type="email" id="welcome_email" name="welcome_email" autocomplete="email" placeholder="your@email.com" />
+          <div class="field-error-msg" id="err_welcome_email">Please enter a valid email address.</div>
+        </div>
+
+        <div class="privacy-note">
+          <p>Your information is held with care and confidentiality. This form is encrypted and your responses are stored securely.</p>
+        </div>
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 2 — Agreements, Safety & Consent
+    ============================================================ -->
+    <div class="form-section" data-section="2">
+      <div class="section-card">
+        <p class="section-eyebrow">Agreements, Safety &amp; Consent</p>
+        <h2 class="section-title">Agreements, Safety &amp; Consent</h2>
+        <div class="section-intro">
+          <p>Please read the following agreements carefully. This work may involve significant physical, emotional, and spiritual processes. Your informed, voluntary consent is essential. This form does not replace medical or psychological evaluation. You are encouraged to consult appropriate licensed professionals about any medical or mental health concerns.</p>
+        </div>
+
+        <!-- Consent 1 -->
+        <div class="consent-item" id="consent_item_1">
+          <h4>Nature of the Work / Scope of Practice</h4>
+          <p>The work offered through this intake form may include preparation, integration, somatic and energetic support, and, in some cases, participation in specialized or expanded states of consciousness within a ceremonial or intentional context.</p>
+          <p>My role is as a facilitator and guide, not as a medical doctor, psychologist, psychiatrist, or licensed therapist. I do not diagnose, treat, or cure medical or psychiatric conditions. This work is intended as complementary and is not a substitute for medical or mental health care.</p>
+          <div class="consent-check-row">
+            <input type="checkbox" id="consent_1" name="consent_1" />
+            <label for="consent_1">I understand, and agree</label>
+          </div>
+          <div class="consent-error-msg" id="err_consent_1">Please check this box to continue.</div>
+        </div>
+
+        <!-- Consent 2 -->
+        <div class="consent-item" id="consent_item_2">
+          <h4>No Medical or Psychological Advice</h4>
+          <p>Information and guidance offered in this context are not medical, psychiatric, or psychological advice and are not meant to replace consultation with licensed healthcare professionals.</p>
+          <p>You agree to continue any medically prescribed treatment unless you have discussed changes with your prescribing clinician. You are encouraged to consult your medical provider and/or mental health provider about the suitability and safety of any deep or altered-state work.</p>
+          <div class="consent-check-row">
+            <input type="checkbox" id="consent_2" name="consent_2" />
+            <label for="consent_2">I understand, and agree</label>
+          </div>
+          <div class="consent-error-msg" id="err_consent_2">Please check this box to continue.</div>
+        </div>
+
+        <!-- Consent 3 -->
+        <div class="consent-item" id="consent_item_3">
+          <h4>Voluntary Participation &amp; Right to Withdraw</h4>
+          <p>Your participation in this work is completely voluntary. You may decline to answer any question on this form and may choose to pause or discontinue at any point in the process.</p>
+          <p>I also reserve the right, based on the information you share, to determine that this work is not appropriate at this time and to decline or delay participation in order to prioritize your safety.</p>
+          <div class="consent-check-row">
+            <input type="checkbox" id="consent_3" name="consent_3" />
+            <label for="consent_3">I understand, and agree</label>
+          </div>
+          <div class="consent-error-msg" id="err_consent_3">Please check this box to continue.</div>
+        </div>
+
+        <!-- Consent 4 -->
+        <div class="consent-item" id="consent_item_4">
+          <h4>Potential Risks &amp; Effects</h4>
+          <p>Work involving specialized or expanded states of consciousness can evoke a wide range of physical, emotional, psychological, and spiritual experiences. These may include, but are not limited to: strong emotions, changes in perception, temporary disorientation, revisiting past experiences, and shifts in how you understand yourself and your life.</p>
+          <p>While care is taken to support and ground the process, there is no way to fully predict how your system will respond. By participating, you acknowledge these possibilities and agree to take responsibility for your own wellbeing, including seeking additional support if needed.</p>
+          <div class="consent-check-row">
+            <input type="checkbox" id="consent_4" name="consent_4" />
+            <label for="consent_4">I understand, and agree</label>
+          </div>
+          <div class="consent-error-msg" id="err_consent_4">Please check this box to continue.</div>
+        </div>
+
+        <!-- Consent 5 -->
+        <div class="consent-item" id="consent_item_5">
+          <h4>Confidentiality &amp; Its Limits</h4>
+          <p>Information you share in this form and in sessions is held in confidence and is not shared without your explicit consent.</p>
+          <p>Electronic communication always carries some inherent privacy risk; by using this form, you acknowledge and accept that risk.</p>
+          <div class="consent-check-row">
+            <input type="checkbox" id="consent_5" name="consent_5" />
+            <label for="consent_5">I understand, and agree</label>
+          </div>
+          <div class="consent-error-msg" id="err_consent_5">Please check this box to continue.</div>
+        </div>
+
+        <!-- Consent 6 -->
+        <div class="consent-item" id="consent_item_6">
+          <h4>Emergency &amp; Safety</h4>
+          <p>This work is not a crisis or emergency service. If you are in immediate danger or experiencing a medical or psychiatric emergency, please contact local emergency services, crisis hotlines, or appropriate emergency care in your area.</p>
+          <p>Psychedelic crisis and support resources are available upon request.</p>
+          <div class="consent-check-row">
+            <input type="checkbox" id="consent_6" name="consent_6" />
+            <label for="consent_6">I understand, and agree</label>
+          </div>
+          <div class="consent-error-msg" id="err_consent_6">Please check this box to continue.</div>
+        </div>
+
+        <!-- Consent 7 -->
+        <div class="consent-item" id="consent_item_7">
+          <h4>Legal Acknowledgment</h4>
+          <p>You are responsible for knowing and complying with the laws of your jurisdiction. Nothing in this form or in our work together is intended to encourage or facilitate any illegal activity.</p>
+          <p>By completing this form and engaging in this work, you acknowledge that you do so by your own choice and are responsible for understanding the legal context that applies to you.</p>
+          <div class="consent-check-row">
+            <input type="checkbox" id="consent_7" name="consent_7" />
+            <label for="consent_7">I understand, and agree</label>
+          </div>
+          <div class="consent-error-msg" id="err_consent_7">Please check this box to continue.</div>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 3 — The Practicals
+    ============================================================ -->
+    <div class="form-section" data-section="3">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 3 of 16</p>
+        <h2 class="section-title">The Practicals — How we Stay in Touch</h2>
+        <div class="section-intro">
+          <p>Here we gather the simple, essential details: how to contact you, where you are in the world, and how you prefer to communicate. These basics allow me to send confirmations, preparation materials, reminders, and follow-up support, and to reach you in a timely way if anything in our planning needs attention. It also begins to locate you in place — geographically and logistically — so the work can be anchored in your real life.</p>
+        </div>
+
+        <div class="fg-row">
+          <div class="fg" id="fg_first_name">
+            <label for="first_name">First Name *</label>
+            <input type="text" id="first_name" name="first_name" autocomplete="given-name" />
+            <div class="field-error-msg" id="err_first_name">Please enter your first name.</div>
+          </div>
+          <div class="fg" id="fg_last_name">
+            <label for="last_name">Last Name *</label>
+            <input type="text" id="last_name" name="last_name" autocomplete="family-name" />
+            <div class="field-error-msg" id="err_last_name">Please enter your last name.</div>
+          </div>
+        </div>
+
+        <div class="fg" id="fg_birth_date">
+          <label for="birth_date">Date of Birth *</label>
+          <input type="date" id="birth_date" name="birth_date" />
+          <div class="field-error-msg" id="err_birth_date">Please enter your date of birth.</div>
+        </div>
+
+        <div class="fg" id="fg_email_confirm">
+          <label for="email_confirm">Email you actually check for confirmations, preparation info, and reminders *</label>
+          <input type="text" id="email_confirm" name="email_confirm" autocomplete="email" placeholder="your@email.com" />
+          <div class="field-error-msg" id="err_email_confirm">Please enter your email address.</div>
+        </div>
+
+        <div class="fg" id="fg_phone">
+          <label for="phone">Phone Number (with Country Code) *</label>
+          <input type="text" id="phone" name="phone" autocomplete="tel" placeholder="+1 555 000 0000" />
+          <div class="field-error-msg" id="err_phone">Please enter your phone number.</div>
+        </div>
+
+        <div class="fg" id="fg_how_found">
+          <label for="how_found">How did you come to find my work or to this offering? (Please be specific) *</label>
+          <textarea id="how_found" name="how_found"></textarea>
+          <div class="field-error-msg" id="err_how_found">Please share how you found this work.</div>
+        </div>
+
+        <div class="fg" id="fg_messaging_app">
+          <label>Which secure or encrypted messaging apps do you use, if any? *</label>
+          <div class="radio-group" id="messaging_app_group">
+            <label class="radio-option">
+              <input type="radio" name="messaging_app" value="Signal" />
+              <span>Signal</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="messaging_app" value="Wire" />
+              <span>Wire</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="messaging_app" value="Whatsapp" />
+              <span>Whatsapp</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="messaging_app" value="Other" />
+              <span>Other</span>
+            </label>
+          </div>
+          <div class="radio-group-error" id="err_messaging_app">Please select a messaging app.</div>
+        </div>
+
+        <div class="fg" id="fg_app_username">
+          <label for="app_username">App Username (e.g. @name, or phone number) *</label>
+          <input type="text" id="app_username" name="app_username" />
+          <div class="field-error-msg" id="err_app_username">Please enter your app username.</div>
+        </div>
+
+        <div class="fg-row">
+          <div class="fg" id="fg_country">
+            <label for="country">Country where you currently live *</label>
+            <input type="text" id="country" name="country" autocomplete="country-name" />
+            <div class="field-error-msg" id="err_country">Please enter your country.</div>
+          </div>
+          <div class="fg" id="fg_state_region">
+            <label for="state_region">State, province, or region (if applicable) *</label>
+            <input type="text" id="state_region" name="state_region" />
+            <div class="field-error-msg" id="err_state_region">Please enter your state or region.</div>
+          </div>
+        </div>
+
+        <div class="fg">
+          <label for="pronouns">How would you like to describe your gender and/or pronouns, if at all?</label>
+          <textarea id="pronouns" name="pronouns" style="min-height:70px;"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="languages">What languages do you speak, prefer, and understand?</label>
+          <input type="text" id="languages" name="languages" />
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 4 — Emergency & Allergy Information
+    ============================================================ -->
+    <div class="form-section" data-section="4">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 4 of 16</p>
+        <h2 class="section-title">Emergency &amp; Allergy Information</h2>
+        <div class="section-intro">
+          <p>This section helps clarify how to respond if something urgent were ever to arise. Please share what feels accurate and current.</p>
+        </div>
+
+        <div class="fg" id="fg_ec1_name">
+          <label for="ec1_name">If an urgent situation were to arise, who would you ideally want contacted first (full name)? *</label>
+          <input type="text" id="ec1_name" name="ec1_name" />
+          <div class="field-error-msg" id="err_ec1_name">Please enter a name.</div>
+        </div>
+
+        <div class="fg" id="fg_ec1_relationship">
+          <label for="ec1_relationship">What is this person's relationship to you (for example: partner, friend, sibling, parent, housemate)? *</label>
+          <input type="text" id="ec1_relationship" name="ec1_relationship" />
+          <div class="field-error-msg" id="err_ec1_relationship">Please describe their relationship to you.</div>
+        </div>
+
+        <div class="fg" id="fg_ec1_phone">
+          <label for="ec1_phone">What is the best phone number for this person, including country code if applicable? *</label>
+          <input type="text" id="ec1_phone" name="ec1_phone" />
+          <div class="field-error-msg" id="err_ec1_phone">Please enter a phone number.</div>
+        </div>
+
+        <div class="fg" id="fg_ec1_email">
+          <label for="ec1_email">If there is an email address for this person that feels useful to include, please add it here. *</label>
+          <textarea id="ec1_email" name="ec1_email" style="min-height:70px;"></textarea>
+          <div class="field-error-msg" id="err_ec1_email">Please enter an email or note.</div>
+        </div>
+
+        <div class="fg">
+          <label for="ec2_info">If there is a second person you would want listed as an emergency contact, please share their name, relationship, and best phone number here.</label>
+          <textarea id="ec2_info" name="ec2_info"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="med_allergies">Do you have any known allergies or sensitivities to medications, and if so, how would you describe them (including typical reactions, if known)?</label>
+          <textarea id="med_allergies" name="med_allergies"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="env_allergies">Are there any allergies or strong sensitivities to foods, plants, animals, or environmental factors (such as fragrances, smoke, or materials) that feel important to name here?</label>
+          <textarea id="env_allergies" name="env_allergies"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="allergy_other">Is there anything else related to allergies, sensitivities, or emergency considerations that you feel is important to include?</label>
+          <textarea id="allergy_other" name="allergy_other"></textarea>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 5 — Body & Physical Health
+    ============================================================ -->
+    <div class="form-section" data-section="5">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 5 of 16 — Medically Important</p>
+        <h2 class="section-title">Body &amp; Physical Health</h2>
+        <div class="section-intro">
+          <p>This section explores your physical health history and current state. Certain conditions can significantly influence how your body responds and may require extra care, modification, or postponement of certain modalities. Your answers here help us discern what is safe, what needs more support or consultation, and how to honor your body's limits and capacities as we move forward.</p>
+        </div>
+
+        <div class="fg">
+          <label for="physical_health_desc">How would you describe your general physical health at this time?</label>
+          <textarea id="physical_health_desc" name="physical_health_desc"></textarea>
+        </div>
+
+        <div class="fg" id="fg_medical_conditions">
+          <label>Which, if any, of the following apply to you now or in the past? *</label>
+          <div class="checkbox-list" id="medical_conditions_list">
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="High Blood Pressure" /><span>High Blood Pressure</span></label>
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="Heart Arrhythmia" /><span>Heart Arrhythmia</span></label>
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="Heart Failure" /><span>Heart Failure</span></label>
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="Chest Pain or Angina" /><span>Chest Pain or Angina</span></label>
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="Pregnancy (actively attempting conception, currently pregnant, or recently postpartum)" /><span>Pregnancy (actively attempting conception, currently pregnant, or recently postpartum)</span></label>
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="Asthma or COPD" /><span>Asthma or COPD</span></label>
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="Heart Attack" /><span>Heart Attack</span></label>
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="Stroke" /><span>Stroke</span></label>
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="Coronary Heart Disease" /><span>Coronary Heart Disease</span></label>
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="Epilepsy or Seizure Disorder" /><span>Epilepsy or Seizure Disorder</span></label>
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="Liver or Kidney Failure" /><span>Liver or Kidney Failure</span></label>
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="Diabetes" /><span>Diabetes</span></label>
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="None of the above" /><span>None of the above</span></label>
+            <label class="cb-item"><input type="checkbox" name="medical_conditions" value="Other" id="medical_conditions_other_cb" /><span>Other</span></label>
+          </div>
+          <div class="cb-other-input" id="medical_conditions_other_wrap">
+            <input type="text" id="medical_conditions_other" name="medical_conditions_other" placeholder="Please describe..." />
+          </div>
+          <div class="checkbox-group-error" id="err_medical_conditions">Please select at least one option.</div>
+        </div>
+
+        <div class="fg">
+          <label for="medical_conditions_desc">In your own words, how would you describe any medical conditions you live with, including how long they've been present and how they are currently being cared for (if they are)?</label>
+          <textarea id="medical_conditions_desc" name="medical_conditions_desc"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="injuries">Have there been major accidents or injuries in your life that feel relevant to name here? If so, how would you briefly describe them and when they occurred?</label>
+          <textarea id="injuries" name="injuries"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="hospitalizations">If you have been hospitalized or had surgery, how would you describe what happened and roughly when?</label>
+          <textarea id="hospitalizations" name="hospitalizations"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="head_injuries">Have you experienced any head injuries or concussions? If so, how would you describe them and when they took place?</label>
+          <textarea id="head_injuries" name="head_injuries"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="aneurysm_history">Is there any known family history of aneurysm? If so, how would you describe what you know?</label>
+          <textarea id="aneurysm_history" name="aneurysm_history"></textarea>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 6 — Mind, Mood & Safety
+    ============================================================ -->
+    <div class="form-section" data-section="6">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 6 of 16 — Medically Important</p>
+        <h2 class="section-title">Mind, Mood &amp; Safety</h2>
+        <div class="section-intro">
+          <p>Here we look at your mental and emotional landscape — past and present. These questions are not about judgment or diagnosis, but about understanding how to meet you with appropriate pacing, containment, and support, and about recognizing when additional or different care might be needed.</p>
+        </div>
+
+        <div class="fg">
+          <label for="mental_health_desc">How would you describe your overall mental health at this time?</label>
+          <textarea id="mental_health_desc" name="mental_health_desc"></textarea>
+        </div>
+
+        <div class="fg" id="fg_mental_health_conditions">
+          <label>Which of the following, if any, have been part of your experience (professionally diagnosed or strongly suspected)? *</label>
+          <div class="checkbox-list" id="mental_health_conditions_list">
+            <label class="cb-item"><input type="checkbox" name="mental_health_conditions" value="Depression" /><span>Depression</span></label>
+            <label class="cb-item"><input type="checkbox" name="mental_health_conditions" value="Anxiety" /><span>Anxiety</span></label>
+            <label class="cb-item"><input type="checkbox" name="mental_health_conditions" value="Post-Traumatic Stress Disorder" /><span>Post-Traumatic Stress Disorder</span></label>
+            <label class="cb-item"><input type="checkbox" name="mental_health_conditions" value="Substance use or addiction" /><span>Substance use or addiction</span></label>
+            <label class="cb-item"><input type="checkbox" name="mental_health_conditions" value="Obsessive-compulsive patterns" /><span>Obsessive-compulsive patterns</span></label>
+            <label class="cb-item"><input type="checkbox" name="mental_health_conditions" value="Bi-polar spectrum experiences" /><span>Bi-polar spectrum experiences</span></label>
+            <label class="cb-item"><input type="checkbox" name="mental_health_conditions" value="Personality structure patterns (e.g. personality disorder diagnosis)" /><span>Personality structure patterns (e.g. "personality disorder" diagnosis)</span></label>
+            <label class="cb-item"><input type="checkbox" name="mental_health_conditions" value="Psychotic or schizophrenia-spectrum experiences" /><span>Psychotic or schizophrenia-spectrum experiences</span></label>
+            <label class="cb-item"><input type="checkbox" name="mental_health_conditions" value="None of the above" /><span>None of the above</span></label>
+            <label class="cb-item"><input type="checkbox" name="mental_health_conditions" value="Other" id="mental_health_conditions_other_cb" /><span>Other</span></label>
+          </div>
+          <div class="cb-other-input" id="mental_health_conditions_other_wrap">
+            <input type="text" id="mental_health_conditions_other" name="mental_health_conditions_other" placeholder="Please describe..." />
+          </div>
+          <div class="checkbox-group-error" id="err_mental_health_conditions">Please select at least one option.</div>
+        </div>
+
+        <div class="fg">
+          <label for="mental_health_history">In your own words, how would you describe any meaningful mental or emotional health history (including diagnoses, significant struggles, or hospitalizations) that feels important for this work to know?</label>
+          <textarea id="mental_health_history" name="mental_health_history"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="harm_history">Have experiences of physical, verbal, emotional, or sexual harm been part of your life? If so, how would you like to name what feels important here, in a way that feels safe enough for you?</label>
+          <textarea id="harm_history" name="harm_history"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="self_harm_history">Have thoughts of suicide or actions of self-harm ever been part of your experience? If yes, how would you describe what feels important to share about that, including where things are now?</label>
+          <textarea id="self_harm_history" name="self_harm_history"></textarea>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 7 — Medications, Substances & Interactions
+    ============================================================ -->
+    <div class="form-section" data-section="7">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 7 of 16</p>
+        <h2 class="section-title">Medications, Substances &amp; Interactions</h2>
+        <div class="section-intro">
+          <p>This section focuses on what you are currently taking into your body. Some medications and substances can create serious risks in combination with certain modalities or states of consciousness; others may simply change how the work feels or unfolds.</p>
+          <p>Your clarity here is critical for safety and helps us make informed, conservative decisions about what is appropriate for you.</p>
+        </div>
+
+        <div class="fg" id="fg_prescription_meds">
+          <label for="prescription_meds">Please list any prescription medications you are currently taking, including name, dose, how often you take them, and how long they've been part of your life. *</label>
+          <textarea id="prescription_meds" name="prescription_meds" placeholder="If none, please write 'None'."></textarea>
+          <div class="field-error-msg" id="err_prescription_meds">Please complete this field (write 'None' if not applicable).</div>
+        </div>
+
+        <div class="fg" id="fg_otc_supplements">
+          <label for="otc_supplements">Please list any over-the-counter medicines, supplements, or herbal products you use regularly, and how you tend to use them. *</label>
+          <textarea id="otc_supplements" name="otc_supplements" placeholder="If none, please write 'None'."></textarea>
+          <div class="field-error-msg" id="err_otc_supplements">Please complete this field (write 'None' if not applicable).</div>
+        </div>
+
+        <div class="fg">
+          <label for="tobacco_rel">How would you describe your relationship with tobacco, past or present, including forms, frequency, and how long this has been part of your life, if at all?</label>
+          <textarea id="tobacco_rel" name="tobacco_rel"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="alcohol_rel">How would you describe your relationship with alcohol at this time, and how, if at all, has it shifted over the years?</label>
+          <textarea id="alcohol_rel" name="alcohol_rel"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="caffeine_rel">What is your relationship with caffeinated substances (such as coffee, tea, energy drinks), and what do you notice about how they affect you?</label>
+          <textarea id="caffeine_rel" name="caffeine_rel"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="cannabis_rel">How would you describe your relationship with cannabis — if present — including how it appears in your life and the role it tends to play?</label>
+          <textarea id="cannabis_rel" name="cannabis_rel"></textarea>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 8 — Exogenous Catalysts and Personal Use History
+    ============================================================ -->
+    <div class="form-section" data-section="8">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 8 of 16</p>
+        <h2 class="section-title">Exogenous Catalysts and Personal Use History</h2>
+        <div class="section-intro">
+          <p>Whether you are new to this territory or have journeyed many times, it matters how those experiences have gone, how they've impacted you, and what remains unfinished or tender.</p>
+          <p>This helps me understand your familiarity with these states, your nervous system's patterns around them, and what kinds of support and structure may be most helpful now.</p>
+        </div>
+
+        <div class="fg">
+          <label for="catalyst_history">Have specialized state substances been part of your experience at any point in your life? If yes, which substances or practices have you engaged with, about how many times, and in what kinds of settings (for example: personal, recreational, ceremonial, therapeutic, clinical)?</label>
+          <textarea id="catalyst_history" name="catalyst_history"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="difficult_experiences">Have there been specialized state experiences that felt particularly difficult or destabilizing for you, and if so, what stands out now as important to name?</label>
+          <textarea id="difficult_experiences" name="difficult_experiences"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="overall_influence">Overall, how would you describe the ways specialized state experiences have influenced your life, whether in supportive, confusing, or mixed ways?</label>
+          <textarea id="overall_influence" name="overall_influence"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="approaching_concerns">As you approach this kind of work, what concerns, questions, or hesitations — if any — do you notice arising in you?</label>
+          <textarea id="approaching_concerns" name="approaching_concerns"></textarea>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 9 — Spirit, Meaning & Cosmology
+    ============================================================ -->
+    <div class="form-section" data-section="9">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 9 of 16</p>
+        <h2 class="section-title">Spirit, Meaning &amp; Cosmology</h2>
+        <div class="section-intro">
+          <p>This section touches the way you make meaning: your spiritual or philosophical orientation, your relationship with Nature, and how you relate to ideas like love, death, soul, and the unseen.</p>
+          <p>There is no 'correct' belief here, merely an opportunity for respectful and complimentary considerations.</p>
+          <p>These questions simply help me understand the symbolic language you live in, the frameworks that feel like home, and how to meet you in a way that respects your cosmology and supports your own ways of knowing and understanding.</p>
+        </div>
+
+        <div class="fg">
+          <label for="spiritual_orientation">In your own words, how would you describe your current spiritual, ontological, or existential orientation, if any?</label>
+          <textarea id="spiritual_orientation" name="spiritual_orientation"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="earth_relationship">How would you describe your relationship, if any, with the living Earth and the more-than-human world (plants, animals, elements, ancestors, unseen presences)?</label>
+          <textarea id="earth_relationship" name="earth_relationship"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="lineages">Are there any lineages, traditions, or practices — ancestral, religious, mystical, contemplative, or other — that feel resonant or like 'home' for you?</label>
+          <textarea id="lineages" name="lineages"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="expanded_state_practices">What is your experience, if any, with practices that invite expanded or specialized states of consciousness (such as meditation, breathwork, trance, ritual, ceremony, dreaming)?</label>
+          <textarea id="expanded_state_practices" name="expanded_state_practices"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="ritual_relationship">How do you relate to ritual, prayer, song, symbol, and mythic or poetic language in the context of healing and inner work?</label>
+          <textarea id="ritual_relationship" name="ritual_relationship"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="life_death_view">When you contemplate life and death — your own or others' — how would you describe the way you understand or feel into it, including any sense of what may or may not follow?</label>
+          <textarea id="life_death_view" name="life_death_view"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="ceremonial_safety">In ceremonial or altered-state spaces, what tends to help you feel spiritually and energetically safe and well-held?</label>
+          <textarea id="ceremonial_safety" name="ceremonial_safety"></textarea>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 10 — Lifestyle
+    ============================================================ -->
+    <div class="form-section" data-section="10">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 10 of 16</p>
+        <h2 class="section-title">Lifestyle — How You Move Through Your Days</h2>
+        <div class="section-intro">
+          <p>Here we look at the everyday ecology of your life — how you live, who you live with, how you inhabit your spaces, and what kinds of relationships and rhythms surround you.</p>
+          <p>This context matters because any powerful experience will ultimately have to land back in your daily life.</p>
+          <p>Seeing these patterns helps me sense what supports may be needed to bridge between 'ceremony' and the ordinary days that follow.</p>
+        </div>
+
+        <div class="fg">
+          <label for="trust_relationship">How would you describe your relationship with trust — toward yourself, others, and life — and, if present, how do fear, vigilance, or suspicion tend to show up for you?</label>
+          <textarea id="trust_relationship" name="trust_relationship"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="living_situation">How would you describe your current living situation and social constellation, and anything you notice about how those shape your day-to-day experience?</label>
+          <textarea id="living_situation" name="living_situation"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="inhabiting_spaces">When you imagine the spaces you inhabit, how do you tend to live inside them, and what do you notice about what feels attended to and what feels less so?</label>
+          <textarea id="inhabiting_spaces" name="inhabiting_spaces"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="relationships_community">How would you describe the current web of relationships and community in your life, and how do you feel about the quality and depth of those connections?</label>
+          <textarea id="relationships_community" name="relationships_community"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="free_time">When you are not in obligation or survival mode, how do you tend to spend your time, and what, if anything, feels truly nourishing in that space?</label>
+          <textarea id="free_time" name="free_time"></textarea>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 11 — Developmental Landscape
+    ============================================================ -->
+    <div class="form-section" data-section="11">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 11 of 16</p>
+        <h2 class="section-title">Developmental Landscape — Your Emotional Companions</h2>
+        <div class="section-intro">
+          <p>This section invites a gentle look at the shaping forces of your life so far: anxiety and stress, loneliness and connection, how criticism lands, and any impactful or overwhelming events along the way.</p>
+          <p>The aim is not to catalogue every wound, but to understand some of the terrain you've walked through, the strategies your system has developed, and the sensitivities or strengths that may be present as you step into deeper work.</p>
+        </div>
+
+        <div class="fg">
+          <label for="anxiety_relationship">If anxiety has been part of your experience, how would you describe your relationship with it now and the ways it tends to show itself?</label>
+          <textarea id="anxiety_relationship" name="anxiety_relationship"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="helplessness">If a sense of helplessness or powerlessness has appeared in your life, how would you describe when it shows up and how it tends to affect you?</label>
+          <textarea id="helplessness" name="helplessness"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="stress_response">When the demands of life increase, how do you notice your system responding to stress or overwhelm, and what patterns do you recognize in how you cope?</label>
+          <textarea id="stress_response" name="stress_response"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="memory_clarity">How would you describe your memory and mental clarity these days, and have you noticed any patterns of difficulty with focus, recall, or presence?</label>
+          <textarea id="memory_clarity" name="memory_clarity"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="low_mood">If low mood, heaviness, or numbness have been present, how would you describe them in your own words, and how long have they been part of your experience?</label>
+          <textarea id="low_mood" name="low_mood"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="loneliness">How does loneliness, if present, show up in your life, and what do you notice about when or where it tends to surface?</label>
+          <textarea id="loneliness" name="loneliness"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="criticism_response">When you receive feedback or feel judged or misunderstood, how do you notice yourself responding inside and outwardly?</label>
+          <textarea id="criticism_response" name="criticism_response"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="traumatic_events">Are there any impactful, overwhelming, or traumatic events in your life — at any age — that feel important to name here, even briefly?</label>
+          <textarea id="traumatic_events" name="traumatic_events"></textarea>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 12 — Fulfillment, Context & Meaning
+    ============================================================ -->
+    <div class="form-section" data-section="12">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 12 of 16</p>
+        <h2 class="section-title">Fulfillment, Context &amp; Meaning</h2>
+        <div class="section-intro">
+          <p>This section explores how your life feels from the inside — how fulfilled you feel, how you understand your place in the larger weave of things, and where you currently derive your sense of meaning.</p>
+          <p>Rather than focusing only on roles or achievements, these questions invite you to share the inner experience of your life: what feels aligned or out of alignment, where you feel connected or adrift, and how you relate to any sense of 'why you are here.'</p>
+          <p>This helps me understand the existential landscape you're living within, so our work can be responsive not just to your circumstances, but to the deeper currents moving through you.</p>
+        </div>
+
+        <div class="fg">
+          <label for="current_work">In whatever language feels natural, how would you describe the work you are currently doing in the world — paid or unpaid — and what it means to you?</label>
+          <textarea id="current_work" name="current_work"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="calling">Do you notice any sense of calling, direction, or service in your life right now, and if so, how would you describe it?</label>
+          <textarea id="calling" name="calling"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="wider_participation">How do you currently participate in the wider life around you — community, culture, care, creativity, or the sacred — and how does that feel?</label>
+          <textarea id="wider_participation" name="wider_participation"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="growth_communities">Are there any ongoing circles, groups, or communities of practice where you feel witnessed in your growth or spiritual unfolding?</label>
+          <textarea id="growth_communities" name="growth_communities"></textarea>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 13 — Health & Wellness Practices
+    ============================================================ -->
+    <div class="form-section" data-section="13">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 13 of 16</p>
+        <h2 class="section-title">Health &amp; Wellness Practices — Inner &amp; Outer Support</h2>
+        <div class="section-intro">
+          <p>This section explores how you care for yourself before, during, and after deep work, and what resources and skills you already have available. Journey work can shift the deeper, often unseen layers of the psyche and body. When that happens, the supports you can draw on — inner practices, outer relationships, and practical structures — become essential.</p>
+          <p>These questions help map the tools, habits, people, and practices you can lean into when you are in process, as well as any places where more support might be helpful. This allows us to shape a container where you are not only opened, but also held, accompanied, and supported in integrating what arises.</p>
+        </div>
+
+        <div class="fg">
+          <label for="self_care">When life feels tender or intense, how do you tend to care for yourself, and what forms of self-nourishment do you reach for?</label>
+          <textarea id="self_care" name="self_care"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="adversity_response">When you move through difficulty or adversity, what do you most often reach for — inside or outside of yourself — and what tends to help you find your footing again?</label>
+          <textarea id="adversity_response" name="adversity_response"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="body_relationship">In this season, how would you describe your relationship with your body, in your own words?</label>
+          <textarea id="body_relationship" name="body_relationship"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="body_signals">When your body sends signals — through sensation, energy, or discomfort — how do you usually notice and respond?</label>
+          <textarea id="body_signals" name="body_signals"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="movement">How does movement show up in your life right now — formal or informal — and what do you notice about how it affects your state?</label>
+          <textarea id="movement" name="movement"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="nourishment">If you were to describe a typical day of eating and drinking, how would you put that into words, and what do you notice about how nourishment lands in your body and mood?</label>
+          <textarea id="nourishment" name="nourishment"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="support_network">Who, if anyone, is currently in your formal support constellation (such as medical, therapeutic, bodywork, or spiritual professionals), and how would you describe that network?</label>
+          <textarea id="support_network" name="support_network"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="support_frequency">How often are you in contact with these supports, and how available do you sense they might be around the time of our work together?</label>
+          <textarea id="support_frequency" name="support_frequency"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="post_work_support">When you think about this process, who — if anyone — comes to mind as a trusted person you could speak to afterward if something needed landing or processing?</label>
+          <textarea id="post_work_support" name="post_work_support"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="integration_history">In the past, what has helped meaningful or intense experiences settle into your everyday life, and what has made integration more difficult?</label>
+          <textarea id="integration_history" name="integration_history"></textarea>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 14 — Trajectory
+    ============================================================ -->
+    <div class="form-section" data-section="14">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 14 of 16</p>
+        <h2 class="section-title">Trajectory — Where You're Heading &amp; What's Unfolding</h2>
+        <div class="section-intro">
+          <p>This section invites you to imagine yourself as The Author and Main Character of your life. If anything were possible, and you were truly free to shape your days and your way of being, who and what are you becoming?</p>
+          <p>These questions are about sensing the deeper arc of your becoming — the directions that quietly call you, the patterns that are ready to change, and the life that feels most true when you let yourself envision it.</p>
+          <p>Your responses help us orient this work toward what you are genuinely moving toward, and distill your intention so that any experiences we invite and curate can serve the larger story you are here to live.</p>
+        </div>
+
+        <div class="fg">
+          <label for="archetypes">When you sense into who you are and who you are becoming, what images, archetypes, or roles feel most resonant — and what feels like it is being outgrown?</label>
+          <textarea id="archetypes" name="archetypes"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="life_chapter">If you were to describe the chapter of life you are in right now, how would you name or characterize it?</label>
+          <textarea id="life_chapter" name="life_chapter"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="life_shifts">When you sense into your life as a whole, what, if anything, feels like it is shifting, loosening, emerging, or asking to be attended to at this time?</label>
+          <textarea id="life_shifts" name="life_shifts"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="intention">As you listen inward, what feels like your clear or tentative intention(s) for entering this particular process or container?</label>
+          <textarea id="intention" name="intention"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="hoped_growth">Looking ahead, what are the things you sense you might be hoping could grow, open, or become more available in you through this work?</label>
+          <textarea id="hoped_growth" name="hoped_growth"></textarea>
+        </div>
+
+        <div class="fg">
+          <label for="hoped_release">And what are the things you sense you might hope could soften, loosen, or fall away as a result of engaging in this process?</label>
+          <textarea id="hoped_release" name="hoped_release"></textarea>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 15 — Final Provisions
+    ============================================================ -->
+    <div class="form-section" data-section="15">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 15 of 16</p>
+        <h2 class="section-title">Final Provisions</h2>
+        <div class="section-intro">
+          <p>This last space is for anything that hasn't yet had a place to land. You might use it to clarify something you shared earlier, name a boundary or sensitivity, voice a question or concern, or speak a hope or quiet prayer for this work.</p>
+          <p>There is no requirement to write anything here. If something in you is still arising for expression or requesting attention, this is a place to share it.</p>
+        </div>
+
+        <div class="fg">
+          <label for="closing_thoughts">Closing Thoughts</label>
+          <textarea id="closing_thoughts" name="closing_thoughts" style="min-height:140px;"></textarea>
+        </div>
+
+        <!-- Final consent 1 -->
+        <div class="consent-item" id="consent_item_final_risk">
+          <h4>Assumption of Risk &amp; Responsibility</h4>
+          <p>By choosing to participate in this work, you acknowledge that you are doing so of your own free will and that you understand there are inherent risks in engaging in deep somatic, emotional, and expanded-state processes.</p>
+          <p>You agree to take responsibility for your own physical, emotional, mental, and spiritual wellbeing, including seeking appropriate medical or psychological support beyond our container if needed.</p>
+          <div class="consent-check-row">
+            <input type="checkbox" id="final_consent_risk" name="final_consent_risk" />
+            <label for="final_consent_risk">I understand, and agree</label>
+          </div>
+          <div class="consent-error-msg" id="err_final_consent_risk">Please check this box to continue.</div>
+        </div>
+
+        <!-- Final consent 2 -->
+        <div class="consent-item" id="consent_item_final_accuracy" style="margin-top: 16px;">
+          <h4>Accuracy &amp; Honesty</h4>
+          <p>I agree that the information I provide in this form is accurate to the best of my knowledge, and I understand that my safety depends on sharing honestly.</p>
+          <div class="consent-check-row">
+            <input type="checkbox" id="final_consent_accuracy" name="final_consent_accuracy" />
+            <label for="final_consent_accuracy">I understand, and agree</label>
+          </div>
+          <div class="consent-error-msg" id="err_final_consent_accuracy">Please check this box to continue.</div>
+        </div>
+
+        <div class="fg" id="fg_signature" style="margin-top: 24px;">
+          <label for="signature">Please type your name in full, with the date *</label>
+          <input type="text" id="signature" name="signature" placeholder="e.g. Jane Smith — March 22, 2026" />
+          <div class="field-error-msg" id="err_signature">Please enter your full name and the date.</div>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 16 — Closing & Gratitude
+    ============================================================ -->
+    <div class="form-section" data-section="16">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 16 of 16</p>
+        <h2 class="section-title" style="text-align:center; font-size: 1.6rem;">Closing &amp; Gratitude</h2>
+
+        <div class="closing-text">
+          <p>Thank you for the time, care, and presence you've given to this form.</p>
+          <p>Some of these questions may have touched tender, complex, or long-guarded places in your life. If that is true for you, I want to acknowledge the courage it takes to pause, to look, and to put words to what has shaped you. Your openness, even in partial or imperfect language, is deeply respected here.</p>
+          <p>My hope is that this process has not only gathered information, but also gently illuminated new angles of consideration — about your body, your heart, your relationships, your history, and the possibilities of this work in your life. Sometimes simply answering these questions can begin to clarify what you are ready to lean into, and what you are ready to loosen or release.</p>
+          <p>Once I have had a chance to sit with your intake and we've completed our inquiry call, I will share any considerations, questions, or recommendations that arise — including whether this particular modality feels like a strong fit at this time, or whether other supports may be better suited.</p>
+          <p>These modalities are most effective when they are woven into a larger ecosystem of self-care and personal responsibility. This includes maintaining any existing medical, therapeutic, or wellness relationships, and being willing to seek additional support as needed.</p>
+          <p>You are invited to enter this work mindfully, devotedly, and with a sincere commitment to the ongoing care of your own life.</p>
+          <p>I am deeply grateful for your honesty and willingness to share yourself in this way. It is an honor to receive it.</p>
+          <p>It is your life. May you live it exquisitely.</p>
+        </div>
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-submit" id="submitBtn" onclick="handleSubmit()">Submit Intake Form</button>
+      </div>
+    </div>
+
+  </form><!-- end #intakeForm -->
+
+</div><!-- end .intake-wrap -->
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">The Animist <em>Apothecary</em></a>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="mythopoetic.html">Mythopoetic Living</a>
+      <a href="shamanic-bodywork.html">Shamanic Bodywork</a>
+      <a href="personal-immersions.html">Personal Immersions</a>
+      <a href="platicas.html">Pl&#225;ticas</a>
+      <a href="divinations.html">Divinations</a>
+      <a href="ceremonial-groups.html">Ceremonial Groups</a>
+      <a href="community.html">Community</a>
+      <a href="about.html">About</a>
+      <a href="sacred-reciprocity.html">Sacred Reciprocity</a>
+      <a href="book.html">Begin Here</a>
+    </nav>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ─── Supabase init ───────────────────────────────────────────────────────────
+  const sb = window.supabase.createClient(
+    'https://wdecjlrfulsdklqeetqb.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs'
+  );
+
+  // ─── State ───────────────────────────────────────────────────────────────────
+  let currentSection = 1;
+  const totalSections = 16;
+
+  // ─── Helpers ─────────────────────────────────────────────────────────────────
+  function val(id) {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+
+  function getChecked(name) {
+    return Array.from(document.querySelectorAll('input[name="' + name + '"]:checked')).map(function(cb) { return cb.value; });
+  }
+
+  function getRadio(name) {
+    const el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+
+  // ─── Navigation ──────────────────────────────────────────────────────────────
+  function goTo(n) {
+    document.querySelectorAll('.form-section').forEach(function(s) { s.classList.remove('active'); });
+    const target = document.querySelector('.form-section[data-section="' + n + '"]');
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    currentSection = n;
+    updateProgress();
+  }
+
+  function goNext() {
+    if (validateSection(currentSection)) {
+      goTo(currentSection + 1);
+    }
+  }
+
+  function goBack() {
+    if (currentSection > 1) {
+      goTo(currentSection - 1);
+    }
+  }
+
+  function updateProgress() {
+    const fill = document.getElementById('progressFill');
+    const label = document.getElementById('progressLabel');
+    if (fill) fill.style.width = (currentSection / totalSections * 100) + '%';
+    if (label) label.textContent = 'Section ' + currentSection + ' of ' + totalSections;
+  }
+
+  // ─── Validation helpers ───────────────────────────────────────────────────────
+  function setError(fgId, errId, show) {
+    const fg = document.getElementById(fgId);
+    const err = document.getElementById(errId);
+    if (fg) fg.classList.toggle('error', show);
+    if (err) err.style.display = show ? 'block' : 'none';
+  }
+
+  function setConsentError(itemId, errId, show) {
+    const item = document.getElementById(itemId);
+    const err = document.getElementById(errId);
+    if (item) item.classList.toggle('error', show);
+    if (err) err.style.display = show ? 'block' : 'none';
+  }
+
+  function setCheckboxGroupError(fgId, errId, show) {
+    const fg = document.getElementById(fgId);
+    const err = document.getElementById(errId);
+    if (fg) fg.classList.toggle('error', show);
+    if (err) err.classList.toggle('visible', show);
+  }
+
+  function setRadioGroupError(fgId, errId, show) {
+    const fg = document.getElementById(fgId);
+    const err = document.getElementById(errId);
+    if (fg) fg.classList.toggle('error', show);
+    if (err) err.classList.toggle('visible', show);
+  }
+
+  // ─── Validation ──────────────────────────────────────────────────────────────
+  function validateSection(n) {
+    var valid = true;
+
+    if (n === 1) {
+      var email = val('welcome_email');
+      var emailOk = email.length > 0 && email.indexOf('@') !== -1;
+      setError('fg_welcome_email', 'err_welcome_email', !emailOk);
+      if (!emailOk) valid = false;
+    }
+
+    else if (n === 2) {
+      for (var i = 1; i <= 7; i++) {
+        var cb = document.getElementById('consent_' + i);
+        var checked = cb && cb.checked;
+        setConsentError('consent_item_' + i, 'err_consent_' + i, !checked);
+        if (!checked) valid = false;
+      }
+    }
+
+    else if (n === 3) {
+      var fields3 = [
+        ['fg_first_name', 'err_first_name', 'first_name'],
+        ['fg_last_name', 'err_last_name', 'last_name'],
+        ['fg_birth_date', 'err_birth_date', 'birth_date'],
+        ['fg_email_confirm', 'err_email_confirm', 'email_confirm'],
+        ['fg_phone', 'err_phone', 'phone'],
+        ['fg_how_found', 'err_how_found', 'how_found'],
+        ['fg_app_username', 'err_app_username', 'app_username'],
+        ['fg_country', 'err_country', 'country'],
+        ['fg_state_region', 'err_state_region', 'state_region']
+      ];
+      fields3.forEach(function(f) {
+        var empty = val(f[2]).length === 0;
+        setError(f[0], f[1], empty);
+        if (empty) valid = false;
+      });
+      var appRadio = getRadio('messaging_app');
+      var radioOk = appRadio.length > 0;
+      setRadioGroupError('fg_messaging_app', 'err_messaging_app', !radioOk);
+      if (!radioOk) valid = false;
+    }
+
+    else if (n === 4) {
+      var fields4 = [
+        ['fg_ec1_name', 'err_ec1_name', 'ec1_name'],
+        ['fg_ec1_relationship', 'err_ec1_relationship', 'ec1_relationship'],
+        ['fg_ec1_phone', 'err_ec1_phone', 'ec1_phone'],
+        ['fg_ec1_email', 'err_ec1_email', 'ec1_email']
+      ];
+      fields4.forEach(function(f) {
+        var empty = val(f[2]).length === 0;
+        setError(f[0], f[1], empty);
+        if (empty) valid = false;
+      });
+    }
+
+    else if (n === 5) {
+      var medChecked = getChecked('medical_conditions');
+      var medOk = medChecked.length > 0;
+      setCheckboxGroupError('fg_medical_conditions', 'err_medical_conditions', !medOk);
+      if (!medOk) valid = false;
+    }
+
+    else if (n === 6) {
+      var mhChecked = getChecked('mental_health_conditions');
+      var mhOk = mhChecked.length > 0;
+      setCheckboxGroupError('fg_mental_health_conditions', 'err_mental_health_conditions', !mhOk);
+      if (!mhOk) valid = false;
+    }
+
+    else if (n === 7) {
+      var fields7 = [
+        ['fg_prescription_meds', 'err_prescription_meds', 'prescription_meds'],
+        ['fg_otc_supplements', 'err_otc_supplements', 'otc_supplements']
+      ];
+      fields7.forEach(function(f) {
+        var empty = val(f[2]).length === 0;
+        setError(f[0], f[1], empty);
+        if (empty) valid = false;
+      });
+    }
+
+    else if (n === 15) {
+      var riskCb = document.getElementById('final_consent_risk');
+      var riskChecked = riskCb && riskCb.checked;
+      setConsentError('consent_item_final_risk', 'err_final_consent_risk', !riskChecked);
+      if (!riskChecked) valid = false;
+
+      var accCb = document.getElementById('final_consent_accuracy');
+      var accChecked = accCb && accCb.checked;
+      setConsentError('consent_item_final_accuracy', 'err_final_consent_accuracy', !accChecked);
+      if (!accChecked) valid = false;
+
+      var sigEmpty = val('signature').length === 0;
+      setError('fg_signature', 'err_signature', sigEmpty);
+      if (sigEmpty) valid = false;
+    }
+
+    return valid;
+  }
+
+  // ─── Form data collection ─────────────────────────────────────────────────────
+  function collectFormData() {
+    return {
+      section_1: {
+        welcome_email: val('welcome_email')
+      },
+      section_2: {
+        consent_1: document.getElementById('consent_1') ? document.getElementById('consent_1').checked : false,
+        consent_2: document.getElementById('consent_2') ? document.getElementById('consent_2').checked : false,
+        consent_3: document.getElementById('consent_3') ? document.getElementById('consent_3').checked : false,
+        consent_4: document.getElementById('consent_4') ? document.getElementById('consent_4').checked : false,
+        consent_5: document.getElementById('consent_5') ? document.getElementById('consent_5').checked : false,
+        consent_6: document.getElementById('consent_6') ? document.getElementById('consent_6').checked : false,
+        consent_7: document.getElementById('consent_7') ? document.getElementById('consent_7').checked : false
+      },
+      section_3: {
+        first_name: val('first_name'),
+        last_name: val('last_name'),
+        birth_date: val('birth_date'),
+        email_confirm: val('email_confirm'),
+        phone: val('phone'),
+        how_found: val('how_found'),
+        messaging_app: getRadio('messaging_app'),
+        app_username: val('app_username'),
+        country: val('country'),
+        state_region: val('state_region'),
+        pronouns: val('pronouns'),
+        languages: val('languages')
+      },
+      section_4: {
+        ec1_name: val('ec1_name'),
+        ec1_relationship: val('ec1_relationship'),
+        ec1_phone: val('ec1_phone'),
+        ec1_email: val('ec1_email'),
+        ec2_info: val('ec2_info'),
+        med_allergies: val('med_allergies'),
+        env_allergies: val('env_allergies'),
+        allergy_other: val('allergy_other')
+      },
+      section_5: {
+        physical_health_desc: val('physical_health_desc'),
+        medical_conditions: getChecked('medical_conditions'),
+        medical_conditions_other: val('medical_conditions_other'),
+        medical_conditions_desc: val('medical_conditions_desc'),
+        injuries: val('injuries'),
+        hospitalizations: val('hospitalizations'),
+        head_injuries: val('head_injuries'),
+        aneurysm_history: val('aneurysm_history')
+      },
+      section_6: {
+        mental_health_desc: val('mental_health_desc'),
+        mental_health_conditions: getChecked('mental_health_conditions'),
+        mental_health_conditions_other: val('mental_health_conditions_other'),
+        mental_health_history: val('mental_health_history'),
+        harm_history: val('harm_history'),
+        self_harm_history: val('self_harm_history')
+      },
+      section_7: {
+        prescription_meds: val('prescription_meds'),
+        otc_supplements: val('otc_supplements'),
+        tobacco_rel: val('tobacco_rel'),
+        alcohol_rel: val('alcohol_rel'),
+        caffeine_rel: val('caffeine_rel'),
+        cannabis_rel: val('cannabis_rel')
+      },
+      section_8: {
+        catalyst_history: val('catalyst_history'),
+        difficult_experiences: val('difficult_experiences'),
+        overall_influence: val('overall_influence'),
+        approaching_concerns: val('approaching_concerns')
+      },
+      section_9: {
+        spiritual_orientation: val('spiritual_orientation'),
+        earth_relationship: val('earth_relationship'),
+        lineages: val('lineages'),
+        expanded_state_practices: val('expanded_state_practices'),
+        ritual_relationship: val('ritual_relationship'),
+        life_death_view: val('life_death_view'),
+        ceremonial_safety: val('ceremonial_safety')
+      },
+      section_10: {
+        trust_relationship: val('trust_relationship'),
+        living_situation: val('living_situation'),
+        inhabiting_spaces: val('inhabiting_spaces'),
+        relationships_community: val('relationships_community'),
+        free_time: val('free_time')
+      },
+      section_11: {
+        anxiety_relationship: val('anxiety_relationship'),
+        helplessness: val('helplessness'),
+        stress_response: val('stress_response'),
+        memory_clarity: val('memory_clarity'),
+        low_mood: val('low_mood'),
+        loneliness: val('loneliness'),
+        criticism_response: val('criticism_response'),
+        traumatic_events: val('traumatic_events')
+      },
+      section_12: {
+        current_work: val('current_work'),
+        calling: val('calling'),
+        wider_participation: val('wider_participation'),
+        growth_communities: val('growth_communities')
+      },
+      section_13: {
+        self_care: val('self_care'),
+        adversity_response: val('adversity_response'),
+        body_relationship: val('body_relationship'),
+        body_signals: val('body_signals'),
+        movement: val('movement'),
+        nourishment: val('nourishment'),
+        support_network: val('support_network'),
+        support_frequency: val('support_frequency'),
+        post_work_support: val('post_work_support'),
+        integration_history: val('integration_history')
+      },
+      section_14: {
+        archetypes: val('archetypes'),
+        life_chapter: val('life_chapter'),
+        life_shifts: val('life_shifts'),
+        intention: val('intention'),
+        hoped_growth: val('hoped_growth'),
+        hoped_release: val('hoped_release')
+      },
+      section_15: {
+        closing_thoughts: val('closing_thoughts'),
+        final_consent_risk: document.getElementById('final_consent_risk') ? document.getElementById('final_consent_risk').checked : false,
+        final_consent_accuracy: document.getElementById('final_consent_accuracy') ? document.getElementById('final_consent_accuracy').checked : false,
+        signature: val('signature')
+      }
+    };
+  }
+
+  // ─── Submit ───────────────────────────────────────────────────────────────────
+  async function handleSubmit() {
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting\u2026';
+
+    var data = collectFormData();
+    var firstName = data.section_3.first_name;
+    var lastName = data.section_3.last_name;
+    var stateRegion = data.section_3.state_region;
+
+    try {
+      // 1. Insert into clients
+      const clientId = crypto.randomUUID();
+      var clientResult = await sb
+        .from('clients')
+        .insert({
+          id: clientId,
+          full_name: (firstName + ' ' + lastName).trim(),
+          email: data.section_3.email_confirm,
+          phone: data.section_3.phone,
+          pronouns: data.section_3.pronouns || null,
+          birth_date: data.section_3.birth_date || null,
+          location: data.section_3.country + (stateRegion ? ', ' + stateRegion : ''),
+          source: 'intake_form',
+          referral_source: data.section_3.how_found || null,
+          emergency_contact: JSON.stringify({
+            name: data.section_4.ec1_name,
+            relationship: data.section_4.ec1_relationship,
+            phone: data.section_4.ec1_phone,
+            email: data.section_4.ec1_email
+          }),
+          pipeline_stage: 'inquiry'
+        });
+
+      if (clientResult.error) throw clientResult.error;
+
+      // 2. Insert into intake_forms
+      var intakeResult = await sb
+        .from('intake_forms')
+        .insert({
+          client_id: clientId,
+          form_type: 'haven_intake',
+          responses: data,
+          submitted_at: new Date().toISOString()
+        });
+
+      if (intakeResult.error) throw intakeResult.error;
+
+      // Success — show success state
+      document.getElementById('intakeForm').style.display = 'none';
+      document.getElementById('progressHeader').style.display = 'none';
+      document.getElementById('progressTrack').style.display = 'none';
+      var successEl = document.getElementById('intakeSuccess');
+      successEl.classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (err) {
+      console.error('Submission error:', err);
+      var message = (err && err.message) ? err.message : 'An unexpected error occurred. Please try again.';
+      alert('There was an issue submitting your intake: ' + message);
+      btn.disabled = false;
+      btn.textContent = 'Submit Intake Form';
+    }
+  }
+
+  // ─── Radio option highlight ───────────────────────────────────────────────────
+  document.addEventListener('change', function(e) {
+    if (e.target.type === 'radio') {
+      var groupName = e.target.name;
+      document.querySelectorAll('input[name="' + groupName + '"]').forEach(function(radio) {
+        var option = radio.closest('.radio-option');
+        if (option) option.classList.toggle('selected', radio.checked);
+      });
+    }
+  });
+
+  // ─── "Other" checkbox toggles ─────────────────────────────────────────────────
+  document.addEventListener('change', function(e) {
+    if (e.target.id === 'medical_conditions_other_cb') {
+      var wrap = document.getElementById('medical_conditions_other_wrap');
+      if (wrap) wrap.classList.toggle('visible', e.target.checked);
+    }
+    if (e.target.id === 'mental_health_conditions_other_cb') {
+      var wrap2 = document.getElementById('mental_health_conditions_other_wrap');
+      if (wrap2) wrap2.classList.toggle('visible', e.target.checked);
+    }
+  });
+
+  // ─── Init ─────────────────────────────────────────────────────────────────────
+  updateProgress();
+</script>
+
+</body>
+</html>

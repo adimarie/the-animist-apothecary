@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceremony Preparation | The Animist Apothecary</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #F7F5F0;
+            --text-primary: #2D2A26;
+            --sage: #5B7553;
+            --sage-light: #7A9B70;
+            --sage-pastel: #C5D5BF;
+            --sage-mist: #E8EFE5;
+            --sage-whisper: #F0F5EE;
+            --earth-gold: #9E8B6E;
+            --card-bg: #FFFFFF;
+            --card-border: rgba(158, 139, 110, 0.15);
+            --nav-bg: rgba(247, 245, 240, 0.92);
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Password Gate */
+        .password-gate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .password-gate.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .gate-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 3rem;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 30px rgba(45, 42, 38, 0.08);
+        }
+
+        .gate-card h2 {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.75rem;
+            color: var(--sage);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .gate-card p {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .gate-input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .gate-input-group input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: var(--sage-whisper);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .gate-input-group input:focus {
+            outline: none;
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px var(--sage-mist);
+        }
+
+        .gate-button {
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background: var(--sage);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gate-button:hover {
+            background: var(--sage-light);
+            transform: translateY(-2px);
+        }
+
+        .gate-error {
+            color: #c84c32;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gate-error.show {
+            opacity: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.25rem 2rem;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--card-border);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.25rem;
+            color: var(--sage);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .nav-back {
+            text-decoration: none;
+            color: var(--sage);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-back:hover {
+            color: var(--sage-light);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+        }
+
+        /* Title Block */
+        .title-block {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeUp 0.8s ease 0.1s both;
+        }
+
+        .title-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: var(--sage);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .title-main {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--sage);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .title-subtitle {
+            font-size: 1.1rem;
+            color: var(--earth-gold);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .ornament {
+            font-size: 1.5rem;
+            color: var(--sage-pastel);
+            letter-spacing: 0.5em;
+        }
+
+        /* Info Card */
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 4rem;
+            animation: fadeUp 0.8s ease 0.2s both;
+        }
+
+        .info-row {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--sage-whisper);
+        }
+
+        .info-row:last-of-type {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .info-label {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 0.95rem;
+            color: var(--sage);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .info-value {
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .host-line {
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            opacity: 0.85;
+            font-style: italic;
+        }
+
+        /* Progress Section */
+        .progress-section {
+            margin-bottom: 3.5rem;
+            animation: fadeUp 0.8s ease 0.3s both;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .progress-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--sage);
+            font-weight: 600;
+        }
+
+        .progress-count {
+            font-size: 0.9rem;
+            color: var(--earth-gold);
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--sage-mist);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 42.8%;
+            background: linear-gradient(90deg, var(--sage) 0%, var(--sage-light) 100%);
+            border-radius: 2px;
+            transition: width 0.6s ease;
+        }
+
+        /* Steps Section */
+        .steps-section {
+            margin-bottom: 4rem;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .step-card:hover {
+            border-color: var(--sage-pastel);
+            box-shadow: 0 8px 24px rgba(91, 117, 83, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .step-card.completed {
+            background: var(--sage-whisper);
+        }
+
+        .step-checkbox {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--card-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--sage);
+            margin-top: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .step-card.completed .step-checkbox {
+            background: var(--sage);
+            color: white;
+            border-color: var(--sage);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-title {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.15rem;
+            color: var(--sage);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .step-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+
+        .step-tag.complete {
+            background: var(--sage-pastel);
+            color: #3d5a3d;
+        }
+
+        .step-tag.in-progress {
+            background: #FFF3E0;
+            color: #D97706;
+        }
+
+        .step-tag.scheduled {
+            background: var(--sage-mist);
+            color: var(--sage);
+        }
+
+        .step-tag.due {
+            background: #FEE2E2;
+            color: #c84c32;
+        }
+
+        .step-tag.after {
+            background: var(--sage-mist);
+            color: var(--sage);
+        }
+
+        .step-tag.date-tbd {
+            background: var(--sage-mist);
+            color: var(--sage);
+        }
+
+        .step-tag.post {
+            background: var(--sage-mist);
+            color: var(--sage);
+        }
+
+        .step-description {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        .step-action {
+            font-size: 0.9rem;
+            color: var(--sage);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .step-action:hover {
+            color: var(--sage-light);
+            text-decoration: underline;
+        }
+
+        /* Stagger animations */
+        .step-card:nth-child(1) { animation-delay: 0.4s; }
+        .step-card:nth-child(2) { animation-delay: 0.45s; }
+        .step-card:nth-child(3) { animation-delay: 0.5s; }
+        .step-card:nth-child(4) { animation-delay: 0.55s; }
+        .step-card:nth-child(5) { animation-delay: 0.6s; }
+        .step-card:nth-child(6) { animation-delay: 0.65s; }
+        .step-card:nth-child(7) { animation-delay: 0.7s; }
+
+        /* Deepen Section */
+        .deepen-section {
+            margin-bottom: 5rem;
+        }
+
+        .deepen-title {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.75rem;
+            color: var(--sage);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+            animation: fadeUp 0.8s ease 0.75s both;
+        }
+
+        .offering-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .offering-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        .offering-card:nth-child(1) { animation-delay: 0.8s; }
+        .offering-card:nth-child(2) { animation-delay: 0.85s; }
+        .offering-card:nth-child(3) { animation-delay: 0.9s; }
+
+        .offering-card:hover {
+            border-color: var(--sage-pastel);
+            box-shadow: 0 12px 32px rgba(91, 117, 83, 0.12);
+            transform: translateY(-4px);
+        }
+
+        .offering-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .offering-title {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.25rem;
+            color: var(--sage);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .offering-description {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            opacity: 0.85;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            border-top: 1px solid var(--card-border);
+            padding: 3rem 2rem;
+            text-align: center;
+            animation: fadeUp 0.8s ease 0.95s both;
+        }
+
+        .footer-signature {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1.25rem;
+            color: var(--sage);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 1rem;
+            color: var(--earth-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-link {
+            font-size: 0.9rem;
+            color: var(--sage);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--sage-light);
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 7rem 1.5rem 2rem;
+            }
+
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .title-main {
+                font-size: 2rem;
+            }
+
+            .info-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .step-card {
+                padding: 1.25rem;
+                gap: 1rem;
+            }
+
+            .step-header {
+                flex-direction: column;
+            }
+
+            .step-tag {
+                margin-left: 0;
+                margin-top: 0.5rem;
+                display: inline-block;
+            }
+
+            .progress-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .offering-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gate-card {
+                padding: 2rem 1.5rem;
+                width: 95%;
+            }
+        }
+
+        /* Intersection Observer for scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .scroll-animate.in-view {
+            animation: fadeUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Password Gate -->
+    <div class="password-gate" id="passwordGate">
+        <div class="gate-card">
+            <h2>Welcome</h2>
+            <p>Enter your access code to continue</p>
+            <div class="gate-input-group">
+                <input type="password" id="passwordInput" placeholder="Access Code" />
+            </div>
+            <button class="gate-button" id="passwordSubmit">Enter</button>
+            <div class="gate-error" id="gateError">Invalid password. Please try again.</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="nav-brand">The Animist Apothecary</a>
+        <a href="/" class="nav-back">Back to Site</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Title Block -->
+        <div class="title-block">
+            <div class="title-label">Ceremony Preparation</div>
+            <h1 class="title-main">Your Journey Begins Here</h1>
+            <div class="title-subtitle">Private Group Ceremony â The Second Full Moon of May</div>
+            <div class="ornament">â¦ â¦ â¦</div>
+        </div>
+
+        <!-- Info Card -->
+        <div class="info-card">
+            <div class="info-row">
+                <div class="info-label">Dates</div>
+                <div class="info-value">May 29â31, 2026</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Time</div>
+                <div class="info-value">Arriving 2pm Friday through departure Sunday</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Location</div>
+                <div class="info-value">Santa Ysabel, CA</div>
+            </div>
+            <div class="host-line">Hosted by George â address and directions provided directly</div>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="progress-section">
+            <div class="progress-header">
+                <div class="progress-label">Your Preparation</div>
+                <div class="progress-count">3 of 7 complete</div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Steps Section -->
+        <div class="steps-section">
+            <div class="step-card completed" data-step="1">
+                <div class="step-checkbox">â</div>
+                <div class="step-content">
+                    <div class="step-header">
+                        <h3 class="step-title">Medication, Supplement & Herb Disclosure</h3>
+                        <span class="step-tag complete">Complete</span>
+                    </div>
+                    <div class="step-description">You've provided information about any medications, supplements, and herbs you're currently taking.</div>
+                </div>
+            </div>
+
+            <div class="step-card completed" data-step="2">
+                <div class="step-checkbox">â</div>
+                <div class="step-content">
+                    <div class="step-header">
+                        <h3 class="step-title">The Dieta â Dietary Preparation</h3>
+                        <span class="step-tag in-progress">In Progress</span>
+                    </div>
+                    <div class="step-description">Begin your dietary preparation with guidance on foods to include and avoid as you approach the ceremony.</div>
+                </div>
+            </div>
+
+            <div class="step-card completed" data-step="3">
+                <div class="step-checkbox">â</div>
+                <div class="step-content">
+                    <div class="step-header">
+                        <h3 class="step-title">Intake Call â Schedule Yours</h3>
+                        <span class="step-tag scheduled">Scheduled</span>
+                    </div>
+                    <div class="step-description">A one-on-one conversation to discuss your intentions, concerns, and answer any questions you may have.</div>
+                    <a href="#" class="step-action">View Your Scheduled Time â</a>
+                </div>
+            </div>
+
+            <div class="step-card" data-step="4">
+                <div class="step-checkbox"></div>
+                <div class="step-content">
+                    <div class="step-header">
+                        <h3 class="step-title">Personal Intake Information</h3>
+                        <span class="step-tag due">Due Before Call</span>
+                    </div>
+                    <div class="step-description">Complete the detailed intake questionnaire to help George understand your background and prepare personalized support.</div>
+                    <a href="#" class="step-action">Complete Questionnaire â</a>
+                </div>
+            </div>
+
+            <div class="step-card" data-step="5">
+                <div class="step-checkbox"></div>
+                <div class="step-content">
+                    <div class="step-header">
+                        <h3 class="step-title">Orientation & Preparation Materials</h3>
+                        <span class="step-tag after">After Intake Calls</span>
+                    </div>
+                    <div class="step-description">Receive comprehensive materials about the ceremony, space, and what to expect. Includes optional preparatory practices.</div>
+                </div>
+            </div>
+
+            <div class="step-card" data-step="6">
+                <div class="step-checkbox"></div>
+                <div class="step-content">
+                    <div class="step-header">
+                        <h3 class="step-title">Group Call â All of Us Together</h3>
+                        <span class="step-tag date-tbd">Date TBD</span>
+                    </div>
+                    <div class="step-description">Join fellow participants in a group orientation call to meet the team and community you'll be ceremonizing with.</div>
+                </div>
+            </div>
+
+            <div class="step-card" data-step="7">
+                <div class="step-checkbox"></div>
+                <div class="step-content">
+                    <div class="step-header">
+                        <h3 class="step-title">Integration Call â After Ceremony</h3>
+                        <span class="step-tag post">Post-Ceremony</span>
+                    </div>
+                    <div class="step-description">A guided session to help you integrate your ceremony experience and discuss next steps in your journey.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deepen Section -->
+        <div class="deepen-section">
+            <h2 class="deepen-title">Ways to Deepen</h2>
+            <div class="offering-grid">
+                <div class="offering-card">
+                    <div class="offering-icon">ð¿</div>
+                    <h3 class="offering-title">Guidance and Counsel</h3>
+                    <p class="offering-description">Personal sessions with George to explore deeper questions, process emotions, and clarify your intentions before the ceremony.</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon">ð¬ï¸</div>
+                    <h3 class="offering-title">Preparatory Journey Work</h3>
+                    <p class="offering-description">The Luminous Breath â a meditation practice to cultivate presence, clarity, and inner connection leading up to the ceremony.</p>
+                </div>
+                <div class="offering-card">
+                    <div class="offering-icon">â¨</div>
+                    <h3 class="offering-title">Ancestral Divination</h3>
+                    <p class="offering-description">Dagara Divinatory Practice â explore messages from your ancestors to inform and guide your ceremony experience.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-signature">~ Adi Marie</div>
+        <div class="footer-brand">The Animist Apothecary</div>
+        <a href="/" class="footer-link">Visit Our Site</a>
+    </footer>
+
+    <script>
+        // Password Gate Logic
+        const passwordGate = document.getElementById('passwordGate');
+        const passwordInput = document.getElementById('passwordInput');
+        const passwordSubmit = document.getElementById('passwordSubmit');
+        const gateError = document.getElementById('gateError');
+        const COPÒECT_PASSWORD = 'ceremony2026';
+        const SESSION_KEY = 'ceremonyAccessGranted';
+
+        // Check if already authenticated in this session
+        if (sessionStorage.getItem(SESSION_KEY)) {
+            passwordGate.classList.add('hidden');
+        }
+
+        // Handle password submission
+        function handlePasswordSubmit() {
+            const enteredPassword = passwordInput.value;
+            gateError.classList.remove('show');
+
+            if (enteredPassword === CORRECT_PASSWORD) {
+                sessionStorage.setItem(SESSION_KEY, 'true');
+                passwordGate.classList.add('hidden');
+            } else {
+                gateError.classList.add('show');
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        }
+
+        passwordSubmit.addEventListener('click', handlePasswordSubmit);
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handlePasswordSubmit();
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe step cards
+        document.querySelectorAll('.step-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Step card toggle functionality
+        document.querySelectorAll('.step-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Don't toggle if clicking a link
+                if (e.target.tagName !== 'A') {
+                    this.classList.toggle('completed');
+                    const checkbox = this.querySelector('.step-checkbox');
+                    if (this.classList.contains('completed')) {
+                        checkbox.textContent = 'â';
+                    } else {
+                        checkbox.textContent = '';
+                    }
+                }
+            });
+        });
+
+        // Prevent link clicks from propagating to card toggle
+        document.querySelectorAll('.step-action').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+
+        // Focus password input on load
+        if (!sessionStorage.getItem(SESSION_KEY)) {
+            passwordInput.focus();
+        }
+    </script>
+</body>
+</html>

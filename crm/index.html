@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorkHub — The Animist Apothecary</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;}
+    body{margin:0;background:#fdf9f3;}
+    #loading{display:flex;align-items:center;justify-content:center;min-height:100vh;
+      font-family:'Georgia',serif;font-style:italic;color:#7a5535;font-size:18px;}
+  </style>
+</head>
+<body>
+  <div id="loading">The Haven is opening…</div>
+  <div id="root"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+
+  <script>
+    const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
+
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // window.storage — backed by Supabase crm_store (JSONB)
+    // API: get(key) → {value: jsonString} | null  /  set(key, jsonString)
+    window.storage = {
+      async get(key) {
+        try {
+          const { data } = await sb
+            .from('crm_store')
+            .select('value')
+            .eq('key', key)
+            .maybeSingle();
+          return data ? { value: JSON.stringify(data.value) } : null;
+        } catch { return null; }
+      },
+      async set(key, jsonString) {
+        try {
+          await sb.from('crm_store').upsert(
+            { key, value: JSON.parse(jsonString), updated_at: new Date().toISOString() },
+            { onConflict: 'key' }
+          );
+        } catch {}
+      }
+    };
+
+    async function boot() {
+      // Auth guard
+      const { data: { session } } = await sb.auth.getSession();
+      if (!session) {
+        window.location.href = '../login.html';
+        return;
+      }
+
+      // Fetch, Babel-transform, and eval the React component
+      const res  = await fetch('app.jsx');
+      const src  = await res.text();
+      const code = Babel.transform(src, { presets: ['react'] }).code;
+      // eslint-disable-next-line no-eval
+      eval(code);
+
+      // Mount
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(React.createElement(WorkHub));
+      document.getElementById('loading').style.display = 'none';
+    }
+
+    boot().catch(err => {
+      document.getElementById('loading').textContent = 'Error loading WorkHub: ' + err.message;
+    });
+  </script>
+</body>
+</html>

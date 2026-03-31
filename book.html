@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Begin Here · The Animist Apothecary</title>
+  <meta name="description" content="Book an introductory call or inquiry session with Adi Marie at The Animist Apothecary.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">The Animist <em class="logo-accent">Apothecary</em></a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="nav-dropdown-parent">
+            <a href="#">Offerings <span class="nav-arrow">▾</span></a>
+            <div class="nav-dropdown">
+              <div class="nav-dropdown-inner">
+                <div class="nav-drop-col">
+                  <span class="nav-drop-label">Cornerstone</span>
+                  <a href="mythopoetic.html" class="nav-drop-featured">Mythopoetic Living<span>Developmental Arcs · 3–24 months</span></a>
+                </div>
+                <div class="nav-drop-col">
+                  <span class="nav-drop-label">Solo Offerings</span>
+                  <a href="shamanic-bodywork.html">Shamanic Bodywork</a>
+                  <a href="personal-immersions.html">Personal Immersions</a>
+                  <a href="platicas.html">Plát icas — Guidance &amp; Counsel</a>
+                  <a href="divinations.html">Ancestral &amp; Elemental Divinations</a>
+                </div>
+                <div class="nav-drop-col">
+                  <span class="nav-drop-label">Collective</span>
+                  <a href="ceremonial-groups.html">Ceremonial &amp; Ritual Groups</a>
+                  <a href="community.html">Community Hubs</a>
+                  <a href="community.html#training">Ceremonialist Training</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="community.html">Community</a></li>
+          <li><a href="about.html">About</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          <li><a href="book.html" class="nav-cta nav-active">Begin Here</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&h=600&fit=crop&q=80'); padding-top: 80px; min-height: 40vh;">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Begin Here</p>
+      <h1 class="page-hero-title">Let's explore what's possible</h1>
+      <p class="page-hero-subtitle">A conversation first. Always.</p>
+    </div>
+  </section>
+
+  <section class="booking-section" style="background: #F7F5F0;">
+    <div class="booking-inner">
+      <div class="booking-intro">
+        <p class="section-label">Your Inquiry</p>
+        <h2 class="section-title">Tell us a little <em>about yourself</em></h2>
+        <div class="section-body" style="max-width: 560px; margin: 0 auto;">
+          <p>If you're called to this work, complete the form below. We'll review your message and be in touch within 48 hours to schedule a free introductory call.</p>
+        </div>
+      </div>
+
+      <form id="booking-form" onsubmit="handleBookingSubmit(event)">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="first-name">First Name</label>
+            <input class="form-input" type="text" id="first-name" name="first_name" placeholder="Your first name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="last-name">Last Name</label>
+            <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Your last name" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Phone (optional)</label>
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
+          <label class="form-label">What offerings are you drawn to? (select all that apply)</label>
+          <div class="checkbox-grid">
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="developmental_arc">
+              Mythopoetic Living — Developmental Arc
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="shamanic_bodywork">
+              Shamanic Bodywork
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="personal_immersions">
+              Personal Immersions
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="ceremonial_groups">
+              Ceremonial &amp; Ritual Groups
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="platicas">
+              Plát icas — Guidance &amp; Counsel
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="divinations">
+              Ancestral &amp; Elemental Divinations
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="training">
+              Ceremonialist Training
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="not_sure">
+              Not sure yet — help me find my entry point
+            </label>
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
+          <label class="form-label">How would you like to work?</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="format" value="solo">
+              Solo — just me
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="format" value="group">
+              Group — with others
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="format" value="both">
+              Both — open to either
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="format" value="not_sure">
+              Not sure yet
+            </label>
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="investment">Investment Range</label>
+            <select class="form-select" id="investment" name="investment">
+              <option value="" disabled selected>Select a range</option>
+              <option value="1500-3000">$1,500 – $3,000</option>
+              <option value="3000-8000">$3,000 – $8,000</option>
+              <option value="8000-15000">$8,000 – $15,000</option>
+              <option value="open">I don't have a set budget — let's talk</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="start-date">Preferred Start Date</label>
+            <input class="form-input" type="date" id="start-date" name="start_date">
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">What are you carrying? What are you seeking?</label>
+          <textarea class="form-textarea" id="message" name="message" placeholder="Tell us a bit about where you are, what you're navigating, and what you're hoping to find. There is no wrong thing to say — only the true thing."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="referral">How did you hear about The Animist Apothecary?</label>
+          <input class="form-input" type="text" id="referral" name="referral" placeholder="Referral, social media, search, word of mouth...">
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-primary">Send Your Inquiry</button>
+          <p class="form-note">We read every message and respond within 48 hours.</p>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <section class="booking-steps" style="background: #EFEDE6;">
+    <div class="booking-steps-inner" style="text-align: center;">
+      <p class="section-label">What Happens Next</p>
+      <h2 class="section-title">A conversation first. <em>Always.</em></h2>
+      <div class="booking-steps-grid">
+        <div class="booking-step">
+          <div class="booking-step-num">01</div>
+          <h3>We Read Your Message</h3>
+          <p>Every inquiry is read personally. We take the time to understand what you're carrying before responding.</p>
+        </div>
+        <div class="booking-step">
+          <div class="booking-step-num">02</div>
+          <h3>We Schedule a Call</h3>
+          <p>A free 20-minute introductory call to feel the resonance, ask questions, and outline a path forward together.</p>
+        </div>
+        <div class="booking-step">
+          <div class="booking-step-num">03</div>
+          <h3>We Find Your Path</h3>
+          <p>If it feels right for both of us, we design the container together — and the work begins on your terms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">The Animist <em class="logo-accent">Apothecary</em></a>
+        <p class="footer-tagline">Shamanic healing, somatic ceremony, and botanical medicine.<br>Based in Topanga Canyon, Los Angeles, California. Available worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#offerings">Offerings</a></li>
+            <li><a href="community.html">Community</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="book.html">Begin Here</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Offerings</h4>
+          <ul>
+            <li><a href="mythopoetic.html">Developmental Arcs</a></li>
+            <li><a href="shamanic-bodywork.html">Shamanic Bodywork</a></li>
+            <li><a href="personal-immersions.html">Personal Immersions</a></li>
+            <li><a href="ceremonial-groups.html">Ceremonial Groups</a></li>
+            <li><a href="platicas.html">Plát icas</a></li>
+            <li><a href="divinations.html">Divinations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Collective</h4>
+          <ul>
+            <li><a href="community.html">Community Hubs</a></li>
+            <li><a href="community.html#training">Ceremonialist Training</a></li>
+            <li><a href="community.html#events">Events &amp; Gatherings</a></li>
+            <li><a href="community.html#newsletter">Newsletter</a></li>
+            <li><a href="book.html">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 The Animist Apothecary. All rights reserved.</p>
+      <p class="footer-credit">Adi Marie · Topanga Canyon, Los Angeles, California</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

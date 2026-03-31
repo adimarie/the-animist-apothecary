@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Community Hearth — The Animist Apothecary</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================
+           RESET & BASE
+           ========================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --linen: #F7F5F0;
+            --linen-warm: #F3EFE8;
+            --sage: #5B7553;
+            --sage-light: #7A9B70;
+            --sage-pastel: #C5D5BF;
+            --sage-mist: #E8EFE5;
+            --sage-whisper: #F0F5EE;
+            --earth-gold: #9E8B6E;
+            --earth-warm: #B8A48A;
+            --earth-light: #D4C9B8;
+            --text-dark: #2D2A26;
+            --text-medium: #5A554E;
+            --text-soft: #7A746C;
+            --white: #FFFFFF;
+            --card-border: rgba(158, 139, 110, 0.15);
+            --card-shadow: 0 2px 20px rgba(91, 117, 83, 0.06);
+            --card-shadow-hover: 0 8px 32px rgba(91, 117, 83, 0.12);
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--linen);
+            line-height: 1.7;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ==========================================
+           TYPOGRAPHY
+           ========================================== */
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        /* ==========================================
+           DECORATIVE ELEMENTS
+           ========================================== */
+        .botanical-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--sage-pastel), transparent);
+            margin: 0 auto;
+        }
+
+        .botanical-line.wide {
+            width: 120px;
+        }
+
+        .leaf-accent {
+            display: inline-block;
+            color: var(--sage);
+            font-size: 1.5rem;
+            opacity: 0.7;
+        }
+
+        /* ==========================================
+           NAVIGATION BAR
+           ========================================== */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(247, 245, 240, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(158, 139, 110, 0.1);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .nav-brand {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--sage);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-brand em {
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .nav-link {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--sage);
+        }
+
+        /* ==========================================
+           HERO SECTION
+           ========================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 2rem 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(197, 213, 191, 0.2) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 30%, rgba(232, 239, 229, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(158, 139, 110, 0.05) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero-icon {
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease 0.2s forwards;
+        }
+
+        .hero-icon svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+            font-weight: 300;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease 0.4s forwards;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--sage);
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--sage);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease 0.6s forwards;
+        }
+
+        .hero-description {
+            max-width: 600px;
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease 0.8s forwards;
+        }
+
+        .hero-cta {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s ease 1s forwards;
+        }
+
+        /* ==========================================
+           BUTTONS
+           ========================================== */
+        .btn-primary {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--sage);
+            padding: 16px 48px;
+            border: none;
+            border-radius: 0;
+            text-decoration: none;
+            transition: all var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .btn-primary:hover {
+            background: var(--sage-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(91, 117, 83, 0.2);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--sage);
+            background: transparent;
+            padding: 14px 44px;
+            border: 1px solid var(--sage-pastel);
+            border-radius: 0;
+            text-decoration: none;
+            transition: all var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--sage);
+            color: var(--white);
+            border-color: var(--sage);
+        }
+
+        /* ==========================================
+           SECTIONS
+           ========================================== */
+        .section {
+            padding: 100px 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 300;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-soft);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ==========================================
+           FEATURE CARDS
+           ========================================== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border: 1px solid var(--card-border);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .feature-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--card-shadow-hover);
+            transform: translateY(-3px);
+            border-color: var(--sage-pastel);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--sage-whisper);
+            border-radius: 50%;
+        }
+
+        .feature-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--sage);
+            stroke: var(--sage);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            line-height: 1.7;
+        }
+
+        /* ==========================================
+           HOW IT WORKS
+           ========================================== */
+        .steps-section {
+            background: var(--sage-whisper);
+            padding: 100px 2rem;
+            margin: 0;
+            max-width: none;
+        }
+
+        .steps-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .step.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--sage);
+            border: 1px solid var(--sage-pastel);
+            border-radius: 50%;
+            background: var(--white);
+        }
+
+        .step-content h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            font-size: 0.88rem;
+            color: var(--text-soft);
+            line-height: 1.7;
+        }
+
+        /* ==========================================
+           CLOSING / QUOTE
+           ========================================== */
+        .closing {
+            text-align: center;
+            padding: 100px 2rem 60px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .closing.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .closing blockquote {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(1.15rem, 2vw, 1.4rem);
+            font-style: italic;
+            font-weight: 300;
+            color: var(--text-medium);
+            line-height: 1.9;
+            margin-bottom: 3rem;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .closing blockquote::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--sage-pastel);
+            margin: 0 auto 2rem;
+        }
+
+        .closing .welcome-text {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--sage);
+            margin-bottom: 2.5rem;
+        }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(158, 139, 110, 0.1);
+        }
+
+        .footer p {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--text-soft);
+            margin-bottom: 0.75rem;
+        }
+
+        .footer a {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--sage);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--sage-light);
+        }
+
+        /* ==========================================
+           ANIMATIONS
+           ========================================== */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ==========================================
+           RESPONSIVE
+           ========================================== */
+        @media (max-width: 900px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 100px 1.5rem 60px;
+            }
+
+            .section {
+                padding: 60px 1.5rem;
+            }
+
+            .steps-section {
+                padding: 60px 1.5rem;
+            }
+
+            .step {
+                gap: 1.25rem;
+            }
+
+            .nav-bar {
+                padding: 0 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <a href="/" class="nav-brand">The Animist <em>Apothecary</em></a>
+        <a href="/" class="nav-link">Back to Site</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 4C24 4 18 14 18 22C18 25.3 19.6 28.2 22 30V38H26V30C28.4 28.2 30 25.3 30 22C30 14 24 4 24 4Z" fill="none" stroke="#5B7553" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M24 30C24 30 20 34 20 38C20 40.2 21.8 42 24 42C26.2 42 28 40.2 28 38C28 34 24 30 24 30Z" fill="none" stroke="#9E8B6E" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+                <line x1="24" y1="42" x2="24" y2="46" stroke="#5B7553" stroke-width="1" opacity="0.4"/>
+            </svg>
+        </div>
+
+        <h1>The Community <em>Hearth</em></h1>
+
+        <p class="hero-subtitle">Your sacred space for healing, growth, and connection</p>
+
+        <p class="hero-description">
+            Welcome to your personal sanctuary within The Animist Apothecary. This is more than a portal—it's your dedicated space to track your sacred journey, access guidance tailored to where you are, prepare for ceremony with intention and care, and stay deeply connected with Adi and our healing community.
+        </p>
+
+        <div class="hero-cta">
+            <a href="/portal/hearth.html" class="btn-primary">Enter Your Hearth</a>
+        </div>
+    </section>
+
+    <!-- What Awaits You -->
+    <div class="section" id="offerings">
+        <div class="section-header">
+            <span class="section-label">Your Sanctuary</span>
+            <h2 class="section-title">What Awaits You</h2>
+            <div class="botanical-line wide" style="margin-top: 1.25rem;"></div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                </div>
+                <h3>Your Journey Map</h3>
+                <p>Track your progression through preparation, ceremony, and integration. See where you are in your path and what unfolds next, with guidance matched to each stage.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <h3>Intake &amp; Deep Inquiry</h3>
+                <p>Complete and revisit your intake forms and reflections from deep inquiry sessions. Your words are held safely here, building a sacred record of your inner work.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Ceremony Preparation</h3>
+                <p>Stage-specific guidance, dietary protocols, intention-setting exercises, and preparation resources to help you arrive at ceremony grounded, clear, and ready.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                </div>
+                <h3>Aftercare &amp; Integration</h3>
+                <p>Post-ceremony support, integration practices, journaling prompts, and grounding resources to help you weave the medicine into your everyday life.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </div>
+                <h3>Resource Library</h3>
+                <p>Curated readings, audio guides, herbal protocols, and sacred practices for your path. A living collection to support your healing and personal evolution.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h3>Connect with Adi</h3>
+                <p>Send messages, schedule sessions, ask questions, and stay in touch throughout your journey. Direct access to support and guidance when you need it most.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works -->
+    <section class="steps-section section" id="how-it-works">
+        <div class="steps-inner">
+            <div class="section-header">
+                <span class="section-label">Getting Started</span>
+                <h2 class="section-title">How It Works</h2>
+                <div class="botanical-line wide" style="margin-top: 1.25rem;"></div>
+            </div>
+
+            <div class="steps-list">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Log in with your invite code and email</h3>
+                        <p>Use the unique invite code you received to create your account and enter the hearth.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Explore your personalized dashboard</h3>
+                        <p>Your space unfolds with resources, guidance, and tools tailored to your journey and current stage.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Engage with your journey at your own pace</h3>
+                        <p>Return anytime to prepare, reflect, integrate, and stay connected with the community and Adi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing -->
+    <div class="closing section">
+        <blockquote>
+            A hearth is more than a fire—it's the gathering place, the warm center where we return to ourselves. It's where we are held, nurtured, and transformed. This portal is your hearth within the Apothecary: a sacred fire lit for you, a space where your healing matters, and a community that tends this flame together.
+        </blockquote>
+
+        <p class="welcome-text">You are welcome here. Always.</p>
+
+        <a href="/portal/hearth.html" class="btn-secondary">Enter Your Hearth</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>The Animist Apothecary &middot; Topanga Canyon, CA</p>
+        <a href="/">Back to main site</a>
+    </footer>
+
+    <!-- Intersection Observer for Animations -->
+    <script>
+        var oo = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, oo);
+
+        document.querySelectorAll('.section').forEach(function(s) { obs.observe(s); });
+        document.querySelectorAll('.feature-card').forEach(function(c) { obs.observe(c); });
+        document.querySelectorAll('.step').forEach(function(s) { obs.observe(s); });
+
+        // Stagger feature card animations
+        document.querySelectorAll('.feature-card').forEach(function(card, i) {
+            card.style.transitionDelay = (i * 0.1) + 's';
+        });
+
+        document.querySelectorAll('.step').forEach(function(step, i) {
+            step.style.transitionDelay = (i * 0.15) + 's';
+        });
+    </script>
+</body>
+</html>

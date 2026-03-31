@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Journeys — The Animist Apothecary</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --linen: #F7F5F0; --linen-warm: #F3EFE8;
+            --sage: #5B7553; --sage-light: #7A9B70; --sage-pastel: #C5D5BF;
+            --sage-mist: #E8EFE5; --sage-whisper: #F0F5EE;
+            --earth-gold: #9E8B6E; --earth-warm: #B8A48A; --earth-light: #D4C9B8;
+            --text-dark: #2D2A26; --text-medium: #5A554E; --text-soft: #7A746C;
+            --white: #FFFFFF; --card-border: rgba(158, 139, 110, 0.15);
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark); background: var(--linen);
+            line-height: 1.7; font-weight: 300; -webkit-font-smoothing: antialiased;
+            height: 100vh; overflow: hidden;
+        }
+        h1,h2,h3,h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; line-height: 1.2; }
+
+        /* LAYOUT */
+        .page-wrapper { display: flex; height: 100vh; width: 100%; }
+        .sidebar {
+            width: 33.333%; min-width: 320px; max-width: 420px; height: 100vh;
+            display: flex; flex-direction: column; background: var(--linen);
+            border-right: 1px solid var(--card-border); overflow: hidden;
+        }
+        .map-pane { flex: 1; height: 100vh; position: relative; }
+        #map { width: 100%; height: 100%; }
+
+        /* SIDEBAR HEADER */
+        .sidebar-header { padding: 1.5rem 1.5rem 1rem; border-bottom: 1px solid var(--card-border); flex-shrink: 0; }
+        .sidebar-brand { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.4rem; color: var(--sage); margin-bottom: 0.15rem; }
+        .sidebar-brand em { font-style: italic; font-weight: 300; }
+        .sidebar-subtitle { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-soft); }
+
+        /* EVENT LIST */
+        .event-list-container { flex: 1; overflow-y: auto; min-height: 0; }
+        .event-list-container::-webkit-scrollbar { width: 4px; }
+        .event-list-container::-webkit-scrollbar-track { background: transparent; }
+        .event-list-container::-webkit-scrollbar-thumb { background: var(--sage-pastel); border-radius: 2px; }
+        .event-section-label {
+            font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage);
+            padding: 1rem 1.5rem 0.5rem; position: sticky; top: 0; background: var(--linen); z-index: 2;
+        }
+        .event-card {
+            padding: 0.85rem 1.5rem; border-bottom: 1px solid rgba(158,139,110,0.08);
+            cursor: pointer; transition: background var(--transition);
+        }
+        .event-card:hover, .event-card.active { background: var(--sage-whisper); }
+        .event-card.active { border-left: 3px solid var(--sage); padding-left: calc(1.5rem - 3px); }
+        .event-date { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.15rem; }
+        .event-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.15rem; }
+        .event-location { font-size: 0.75rem; color: var(--text-soft); }
+        .event-type-badge { display: inline-block; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 1px 8px; margin-top: 0.3rem; border-radius: 2px; }
+        .badge-retreat { background: var(--sage-mist); color: var(--sage); }
+        .badge-ceremony { background: #F0E8DD; color: var(--earth-gold); }
+        .badge-gathering { background: #E8EAF0; color: #6B7A8D; }
+
+        /* CTA */
+        .cta-section { padding: 1.25rem 1.5rem; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); background: var(--sage-whisper); flex-shrink: 0; }
+        .cta-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1rem; font-style: italic; color: var(--text-medium); line-height: 1.6; margin-bottom: 0.75rem; }
+        .cta-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+        .cta-btn {
+            font-size: 0.6rem; font-weight: 400; font-family: 'Inter', sans-serif; letter-spacing: 0.15em; text-transform: uppercase;
+            padding: 8px 16px; border: 1px solid var(--sage-pastel); background: transparent; color: var(--sage);
+            cursor: pointer; text-decoration: none; transition: all var(--transition);
+        }
+        .cta-btn:hover { background: var(--sage); color: var(--white); border-color: var(--sage); }
+        .cta-btn.primary { background: var(--sage); color: var(--white); border-color: var(--sage); }
+        .cta-btn.primary:hover { background: var(--sage-light); border-color: var(--sage-light); }
+
+        /* CALENDAR */
+        .calendar-section { flex-shrink: 0; padding: 1rem 1.5rem 1.25rem; }
+        .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem; }
+        .cal-month { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; color: var(--text-dark); }
+        .cal-nav { display: flex; gap: 0.5rem; }
+        .cal-nav button { background: none; border: 1px solid var(--card-border); color: var(--text-soft); width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.75rem; }
+        .cal-nav button:hover { border-color: var(--sage); color: var(--sage); }
+        .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; }
+        .cal-day-header { font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-soft); text-align: center; padding: 4px 0; }
+        .cal-day { text-align: center; padding: 5px 2px; font-size: 0.75rem; color: var(--text-medium); cursor: default; position: relative; border-radius: 2px; }
+        .cal-day.other-month { color: var(--earth-light); }
+        .cal-day.today { font-weight: 500; color: var(--sage); }
+        .cal-day.has-event { cursor: pointer; }
+        .cal-day.has-event::after { content: ''; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; border-radius: 50%; background: var(--sage); }
+        .cal-day.has-retreat { background: var(--sage-mist); color: var(--sage); }
+        .cal-day.has-retreat::after { display: none; }
+        .cal-day.has-event:hover, .cal-day.active { background: var(--sage); color: var(--white); }
+        .cal-day.has-event:hover::after, .cal-day.active::after { background: var(--white); }
+
+        /* MAP MARKERS & POPUPS */
+        .leaflet-popup-content-wrapper { border-radius: 0 !important; font-family: 'Inter', sans-serif !important; box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important; }
+        .leaflet-popup-content { margin: 16px 20px !important; font-size: 0.85rem !important; line-height: 1.6 !important; }
+        .popup-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; color: var(--text-dark); margin-bottom: 4px; }
+        .popup-dates { font-size: 0.75rem; color: var(--sage); font-weight: 400; letter-spacing: 0.05em; margin-bottom: 6px; }
+        .popup-desc { font-size: 0.8rem; color: var(--text-soft); }
+        .custom-marker { background: var(--sage); border: 2px solid var(--white); border-radius: 50%; box-shadow: 0 2px 8px rgba(91,117,83,0.3); transition: all 0.3s; }
+        .custom-marker.retreat { background: var(--sage); }
+        .custom-marker.ceremony { background: var(--earth-gold); }
+        .custom-marker.gathering { background: #6B7A8D; }
+        .custom-marker.home { background: var(--sage); box-shadow: 0 0 0 4px rgba(91,117,83,0.2), 0 2px 8px rgba(91,117,83,0.3); }
+        .custom-marker.active-pin { transform: scale(1.5); box-shadow: 0 0 0 6px rgba(91,117,83,0.25); }
+
+        .bioregion-layer { mix-blend-mode: multiply; pointer-events: none; }
+        .park-label { background: rgba(91,117,83,0.65) !important; color: white !important; border: none !important; font-family: 'Inter', sans-serif !important; font-size: 0.6rem !important; font-weight: 400 !important; letter-spacing: 0.08em !important; padding: 2px 7px !important; box-shadow: none !important; text-transform: uppercase; }
+        .park-label::before { display: none !important; }
+        .river-label { background: transparent !important; color: rgba(107,163,190,0.7) !important; border: none !important; font-family: 'Cormorant Garamond', serif !important; font-size: 0.75rem !important; font-style: italic !important; padding: 0 !important; box-shadow: none !important; text-shadow: 0 1px 3px rgba(0,0,0,0.4); }
+        .river-label::before { display: none !important; }
+        .city-label { background: transparent !important; color: rgba(255,255,255,0.85) !important; border: none !important; font-family: 'Inter', sans-serif !important; font-size: 0.6rem !important; font-weight: 400 !important; letter-spacing: 0.05em !important; padding: 0 !important; box-shadow: none !important; text-shadow: 0 1px 4px rgba(0,0,0,0.6); }
+        .city-label::before { display: none !important; }
+        .spiritual-label { background: rgba(158,139,110,0.6) !important; color: white !important; border: none !important; font-family: 'Cormorant Garamond', serif !important; font-size: 0.65rem !important; font-style: italic !important; letter-spacing: 0.05em !important; padding: 2px 7px !important; box-shadow: none !important; }
+        .spiritual-label::before { display: none !important; }
+        .sacred-label { background: rgba(180,130,80,0.55) !important; color: white !important; border: none !important; font-family: 'Cormorant Garamond', serif !important; font-size: 0.6rem !important; font-weight: 400 !important; letter-spacing: 0.06em !important; padding: 2px 7px !important; box-shadow: none !important; }
+        .sacred-label::before { display: none !important; }
+        .mountain-label { background: transparent !important; color: rgba(255,255,255,0.75) !important; border: none !important; font-family: 'Inter', sans-serif !important; font-size: 0.55rem !important; font-weight: 400 !important; letter-spacing: 0.04em !important; padding: 0 !important; box-shadow: none !important; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
+        .mountain-label::before { display: none !important; }
+        .mountain-icon { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 8px solid rgba(255,255,255,0.6); filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4)); }
+        .volcano-icon { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 8px solid rgba(210,120,80,0.7); filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4)); }
+
+        /* LOADING STATE */
+        .loading-overlay { position: absolute; inset: 0; background: var(--linen); display: flex; align-items: center; justify-content: center; z-index: 1000; transition: opacity 0.6s; }
+        .loading-overlay.hidden { opacity: 0; pointer-events: none; }
+        .loading-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.2rem; color: var(--sage); font-style: italic; }
+
+        @media (max-width: 900px) {
+            .page-wrapper { flex-direction: column; }
+            .sidebar { width: 100%; max-width: none; height: auto; max-height: 50vh; }
+            .map-pane { height: 50vh; }
+            body { overflow: auto; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-brand">The Animist <em>Apothecary</em></div>
+            <div class="sidebar-subtitle">Migratory Map 2026</div>
+        </div>
+        <div class="event-list-container" id="eventList"></div>
+        <div class="cta-section">
+            <p class="cta-text">See that I'll be near you? I'd love to connect — for ceremony, private sessions, or to seed a new regional hub.</p>
+            <div class="cta-buttons">
+                <a href="/book.html" class="cta-btn primary">Book a Session</a>
+                <a href="/hearth.html" class="cta-btn">Propose a Hub</a>
+                <a href="mailto:adimarie@bodyworkandbotanicals.com?subject=Let's%20Gather" class="cta-btn">Let's Gather</a>
+            </div>
+        </div>
+        <div class="calendar-section" id="calendarSection">
+            <div class="cal-header">
+                <span class="cal-month" id="calMonth"></span>
+                <div class="cal-nav"><button onclick="changeMonth(-1)">&#8592;</button><button onclick="changeMonth(1)">&#8594;</button></div>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+        </div>
+    </aside>
+    <div class="map-pane">
+        <div id="map"></div>
+        <div class="loading-overlay" id="loadingOverlay">
+            <span class="loading-text">Gathering the land...</span>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+// ==========================================
+// SUPABASE CONFIG
+// ==========================================
+const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
+
+async function sb(table, select) {
+    const url = SUPABASE_URL + '/rest/v1/' + table + '?select=' + encodeURIComponent(select || '*');
+    const res = await fetch(url, {
+        headers: { 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY }
+    });
+    return res.json();
+}
+
+// ==========================================
+// MAP INIT — zoomed to West Coast
+// ==========================================
+const map = L.map('map', { scrollWheelZoom: true, zoomControl: true }).setView([38.5, -121.0], 6);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Imagery &copy; Esri', maxZoom: 18
+}).addTo(map);
+map.setMaxBounds([[25, -135], [55, -105]]);
+
+// SVG blur filter for bioregions
+const svgDefs = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+svgDefs.setAttribute('width','0'); svgDefs.setAttribute('height','0'); svgDefs.style.position='absolute';
+svgDefs.innerHTML='<defs><filter id="bb"><feGaussianBlur in="SourceGraphic" stdDeviation="6"/></filter></defs>';
+document.body.appendChild(svgDefs);
+
+// Shared state
+let events = [];
+let calendarEventDates = {};
+const markers = {};
+let activeIndex = null;
+const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const today = new Date();
+let currentMonth = today.getMonth(), currentYear = today.getFullYear();
+
+// ==========================================
+// LOAD ALL DATA FROM SUPABASE
+// ==========================================
+async function loadMap() {
+    const [eventsData, ecoData, currentsData, parksData, watershedsData, citiesData, hubsData, sacredData, mountainsData, calDatesData] = await Promise.all([
+        sb('events', '*'),
+        sb('ecoregions', '*'),
+        sb('ocean_currents', '*'),
+        sb('national_parks', '*'),
+        sb('watersheds', '*'),
+        sb('cities', '*'),
+        sb('hubs', '*'),
+        sb('sacred_lands', '*'),
+        sb('mountains', '*'),
+        sb('calendar_dates', '*')
+    ]);
+
+    // ---- EVENTS ----
+    events = eventsData
+        .filter(function(e) { return e.lat && e.lng; })
+        .sort(function(a, b) { return (a.date_start || a.event_date || '').localeCompare(b.date_start || b.event_date || ''); });
+
+    // ---- CALENDAR DATES ----
+    calDatesData.forEach(function(d) { calendarEventDates[d.date] = d.event_type; });
+
+    // ---- BIOREGIONS ----
+    ecoData.filter(function(e) { return e.is_active !== false; }).forEach(function(eco) {
+        var coords = typeof eco.coords === 'string' ? JSON.parse(eco.coords) : eco.coords;
+        L.polygon(coords, {
+            color: 'transparent', fillColor: eco.fill_color,
+            fillOpacity: eco.fill_opacity || 0.06, stroke: false,
+            smoothFactor: 3, className: 'bioregion-layer'
+        }).addTo(map);
+    });
+    setTimeout(function() {
+        document.querySelectorAll('.bioregion-layer').forEach(function(el) {
+            if (el._path) el._path.style.filter = 'url(#bb)';
+        });
+    }, 500);
+
+    // ---- OCEAN CURRENTS ----
+    currentsData.filter(function(c) { return c.is_active !== false; })
+        .sort(function(a, b) { return (a.layer_index || 0) - (b.layer_index || 0); })
+        .forEach(function(c) {
+            var coords = typeof c.coords === 'string' ? JSON.parse(c.coords) : c.coords;
+            L.polyline(coords, {
+                color: c.color, weight: c.weight, opacity: c.opacity,
+                smoothFactor: 3, lineCap: 'round', lineJoin: 'round'
+            }).addTo(map);
+        });
+
+    // ---- NATIONAL PARKS ----
+    var pkS = { color: '#A8C99A', weight: 1.5, opacity: 0.5, fillColor: '#C5E1A5', fillOpacity: 0.12, smoothFactor: 2 };
+    var pkL = { className: 'park-label', permanent: true, direction: 'center', opacity: 0.7 };
+    parksData.filter(function(p) { return p.is_active !== false; }).forEach(function(p) {
+        var coords = typeof p.coords === 'string' ? JSON.parse(p.coords) : p.coords;
+        L.polygon(coords, pkS).addTo(map).bindTooltip(p.name, pkL);
+    });
+
+    // ---- WATERSHEDS ----
+    var rvS = { color: '#6BA3BE', weight: 2, opacity: 0.35, smoothFactor: 3, lineCap: 'round', lineJoin: 'round' };
+    var rvW = { color: '#7BB5D0', weight: 8, opacity: 0.08, smoothFactor: 3, lineCap: 'round', lineJoin: 'round' };
+    var rvL = { permanent: true, direction: 'center', className: 'river-label', opacity: 0.5 };
+    watershedsData.filter(function(w) { return w.is_active !== false; }).forEach(function(w) {
+        var coords = typeof w.coords === 'string' ? JSON.parse(w.coords) : w.coords;
+        L.polyline(coords, rvW).addTo(map);
+        L.polyline(coords, rvS).addTo(map).bindTooltip(w.name, rvL);
+    });
+
+    // ---- CITIES ----
+    var cityL = { permanent: true, direction: 'right', className: 'city-label', offset: [6, 0] };
+    citiesData.filter(function(c) { return c.is_active !== false; }).forEach(function(c) {
+        L.marker([c.lat, c.lng], { icon: L.divIcon({ className: '', iconSize: [0, 0] }) }).addTo(map).bindTooltip(c.name, cityL);
+    });
+
+    // ---- SPIRITUAL / CULTURAL HUBS ----
+    var spL = { permanent: true, direction: 'center', className: 'spiritual-label', opacity: 0.8 };
+    hubsData.filter(function(h) { return h.is_active !== false && h.hub_type === 'spiritual'; }).forEach(function(h) {
+        L.marker([h.lat, h.lng], { icon: L.divIcon({ className: '', iconSize: [0, 0] }) }).addTo(map).bindTooltip(h.name, spL);
+    });
+
+    // ---- SACRED LANDS ----
+    var sacStyle = { color: 'rgba(180,130,80,0.3)', weight: 1, fillColor: '#C4956B', fillOpacity: 0.08, smoothFactor: 2 };
+    var sacL = { permanent: true, direction: 'center', className: 'sacred-label', opacity: 0.7 };
+    sacredData.filter(function(s) { return s.is_active !== false; }).forEach(function(s) {
+        var coords = typeof s.coords === 'string' ? JSON.parse(s.coords) : s.coords;
+        L.polygon(coords, sacStyle).addTo(map).bindTooltip(s.name, sacL);
+    });
+
+    // ---- MOUNTAINS & VOLCANOES ----
+    var mtL = { permanent: true, direction: 'right', className: 'mountain-label', offset: [8, 0] };
+    mountainsData.filter(function(m) { return m.is_active !== false; }).forEach(function(m) {
+        var isVolcano = m.mountain_type === 'volcano';
+        var iconHtml = isVolcano
+            ? '<div class="volcano-icon"></div>'
+            : '<div class="mountain-icon"></div>';
+        var icon = L.divIcon({ className: '', html: iconHtml, iconSize: [10, 8], iconAnchor: [5, 8] });
+        var label = m.elevation_ft ? m.name + ' \u00b7 ' + m.elevation_ft.toLocaleString() + '\u2032' : m.name;
+        L.marker([m.lat, m.lng], { icon: icon }).addTo(map).bindTooltip(label, mtL);
+    });
+
+    // ---- EVENT MARKERS ----
+    events.forEach(function(evt, i) {
+        var sz = evt.event_type === 'home' ? 14 : 10;
+        var icon = L.divIcon({ className: 'custom-marker ' + evt.event_type, iconSize: [sz, sz], iconAnchor: [sz/2, sz/2] });
+        var m = L.marker([evt.lat, evt.lng], { icon: icon }).addTo(map);
+        m.bindPopup(
+            '<div><div class="popup-title">' + evt.name + '</div>' +
+            '<div class="popup-dates">' + (evt.date_label || '') + '</div>' +
+            '<div class="popup-desc">' + (evt.description || '') + '</div></div>',
+            { maxWidth: 260 }
+        );
+        markers[i] = m;
+    });
+
+    // ---- SIDEBAR EVENT LIST ----
+    buildEventList();
+
+    // ---- CALENDAR ----
+    renderCalendar();
+
+    // ---- HIDE LOADING ----
+    document.getElementById('loadingOverlay').classList.add('hidden');
+}
+
+// ==========================================
+// SIDEBAR EVENT LIST
+// ==========================================
+function buildEventList() {
+    var el = document.getElementById('eventList');
+    el.innerHTML = '';
+    var grouped = {};
+    events.forEach(function(evt, i) {
+        if (evt.event_type === 'home') return;
+        var ds = evt.date_start || evt.event_date;
+        if (!ds) return;
+        var d = new Date(ds + 'T00:00:00');
+        var key = d.getFullYear() + '-' + String(d.getMonth()).padStart(2, '0');
+        if (!grouped[key]) grouped[key] = [];
+        grouped[key].push({ name: evt.name, event_type: evt.event_type, date_label: evt.date_label, location: evt.location, index: i });
+    });
+    Object.keys(grouped).sort().forEach(function(key) {
+        var parts = key.split('-');
+        var label = document.createElement('div');
+        label.className = 'event-section-label';
+        label.textContent = monthNames[parseInt(parts[1])] + ' ' + parts[0];
+        el.appendChild(label);
+        grouped[key].forEach(function(evt) {
+            var card = document.createElement('div');
+            card.className = 'event-card';
+            card.setAttribute('data-index', evt.index);
+            card.innerHTML =
+                '<div class="event-date">' + (evt.date_label || '') + '</div>' +
+                '<div class="event-title">' + evt.name + '</div>' +
+                '<div class="event-location">' + (evt.location || '') + '</div>' +
+                '<span class="event-type-badge badge-' + evt.event_type + '">' + evt.event_type + '</span>';
+            card.addEventListener('click', function() { selectEvent(evt.index); });
+            el.appendChild(card);
+        });
+    });
+}
+
+// ==========================================
+// SELECTION — connects list + map + calendar
+// ==========================================
+function selectEvent(index) {
+    document.querySelectorAll('.event-card.active').forEach(function(el) { el.classList.remove('active'); });
+    document.querySelectorAll('.custom-marker.active-pin').forEach(function(el) { el.classList.remove('active-pin'); });
+    activeIndex = index;
+    var evt = events[index];
+    var card = document.querySelector('.event-card[data-index="' + index + '"]');
+    if (card) { card.classList.add('active'); card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    if (markers[index]) {
+        map.flyTo([evt.lat, evt.lng], 9, { duration: 1.2 });
+        setTimeout(function() { markers[index].openPopup(); }, 600);
+        var mel = markers[index]._icon;
+        if (mel) mel.classList.add('active-pin');
+    }
+    var ds = evt.date_start || evt.event_date;
+    if (ds) {
+        var d = new Date(ds + 'T00:00:00');
+        currentMonth = d.getMonth(); currentYear = d.getFullYear();
+        renderCalendar();
+    }
+}
+
+// ==========================================
+// CALENDAR
+// ==========================================
+function changeMonth(d) {
+    currentMonth += d;
+    if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+    if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+    renderCalendar();
+}
+
+function renderCalendar() {
+    var grid = document.getElementById('calGrid'), mEl = document.getElementById('calMonth');
+    grid.innerHTML = '';
+    mEl.textContent = monthNames[currentMonth] + ' ' + currentYear;
+    ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(function(d) {
+        var el = document.createElement('div'); el.className = 'cal-day-header'; el.textContent = d; grid.appendChild(el);
+    });
+    var first = new Date(currentYear, currentMonth, 1).getDay();
+    var days = new Date(currentYear, currentMonth + 1, 0).getDate();
+    var prevDays = new Date(currentYear, currentMonth, 0).getDate();
+    for (var i = first - 1; i >= 0; i--) {
+        var el = document.createElement('div'); el.className = 'cal-day other-month'; el.textContent = prevDays - i; grid.appendChild(el);
+    }
+    for (var d = 1; d <= days; d++) {
+        var el = document.createElement('div');
+        var ds = currentYear + '-' + String(currentMonth + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+        var cls = 'cal-day';
+        if (d === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear()) cls += ' today';
+        if (calendarEventDates[ds]) {
+            cls += calendarEventDates[ds] === 'retreat' ? ' has-retreat' : ' has-event';
+            (function(dateStr) {
+                el.addEventListener('click', function() {
+                    for (var j = 0; j < events.length; j++) {
+                        var eStart = events[j].date_start || events[j].event_date;
+                        var eEnd = events[j].date_end || events[j].event_date;
+                        if (eStart <= dateStr && eEnd >= dateStr && events[j].event_type !== 'home') { selectEvent(j); return; }
+                    }
+                });
+            })(ds);
+        }
+        el.className = cls; el.textContent = d; grid.appendChild(el);
+    }
+    var tot = first + days, rem = (7 - (tot % 7)) % 7;
+    for (var i = 1; i <= rem; i++) {
+        var el = document.createElement('div'); el.className = 'cal-day other-month'; el.textContent = i; grid.appendChild(el);
+    }
+}
+
+// ==========================================
+// LAUNCH
+// ==========================================
+loadMap().catch(function(err) {
+    console.error('Failed to load map data:', err);
+    document.getElementById('loadingOverlay').innerHTML = '<span class="loading-text">Unable to load map data. Please refresh.</span>';
+});
+</script>
+</body>
+</html>

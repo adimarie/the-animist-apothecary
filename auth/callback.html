@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signing in… — The Animist Apothecary</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: Georgia, serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #F5F0E8;
+            color: #5C4A32;
+        }
+        .card {
+            text-align: center;
+            padding: 48px 40px;
+            max-width: 440px;
+        }
+        .mark {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .mark.breathing { animation: breathe 2s ease-in-out infinite; }
+        h1 { font-size: 1.4rem; font-weight: 600; color: #5A0F1E; margin-bottom: 8px; }
+        .sub { font-size: 14px; color: #8A7668; line-height: 1.6; }
+        .error-box {
+            margin-top: 20px;
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-size: 13px;
+            color: #991b1b;
+            text-align: left;
+            display: none;
+        }
+        .error-box.show { display: block; }
+        .retry-link {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 13px;
+            color: #6b2d3e;
+            text-decoration: underline;
+        }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.08); opacity: 0.8; }
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <span class="mark breathing" id="mark">🌿</span>
+    <h1 id="title">Signing you in…</h1>
+    <p class="sub" id="sub">You'll be redirected to your dashboard in a moment.</p>
+    <div class="error-box" id="errorBox"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="../shared/supabase.js"></script>
+<script>
+(function() {
+    var DEST = '../admin/index.html';
+    var FALLBACK = '../login.html';
+
+    var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+        auth: { detectSessionInUrl: true, persistSession: true }
+    });
+
+    var done = false;
+
+    function go() {
+        if (done) return;
+        done = true;
+        window.location.replace(DEST);
+    }
+
+    function fail(msg) {
+        if (done) return;
+        done = true;
+        document.getElementById('mark').textContent = '⚠';
+        document.getElementById('mark').classList.remove('breathing');
+        document.getElementById('title').textContent = 'Sign-in failed';
+        document.getElementById('sub').textContent = '';
+        var box = document.getElementById('errorBox');
+        box.innerHTML = (msg || 'Authentication failed.') +
+            '<br><br><a href="' + FALLBACK + '" class="retry-link">← Try again</a>';
+        box.classList.add('show');
+    }
+
+    // ── 1. Listen for auth state change (covers implicit + PKCE via detectSessionInUrl)
+    sb.auth.onAuthStateChange(function(event, session) {
+        if (done) return;
+        if (event === 'SIGNED_IN' && session) { go(); }
+        if (event === 'SIGNED_OUT') { fail('Sign-in was cancelled.'); }
+    });
+
+    // ── 2. Check URL for PKCE code and exchange it explicitly
+    var params = new URLSearchParams(window.location.search);
+    var code = params.get('code');
+    var errorParam = params.get('error');
+    var errorDesc = params.get('error_description');
+
+    if (errorParam) {
+        // OAuth provider returned an error
+        fail('OAuth error: ' + (errorDesc || errorParam).replace(/\+/g, ' '));
+        return;
+    }
+
+    if (code) {
+        // PKCE flow — exchange the code for a session
+        sb.auth.exchangeCodeForSession(window.location.href)
+            .then(function(result) {
+                if (result.error) {
+                    fail('Code exchange failed: ' + result.error.message);
+                } else if (result.data && result.data.session) {
+                    go();
+                }
+            })
+            .catch(function(e) {
+                fail('Unexpected error: ' + (e.message || String(e)));
+            });
+        return;
+    }
+
+    // ── 3. No code in URL — check if there's already a valid session
+    //       (handles implicit flow where token is in the hash, processed by detectSessionInUrl)
+    sb.auth.getSession().then(function(r) {
+        if (r.data && r.data.session) { go(); return; }
+
+        // Poll for up to 6 seconds while detectSessionInUrl works async
+        var attempts = 0;
+        function poll() {
+            if (done) return;
+            sb.auth.getSession().then(function(r2) {
+                if (r2.data && r2.data.session) {
+                    go();
+                } else if (++attempts < 12) {
+                    setTimeout(poll, 500);
+                } else {
+                    fail('Session could not be established. The sign-in link may have expired.');
+                }
+            });
+        }
+        setTimeout(poll, 500);
+    });
+})();
+</script>
+</body>
+</html>
