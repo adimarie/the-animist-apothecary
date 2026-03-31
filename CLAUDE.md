@@ -1,4 +1,4 @@
-# [Your Project Name] — Project Directives
+# The Animist Apothecary — Project Directives
 
 > **On-demand docs — load when the task matches:**
 > - `docs/CREDENTIALS.md` — **load for:** SQL queries, deploying functions, SSH, API calls
@@ -36,7 +36,7 @@
 ## Quick Refs
 
 - **Tech:** Vanilla HTML/JS + Tailwind v4 | Supabase | GitHub Pages
-- **Live:** https://USERNAME.github.io/REPO/
+- **Live:** https://theanimistapothecary.github.io/the-animist-apothecary/
 - **Architecture:** Browser → GitHub Pages → Supabase (no server-side code)
 - **Template repo:** https://github.com/rsonnad/alpacapps-infra
 - **Upgrade guide:** `infra/infra-upgrade-guide.md`

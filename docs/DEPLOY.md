@@ -27,13 +27,13 @@ CI bumps automatically via GitHub Action on every push. **Never bump locally.**
 
 | Environment | URL |
 |---|---|
-| Custom domain | https://YOUR_DOMAIN/ |
-| GitHub Pages | https://USERNAME.github.io/REPO/ |
-| Resident portal | https://YOUR_DOMAIN/residents/ |
-| Admin | https://YOUR_DOMAIN/spaces/admin/manage.html |
-| Public spaces | https://YOUR_DOMAIN/spaces/ |
-| Payments | https://YOUR_DOMAIN/pay/ |
-| Repository | https://github.com/USERNAME/REPO |
+| Custom domain | https://theanimistapothecary.github.io/the-animist-apothecary/ |
+| GitHub Pages | https://theanimistapothecary.github.io/the-animist-apothecary/ |
+| Resident portal | https://theanimistapothecary.github.io/the-animist-apothecary/residents/ |
+| Admin | https://theanimistapothecary.github.io/the-animist-apothecary/spaces/admin/manage.html |
+| Public spaces | https://theanimistapothecary.github.io/the-animist-apothecary/spaces/ |
+| Payments | https://theanimistapothecary.github.io/the-animist-apothecary/pay/ |
+| Repository | https://github.com/theanimistapothecary/the-animist-apothecary |
 
 ## Tailwind CSS
 

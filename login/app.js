@@ -2,7 +2,7 @@
 import { supabase } from '../shared/supabase.js';
 import { initAuth, signInWithGoogle, signInWithPassword, signUpWithPassword, signOut, getAuthState, onAuthStateChange } from '../shared/auth.js';
 
-const CACHED_AUTH_KEY = 'your-project-cached-auth';
+const CACHED_AUTH_KEY = 'animist-apothecary-auth';
 
 // DOM elements
 const loginContent = document.getElementById('loginContent');

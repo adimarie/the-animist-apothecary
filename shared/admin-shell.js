@@ -13,6 +13,25 @@ import { initNavTabList, scrollActiveIntoView } from './tab-utils.js';
 import { getEnabledFeatures } from './feature-registry.js';
 
 // =============================================
+// TAB VISIBILITY (DB-driven via page_display_config)
+// =============================================
+let _tabVisCache = null;
+let _tabVisCacheTs = 0;
+async function getTabVisibilityConfig() {
+  const now = Date.now();
+  if (_tabVisCache && (now - _tabVisCacheTs) < 5 * 60 * 1000) return _tabVisCache;
+  try {
+    const { data } = await supabase.from('page_display_config').select('tab_id, visible');
+    _tabVisCache = {};
+    (data || []).forEach(r => { _tabVisCache[r.tab_id] = r.visible; });
+    _tabVisCacheTs = now;
+  } catch {
+    _tabVisCache = _tabVisCache || {};
+  }
+  return _tabVisCache;
+}
+
+// =============================================
 // TAB DEFINITIONS
 // =============================================
 // Permission keys for staff/admin section detection
@@ -182,12 +201,17 @@ export async function renderTabNav(activeTab, authState, section = 'staff') {
     }
   }
 
-  // Filter tabs by section, permission, AND enabled features
+  // Filter tabs by section, permission, enabled features, AND page_display_config
   const enabledFeatures = await getEnabledFeatures();
+  const dbVisibility = await getTabVisibilityConfig();
   const tabs = ALL_ADMIN_TABS
     .filter(tab => tab.section === section)
     .filter(tab => !tab.feature || enabledFeatures[tab.feature])
-    .filter(tab => authState.hasPermission?.(tab.permission));
+    .filter(tab => authState.hasPermission?.(tab.permission))
+    .filter(tab => {
+      const dbEntry = dbVisibility[tab.id];
+      return dbEntry === undefined || dbEntry === true; // visible by default if not in DB
+    });
 
   // DevControl manages its own sub-tabs via renderDevControlTabs() — don't overwrite
   if (section !== 'devcontrol') {
@@ -441,7 +465,7 @@ export async function initAdminPage({ activeTab, requiredRole = 'staff', require
   let hasCachedAuthHint = rootEl.hasAttribute('data-cached-auth');
   if (!hasCachedAuthHint) {
     try {
-      const raw = localStorage.getItem('your-project-cached-auth');
+      const raw = localStorage.getItem('animist-apothecary-auth');
       if (raw) {
         const cached = JSON.parse(raw);
         const ageMs = Date.now() - (cached?.timestamp || 0);
@@ -652,7 +676,7 @@ export async function initAdminPage({ activeTab, requiredRole = 'staff', require
         if (!sessionData?.session) {
           // Refresh also failed — force re-login
           console.warn('[admin-shell] Token refresh failed — redirecting to login');
-          try { localStorage.removeItem('your-project-cached-auth'); } catch (e) { /* ignore */ }
+          try { localStorage.removeItem('animist-apothecary-auth'); } catch (e) { /* ignore */ }
           transitionBootState('redirecting');
           window.location.href = '/login/?redirect=' + encodeURIComponent(window.location.pathname);
           return;

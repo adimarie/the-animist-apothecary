@@ -517,7 +517,7 @@ export async function initResidentPage({ activeTab, requiredRole = 'resident', r
   let hasCachedAuthHint = rootEl.hasAttribute('data-cached-auth');
   if (!hasCachedAuthHint) {
     try {
-      const raw = localStorage.getItem('your-project-cached-auth');
+      const raw = localStorage.getItem('animist-apothecary-auth');
       if (raw) {
         const cached = JSON.parse(raw);
         const ageMs = Date.now() - (cached?.timestamp || 0);
@@ -684,7 +684,7 @@ export async function initResidentPage({ activeTab, requiredRole = 'resident', r
         if (!sessionData?.session) {
           // Refresh also failed — force re-login
           console.warn('[resident-shell] Token refresh failed — redirecting to login');
-          try { localStorage.removeItem('your-project-cached-auth'); } catch (e) { /* ignore */ }
+          try { localStorage.removeItem('animist-apothecary-auth'); } catch (e) { /* ignore */ }
           transitionBootState('redirecting');
           window.location.href = '/login/?redirect=' + encodeURIComponent(window.location.pathname);
           return;

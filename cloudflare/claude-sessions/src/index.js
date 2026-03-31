@@ -2,7 +2,7 @@
 // Stores and retrieves Claude Code session transcripts.
 // Auth: Bearer token — change AUTH_TOKEN below before deploying.
 
-const AUTH_TOKEN = 'CHANGE_ME_TO_A_SECRET';
+const AUTH_TOKEN = '3bc65ac46ac36620c5f10e90b4d5cd14e6a4c45c1d33d419e3e18586f48b3bbc';
 
 export default {
   async fetch(request, env) {

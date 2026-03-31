@@ -8,6 +8,10 @@ HOMEAUTOMATION.local.md
 .sshpass-*
 *.pass
 
+# Wrangler cache
+.wrangler/
+**/.wrangler/
+
 # Nested repo clone (used by bug-fixer on droplet)
 alpacapps/
 .claude/worktrees/
