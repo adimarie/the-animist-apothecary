@@ -1,5 +1,5 @@
 /**
- * Austin YOUR_PROPERTY_NAME - Site Components
+ * The Animist Apothecary - Site Components
  *
  * Shared components for the main AAP website.
  * These components generate the header, navigation, and footer.
@@ -12,9 +12,9 @@ import { initAuth, getAuthState, signOut } from './auth.js';
 // =============================================
 
 // Image URLs - transparent PNGs from Supabase storage
-const LOGO_BASE = 'YOUR_SUPABASE_URL/storage/v1/object/public/housephotos/logos';
-const ALPACA_ICON_FALLBACK = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 30"><rect width="21" height="30" rx="4" fill="none"/><path d="M10.5 1.5C8.3 1.5 6.5 3.3 6.5 5.5v4.1L3.8 13c-1 1.3-1.5 2.8-1.5 4.4 0 4.6 3.7 8.3 8.2 8.3s8.2-3.7 8.2-8.3c0-1.6-.5-3.2-1.5-4.4l-2.7-3.4V5.5c0-2.2-1.8-4-4-4z" fill="#1f1720"/><ellipse cx="10.5" cy="18.6" rx="3.1" ry="4.7" fill="#f6f5f0"/></svg>');
-const ALPACA_WORDMARK_FALLBACK = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 28"><rect width="120" height="28" fill="none"/><text x="0" y="20" font-size="16" font-family="Arial,sans-serif" fill="#1f1720">Property</text></svg>');
+const LOGO_BASE = 'https://wdecjlrfulsdklqeetqb.supabase.co/storage/v1/object/public/housephotos/logos';
+const ICON_FALLBACK = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><rect width="30" height="30" rx="4" fill="none"/><text x="15" y="20" text-anchor="middle" font-size="10" font-family="Georgia,serif" fill="#b8943c">AA</text></svg>');
+const WORDMARK_FALLBACK = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 28"><rect width="220" height="28" fill="none"/><text x="0" y="20" font-size="14" font-family="Georgia,serif" fill="#e8e0d4">The Animist Apothecary</text></svg>');
 const IMAGES = {
   // Property head icon (transparent PNGs)
   icon: `${LOGO_BASE}/logo-black-transparent.png`,        // black on transparent - for light backgrounds
@@ -25,27 +25,26 @@ const IMAGES = {
   // Legacy aliases
   logo: `${LOGO_BASE}/logo-white-transparent.png`,
   logoLight: `${LOGO_BASE}/logo-black-transparent.png`,
-  heroPropertys: 'https://images.squarespace-cdn.com/content/v1/6213d804273001551ffe5b8c/4e23696e-623b-4621-8f3a-c223a521131b/P1020387.jpeg',
+  heroPropertys: 'https://wdecjlrfulsdklqeetqb.supabase.co/storage/v1/object/public/housephotos/hero.jpeg',
 };
 
-// Base path for links (root on YOUR_DOMAIN)
+// Base path for links (root on theanimistapothecary.com)
 // Change this if deploying to a different subdirectory
 const BASE_PATH = '';
 
 // Navigation links - unified across all pages
 // Logo clicks to Home, so Home is not in the nav
 const NAV_LINKS = [
-  { text: 'Visiting', href: `${BASE_PATH}/visiting/` },
-  { text: 'Rentals', href: `${BASE_PATH}/spaces/` },
-  { text: 'Events', href: `${BASE_PATH}/events/` },
-  { text: 'Community', href: `${BASE_PATH}/community/` },
-  { text: 'Photos', href: `${BASE_PATH}/photos/` },
+  { text: 'The Practice', href: `${BASE_PATH}/practice/` },
+  { text: 'Offerings', href: `${BASE_PATH}/offerings/` },
+  { text: 'Book a Session', href: `${BASE_PATH}/book/` },
+  { text: 'Sacred Reciprocity', href: `${BASE_PATH}/sacred-reciprocity/` },
   { text: 'Contact', href: `${BASE_PATH}/contact/` },
 ];
 
-// Mistiq link - only shown on Mistiq pages
-const MISTIQ_LINK = { text: 'Mistiq', href: `${BASE_PATH}/mistiq/` };
-const AUTH_LINK = { text: 'Sign In', href: `${BASE_PATH}/login/` };
+// "Begin Here" CTA link for the header
+const BEGIN_HERE_LINK = { text: 'Begin Here', href: `${BASE_PATH}/book/?intake=true` };
+const AUTH_LINK = { text: 'Portal', href: `${BASE_PATH}/login/` };
 
 // =============================================
 // HEADER COMPONENT
@@ -57,39 +56,38 @@ const AUTH_LINK = { text: 'Sign In', href: `${BASE_PATH}/login/` };
  * @param {boolean} options.transparent - Start with transparent background (for hero pages)
  * @param {boolean} options.light - Use light (white) text/logo
  * @param {string} options.activePage - Current page identifier for nav highlighting
- * @param {boolean} options.showMistiq - Whether to show the Mistiq nav link (only true on Mistiq pages)
  * @param {string} options.version - Version string for display in header
  */
 function renderHeader(options = {}) {
-  const { transparent = false, light = true, activePage = '', showMistiq = false, version = '' } = options;
+  const { transparent = false, light = true, activePage = '', version = '' } = options;
 
   const headerClass = transparent ? 'aap-header--transparent' : 'aap-header--solid';
   const colorClass = light ? 'aap-header--light' : 'aap-header--dark';
 
-  // Build navigation links - include Mistiq only if showMistiq is true
-  const links = showMistiq ? [...NAV_LINKS, MISTIQ_LINK] : NAV_LINKS;
-  const linksWithAuth = [...links, AUTH_LINK];
+  // Build navigation links
+  const linksWithAuth = [...NAV_LINKS, AUTH_LINK];
 
   const navItems = linksWithAuth.map(link => {
     const isActive = link.href.includes(activePage) && activePage !== '';
     const activeClass = isActive ? 'aap-nav__link--active' : '';
-    // Add ID to Sign In link so initPublicHeaderAuth can find and hide it
-    const signInId = link.text === 'Sign In' ? ' id="aapSignInLink"' : '';
-    return `<li><a href="${link.href}" class="aap-nav__link ${activeClass}"${signInId}>${link.text}</a></li>`;
+    // Add ID to Portal link so initPublicHeaderAuth can find and hide it
+    const portalId = link.text === 'Portal' ? ' id="aapSignInLink"' : '';
+    return `<li><a href="${link.href}" class="aap-nav__link ${activeClass}"${portalId}>${link.text}</a></li>`;
   }).join('');
 
   return `
     <header class="aap-header ${headerClass} ${colorClass}" id="aap-header">
       <div class="aap-header__inner">
         <a href="${BASE_PATH}/" class="aap-header__logo">
-          <img src="${light ? IMAGES.iconInverted : IMAGES.icon}" alt="YOUR_PROPERTY_NAME Austin" class="aap-header__icon" width="21" height="30" data-light-src="${IMAGES.iconInverted}" data-dark-src="${IMAGES.icon}" onerror="this.onerror=null;this.src='${ALPACA_ICON_FALLBACK}'">
-          <img src="${light ? IMAGES.wordmarkInverted : IMAGES.wordmark}" alt="YOUR_PROPERTY_NAME Austin" class="aap-header__wordmark" width="22" height="22" data-light-src="${IMAGES.wordmarkInverted}" data-dark-src="${IMAGES.wordmark}" onerror="this.onerror=null;this.src='${ALPACA_WORDMARK_FALLBACK}'">
+          <img src="${light ? IMAGES.iconInverted : IMAGES.icon}" alt="The Animist Apothecary" class="aap-header__icon" width="21" height="30" data-light-src="${IMAGES.iconInverted}" data-dark-src="${IMAGES.icon}" onerror="this.onerror=null;this.src='${ICON_FALLBACK}'">
+          <img src="${light ? IMAGES.wordmarkInverted : IMAGES.wordmark}" alt="The Animist Apothecary" class="aap-header__wordmark" width="22" height="22" data-light-src="${IMAGES.wordmarkInverted}" data-dark-src="${IMAGES.wordmark}" onerror="this.onerror=null;this.src='${WORDMARK_FALLBACK}'">
           <span title="Site version" class="aap-header__version">${version || ''}</span>
         </a>
         <nav class="aap-nav" id="aap-nav">
           <ul class="aap-nav__list">
             ${navItems}
           </ul>
+          <a href="${BEGIN_HERE_LINK.href}" class="aap-nav__cta">${BEGIN_HERE_LINK.text}</a>
         </nav>
 
         <div id="aapHeaderAuth" class="aap-header-auth"></div>
@@ -102,27 +100,26 @@ function renderHeader(options = {}) {
       </div>
     </header>
 
-    ${renderMobileNav(activePage, showMistiq)}
+    ${renderMobileNav(activePage)}
   `;
 }
 
 /**
  * Generate mobile navigation overlay
  * @param {string} activePage - Current page identifier for nav highlighting
- * @param {boolean} showMistiq - Whether to show the Mistiq nav link
  */
-function renderMobileNav(activePage = '', showMistiq = false) {
-  // Build navigation links - include Mistiq only if showMistiq is true
-  const links = showMistiq ? [...NAV_LINKS, MISTIQ_LINK] : NAV_LINKS;
-  const linksWithAuth = [...links, AUTH_LINK];
+function renderMobileNav(activePage = '') {
+  const linksWithAuth = [...NAV_LINKS, BEGIN_HERE_LINK, AUTH_LINK];
 
   const navItems = linksWithAuth.map(link => {
     const isActive = link.href.includes(activePage) && activePage !== '';
     const activeClass = isActive ? 'aap-mobile-nav__link--active' : '';
-    const signInId = link.text === 'Sign In' ? ' id="aapMobileSignInLink"' : '';
+    const isBeginHere = link.text === 'Begin Here';
+    const beginClass = isBeginHere ? ' aap-mobile-nav__link--begin' : '';
+    const portalId = link.text === 'Portal' ? ' id="aapMobileSignInLink"' : '';
     return `
       <li class="aap-mobile-nav__item">
-        <a href="${link.href}" class="aap-mobile-nav__link ${activeClass}"${signInId}>${link.text}</a>
+        <a href="${link.href}" class="aap-mobile-nav__link ${activeClass}${beginClass}"${portalId}>${link.text}</a>
       </li>
     `;
   }).join('');
@@ -151,8 +148,8 @@ function renderFooter() {
     <footer class="aap-footer">
       <div class="aap-footer__content">
         <div class="aap-footer__logo">
-          <img src="${IMAGES.iconInverted}" alt="YOUR_PROPERTY_NAME Austin" class="aap-footer__icon">
-          <img src="${IMAGES.wordmarkInverted}" alt="YOUR_PROPERTY_NAME Austin" class="aap-footer__wordmark">
+          <img src="${IMAGES.iconInverted}" alt="The Animist Apothecary" class="aap-footer__icon">
+          <img src="${IMAGES.wordmarkInverted}" alt="The Animist Apothecary" class="aap-footer__wordmark">
         </div>
 
         <div class="aap-footer__social">
@@ -171,7 +168,7 @@ function renderFooter() {
         </div>
 
         <p class="aap-footer__copyright">
-          © ${currentYear} Austin YOUR_PROPERTY_NAME. All rights reserved.<br>
+          © ${currentYear} The Animist Apothecary. All rights reserved.<br>
           123 Main Stive, Your City, TX 00000
         </p>
       </div>

@@ -1,12 +1,12 @@
 /**
- * YOUR_APP_NAME Design Tokens
+ * The Animist Apothecary Design Tokens
  *
  * Canonical source of truth for every visual constant in the AAP design system.
  * All values use CSS custom properties prefixed with `--aap-`.
  *
  * Spacing uses a strict 4 px base grid (0.25 rem increments).
- * Colors are the warm property palette — cream backgrounds, amber accents,
- * warm-dark text, and warm-tinted shadows.
+ * Colors are a dark ceremonial palette — deep earth backgrounds, gold accents,
+ * warm cream text, and dark warm-tinted shadows.
  *
  * This file is imported by site.css and referenced by the Tailwind v4 @theme.
  * If you add a token here, mirror it in styles/tailwind.css @theme so both
@@ -17,19 +17,37 @@
   /* ===========================================
      COLOR — Core palette
      =========================================== */
-  --aap-bg:            #faf9f6;              /* Cream canvas           */
-  --aap-bg-muted:      #f2f0e8;              /* Muted cream for cards  */
-  --aap-bg-dark:       #1c1618;              /* Dark background        */
-  --aap-text:          #2a1f23;              /* Body text              */
-  --aap-text-light:    #faf9f6;              /* Text on dark surfaces  */
-  --aap-text-muted:    #7d6f74;              /* Secondary / caption    */
-  --aap-accent:        #d4883a;              /* Amber primary action   */
-  --aap-accent-hover:  #be7830;              /* Amber hover / pressed  */
-  --aap-accent-light:  rgba(212, 136, 58, 0.1); /* Amber tint bg      */
-  --aap-link:          #2a1f23;              /* Inline link text       */
-  --aap-link-hover:    #d4883a;              /* Inline link hover      */
-  --aap-border:        #e6e2d9;              /* Default border         */
-  --aap-overlay:       rgba(28, 22, 24, 0.6); /* Modal / drawer scrim */
+
+  /* Background */
+  --aap-bg: #141210;              /* Deep dark earth */
+  --aap-bg-muted: #1e1a17;        /* Slightly lighter, for cards */
+  --aap-bg-dark: #0c0a09;         /* Deepest dark */
+  --aap-bg-elevated: #262220;     /* Elevated surfaces */
+
+  /* Text */
+  --aap-text: #e8e0d4;            /* Warm cream text */
+  --aap-text-light: #f5f0e8;      /* Brightest text */
+  --aap-text-muted: #8a7e72;      /* Muted/secondary */
+
+  /* Accent — ceremonial gold */
+  --aap-accent: #b8943c;          /* Ceremonial gold */
+  --aap-accent-hover: #d4aa4a;    /* Gold hover (lighter) */
+  --aap-accent-light: rgba(184, 148, 60, 0.12); /* Gold tint */
+
+  /* Links */
+  --aap-link: #c4a24e;            /* Gold link */
+  --aap-link-hover: #d4aa4a;      /* Gold hover */
+
+  /* Borders & overlays */
+  --aap-border: #2e2924;          /* Subtle warm border */
+  --aap-border-light: #3a342e;    /* Slightly visible border */
+  --aap-overlay: rgba(10, 8, 7, 0.75); /* Dark overlay */
+
+  /* Sliding Scale Tier Colors */
+  --aap-tier-patron: #c4943a;     /* Gold */
+  --aap-tier-abundance: #5a7c5a;  /* Forest green */
+  --aap-tier-community: #4a6b8a;  /* Deep blue */
+  --aap-tier-accessibility: #7c5a8a; /* Purple */
 
   /* ===========================================
      COLOR — Status
@@ -46,17 +64,18 @@
   /* ===========================================
      TYPOGRAPHY
      =========================================== */
-  --aap-font-heading:  'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --aap-font-body:     'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --aap-font-heading: 'Cormorant Garamond', 'Georgia', serif;
+  --aap-font-body: 'Lora', 'Georgia', serif;
 
-  /* Type scale (major-second ~1.125) */
+  /* Type scale (dramatic serif scale) */
   --aap-text-xs:   0.75rem;   /* 12 px */
   --aap-text-sm:   0.875rem;  /* 14 px */
   --aap-text-base: 1rem;      /* 16 px */
   --aap-text-lg:   1.125rem;  /* 18 px */
   --aap-text-xl:   1.25rem;   /* 20 px */
-  --aap-text-2xl:  1.5rem;    /* 24 px */
-  --aap-text-3xl:  2rem;      /* 32 px */
+  --aap-text-2xl:  1.625rem;  /* 26 px */
+  --aap-text-3xl:  2.25rem;   /* 36 px */
+  --aap-text-4xl:  3rem;      /* 48 px — for hero titles */
 
   /* Line heights */
   --aap-leading-tight:  1.25;
@@ -115,15 +134,15 @@
   --aap-radius-full: 9999px;
 
   /* ===========================================
-     SHADOWS — warm tint (42, 31, 35)
+     SHADOWS — dark warm tint
      =========================================== */
-  --aap-shadow-sm: 0 1px 2px rgba(42, 31, 35, 0.04);
-  --aap-shadow:    0 2px 8px rgba(42, 31, 35, 0.06),
-                   0 1px 2px rgba(42, 31, 35, 0.04);
-  --aap-shadow-lg: 0 8px 24px rgba(42, 31, 35, 0.08),
-                   0 2px 6px rgba(42, 31, 35, 0.04);
-  --aap-shadow-xl: 0 16px 48px rgba(42, 31, 35, 0.12),
-                   0 4px 12px rgba(42, 31, 35, 0.06);
+  --aap-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --aap-shadow:    0 2px 8px rgba(0, 0, 0, 0.25),
+                   0 1px 2px rgba(0, 0, 0, 0.15);
+  --aap-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.3),
+                   0 2px 6px rgba(0, 0, 0, 0.2);
+  --aap-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.4),
+                   0 4px 12px rgba(0, 0, 0, 0.25);
 
   /* ===========================================
      MOTION / TRANSITIONS
