@@ -1,12 +1,12 @@
 {
-  "version": "v260331.08 11:02p",
-  "release": 8,
-  "sha": "fff59c3",
-  "fullSha": "fff59c33257d6581ea988c6fb50fc3e67228fdea",
+  "version": "v260331.09 11:15p",
+  "release": 9,
+  "sha": "08244c0",
+  "fullSha": "08244c09acd098a52c20b2eec34f0cb5126ace09",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-03-31T16:01:54-07:00",
-  "commits": [{"sha":"fff59c3","message":"feat: merge live site from AdiMarie repo + set custom domain","author":"Adi Marie"}]
+  "pushedAt": "2026-03-31T16:15:10-07:00",
+  "commits": [{"sha":"08244c0","message":"fix: restore correct Animist Apothecary home page from AdiMarie repo","author":"Adi Marie"}]
 }
