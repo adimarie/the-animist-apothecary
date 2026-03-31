@@ -1,12 +1,12 @@
 {
-  "version": "v260331.02 5:08p",
-  "release": 2,
-  "sha": "c132ef6",
-  "fullSha": "c132ef6f6997ebe58b297a1f771f0f8c590cc268",
+  "version": "v260331.03 9:41p",
+  "release": 3,
+  "sha": "97c59d6",
+  "fullSha": "97c59d6a169bb076246c854e861f37655afcddca",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-03-31T10:07:49-07:00",
-  "commits": [{"sha":"c132ef6","message":"feat: configure all 8 AlpacApps infra features for The Animist Apothecary","author":"Adi Marie"}]
+  "pushedAt": "2026-03-31T14:41:14-07:00",
+  "commits": [{"sha":"97c59d6","message":"feat: retheme site for The Animist Apothecary — dark ceremonial aesthetic","author":"Adi Marie"}]
 }
