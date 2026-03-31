@@ -1,12 +1,12 @@
 {
-  "version": "v260331.10 11:41p",
-  "release": 10,
-  "sha": "4f7f69a",
-  "fullSha": "4f7f69a63b66d44be2b6d4fd4836d0a00cd56260",
+  "version": "v260331.11 11:44p",
+  "release": 11,
+  "sha": "0544da3",
+  "fullSha": "0544da33b44bbdba66f1559d8a99ac9c803ea8fd",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-03-31T16:41:15-07:00",
-  "commits": [{"sha":"4f7f69a","message":"feat: update nav (The Deep Work / Sacred Sessions / The Living Web), add Ceremonial Therapeutics, update intake flow","author":"Adi Marie"}]
+  "pushedAt": "2026-03-31T16:43:54-07:00",
+  "commits": [{"sha":"0544da3","message":"feat: add new offering and placeholder pages","author":"Adi Marie"}]
 }
