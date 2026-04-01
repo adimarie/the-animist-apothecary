@@ -207,41 +207,69 @@ img { max-width: 100%; display: block; }
 .nav-drop-deepwork-card {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  padding: 1.5rem 1.25rem !important;
-  background: rgba(201, 168, 76, 0.05);
-  border: 1px solid rgba(201, 168, 76, 0.18);
-  border-radius: 8px;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 1.75rem 1.5rem !important;
+  background: linear-gradient(160deg, rgba(158,139,110,0.06) 0%, rgba(91,117,83,0.04) 100%);
+  border: 1px solid var(--border-mid);
+  border-radius: 10px;
   text-decoration: none !important;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.nav-drop-deepwork-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 2px;
+  background: var(--gold);
+  opacity: 0.4;
+  border-radius: 1px;
+  transition: width 0.35s ease, opacity 0.35s ease;
 }
 
 .nav-drop-deepwork-card:hover {
-  background: rgba(201, 168, 76, 0.1);
-  border-color: rgba(201, 168, 76, 0.35);
+  background: linear-gradient(160deg, rgba(158,139,110,0.1) 0%, rgba(91,117,83,0.06) 100%);
+  border-color: rgba(158,139,110,0.25);
+  transform: translateY(-1px);
+}
+
+.nav-drop-deepwork-card:hover::before {
+  width: 48px;
+  opacity: 0.7;
 }
 
 .nav-drop-deepwork-card .nav-drop-label {
   font-weight: 600;
-  font-size: 0.65rem;
-  margin-bottom: 0;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  margin-top: 0.25rem;
+  margin-bottom: 0.15rem;
+  color: var(--gold);
 }
 
 .nav-drop-deepwork-desc {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-style: italic;
-  line-height: 1.6;
+  line-height: 1.65;
   color: var(--earth-light);
-  opacity: 0.7;
+  max-width: 18ch;
 }
 
 .nav-drop-deepwork-cta {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+  font-family: 'Inter', sans-serif;
   color: var(--gold);
-  letter-spacing: 0.03em;
-  opacity: 0.8;
-  margin-top: 0.2rem;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+  margin-top: 0.35rem;
+  transition: opacity 0.3s ease;
 }
 
 .nav-drop-deepwork-card:hover .nav-drop-deepwork-cta {
