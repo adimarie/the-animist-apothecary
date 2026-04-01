@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Admin Console — The Animist Apothecary</title>
+  <title>Admin Console &mdash; The Animist Apothecary</title>
   <link rel="stylesheet" href="css/styles.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
@@ -680,17 +680,17 @@
           <div class="stats-grid">
             <div class="stat-card">
               <div class="stat-label">Total Clients</div>
-              <div class="stat-value" id="stat-clients">—</div>
+              <div class="stat-value" id="stat-clients">&mdash;</div>
               <div class="stat-sub">all time</div>
             </div>
             <div class="stat-card">
               <div class="stat-label">Recent Intakes</div>
-              <div class="stat-value" id="stat-intakes">—</div>
+              <div class="stat-value" id="stat-intakes">&mdash;</div>
               <div class="stat-sub">last 7 days</div>
             </div>
             <div class="stat-card">
               <div class="stat-label">Session Notes</div>
-              <div class="stat-value" id="stat-notes">—</div>
+              <div class="stat-value" id="stat-notes">&mdash;</div>
               <div class="stat-sub">total recorded</div>
             </div>
           </div>
@@ -699,7 +699,7 @@
             <h2 style="font-size:1.3rem;">Recent Intake Activity</h2>
           </div>
           <div class="activity-list" id="recentActivity">
-            <div class="loading-state">Loading…</div>
+            <div class="loading-state">Loading&hellip;</div>
           </div>
         </div>
 
@@ -714,7 +714,7 @@
           <div class="table-card">
             <div class="table-toolbar">
               <input type="text" class="search-input" id="clientSearch"
-                placeholder="Search by name or email…" oninput="filterClients()">
+                placeholder="Search by name or email&hellip;" oninput="filterClients()">
             </div>
             <table class="admin-table">
               <thead>
@@ -727,7 +727,7 @@
                 </tr>
               </thead>
               <tbody id="clientsTableBody">
-                <tr><td colspan="5"><div class="loading-state">Loading…</div></td></tr>
+                <tr><td colspan="5"><div class="loading-state">Loading&hellip;</div></td></tr>
               </tbody>
             </table>
           </div>
@@ -737,11 +737,11 @@
              CLIENT DOSSIER VIEW
         ──────────────────────────────── -->
         <div class="admin-view" id="view-dossier">
-          <div class="dossier-back" onclick="navigateTo('clients')">← Back to Clients</div>
+          <div class="dossier-back" onclick="navigateTo('clients')">&larr; Back to Clients</div>
 
           <div class="dossier-header">
             <div>
-              <h2 class="dossier-name" id="dossierName">—</h2>
+              <h2 class="dossier-name" id="dossierName">&mdash;</h2>
               <div class="dossier-meta" id="dossierMeta"></div>
             </div>
             <div id="dossierStageBadge"></div>
@@ -771,7 +771,7 @@
           <!-- Intake -->
           <div class="tab-panel" id="tab-intake">
             <div class="tab-body" id="intakeTabContent">
-              <div class="loading-state">Loading intake…</div>
+              <div class="loading-state">Loading intake&hellip;</div>
             </div>
           </div>
 
@@ -782,11 +782,11 @@
                 <h4>Add Session Note</h4>
                 <div class="note-fg">
                   <label>Practitioner Notes <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#aaa;">(private)</span></label>
-                  <textarea id="nPrivate" placeholder="Your private observations, reflections, and clinical notes…"></textarea>
+                  <textarea id="nPrivate" placeholder="Your private observations, reflections, and clinical notes&hellip;"></textarea>
                 </div>
                 <div class="note-fg">
                   <label>Client-Visible Notes</label>
-                  <textarea id="nClient" placeholder="Notes you may share with the client…"></textarea>
+                  <textarea id="nClient" placeholder="Notes you may share with the client&hellip;"></textarea>
                 </div>
                 <div class="note-fg">
                   <label>Session Themes</label>
@@ -795,7 +795,7 @@
                 <div class="note-form-row">
                   <div class="note-fg">
                     <label>Integration Tasks</label>
-                    <textarea id="nIntegration" style="min-height:80px" placeholder="Practices, tasks, or intentions for integration…"></textarea>
+                    <textarea id="nIntegration" style="min-height:80px" placeholder="Practices, tasks, or intentions for integration&hellip;"></textarea>
                   </div>
                   <div class="note-fg">
                     <label>Follow-Up Date</label>
@@ -805,7 +805,7 @@
                 <button class="btn-save-note" id="saveNoteBtn" onclick="saveNote()">Save Note</button>
               </div>
               <div id="notesTabContent">
-                <div class="loading-state">Loading notes…</div>
+                <div class="loading-state">Loading notes&hellip;</div>
               </div>
             </div>
           </div>
@@ -813,7 +813,7 @@
           <!-- Appointments -->
           <div class="tab-panel" id="tab-appts">
             <div class="tab-body" id="apptsTabContent">
-              <div class="loading-state">Loading appointments…</div>
+              <div class="loading-state">Loading appointments&hellip;</div>
             </div>
           </div>
         </div>
@@ -837,7 +837,7 @@
                 </tr>
               </thead>
               <tbody id="intakesTableBody">
-                <tr><td colspan="4"><div class="loading-state">Loading…</div></td></tr>
+                <tr><td colspan="4"><div class="loading-state">Loading&hellip;</div></td></tr>
               </tbody>
             </table>
           </div>
@@ -862,7 +862,7 @@
                 </tr>
               </thead>
               <tbody id="sessionsTableBody">
-                <tr><td colspan="4"><div class="loading-state">Loading…</div></td></tr>
+                <tr><td colspan="4"><div class="loading-state">Loading&hellip;</div></td></tr>
               </tbody>
             </table>
           </div>
@@ -873,7 +873,7 @@
             <div class="admin-view" id="view-pipeline" style="display:none">
         <div class="bt-header">
           <h2>Sales Pipeline</h2>
-          <p>Lead tracking from IAM Tracking — Adi tab</p>
+          <p>Lead tracking from IAM Tracking &mdash; Adi tab</p>
         </div>
         <div class="bt-summary-cards">
           <div class="bt-summary-card"><span class="num">16</span><span class="lbl">Total Leads</span></div>
@@ -886,21 +886,21 @@
             <thead><tr><th>Name</th><th>Referral</th><th>Convos</th><th>Proposal</th><th>Answer</th><th>Collected</th><th>Notes</th></tr></thead>
             <tbody>
               <tr><td>George M.</td><td>Website</td><td>3</td><td>$8,500</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">$8,500</td><td>Ceremony booked May 2026</td></tr>
-              <tr><td>Rita K.</td><td>Referral — George</td><td>4</td><td>$6,200</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">$3,100</td><td>50% deposit, Apr ceremony</td></tr>
+              <tr><td>Rita K.</td><td>Referral &mdash; George</td><td>4</td><td>$6,200</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">$3,100</td><td>50% deposit, Apr ceremony</td></tr>
               <tr><td>Samantha P.</td><td>Instagram</td><td>2</td><td>$4,500</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">$4,500</td><td>Paid in full</td></tr>
               <tr><td>David L.</td><td>Workshop</td><td>5</td><td>$7,800</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">$2,600</td><td>Payment plan 3x</td></tr>
-              <tr><td>Mira T.</td><td>Referral — Samantha</td><td>1</td><td>$3,200</td><td><span class="bt-badge bt-badge-maybe">Maybe</span></td><td class="bt-money">—</td><td>Following up next week</td></tr>
+              <tr><td>Mira T.</td><td>Referral &mdash; Samantha</td><td>1</td><td>$3,200</td><td><span class="bt-badge bt-badge-maybe">Maybe</span></td><td class="bt-money">&mdash;</td><td>Following up next week</td></tr>
               <tr><td>Jason W.</td><td>Podcast</td><td>3</td><td>$5,500</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">$2,800</td><td>Half deposit received</td></tr>
-              <tr><td>Elena R.</td><td>Website</td><td>2</td><td>$4,200</td><td><span class="bt-badge bt-badge-no">No</span></td><td class="bt-money">—</td><td>Not ready, revisit in 6mo</td></tr>
-              <tr><td>Carlos F.</td><td>Referral — David</td><td>4</td><td>$6,800</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">—</td><td>Signed, awaiting deposit</td></tr>
-              <tr><td>Naomi B.</td><td>Instagram</td><td>1</td><td>$3,500</td><td><span class="bt-badge bt-badge-feeling">Feeling</span></td><td class="bt-money">—</td><td>Interested, needs time</td></tr>
-              <tr><td>Trevor H.</td><td>Workshop</td><td>6</td><td>$9,200</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">—</td><td>Extended program, starting June</td></tr>
-              <tr><td>Yuki S.</td><td>Referral — Rita</td><td>2</td><td>$3,800</td><td><span class="bt-badge bt-badge-maybe">Maybe</span></td><td class="bt-money">—</td><td>Considering group ceremony</td></tr>
-              <tr><td>Aisha D.</td><td>Website</td><td>3</td><td>$2,900</td><td><span class="bt-badge bt-badge-no">No</span></td><td class="bt-money">—</td><td>Budget constraints</td></tr>
-              <tr><td>Marcus J.</td><td>Podcast</td><td>1</td><td>—</td><td><span class="bt-badge bt-badge-feeling">Feeling</span></td><td class="bt-money">—</td><td>Initial inquiry only</td></tr>
-              <tr><td>Priya V.</td><td>Referral — Jason</td><td>2</td><td>$2,500</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">—</td><td>Micro-ceremony package</td></tr>
-              <tr><td>Liam O.</td><td>Workshop</td><td>4</td><td>$1,800</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">—</td><td>Herbal consult only</td></tr>
-              <tr><td>Zoe C.</td><td>Instagram</td><td>1</td><td>$1,700</td><td><span class="bt-badge bt-badge-maybe">Maybe</span></td><td class="bt-money">—</td><td>Wants more info</td></tr>
+              <tr><td>Elena R.</td><td>Website</td><td>2</td><td>$4,200</td><td><span class="bt-badge bt-badge-no">No</span></td><td class="bt-money">&mdash;</td><td>Not ready, revisit in 6mo</td></tr>
+              <tr><td>Carlos F.</td><td>Referral &mdash; David</td><td>4</td><td>$6,800</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">&mdash;</td><td>Signed, awaiting deposit</td></tr>
+              <tr><td>Naomi B.</td><td>Instagram</td><td>1</td><td>$3,500</td><td><span class="bt-badge bt-badge-feeling">Feeling</span></td><td class="bt-money">&mdash;</td><td>Interested, needs time</td></tr>
+              <tr><td>Trevor H.</td><td>Workshop</td><td>6</td><td>$9,200</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">&mdash;</td><td>Extended program, starting June</td></tr>
+              <tr><td>Yuki S.</td><td>Referral &mdash; Rita</td><td>2</td><td>$3,800</td><td><span class="bt-badge bt-badge-maybe">Maybe</span></td><td class="bt-money">&mdash;</td><td>Considering group ceremony</td></tr>
+              <tr><td>Aisha D.</td><td>Website</td><td>3</td><td>$2,900</td><td><span class="bt-badge bt-badge-no">No</span></td><td class="bt-money">&mdash;</td><td>Budget constraints</td></tr>
+              <tr><td>Marcus J.</td><td>Podcast</td><td>1</td><td>&mdash;</td><td><span class="bt-badge bt-badge-feeling">Feeling</span></td><td class="bt-money">&mdash;</td><td>Initial inquiry only</td></tr>
+              <tr><td>Priya V.</td><td>Referral &mdash; Jason</td><td>2</td><td>$2,500</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">&mdash;</td><td>Micro-ceremony package</td></tr>
+              <tr><td>Liam O.</td><td>Workshop</td><td>4</td><td>$1,800</td><td><span class="bt-badge bt-badge-yes">Yes</span></td><td class="bt-money">&mdash;</td><td>Herbal consult only</td></tr>
+              <tr><td>Zoe C.</td><td>Instagram</td><td>1</td><td>$1,700</td><td><span class="bt-badge bt-badge-maybe">Maybe</span></td><td class="bt-money">&mdash;</td><td>Wants more info</td></tr>
             </tbody>
           </table>
         </div>
@@ -924,7 +924,7 @@
             <h3 class="bt-card-title">Plant Medicine Ceremony</h3>
             <div class="bt-card-sub">Ceremony • Multi-Day • Full Screening</div>
             <div class="bt-card-body">Sacred plant medicine ceremony with preparation, ceremony, and integration support. Includes dietary guidelines and follow-up.</div>
-            <div style="margin-top:12px;font-family:'Courier Prime',monospace;color:#7ac77a;font-size:14px">$3,200 – $8,500</div>
+            <div style="margin-top:12px;font-family:'Courier Prime',monospace;color:#7ac77a;font-size:14px">$3,200 &ndash; $8,500</div>
           </div>
           <div class="bt-card">
             <h3 class="bt-card-title">Herbal Consultation</h3>
@@ -959,7 +959,7 @@
           <div class="bt-card">
             <h3 class="bt-card-title">Group Ceremony</h3>
             <div class="bt-card-sub">Ceremony • Weekend • Application</div>
-            <div class="bt-card-body">Small group ceremony experience (4–8 participants) with shared container, individual attention, and community integration.</div>
+            <div class="bt-card-body">Small group ceremony experience (4&ndash;8 participants) with shared container, individual attention, and community integration.</div>
             <div style="margin-top:12px;font-family:'Courier Prime',monospace;color:#7ac77a;font-size:14px">$2,400/person</div>
           </div>
           <div class="bt-card">
@@ -976,7 +976,7 @@
       <div class="admin-view" id="view-bookkeeping" style="display:none">
         <div class="bt-header">
           <h2>Bookkeeping</h2>
-          <p>Easy Bookkeeping — income, expenses, and tax tracking</p>
+          <p>Easy Bookkeeping &mdash; income, expenses, and tax tracking</p>
         </div>
         <div class="bt-grid-3">
           <div class="bt-card">
@@ -1028,7 +1028,7 @@
       <div class="admin-view" id="view-finance" style="display:none">
         <div class="bt-header">
           <h2>Financials</h2>
-          <p>Small Business Bookkeeping 4.2 — comprehensive financial overview</p>
+          <p>Small Business Bookkeeping 4.2 &mdash; comprehensive financial overview</p>
         </div>
         <div class="bt-grid-2">
           <div class="bt-card">
@@ -1075,7 +1075,7 @@
           <div class="bt-card">
             <h3 class="bt-card-title">Client Journey</h3>
             <div class="bt-card-sub">Lifecycle View</div>
-            <div class="bt-card-body">Track each client’s progression from inquiry through intake, ceremony, integration, and ongoing relationship.</div>
+            <div class="bt-card-body">Track each client&rsquo;s progression from inquiry through intake, ceremony, integration, and ongoing relationship.</div>
           </div>
         </div>
         <div class="bt-actions">
@@ -1119,13 +1119,13 @@
   }
 
   function fmtDate(iso) {
-    if (!iso) return '—';
+    if (!iso) return '&mdash;';
     return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   }
 
   function stageBadge(stage) {
     const map = { intake: 'badge-intake', active: 'badge-active', inquiry: 'badge-inquiry', completed: 'badge-completed' };
-    if (!stage) return '—';
+    if (!stage) return '&mdash;';
     return `<span class="badge ${map[stage] || 'badge-default'}">${esc(stage)}</span>`;
   }
 
@@ -1157,7 +1157,7 @@
     const btn      = document.getElementById('loginBtn');
     errEl.textContent = '';
     if (!email || !password) { errEl.textContent = 'Please enter your email and password.'; return; }
-    btn.disabled = true; btn.textContent = 'Signing in…';
+    btn.disabled = true; btn.textContent = 'Signing in&hellip;';
     const { data, error } = await sb.auth.signInWithPassword({ email, password });
     if (error) {
       errEl.textContent = error.message;
@@ -1204,9 +1204,9 @@
       sb.from('intake_forms').select('submitted_at, clients(full_name)').order('submitted_at', { ascending: false }).limit(12)
     ]);
 
-    document.getElementById('stat-clients').textContent = cCount ?? '—';
-    document.getElementById('stat-intakes').textContent = iCount ?? '—';
-    document.getElementById('stat-notes').textContent   = nCount ?? '—';
+    document.getElementById('stat-clients').textContent = cCount ?? '&mdash;';
+    document.getElementById('stat-intakes').textContent = iCount ?? '&mdash;';
+    document.getElementById('stat-notes').textContent   = nCount ?? '&mdash;';
 
     const feed = document.getElementById('recentActivity');
     const items = recent || [];
@@ -1238,10 +1238,10 @@
     }
     tbody.innerHTML = list.map(c => `
       <tr onclick="openDossier('${c.id}')">
-        <td class="td-name">${esc(c.full_name || '—')}</td>
-        <td>${esc(c.email || '—')}</td>
+        <td class="td-name">${esc(c.full_name || '&mdash;')}</td>
+        <td>${esc(c.email || '&mdash;')}</td>
         <td>${stageBadge(c.pipeline_stage)}</td>
-        <td>${esc(c.location || '—')}</td>
+        <td>${esc(c.location || '&mdash;')}</td>
         <td>${fmtDate(c.created_at)}</td>
       </tr>`).join('');
   }
@@ -1278,7 +1278,7 @@
   }
 
   function renderDossierHeader(c) {
-    document.getElementById('dossierName').textContent = c.full_name || '—';
+    document.getElementById('dossierName').textContent = c.full_name || '&mdash;';
     document.getElementById('dossierStageBadge').innerHTML = stageBadge(c.pipeline_stage);
     document.getElementById('dossierMeta').innerHTML = [
       c.email    && `<span class="dossier-meta-item">✉ ${esc(c.email)}</span>`,
@@ -1355,7 +1355,7 @@
 
     return `
       <div style="margin-bottom:8px; font-size:0.72rem; color:#9e8b6e; text-transform:uppercase; letter-spacing:0.14em;">
-        Submitted ${fmtDate(form.submitted_at)} · ${esc(form.form_type || 'initial_intake')}
+        Submitted ${fmtDate(form.submitted_at)} &middot; ${esc(form.form_type || 'initial_intake')}
       </div>
       ${consentHTML}${sectionsHTML}
       <hr style="border:none;border-top:1px solid #f0ede8;margin:24px 0;">`;
@@ -1393,7 +1393,7 @@
 
   async function saveNote() {
     const btn = document.getElementById('saveNoteBtn');
-    btn.disabled = true; btn.textContent = 'Saving…';
+    btn.disabled = true; btn.textContent = 'Saving&hellip;';
     const { error } = await sb.from('session_notes').insert({
       client_id:            currentClientId,
       practitioner_notes:   document.getElementById('nPrivate').value     || null,
@@ -1424,9 +1424,9 @@
       <thead><tr><th>Date &amp; Time</th><th>Service</th><th>Status</th><th>Notes</th></tr></thead>
       <tbody>${data.map(a => `<tr>
         <td>${fmtDate(a.start_time)}</td>
-        <td>${esc(a.service_name || a.service_id || '—')}</td>
+        <td>${esc(a.service_name || a.service_id || '&mdash;')}</td>
         <td>${stageBadge(a.status)}</td>
-        <td>${esc(a.notes || '—')}</td>
+        <td>${esc(a.notes || '&mdash;')}</td>
       </tr>`).join('')}</tbody>
     </table></div>`;
   }
@@ -1443,10 +1443,10 @@
     }
     tbody.innerHTML = data.map(f => `
       <tr onclick="openDossier('${f.client_id}')">
-        <td class="td-name">${esc(f.clients?.full_name || '—')}</td>
+        <td class="td-name">${esc(f.clients?.full_name || '&mdash;')}</td>
         <td>${esc(f.form_type || 'initial_intake')}</td>
         <td>${fmtDate(f.submitted_at)}</td>
-        <td class="td-arrow">View →</td>
+        <td class="td-arrow">View &rarr;</td>
       </tr>`).join('');
   }
 
@@ -1463,9 +1463,9 @@
     tbody.innerHTML = data.map(n => {
       const themes = (n.session_themes || '').split(',').filter(Boolean);
       return `<tr onclick="openDossier('${n.client_id}')">
-        <td class="td-name">${esc(n.clients?.full_name || '—')}</td>
-        <td>${themes.map(t => `<span class="theme-tag">${esc(t.trim())}</span>`).join(' ') || '—'}</td>
-        <td>${n.follow_up_date || '—'}</td>
+        <td class="td-name">${esc(n.clients?.full_name || '&mdash;')}</td>
+        <td>${themes.map(t => `<span class="theme-tag">${esc(t.trim())}</span>`).join(' ') || '&mdash;'}</td>
+        <td>${n.follow_up_date || '&mdash;'}</td>
         <td>${fmtDate(n.created_at)}</td>
       </tr>`;
     }).join('');
