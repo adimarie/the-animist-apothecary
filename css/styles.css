@@ -197,15 +197,55 @@ img { max-width: 100%; display: block; }
   border-left: 2px solid var(--sage);
 }
 
-/* Cornerstone column — The Deep Work visual distinction */
+/* Cornerstone column — The Deep Work invitation card */
 .nav-drop-col--cornerstone {
-  border-left: 2px solid rgba(201, 168, 76, 0.35);
-  padding-left: 1rem;
+  border-left: none;
+  padding-left: 0;
+  justify-content: center;
 }
 
-.nav-drop-col--cornerstone .nav-drop-label {
+.nav-drop-deepwork-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem 1.25rem !important;
+  background: rgba(201, 168, 76, 0.05);
+  border: 1px solid rgba(201, 168, 76, 0.18);
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.nav-drop-deepwork-card:hover {
+  background: rgba(201, 168, 76, 0.1);
+  border-color: rgba(201, 168, 76, 0.35);
+}
+
+.nav-drop-deepwork-card .nav-drop-label {
   font-weight: 600;
   font-size: 0.65rem;
+  margin-bottom: 0;
+}
+
+.nav-drop-deepwork-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.88rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--earth-light);
+  opacity: 0.7;
+}
+
+.nav-drop-deepwork-cta {
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.03em;
+  opacity: 0.8;
+  margin-top: 0.2rem;
+}
+
+.nav-drop-deepwork-card:hover .nav-drop-deepwork-cta {
+  opacity: 1;
 }
 
 .nav-drop-cornerstone-intro {
