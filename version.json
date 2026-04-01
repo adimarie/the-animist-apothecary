@@ -1,12 +1,12 @@
 {
-  "version": "v260401.01 2:41p",
-  "release": 1,
-  "sha": "45fc5be",
-  "fullSha": "45fc5be1d3d5a2fc6191a231cb0ba4fdd9b31ad8",
+  "version": "v260401.02 2:45p",
+  "release": 2,
+  "sha": "66a5dc8",
+  "fullSha": "66a5dc8f048e6f499193ffba67411053dab72b5d",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-04-01T07:41:35-07:00",
-  "commits": [{"sha":"45fc5be","message":"feat: major site update — Deep Work cornerstone, nav overhaul, new pages, Sacred Reciprocity","author":"Adi Marie"}]
+  "pushedAt": "2026-04-01T07:44:46-07:00",
+  "commits": [{"sha":"66a5dc8","message":"fix: link deep-work.html in nav dropdown — make column header clickable + add explore link","author":"Adi Marie"}]
 }
