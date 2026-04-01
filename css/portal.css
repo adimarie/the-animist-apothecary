@@ -1,0 +1,482 @@
+/* ===================================================
+   THE ANIMIST APOTHECARY — Client Portal Styles
+   Extracted from portal preview design system
+   =================================================== */
+
+/* ====== PORTAL NAV ====== */
+.portal-nav {
+  padding: 22px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--cream);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+.portal-nav .nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--earth);
+  letter-spacing: 0.5px;
+}
+.portal-nav .nav-brand em {
+  font-style: italic;
+  font-weight: 500;
+}
+.portal-nav .nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.portal-nav .nav-links a {
+  color: var(--earth-light);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.portal-nav .nav-links a:hover {
+  color: var(--earth);
+}
+.portal-nav .nav-links a.active {
+  color: var(--sage);
+}
+.user-dropdown {
+  color: var(--earth-faint) !important;
+  cursor: pointer;
+}
+
+/* ====== PORTAL LAYOUT ====== */
+.portal-container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 40px;
+}
+.portal-header {
+  margin-bottom: 36px;
+}
+.portal-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  margin-bottom: 4px;
+  color: var(--earth);
+}
+.portal-header .subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--earth-light);
+  font-size: 16px;
+  margin-top: 6px;
+}
+
+/* ====== PORTAL GRID & CARDS ====== */
+.portal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.portal-card {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 28px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+}
+.portal-card h3 {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--earth-faint);
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ====== SESSION ITEMS ====== */
+.session-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.session-item:last-child {
+  border: none;
+}
+.session-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  color: var(--earth);
+}
+.session-date {
+  font-size: 12px;
+  color: var(--earth-faint);
+}
+
+/* ====== CONTAINER PROGRESS ====== */
+.container-count {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--earth);
+}
+.container-total {
+  color: var(--earth-faint);
+  font-size: 16px;
+}
+.container-name {
+  font-size: 12px;
+  color: var(--earth-faint);
+  margin-top: 10px;
+}
+
+/* ====== PROGRESS BAR ====== */
+.progress-bar-bg {
+  height: 3px;
+  background: var(--cream-dark);
+  border-radius: 2px;
+  margin: 14px 0;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--sage-light), var(--sage));
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+.progress-label {
+  font-size: 11px;
+  color: var(--earth-faint);
+  letter-spacing: 0.5px;
+}
+
+/* ====== CEREMONY CARD ====== */
+.ceremony-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--earth);
+  margin-bottom: 8px;
+}
+.ceremony-meta {
+  font-size: 12px;
+  color: var(--earth-faint);
+  margin-bottom: 16px;
+}
+.ceremony-steps-summary {
+  font-size: 11px;
+  color: var(--earth-faint);
+  margin-top: 8px;
+}
+
+/* ====== MESSAGE INDICATOR ====== */
+.unread-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sage);
+  display: inline-block;
+  flex-shrink: 0;
+}
+.message-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  color: var(--earth);
+}
+
+/* ====== MILESTONE TIMELINE ====== */
+.milestone-timeline {
+  position: relative;
+  padding-left: 24px;
+}
+.milestone-timeline::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: var(--sage-pale);
+}
+.milestone-item {
+  position: relative;
+  padding: 10px 0 10px 20px;
+}
+.milestone-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 16px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sage);
+}
+.milestone-item .m-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: var(--earth);
+}
+.milestone-item .m-date {
+  font-size: 11px;
+  color: var(--earth-faint);
+}
+
+/* ====== CEREMONY PORTAL VIEW (Stepper) ====== */
+.ceremony-portal-view {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+.ceremony-header {
+  text-align: center;
+  margin-bottom: 48px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--border-mid);
+}
+.ceremony-header h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 8px;
+  color: var(--earth);
+}
+.ceremony-header .meta {
+  color: var(--earth-faint);
+  font-size: 13px;
+}
+.progress-summary {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* ====== CEREMONY STEPS ====== */
+.ceremony-step {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  position: relative;
+}
+.ceremony-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 56px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border-mid);
+}
+.step-indicator {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  flex-shrink: 0;
+  z-index: 1;
+  font-weight: 500;
+}
+.step-indicator.completed {
+  background: var(--sage);
+  color: white;
+}
+.step-indicator.current {
+  background: white;
+  border: 2px solid var(--sage);
+  color: var(--sage);
+  box-shadow: 0 0 0 4px rgba(91,117,83,0.12);
+}
+.step-indicator.locked {
+  background: var(--cream-dark);
+  border: 1px solid var(--border-mid);
+  color: var(--earth-faint);
+}
+.step-content {
+  flex: 1;
+  padding-top: 4px;
+}
+.step-content h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 3px;
+  color: var(--earth);
+}
+.step-content.locked h4 {
+  color: var(--earth-faint);
+}
+.step-content p {
+  font-size: 12px;
+  color: var(--earth-faint);
+}
+.step-action {
+  margin-top: 10px;
+  padding: 7px 18px;
+  border: 1px solid var(--sage);
+  color: var(--sage);
+  background: transparent;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+  border-radius: 2px;
+  font-family: 'Inter', sans-serif;
+}
+.step-action:hover {
+  background: var(--sage);
+  color: white;
+}
+
+/* ====== EMPTY STATES ====== */
+.empty-state {
+  text-align: center;
+  padding: 24px;
+  color: var(--earth-faint);
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* ====== AUTH SCREEN ====== */
+.auth-container {
+  max-width: 420px;
+  margin: 120px auto;
+  padding: 48px 40px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+.auth-container h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--earth);
+  margin-bottom: 8px;
+}
+.auth-container p {
+  color: var(--earth-faint);
+  font-size: 13px;
+  margin-bottom: 28px;
+}
+.auth-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-mid);
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--earth);
+  background: var(--cream);
+  margin-bottom: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.auth-input:focus {
+  border-color: var(--sage);
+}
+.auth-btn {
+  width: 100%;
+  padding: 12px 24px;
+  background: var(--sage);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.auth-btn:hover {
+  background: var(--sage-dark);
+}
+.auth-error {
+  color: #c75a3a;
+  font-size: 12px;
+  margin-top: 12px;
+  display: none;
+}
+
+/* ====== LOADING ====== */
+.portal-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  color: var(--earth-faint);
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+/* ====== RESPONSIVE BREAKPOINTS ====== */
+@media (max-width: 768px) {
+  .portal-nav {
+    padding: 16px 20px;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .portal-nav .nav-links {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .portal-nav .nav-links a {
+    font-size: 10px;
+    letter-spacing: 1.2px;
+  }
+  .portal-container {
+    padding: 28px 20px;
+  }
+  .portal-grid {
+    grid-template-columns: 1fr;
+  }
+  .portal-header h1 {
+    font-size: 26px;
+  }
+  .ceremony-portal-view {
+    padding: 40px 20px;
+  }
+  .ceremony-header h1 {
+    font-size: 28px;
+  }
+  .ceremony-step {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .portal-nav {
+    padding: 12px 16px;
+  }
+  .portal-nav .nav-links {
+    gap: 12px;
+  }
+  .portal-card {
+    padding: 20px;
+  }
+  .portal-header h1 {
+    font-size: 22px;
+  }
+  .ceremony-portal-view {
+    padding: 28px 16px;
+  }
+  .ceremony-header h1 {
+    font-size: 24px;
+  }
+  .step-content h4 {
+    font-size: 16px;
+  }
+}

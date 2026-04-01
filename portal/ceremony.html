@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ceremony Preparation &mdash; The Animist Apothecary</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/portal.css">
+</head>
+<body>
+
+<!-- Loading state -->
+<div id="portal-loading" class="portal-loading">Loading your ceremony&hellip;</div>
+
+<!-- Main ceremony view (hidden until authenticated) -->
+<div id="ceremony-app" style="display:none;">
+
+  <!-- Navigation -->
+  <nav class="portal-nav">
+    <a href="/portal/" class="nav-brand">The Animist <em>Apothecary</em></a>
+    <div class="nav-links">
+      <a href="/portal/">&larr; Back to Portal</a>
+      <a href="#" id="user-dropdown" class="user-dropdown"></a>
+    </div>
+  </nav>
+
+  <div class="ceremony-portal-view">
+    <div class="ceremony-header">
+      <h1 id="ceremony-name">Ceremony</h1>
+      <p class="meta" id="ceremony-meta"></p>
+    </div>
+
+    <div class="progress-summary">
+      <div class="progress-label">YOUR PREPARATION PROGRESS</div>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill" style="width:0%;"></div></div>
+      <div class="progress-label" id="progress-text">0 of 10 steps completed</div>
+    </div>
+
+    <div id="ceremony-steps"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/supabase-client.js"></script>
+<script src="/js/portal-auth.js"></script>
+<script src="/js/components.js"></script>
+<script>
+const CEREMONY_STEPS = [
+  { num: 1,  key: 'intake',       title: 'Intake & Inquiry Call',           actionLabel: 'Schedule Call',            actionUrl: null },
+  { num: 2,  key: 'forms',        title: 'Ceremony Intake Form',           actionLabel: 'Complete Form',            actionUrl: null },
+  { num: 3,  key: 'med_review',   title: 'Medication & Supplement Review', actionLabel: 'Submit Health Info',       actionUrl: null },
+  { num: 4,  key: 'dieta',        title: 'Dieta & Preparation',            actionLabel: 'View Guidelines',          actionUrl: null },
+  { num: 5,  key: 'orientation',  title: 'Orientation Call',               actionLabel: 'Schedule Orientation',     actionUrl: null },
+  { num: 6,  key: 'group_call',   title: 'Group Call',                     actionLabel: 'Join Group Call',          actionUrl: null },
+  { num: 7,  key: 'consent',      title: 'Consent & Agreements',           actionLabel: 'Sign Agreements \u2192',   actionUrl: null },
+  { num: 8,  key: 'logistics',    title: 'What to Bring & Logistics',      actionLabel: 'View Details',             actionUrl: null },
+  { num: 9,  key: 'ceremony',     title: 'The Ceremony',                   actionLabel: null,                       actionUrl: null },
+  { num: 10, key: 'aftercare',    title: 'Aftercare & Integration',        actionLabel: 'Access Resources',         actionUrl: null }
+];
+
+(async function() {
+  const loadingEl = document.getElementById('portal-loading');
+  const appEl = document.getElementById('ceremony-app');
+
+  try {
+    // 1. Authenticate client
+    const client = await initPortalAuth();
+    if (!client) return;
+
+    // Set user dropdown
+    const displayName = client.display_name || client.full_name || 'Friend';
+    const firstName = displayName.split(' ')[0];
+    const lastName = displayName.split(' ').length > 1 ? displayName.split(' ')[1][0] + '.' : '';
+    document.getElementById('user-dropdown').textContent = firstName + ' ' + lastName + ' \u25BE';
+
+    // 2. Load ceremony participant record joined with ceremony group
+    const { data: participant, error } = await supabase
+      .from('ceremony_participants')
+      .select('id, current_step, step_statuses, status, ceremony_groups(id, name, ceremony_date, location, facilitator_name)')
+      .eq('client_id', client.id)
+      .eq('status', 'active')
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .single();
+
+    if (error || !participant) {
+      loadingEl.innerHTML = '<div style="text-align:center;"><p style="color:var(--earth-faint);margin-bottom:16px;">No active ceremony found.</p><a href="/portal/" style="color:var(--sage);">Return to Portal</a></div>';
+      return;
+    }
+
+    const group = participant.ceremony_groups;
+    const currentStep = participant.current_step || 1;
+    const stepStatuses = participant.step_statuses || {};
+
+    // Show the app
+    loadingEl.style.display = 'none';
+    appEl.style.display = 'block';
+
+    // Set header info
+    document.getElementById('ceremony-name').textContent = group.name || 'Ceremony';
+    const dateParts = [];
+    if (group.ceremony_date) {
+      dateParts.push(new Date(group.ceremony_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }));
+    }
+    if (group.location) dateParts.push(group.location);
+    if (group.facilitator_name) dateParts.push('Facilitated by ' + group.facilitator_name);
+    document.getElementById('ceremony-meta').textContent = dateParts.join(' \u00B7 ');
+
+    // 3. Render progress
+    const completedCount = CEREMONY_STEPS.filter(s => {
+      const status = stepStatuses[s.key] || (s.num < currentStep ? 'completed' : s.num === currentStep ? 'current' : 'locked');
+      return status === 'completed';
+    }).length;
+    // Fallback: count steps before current as completed
+    const effectiveCompleted = completedCount > 0 ? completedCount : Math.max(0, currentStep - 1);
+    const pct = Math.round((effectiveCompleted / 10) * 100);
+
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = effectiveCompleted + ' of 10 steps completed';
+
+    // 4. Render stepper
+    const stepsContainer = document.getElementById('ceremony-steps');
+    stepsContainer.innerHTML = CEREMONY_STEPS.map(step => {
+      let status;
+      if (stepStatuses[step.key]) {
+        status = stepStatuses[step.key];
+      } else if (step.num < currentStep) {
+        status = 'completed';
+      } else if (step.num === currentStep) {
+        status = 'current';
+      } else {
+        status = 'locked';
+      }
+
+      let indicatorClass, indicatorContent;
+      if (status === 'completed') {
+        indicatorClass = 'completed';
+        indicatorContent = '\u2713';
+      } else if (status === 'current') {
+        indicatorClass = 'current';
+        indicatorContent = step.num;
+      } else {
+        indicatorClass = 'locked';
+        indicatorContent = step.num;
+      }
+
+      const contentClass = status === 'locked' ? 'step-content locked' : 'step-content';
+      let description = '';
+      if (status === 'completed') {
+        description = '<p>Completed</p>';
+      } else if (status === 'current') {
+        description = '<p>In progress</p>';
+      } else {
+        description = '<p>Unlocks after previous step</p>';
+      }
+
+      // Show action button only on current step
+      let actionBtn = '';
+      if (status === 'current' && step.actionLabel) {
+        const url = step.actionUrl ? ' onclick="location.href=\'' + step.actionUrl + '\'"' : '';
+        actionBtn = '<button class="step-action"' + url + '>' + escapeHtml(step.actionLabel) + '</button>';
+      }
+
+      return '<div class="ceremony-step">' +
+        '<div class="step-indicator ' + indicatorClass + '">' + indicatorContent + '</div>' +
+        '<div class="' + contentClass + '">' +
+          '<h4>' + escapeHtml(step.title) + '</h4>' +
+          description +
+          actionBtn +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+  } catch (err) {
+    console.error('Ceremony init error:', err);
+    loadingEl.textContent = 'Something went wrong. Please try again.';
+  }
+})();
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+</script>
+</body>
+</html>

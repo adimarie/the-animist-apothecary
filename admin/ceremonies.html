@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ceremonies &mdash; Admin &mdash; The Animist Apothecary</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <div id="loadingState" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--cream);">
+    <p style="color: var(--earth-faint); font-family: Inter, sans-serif; font-size: 13px;">Loading...</p>
+  </div>
+
+  <div id="appContent" style="display: none;">
+    <div class="admin-layout">
+      <!-- Sidebar -->
+      <div class="admin-sidebar">
+        <div class="brand"><h3>The Animist Apothecary</h3><span>Admin Portal</span></div>
+        <a href="/admin/" class="sidebar-item"><span class="sidebar-icon">&#9673;</span> Dashboard</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9679;</span> Clients</a>
+        <a href="/admin/ceremonies.html" class="sidebar-item active"><span class="sidebar-icon">&#9830;</span> Ceremonies</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9633;</span> Calendar</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#10047;</span> Deep Work</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9671;</span> Finances</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9993;</span> Messages</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9776;</span> Resources</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9881;</span> Settings</a>
+      </div>
+
+      <!-- Main content area -->
+      <div class="admin-main">
+        <!-- Ceremony Admin Header -->
+        <div class="ceremony-admin-header">
+          <div>
+            <div class="admin-header" style="margin-bottom: 0;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                  <h1>Ceremony Management</h1>
+                  <p>Track participant onboarding and readiness across all active ceremonies</p>
+                </div>
+                <div id="adminUserInfo"></div>
+              </div>
+            </div>
+          </div>
+          <select class="ceremony-select" id="ceremonySelect">
+            <option value="">Loading ceremonies...</option>
+          </select>
+        </div>
+
+        <!-- Ceremony Meta Row -->
+        <div class="ceremony-meta-row" id="ceremonyMeta">
+          <div class="ceremony-meta-item"><div class="label">Date</div><div class="value" id="metaDate">&mdash;</div></div>
+          <div class="ceremony-meta-item"><div class="label">Location</div><div class="value" id="metaLocation">&mdash;</div></div>
+          <div class="ceremony-meta-item"><div class="label">Capacity</div><div class="value" id="metaCapacity">&mdash;</div></div>
+          <div class="ceremony-meta-item"><div class="label">Overall Readiness</div><div class="value" id="metaReadiness" style="color: var(--sage);">&mdash;</div></div>
+          <div class="ceremony-meta-item"><div class="label">Flags</div><div class="value" id="metaFlags">&mdash;</div></div>
+        </div>
+
+        <!-- Progression Matrix -->
+        <div class="matrix-card" id="matrixCard">
+          <div class="matrix-card-header">
+            <h3>Participant Progression Matrix</h3>
+            <div class="matrix-legend">
+              <span><span class="legend-dot done"></span> Complete</span>
+              <span><span class="legend-dot current"></span> Current</span>
+              <span><span class="legend-dot pending"></span> Pending</span>
+              <span><span class="legend-dot flagged"></span> Flagged</span>
+            </div>
+          </div>
+          <div style="overflow-x: auto;">
+            <table class="matrix-table">
+              <thead>
+                <tr>
+                  <th>Participant</th>
+                  <th>1. Intake</th>
+                  <th>2. Forms</th>
+                  <th>3. Med Review</th>
+                  <th>4. Dieta</th>
+                  <th>5. Orientation</th>
+                  <th>6. Group Call</th>
+                  <th>7. Consent</th>
+                  <th>8. Logistics</th>
+                  <th>9. Ceremony</th>
+                  <th>10. Aftercare</th>
+                </tr>
+              </thead>
+              <tbody id="matrixBody">
+                <tr><td colspan="11" style="text-align: center; padding: 48px; color: var(--earth-faint); font-style: italic;">Select a ceremony to view participants</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Participant Drawer (injected dynamically) -->
+        <div id="participantDrawer"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/supabase-client.js"></script>
+  <script src="/js/admin-auth.js"></script>
+  <script src="/js/components.js"></script>
+  <script>
+    // ====== Ceremony Admin State ======
+    const STEPS = [
+      { num: 1, key: 'intake', label: 'Intake' },
+      { num: 2, key: 'forms', label: 'Forms' },
+      { num: 3, key: 'med_review', label: 'Med Review' },
+      { num: 4, key: 'dieta', label: 'Dieta' },
+      { num: 5, key: 'orientation', label: 'Orientation' },
+      { num: 6, key: 'group_call', label: 'Group Call' },
+      { num: 7, key: 'consent', label: 'Consent' },
+      { num: 8, key: 'logistics', label: 'Logistics' },
+      { num: 9, key: 'ceremony', label: 'Ceremony' },
+      { num: 10, key: 'aftercare', label: 'Aftercare' },
+    ];
+
+    let sb = null;
+    let allCeremonies = [];
+    let currentCeremony = null;
+    let participants = [];
+    let expandedParticipantId = null;
+
+    // ====== Helpers ======
+    function getStepStatus(progression, stepKey, currentStepNum) {
+      if (!progression) progression = {};
+      if (progression[stepKey + '_flagged']) return 'flagged';
+      if (progression[stepKey + '_completed']) return 'done';
+      const stepObj = STEPS.find(s => s.key === stepKey);
+      if (stepObj && stepObj.num === currentStepNum) return 'current';
+      return 'pending';
+    }
+
+    function getCurrentStepNum(progression) {
+      if (!progression) return 1;
+      for (let i = STEPS.length - 1; i >= 0; i--) {
+        if (progression[STEPS[i].key + '_completed']) return Math.min(i + 2, 10);
+      }
+      return 1;
+    }
+
+    function countCompletedSteps(progression) {
+      if (!progression) return 0;
+      return STEPS.filter(s => progression[s.key + '_completed']).length;
+    }
+
+    function countFlags(progression) {
+      if (!progression) return 0;
+      return STEPS.filter(s => progression[s.key + '_flagged']).length;
+    }
+
+    function fmtDateLong(dateStr) {
+      if (!dateStr) return '\u2014';
+      return new Date(dateStr).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    }
+
+    function fmtDateCompact(dateStr) {
+      if (!dateStr) return '';
+      const d = new Date(dateStr);
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    // ====== Load Ceremonies ======
+    async function loadCeremonies() {
+      const { data, error } = await sb.from('ceremony_groups')
+        .select('id, name, ceremony_date, location, max_participants, status')
+        .order('ceremony_date', { ascending: true });
+
+      if (error) {
+        Components.toast('Failed to load ceremonies', 'error');
+        return;
+      }
+
+      allCeremonies = data || [];
+      const select = document.getElementById('ceremonySelect');
+      select.innerHTML = allCeremonies.length === 0
+        ? '<option value="">No ceremonies found</option>'
+        : allCeremonies.map(c =>
+            `<option value="${c.id}">${c.name} &mdash; ${fmtDateCompact(c.ceremony_date)}</option>`
+          ).join('');
+
+      if (allCeremonies.length > 0) {
+        select.value = allCeremonies[0].id;
+        await loadCeremonyDetail(allCeremonies[0].id);
+      }
+    }
+
+    // ====== Load Ceremony Detail ======
+    async function loadCeremonyDetail(ceremonyId) {
+      currentCeremony = allCeremonies.find(c => c.id === ceremonyId);
+      if (!currentCeremony) return;
+
+      // Load participants with client data
+      const { data, error } = await sb.from('ceremony_participants')
+        .select('id, client_id, tier, progression, facilitator_notes, clients(id, full_name, email, phone, emergency_contact_name, tags, pipeline_stage)')
+        .eq('ceremony_group_id', ceremonyId)
+        .order('created_at', { ascending: true });
+
+      if (error) {
+        Components.toast('Failed to load participants', 'error');
+        return;
+      }
+
+      participants = data || [];
+      renderMeta();
+      renderMatrix();
+      // Close any open drawer
+      document.getElementById('participantDrawer').innerHTML = '';
+      expandedParticipantId = null;
+    }
+
+    // ====== Render Meta Row ======
+    function renderMeta() {
+      if (!currentCeremony) return;
+
+      document.getElementById('metaDate').textContent = fmtDateLong(currentCeremony.ceremony_date);
+      document.getElementById('metaLocation').textContent = currentCeremony.location || 'Topanga Canyon';
+      document.getElementById('metaCapacity').textContent = `${participants.length} / ${currentCeremony.max_participants || '?'}`;
+
+      // Calculate readiness
+      const totalSteps = participants.length * 10;
+      const completedSteps = participants.reduce((sum, p) => sum + countCompletedSteps(p.progression), 0);
+      const readinessPct = totalSteps > 0 ? Math.round((completedSteps / totalSteps) * 100) : 0;
+      const readinessEl = document.getElementById('metaReadiness');
+      readinessEl.textContent = `${readinessPct}%`;
+      readinessEl.style.color = readinessPct >= 70 ? 'var(--sage)' : readinessPct >= 40 ? 'var(--gold)' : '#c75a3a';
+
+      // Count flags
+      const totalFlags = participants.reduce((sum, p) => sum + countFlags(p.progression), 0);
+      const flagsEl = document.getElementById('metaFlags');
+      if (totalFlags > 0) {
+        flagsEl.textContent = `${totalFlags} item${totalFlags > 1 ? 's' : ''}`;
+        flagsEl.style.color = '#c75a3a';
+      } else {
+        flagsEl.textContent = 'None';
+        flagsEl.style.color = 'var(--sage)';
+      }
+    }
+
+    // ====== Render Matrix ======
+    function renderMatrix() {
+      const tbody = document.getElementById('matrixBody');
+
+      if (participants.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="11">' + Components.emptyState('No participants enrolled in this ceremony') + '</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = participants.map(p => {
+        const client = p.clients || {};
+        const progression = p.progression || {};
+        const currentStep = getCurrentStepNum(progression);
+        const tier = p.tier || '';
+
+        const stepCells = STEPS.map(s => {
+          const status = getStepStatus(progression, s.key, currentStep);
+          const tooltip = progression[s.key + '_note'] || '';
+          let content = '';
+          if (status === 'done') content = '&#10003;';
+          else if (status === 'flagged') content = '!';
+          else content = s.num;
+          return `<td class="step-cell"><span class="step-dot ${status}" data-participant="${p.id}" data-step="${s.key}" data-num="${s.num}" onclick="event.stopPropagation(); toggleStep('${p.id}', '${s.key}')">${content}</span>${tooltip ? `<div class="step-tooltip">${tooltip}</div>` : ''}</td>`;
+        }).join('');
+
+        return `<tr onclick="toggleDrawer('${p.id}')">
+          <td><div class="client-name-cell"><span class="name">${client.full_name || 'Unknown'}</span>${tier ? Components.tierBadge(tier) : ''}</div></td>
+          ${stepCells}
+        </tr>`;
+      }).join('');
+    }
+
+    // ====== Toggle Step Completion ======
+    async function toggleStep(participantId, stepKey) {
+      const p = participants.find(p => p.id === participantId);
+      if (!p) return;
+
+      const progression = { ...(p.progression || {}) };
+      const completedKey = stepKey + '_completed';
+      const flaggedKey = stepKey + '_flagged';
+
+      // Cycle: pending -> done -> flagged -> pending
+      if (progression[flaggedKey]) {
+        // flagged -> clear flag and mark pending
+        delete progression[flaggedKey];
+        delete progression[completedKey];
+      } else if (progression[completedKey]) {
+        // done -> flagged
+        progression[flaggedKey] = true;
+        delete progression[completedKey];
+      } else {
+        // pending/current -> done
+        progression[completedKey] = new Date().toISOString();
+      }
+
+      const { error } = await sb.from('ceremony_participants')
+        .update({ progression })
+        .eq('id', participantId);
+
+      if (error) {
+        Components.toast('Failed to update step', 'error');
+        return;
+      }
+
+      // Update local state
+      p.progression = progression;
+      renderMeta();
+      renderMatrix();
+
+      // Re-render drawer if this participant is expanded
+      if (expandedParticipantId === participantId) {
+        renderDrawer(participantId);
+      }
+
+      Components.toast('Step updated', 'success');
+    }
+
+    // ====== Toggle Drawer ======
+    function toggleDrawer(participantId) {
+      if (expandedParticipantId === participantId) {
+        hideDrawer();
+      } else {
+        expandedParticipantId = participantId;
+        renderDrawer(participantId);
+      }
+    }
+
+    function hideDrawer() {
+      expandedParticipantId = null;
+      document.getElementById('participantDrawer').innerHTML = '';
+    }
+
+    // ====== Render Drawer ======
+    function renderDrawer(participantId) {
+      const p = participants.find(p => p.id === participantId);
+      if (!p) return;
+
+      const client = p.clients || {};
+      const progression = p.progression || {};
+      const currentStep = getCurrentStepNum(progression);
+      const completedCount = countCompletedSteps(progression);
+      const flags = countFlags(progression);
+      const notes = p.facilitator_notes || [];
+      const tier = p.tier || '';
+
+      // Build tier display
+      const tierColors = { patron: 'var(--tier-gold)', abundance: 'var(--tier-green)', community: 'var(--tier-blue)', accessibility: 'var(--tier-purple)' };
+      const tierColor = tierColors[(tier || '').toLowerCase()] || 'var(--earth)';
+
+      // Build progression detail
+      const progHtml = STEPS.map(s => {
+        const status = getStepStatus(progression, s.key, currentStep);
+        const isCurrent = s.num === currentStep;
+        const isFlagged = progression[s.key + '_flagged'];
+        let numContent = status === 'done' ? '&#10003;' : (status === 'flagged' ? '!' : s.num);
+        let stepClass = 'prog-step';
+        if (isCurrent && !isFlagged) stepClass += ' active-step';
+        if (isFlagged) stepClass += ' flagged-step';
+        return `<div class="${stepClass}"><span class="num ${status}">${numContent}</span><span class="step-label">${s.label}</span></div>`;
+      }).join('');
+
+      // Build flag alerts
+      let flagAlerts = '';
+      STEPS.forEach(s => {
+        if (progression[s.key + '_flagged']) {
+          const flagNote = progression[s.key + '_flag_note'] || 'Flagged for review';
+          flagAlerts += `<div class="flag-alert"><div class="flag-alert-title">&#9888; Flagged: ${s.label}</div><div class="flag-alert-body">${flagNote}</div></div>`;
+        }
+      });
+
+      // Build notes
+      const notesHtml = (Array.isArray(notes) ? notes : []).map(n =>
+        `<div class="note-entry"><div class="note-date">${n.date || ''}</div>${n.text || n}</div>`
+      ).join('') || '<div style="color: var(--earth-faint); font-size: 12px; font-style: italic;">No notes yet</div>';
+
+      // Status line
+      const statusLine = flags > 0
+        ? `<span style="font-size: 12px; color: #c75a3a;">&#9888; ${flags} flagged item${flags > 1 ? 's' : ''} &mdash; Step ${currentStep} of 10</span>`
+        : `<span style="font-size: 12px; color: var(--earth-faint);">${currentCeremony ? currentCeremony.name : 'Ceremony'} &mdash; Step ${currentStep} of 10</span>`;
+
+      document.getElementById('participantDrawer').innerHTML = `
+        <div class="participant-drawer">
+          <div class="drawer-header">
+            <div>
+              <h3>${client.full_name || 'Unknown'}</h3>
+              ${statusLine}
+            </div>
+            <button class="close-btn" onclick="hideDrawer()">Close</button>
+          </div>
+          <div class="drawer-grid">
+            <div class="drawer-field"><div class="label">Email</div><div class="value">${client.email || '&mdash;'}</div></div>
+            <div class="drawer-field"><div class="label">Phone</div><div class="value">${client.phone || '&mdash;'}</div></div>
+            <div class="drawer-field"><div class="label">Tier</div><div class="value" style="color: ${tierColor};">${tier || '&mdash;'}</div></div>
+            <div class="drawer-field"><div class="label">Emergency Contact</div><div class="value">${client.emergency_contact_name || '&mdash;'}</div></div>
+            <div class="drawer-field"><div class="label">Pipeline Stage</div><div class="value" style="color: var(--sage);">${client.pipeline_stage || '&mdash;'}</div></div>
+            <div class="drawer-field"><div class="label">Tags</div><div class="value">${(client.tags || []).join(', ') || '&mdash;'}</div></div>
+          </div>
+          <div style="margin-bottom: 20px;">
+            <div style="font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--earth-faint); font-weight: 600; margin-bottom: 12px;">Progression Detail</div>
+            <div class="progression-detail">${progHtml}</div>
+          </div>
+          ${flagAlerts}
+          <div class="quick-actions">
+            <button class="action-btn primary" onclick="markNextStep('${p.id}')">Mark Next Step Complete</button>
+            <button class="action-btn" onclick="flagCurrentStep('${p.id}')">Flag Current Step</button>
+            <button class="action-btn" onclick="window.open('/admin/?client=${client.id}', '_blank')">View Full Profile</button>
+          </div>
+          <div class="admin-notes">
+            <h4>Practitioner Notes</h4>
+            ${notesHtml}
+            <div class="note-add-form" style="margin-top: 12px;">
+              <textarea id="newNote_${p.id}" placeholder="Add a note..." style="flex: 1; padding: 10px 14px; border: 1px solid var(--border-mid); border-radius: 6px; font-family: Inter, sans-serif; font-size: 13px; color: var(--earth); resize: vertical; min-height: 60px; background: var(--cream);"></textarea>
+              <button class="action-btn primary" style="align-self: flex-end;" onclick="addNote('${p.id}')">Add Note</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // ====== Mark Next Step Complete ======
+    async function markNextStep(participantId) {
+      const p = participants.find(p => p.id === participantId);
+      if (!p) return;
+
+      const currentStep = getCurrentStepNum(p.progression);
+      if (currentStep > 10) {
+        Components.toast('All steps already complete', 'info');
+        return;
+      }
+
+      const step = STEPS[currentStep - 1];
+      if (!step) return;
+
+      await toggleStep(participantId, step.key);
+    }
+
+    // ====== Flag Current Step ======
+    async function flagCurrentStep(participantId) {
+      const p = participants.find(p => p.id === participantId);
+      if (!p) return;
+
+      const currentStep = getCurrentStepNum(p.progression);
+      const step = STEPS[currentStep - 1];
+      if (!step) return;
+
+      const progression = { ...(p.progression || {}) };
+      const flaggedKey = step.key + '_flagged';
+
+      if (progression[flaggedKey]) {
+        // Already flagged, remove flag
+        delete progression[flaggedKey];
+      } else {
+        progression[flaggedKey] = true;
+        // Remove completed if it was set
+        delete progression[step.key + '_completed'];
+      }
+
+      const { error } = await sb.from('ceremony_participants')
+        .update({ progression })
+        .eq('id', participantId);
+
+      if (error) {
+        Components.toast('Failed to flag step', 'error');
+        return;
+      }
+
+      p.progression = progression;
+      renderMeta();
+      renderMatrix();
+      renderDrawer(participantId);
+      Components.toast(progression[flaggedKey] ? 'Step flagged' : 'Flag removed', 'success');
+    }
+
+    // ====== Add Note ======
+    async function addNote(participantId) {
+      const textarea = document.getElementById('newNote_' + participantId);
+      if (!textarea) return;
+      const text = textarea.value.trim();
+      if (!text) return;
+
+      const p = participants.find(p => p.id === participantId);
+      if (!p) return;
+
+      const notes = Array.isArray(p.facilitator_notes) ? [...p.facilitator_notes] : [];
+      const newNote = {
+        date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+        text: text,
+      };
+      notes.unshift(newNote);
+
+      const { error } = await sb.from('ceremony_participants')
+        .update({ facilitator_notes: notes })
+        .eq('id', participantId);
+
+      if (error) {
+        Components.toast('Failed to add note', 'error');
+        return;
+      }
+
+      p.facilitator_notes = notes;
+      renderDrawer(participantId);
+      Components.toast('Note added', 'success');
+    }
+
+    // ====== Initialize ======
+    (async function() {
+      const user = await window.aapAdmin.initAdminAuth();
+      if (!user) return;
+
+      document.getElementById('loadingState').style.display = 'none';
+      document.getElementById('appContent').style.display = 'block';
+
+      sb = await window.aapSupabase.getSupabase();
+
+      // Ceremony selector change handler
+      document.getElementById('ceremonySelect').addEventListener('change', function() {
+        if (this.value) loadCeremonyDetail(this.value);
+      });
+
+      await loadCeremonies();
+    })();
+  </script>
+</body>
+</html>

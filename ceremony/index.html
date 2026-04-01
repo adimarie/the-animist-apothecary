@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ceremony Access &mdash; The Animist Apothecary</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/portal.css">
+</head>
+<body>
+
+<!-- Navigation (minimal for public page) -->
+<nav class="portal-nav">
+  <a href="/" class="nav-brand">The Animist <em>Apothecary</em></a>
+  <div class="nav-links">
+    <a href="/portal/">Client Portal</a>
+  </div>
+</nav>
+
+<!-- Auth screen (shown by default) -->
+<div id="auth-screen" class="auth-container">
+  <h1>Ceremony Access</h1>
+  <p id="auth-description">Enter your ceremony access code to view your preparation journey.</p>
+
+  <!-- Password mode form -->
+  <div id="password-form">
+    <input type="password" id="access-code" class="auth-input" placeholder="Access code" autocomplete="off">
+    <button id="auth-submit" class="auth-btn" onclick="handlePasswordAuth()">Enter Ceremony</button>
+  </div>
+
+  <div id="auth-error" class="auth-error"></div>
+</div>
+
+<!-- Loading -->
+<div id="ceremony-loading" class="portal-loading" style="display:none;">Loading ceremony&hellip;</div>
+
+<!-- Ceremony view (hidden until authenticated) -->
+<div id="ceremony-app" style="display:none;">
+  <div class="ceremony-portal-view">
+    <div class="ceremony-header">
+      <h1 id="ceremony-name">Ceremony</h1>
+      <p class="meta" id="ceremony-meta"></p>
+    </div>
+
+    <div class="progress-summary">
+      <div class="progress-label">YOUR PREPARATION PROGRESS</div>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill" style="width:0%;"></div></div>
+      <div class="progress-label" id="progress-text">0 of 10 steps completed</div>
+    </div>
+
+    <div id="ceremony-steps"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/supabase-client.js"></script>
+<script>
+const CEREMONY_STEPS = [
+  { num: 1,  key: 'intake',       title: 'Intake & Inquiry Call',           actionLabel: 'Schedule Call' },
+  { num: 2,  key: 'forms',        title: 'Ceremony Intake Form',           actionLabel: 'Complete Form' },
+  { num: 3,  key: 'med_review',   title: 'Medication & Supplement Review', actionLabel: 'Submit Health Info' },
+  { num: 4,  key: 'dieta',        title: 'Dieta & Preparation',            actionLabel: 'View Guidelines' },
+  { num: 5,  key: 'orientation',  title: 'Orientation Call',               actionLabel: 'Schedule Orientation' },
+  { num: 6,  key: 'group_call',   title: 'Group Call',                     actionLabel: 'Join Group Call' },
+  { num: 7,  key: 'consent',      title: 'Consent & Agreements',           actionLabel: 'Sign Agreements \u2192' },
+  { num: 8,  key: 'logistics',    title: 'What to Bring & Logistics',      actionLabel: 'View Details' },
+  { num: 9,  key: 'ceremony',     title: 'The Ceremony',                   actionLabel: null },
+  { num: 10, key: 'aftercare',    title: 'Aftercare & Integration',        actionLabel: 'Access Resources' }
+];
+
+// Check URL for token mode on load
+(async function() {
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('token');
+
+  if (token) {
+    // Token mode: validate against ceremony_preparation_responses
+    document.getElementById('auth-screen').style.display = 'none';
+    document.getElementById('ceremony-loading').style.display = 'flex';
+
+    try {
+      const { data, error } = await supabase
+        .from('ceremony_preparation_responses')
+        .select('id, client_id, ceremony_group_id, token')
+        .eq('token', token)
+        .limit(1)
+        .single();
+
+      if (error || !data) {
+        showAuthError('Invalid or expired access token.');
+        document.getElementById('ceremony-loading').style.display = 'none';
+        document.getElementById('auth-screen').style.display = 'block';
+        return;
+      }
+
+      // Load participant data using the client_id and ceremony_group_id from the token
+      await loadCeremonyView(data.client_id, data.ceremony_group_id);
+    } catch (err) {
+      console.error('Token auth error:', err);
+      showAuthError('Unable to validate token. Please try again.');
+      document.getElementById('ceremony-loading').style.display = 'none';
+      document.getElementById('auth-screen').style.display = 'block';
+    }
+  }
+  // Otherwise, show password form (default)
+})();
+
+async function handlePasswordAuth() {
+  const code = document.getElementById('access-code').value.trim();
+  if (!code) {
+    showAuthError('Please enter an access code.');
+    return;
+  }
+
+  document.getElementById('auth-screen').style.display = 'none';
+  document.getElementById('ceremony-loading').style.display = 'flex';
+
+  try {
+    // Validate against group_experiences password_hash
+    // We compare plain text here; in production you'd hash client-side or use an edge function
+    const { data: experiences, error } = await supabase
+      .from('group_experiences')
+      .select('id, ceremony_group_id, password_hash')
+      .eq('password_hash', code)
+      .limit(1)
+      .single();
+
+    if (error || !experiences) {
+      showAuthError('Invalid access code. Please check and try again.');
+      document.getElementById('ceremony-loading').style.display = 'none';
+      document.getElementById('auth-screen').style.display = 'block';
+      return;
+    }
+
+    // For password-based access, we need to find a participant
+    // Look for a ceremony_participants record linked to this group
+    const { data: participants, error: pErr } = await supabase
+      .from('ceremony_participants')
+      .select('id, client_id, ceremony_group_id')
+      .eq('ceremony_group_id', experiences.ceremony_group_id)
+      .eq('status', 'active')
+      .limit(1)
+      .single();
+
+    if (pErr || !participants) {
+      showAuthError('No active enrollment found for this ceremony.');
+      document.getElementById('ceremony-loading').style.display = 'none';
+      document.getElementById('auth-screen').style.display = 'block';
+      return;
+    }
+
+    await loadCeremonyView(participants.client_id, experiences.ceremony_group_id);
+  } catch (err) {
+    console.error('Password auth error:', err);
+    showAuthError('Something went wrong. Please try again.');
+    document.getElementById('ceremony-loading').style.display = 'none';
+    document.getElementById('auth-screen').style.display = 'block';
+  }
+}
+
+async function loadCeremonyView(clientId, ceremonyGroupId) {
+  try {
+    // Load participant record with ceremony group info
+    const { data: participant, error } = await supabase
+      .from('ceremony_participants')
+      .select('id, current_step, step_statuses, status, ceremony_groups(id, name, ceremony_date, location, facilitator_name)')
+      .eq('client_id', clientId)
+      .eq('ceremony_group_id', ceremonyGroupId)
+      .eq('status', 'active')
+      .limit(1)
+      .single();
+
+    if (error || !participant) {
+      showAuthError('No active ceremony record found.');
+      document.getElementById('ceremony-loading').style.display = 'none';
+      document.getElementById('auth-screen').style.display = 'block';
+      return;
+    }
+
+    const group = participant.ceremony_groups;
+    const currentStep = participant.current_step || 1;
+    const stepStatuses = participant.step_statuses || {};
+
+    // Hide loading, show ceremony
+    document.getElementById('ceremony-loading').style.display = 'none';
+    document.getElementById('ceremony-app').style.display = 'block';
+
+    // Set header
+    document.getElementById('ceremony-name').textContent = group.name || 'Ceremony';
+    const dateParts = [];
+    if (group.ceremony_date) {
+      dateParts.push(new Date(group.ceremony_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }));
+    }
+    if (group.location) dateParts.push(group.location);
+    if (group.facilitator_name) dateParts.push('Facilitated by ' + group.facilitator_name);
+    document.getElementById('ceremony-meta').textContent = dateParts.join(' \u00B7 ');
+
+    // Calculate progress
+    const completedCount = CEREMONY_STEPS.filter(s => {
+      const status = stepStatuses[s.key] || (s.num < currentStep ? 'completed' : 'locked');
+      return status === 'completed';
+    }).length;
+    const effectiveCompleted = completedCount > 0 ? completedCount : Math.max(0, currentStep - 1);
+    const pct = Math.round((effectiveCompleted / 10) * 100);
+
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = effectiveCompleted + ' of 10 steps completed';
+
+    // Render stepper
+    const stepsContainer = document.getElementById('ceremony-steps');
+    stepsContainer.innerHTML = CEREMONY_STEPS.map(step => {
+      let status;
+      if (stepStatuses[step.key]) {
+        status = stepStatuses[step.key];
+      } else if (step.num < currentStep) {
+        status = 'completed';
+      } else if (step.num === currentStep) {
+        status = 'current';
+      } else {
+        status = 'locked';
+      }
+
+      let indicatorClass, indicatorContent;
+      if (status === 'completed') {
+        indicatorClass = 'completed';
+        indicatorContent = '\u2713';
+      } else if (status === 'current') {
+        indicatorClass = 'current';
+        indicatorContent = step.num;
+      } else {
+        indicatorClass = 'locked';
+        indicatorContent = step.num;
+      }
+
+      const contentClass = status === 'locked' ? 'step-content locked' : 'step-content';
+      let description = '';
+      if (status === 'completed') {
+        description = '<p>Completed</p>';
+      } else if (status === 'current') {
+        description = '<p>In progress</p>';
+      } else {
+        description = '<p>Unlocks after previous step</p>';
+      }
+
+      let actionBtn = '';
+      if (status === 'current' && step.actionLabel) {
+        actionBtn = '<button class="step-action">' + escapeHtml(step.actionLabel) + '</button>';
+      }
+
+      return '<div class="ceremony-step">' +
+        '<div class="step-indicator ' + indicatorClass + '">' + indicatorContent + '</div>' +
+        '<div class="' + contentClass + '">' +
+          '<h4>' + escapeHtml(step.title) + '</h4>' +
+          description +
+          actionBtn +
+        '</div>' +
+      '</div>';
+    }).join('');
+
+  } catch (err) {
+    console.error('Error loading ceremony view:', err);
+    showAuthError('Unable to load ceremony. Please try again.');
+    document.getElementById('ceremony-loading').style.display = 'none';
+    document.getElementById('auth-screen').style.display = 'block';
+  }
+}
+
+function showAuthError(msg) {
+  const el = document.getElementById('auth-error');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// Allow Enter key on password input
+document.getElementById('access-code').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') handlePasswordAuth();
+});
+</script>
+</body>
+</html>

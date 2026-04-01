@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin &mdash; The Animist Apothecary</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <div id="loadingState" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--cream);">
+    <p style="color: var(--earth-faint); font-family: Inter, sans-serif; font-size: 13px;">Loading...</p>
+  </div>
+
+  <div id="appContent" style="display: none;">
+    <div class="admin-layout">
+      <!-- Sidebar -->
+      <div class="admin-sidebar">
+        <div class="brand"><h3>The Animist Apothecary</h3><span>Admin Portal</span></div>
+        <a href="/admin/" class="sidebar-item active"><span class="sidebar-icon">&#9673;</span> Dashboard</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9679;</span> Clients</a>
+        <a href="/admin/ceremonies.html" class="sidebar-item"><span class="sidebar-icon">&#9830;</span> Ceremonies</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9633;</span> Calendar</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#10047;</span> Deep Work</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9671;</span> Finances</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9993;</span> Messages</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9776;</span> Resources</a>
+        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9881;</span> Settings</a>
+      </div>
+
+      <!-- Main content area -->
+      <div class="admin-main">
+        <div class="admin-header">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <h1>Welcome back, Adi</h1>
+              <p id="adminDate"></p>
+            </div>
+            <div id="adminUserInfo"></div>
+          </div>
+        </div>
+
+        <!-- Metrics row (populated by JS) -->
+        <div class="metrics" id="metricsRow"><!-- JS fills --></div>
+
+        <!-- Recent Clients table -->
+        <div class="table-card" style="margin-bottom: 24px;" id="clientsTable"><!-- JS fills --></div>
+
+        <!-- Upcoming Ceremonies -->
+        <div class="table-card" id="ceremoniesTable"><!-- JS fills --></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/js/supabase-client.js"></script>
+  <script src="/js/admin-auth.js"></script>
+  <script src="/js/components.js"></script>
+  <script>
+    // Initialize admin portal
+    (async function() {
+      const user = await window.aapAdmin.initAdminAuth();
+      if (!user) return;
+
+      document.getElementById('loadingState').style.display = 'none';
+      document.getElementById('appContent').style.display = 'block';
+
+      // Set date
+      document.getElementById('adminDate').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }) + ' \u2014 Topanga Canyon';
+
+      const sb = await window.aapSupabase.getSupabase();
+
+      // Load metrics
+      const [clientsRes, apptRes, ceremRes, paymentsRes] = await Promise.all([
+        sb.from('clients').select('id', { count: 'exact' }).eq('is_archived', false),
+        sb.from('appointments').select('id', { count: 'exact' }).gte('scheduled_at', new Date().toISOString()).lte('scheduled_at', new Date(Date.now() + 7*86400000).toISOString()),
+        sb.from('ceremony_groups').select('id', { count: 'exact' }).eq('status', 'active'),
+        sb.from('payments').select('amount_cents').eq('status', 'completed').gte('created_at', new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString()),
+      ]);
+
+      const revenue = (paymentsRes.data || []).reduce((sum, p) => sum + (p.amount_cents || 0), 0);
+
+      document.getElementById('metricsRow').innerHTML = [
+        Components.metricCard('Active Clients', clientsRes.count || 0),
+        Components.metricCard('This Week', apptRes.count || 0, 'upcoming sessions'),
+        Components.metricCard('Active Ceremonies', ceremRes.count || 0),
+        Components.metricCard('Revenue (Month)', Components.fmtCurrency(revenue)),
+      ].join('');
+
+      // Load recent clients
+      const { data: clients } = await sb.from('clients').select('id, full_name, pipeline_stage, tags').eq('is_archived', false).order('created_at', { ascending: false }).limit(10);
+
+      document.getElementById('clientsTable').innerHTML = `
+        <div class="table-card-header"><h3>Recent Clients</h3></div>
+        <table class="data-table">
+          <thead><tr><th>Client</th><th>Status</th><th>Tags</th></tr></thead>
+          <tbody>${(clients || []).map(c => `
+            <tr>
+              <td style="color: var(--earth); font-weight: 500;">${c.full_name || 'Unnamed'}</td>
+              <td>${Components.tag(c.pipeline_stage || 'active', c.pipeline_stage || 'active')}</td>
+              <td style="font-size: 12px; color: var(--earth-faint);">${(c.tags || []).join(', ') || '&mdash;'}</td>
+            </tr>
+          `).join('') || '<tr><td colspan="3">' + Components.emptyState('No clients yet') + '</td></tr>'}</tbody>
+        </table>
+      `;
+
+      // Load ceremonies
+      const { data: ceremonies } = await sb.from('ceremony_groups').select('id, name, ceremony_date, max_participants, status').order('ceremony_date', { ascending: true }).limit(5);
+
+      document.getElementById('ceremoniesTable').innerHTML = `
+        <div class="table-card-header"><h3>Upcoming Ceremonies</h3><a href="/admin/ceremonies.html" style="color: var(--sage); font-size: 12px; text-decoration: none;">Manage Ceremonies &rarr;</a></div>
+        <table class="data-table">
+          <thead><tr><th>Ceremony</th><th>Date</th><th>Status</th></tr></thead>
+          <tbody>${(ceremonies || []).map(c => `
+            <tr>
+              <td style="color: var(--earth); font-weight: 500;">${c.name}</td>
+              <td>${Components.fmtDate(c.ceremony_date)}</td>
+              <td>${Components.tag(c.status || 'active', c.status || 'active')}</td>
+            </tr>
+          `).join('') || '<tr><td colspan="3">' + Components.emptyState('No ceremonies yet') + '</td></tr>'}</tbody>
+        </table>
+      `;
+    })();
+  </script>
+</body>
+</html>

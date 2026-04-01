@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Portal &mdash; The Animist Apothecary</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/css/portal.css">
+</head>
+<body>
+
+<!-- Loading state -->
+<div id="portal-loading" class="portal-loading">Loading your portal&hellip;</div>
+
+<!-- Main portal (hidden until authenticated) -->
+<div id="portal-app" style="display:none;">
+
+  <!-- Navigation -->
+  <nav class="portal-nav">
+    <a href="/portal/" class="nav-brand">The Animist <em>Apothecary</em></a>
+    <div class="nav-links">
+      <a href="/portal/" class="active">Dashboard</a>
+      <a href="/portal/#journey">My Journey</a>
+      <a href="/portal/ceremony.html">Ceremony</a>
+      <a href="/portal/#messages">Messages</a>
+      <a href="#" id="user-dropdown" class="user-dropdown"></a>
+    </div>
+  </nav>
+
+  <div class="portal-container">
+    <!-- Header -->
+    <div class="portal-header">
+      <h1 id="welcome-greeting">Welcome back</h1>
+      <p class="subtitle" id="container-subtitle"></p>
+    </div>
+
+    <!-- Row 1: Upcoming Sessions + My Container -->
+    <div class="portal-grid">
+      <div class="portal-card">
+        <h3>Upcoming Sessions</h3>
+        <div id="sessions-list">
+          <div class="empty-state">No upcoming sessions</div>
+        </div>
+      </div>
+      <div class="portal-card">
+        <h3>My Container</h3>
+        <div id="container-card">
+          <div class="empty-state">No active container</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Active Ceremony + Recent Messages -->
+    <div class="portal-grid">
+      <div class="portal-card">
+        <h3>Active Ceremony</h3>
+        <div id="ceremony-card">
+          <div class="empty-state">No active ceremony</div>
+        </div>
+      </div>
+      <div class="portal-card">
+        <h3>Recent Messages</h3>
+        <div id="messages-card">
+          <div class="empty-state">No messages</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Journey Milestones -->
+    <div class="portal-card">
+      <h3>My Journey &mdash; Milestones</h3>
+      <div id="milestones-timeline" class="milestone-timeline">
+        <div class="empty-state">Your milestones will appear here</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/js/supabase-client.js"></script>
+<script src="/js/portal-auth.js"></script>
+<script src="/js/components.js"></script>
+<script>
+(async function() {
+  const loadingEl = document.getElementById('portal-loading');
+  const appEl = document.getElementById('portal-app');
+
+  try {
+    // 1. Authenticate client
+    const client = await initPortalAuth();
+    if (!client) return; // auth module handles redirect
+
+    // Show the portal
+    loadingEl.style.display = 'none';
+    appEl.style.display = 'block';
+
+    const displayName = client.display_name || client.full_name || 'Friend';
+    const firstName = displayName.split(' ')[0];
+
+    // Set user dropdown
+    const dropdownEl = document.getElementById('user-dropdown');
+    const lastName = displayName.split(' ').length > 1 ? displayName.split(' ')[1][0] + '.' : '';
+    dropdownEl.textContent = firstName + ' ' + lastName + ' \u25BE';
+
+    // Set welcome greeting
+    document.getElementById('welcome-greeting').textContent = 'Welcome back, ' + firstName;
+
+    // 2. Load appointments for this client
+    loadSessions(client.id);
+
+    // 3. Load mentorship containers for this client
+    loadContainer(client.id);
+
+    // 4. Load ceremony participation
+    loadCeremony(client.id);
+
+    // 5. Load messages
+    loadMessages(client.id);
+
+    // 6. Load milestones
+    loadMilestones(client.id);
+
+  } catch (err) {
+    console.error('Portal init error:', err);
+    loadingEl.textContent = 'Something went wrong. Please try again.';
+  }
+})();
+
+async function loadSessions(clientId) {
+  try {
+    const { data, error } = await supabase
+      .from('appointments')
+      .select('id, title, scheduled_at, location, meeting_type')
+      .eq('client_id', clientId)
+      .gte('scheduled_at', new Date().toISOString())
+      .order('scheduled_at', { ascending: true })
+      .limit(4);
+
+    if (error) throw error;
+
+    const container = document.getElementById('sessions-list');
+    if (!data || data.length === 0) return;
+
+    container.innerHTML = data.map(s => {
+      const dt = new Date(s.scheduled_at);
+      const dateStr = dt.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+      const timeStr = dt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      const loc = s.location || s.meeting_type || '';
+      return '<div class="session-item"><div>' +
+        '<div class="session-name">' + escapeHtml(s.title || 'Session') + '</div>' +
+        '<div class="session-date">' + dateStr + ' &middot; ' + timeStr + (loc ? ' &middot; ' + escapeHtml(loc) : '') + '</div>' +
+        '</div></div>';
+    }).join('');
+  } catch (err) {
+    console.error('Error loading sessions:', err);
+  }
+}
+
+async function loadContainer(clientId) {
+  try {
+    const { data, error } = await supabase
+      .from('mentorship_containers')
+      .select('id, name, sessions_completed, total_sessions, status')
+      .eq('client_id', clientId)
+      .eq('status', 'active')
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .single();
+
+    if (error || !data) return;
+
+    const pct = data.total_sessions > 0
+      ? Math.round((data.sessions_completed / data.total_sessions) * 100)
+      : 0;
+
+    const container = document.getElementById('container-card');
+    container.innerHTML =
+      '<div style="margin-bottom:16px;">' +
+        '<span class="container-count">' + (data.sessions_completed || 0) + '</span>' +
+        '<span class="container-total"> / ' + (data.total_sessions || 0) + ' sessions</span>' +
+      '</div>' +
+      '<div class="progress-bar-bg"><div class="progress-bar-fill" style="width:' + pct + '%;"></div></div>' +
+      '<div class="container-name">' + escapeHtml(data.name || '') + '</div>';
+
+    // Also set the subtitle
+    const subtitle = document.getElementById('container-subtitle');
+    subtitle.textContent = data.name + ' \u2014 Session ' + data.sessions_completed + ' of ' + data.total_sessions;
+  } catch (err) {
+    console.error('Error loading container:', err);
+  }
+}
+
+async function loadCeremony(clientId) {
+  try {
+    const { data, error } = await supabase
+      .from('ceremony_participants')
+      .select('id, current_step, ceremony_groups(id, name, ceremony_date, location)')
+      .eq('client_id', clientId)
+      .eq('status', 'active')
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .single();
+
+    if (error || !data) return;
+
+    const group = data.ceremony_groups;
+    if (!group) return;
+
+    const dateStr = group.ceremony_date
+      ? new Date(group.ceremony_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+      : '';
+    const currentStep = data.current_step || 0;
+    const pct = Math.round((currentStep / 10) * 100);
+
+    const container = document.getElementById('ceremony-card');
+    container.innerHTML =
+      '<div class="ceremony-title">' + escapeHtml(group.name || 'Ceremony') + '</div>' +
+      '<div class="ceremony-meta">' + dateStr + (group.location ? ' &middot; ' + escapeHtml(group.location) : '') + '</div>' +
+      '<div class="progress-bar-bg"><div class="progress-bar-fill" style="width:' + pct + '%;"></div></div>' +
+      '<div class="ceremony-steps-summary">' + currentStep + ' of 10 preparation steps complete</div>' +
+      '<button class="step-action" style="margin-top:14px;" onclick="location.href=\'/portal/ceremony.html\'">Continue Preparation &rarr;</button>';
+  } catch (err) {
+    console.error('Error loading ceremony:', err);
+  }
+}
+
+async function loadMessages(clientId) {
+  try {
+    const { data, error } = await supabase
+      .from('client_messages')
+      .select('id, subject, sender_name, created_at, is_read')
+      .eq('client_id', clientId)
+      .order('created_at', { ascending: false })
+      .limit(3);
+
+    if (error) throw error;
+
+    const container = document.getElementById('messages-card');
+    if (!data || data.length === 0) return;
+
+    container.innerHTML = data.map(m => {
+      const dateStr = new Date(m.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      const unreadDot = !m.is_read ? '<span class="unread-dot"></span>' : '';
+      return '<div class="session-item"><div>' +
+        '<div class="message-name">' + escapeHtml((m.sender_name ? 'From ' + m.sender_name + ' \u2014 ' : '') + (m.subject || '')) + '</div>' +
+        '<div class="session-date">' + dateStr + '</div>' +
+        '</div>' + unreadDot + '</div>';
+    }).join('');
+  } catch (err) {
+    console.error('Error loading messages:', err);
+  }
+}
+
+async function loadMilestones(clientId) {
+  try {
+    const { data, error } = await supabase
+      .from('client_milestones')
+      .select('id, title, milestone_date')
+      .eq('client_id', clientId)
+      .order('milestone_date', { ascending: true });
+
+    if (error) throw error;
+
+    const container = document.getElementById('milestones-timeline');
+    if (!data || data.length === 0) return;
+
+    container.innerHTML = data.map(m => {
+      const dateStr = m.milestone_date
+        ? new Date(m.milestone_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+        : '';
+      return '<div class="milestone-item">' +
+        '<div class="m-title">' + escapeHtml(m.title || '') + '</div>' +
+        '<div class="m-date">' + dateStr + '</div>' +
+        '</div>';
+    }).join('');
+  } catch (err) {
+    console.error('Error loading milestones:', err);
+  }
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+</script>
+</body>
+</html>
