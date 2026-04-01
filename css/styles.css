@@ -197,6 +197,34 @@ img { max-width: 100%; display: block; }
   border-left: 2px solid var(--sage);
 }
 
+/* Cornerstone column — The Deep Work visual distinction */
+.nav-drop-col--cornerstone {
+  border-left: 2px solid rgba(201, 168, 76, 0.35);
+  padding-left: 1rem;
+}
+
+.nav-drop-col--cornerstone .nav-drop-label {
+  font-weight: 600;
+  font-size: 0.65rem;
+}
+
+.nav-drop-cornerstone-intro {
+  font-size: 0.7rem;
+  font-style: italic;
+  opacity: 0.45;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.nav-dropdown a span {
+  display: block;
+  font-size: 0.72rem;
+  font-style: italic;
+  opacity: 0.5;
+  margin-top: 0.1rem;
+}
+
 .nav-drop-featured span {
   font-size: 0.7rem;
   color: var(--gold);

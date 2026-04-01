@@ -9,88 +9,101 @@
   <style>
     /* ===== Sacred Reciprocity — Page-Specific Styles ===== */
 
-    .reciprocity-intro { padding: 7rem 3rem; background: var(--cream); }
-    .reciprocity-intro-inner { max-width: 820px; margin: 0 auto; text-align: center; }
-    .reciprocity-intro-inner p { color: var(--earth-light); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.2rem; }
-    .reciprocity-values { display: flex; justify-content: center; gap: 2.5rem; margin-top: 2.5rem; flex-wrap: wrap; }
-    .reciprocity-value { text-align: center; max-width: 240px; }
-    .reciprocity-value-icon { font-size: 1.4rem; color: rgba(158,139,110,0.45); display: block; margin-bottom: 0.8rem; letter-spacing: 0.3em; }
-    .reciprocity-value h4 { font-size: 1.15rem; color: var(--earth); margin-bottom: 0.5rem; }
-    .reciprocity-value p { font-size: 0.85rem !important; color: var(--earth-faint) !important; line-height: 1.75 !important; }
+    /* Hero / Title */
+    .reciprocity-hero { padding: 7rem 3rem 4rem; background: linear-gradient(rgba(18,24,14,0.55), rgba(18,24,14,0.80)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&h=900&fit=crop&q=80') center/cover no-repeat; text-align: center; }
+    .reciprocity-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: #fff; margin-bottom: 0.3rem; line-height: 1.15; font-weight: 300; }
+    .reciprocity-hero h1 em { color: var(--sage-pale); font-style: normal; }
+    .reciprocity-hero .hero-sub { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: rgba(255,255,255,0.6); font-style: italic; margin-top: 0.5rem; }
 
-    /* Framework */
-    .section-framework { padding: 7rem 3rem; background: var(--cream-dark); }
-    .framework-inner { max-width: 900px; margin: 0 auto; }
-    .framework-header { text-align: center; margin-bottom: 3.5rem; }
-    .framework-body p { color: var(--earth-light); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.4rem; }
-    .framework-body h3 { font-size: 1.6rem; color: var(--earth); margin: 2.5rem 0 1rem; }
-    .framework-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 3rem 0; }
-    .framework-pillar { background: #fff; border-radius: 8px; padding: 2rem 1.5rem; box-shadow: var(--shadow-soft); border: 1px solid var(--border); text-align: center; }
-    .framework-pillar-icon { font-size: 2rem; color: rgba(158,139,110,0.35); display: block; margin-bottom: 0.8rem; font-family: 'Cormorant Garamond', serif; }
-    .framework-pillar h4 { font-size: 1.15rem; color: var(--earth); margin-bottom: 0.6rem; }
-    .framework-pillar p { font-size: 0.85rem !important; color: var(--earth-faint) !important; line-height: 1.7 !important; margin: 0 !important; }
+    /* Opening Epigraph */
+    .reciprocity-epigraph { padding: 5rem 3rem; background: var(--cream-dark); }
+    .reciprocity-epigraph-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+    .reciprocity-epigraph-inner p { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; color: var(--earth-light); line-height: 1.85; }
 
-    /* The Deeper Why */
-    .section-why { position: relative; padding: 7rem 3rem; background: linear-gradient(rgba(18,24,14,0.90), rgba(18,24,14,0.94)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1400&h=700&fit=crop&q=80') center/cover no-repeat; }
-    .why-inner { max-width: 780px; margin: 0 auto; }
-    .why-inner .section-label { color: rgba(158,139,110,0.7); text-align: center; }
-    .why-inner h2 { font-size: 2.6rem; color: #fff; text-align: center; margin-bottom: 1.5rem; line-height: 1.15; }
-    .why-inner h2 em { color: var(--sage-pale); }
-    .why-divider { width: 50px; height: 1px; background: rgba(158,139,110,0.4); margin: 0 auto 2.5rem; }
-    .why-inner p { color: rgba(255,255,255,0.68); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.4rem; }
-    .why-inner p strong { color: rgba(255,255,255,0.92); font-weight: 500; }
-    .why-inner p em { color: var(--sage-pale); }
-    .why-inner blockquote { border-left: 2px solid rgba(158,139,110,0.4); padding: 1.2rem 0 1.2rem 2rem; margin: 2rem 0; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    /* Prose sections */
+    .reciprocity-prose { padding: 5rem 3rem; background: var(--cream); }
+    .reciprocity-prose-inner { max-width: 780px; margin: 0 auto; }
+    .reciprocity-prose-inner p { color: var(--earth-light); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.4rem; }
+    .reciprocity-prose-inner h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--earth); margin: 3rem 0 1.2rem; line-height: 1.2; }
+    .reciprocity-prose-inner h3:first-child { margin-top: 0; }
+    .reciprocity-prose-inner ul { list-style: none; padding: 0; margin: 0 0 1.8rem; display: flex; flex-direction: column; gap: 0.65rem; }
+    .reciprocity-prose-inner ul li { display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.93rem; color: var(--earth-light); line-height: 1.75; }
+    .reciprocity-prose-inner ul li span.bullet { color: var(--gold); flex-shrink: 0; font-size: 0.85rem; line-height: 1.75; }
+    .reciprocity-prose.alt-bg { background: var(--cream-dark); }
 
-    /* Tiers */
-    .section-tiers { padding: 7rem 3rem; background: var(--cream); }
+    /* Attribution / quote block */
+    .reciprocity-attribution { padding: 4rem 3rem; background: var(--cream-dark); }
+    .reciprocity-attribution-inner { max-width: 780px; margin: 0 auto; }
+    .reciprocity-attribution-inner .attr-note { font-size: 0.85rem; color: var(--earth-faint); line-height: 1.8; margin-bottom: 1.5rem; }
+    .reciprocity-attribution-inner blockquote { border-left: 3px solid var(--gold); padding: 1.2rem 0 1.2rem 2rem; margin: 1.5rem 0; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--earth-light); line-height: 1.75; }
+    .reciprocity-attribution-inner .trust-note { font-size: 0.95rem; color: var(--earth-light); line-height: 1.85; margin-top: 1.2rem; font-weight: 500; }
+    .reciprocity-attribution-inner .reach-out { font-size: 0.95rem; color: var(--earth-light); line-height: 1.85; margin-top: 1rem; }
+
+    /* Tier Cards */
+    .section-tiers { padding: 5rem 3rem; background: var(--cream); }
     .tiers-inner { max-width: 1200px; margin: 0 auto; }
-    .tiers-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
-    .tiers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-    .tier-card { background: #fff; border-radius: 8px; padding: 2.4rem 1.8rem; box-shadow: var(--shadow-soft); border: 1px solid var(--border); transition: all 0.5s cubic-bezier(0.25,0.46,0.45,0.94); display: flex; flex-direction: column; }
-    .tier-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-mid); }
-    .tier-card.tier-featured { border-color: var(--sage); border-width: 2px; }
-    .tier-eyebrow { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); font-weight: 500; font-family: 'Inter', sans-serif; margin-bottom: 0.6rem; }
-    .tier-card h3 { font-size: 1.5rem; color: var(--earth); margin-bottom: 0.3rem; }
-    .tier-card h3 em { color: var(--sage); }
-    .tier-divider { width: 35px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); margin-bottom: 1.2rem; }
+    .tiers-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
+    .tiers-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .tier-card { background: #fff; border-radius: 10px; padding: 2.4rem 2rem; box-shadow: var(--shadow-soft); border: 1px solid var(--border); border-top: 4px solid var(--border); transition: all 0.5s cubic-bezier(0.25,0.46,0.45,0.94); display: flex; flex-direction: column; }
+    .tier-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-mid); }
+    .tier-card.tier-gold { border-top-color: #c9a84c; }
+    .tier-card.tier-green { border-top-color: #6b8f5e; }
+    .tier-card.tier-blue { border-top-color: #5a7fa0; }
+    .tier-card.tier-purple { border-top-color: #7b6b8a; }
+    .tier-eyebrow { font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; font-family: 'Inter', sans-serif; margin-bottom: 0.5rem; }
+    .tier-gold .tier-eyebrow { color: #c9a84c; }
+    .tier-green .tier-eyebrow { color: #6b8f5e; }
+    .tier-blue .tier-eyebrow { color: #5a7fa0; }
+    .tier-purple .tier-eyebrow { color: #7b6b8a; }
+    .tier-card h3 { font-size: 1.5rem; color: var(--earth); margin-bottom: 0.3rem; font-family: 'Cormorant Garamond', serif; }
+    .tier-card h3 em { font-style: normal; }
+    .tier-gold h3 em { color: #c9a84c; }
+    .tier-green h3 em { color: #6b8f5e; }
+    .tier-blue h3 em { color: #5a7fa0; }
+    .tier-purple h3 em { color: #7b6b8a; }
+    .tier-divider { width: 35px; height: 2px; margin-bottom: 1.2rem; }
+    .tier-gold .tier-divider { background: linear-gradient(90deg, #c9a84c, transparent); }
+    .tier-green .tier-divider { background: linear-gradient(90deg, #6b8f5e, transparent); }
+    .tier-blue .tier-divider { background: linear-gradient(90deg, #5a7fa0, transparent); }
+    .tier-purple .tier-divider { background: linear-gradient(90deg, #7b6b8a, transparent); }
     .tier-description { font-size: 0.87rem; color: var(--earth-light); line-height: 1.8; margin-bottom: 1.2rem; }
-    .tier-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; font-family: 'Inter', sans-serif; margin-bottom: 0.6rem; }
-    .tier-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.2rem; }
+    .tier-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--earth-faint); font-weight: 500; font-family: 'Inter', sans-serif; margin-bottom: 0.6rem; }
+    .tier-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.2rem; padding: 0; }
     .tier-list li { display: flex; gap: 0.7rem; align-items: flex-start; font-size: 0.84rem; color: var(--earth-light); line-height: 1.65; }
-    .tier-list li span { color: var(--gold); flex-shrink: 0; font-size: 0.85rem; line-height: 1.65; }
-    .tier-note { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-style: italic; color: var(--sage); margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border); line-height: 1.6; }
+    .tier-list li span { flex-shrink: 0; font-size: 0.85rem; line-height: 1.65; }
+    .tier-gold .tier-list li span { color: #c9a84c; }
+    .tier-green .tier-list li span { color: #6b8f5e; }
+    .tier-blue .tier-list li span { color: #5a7fa0; }
+    .tier-purple .tier-list li span { color: #7b6b8a; }
+    .tier-note { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-style: italic; color: var(--earth-faint); margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border); line-height: 1.6; }
+    .tier-note strong { font-weight: 600; font-style: normal; }
 
-    /* Fluidity */
-    .section-fluidity { padding: 6rem 3rem; background: var(--cream-dark); }
-    .fluidity-inner { max-width: 820px; margin: 0 auto; text-align: center; }
-    .fluidity-inner p { color: var(--earth-light); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.2rem; }
-    .fluidity-inner p em { color: var(--sage); }
-    .fluidity-inner a.fluidity-link { color: var(--sage); border-bottom: 1px solid var(--sage); }
-    .fluidity-inner a.fluidity-link:hover { color: var(--sage-dark); }
-
-    /* Spirit */
-    .section-spirit { position: relative; padding: 8rem 3rem; background: linear-gradient(rgba(18,24,14,0.88), rgba(18,24,14,0.93)), url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1400&h=700&fit=crop&q=80') center/cover no-repeat; text-align: center; }
+    /* Spirit / Closing */
+    .section-spirit { position: relative; padding: 6rem 3rem; background: linear-gradient(rgba(18,24,14,0.88), rgba(18,24,14,0.93)), url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1400&h=700&fit=crop&q=80') center/cover no-repeat; text-align: center; }
     .spirit-inner { max-width: 720px; margin: 0 auto; }
-    .spirit-inner h2 { font-size: 2.8rem; color: #fff; margin-bottom: 1rem; line-height: 1.15; }
+    .spirit-inner h2 { font-size: 2.4rem; color: #fff; margin-bottom: 1rem; line-height: 1.15; font-family: 'Cormorant Garamond', serif; }
     .spirit-inner h2 em { color: var(--sage-pale); }
     .spirit-divider { width: 50px; height: 1px; background: rgba(158,139,110,0.4); margin: 1.5rem auto 2rem; }
-    .spirit-body { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: rgba(255,255,255,0.72); font-style: italic; line-height: 1.75; margin-bottom: 1.5rem; }
-    .spirit-body strong { color: #fff; font-weight: 500; }
-    .spirit-questions { margin-top: 3rem; display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+    .spirit-body { font-size: 0.95rem; color: rgba(255,255,255,0.68); line-height: 1.85; margin-bottom: 1.4rem; }
+    .spirit-body strong { color: rgba(255,255,255,0.92); font-weight: 500; }
+    .spirit-questions { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center; }
     .spirit-question { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: rgba(255,255,255,0.55); line-height: 1.65; }
-    .spirit-closing { margin-top: 3rem; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--sage-pale); font-style: italic; line-height: 1.65; }
+    .spirit-closing { margin-top: 2.5rem; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--sage-pale); font-style: italic; line-height: 1.65; }
+
+    /* Final blessing */
+    .reciprocity-blessing { padding: 4rem 3rem; background: var(--cream-dark); }
+    .reciprocity-blessing-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .reciprocity-blessing-inner p { font-size: 0.85rem; color: var(--earth-faint); line-height: 1.85; }
 
     /* Responsive */
     @media (max-width: 1024px) {
       .tiers-grid { grid-template-columns: repeat(2, 1fr); }
-      .framework-pillars { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
     }
     @media (max-width: 768px) {
       .tiers-grid { grid-template-columns: 1fr; }
-      .reciprocity-values { flex-direction: column; align-items: center; }
-      .reciprocity-intro, .section-tiers, .section-spirit, .section-framework, .section-why, .section-fluidity { padding: 5rem 1.5rem; }
-      .spirit-inner h2, .why-inner h2 { font-size: 2.2rem; }
+      .reciprocity-hero, .reciprocity-epigraph, .reciprocity-prose, .reciprocity-attribution, .section-tiers, .section-spirit, .reciprocity-blessing { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .reciprocity-hero h1 { font-size: 2.2rem; }
+      .spirit-inner h2 { font-size: 2rem; }
     }
   </style>
 </head>
@@ -107,7 +120,8 @@
             <a href="#">Offerings <span class="nav-arrow">▾</span></a>
             <div class="nav-dropdown">
               <div class="nav-dropdown-inner">
-                <div class="nav-drop-col">
+                <div class="nav-drop-col nav-drop-col--cornerstone">
+                  <span class="nav-drop-cornerstone-intro">The heart of the practice</span>
                   <span class="nav-drop-label">The Deep Work</span>
                   <a href="mythopoetic.html">Mythopoetic Living<span>A Metamorphic Season</span></a>
                   <a href="inner-excavations.html">Inner Excavations<span>Deep personal reclamation</span></a>
@@ -141,188 +155,162 @@
   </header>
 
 
-  <!-- ═══════ 1. HERO ═══════ -->
-  <section class="page-hero fade-in" style="background: linear-gradient(rgba(18,24,14,0.55), rgba(18,24,14,0.80)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;">
+  <!-- ═══════ 1. HERO / TITLE ═══════ -->
+  <section class="reciprocity-hero fade-in">
     <div class="hero-overlay"></div>
-    <div class="hero-inner" style="position:relative; z-index:2; max-width:800px; padding:5rem 2rem 4rem; text-align:center;">
-      <p class="hero-eyebrow">Community Economic Model</p>
-      <h1 class="page-hero-title">Sacred Reciprocity</h1>
-      <p class="page-hero-subtitle">A return to the way healing has always moved — in circles, not straight lines.</p>
+    <div style="position:relative; z-index:2; max-width:800px; margin:0 auto; padding:4rem 2rem 3rem;">
+      <h1>Sacred Reciprocity <em>— The Sliding Scale</em></h1>
     </div>
   </section>
 
 
-  <!-- ═══════ 2. INTRO ═══════ -->
-  <section class="reciprocity-intro fade-in">
-    <div class="reciprocity-intro-inner">
-      <p class="section-label">The Practice of Fair Exchange</p>
-      <h2 class="section-title">Healing belongs to <em>the whole community</em></h2>
-      <div class="story-divider" style="margin: 1.5rem auto 2rem;"></div>
-      <p>In traditional ways, healers were supported by the community because the health of one is the health of all. That truth still guides my work.</p>
-      <p>My offerings require a deep investment of energy, time, and training, and I am committed to promoting economic justice. We do not all walk the same path of resources.</p>
-      <p>I believe that healing and spiritual counsel should be accessible — while honoring the real costs of sustaining this work.</p>
-      <div class="reciprocity-values">
-        <div class="reciprocity-value">
-          <span class="reciprocity-value-icon">◈</span>
-          <h4>Acknowledge</h4>
-          <p>Diverse economic realities</p>
-        </div>
-        <div class="reciprocity-value">
-          <span class="reciprocity-value-icon">◈ ◈</span>
-          <h4>Disrupt</h4>
-          <p>Patterns of economic exclusion</p>
-        </div>
-        <div class="reciprocity-value">
-          <span class="reciprocity-value-icon">◈ ◈ ◈</span>
-          <h4>Offer</h4>
-          <p>Multiple access points for engagement</p>
-        </div>
-      </div>
+  <!-- ═══════ 2. OPENING EPIGRAPH ═══════ -->
+  <section class="reciprocity-epigraph fade-in">
+    <div class="reciprocity-epigraph-inner">
+      <p>Beneath the sky, a single seed dreamed of a forest. And thus the waters fell as gifts from the eyes of heaven, and the rain fed and filled the rivers. The soothing beauty and bounty of the currents flowed. The river taught that its waters belong to every shore it touches. Healing, too, must flow where it's most needed, mending not just wounds, but the pathways between us.</p>
     </div>
   </section>
 
 
-  <!-- ═══════ 3. EDUCATIONAL FRAMEWORK ═══════ -->
-  <section class="section-framework fade-in">
-    <div class="framework-inner">
-      <div class="framework-header">
-        <p class="section-label">Returning to What Was</p>
-        <h2 class="section-title">Community-based care is <em>not a new idea</em></h2>
-        <div class="story-divider" style="margin: 1.5rem auto 2rem;"></div>
-      </div>
-      <div class="framework-body">
-        <p>Long before healing became an industry, it lived inside relationships. The healer knew the family. The community fed the healer. The medicine moved in circles — not transactions. No one was turned away, and no one carried the work alone.</p>
-        <p>This is not a radical concept. It is an ancient one. Across cultures and throughout human history, the people who tended the body, the spirit, and the unseen dimensions of life were held by a web of mutual care. They were not vendors. They were vital organs of the collective body — and the community understood that when the healer was nourished, the whole village was well.</p>
-        <p>Somewhere along the way, this relationship was severed. Healing became a commodity. Access became contingent on ability to pay a fixed price. And practitioners — especially those carrying Indigenous, earth-based, and body-centered traditions — were left navigating an economy that was never designed to hold the kind of work they do.</p>
-        <p>The sliding scale is one way of remembering. It is a humble attempt to restore the circle — to create an economic container that honors the real diversity of people's lives while sustaining the practitioner's ability to keep showing up with depth, presence, and devotion.</p>
-
-        <h3>Three things this model <em>asks of us</em></h3>
-
-        <div class="framework-pillars">
-          <div class="framework-pillar">
-            <span class="framework-pillar-icon">I</span>
-            <h4>Honesty</h4>
-            <p>Each person is invited to reflect truthfully on where they sit in the landscape of resources — not where they wish they sat, and not where shame or habit tells them to sit. Just the truth of right now.</p>
-          </div>
-          <div class="framework-pillar">
-            <span class="framework-pillar-icon">II</span>
-            <h4>Trust</h4>
-            <p>I do not ask for proof of income. I do not audit your life. This model runs on the same currency that the healing work itself runs on: trust between two people choosing to be in relationship.</p>
-          </div>
-          <div class="framework-pillar">
-            <span class="framework-pillar-icon">III</span>
-            <h4>Participation</h4>
-            <p>Every tier is a form of participation in the health of the whole. Those who give more make it possible for others to receive. Those who receive carry the medicine forward in their own way. No role is lesser.</p>
-          </div>
-        </div>
-
-        <p>This is not charity, and it is not a discount. It is an invitation to participate in an older kind of economy — one where the exchange itself is part of the healing.</p>
-      </div>
+  <!-- ═══════ 3. PHILOSOPHY ═══════ -->
+  <section class="reciprocity-prose fade-in">
+    <div class="reciprocity-prose-inner">
+      <p>My work stands in service to this ethos of ecology — a promise that no one is to be kept, by artifice or construct, from connection with the Rivers of Creation.</p>
+      <p>These offerings are uniquely crafted and adapted just for you; supported by years of deep, devotional investment in my life to this path, of my energy, of my time, of my development, and relationships. I have worked methodically and consistently to bring balance to my raw talents and the inherited medicine gifts from my lineage with immersive education, extensive trainings, and intensive initiatory processes. These transformational immersive experiences carry a very great and real value.</p>
+      <p>I walk a medicine path rooted in the heritage of my First Peoples Ancestors and continual commitment to disciplined learning in Western therapeutic arts, Eastern wellness modalities, botanical and ritual ethnopharmacology, somatic psychology, trauma-informed care, and Animist spiritual practice and traditions. The work I offer is rare and unique, requiring many interwoven specializations to safely and powerfully guide others through transformative spaces.</p>
     </div>
   </section>
 
 
-  <!-- ═══════ 4. THE DEEPER WHY ═══════ -->
-  <section class="section-why fade-in">
-    <div class="why-inner">
-      <p class="section-label">A Gentle Word on Value</p>
-      <h2>What it takes to <em>hold this work</em></h2>
-      <div class="why-divider"></div>
-      <p>I want to speak honestly about something that the wellness world often dances around: what it actually costs — in every sense — to do this kind of work well.</p>
-      <p>The offerings I bring are the result of over sixteen years of devoted study, initiation, and practice across multiple lineages, disciplines, and continents. They draw on traditions that my ancestors preserved at great personal cost — traditions that were outlawed, driven underground, and carried forward in whispers and in the body's own memory.</p>
-      <p>This work asks everything of me. It asks my body to hold space for hours. It asks my nervous system to navigate realms that are not easy to navigate. It asks my heart to remain open in the presence of immense suffering. And it asks my life to be organized around the kind of devotion that doesn't clock in and out.</p>
-      <p><strong>This is skilled, technical, sacred labor.</strong> It involves the same rigor as any professional discipline — and an additional dimension that most professional disciplines do not ask: the willingness to be changed by the work, every single time.</p>
-      <p>Every dollar that comes to me nourishes a living web. It supports the elders I continue to learn from. It funds the materials, the travel, the ceremonies, the ongoing education. It provides shelter, food, and the basic stability that allows me to keep showing up with the depth this work requires.</p>
-      <blockquote>"Your evolution serves everyone." — Katharine Hargreaves</blockquote>
-      <p>I share this not to justify my prices, but to gently illuminate what lives behind them. When you engage with this model, you are not just paying for a session. <em>You are participating in the survival and flourishing of a living tradition</em> — and in the kind of economy where care flows in circles rather than straight lines.</p>
+  <!-- ═══════ 4. ECOLOGICAL JUSTICE ═══════ -->
+  <section class="reciprocity-prose alt-bg fade-in">
+    <div class="reciprocity-prose-inner">
+      <h3>Ecological Justice</h3>
+      <p>Many of the sacramental medicines I steward and carry come from endangered ecosystems, tended by endangered cultures. To appropriately honor the precarious and precious access to these modalities is not merely to sustain it, but to participate in regenerative and reparative justice. This sacred exchange helps ensure that:</p>
+      <ul>
+        <li><span class="bullet">&#9670;</span> Medicines are sourced ethically and sustainably, with an emphasis on cultural and ecological restoration.</li>
+        <li><span class="bullet">&#9670;</span> Indigenous and traditional stewards are respected, supported, and fairly compensated.</li>
+        <li><span class="bullet">&#9670;</span> Cultural wisdom traditions and their Elders are respectfully nourished for future generations.</li>
+        <li><span class="bullet">&#9670;</span> We participate in healing historical harm, as it exists within and through us — rebalancing inequities between the industrialized world and the Indigenous and equatorial South communities.</li>
+      </ul>
     </div>
   </section>
 
 
-  <!-- ═══════ 5. QUOTE ═══════ -->
-  <section class="section-testimonial fade-in">
-    <div class="testimonial-container">
-      <div class="testimonial-quote-mark">❝</div>
-      <p class="testimonial-text">The sliding scale is a tool of accountability and trust. It thrives on honesty, respect for complexity, and the understanding that financial resources are not the only measure of value.</p>
-      <div class="testimonial-line"></div>
-      <p class="testimonial-author"><span>Alexis J. Cunningfolk</span></p>
+  <!-- ═══════ 5. ACCESSIBILITY & EQUITY ═══════ -->
+  <section class="reciprocity-prose fade-in">
+    <div class="reciprocity-prose-inner">
+      <h3>Accessibility &amp; Equity</h3>
+      <p>Yet I remain intimately aware of the hardships created by systemic economic inequity. Far too often, this kind of profound and direct access to healing remains out of reach for many — especially those from historically marginalized and underserved communities — many of whom are the progeny of the original channels and stewards of these very same methods and medicines, who were then forbidden from turning to their traditions and relations. The same traditions, methods, and medicines we turn to now, in hopes, in part, of restoring this ancient birthright.</p>
+      <p>I believe that healing and spiritual counsel should remain accessible while honoring the real costs of sustaining this work in an ambiguously hostile environment, while protecting sacred medicines and the intrinsic traditions. With many of these considerations held closely to my heart, I hope to continually grow and foster an equitable balance, a part of which includes the provision of a sliding scale.</p>
     </div>
   </section>
 
 
-  <!-- ═══════ 6. FOUR TIERS ═══════ -->
+  <!-- ═══════ 6. SACRED EXCHANGE ═══════ -->
+  <section class="reciprocity-prose alt-bg fade-in">
+    <div class="reciprocity-prose-inner">
+      <h3>Sacred Exchange</h3>
+      <p>Sacred exchange is not only monetary. It may also include acts of service, creative offerings, or gifts meaningful to you, as appropriate, when clearly discussed and mutually agreed upon. My intention is that this healing path remains rooted in sacred repair, the guardian presence of fierce compassion, holistic community care, and the weaving of a more balanced world for the many generations to come.</p>
+      <p>The health of one is the health of all. May our exchanges nourish not only our personal healing, but may they tend to the thriving of this kaleidoscopic prismatic miracle we are beholden and belong to.</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════ 7. ATTRIBUTION ═══════ -->
+  <section class="reciprocity-attribution fade-in">
+    <div class="reciprocity-attribution-inner">
+      <p class="attr-note">As inspired by the writings of Alexis J. Cunningfolk, and the implementation of the sliding scale by kindred Medicine Sisters in the work, I have incorporated it below to help ease and facilitate allocating and accessing these modalities within the framework of your life.</p>
+      <blockquote>The sliding scale is a tool of accountability and trust. It thrives on honesty, respect for complexity, and the understanding that financial resources are not the only measure of value.</blockquote>
+      <p class="trust-note">I do not require income verification. I trust you to choose honestly.</p>
+      <p class="reach-out">If the full exchange is not possible for you at this time, please reach out. Together, we will explore pathways of contribution with flexible timelines that honor both your current circumstances and my providing of these modalities.</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════ 8. THE FOUR TIERS ═══════ -->
   <section class="section-tiers fade-in">
     <div class="tiers-inner">
       <div class="tiers-header">
-        <p class="section-label">Choose Your Tier</p>
-        <h2 class="section-title">Four pathways of <em>reciprocity</em></h2>
-        <p class="section-body">I do not require income verification. I trust you to choose honestly. Specific rates for each offering are listed on their respective pages — below is the framework for how the tiers work across all of my services.</p>
+        <p class="section-label">The Four Tiers</p>
+        <h2 class="section-title">Pathways of <em>reciprocity</em></h2>
+        <div class="story-divider" style="margin: 1.5rem auto 2rem;"></div>
       </div>
 
       <div class="tiers-grid">
 
-        <!-- Patron -->
-        <div class="tier-card">
-          <p class="tier-eyebrow">Patronage &amp; Stewardship</p>
+        <!-- Patron Rate -->
+        <div class="tier-card tier-gold">
+          <p class="tier-eyebrow">Abundance &amp; Stewardship</p>
           <h3>Patron <em>Rate</em></h3>
           <div class="tier-divider"></div>
-          <p class="tier-description">This is for those who feel resourced and want to offer abundance, stewardship, and patronage — not just paying for a session, but helping support the work in the world. This tier is a blend of gratitude and generosity, and it is one of the ways the accessibility rates are possible at all.</p>
-          <p class="tier-label">This tier is for you if you:</p>
+          <p class="tier-description">This is for those who feel resourced and want to offer abundance, stewardship, and patronage — not just paying for a session, but helping support the work in the world.</p>
+          <p class="tier-label">Purpose</p>
+          <p class="tier-description" style="margin-bottom:0.8rem;">Expands access for others and strengthens land/lineage give-backs.</p>
+          <p class="tier-label">What your contribution supports</p>
           <ul class="tier-list">
-            <li><span>◈</span> Carry wealth, savings, or significant financial ease</li>
-            <li><span>◈</span> Want to invest in the survival of this medicine beyond your own session</li>
-            <li><span>◈</span> Feel called to steward and sponsor the broader healing work</li>
-            <li><span>◈</span> Wish to directly make accessibility sessions possible for others</li>
+            <li><span>&#9670;</span> Subsidies for Scholarship and Financial Hardship seats</li>
+            <li><span>&#9670;</span> Stipends for Elders/culture-bearers, ecological restoration, and ethical sourcing</li>
+            <li><span>&#9670;</span> Training, supervision, research, development, and ongoing education</li>
+            <li><span>&#9670;</span> Community Care Fund for crisis-adjacent needs</li>
           </ul>
-          <p class="tier-note">Your patronage keeps the circle whole. This is how community care sustains itself.</p>
+          <p class="tier-label">This is for you if</p>
+          <ul class="tier-list">
+            <li><span>&#9670;</span> You meet needs with ease; have savings/assets</li>
+            <li><span>&#9670;</span> Discretionary spending and travel are common</li>
+            <li><span>&#9670;</span> You wish to widen access materially</li>
+          </ul>
+          <p class="tier-note"><strong>Typical contribution:</strong> ~125–200% of the Full Rate.</p>
         </div>
 
-        <!-- Abundance -->
-        <div class="tier-card tier-featured">
-          <p class="tier-eyebrow">Full Value</p>
+        <!-- Abundance Rate -->
+        <div class="tier-card tier-green">
+          <p class="tier-eyebrow">Full Value of the Work</p>
           <h3>Abundance <em>Rate</em></h3>
           <div class="tier-divider"></div>
-          <p class="tier-description">This reflects the real cost of my time, materials, preparation, and the depth of skill I bring. It is the standard "I can meet the full value of this support" tier, and it helps keep the community model steady and sustainable.</p>
-          <p class="tier-label">This tier is for you if you:</p>
+          <p class="tier-description">This is the standard tier. It reflects the real cost of my time, materials, preparation, and the depth of skill I bring.</p>
+          <p class="tier-label">This is for you if</p>
           <ul class="tier-list">
-            <li><span>◈</span> Can comfortably meet your basic needs</li>
-            <li><span>◈</span> Own property, hold savings, or have expendable income</li>
-            <li><span>◈</span> Can afford wants, travel, and investments</li>
-            <li><span>◈</span> Want to honor the full value of the work you receive</li>
+            <li><span>&#9670;</span> You easily meet basic needs</li>
+            <li><span>&#9670;</span> Own property, have savings, or expendable income</li>
+            <li><span>&#9670;</span> Can afford wants, travel, and investments</li>
           </ul>
-          <p class="tier-note">This is where the true value of the work is met — honoring what it takes to offer it at this depth.</p>
+          <p class="tier-note"><strong>Typical contribution:</strong> 100% (the posted rate for each service).</p>
         </div>
 
-        <!-- Community -->
-        <div class="tier-card">
-          <p class="tier-eyebrow">Mutual Support</p>
+        <!-- Community Rate -->
+        <div class="tier-card tier-blue">
+          <p class="tier-eyebrow">At-Cost Community Provision</p>
           <h3>Community <em>Rate</em></h3>
           <div class="tier-divider"></div>
-          <p class="tier-description">This is for people who are part of the broader web: community members, peers and other holistic health and wellness professionals, folks in closer proximity to the work of healing, or those in a more mutual relationship in alliance with these modalities. This is the rate where I can break even.</p>
-          <p class="tier-label">This tier is for you if you:</p>
+          <p class="tier-description">For people who are part of the broader web: community members, peers, folks in closer proximity to the work of healing. This rate is where I can break even.</p>
+          <p class="tier-label">Availability</p>
+          <p class="tier-description" style="margin-bottom:0.8rem;">3 spaces per season (first come, first served; waitlist when filled).</p>
+          <p class="tier-label">This is for you if</p>
           <ul class="tier-list">
-            <li><span>◈</span> Are a fellow practitioner, healer, or wellness professional</li>
-            <li><span>◈</span> Meet basic needs with some ease but the full rate is a stretch</li>
-            <li><span>◈</span> Are in mutual or ongoing relationship with this work</li>
-            <li><span>◈</span> Have a steady income with some expendable funds</li>
+            <li><span>&#9670;</span> You meet basic needs with some ease</li>
+            <li><span>&#9670;</span> Occasionally stretch your budget</li>
+            <li><span>&#9670;</span> Have a steady income and some expendable funds</li>
           </ul>
-          <p class="tier-note">Supportive, fair, and sustainable — where the exchange finds its balance.</p>
+          <p class="tier-note"><strong>Typical contribution:</strong> ~70–85% of the Full Rate.</p>
         </div>
 
-        <!-- Accessibility -->
-        <div class="tier-card">
-          <p class="tier-eyebrow">Scholarship</p>
+        <!-- Accessibility Rate -->
+        <div class="tier-card tier-purple">
+          <p class="tier-eyebrow">Scholarship &amp; Hardship Rates</p>
           <h3>Accessibility <em>Rate</em></h3>
           <div class="tier-divider"></div>
-          <p class="tier-description">This acknowledges financial hardship and systemic barriers. I offer a limited number of sessions at this tier. To be transparent: it does not fully cover the true cost of my time and resources. It is essentially a scholarship rate, and I hold it because I believe care should still be reachable during hard seasons.</p>
-          <p class="tier-label">This tier is for you if you:</p>
+          <p class="tier-description">The "I need support and money is tight" tier. A limited scholarship rate for those experiencing genuine financial hardship.</p>
+          <p class="tier-label">Availability</p>
+          <p class="tier-description" style="margin-bottom:0.8rem;">1 seat per season (application required; short intake + brief call).</p>
+          <p class="tier-label">This is for you if</p>
           <ul class="tier-list">
-            <li><span>◈</span> Often worry about meeting basic needs</li>
-            <li><span>◈</span> Have little or no expendable income</li>
-            <li><span>◈</span> Qualify for assistance or live paycheck-to-paycheck</li>
-            <li><span>◈</span> Would face genuine hardship paying at higher tiers</li>
+            <li><span>&#9670;</span> You often worry about basic needs</li>
+            <li><span>&#9670;</span> Have little expendable income</li>
+            <li><span>&#9670;</span> Qualify for assistance or live paycheck-to-paycheck</li>
           </ul>
-          <p class="tier-note">If this rate is still out of reach, please reach out so we can find a sustainable path together.</p>
+          <p class="tier-note"><strong>Typical contribution:</strong> ~55–65% of the Full Rate.</p>
+          <p style="font-size:0.84rem; color:var(--earth-light); line-height:1.7; margin-top:1rem; font-style:italic;">If this rate is still out of reach, please email me to discuss alternative options, including payment plans, seva, and other paths.</p>
         </div>
 
       </div>
@@ -330,40 +318,33 @@
   </section>
 
 
-  <!-- ═══════ 7. FLUIDITY ═══════ -->
-  <section class="section-fluidity fade-in">
-    <div class="fluidity-inner">
-      <p class="section-label">A Living Model</p>
-      <h2 class="section-title">The circle is <em>always moving</em></h2>
-      <div class="story-divider" style="margin: 1.5rem auto 2rem;"></div>
-      <p>One of the things I love most about this model is that it breathes. It is not a fixed identity — it is a living relationship with your current season.</p>
-      <p>Sometimes someone comes to this work during a time when resources are thin, and they receive at the accessibility tier with grace. Later, when life opens, they choose to give at abundance or patron — not because they owe anything, but because they want to <em>give back to the web that held them</em>.</p>
-      <p>This is how community care has always worked. The tides go in and out. People give when they can. People receive when they need to. And the circle holds because everyone participates with honesty and good faith.</p>
-      <p>Those paying at the patron and abundance tiers directly make it possible for accessibility sessions to exist. This is not abstract — it is the literal mechanism by which the work remains available to people in every season of life. It is community-based economics in its most intimate, human form.</p>
-      <p>If you would like to go deeper into this model or need help finding a sustainable path, I warmly invite you to <a href="book.html" class="fluidity-link">reach out</a> so we can talk it through together.</p>
-    </div>
-  </section>
-
-
-  <!-- ═══════ 8. ECOLOGY OF RECIPROCITY ═══════ -->
+  <!-- ═══════ 9. THE SPIRIT OF SACRED ECONOMICS ═══════ -->
   <section class="section-spirit fade-in">
     <div class="spirit-inner">
-      <p class="hero-eyebrow">The Ecology of Reciprocity</p>
-      <h2>This work is not a transaction.<br><em>It is a sacred exchange.</em></h2>
+      <h2>The Spirit of <em>Sacred Economics</em></h2>
       <div class="spirit-divider"></div>
-      <p class="spirit-body">It is a living exchange within a larger ecosystem. When we care for one part of the ecosystem, the whole flourishes. When you pay me, you are nourishing the web of elders, teachers, spirits, and community to whom I am accountable — and you are participating in a future where medicine keepers do not have to choose between poverty and their calling.</p>
+      <p class="spirit-body"><strong>This work is not just a transaction. It is a sacred exchange.</strong></p>
+      <p class="spirit-body">The social economics of this model help offset scholarship and accessibility sessions, so the work can remain available to people in different seasons of life.</p>
       <p class="spirit-body">Please reflect honestly:</p>
       <div class="spirit-questions">
-        <p class="spirit-question">Does paying the full rate feel like a natural stretch — or genuine hardship?</p>
-        <p class="spirit-question">Could you contribute more to nourish the broader community?</p>
-        <p class="spirit-question">Would paying less allow you to access this work without sacrificing essentials?</p>
+        <p class="spirit-question">Does paying the full rate feel like a sacrifice or a genuine hardship?</p>
+        <p class="spirit-question">Could you pay more to support someone else's healing?</p>
+        <p class="spirit-question">Would paying less help you access this work without sacrificing essentials?</p>
       </div>
-      <p class="spirit-closing">Whatever tier you choose, you are welcome here.<br>Together, we keep the circle strong.<br>May we build an economy of healing, honesty, and mutual care.</p>
+      <p class="spirit-closing">Whichever tier you choose, you are welcome here.</p>
     </div>
   </section>
 
 
-  <!-- ═══════ 9. CTA ═══════ -->
+  <!-- ═══════ 10. CLOSING BLESSING ═══════ -->
+  <section class="reciprocity-blessing fade-in">
+    <div class="reciprocity-blessing-inner">
+      <p>Thank you for participating in this living experiment in right relations and sacred economics — a practice of thoughtful activism and an exploration of our collective subtle sovereign power. These moments of adaptive tending feed the possibility of a world where healing, peace, and flourishing are accessible to all. We are the changemakers of culture, the dreamers, and the weavers. The future is looming, shaped by each shimmering choice — we thread. May we continue to grow these gardens of Life together.</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════ CTA ═══════ -->
   <section class="section-cta fade-in">
     <div class="cta-container">
       <h2>Ready to <em>begin?</em></h2>
