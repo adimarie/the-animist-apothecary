@@ -1,12 +1,12 @@
 {
-  "version": "v260401.09 4:19p",
-  "release": 9,
-  "sha": "9a0ffc5",
-  "fullSha": "9a0ffc570c2c0b8a7149131ec195619fc656d7d5",
+  "version": "v260401.10 7:42p",
+  "release": 10,
+  "sha": "d1407a0",
+  "fullSha": "d1407a0522ee05add60c9e9efcb9bc85cbef632c",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-04-01T09:19:11-07:00",
-  "commits": [{"sha":"9a0ffc5","message":"Fix portal buttons in footer with proper styling and invitational copy","author":"Adi Marie"}]
+  "pushedAt": "2026-04-01T12:42:07-07:00",
+  "commits": [{"sha":"d1407a0","message":"Deploy admin portal, client portal, and fix footer buttons","author":"Adi Marie"}]
 }
