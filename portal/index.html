@@ -1,289 +1,532 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Client Portal &mdash; The Animist Apothecary</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/styles.css">
-<link rel="stylesheet" href="/css/portal.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Portal &mdash; The Animist Apothecary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF8F5;
+      --cream-dark: #F0EDE8;
+      --earth: #3D2E1F;
+      --earth-mid: #6B5744;
+      --earth-faint: #9A8C7A;
+      --sage: #7A8B6F;
+      --sage-light: #E8EDE5;
+      --sage-dark: #5C6B52;
+      --gold: #C4A35A;
+      --gold-light: #F5EDD6;
+      --rose: #C4836F;
+      --rose-light: #F5E0D9;
+      --white: #FFFFFF;
+      --shadow-sm: 0 1px 3px rgba(61,46,31,0.06);
+      --shadow-md: 0 4px 12px rgba(61,46,31,0.08);
+      --radius: 10px;
+      --radius-sm: 6px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--earth);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+    }
+
+    /* LOGIN SCREEN */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      background: var(--cream);
+    }
+    #login-screen h1 {
+      font-size: 32px;
+      color: var(--earth);
+    }
+    #login-screen .subtitle {
+      color: var(--earth-faint);
+      font-size: 13px;
+    }
+    .login-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      background: var(--earth);
+      color: var(--cream);
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .login-btn:hover { background: var(--earth-mid); }
+    .login-error {
+      color: var(--rose);
+      font-size: 13px;
+      display: none;
+    }
+
+    /* NAV */
+    .portal-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      background: var(--white);
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: var(--earth);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .nav-brand em { font-style: italic; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-user {
+      font-size: 13px;
+      color: var(--earth-faint);
+    }
+    .sign-out-link {
+      font-size: 12px;
+      color: var(--sage);
+      text-decoration: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .sign-out-link:hover { color: var(--sage-dark); }
+
+    /* CONTAINER */
+    .portal-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    .portal-header {
+      margin-bottom: 28px;
+    }
+    .portal-header h1 {
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+    .portal-header .subtitle {
+      font-size: 13px;
+      color: var(--earth-faint);
+    }
+
+    /* GRID */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    /* CARD */
+    .portal-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .portal-card h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: var(--earth);
+    }
+
+    /* SESSION ITEM */
+    .session-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .session-item:last-child { border-bottom: none; }
+    .session-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--earth);
+      margin-bottom: 2px;
+    }
+    .session-date {
+      font-size: 12px;
+      color: var(--earth-faint);
+    }
+
+    /* MESSAGE ITEM */
+    .message-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .message-item:last-child { border-bottom: none; }
+    .message-subject {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--earth);
+      margin-bottom: 2px;
+    }
+    .message-body {
+      font-size: 13px;
+      color: var(--earth-mid);
+      margin-bottom: 4px;
+    }
+    .message-date {
+      font-size: 11px;
+      color: var(--earth-faint);
+    }
+    .unread-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--sage);
+      border-radius: 50%;
+      margin-left: 8px;
+    }
+
+    /* CEREMONY PROGRESS */
+    .ceremony-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .ceremony-meta {
+      font-size: 12px;
+      color: var(--earth-faint);
+      margin-bottom: 12px;
+    }
+    .progress-bar-bg {
+      height: 8px;
+      background: var(--cream-dark);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--sage);
+      border-radius: 4px;
+      transition: width 0.4s ease;
+    }
+    .ceremony-steps {
+      font-size: 12px;
+      color: var(--earth-faint);
+    }
+
+    /* EMPTY STATE */
+    .empty-state {
+      text-align: center;
+      padding: 24px 16px;
+      color: var(--earth-faint);
+      font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .portal-nav {
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .portal-container {
+        padding: 20px 16px;
+      }
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Loading state -->
-<div id="portal-loading" class="portal-loading">Loading your portal&hellip;</div>
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen">
+    <h1>The Animist Apothecary</h1>
+    <p class="subtitle">Client Portal</p>
+    <button class="login-btn" id="google-signin-btn">
+      <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+      Sign in with Google
+    </button>
+    <p class="login-error" id="login-error"></p>
+  </div>
 
-<!-- Main portal (hidden until authenticated) -->
-<div id="portal-app" style="display:none;">
+  <!-- PORTAL APP -->
+  <div id="portal-app" style="display:none;">
+    <nav class="portal-nav">
+      <a href="/portal/" class="nav-brand">The Animist <em>Apothecary</em></a>
+      <div class="nav-right">
+        <span class="nav-user" id="nav-user"></span>
+        <button class="sign-out-link" id="sign-out-btn">Sign Out</button>
+      </div>
+    </nav>
 
-  <!-- Navigation -->
-  <nav class="portal-nav">
-    <a href="/portal/" class="nav-brand">The Animist <em>Apothecary</em></a>
-    <div class="nav-links">
-      <a href="/portal/" class="active">Dashboard</a>
-      <a href="/portal/#journey">My Journey</a>
-      <a href="/portal/ceremony.html">Ceremony</a>
-      <a href="/portal/#messages">Messages</a>
-      <a href="#" id="user-dropdown" class="user-dropdown"></a>
-    </div>
-  </nav>
+    <div class="portal-container">
+      <div class="portal-header">
+        <h1 id="welcome-greeting">Welcome back</h1>
+        <p class="subtitle" id="portal-subtitle"></p>
+      </div>
 
-  <div class="portal-container">
-    <!-- Header -->
-    <div class="portal-header">
-      <h1 id="welcome-greeting">Welcome back</h1>
-      <p class="subtitle" id="container-subtitle"></p>
-    </div>
-
-    <!-- Row 1: Upcoming Sessions + My Container -->
-    <div class="portal-grid">
-      <div class="portal-card">
-        <h3>Upcoming Sessions</h3>
-        <div id="sessions-list">
-          <div class="empty-state">No upcoming sessions</div>
+      <!-- Row 1: Appointments + Messages -->
+      <div class="portal-grid">
+        <div class="portal-card">
+          <h3>Upcoming Appointments</h3>
+          <div id="appointments-list">
+            <div class="empty-state">No upcoming appointments</div>
+          </div>
+        </div>
+        <div class="portal-card">
+          <h3>Messages from Practitioner</h3>
+          <div id="messages-list">
+            <div class="empty-state">No messages</div>
+          </div>
         </div>
       </div>
-      <div class="portal-card">
-        <h3>My Container</h3>
-        <div id="container-card">
-          <div class="empty-state">No active container</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Row 2: Active Ceremony + Recent Messages -->
-    <div class="portal-grid">
+      <!-- Row 2: Ceremony Progress -->
       <div class="portal-card">
-        <h3>Active Ceremony</h3>
+        <h3>Ceremony Progress</h3>
         <div id="ceremony-card">
           <div class="empty-state">No active ceremony</div>
         </div>
       </div>
-      <div class="portal-card">
-        <h3>Recent Messages</h3>
-        <div id="messages-card">
-          <div class="empty-state">No messages</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Journey Milestones -->
-    <div class="portal-card">
-      <h3>My Journey &mdash; Milestones</h3>
-      <div id="milestones-timeline" class="milestone-timeline">
-        <div class="empty-state">Your milestones will appear here</div>
-      </div>
     </div>
   </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="/js/supabase-client.js"></script>
-<script src="/js/portal-auth.js"></script>
-<script src="/js/components.js"></script>
-<script>
-(async function() {
-  const loadingEl = document.getElementById('portal-loading');
-  const appEl = document.getElementById('portal-app');
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-  try {
-    // 1. Authenticate client
-    const client = await initPortalAuth();
-    if (!client) return; // auth module handles redirect
+    const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
 
-    // Show the portal
-    loadingEl.style.display = 'none';
-    appEl.style.display = 'block';
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    const displayName = client.display_name || client.full_name || 'Friend';
-    const firstName = displayName.split(' ')[0];
+    // ── DOM refs ──
+    const loginScreen = document.getElementById('login-screen');
+    const portalApp = document.getElementById('portal-app');
+    const loginError = document.getElementById('login-error');
 
-    // Set user dropdown
-    const dropdownEl = document.getElementById('user-dropdown');
-    const lastName = displayName.split(' ').length > 1 ? displayName.split(' ')[1][0] + '.' : '';
-    dropdownEl.textContent = firstName + ' ' + lastName + ' \u25BE';
+    // ── Helpers ──
+    function escapeHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str || '';
+      return d.innerHTML;
+    }
 
-    // Set welcome greeting
-    document.getElementById('welcome-greeting').textContent = 'Welcome back, ' + firstName;
+    function fmtDate(dateStr) {
+      if (!dateStr) return '';
+      return new Date(dateStr).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    }
 
-    // 2. Load appointments for this client
-    loadSessions(client.id);
+    function fmtDateTime(dateStr) {
+      if (!dateStr) return '';
+      const dt = new Date(dateStr);
+      const date = dt.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+      const time = dt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+      return date + ' at ' + time;
+    }
 
-    // 3. Load mentorship containers for this client
-    loadContainer(client.id);
+    // ── Auth ──
+    document.getElementById('google-signin-btn').addEventListener('click', async () => {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: { redirectTo: window.location.origin + window.location.pathname }
+      });
+      if (error) {
+        loginError.textContent = error.message;
+        loginError.style.display = 'block';
+      }
+    });
 
-    // 4. Load ceremony participation
-    loadCeremony(client.id);
+    document.getElementById('sign-out-btn').addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      window.location.reload();
+    });
 
-    // 5. Load messages
-    loadMessages(client.id);
+    // ── Init ──
+    async function init() {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        loginScreen.style.display = 'flex';
+        return;
+      }
 
-    // 6. Load milestones
-    loadMilestones(client.id);
+      const email = session.user.email;
 
-  } catch (err) {
-    console.error('Portal init error:', err);
-    loadingEl.textContent = 'Something went wrong. Please try again.';
-  }
-})();
+      // Find client by email match
+      const { data: client, error: clientError } = await supabase
+        .from('clients')
+        .select('id, full_name, display_name, email, phone, pipeline_stage')
+        .eq('email', email)
+        .eq('is_archived', false)
+        .single();
 
-async function loadSessions(clientId) {
-  try {
-    const { data, error } = await supabase
-      .from('appointments')
-      .select('id, title, scheduled_at, location, meeting_type')
-      .eq('client_id', clientId)
-      .gte('scheduled_at', new Date().toISOString())
-      .order('scheduled_at', { ascending: true })
-      .limit(4);
+      if (clientError || !client) {
+        loginError.textContent = 'No client profile found for ' + email + '. Please contact your practitioner.';
+        loginError.style.display = 'block';
+        loginScreen.style.display = 'flex';
+        return;
+      }
 
-    if (error) throw error;
+      // Show portal
+      loginScreen.style.display = 'none';
+      portalApp.style.display = 'block';
 
-    const container = document.getElementById('sessions-list');
-    if (!data || data.length === 0) return;
+      const displayName = client.display_name || client.full_name || 'Friend';
+      const firstName = displayName.split(' ')[0];
 
-    container.innerHTML = data.map(s => {
-      const dt = new Date(s.scheduled_at);
-      const dateStr = dt.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-      const timeStr = dt.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
-      const loc = s.location || s.meeting_type || '';
-      return '<div class="session-item"><div>' +
-        '<div class="session-name">' + escapeHtml(s.title || 'Session') + '</div>' +
-        '<div class="session-date">' + dateStr + ' &middot; ' + timeStr + (loc ? ' &middot; ' + escapeHtml(loc) : '') + '</div>' +
-        '</div></div>';
-    }).join('');
-  } catch (err) {
-    console.error('Error loading sessions:', err);
-  }
-}
+      document.getElementById('welcome-greeting').textContent = 'Welcome back, ' + firstName;
+      document.getElementById('nav-user').textContent = displayName;
 
-async function loadContainer(clientId) {
-  try {
-    const { data, error } = await supabase
-      .from('mentorship_containers')
-      .select('id, name, sessions_completed, total_sessions, status')
-      .eq('client_id', clientId)
-      .eq('status', 'active')
-      .order('created_at', { ascending: false })
-      .limit(1)
-      .single();
+      // Load data
+      await Promise.all([
+        loadAppointments(client.id),
+        loadMessages(client.id),
+        loadCeremony(client.id),
+      ]);
 
-    if (error || !data) return;
+      // Real-time subscriptions
+      setupRealtime(client.id);
+    }
 
-    const pct = data.total_sessions > 0
-      ? Math.round((data.sessions_completed / data.total_sessions) * 100)
-      : 0;
+    // ── Appointments ──
+    async function loadAppointments(clientId) {
+      try {
+        const { data, error } = await supabase
+          .from('appointments')
+          .select('id, title, scheduled_at, location, meeting_type, service_id, services(name)')
+          .eq('client_id', clientId)
+          .gte('scheduled_at', new Date().toISOString())
+          .order('scheduled_at', { ascending: true })
+          .limit(5);
 
-    const container = document.getElementById('container-card');
-    container.innerHTML =
-      '<div style="margin-bottom:16px;">' +
-        '<span class="container-count">' + (data.sessions_completed || 0) + '</span>' +
-        '<span class="container-total"> / ' + (data.total_sessions || 0) + ' sessions</span>' +
-      '</div>' +
-      '<div class="progress-bar-bg"><div class="progress-bar-fill" style="width:' + pct + '%;"></div></div>' +
-      '<div class="container-name">' + escapeHtml(data.name || '') + '</div>';
+        if (error) throw error;
 
-    // Also set the subtitle
-    const subtitle = document.getElementById('container-subtitle');
-    subtitle.textContent = data.name + ' \u2014 Session ' + data.sessions_completed + ' of ' + data.total_sessions;
-  } catch (err) {
-    console.error('Error loading container:', err);
-  }
-}
+        const container = document.getElementById('appointments-list');
+        if (!data || data.length === 0) return;
 
-async function loadCeremony(clientId) {
-  try {
-    const { data, error } = await supabase
-      .from('ceremony_participants')
-      .select('id, current_step, ceremony_groups(id, name, ceremony_date, location)')
-      .eq('client_id', clientId)
-      .eq('status', 'active')
-      .order('created_at', { ascending: false })
-      .limit(1)
-      .single();
+        container.innerHTML = data.map(a => {
+          const title = a.title || a.services?.name || 'Session';
+          const loc = a.location || a.meeting_type || '';
+          return `<div class="session-item">
+            <div>
+              <div class="session-name">${escapeHtml(title)}</div>
+              <div class="session-date">${fmtDateTime(a.scheduled_at)}${loc ? ' &middot; ' + escapeHtml(loc) : ''}</div>
+            </div>
+          </div>`;
+        }).join('');
+      } catch (err) {
+        console.error('Error loading appointments:', err);
+      }
+    }
 
-    if (error || !data) return;
+    // ── Messages ──
+    async function loadMessages(clientId) {
+      try {
+        const { data, error } = await supabase
+          .from('client_messages')
+          .select('id, subject, body, sender_name, created_at, is_read')
+          .eq('client_id', clientId)
+          .eq('sender_type', 'practitioner')
+          .order('created_at', { ascending: false })
+          .limit(5);
 
-    const group = data.ceremony_groups;
-    if (!group) return;
+        if (error) throw error;
 
-    const dateStr = group.ceremony_date
-      ? new Date(group.ceremony_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
-      : '';
-    const currentStep = data.current_step || 0;
-    const pct = Math.round((currentStep / 10) * 100);
+        const container = document.getElementById('messages-list');
+        if (!data || data.length === 0) return;
 
-    const container = document.getElementById('ceremony-card');
-    container.innerHTML =
-      '<div class="ceremony-title">' + escapeHtml(group.name || 'Ceremony') + '</div>' +
-      '<div class="ceremony-meta">' + dateStr + (group.location ? ' &middot; ' + escapeHtml(group.location) : '') + '</div>' +
-      '<div class="progress-bar-bg"><div class="progress-bar-fill" style="width:' + pct + '%;"></div></div>' +
-      '<div class="ceremony-steps-summary">' + currentStep + ' of 10 preparation steps complete</div>' +
-      '<button class="step-action" style="margin-top:14px;" onclick="location.href=\'/portal/ceremony.html\'">Continue Preparation &rarr;</button>';
-  } catch (err) {
-    console.error('Error loading ceremony:', err);
-  }
-}
+        container.innerHTML = data.map(m => {
+          const unread = !m.is_read ? '<span class="unread-dot"></span>' : '';
+          const bodyPreview = m.body ? (m.body.length > 100 ? m.body.substring(0, 100) + '...' : m.body) : '';
+          return `<div class="message-item">
+            <div class="message-subject">${escapeHtml(m.subject || 'Message')}${unread}</div>
+            ${bodyPreview ? `<div class="message-body">${escapeHtml(bodyPreview)}</div>` : ''}
+            <div class="message-date">${m.sender_name ? 'From ' + escapeHtml(m.sender_name) + ' &middot; ' : ''}${fmtDate(m.created_at)}</div>
+          </div>`;
+        }).join('');
+      } catch (err) {
+        console.error('Error loading messages:', err);
+      }
+    }
 
-async function loadMessages(clientId) {
-  try {
-    const { data, error } = await supabase
-      .from('client_messages')
-      .select('id, subject, sender_name, created_at, is_read')
-      .eq('client_id', clientId)
-      .order('created_at', { ascending: false })
-      .limit(3);
+    // ── Ceremony ──
+    async function loadCeremony(clientId) {
+      try {
+        const { data, error } = await supabase
+          .from('ceremony_participants')
+          .select('id, current_step, status, completed_steps, ceremony_groups(id, name, ceremony_date, location)')
+          .eq('client_id', clientId)
+          .eq('status', 'active')
+          .order('created_at', { ascending: false })
+          .limit(1)
+          .single();
 
-    if (error) throw error;
+        if (error || !data) return;
 
-    const container = document.getElementById('messages-card');
-    if (!data || data.length === 0) return;
+        const group = data.ceremony_groups;
+        if (!group) return;
 
-    container.innerHTML = data.map(m => {
-      const dateStr = new Date(m.created_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-      const unreadDot = !m.is_read ? '<span class="unread-dot"></span>' : '';
-      return '<div class="session-item"><div>' +
-        '<div class="message-name">' + escapeHtml((m.sender_name ? 'From ' + m.sender_name + ' \u2014 ' : '') + (m.subject || '')) + '</div>' +
-        '<div class="session-date">' + dateStr + '</div>' +
-        '</div>' + unreadDot + '</div>';
-    }).join('');
-  } catch (err) {
-    console.error('Error loading messages:', err);
-  }
-}
+        const currentStep = data.current_step || 0;
+        const pct = Math.round((currentStep / 10) * 100);
 
-async function loadMilestones(clientId) {
-  try {
-    const { data, error } = await supabase
-      .from('client_milestones')
-      .select('id, title, milestone_date')
-      .eq('client_id', clientId)
-      .order('milestone_date', { ascending: true });
+        const container = document.getElementById('ceremony-card');
+        container.innerHTML = `
+          <div class="ceremony-title">${escapeHtml(group.name || 'Ceremony')}</div>
+          <div class="ceremony-meta">${fmtDate(group.ceremony_date)}${group.location ? ' &middot; ' + escapeHtml(group.location) : ''}</div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${pct}%;"></div></div>
+          <div class="ceremony-steps">${currentStep} of 10 preparation steps complete</div>
+        `;
 
-    if (error) throw error;
+        // Also set subtitle
+        document.getElementById('portal-subtitle').textContent =
+          group.name + ' — Step ' + currentStep + ' of 10';
+      } catch (err) {
+        console.error('Error loading ceremony:', err);
+      }
+    }
 
-    const container = document.getElementById('milestones-timeline');
-    if (!data || data.length === 0) return;
+    // ── Real-time ──
+    function setupRealtime(clientId) {
+      supabase.channel('portal-realtime')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'appointments', filter: `client_id=eq.${clientId}` }, () => {
+          loadAppointments(clientId);
+        })
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'client_messages', filter: `client_id=eq.${clientId}` }, () => {
+          loadMessages(clientId);
+        })
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'ceremony_participants', filter: `client_id=eq.${clientId}` }, () => {
+          loadCeremony(clientId);
+        })
+        .subscribe();
+    }
 
-    container.innerHTML = data.map(m => {
-      const dateStr = m.milestone_date
-        ? new Date(m.milestone_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
-        : '';
-      return '<div class="milestone-item">' +
-        '<div class="m-title">' + escapeHtml(m.title || '') + '</div>' +
-        '<div class="m-date">' + dateStr + '</div>' +
-        '</div>';
-    }).join('');
-  } catch (err) {
-    console.error('Error loading milestones:', err);
-  }
-}
-
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
-</script>
+    // ── Boot ──
+    init();
+  </script>
 </body>
 </html>

@@ -6,123 +6,1140 @@
   <title>Admin &mdash; The Animist Apothecary</title>
   <meta name="robots" content="noindex, nofollow">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css">
-  <link rel="stylesheet" href="/css/admin.css">
+  <style>
+    :root {
+      --cream: #FAF8F5;
+      --cream-dark: #F0EDE8;
+      --earth: #3D2E1F;
+      --earth-mid: #6B5744;
+      --earth-faint: #9A8C7A;
+      --sage: #7A8B6F;
+      --sage-light: #E8EDE5;
+      --sage-dark: #5C6B52;
+      --gold: #C4A35A;
+      --gold-light: #F5EDD6;
+      --rose: #C4836F;
+      --rose-light: #F5E0D9;
+      --white: #FFFFFF;
+      --shadow-sm: 0 1px 3px rgba(61,46,31,0.06);
+      --shadow-md: 0 4px 12px rgba(61,46,31,0.08);
+      --shadow-lg: 0 8px 24px rgba(61,46,31,0.12);
+      --radius: 10px;
+      --radius-sm: 6px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--earth);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+    }
+
+    /* LOGIN SCREEN */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream);
+      flex-direction: column;
+      gap: 24px;
+    }
+    #login-screen h1 {
+      font-size: 32px;
+      color: var(--earth);
+    }
+    #login-screen p {
+      color: var(--earth-faint);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+    .login-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      background: var(--earth);
+      color: var(--cream);
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .login-btn:hover { background: var(--earth-mid); }
+    .login-error {
+      color: var(--rose);
+      font-size: 13px;
+      margin-top: 8px;
+      display: none;
+    }
+
+    /* ADMIN LAYOUT */
+    .admin-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* SIDEBAR */
+    .admin-sidebar {
+      width: 240px;
+      background: var(--earth);
+      color: var(--cream);
+      padding: 32px 0;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .admin-sidebar .brand {
+      padding: 0 24px 28px;
+      border-bottom: 1px solid rgba(250,248,245,0.1);
+      margin-bottom: 16px;
+    }
+    .admin-sidebar .brand h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 2px;
+    }
+    .admin-sidebar .brand span {
+      font-size: 11px;
+      color: var(--earth-faint);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 24px;
+      color: rgba(250,248,245,0.6);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 400;
+      transition: all 0.15s;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+    }
+    .sidebar-item:hover { color: var(--cream); background: rgba(250,248,245,0.06); }
+    .sidebar-item.active { color: var(--cream); background: rgba(250,248,245,0.1); font-weight: 500; }
+    .sidebar-icon { font-size: 14px; width: 18px; text-align: center; }
+    .sidebar-spacer { flex: 1; }
+
+    /* MAIN AREA */
+    .admin-main {
+      flex: 1;
+      padding: 32px 40px;
+      overflow-y: auto;
+      max-height: 100vh;
+    }
+
+    .admin-header {
+      margin-bottom: 28px;
+    }
+    .admin-header h1 {
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+    .admin-header p {
+      font-size: 13px;
+      color: var(--earth-faint);
+    }
+
+    /* METRICS */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .metric-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .metric-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--earth-faint);
+      margin-bottom: 6px;
+    }
+    .metric-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--earth);
+    }
+    .metric-sub {
+      font-size: 11px;
+      color: var(--sage);
+      margin-top: 2px;
+    }
+
+    /* TABLE CARDS */
+    .table-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .table-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .table-card-header h3 {
+      font-size: 18px;
+    }
+
+    /* SEARCH BAR */
+    .search-bar {
+      display: flex;
+      gap: 10px;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 8px 14px;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--earth);
+      outline: none;
+    }
+    .search-bar input:focus { border-color: var(--sage); }
+    .search-bar select {
+      padding: 8px 12px;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--earth);
+      outline: none;
+    }
+
+    /* DATA TABLE */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .data-table th {
+      text-align: left;
+      padding: 10px 20px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--earth-faint);
+      font-weight: 500;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .data-table td {
+      padding: 12px 20px;
+      font-size: 13px;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover { background: var(--cream); cursor: pointer; }
+
+    /* TAGS / BADGES */
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: capitalize;
+    }
+    .tag-active, .tag-lead { background: var(--sage-light); color: var(--sage-dark); }
+    .tag-completed { background: var(--gold-light); color: var(--gold); }
+    .tag-paused, .tag-archived { background: var(--cream-dark); color: var(--earth-faint); }
+    .tag-inquiry { background: var(--rose-light); color: var(--rose); }
+
+    /* CLIENT DRAWER */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(61,46,31,0.3);
+      z-index: 100;
+      opacity: 0;
+      transition: opacity 0.25s;
+      pointer-events: none;
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -480px;
+      width: 480px;
+      height: 100vh;
+      background: var(--white);
+      box-shadow: var(--shadow-lg);
+      z-index: 101;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+      padding: 32px;
+    }
+    .drawer.open { right: 0; }
+    .drawer-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--earth-faint);
+      padding: 4px 8px;
+    }
+    .drawer-close:hover { color: var(--earth); }
+    .drawer h2 {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+    .drawer-meta {
+      font-size: 12px;
+      color: var(--earth-faint);
+      margin-bottom: 20px;
+    }
+    .drawer-section {
+      margin-bottom: 20px;
+    }
+    .drawer-section h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--earth-faint);
+      margin-bottom: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+    }
+    .drawer-section p, .drawer-section li {
+      font-size: 13px;
+      color: var(--earth);
+    }
+    .drawer-section ul { list-style: none; }
+    .drawer-section ul li { padding: 4px 0; }
+
+    /* CEREMONY ADMIN VIEW */
+    .ceremony-selector {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .ceremony-selector select {
+      padding: 10px 16px;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--earth);
+      outline: none;
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .ceremony-meta-row {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .ceremony-meta-item {
+      font-size: 13px;
+      color: var(--earth-faint);
+    }
+    .ceremony-meta-item strong {
+      color: var(--earth);
+    }
+
+    /* PROGRESSION MATRIX */
+    .matrix-wrapper {
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+    .progression-matrix {
+      display: grid;
+      grid-template-columns: 200px repeat(10, minmax(80px, 1fr));
+      gap: 1px;
+      background: var(--cream-dark);
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-width: 1100px;
+    }
+    .matrix-header {
+      background: var(--earth);
+      color: var(--cream);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+    .matrix-header:first-child { text-align: left; }
+    .matrix-name {
+      background: var(--white);
+      padding: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--earth);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .matrix-name:hover { background: var(--cream); }
+    .matrix-cell {
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .matrix-cell:hover { background: var(--cream); }
+    .step-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--cream-dark);
+      transition: all 0.2s;
+    }
+    .step-dot.complete {
+      background: var(--sage);
+      border-color: var(--sage);
+    }
+
+    /* PARTICIPANT DRAWER (ceremony) */
+    .note-form {
+      margin-top: 12px;
+    }
+    .note-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      resize: vertical;
+      min-height: 60px;
+      outline: none;
+    }
+    .note-form textarea:focus { border-color: var(--sage); }
+    .note-form button {
+      margin-top: 8px;
+      padding: 8px 16px;
+      background: var(--sage);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+    .note-form button:hover { background: var(--sage-dark); }
+    .note-item {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--cream-dark);
+      font-size: 13px;
+    }
+    .note-item:last-child { border-bottom: none; }
+    .note-date {
+      font-size: 11px;
+      color: var(--earth-faint);
+      margin-top: 2px;
+    }
+
+    /* EMPTY STATE */
+    .empty-state {
+      padding: 32px;
+      text-align: center;
+      color: var(--earth-faint);
+      font-size: 13px;
+    }
+
+    /* TOAST */
+    #toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .toast {
+      background: var(--earth);
+      color: var(--cream);
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      box-shadow: var(--shadow-md);
+      animation: toastIn 0.3s ease, toastOut 0.3s ease 2.7s forwards;
+    }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes toastOut { from { opacity: 1; } to { opacity: 0; transform: translateY(-10px); } }
+
+    /* ADMIN VIEW */
+    .admin-view { display: block; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .admin-sidebar { width: 200px; }
+      .admin-main { padding: 24px 20px; }
+      .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .admin-layout { flex-direction: column; }
+      .admin-sidebar {
+        width: 100%;
+        flex-direction: row;
+        padding: 12px 16px;
+        overflow-x: auto;
+        gap: 4px;
+      }
+      .admin-sidebar .brand { display: none; }
+      .sidebar-item { padding: 8px 12px; white-space: nowrap; }
+      .sidebar-spacer { display: none; }
+      .metrics-row { grid-template-columns: 1fr 1fr; }
+      .drawer { width: 100vw; right: -100vw; }
+    }
+  </style>
 </head>
 <body>
-  <div id="loadingState" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--cream);">
-    <p style="color: var(--earth-faint); font-family: Inter, sans-serif; font-size: 13px;">Loading...</p>
+
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen">
+    <h1>The Animist Apothecary</h1>
+    <p>Admin Portal</p>
+    <button class="login-btn" id="google-signin-btn">
+      <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+      Sign in with Google
+    </button>
+    <p class="login-error" id="login-error"></p>
   </div>
 
-  <div id="appContent" style="display: none;">
-    <div class="admin-layout">
-      <!-- Sidebar -->
-      <div class="admin-sidebar">
-        <div class="brand"><h3>The Animist Apothecary</h3><span>Admin Portal</span></div>
-        <a href="/admin/" class="sidebar-item active"><span class="sidebar-icon">&#9673;</span> Dashboard</a>
-        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9679;</span> Clients</a>
-        <a href="/admin/ceremonies.html" class="sidebar-item"><span class="sidebar-icon">&#9830;</span> Ceremonies</a>
-        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9633;</span> Calendar</a>
-        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#10047;</span> Deep Work</a>
-        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9671;</span> Finances</a>
-        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9993;</span> Messages</a>
-        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9776;</span> Resources</a>
-        <a href="#" class="sidebar-item"><span class="sidebar-icon">&#9881;</span> Settings</a>
+  <!-- ADMIN APP -->
+  <div id="admin-app" class="admin-layout" style="display:none;">
+    <div class="admin-sidebar">
+      <div class="brand">
+        <h3>The Animist Apothecary</h3>
+        <span>Admin Portal</span>
       </div>
+      <button class="sidebar-item active" data-view="dashboard">
+        <span class="sidebar-icon">&#9673;</span> Dashboard
+      </button>
+      <button class="sidebar-item" data-view="ceremony-admin">
+        <span class="sidebar-icon">&#9830;</span> Ceremonies
+      </button>
+      <div class="sidebar-spacer"></div>
+      <button class="sidebar-item" id="sign-out-btn">
+        <span class="sidebar-icon">&#8617;</span> Sign Out
+      </button>
+    </div>
 
-      <!-- Main content area -->
-      <div class="admin-main">
+    <div class="admin-main">
+      <!-- ===== DASHBOARD VIEW ===== -->
+      <div id="view-dashboard" class="admin-view">
         <div class="admin-header">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
             <div>
-              <h1>Welcome back, Adi</h1>
-              <p id="adminDate"></p>
+              <h1 id="admin-greeting">Welcome back</h1>
+              <p id="admin-date"></p>
             </div>
-            <div id="adminUserInfo"></div>
+            <div id="admin-user-info" style="font-size:12px;color:var(--earth-faint);"></div>
           </div>
         </div>
 
-        <!-- Metrics row (populated by JS) -->
-        <div class="metrics" id="metricsRow"><!-- JS fills --></div>
+        <div class="metrics-row" id="metrics-row"></div>
 
-        <!-- Recent Clients table -->
-        <div class="table-card" style="margin-bottom: 24px;" id="clientsTable"><!-- JS fills --></div>
+        <!-- CLIENT TABLE -->
+        <div class="table-card" id="clients-card">
+          <div class="table-card-header"><h3>Clients</h3></div>
+          <div class="search-bar">
+            <input type="text" id="client-search" placeholder="Search clients...">
+            <select id="client-filter">
+              <option value="">All Stages</option>
+              <option value="inquiry">Inquiry</option>
+              <option value="lead">Lead</option>
+              <option value="active">Active</option>
+              <option value="completed">Completed</option>
+              <option value="paused">Paused</option>
+            </select>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr><th>Client</th><th>Email</th><th>Stage</th><th>Tags</th></tr>
+            </thead>
+            <tbody id="clients-tbody"></tbody>
+          </table>
+        </div>
 
-        <!-- Upcoming Ceremonies -->
-        <div class="table-card" id="ceremoniesTable"><!-- JS fills --></div>
+        <!-- CEREMONY OVERVIEW -->
+        <div class="table-card" id="ceremonies-overview-card">
+          <div class="table-card-header">
+            <h3>Upcoming Ceremonies</h3>
+            <button class="sidebar-item" style="width:auto;color:var(--sage);padding:4px 0;" data-view="ceremony-admin">Manage &rarr;</button>
+          </div>
+          <table class="data-table">
+            <thead><tr><th>Ceremony</th><th>Date</th><th>Participants</th><th>Status</th></tr></thead>
+            <tbody id="ceremonies-overview-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ===== CEREMONY ADMIN VIEW ===== -->
+      <div id="view-ceremony-admin" class="admin-view" style="display:none;">
+        <div class="admin-header">
+          <h1>Ceremony Administration</h1>
+          <p>Manage ceremony groups and track participant progression</p>
+        </div>
+
+        <div class="ceremony-selector">
+          <select id="ceremony-select">
+            <option value="">Select a ceremony...</option>
+          </select>
+        </div>
+
+        <div id="ceremony-detail" style="display:none;">
+          <div class="ceremony-meta-row" id="ceremony-meta"></div>
+          <div class="matrix-wrapper">
+            <div class="progression-matrix" id="progression-matrix"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="/js/supabase-client.js"></script>
-  <script src="/js/admin-auth.js"></script>
-  <script src="/js/components.js"></script>
-  <script>
-    // Initialize admin portal
-    (async function() {
-      const user = await window.aapAdmin.initAdminAuth();
-      if (!user) return;
+  <!-- DRAWER OVERLAY -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+  <div class="drawer" id="drawer">
+    <button class="drawer-close" id="drawer-close">&times;</button>
+    <div id="drawer-content"></div>
+  </div>
 
-      document.getElementById('loadingState').style.display = 'none';
-      document.getElementById('appContent').style.display = 'block';
+  <!-- TOAST -->
+  <div id="toast-container"></div>
 
-      // Set date
-      document.getElementById('adminDate').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }) + ' \u2014 Topanga Canyon';
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-      const sb = await window.aapSupabase.getSupabase();
+    const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
+    const ADMIN_EMAILS = ['adimarie@bodyworkandbotanicals.com', 'its.adimarie@gmail.com'];
 
-      // Load metrics
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // ── DOM refs ──
+    const loginScreen = document.getElementById('login-screen');
+    const adminApp = document.getElementById('admin-app');
+    const loginError = document.getElementById('login-error');
+    const toastContainer = document.getElementById('toast-container');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+    const drawer = document.getElementById('drawer');
+    const drawerContent = document.getElementById('drawer-content');
+
+    // ── State ──
+    let allClients = [];
+    let allCeremonies = [];
+    let currentUser = null;
+
+    // ── Helpers ──
+    function escapeHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str || '';
+      return d.innerHTML;
+    }
+
+    function fmtDate(dateStr) {
+      if (!dateStr) return '—';
+      return new Date(dateStr).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    }
+
+    function fmtCurrency(cents) {
+      return '$' + (cents / 100).toLocaleString('en-US', { minimumFractionDigits: 2 });
+    }
+
+    function tagHtml(label) {
+      const cls = label === 'active' ? 'tag-active' : label === 'completed' ? 'tag-completed' : label === 'lead' ? 'tag-lead' : label === 'inquiry' ? 'tag-inquiry' : 'tag-paused';
+      return `<span class="tag ${cls}">${escapeHtml(label)}</span>`;
+    }
+
+    function showToast(msg) {
+      const t = document.createElement('div');
+      t.className = 'toast';
+      t.textContent = msg;
+      toastContainer.appendChild(t);
+      setTimeout(() => t.remove(), 3000);
+    }
+
+    // ── Drawer ──
+    function openDrawer(html) {
+      drawerContent.innerHTML = html;
+      drawer.classList.add('open');
+      drawerOverlay.classList.add('open');
+    }
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      drawerOverlay.classList.remove('open');
+    }
+    drawerOverlay.addEventListener('click', closeDrawer);
+    document.getElementById('drawer-close').addEventListener('click', closeDrawer);
+
+    // ── View switching ──
+    document.querySelectorAll('[data-view]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const view = btn.dataset.view;
+        document.querySelectorAll('.admin-view').forEach(v => v.style.display = 'none');
+        document.getElementById('view-' + view).style.display = 'block';
+        document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll(`.sidebar-item[data-view="${view}"]`).forEach(s => s.classList.add('active'));
+      });
+    });
+
+    // ── Auth ──
+    document.getElementById('google-signin-btn').addEventListener('click', async () => {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: { redirectTo: window.location.origin + window.location.pathname }
+      });
+      if (error) {
+        loginError.textContent = error.message;
+        loginError.style.display = 'block';
+      }
+    });
+
+    document.getElementById('sign-out-btn').addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      window.location.reload();
+    });
+
+    // ── Init auth check ──
+    async function initAuth() {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        loginScreen.style.display = 'flex';
+        return;
+      }
+
+      const email = session.user.email;
+      if (!ADMIN_EMAILS.includes(email)) {
+        loginError.textContent = 'Access denied. This account is not authorized as an admin.';
+        loginError.style.display = 'block';
+        loginScreen.style.display = 'flex';
+        await supabase.auth.signOut();
+        return;
+      }
+
+      currentUser = session.user;
+      loginScreen.style.display = 'none';
+      adminApp.style.display = 'flex';
+
+      const firstName = (currentUser.user_metadata?.full_name || email).split(' ')[0];
+      document.getElementById('admin-greeting').textContent = 'Welcome back, ' + firstName;
+      document.getElementById('admin-date').textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+      document.getElementById('admin-user-info').textContent = email;
+
+      await loadDashboard();
+      await loadCeremonyAdmin();
+      setupRealtimeSubscriptions();
+    }
+
+    // ── Dashboard ──
+    async function loadDashboard() {
+      // Metrics
       const [clientsRes, apptRes, ceremRes, paymentsRes] = await Promise.all([
-        sb.from('clients').select('id', { count: 'exact' }).eq('is_archived', false),
-        sb.from('appointments').select('id', { count: 'exact' }).gte('scheduled_at', new Date().toISOString()).lte('scheduled_at', new Date(Date.now() + 7*86400000).toISOString()),
-        sb.from('ceremony_groups').select('id', { count: 'exact' }).eq('status', 'active'),
-        sb.from('payments').select('amount_cents').eq('status', 'completed').gte('created_at', new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString()),
+        supabase.from('clients').select('id', { count: 'exact' }).eq('is_archived', false),
+        supabase.from('appointments').select('id', { count: 'exact' }).gte('scheduled_at', new Date().toISOString()).lte('scheduled_at', new Date(Date.now() + 7 * 86400000).toISOString()),
+        supabase.from('ceremony_groups').select('id', { count: 'exact' }).eq('status', 'active'),
+        supabase.from('payments').select('amount_cents').eq('status', 'completed').gte('created_at', new Date(new Date().getFullYear(), new Date().getMonth(), 1).toISOString()),
       ]);
 
       const revenue = (paymentsRes.data || []).reduce((sum, p) => sum + (p.amount_cents || 0), 0);
 
-      document.getElementById('metricsRow').innerHTML = [
-        Components.metricCard('Active Clients', clientsRes.count || 0),
-        Components.metricCard('This Week', apptRes.count || 0, 'upcoming sessions'),
-        Components.metricCard('Active Ceremonies', ceremRes.count || 0),
-        Components.metricCard('Revenue (Month)', Components.fmtCurrency(revenue)),
-      ].join('');
+      document.getElementById('metrics-row').innerHTML = [
+        { label: 'Active Clients', value: clientsRes.count || 0 },
+        { label: 'Upcoming Sessions', value: apptRes.count || 0, sub: 'this week' },
+        { label: 'Active Ceremonies', value: ceremRes.count || 0 },
+        { label: 'Revenue (Month)', value: fmtCurrency(revenue) },
+      ].map(m => `
+        <div class="metric-card">
+          <div class="metric-label">${m.label}</div>
+          <div class="metric-value">${m.value}</div>
+          ${m.sub ? `<div class="metric-sub">${m.sub}</div>` : ''}
+        </div>
+      `).join('');
 
-      // Load recent clients
-      const { data: clients } = await sb.from('clients').select('id, full_name, pipeline_stage, tags').eq('is_archived', false).order('created_at', { ascending: false }).limit(10);
+      // Clients
+      await loadClients();
 
-      document.getElementById('clientsTable').innerHTML = `
-        <div class="table-card-header"><h3>Recent Clients</h3></div>
-        <table class="data-table">
-          <thead><tr><th>Client</th><th>Status</th><th>Tags</th></tr></thead>
-          <tbody>${(clients || []).map(c => `
-            <tr>
-              <td style="color: var(--earth); font-weight: 500;">${c.full_name || 'Unnamed'}</td>
-              <td>${Components.tag(c.pipeline_stage || 'active', c.pipeline_stage || 'active')}</td>
-              <td style="font-size: 12px; color: var(--earth-faint);">${(c.tags || []).join(', ') || '&mdash;'}</td>
-            </tr>
-          `).join('') || '<tr><td colspan="3">' + Components.emptyState('No clients yet') + '</td></tr>'}</tbody>
-        </table>
+      // Ceremonies overview
+      await loadCeremoniesOverview();
+    }
+
+    async function loadClients() {
+      const { data } = await supabase
+        .from('clients')
+        .select('id, full_name, email, phone, pipeline_stage, tags, intake_notes, created_at')
+        .eq('is_archived', false)
+        .order('created_at', { ascending: false });
+
+      allClients = data || [];
+      renderClients();
+    }
+
+    function renderClients() {
+      const search = (document.getElementById('client-search').value || '').toLowerCase();
+      const filter = document.getElementById('client-filter').value;
+
+      const filtered = allClients.filter(c => {
+        const matchSearch = !search || (c.full_name || '').toLowerCase().includes(search) || (c.email || '').toLowerCase().includes(search);
+        const matchFilter = !filter || c.pipeline_stage === filter;
+        return matchSearch && matchFilter;
+      });
+
+      const tbody = document.getElementById('clients-tbody');
+      if (filtered.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" class="empty-state">No clients found</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(c => `
+        <tr data-client-id="${c.id}">
+          <td style="color:var(--earth);font-weight:500;">${escapeHtml(c.full_name || 'Unnamed')}</td>
+          <td style="font-size:12px;color:var(--earth-faint);">${escapeHtml(c.email || '—')}</td>
+          <td>${tagHtml(c.pipeline_stage || 'active')}</td>
+          <td style="font-size:12px;color:var(--earth-faint);">${(c.tags || []).map(escapeHtml).join(', ') || '—'}</td>
+        </tr>
+      `).join('');
+
+      // Attach click handlers
+      tbody.querySelectorAll('tr[data-client-id]').forEach(tr => {
+        tr.addEventListener('click', () => openClientDrawer(tr.dataset.clientId));
+      });
+    }
+
+    document.getElementById('client-search').addEventListener('input', renderClients);
+    document.getElementById('client-filter').addEventListener('change', renderClients);
+
+    async function openClientDrawer(clientId) {
+      const client = allClients.find(c => c.id === clientId);
+      if (!client) return;
+
+      // Fetch related data
+      const [apptRes, msgRes, ceremRes] = await Promise.all([
+        supabase.from('appointments').select('id, title, scheduled_at, status').eq('client_id', clientId).order('scheduled_at', { ascending: false }).limit(5),
+        supabase.from('client_messages').select('id, subject, created_at, sender_type').eq('client_id', clientId).order('created_at', { ascending: false }).limit(5),
+        supabase.from('ceremony_participants').select('id, current_step, status, ceremony_groups(name)').eq('client_id', clientId).limit(3),
+      ]);
+
+      const appointments = apptRes.data || [];
+      const messages = msgRes.data || [];
+      const ceremonies = ceremRes.data || [];
+
+      openDrawer(`
+        <h2>${escapeHtml(client.full_name || 'Unnamed')}</h2>
+        <div class="drawer-meta">${escapeHtml(client.email || '')} ${client.phone ? '&middot; ' + escapeHtml(client.phone) : ''}</div>
+        <div class="drawer-meta">${tagHtml(client.pipeline_stage || 'active')} &nbsp; Since ${fmtDate(client.created_at)}</div>
+
+        ${client.intake_notes ? `<div class="drawer-section"><h4>Intake Notes</h4><p>${escapeHtml(client.intake_notes)}</p></div>` : ''}
+
+        <div class="drawer-section">
+          <h4>Recent Appointments</h4>
+          ${appointments.length ? '<ul>' + appointments.map(a =>
+            `<li>${escapeHtml(a.title || 'Session')} — ${fmtDate(a.scheduled_at)}</li>`
+          ).join('') + '</ul>' : '<p style="color:var(--earth-faint);">No appointments</p>'}
+        </div>
+
+        <div class="drawer-section">
+          <h4>Messages</h4>
+          ${messages.length ? '<ul>' + messages.map(m =>
+            `<li>${escapeHtml(m.subject || 'No subject')} (${m.sender_type}) — ${fmtDate(m.created_at)}</li>`
+          ).join('') + '</ul>' : '<p style="color:var(--earth-faint);">No messages</p>'}
+        </div>
+
+        <div class="drawer-section">
+          <h4>Ceremonies</h4>
+          ${ceremonies.length ? '<ul>' + ceremonies.map(c =>
+            `<li>${escapeHtml(c.ceremony_groups?.name || 'Ceremony')} — Step ${c.current_step || 0}/10 (${c.status})</li>`
+          ).join('') + '</ul>' : '<p style="color:var(--earth-faint);">No ceremonies</p>'}
+        </div>
+      `);
+    }
+
+    // ── Ceremonies Overview ──
+    async function loadCeremoniesOverview() {
+      const { data } = await supabase
+        .from('ceremony_groups')
+        .select('id, name, ceremony_date, max_participants, status, ceremony_participants(id)')
+        .order('ceremony_date', { ascending: true })
+        .limit(5);
+
+      const ceremonies = data || [];
+      const tbody = document.getElementById('ceremonies-overview-tbody');
+
+      if (ceremonies.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" class="empty-state">No ceremonies yet</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = ceremonies.map(c => `
+        <tr>
+          <td style="color:var(--earth);font-weight:500;">${escapeHtml(c.name)}</td>
+          <td>${fmtDate(c.ceremony_date)}</td>
+          <td>${(c.ceremony_participants || []).length}${c.max_participants ? ' / ' + c.max_participants : ''}</td>
+          <td>${tagHtml(c.status || 'active')}</td>
+        </tr>
+      `).join('');
+    }
+
+    // ── Ceremony Admin ──
+    async function loadCeremonyAdmin() {
+      const { data } = await supabase
+        .from('ceremony_groups')
+        .select('id, name, ceremony_date, location, max_participants, status')
+        .order('ceremony_date', { ascending: false });
+
+      allCeremonies = data || [];
+      const sel = document.getElementById('ceremony-select');
+      sel.innerHTML = '<option value="">Select a ceremony...</option>' +
+        allCeremonies.map(c => `<option value="${c.id}">${escapeHtml(c.name)} — ${fmtDate(c.ceremony_date)}</option>`).join('');
+    }
+
+    document.getElementById('ceremony-select').addEventListener('change', async (e) => {
+      const id = e.target.value;
+      const detail = document.getElementById('ceremony-detail');
+      if (!id) { detail.style.display = 'none'; return; }
+
+      detail.style.display = 'block';
+      const ceremony = allCeremonies.find(c => c.id === id);
+      if (!ceremony) return;
+
+      // Meta row
+      document.getElementById('ceremony-meta').innerHTML = `
+        <div class="ceremony-meta-item"><strong>Date:</strong> ${fmtDate(ceremony.ceremony_date)}</div>
+        <div class="ceremony-meta-item"><strong>Location:</strong> ${escapeHtml(ceremony.location || '—')}</div>
+        <div class="ceremony-meta-item"><strong>Max Participants:</strong> ${ceremony.max_participants || '—'}</div>
+        <div class="ceremony-meta-item"><strong>Status:</strong> ${tagHtml(ceremony.status || 'active')}</div>
       `;
 
-      // Load ceremonies
-      const { data: ceremonies } = await sb.from('ceremony_groups').select('id, name, ceremony_date, max_participants, status').order('ceremony_date', { ascending: true }).limit(5);
+      // Load participants
+      const { data: participants } = await supabase
+        .from('ceremony_participants')
+        .select('id, current_step, status, completed_steps, clients(id, full_name, email)')
+        .eq('ceremony_group_id', id)
+        .order('created_at', { ascending: true });
 
-      document.getElementById('ceremoniesTable').innerHTML = `
-        <div class="table-card-header"><h3>Upcoming Ceremonies</h3><a href="/admin/ceremonies.html" style="color: var(--sage); font-size: 12px; text-decoration: none;">Manage Ceremonies &rarr;</a></div>
-        <table class="data-table">
-          <thead><tr><th>Ceremony</th><th>Date</th><th>Status</th></tr></thead>
-          <tbody>${(ceremonies || []).map(c => `
-            <tr>
-              <td style="color: var(--earth); font-weight: 500;">${c.name}</td>
-              <td>${Components.fmtDate(c.ceremony_date)}</td>
-              <td>${Components.tag(c.status || 'active', c.status || 'active')}</td>
-            </tr>
-          `).join('') || '<tr><td colspan="3">' + Components.emptyState('No ceremonies yet') + '</td></tr>'}</tbody>
-        </table>
-      `;
-    })();
+      renderMatrix(participants || [], id);
+    });
+
+    const STEP_LABELS = [
+      'Intention', 'Medical', 'Consent', 'Prep Diet', 'Integration Plan',
+      'Container', 'Orientation', 'Arrival', 'Ceremony', 'Integration'
+    ];
+
+    function renderMatrix(participants, ceremonyId) {
+      const matrix = document.getElementById('progression-matrix');
+
+      if (participants.length === 0) {
+        matrix.innerHTML = '';
+        matrix.style.display = 'none';
+        document.getElementById('ceremony-detail').insertAdjacentHTML('beforeend',
+          '<div class="empty-state" id="no-participants-msg">No participants enrolled</div>');
+        return;
+      }
+
+      const existing = document.getElementById('no-participants-msg');
+      if (existing) existing.remove();
+      matrix.style.display = 'grid';
+
+      // Headers
+      let html = '<div class="matrix-header">Participant</div>';
+      STEP_LABELS.forEach(l => { html += `<div class="matrix-header">${l}</div>`; });
+
+      // Rows
+      participants.forEach(p => {
+        const name = p.clients?.full_name || 'Unknown';
+        const completedSteps = p.completed_steps || [];
+        html += `<div class="matrix-name" data-participant-id="${p.id}">${escapeHtml(name)}</div>`;
+
+        for (let i = 1; i <= 10; i++) {
+          const done = completedSteps.includes(i) || i <= (p.current_step || 0);
+          html += `<div class="matrix-cell" data-participant-id="${p.id}" data-step="${i}" data-ceremony-id="${ceremonyId}">
+            <div class="step-dot ${done ? 'complete' : ''}"></div>
+          </div>`;
+        }
+      });
+
+      matrix.innerHTML = html;
+
+      // Click handlers for step toggling
+      matrix.querySelectorAll('.matrix-cell').forEach(cell => {
+        cell.addEventListener('click', () => toggleStep(cell));
+      });
+
+      // Click handlers for participant names (open drawer)
+      matrix.querySelectorAll('.matrix-name').forEach(nameEl => {
+        nameEl.addEventListener('click', () => openParticipantDrawer(nameEl.dataset.participantId));
+      });
+    }
+
+    async function toggleStep(cell) {
+      const participantId = cell.dataset.participantId;
+      const step = parseInt(cell.dataset.step);
+      const dot = cell.querySelector('.step-dot');
+      const isComplete = dot.classList.contains('complete');
+
+      // Fetch current participant data
+      const { data: participant } = await supabase
+        .from('ceremony_participants')
+        .select('completed_steps, current_step')
+        .eq('id', participantId)
+        .single();
+
+      if (!participant) return;
+
+      let completedSteps = participant.completed_steps || [];
+
+      if (isComplete) {
+        completedSteps = completedSteps.filter(s => s !== step);
+      } else {
+        if (!completedSteps.includes(step)) completedSteps.push(step);
+      }
+
+      completedSteps.sort((a, b) => a - b);
+      const newCurrentStep = completedSteps.length > 0 ? Math.max(...completedSteps) : 0;
+
+      const { error } = await supabase
+        .from('ceremony_participants')
+        .update({ completed_steps: completedSteps, current_step: newCurrentStep })
+        .eq('id', participantId);
+
+      if (error) {
+        showToast('Error updating step');
+        return;
+      }
+
+      dot.classList.toggle('complete');
+      showToast(`Step ${step} ${isComplete ? 'unmarked' : 'completed'}`);
+    }
+
+    async function openParticipantDrawer(participantId) {
+      const { data: participant } = await supabase
+        .from('ceremony_participants')
+        .select('id, current_step, status, completed_steps, notes, clients(id, full_name, email, phone)')
+        .eq('id', participantId)
+        .single();
+
+      if (!participant) return;
+
+      const client = participant.clients || {};
+      const notes = participant.notes || [];
+
+      openDrawer(`
+        <h2>${escapeHtml(client.full_name || 'Participant')}</h2>
+        <div class="drawer-meta">${escapeHtml(client.email || '')} ${client.phone ? '&middot; ' + escapeHtml(client.phone) : ''}</div>
+        <div class="drawer-meta">Step ${participant.current_step || 0} of 10 &middot; ${tagHtml(participant.status || 'active')}</div>
+
+        <div class="drawer-section">
+          <h4>Completed Steps</h4>
+          <p>${(participant.completed_steps || []).map(s => STEP_LABELS[s - 1] || 'Step ' + s).join(', ') || 'None'}</p>
+        </div>
+
+        <div class="drawer-section">
+          <h4>Notes</h4>
+          ${(Array.isArray(notes) ? notes : []).map(n => `
+            <div class="note-item">
+              <div>${escapeHtml(typeof n === 'string' ? n : n.text || '')}</div>
+              ${n.date ? `<div class="note-date">${fmtDate(n.date)}</div>` : ''}
+            </div>
+          `).join('') || '<p style="color:var(--earth-faint);">No notes yet</p>'}
+
+          <div class="note-form">
+            <textarea id="new-note-text" placeholder="Add a note..."></textarea>
+            <button id="add-note-btn">Add Note</button>
+          </div>
+        </div>
+      `);
+
+      // Add note handler
+      document.getElementById('add-note-btn').addEventListener('click', async () => {
+        const text = document.getElementById('new-note-text').value.trim();
+        if (!text) return;
+
+        const currentNotes = Array.isArray(participant.notes) ? participant.notes : [];
+        const newNote = { text, date: new Date().toISOString() };
+        const updatedNotes = [...currentNotes, newNote];
+
+        const { error } = await supabase
+          .from('ceremony_participants')
+          .update({ notes: updatedNotes })
+          .eq('id', participantId);
+
+        if (error) {
+          showToast('Error adding note');
+          return;
+        }
+
+        showToast('Note added');
+        openParticipantDrawer(participantId); // refresh
+      });
+    }
+
+    // ── Real-time subscriptions ──
+    function setupRealtimeSubscriptions() {
+      supabase.channel('admin-realtime')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'clients' }, () => {
+          loadClients();
+          showToast('Clients updated');
+        })
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'ceremony_participants' }, () => {
+          const sel = document.getElementById('ceremony-select');
+          if (sel.value) sel.dispatchEvent(new Event('change'));
+          showToast('Ceremony participant updated');
+        })
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'appointments' }, () => {
+          loadDashboard();
+          showToast('Appointment updated');
+        })
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'payments' }, () => {
+          loadDashboard();
+          showToast('Payment recorded');
+        })
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'client_messages' }, () => {
+          showToast('New message');
+        })
+        .subscribe();
+    }
+
+    // ── Boot ──
+    initAuth();
   </script>
 </body>
 </html>
