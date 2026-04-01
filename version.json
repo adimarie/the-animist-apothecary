@@ -1,12 +1,12 @@
 {
-  "version": "v260331.11 11:44p",
-  "release": 11,
-  "sha": "0544da3",
-  "fullSha": "0544da33b44bbdba66f1559d8a99ac9c803ea8fd",
+  "version": "v260401.01 2:41p",
+  "release": 1,
+  "sha": "45fc5be",
+  "fullSha": "45fc5be1d3d5a2fc6191a231cb0ba4fdd9b31ad8",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-03-31T16:43:54-07:00",
-  "commits": [{"sha":"0544da3","message":"feat: add new offering and placeholder pages","author":"Adi Marie"}]
+  "pushedAt": "2026-04-01T07:41:35-07:00",
+  "commits": [{"sha":"45fc5be","message":"feat: major site update — Deep Work cornerstone, nav overhaul, new pages, Sacred Reciprocity","author":"Adi Marie"}]
 }
