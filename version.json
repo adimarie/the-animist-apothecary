@@ -1,12 +1,12 @@
 {
-  "version": "v260401.07 4:11p",
-  "release": 7,
-  "sha": "0954ed3",
-  "fullSha": "0954ed31f6e32604b8811f8b9a8f7af46193615a",
+  "version": "v260401.08 4:13p",
+  "release": 8,
+  "sha": "27a6443",
+  "fullSha": "27a6443f1fa75df5ede332e18ee7836dc420a24a",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-04-01T09:11:07-07:00",
-  "commits": [{"sha":"0954ed3","message":"feat: add Admin Portal, Client Portal, and Ceremony Management System","author":"Adi Marie"}]
+  "pushedAt": "2026-04-01T09:12:55-07:00",
+  "commits": [{"sha":"27a6443","message":"Add Client Portal and Facilitator Portal buttons to footer across all pages","author":"Adi Marie"}]
 }
