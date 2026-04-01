@@ -1,12 +1,12 @@
 {
-  "version": "v260401.03 2:48p",
-  "release": 3,
-  "sha": "0f8670d",
-  "fullSha": "0f8670dd5668e0963749b9a2f9323bca3a42478b",
+  "version": "v260401.04 3:07p",
+  "release": 4,
+  "sha": "8ae8373",
+  "fullSha": "8ae8373a42b351e06cd9ce9fe3199ab341ecca73",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-04-01T07:48:12-07:00",
-  "commits": [{"sha":"0f8670d","message":"feat: simplify Deep Work nav column — single invitation card instead of 4 arc links","author":"Adi Marie"}]
+  "pushedAt": "2026-04-01T08:07:20-07:00",
+  "commits": [{"sha":"8ae8373","message":"fix: resolve all encoding errors + refine Deep Work nav card","author":"Adi Marie"}]
 }
