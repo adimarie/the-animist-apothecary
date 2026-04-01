@@ -1778,3 +1778,31 @@ img { max-width: 100%; display: block; }
   .newsletter-form input { border-right: 1px solid rgba(255,255,255,0.12); border-radius: 2px; }
   .newsletter-form button { border-radius: 2px; }
 }
+
+/* ====== PORTAL BUTTONS (Footer) ====== */
+.portal-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.portal-btn {
+  display: inline-block;
+  padding: 10px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-family: Inter, -apple-system, sans-serif !important;
+  font-size: 11px !important;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.portal-btn:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.06);
+}
