@@ -41,43 +41,84 @@
       font-weight: 500;
     }
 
-    /* LOGIN SCREEN */
-    #login-screen {
+    /* AUTH SCREEN */
+    #auth-screen {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      gap: 20px;
       background: var(--cream);
     }
-    #login-screen h1 {
-      font-size: 32px;
-      color: var(--earth);
+    .auth-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 48px 40px;
+      box-shadow: var(--shadow-md);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
     }
-    #login-screen .subtitle {
+    .auth-card h1 {
+      font-size: 28px;
+      color: var(--earth);
+      margin-bottom: 4px;
+    }
+    .auth-card > p {
       color: var(--earth-faint);
       font-size: 13px;
+      margin-bottom: 28px;
     }
-    .login-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 28px;
+    .auth-mode { display: none; }
+    .auth-mode.active { display: block; }
+    .auth-input {
+      display: block;
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      background: var(--cream);
+      color: var(--earth);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .auth-input:focus {
+      outline: none;
+      border-color: var(--sage);
+      background: var(--white);
+    }
+    .auth-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
       background: var(--earth);
       color: var(--cream);
       border: none;
-      border-radius: var(--radius);
+      border-radius: var(--radius-sm);
       font-family: 'Inter', sans-serif;
       font-size: 14px;
       font-weight: 500;
       cursor: pointer;
       transition: background 0.2s;
+      margin-bottom: 12px;
     }
-    .login-btn:hover { background: var(--earth-mid); }
-    .login-error {
+    .auth-btn:hover { background: var(--earth-mid); }
+    .auth-switch {
+      background: none;
+      border: none;
+      color: var(--sage);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .auth-switch:hover { color: var(--sage-dark); }
+    .auth-error {
       color: var(--rose);
       font-size: 13px;
+      margin-top: 12px;
       display: none;
     }
 
@@ -238,6 +279,53 @@
       color: var(--earth-faint);
     }
 
+    /* SEND MESSAGE */
+    .send-message-form {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--cream-dark);
+    }
+    .send-message-form textarea {
+      display: block;
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--cream-dark);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      background: var(--cream);
+      color: var(--earth);
+      resize: vertical;
+      min-height: 60px;
+      margin-bottom: 10px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .send-message-form textarea:focus {
+      outline: none;
+      border-color: var(--sage);
+      background: var(--white);
+    }
+    .send-btn {
+      padding: 8px 20px;
+      background: var(--sage);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .send-btn:hover { background: var(--sage-dark); }
+    .send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .send-success {
+      color: var(--sage);
+      font-size: 12px;
+      margin-top: 8px;
+      display: none;
+    }
+
     /* EMPTY STATE */
     .empty-state {
       text-align: center;
@@ -259,24 +347,44 @@
       .portal-grid {
         grid-template-columns: 1fr;
       }
+      .auth-card {
+        margin: 16px;
+        padding: 32px 24px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- LOGIN SCREEN -->
-  <div id="login-screen">
-    <h1>The Animist Apothecary</h1>
-    <p class="subtitle">Client Portal</p>
-    <button class="login-btn" id="google-signin-btn">
-      <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
-      Sign in with Google
-    </button>
-    <p class="login-error" id="login-error"></p>
+  <!-- AUTH SCREEN -->
+  <div id="auth-screen">
+    <div class="auth-card">
+      <h1>The Animist Apothecary</h1>
+      <p>Your Personal Portal</p>
+
+      <!-- Sign In mode (default) -->
+      <div id="mode-signin" class="auth-mode active">
+        <input type="email" id="signin-email" class="auth-input" placeholder="Email">
+        <input type="password" id="signin-password" class="auth-input" placeholder="Password">
+        <button class="auth-btn" id="signin-btn">Sign In</button>
+        <button class="auth-switch" id="show-signup">First time? Create Account</button>
+      </div>
+
+      <!-- Sign Up mode -->
+      <div id="mode-signup" class="auth-mode">
+        <input type="email" id="signup-email" class="auth-input" placeholder="Email">
+        <input type="password" id="signup-password" class="auth-input" placeholder="Password">
+        <input type="password" id="signup-confirm" class="auth-input" placeholder="Confirm Password">
+        <button class="auth-btn" id="signup-btn">Create Account</button>
+        <button class="auth-switch" id="show-signin">Already have an account? Sign In</button>
+      </div>
+
+      <div id="auth-error" class="auth-error"></div>
+    </div>
   </div>
 
-  <!-- PORTAL APP -->
-  <div id="portal-app" style="display:none;">
+  <!-- DASHBOARD SCREEN -->
+  <div id="dashboard-screen" style="display:none;">
     <nav class="portal-nav">
       <a href="/portal/" class="nav-brand">The Animist <em>Apothecary</em></a>
       <div class="nav-right">
@@ -294,7 +402,7 @@
       <!-- Row 1: Appointments + Messages -->
       <div class="portal-grid">
         <div class="portal-card">
-          <h3>Upcoming Appointments</h3>
+          <h3>Upcoming Sessions</h3>
           <div id="appointments-list">
             <div class="empty-state">No upcoming appointments</div>
           </div>
@@ -303,6 +411,11 @@
           <h3>Messages from Practitioner</h3>
           <div id="messages-list">
             <div class="empty-state">No messages</div>
+          </div>
+          <div class="send-message-form">
+            <textarea id="message-text" placeholder="Write a message to your practitioner..."></textarea>
+            <button class="send-btn" id="send-message-btn">Send Message</button>
+            <div class="send-success" id="send-success">Message sent</div>
           </div>
         </div>
       </div>
@@ -321,14 +434,16 @@
     import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
     const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     // ── DOM refs ──
-    const loginScreen = document.getElementById('login-screen');
-    const portalApp = document.getElementById('portal-app');
-    const loginError = document.getElementById('login-error');
+    const authScreen = document.getElementById('auth-screen');
+    const dashboardScreen = document.getElementById('dashboard-screen');
+    const authError = document.getElementById('auth-error');
+    const modeSignin = document.getElementById('mode-signin');
+    const modeSignup = document.getElementById('mode-signup');
 
     // ── Helpers ──
     function escapeHtml(str) {
@@ -350,31 +465,143 @@
       return date + ' at ' + time;
     }
 
-    // ── Auth ──
-    document.getElementById('google-signin-btn').addEventListener('click', async () => {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: { redirectTo: window.location.origin + window.location.pathname }
-      });
+    function showError(msg) {
+      authError.textContent = msg;
+      authError.style.display = 'block';
+    }
+
+    function clearError() {
+      authError.textContent = '';
+      authError.style.display = 'none';
+    }
+
+    // ── Mode switching ──
+    document.getElementById('show-signup').addEventListener('click', () => {
+      clearError();
+      modeSignin.classList.remove('active');
+      modeSignup.classList.add('active');
+      document.getElementById('signup-email').focus();
+    });
+
+    document.getElementById('show-signin').addEventListener('click', () => {
+      clearError();
+      modeSignup.classList.remove('active');
+      modeSignin.classList.add('active');
+      document.getElementById('signin-email').focus();
+    });
+
+    // ── Sign In ──
+    document.getElementById('signin-btn').addEventListener('click', async () => {
+      clearError();
+      const email = document.getElementById('signin-email').value.trim();
+      const password = document.getElementById('signin-password').value;
+      if (!email || !password) {
+        showError('Please enter both email and password');
+        return;
+      }
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) {
-        loginError.textContent = error.message;
-        loginError.style.display = 'block';
+        showError(error.message);
       }
     });
 
+    // ── Sign Up ──
+    document.getElementById('signup-btn').addEventListener('click', async () => {
+      clearError();
+      const email = document.getElementById('signup-email').value.trim();
+      const password = document.getElementById('signup-password').value;
+      const confirm = document.getElementById('signup-confirm').value;
+
+      if (!email || !password || !confirm) {
+        showError('Please fill in all fields');
+        return;
+      }
+      if (password !== confirm) {
+        showError('Passwords do not match');
+        return;
+      }
+      if (password.length < 6) {
+        showError('Password must be at least 6 characters');
+        return;
+      }
+
+      // Check if email exists in clients table
+      const { data: clientCheck, error: checkError } = await supabase
+        .from('clients')
+        .select('id')
+        .eq('email', email)
+        .eq('is_archived', false)
+        .single();
+
+      if (checkError || !clientCheck) {
+        showError('Email not found in our client records. Please contact your practitioner to get started.');
+        return;
+      }
+
+      const { error } = await supabase.auth.signUp({ email, password });
+      if (error) {
+        showError(error.message);
+      } else {
+        showError('');
+        authError.style.display = 'block';
+        authError.style.color = 'var(--sage)';
+        authError.textContent = 'Account created! Please check your email to confirm, then sign in.';
+      }
+    });
+
+    // ── Sign Out ──
     document.getElementById('sign-out-btn').addEventListener('click', async () => {
       await supabase.auth.signOut();
       window.location.reload();
+    });
+
+    // ── Send Message ──
+    document.getElementById('send-message-btn').addEventListener('click', async () => {
+      const textarea = document.getElementById('message-text');
+      const body = textarea.value.trim();
+      if (!body || !window._clientId) return;
+
+      const btn = document.getElementById('send-message-btn');
+      btn.disabled = true;
+
+      const { error } = await supabase.from('client_messages').insert({
+        client_id: window._clientId,
+        body: body,
+        sender_type: 'client',
+        subject: 'Message from client'
+      });
+
+      btn.disabled = false;
+
+      if (error) {
+        console.error('Error sending message:', error);
+        return;
+      }
+
+      textarea.value = '';
+      const success = document.getElementById('send-success');
+      success.style.display = 'block';
+      setTimeout(() => { success.style.display = 'none'; }, 3000);
+    });
+
+    // ── Auth state listener ──
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN' && session) {
+        loadPortal(session);
+      }
     });
 
     // ── Init ──
     async function init() {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
-        loginScreen.style.display = 'flex';
+        authScreen.style.display = 'flex';
         return;
       }
+      await loadPortal(session);
+    }
 
+    async function loadPortal(session) {
       const email = session.user.email;
 
       // Find client by email match
@@ -386,15 +613,17 @@
         .single();
 
       if (clientError || !client) {
-        loginError.textContent = 'No client profile found for ' + email + '. Please contact your practitioner.';
-        loginError.style.display = 'block';
-        loginScreen.style.display = 'flex';
+        showError('No client profile found for ' + email + '. Please contact your practitioner.');
+        authScreen.style.display = 'flex';
         return;
       }
 
-      // Show portal
-      loginScreen.style.display = 'none';
-      portalApp.style.display = 'block';
+      // Store client ID for messaging
+      window._clientId = client.id;
+
+      // Show dashboard
+      authScreen.style.display = 'none';
+      dashboardScreen.style.display = 'block';
 
       const displayName = client.display_name || client.full_name || 'Friend';
       const firstName = displayName.split(' ')[0];
@@ -449,11 +678,10 @@
       try {
         const { data, error } = await supabase
           .from('client_messages')
-          .select('id, subject, body, sender_name, created_at, is_read')
+          .select('id, subject, body, sender_name, sender_type, created_at, is_read')
           .eq('client_id', clientId)
-          .eq('sender_type', 'practitioner')
           .order('created_at', { ascending: false })
-          .limit(5);
+          .limit(10);
 
         if (error) throw error;
 
@@ -461,12 +689,13 @@
         if (!data || data.length === 0) return;
 
         container.innerHTML = data.map(m => {
-          const unread = !m.is_read ? '<span class="unread-dot"></span>' : '';
+          const unread = !m.is_read && m.sender_type === 'practitioner' ? '<span class="unread-dot"></span>' : '';
+          const fromLabel = m.sender_type === 'client' ? 'You' : (m.sender_name || 'Practitioner');
           const bodyPreview = m.body ? (m.body.length > 100 ? m.body.substring(0, 100) + '...' : m.body) : '';
           return `<div class="message-item">
             <div class="message-subject">${escapeHtml(m.subject || 'Message')}${unread}</div>
             ${bodyPreview ? `<div class="message-body">${escapeHtml(bodyPreview)}</div>` : ''}
-            <div class="message-date">${m.sender_name ? 'From ' + escapeHtml(m.sender_name) + ' &middot; ' : ''}${fmtDate(m.created_at)}</div>
+            <div class="message-date">${escapeHtml(fromLabel)} &middot; ${fmtDate(m.created_at)}</div>
           </div>`;
         }).join('');
       } catch (err) {
@@ -502,7 +731,6 @@
           <div class="ceremony-steps">${currentStep} of 10 preparation steps complete</div>
         `;
 
-        // Also set subtitle
         document.getElementById('portal-subtitle').textContent =
           group.name + ' — Step ' + currentStep + ' of 10';
       } catch (err) {
