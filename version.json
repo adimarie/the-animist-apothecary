@@ -1,12 +1,12 @@
 {
-  "version": "v260402.03 6:23p",
-  "release": 3,
-  "sha": "4729e0b",
-  "fullSha": "4729e0bceefb97b017f53ef76a2226da2e008ab3",
+  "version": "v260402.04 7:32p",
+  "release": 4,
+  "sha": "a2e1b04",
+  "fullSha": "a2e1b0404d7c809cf815873539f06445aa8671a4",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervmrg6be",
-  "pushedAt": "2026-04-02T11:23:37-07:00",
-  "commits": [{"sha":"9b8128c","message":"Fix site-wide visibility bug, unify aesthetic, and clean up branding","author":"Adi Marie"},{"sha":"4729e0b","message":"Fix copyright year: 2026 → 2025 across all pages","author":"Adi Marie"}]
+  "machine": "runnervm727z3",
+  "pushedAt": "2026-04-02T12:31:52-07:00",
+  "commits": [{"sha":"a2e1b04","message":"Elevate images to moodboard aesthetic, unify colors/buttons/styles site-wide","author":"Adi Marie"}]
 }
