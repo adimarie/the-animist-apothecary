@@ -1,12 +1,12 @@
 {
-  "version": "v260401.10 7:42p",
-  "release": 10,
-  "sha": "d1407a0",
-  "fullSha": "d1407a0522ee05add60c9e9efcb9bc85cbef632c",
+  "version": "v260402.01 12:55a",
+  "release": 1,
+  "sha": "726be92",
+  "fullSha": "726be92289b8243ecc36689003760d0f0dadecd6",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-04-01T12:42:07-07:00",
-  "commits": [{"sha":"d1407a0","message":"Deploy admin portal, client portal, and fix footer buttons","author":"Adi Marie"}]
+  "pushedAt": "2026-04-01T17:55:01-07:00",
+  "commits": [{"sha":"726be92","message":"Deploy portals with internal login system and fix footer buttons","author":"Adi Marie"}]
 }
