@@ -1,12 +1,12 @@
 {
-  "version": "v260402.02 2:29a",
-  "release": 2,
-  "sha": "a0cb3b4",
-  "fullSha": "a0cb3b495449dc1ccee727a250a5b4e22b5bbe03",
+  "version": "v260402.03 6:23p",
+  "release": 3,
+  "sha": "4729e0b",
+  "fullSha": "4729e0bceefb97b017f53ef76a2226da2e008ab3",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-04-01T19:29:40-07:00",
-  "commits": [{"sha":"a0cb3b4","message":"Restore corrupted pages and safely add footer portal buttons","author":"Adi Marie"}]
+  "pushedAt": "2026-04-02T11:23:37-07:00",
+  "commits": [{"sha":"9b8128c","message":"Fix site-wide visibility bug, unify aesthetic, and clean up branding","author":"Adi Marie"},{"sha":"4729e0b","message":"Fix copyright year: 2026 → 2025 across all pages","author":"Adi Marie"}]
 }
