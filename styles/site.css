@@ -952,8 +952,8 @@ li {
 
 /* Begin Here — ceremonial CTA */
 .aap-btn--begin {
-  background: linear-gradient(135deg, #b8943c 0%, #c4a24e 100%);
-  color: #141210;
+  background: linear-gradient(135deg, #5B7553 0%, #6B8563 100%);
+  color: #f5f0e8;
   border: none;
   font-family: var(--aap-font-heading);
   font-size: 1.1rem;
@@ -961,13 +961,13 @@ li {
   letter-spacing: 0.05em;
   padding: 1rem 2.5rem;
   border-radius: 2px;
-  box-shadow: 0 2px 12px rgba(184, 148, 60, 0.3);
+  box-shadow: 0 2px 12px rgba(91, 117, 83, 0.3);
   text-transform: none;
 }
 .aap-btn--begin:hover {
-  background: linear-gradient(135deg, #c4a24e 0%, #d4b05a 100%);
-  color: #141210;
-  box-shadow: 0 4px 20px rgba(184, 148, 60, 0.4);
+  background: linear-gradient(135deg, #4A6344 0%, #5B7553 100%);
+  color: #f5f0e8;
+  box-shadow: 0 4px 20px rgba(91, 117, 83, 0.4);
   transform: translateY(-1px);
 }
 

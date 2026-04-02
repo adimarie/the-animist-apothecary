@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sacred Reciprocity &middot; The Animist Apothecary</title>
   <meta name="description" content="A community economic model rooted in sacred exchange, mutual care, and the belief that healing must remain accessible while honoring the true cost of sustaining this medicine.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
     /* ===== Sacred Reciprocity &mdash; Page-Specific Styles ===== */
@@ -12,40 +15,30 @@
     /* Hero / Title */
     .reciprocity-hero { padding: 7rem 3rem 4rem; background: linear-gradient(rgba(18,24,14,0.55), rgba(18,24,14,0.80)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&h=900&fit=crop&q=80') center/cover no-repeat; text-align: center; }
     .reciprocity-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: #fff; margin-bottom: 0.3rem; line-height: 1.15; font-weight: 300; }
-    .reciprocity-hero h1 em { color: var(--sage-pale); font-style: normal; }
+    .reciprocity-hero h1 em { color: #C5D9C6; font-style: normal; }
     .reciprocity-hero .hero-sub { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: rgba(255,255,255,0.6); font-style: italic; margin-top: 0.5rem; }
 
-    /* Opening Epigraph */
-    .reciprocity-epigraph { padding: 5rem 3rem; background: var(--cream-dark); }
-    .reciprocity-epigraph-inner { max-width: 780px; margin: 0 auto; text-align: center; }
-    .reciprocity-epigraph-inner p { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; color: var(--earth-light); line-height: 1.85; }
+    /* Introduction section */
+    .reciprocity-intro { padding: 5rem 3rem; background: #fff; }
+    .reciprocity-intro-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+    .reciprocity-intro-inner p { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; line-height: 1.85; color: #3d3d3d; margin-bottom: 1.5rem; }
+    .reciprocity-intro-inner p:last-child { margin-bottom: 0; }
 
     /* Prose sections */
-    .reciprocity-prose { padding: 5rem 3rem; background: var(--cream); }
+    .reciprocity-prose { padding: 5rem 3rem; background: #f9f7f4; }
     .reciprocity-prose-inner { max-width: 780px; margin: 0 auto; }
-    .reciprocity-prose-inner p { color: var(--earth-light); font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.4rem; }
-    .reciprocity-prose-inner h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--earth); margin: 3rem 0 1.2rem; line-height: 1.2; }
+    .reciprocity-prose-inner p { color: #3d3d3d; font-size: 0.95rem; line-height: 1.85; margin-bottom: 1.4rem; }
+    .reciprocity-prose-inner h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #2a2a2a; margin: 3rem 0 1.2rem; line-height: 1.2; }
     .reciprocity-prose-inner h3:first-child { margin-top: 0; }
-    .reciprocity-prose-inner ul { list-style: none; padding: 0; margin: 0 0 1.8rem; display: flex; flex-direction: column; gap: 0.65rem; }
-    .reciprocity-prose-inner ul li { display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.93rem; color: var(--earth-light); line-height: 1.75; }
-    .reciprocity-prose-inner ul li span.bullet { color: var(--gold); flex-shrink: 0; font-size: 0.85rem; line-height: 1.75; }
-    .reciprocity-prose.alt-bg { background: var(--cream-dark); }
-
-    /* Attribution / quote block */
-    .reciprocity-attribution { padding: 4rem 3rem; background: var(--cream-dark); }
-    .reciprocity-attribution-inner { max-width: 780px; margin: 0 auto; }
-    .reciprocity-attribution-inner .attr-note { font-size: 0.85rem; color: var(--earth-faint); line-height: 1.8; margin-bottom: 1.5rem; }
-    .reciprocity-attribution-inner blockquote { border-left: 3px solid var(--gold); padding: 1.2rem 0 1.2rem 2rem; margin: 1.5rem 0; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--earth-light); line-height: 1.75; }
-    .reciprocity-attribution-inner .trust-note { font-size: 0.95rem; color: var(--earth-light); line-height: 1.85; margin-top: 1.2rem; font-weight: 500; }
-    .reciprocity-attribution-inner .reach-out { font-size: 0.95rem; color: var(--earth-light); line-height: 1.85; margin-top: 1rem; }
 
     /* Tier Cards */
-    .section-tiers { padding: 5rem 3rem; background: var(--cream); }
+    .section-tiers { padding: 5rem 3rem; background: #fff; }
     .tiers-inner { max-width: 1200px; margin: 0 auto; }
     .tiers-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
+    .tiers-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; color: #2a2a2a; margin-bottom: 1rem; }
     .tiers-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-    .tier-card { background: #fff; border-radius: 10px; padding: 2.4rem 2rem; box-shadow: var(--shadow-soft); border: 1px solid var(--border); border-top: 4px solid var(--border); transition: all 0.5s cubic-bezier(0.25,0.46,0.45,0.94); display: flex; flex-direction: column; }
-    .tier-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-mid); }
+    .tier-card { background: #fff; border-radius: 8px; padding: 2.4rem 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid #e8e4df; border-top: 4px solid #e8e4df; transition: all 0.5s cubic-bezier(0.25,0.46,0.45,0.94); display: flex; flex-direction: column; }
+    .tier-card:hover { transform: translateY(-4px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
     .tier-card.tier-gold { border-top-color: #c9a84c; }
     .tier-card.tier-green { border-top-color: #6b8f5e; }
     .tier-card.tier-blue { border-top-color: #5a7fa0; }
@@ -55,7 +48,7 @@
     .tier-green .tier-eyebrow { color: #6b8f5e; }
     .tier-blue .tier-eyebrow { color: #5a7fa0; }
     .tier-purple .tier-eyebrow { color: #7b6b8a; }
-    .tier-card h3 { font-size: 1.5rem; color: var(--earth); margin-bottom: 0.3rem; font-family: 'Cormorant Garamond', serif; }
+    .tier-card h3 { font-size: 1.5rem; color: #2a2a2a; margin-bottom: 0.3rem; font-family: 'Cormorant Garamond', serif; }
     .tier-card h3 em { font-style: normal; }
     .tier-gold h3 em { color: #c9a84c; }
     .tier-green h3 em { color: #6b8f5e; }
@@ -66,34 +59,25 @@
     .tier-green .tier-divider { background: linear-gradient(90deg, #6b8f5e, transparent); }
     .tier-blue .tier-divider { background: linear-gradient(90deg, #5a7fa0, transparent); }
     .tier-purple .tier-divider { background: linear-gradient(90deg, #7b6b8a, transparent); }
-    .tier-description { font-size: 0.87rem; color: var(--earth-light); line-height: 1.8; margin-bottom: 1.2rem; }
-    .tier-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--earth-faint); font-weight: 500; font-family: 'Inter', sans-serif; margin-bottom: 0.6rem; }
-    .tier-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.2rem; padding: 0; }
-    .tier-list li { display: flex; gap: 0.7rem; align-items: flex-start; font-size: 0.84rem; color: var(--earth-light); line-height: 1.65; }
-    .tier-list li span { flex-shrink: 0; font-size: 0.85rem; line-height: 1.65; }
-    .tier-gold .tier-list li span { color: #c9a84c; }
-    .tier-green .tier-list li span { color: #6b8f5e; }
-    .tier-blue .tier-list li span { color: #5a7fa0; }
-    .tier-purple .tier-list li span { color: #7b6b8a; }
-    .tier-note { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-style: italic; color: var(--earth-faint); margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border); line-height: 1.6; }
+    .tier-description { font-size: 0.87rem; color: #4a4a4a; line-height: 1.8; margin-bottom: 1.2rem; }
+    .tier-note { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; font-style: italic; color: #666; margin-top: auto; padding-top: 1rem; border-top: 1px solid #e8e4df; line-height: 1.6; }
     .tier-note strong { font-weight: 600; font-style: normal; }
 
-    /* Spirit / Closing */
-    .section-spirit { position: relative; padding: 6rem 3rem; background: linear-gradient(rgba(18,24,14,0.88), rgba(18,24,14,0.93)), url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1400&h=700&fit=crop&q=80') center/cover no-repeat; text-align: center; }
-    .spirit-inner { max-width: 720px; margin: 0 auto; }
-    .spirit-inner h2 { font-size: 2.4rem; color: #fff; margin-bottom: 1rem; line-height: 1.15; font-family: 'Cormorant Garamond', serif; }
-    .spirit-inner h2 em { color: var(--sage-pale); }
-    .spirit-divider { width: 50px; height: 1px; background: rgba(158,139,110,0.4); margin: 1.5rem auto 2rem; }
-    .spirit-body { font-size: 0.95rem; color: rgba(255,255,255,0.68); line-height: 1.85; margin-bottom: 1.4rem; }
-    .spirit-body strong { color: rgba(255,255,255,0.92); font-weight: 500; }
-    .spirit-questions { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; align-items: center; }
-    .spirit-question { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: rgba(255,255,255,0.55); line-height: 1.65; }
-    .spirit-closing { margin-top: 2.5rem; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--sage-pale); font-style: italic; line-height: 1.65; }
+    /* Personal Note / Call Out */
+    .reciprocity-note { padding: 4rem 3rem; background: #f9f7f4; }
+    .reciprocity-note-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .reciprocity-note-box { padding: 2rem; border: 1px solid #e8e4df; border-radius: 8px; background: #fff; }
+    .reciprocity-note-box p { font-size: 1.05rem; line-height: 1.85; color: #3d3d3d; font-style: italic; margin: 0; }
+    .reciprocity-note-box .contact-link { display: block; margin-top: 1.25rem; font-size: 0.95rem; color: #c9a84c; text-decoration: none; font-style: normal; }
+    .reciprocity-note-box .contact-link:hover { text-decoration: underline; }
 
-    /* Final blessing */
-    .reciprocity-blessing { padding: 4rem 3rem; background: var(--cream-dark); }
-    .reciprocity-blessing-inner { max-width: 720px; margin: 0 auto; text-align: center; }
-    .reciprocity-blessing-inner p { font-size: 0.85rem; color: var(--earth-faint); line-height: 1.85; }
+    /* CTA Section */
+    .reciprocity-cta { padding: 5rem 3rem; background: #f9f7f4; text-align: center; }
+    .reciprocity-cta-inner { max-width: 720px; margin: 0 auto; }
+    .reciprocity-cta-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: #2a2a2a; margin-bottom: 1.5rem; }
+    .reciprocity-cta-inner p { font-size: 0.95rem; line-height: 1.8; color: #4a4a4a; margin-bottom: 2rem; }
+    .btn-begin { display: inline-block; padding: 0.85rem 2.2rem; background: #3d3d3d; color: #fff; text-decoration: none; font-family: 'Inter', sans-serif; font-size: 0.9rem; letter-spacing: 0.05em; border-radius: 4px; transition: all 0.3s ease; border: 1px solid #3d3d3d; }
+    .btn-begin:hover { background: #2a2a2a; border-color: #2a2a2a; }
 
     /* Responsive */
     @media (max-width: 1024px) {
@@ -101,19 +85,141 @@
     }
     @media (max-width: 768px) {
       .tiers-grid { grid-template-columns: 1fr; }
-      .reciprocity-hero, .reciprocity-epigraph, .reciprocity-prose, .reciprocity-attribution, .section-tiers, .section-spirit, .reciprocity-blessing { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .reciprocity-hero, .reciprocity-intro, .reciprocity-prose, .reciprocity-note, .reciprocity-cta, .section-tiers { padding-left: 1.5rem; padding-right: 1.5rem; }
       .reciprocity-hero h1 { font-size: 2.2rem; }
-      .spirit-inner h2 { font-size: 2rem; }
+      .tiers-header h2 { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; HEADER &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash; -->
   <header class="site-header">
-    
+    <div class="header-inner">
+      <a href="index.html" class="logo">The Animist <em class="logo-accent">Apothecary</em></a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="nav-dropdown-parent">
+            <a href="#">Offerings <span class="nav-arrow">&#9662;</span></a>
+            <div class="nav-dropdown">
+              <div class="nav-dropdown-inner">
+                <div class="nav-drop-col nav-drop-col--cornerstone">
+                  <a href="deep-work.html" class="nav-drop-deepwork-card">
+                    <span class="nav-drop-label">The Deep Work</span>
+                    <span class="nav-drop-deepwork-desc">Sustained containers of 3&ndash;24 months for those called to genuine transformation. The heart of this practice.</span>
+                    <span class="nav-drop-deepwork-cta">Explore initiating paths &rarr;</span>
+                  </a>
+                </div>
+                <div class="nav-drop-col">
+                  <span class="nav-drop-label">Sacred Sessions</span>
+                  <a href="shamanic-bodywork.html">Shamanic Bodywork</a>
+                  <a href="personal-immersions.html">Personal Immersions</a>
+                  <a href="ceremonial-therapeutics.html">Ceremonial Therapeutics</a>
+                  <a href="platicas.html">Pl&aacute;ticas &mdash; Guidance &amp; Counsel</a>
+                  <a href="divinations.html">Ancestral &amp; Elemental Divinations</a>
+                </div>
+                <div class="nav-drop-col">
+                  <span class="nav-drop-label">The Living Web</span>
+                  <a href="private-group-ceremonies.html">Private &amp; Group Ceremonies</a>
+                  <a href="community.html">Community Hubs</a>
+                  <a href="community.html#training">Ceremonialist Training</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="community.html">Community</a></li>
+          <li><a href="about.html">About</a></li>
+          <li class="nav-active"><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          <li><a href="book.html" class="nav-cta">Begin Here</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  
+  <!-- HERO -->
+  <section class="reciprocity-hero">
+    <h1>Sacred <em>Reciprocity</em></h1>
+    <p class="hero-sub">A sliding scale rooted in mutual care</p>
+  </section>
+
+  <!-- INTRODUCTION -->
+  <section class="reciprocity-intro">
+    <div class="reciprocity-intro-inner">
+      <p>The sliding scale at The Animist Apothecary is not charity. It is not a discount. It is a practice of sacred reciprocity &mdash; an acknowledgment that healing work exists within an ecosystem of relationship, and that the exchange between practitioner and participant must honor both.</p>
+      <p>When you choose your tier, you are not simply selecting a price. You are making a statement about your relationship to this work, your current means, and your willingness to participate in a system where those with more help sustain access for those with less.</p>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <section class="section-tiers">
+    <div class="tiers-inner">
+      <div class="tiers-header">
+        <h2>The Four Tiers</h2>
+      </div>
+      <div class="tiers-grid">
+        <!-- Patron -->
+        <div class="tier-card tier-gold">
+          <div class="tier-eyebrow">Tier One</div>
+          <h3><em>Patron</em></h3>
+          <div class="tier-divider"></div>
+          <p class="tier-description">You are choosing to invest at a level that directly sustains this practice and makes lower-tier sessions possible for others.</p>
+          <p class="tier-note"><strong>For those with capacity to invest generously</strong> in sustaining healing accessibility within the community.</p>
+        </div>
+
+        <!-- Abundance -->
+        <div class="tier-card tier-green">
+          <div class="tier-eyebrow">Tier Two</div>
+          <h3><em>Abundance</em></h3>
+          <div class="tier-divider"></div>
+          <p class="tier-description">This rate reflects a comfortable investment in your healing work, honoring both your means and the practitioner's offering.</p>
+          <p class="tier-note"><strong>For those with stable income</strong> who wish to invest meaningfully in their healing journey.</p>
+        </div>
+
+        <!-- Community -->
+        <div class="tier-card tier-blue">
+          <div class="tier-eyebrow">Tier Three</div>
+          <h3><em>Community</em></h3>
+          <div class="tier-divider"></div>
+          <p class="tier-description">A supported rate for those navigating financial transitions while still prioritizing their ceremonial and healing work.</p>
+          <p class="tier-note"><strong>For those in transition</strong> who remain committed to their healing practice.</p>
+        </div>
+
+        <!-- Accessibility -->
+        <div class="tier-card tier-purple">
+          <div class="tier-eyebrow">Tier Four</div>
+          <h3><em>Accessibility</em></h3>
+          <div class="tier-divider"></div>
+          <p class="tier-description">Reserved for those experiencing genuine financial hardship. Limited slots available each season.</p>
+          <p class="tier-note"><strong>For those in genuine need</strong> of healing access during times of financial hardship.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONAL NOTE -->
+  <section class="reciprocity-note">
+    <div class="reciprocity-note-inner">
+      <div class="reciprocity-note-box">
+        <p>If none of these tiers are accessible to you right now, please reach out. I would rather find a path forward together than have finances be the reason you don't receive the care you need.</p>
+        <a href="mailto:hello@theanimistapothecary.com" class="contact-link">hello@theanimistapothecary.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="reciprocity-cta">
+    <div class="reciprocity-cta-inner">
+      <h2>Ready to Begin?</h2>
+      <p>The first step is an Intake &amp; Inquiry call &mdash; a 90-minute Pl&aacute;ticas session where we explore what brings you here and how this practice might serve your path.</p>
+      <a href="book.html" class="btn-begin">Begin Here</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">The Animist <em class="logo-accent">Apothecary</em></a>
+        <p class="footer-tagline">Shamanic healing, somatic ceremony, and botanical medicine.<br>Based in Topanga Canyon, Los Angeles, California. Available worldwide.</p>
       </div>
       <nav class="footer-nav">
         <div class="footer-col">
@@ -132,8 +238,8 @@
           <ul>
             <li><a href="mythopoetic.html">The Deep Work</a></li>
             <li><a href="shamanic-bodywork.html">Shamanic Bodywork</a></li>
-            <li><a href="personal-immersions.html">Personal Immersions</a>
-                  <a href="ceremonial-therapeutics.html">Ceremonial Therapeutics</a></li>
+            <li><a href="personal-immersions.html">Personal Immersions</a></li>
+            <li><a href="ceremonial-therapeutics.html">Ceremonial Therapeutics</a></li>
             <li><a href="private-group-ceremonies.html">Private &amp; Group Ceremonies</a></li>
             <li><a href="platicas.html">Pl&aacute;ticas</a></li>
             <li><a href="divinations.html">Divinations</a></li>
@@ -144,19 +250,19 @@
           <ul>
             <li><a href="community.html">Community Hubs</a></li>
             <li><a href="community.html#training">Ceremonialist Training</a></li>
-            <li><a href="community.html">Events &amp; Gatherings</a></li>
-            <li><a href="community.html">Newsletter</a></li>
+            <li><a href="community.html#events">Events &amp; Gatherings</a></li>
+            <li><a href="community.html#newsletter">Newsletter</a></li>
             <li><a href="book.html">Contact</a></li>
           </ul>
         </div>
       </nav>
     </div>
-        <div style="display:flex;gap:14px;margin-top:24px;margin-bottom:24px;justify-content:center;flex-wrap:wrap;">
+    <div style="display:flex;gap:14px;margin-top:24px;flex-wrap:wrap;justify-content:center;">
       <a href="/portal/" style="display:inline-block;padding:11px 28px;border:1px solid rgba(145,163,134,0.5);border-radius:2px;color:rgba(255,255,255,0.8);font-family:Inter,-apple-system,sans-serif;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;font-weight:500;transition:all 0.3s;background:transparent;" onmouseover="this.style.borderColor='rgba(145,163,134,0.85)';this.style.color='rgba(255,255,255,0.95)';this.style.background='rgba(91,117,83,0.12)';" onmouseout="this.style.borderColor='rgba(145,163,134,0.5)';this.style.color='rgba(255,255,255,0.8)';this.style.background='transparent';">Enter Your Portal</a>
       <a href="/admin/" style="display:inline-block;padding:11px 28px;border:1px solid rgba(158,139,110,0.4);border-radius:2px;color:rgba(255,255,255,0.8);font-family:Inter,-apple-system,sans-serif;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;font-weight:500;transition:all 0.3s;background:transparent;" onmouseover="this.style.borderColor='rgba(158,139,110,0.75)';this.style.color='rgba(255,255,255,0.95)';this.style.background='rgba(158,139,110,0.1)';" onmouseout="this.style.borderColor='rgba(158,139,110,0.4)';this.style.color='rgba(255,255,255,0.8)';this.style.background='transparent';">Facilitator Portal</a>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 The Animist Apothecary. All rights reserved.</p>
+      <p>&copy; 2026 The Animist Apothecary. All rights reserved.</p>
       <p class="footer-credit">Adi Marie &middot; Topanga Canyon, Los Angeles, California</p>
     </div>
   </footer>

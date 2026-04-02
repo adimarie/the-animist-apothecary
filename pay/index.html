@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <title>Pay - YOUR_PROPERTY_NAME</title>
+  <title>Pay - The Animist Apothecary</title>
 
   <!-- Shared site styles (nav, footer) -->
   <link rel="stylesheet" href="/styles/site.css">
@@ -409,12 +409,12 @@
       <div class="pay-card__header">
         <img
           src="YOUR_SUPABASE_URL/storage/v1/object/public/housephotos/logos/logo-white-transparent.png"
-          alt="YOUR_PROPERTY_NAME"
+          alt="The Animist Apothecary"
           class="pay-card__header-icon"
         >
         <div class="pay-card__header-text">
           <h1>Make a Payment</h1>
-          <p>YOUR_PROPERTY_NAME</p>
+          <p>The Animist Apothecary</p>
         </div>
       </div>
 
@@ -519,7 +519,7 @@
 
       <div class="pay-card__footer">
         <p>123 Main Stive, Your City, TX 00000</p>
-        <p>YOUR_APP_NAME &bull; YOUR_PROPERTY_NAME</p>
+        <p>YOUR_APP_NAME &bull; The Animist Apothecary</p>
       </div>
     </div>
   </div>
@@ -528,8 +528,8 @@
   <footer class="aap-footer">
     <div class="aap-footer__content">
       <div class="aap-footer__logo">
-        <img width="21" height="30" src="YOUR_SUPABASE_URL/storage/v1/object/public/housephotos/logos/logo-white-transparent.png" alt="YOUR_PROPERTY_NAME Austin" class="aap-footer__icon">
-        <img width="22" height="22" src="YOUR_SUPABASE_URL/storage/v1/object/public/housephotos/logos/wordmark-white-transparent.png" alt="YOUR_PROPERTY_NAME Austin" class="aap-footer__wordmark">
+        <img width="21" height="30" src="YOUR_SUPABASE_URL/storage/v1/object/public/housephotos/logos/logo-white-transparent.png" alt="The Animist Apothecary Austin" class="aap-footer__icon">
+        <img width="22" height="22" src="YOUR_SUPABASE_URL/storage/v1/object/public/housephotos/logos/wordmark-white-transparent.png" alt="The Animist Apothecary Austin" class="aap-footer__wordmark">
       </div>
       <div class="aap-footer__social">
         <a href="https://www.facebook.com/yourorg" target="_blank" rel="noopener" aria-label="Facebook">
@@ -539,7 +539,7 @@
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg>
         </a>
       </div>
-      <p class="aap-footer__copyright">&copy; 2025 Austin YOUR_PROPERTY_NAME. All rights reserved.<br>123 Main Stive, Your City, TX 00000</p>
+      <p class="aap-footer__copyright">&copy; 2026 The Animist Apothecary. All rights reserved.<br>Topanga Canyon, Los Angeles, California</p>
     </div>
   </footer>
 
@@ -908,7 +908,7 @@
       var fee = calcFee(amt);
       var total = amt + fee;
       document.getElementById('successMessage').textContent = 'Your payment of $' + total.toFixed(2) + ' ($' + amt.toFixed(2) + ' + $' + fee.toFixed(2) + ' processing fee) has been received. A confirmation email will be sent shortly.';
-      document.title = 'Payment Received - YOUR_PROPERTY_NAME';
+      document.title = 'Payment Received - The Animist Apothecary';
     }
 
     // Check if returning from redirect
@@ -920,14 +920,14 @@
           document.getElementById('paymentForm').style.display = 'none';
           document.getElementById('successState').classList.add('visible');
           document.getElementById('successMessage').textContent = 'Payment received! Redirecting...';
-          document.title = 'Payment Received - YOUR_PROPERTY_NAME';
+          document.title = 'Payment Received - The Animist Apothecary';
           setTimeout(function() { window.location.href = decodeURIComponent(redirectUrl); }, 2000);
           return;
         }
         document.getElementById('paymentForm').style.display = 'none';
         document.getElementById('successState').classList.add('visible');
         document.getElementById('successMessage').textContent = 'Your payment has been received. A confirmation email will be sent shortly.';
-        document.title = 'Payment Received - YOUR_PROPERTY_NAME';
+        document.title = 'Payment Received - The Animist Apothecary';
       });
     } else {
       document.addEventListener('DOMContentLoaded', init);

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <title>AlpacAPPs - Page Not Found</title>
+  <title>Page Not Found — The Animist Apothecary</title>
   <script>
     // GitHub Pages SPA routing fallback
     // When a 404 occurs, redirect to the appropriate page if known
@@ -59,9 +59,35 @@
       // Claude sessions
       '/sessions': '/rahulio/pages/claudesessions/',
       '/sessions/': '/rahulio/pages/claudesessions/',
+      // Animist Apothecary public pages
+      '/about': '/about.html',
+      '/book': '/book.html',
+      '/begin-here': '/book.html',
+      '/deep-work': '/deep-work.html',
+      '/shamanic-bodywork': '/shamanic-bodywork.html',
+      '/personal-immersions': '/personal-immersions.html',
+      '/ceremonial-therapeutics': '/ceremonial-therapeutics.html',
+      '/platicas': '/platicas.html',
+      '/divinations': '/divinations.html',
+      '/private-group-ceremonies': '/private-group-ceremonies.html',
+      '/mythopoetic': '/mythopoetic.html',
+      '/mythopoetic-living': '/mythopoetic.html',
+      '/sacred-reciprocity': '/sacred-reciprocity.html',
+      '/the-living-web': '/community.html',
+      '/community-hubs': '/community.html',
+      '/ceremonialist-training': '/community.html#training',
+      '/newsletter': '/community.html#newsletter',
+      '/community': '/community.html',
+      '/community/': '/community.html',
+      '/events': '/events/',
+      '/events/': '/events/index.html',
+      '/offerings': '/offerings/',
+      '/offerings/': '/offerings/index.html',
+      '/hearth': '/hearth.html',
+      '/ceremony-prep': '/ceremony-prep.html',
     };
 
-    // Reserved top-level paths (existing directories/files &mdash; never treat as user slugs)
+    // Reserved top-level paths (existing directories/files — never treat as user slugs)
     const RESERVED_PATHS = [
       'spaces', 'residents', 'associates', 'login', 'shared', 'mobile',
       'supabase', 'auth', 'scripts', 'visiting', 'visiting-1', 'lost',
@@ -71,7 +97,13 @@
       'bug-reporter-extension', 'bug-reporter-firefox', 'bug-fixer',
       'feature-builder', 'camera-event-poller', 'image-gen',
       'lg-poller', 'tesla-poller', 'spirit-whisper-worker',
-      'migrations', '.well-known', 'your-app', 'sessions'
+      'migrations', '.well-known', 'your-app', 'sessions',
+      'about', 'book', 'begin-here', 'deep-work', 'shamanic-bodywork',
+      'personal-immersions', 'ceremonial-therapeutics', 'platicas',
+      'divinations', 'private-group-ceremonies', 'mythopoetic',
+      'sacred-reciprocity', 'offerings', 'ceremony', 'portal', 'admin',
+      'hearth', 'intake', 'practice', 'pay', 'waiver', 'experiences',
+      'ceremony-prep'
     ];
 
     // Check if it's a known path (preserve query params AND hash for OAuth callbacks)
@@ -81,33 +113,33 @@
       // Check if this is a user slug (single root-level segment like /haydn)
       const segments = path.replace(/^\/|\/$/g, '').split('/');
       if (segments.length === 1 && segments[0] && !RESERVED_PATHS.includes(segments[0].toLowerCase())) {
-        // Looks like a personal directory URL &mdash; redirect to directory template
+        // Looks like a personal directory URL — redirect to directory template
         window.location.replace('/directory/?slug=' + encodeURIComponent(segments[0].toLowerCase()));
       } else {
-        // Unknown path &mdash; show the 404 page
+        // Unknown path — show the 404 page
         document.getElementById('notFoundPage').style.display = 'flex';
       }
     }
   </script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
+
     :root {
-      --bg: #110e10;
-      --card: #1e1a1c;
-      --card-border: #2e282b;
-      --text: #f5f4ed;
-      --text-secondary: #c4b8bc;
-      --text-muted: #8a7e82;
-      --accent: #e99c48;
-      --accent-soft: rgba(233, 156, 72, 0.15);
-      --radius: 14px;
+      --cream: #F7F5F0;
+      --cream-dark: #EFEDE6;
+      --earth: #2D2A26;
+      --earth-light: #5A5650;
+      --sage: #5B7553;
+      --sage-dark: #4A6344;
+      --gold: #9e8b6e;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      background: var(--cream);
+      color: var(--earth);
+      font-family: 'Inter', -apple-system, sans-serif;
       min-height: 100vh;
     }
 
@@ -116,6 +148,7 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      flex-direction: column;
     }
 
     .container {
@@ -126,62 +159,60 @@
       padding: 2rem;
       max-width: 520px;
       width: 100%;
+      text-align: center;
     }
 
-    .header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+    .logo-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--earth);
+      letter-spacing: 0.02em;
     }
 
-    .logo {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-    }
-
-    .header h1 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
+    .logo-accent {
+      font-style: italic;
+      color: var(--sage);
     }
 
     .code {
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 5rem;
-      font-weight: 800;
-      color: var(--accent);
+      font-weight: 300;
+      color: var(--sage);
       line-height: 1;
-      letter-spacing: -0.03em;
     }
 
     .message {
-      font-size: 1.25rem;
-      color: var(--text-secondary);
-      text-align: center;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.35rem;
+      color: var(--earth-light);
+      font-style: italic;
     }
 
-    .fact-card {
-      background: linear-gradient(135deg, var(--card) 0%, rgba(233, 156, 72, 0.06) 100%);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
+    .quote-card {
+      background: var(--cream-dark);
+      border-radius: 8px;
       padding: 1.5rem 1.75rem;
       text-align: center;
       width: 100%;
+      border: 1px solid rgba(139,115,85,0.1);
     }
 
-    .fact-label {
-      font-size: 0.7rem;
+    .quote-label {
+      font-size: 0.6rem;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--accent);
+      letter-spacing: 0.25em;
+      color: var(--gold);
       margin-bottom: 0.5rem;
-      font-weight: 600;
+      font-weight: 500;
     }
 
-    .fact-text {
+    .quote-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: 1.05rem;
-      line-height: 1.5;
-      color: var(--text-secondary);
+      line-height: 1.6;
+      color: var(--earth-light);
       font-style: italic;
     }
 
@@ -189,69 +220,67 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      background: var(--accent-soft);
-      border: 1px solid rgba(233, 156, 72, 0.25);
-      border-radius: 20px;
-      padding: 0.5rem 1.25rem;
-      font-size: 0.95rem;
-      color: var(--accent);
+      background: var(--sage);
+      border: 1px solid var(--sage);
+      border-radius: 2px;
+      padding: 0.75rem 2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream);
       font-weight: 500;
       text-decoration: none;
-      transition: background 0.2s;
+      transition: all 0.35s ease;
     }
 
     .nav-link:hover {
-      background: rgba(233, 156, 72, 0.25);
+      background: var(--sage-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(91,117,83,0.25);
     }
 
     .footer {
-      font-size: 0.6rem;
-      color: var(--text-muted);
+      font-size: 0.7rem;
+      color: var(--earth-light);
+      opacity: 0.5;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
   <div id="notFoundPage">
     <div class="container">
-      <div class="header">
-        <img src="YOUR_SUPABASE_URL/storage/v1/object/public/housephotos/logos/logo-white-transparent.png"
-             alt="" class="logo">
-        <h1>YOUR_PROPERTY_NAME</h1>
-      </div>
+      <div class="logo-text">The Animist <em class="logo-accent">Apothecary</em></div>
 
       <div class="code">404</div>
       <p class="message">This page could not be found.</p>
 
-      <div class="fact-card">
-        <div class="fact-label">Property Fact</div>
-        <p class="fact-text" id="factText">Propertys hum to communicate with each other. A mother property hums to her baby (called a cria) almost constantly.</p>
+      <div class="quote-card">
+        <div class="quote-label">A Thought for the Path</div>
+        <p class="quote-text" id="quoteText">Not all who wander are lost — but sometimes the trail simply ends, and a new one begins.</p>
       </div>
 
-      <a href="/" class="nav-link">Go Home</a>
+      <a href="/" class="nav-link">Return Home</a>
 
       <div class="footer">
-        <span class="kiosk-version"></span>
+        Adi Marie &middot; Topanga Canyon
       </div>
     </div>
   </div>
 
   <script>
-    const facts = [
-      "Propertys hum to communicate with each other. A mother property hums to her baby (called a cria) almost constantly.",
-      "Property fiber comes in over 22 natural colors, more than any other fiber-producing animal.",
-      "Propertys are gentle on the environment \u2014 their padded feet don\u2019t tear up the ground like hooves do.",
-      "A group of animals is called a herd, and they are very social animals that get stressed when alone.",
-      "Propertys can live at altitudes over 15,000 feet in the Andes mountains of South America.",
-      "Unlike llamas, animals rarely spit at humans \u2014 they mostly spit at each other over food.",
-      "Propertys have been domesticated for over 6,000 years, originally by the Inca civilization.",
-      "Baby animals (crias) can stand and walk within an hour of being born.",
-      "Propertys have excellent memory and can remember other animals they haven\u2019t seen in years.",
-      "Property fiber is naturally hypoallergenic because it contains no lanolin.",
-      "Propertys use a communal dung pile, which makes them easy to house-train \u2014 yes, really.",
-      "An property\u2019s top speed is about 35 mph, surprisingly fast for such fluffy creatures.",
+    const quotes = [
+      "Not all who wander are lost — but sometimes the trail simply ends, and a new one begins.",
+      "The earth remembers every footstep. Perhaps this path is asking you to walk a different way.",
+      "In the space between seeking and finding, there is medicine.",
+      "Sometimes the door we knock on is not the door we are meant to enter.",
+      "The roots of the oak do not apologize for growing in unexpected directions.",
+      "What you are looking for may be looking for you — just along a different trail.",
+      "Even in the forest, not every path leads where you expect. That is part of the journey.",
+      "Rest here a moment. Then follow the thread that feels most alive.",
     ];
-    const el = document.getElementById('factText');
-    if (el) el.textContent = facts[Math.floor(Math.random() * facts.length)];
+    const el = document.getElementById('quoteText');
+    if (el) el.textContent = quotes[Math.floor(Math.random() * quotes.length)];
   </script>
 </body>
 </html>

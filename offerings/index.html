@@ -5,104 +5,423 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <title>Offerings — The Animist Apothecary</title>
-  <meta name="description" content="Ceremonial healing offerings: Pláticas, Ancestral Divinations, Ceremonial Therapeutics, Ceremonial Immersions, Shamanic Bodywork. The Animist Apothecary.">
+  <title>Offerings &mdash; The Animist Apothecary</title>
+  <meta name="description" content="Ceremonial healing offerings: Pl&aacute;ticas, Ancestral Divinations, Ceremonial Therapeutics, Ceremonial Immersions, Shamanic Bodywork. The Animist Apothecary.">
   <link rel="canonical" href="https://theanimistapothecary.com/offerings/">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://theanimistapothecary.com/offerings/">
-  <meta property="og:title" content="Offerings — The Animist Apothecary">
-  <meta property="og:description" content="Ceremonial healing offerings: Pláticas, Ancestral Divinations, Ceremonial Therapeutics, Ceremonial Immersions, Shamanic Bodywork.">
+  <meta property="og:title" content="Offerings &mdash; The Animist Apothecary">
+  <meta property="og:description" content="Ceremonial healing offerings: Shamanic bodywork, sacred ceremony, and botanical medicine with Adi Marie.">
   <meta property="og:site_name" content="The Animist Apothecary">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/site.css">
-  <link rel="stylesheet" href="/styles/tailwind.out.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <style>
+    /* ===== Offerings Index — Page-Specific Styles ===== */
+
+    .offerings-index-hero {
+      position: relative;
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(18,24,14,0.50), rgba(18,24,14,0.72)),
+        url('https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?w=1400&h=700&fit=crop&q=80') center/cover no-repeat;
+      padding-top: 80px;
+    }
+
+    .offerings-index-hero h1 {
+      font-size: 3.8rem;
+      color: #fff;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+
+    .offerings-index-hero p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.7);
+      font-style: italic;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Cornerstone Card */
+    .cornerstone-section {
+      padding: 5rem 3rem;
+      background: var(--cream);
+    }
+
+    .cornerstone-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cornerstone-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      min-height: 360px;
+      display: flex;
+      align-items: flex-end;
+      text-decoration: none;
+      transition: all 0.5s ease;
+    }
+
+    .cornerstone-card:hover { transform: translateY(-4px); }
+
+    .cornerstone-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(10,8,18,0.90) 0%, rgba(10,8,18,0.40) 50%, rgba(10,8,18,0.15) 100%),
+        url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1400&h=600&fit=crop&q=80') center/cover no-repeat;
+    }
+
+    .cornerstone-content {
+      position: relative;
+      z-index: 2;
+      padding: 3rem;
+      text-align: left;
+      max-width: 700px;
+    }
+
+    .cornerstone-content .section-label { color: rgba(197,217,198,0.7); }
+    .cornerstone-content h3 { font-size: 2.2rem; color: #fff; margin-bottom: 0.5rem; }
+    .cornerstone-content p { font-size: 0.95rem; color: rgba(255,255,255,0.72); line-height: 1.75; max-width: 100%; }
+    .cornerstone-content .offering-link { color: var(--sage-pale); }
+
+    /* Offerings Grid */
+    .offerings-index-grid {
+      padding: 5rem 3rem;
+      background: var(--cream-dark);
+    }
+
+    .offerings-index-grid .offerings-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .grid-intro {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 3rem;
+    }
+
+    .offerings-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .offering-index-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 2.2rem 2rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    .offering-index-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-mid);
+      border-color: var(--sage-pale);
+    }
+
+    .offering-index-card .offering-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .offering-index-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      color: var(--earth);
+      margin-bottom: 0.6rem;
+    }
+
+    .offering-index-card .card-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--earth-faint);
+      font-style: italic;
+      margin-bottom: 0.8rem;
+    }
+
+    .offering-index-card p {
+      font-size: 0.88rem;
+      color: var(--earth-light);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+      max-width: 100%;
+    }
+
+    .offering-index-card .card-meta {
+      font-size: 0.78rem;
+      color: var(--earth-faint);
+      font-family: 'Inter', sans-serif;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .offering-index-card .card-link {
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 0.8rem;
+    }
+
+    .offering-index-card:hover .card-link { letter-spacing: 0.22em; }
+
+    /* CTA */
+    .offerings-cta {
+      padding: 5rem 3rem;
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .offerings-cta-inner {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .offerings-cta-inner p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--earth-light);
+      font-style: italic;
+      margin-bottom: 2rem;
+      max-width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .offerings-list { grid-template-columns: 1fr; }
+      .offerings-index-hero h1 { font-size: 2.6rem; }
+      .cornerstone-section,
+      .offerings-index-grid,
+      .offerings-cta { padding: 3.5rem 1.5rem; }
+    }
+  </style>
 </head>
 <body>
-  <span data-site-version style="display:none">v260402.02 2:29a</span>
-  <div id="siteHeader"></div>
 
-  <!-- Hero -->
-  <section class="aap-hero aap-hero--short" style="background: linear-gradient(to bottom, var(--aap-bg-dark), var(--aap-bg));">
-    <div class="aap-hero__content">
-      <h1 class="aap-hero__title" style="font-weight: 400; letter-spacing: 0.04em;">Offerings</h1>
-      <p class="aap-hero__subtitle">Single session work — each a complete ceremonial container</p>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/index.html" class="logo">The Animist <em class="logo-accent">Apothecary</em></a>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li class="nav-dropdown-parent">
+            <a href="#" class="nav-active">Offerings <span class="nav-arrow">&#9662;</span></a>
+            <div class="nav-dropdown">
+              <div class="nav-dropdown-inner">
+                <div class="nav-drop-col nav-drop-col--cornerstone">
+                  <a href="/deep-work.html" class="nav-drop-deepwork-card">
+                    <span class="nav-drop-label">The Deep Work</span>
+                    <span class="nav-drop-deepwork-desc">Sustained containers of 3&ndash;24 months for those called to genuine transformation. The heart of this practice.</span>
+                    <span class="nav-drop-deepwork-cta">Explore initiating paths &rarr;</span>
+                  </a>
+                </div>
+                <div class="nav-drop-col">
+                  <span class="nav-drop-label">Sacred Sessions</span>
+                  <a href="/shamanic-bodywork.html">Shamanic Bodywork</a>
+                  <a href="/personal-immersions.html">Personal Immersions</a>
+                  <a href="/ceremonial-therapeutics.html">Ceremonial Therapeutics</a>
+                  <a href="/platicas.html">Pl&aacute;ticas &mdash; Guidance &amp; Counsel</a>
+                  <a href="/divinations.html">Ancestral &amp; Elemental Divinations</a>
+                </div>
+                <div class="nav-drop-col">
+                  <span class="nav-drop-label">The Living Web</span>
+                  <a href="/private-group-ceremonies.html">Private &amp; Group Ceremonies</a>
+                  <a href="/community.html">Community Hubs</a>
+                  <a href="/community.html#training">Ceremonialist Training</a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="/community.html">Community</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          <li><a href="/book.html" class="nav-cta">Begin Here</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="offerings-index-hero">
+    <div class="hero-content" style="position: relative; z-index: 2; padding: 4rem 2rem 3rem;">
+      <p class="hero-eyebrow">Sacred Pathways of Transformation</p>
+      <h1>Offerings</h1>
+      <p>Single session work &amp; sustained containers &mdash; each a complete ceremonial doorway</p>
     </div>
   </section>
 
-  <!-- Offerings Grid -->
-  <section class="aap-content" style="max-width: 960px;">
-
-    <!-- Pláticas -->
-    <a href="/offerings/platicas/" style="display: block; padding: 2rem; border: 1px solid var(--aap-border); border-radius: 4px; margin-bottom: 1.5rem; text-decoration: none; transition: border-color 0.2s ease, transform 0.2s ease; background: var(--aap-bg-muted);"
-       onmouseover="this.style.borderColor='var(--aap-accent)'"
-       onmouseout="this.style.borderColor='var(--aap-border)'">
-      <h3 style="font-family: var(--aap-font-heading); font-size: 1.5rem; font-weight: 500; color: var(--aap-text-light); margin-bottom: 0.25rem;">Pláticas</h3>
-      <p style="font-family: var(--aap-font-heading); font-size: 1.05rem; color: var(--aap-text-muted); margin-bottom: 0.75rem; font-style: italic;">Guidance & Counsel</p>
-      <p style="color: var(--aap-text-muted); margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7; max-width: 100%;">Sacred conversation at the threshold of knowing. Strategic spiritual counsel. A space to be witnessed, guided, and met with honesty and devotion.</p>
-      <p style="font-size: 0.85rem; color: var(--aap-text-muted);">90 minutes · Virtual · From $200</p>
-    </a>
-
-    <!-- Ancestral & Elemental Divinations -->
-    <a href="/offerings/divinations/" style="display: block; padding: 2rem; border: 1px solid var(--aap-border); border-radius: 4px; margin-bottom: 1.5rem; text-decoration: none; transition: border-color 0.2s ease, transform 0.2s ease; background: var(--aap-bg-muted);"
-       onmouseover="this.style.borderColor='var(--aap-accent)'"
-       onmouseout="this.style.borderColor='var(--aap-border)'">
-      <h3 style="font-family: var(--aap-font-heading); font-size: 1.5rem; font-weight: 500; color: var(--aap-text-light); margin-bottom: 0.25rem;">Ancestral & Elemental Divinations</h3>
-      <p style="color: var(--aap-text-muted); margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7; max-width: 100%;">Readings and transmissions from the ancestral and elemental realms — a mirror held by those who walked before you, for clarity at the crossroads.</p>
-      <p style="font-size: 0.85rem; color: var(--aap-text-muted);">2 hours · Virtual · From $300</p>
-    </a>
-
-    <!-- Ceremonial Therapeutics -->
-    <a href="/offerings/ceremonial-therapeutics/" style="display: block; padding: 2rem; border: 1px solid var(--aap-border); border-radius: 4px; margin-bottom: 1.5rem; text-decoration: none; transition: border-color 0.2s ease, transform 0.2s ease; background: var(--aap-bg-muted);"
-       onmouseover="this.style.borderColor='var(--aap-accent)'"
-       onmouseout="this.style.borderColor='var(--aap-border)'">
-      <h3 style="font-family: var(--aap-font-heading); font-size: 1.5rem; font-weight: 500; color: var(--aap-text-light); margin-bottom: 0.25rem;">Ceremonial Therapeutics</h3>
-      <p style="color: var(--aap-text-muted); margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7; max-width: 100%;">A holistic and integrated synergy of Sacramental Entheogenic Breath, Somatic Bodywork, Generative Trance, and Shamanic Guidance in the specialized state of consciousness brought about by these modalities.</p>
-      <p style="font-size: 0.85rem; color: var(--aap-text-muted);">3 hours · In-person · From $800</p>
-    </a>
-
-    <!-- Ceremonial Immersions -->
-    <a href="/offerings/ceremonial-immersions/" style="display: block; padding: 2rem; border: 1px solid var(--aap-border); border-radius: 4px; margin-bottom: 1.5rem; text-decoration: none; transition: border-color 0.2s ease, transform 0.2s ease; background: var(--aap-bg-muted);"
-       onmouseover="this.style.borderColor='var(--aap-accent)'"
-       onmouseout="this.style.borderColor='var(--aap-border)'">
-      <h3 style="font-family: var(--aap-font-heading); font-size: 1.5rem; font-weight: 500; color: var(--aap-text-light); margin-bottom: 0.25rem;">Ceremonial Immersions</h3>
-      <p style="color: var(--aap-text-muted); margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7; max-width: 100%;">A holistic integrated harmony of Sacramental Entheogenic Shamanic Medicine, incorporating Somatic Touch and Inner Wisdom Guidance within a specialized state of consciousness.</p>
-      <p style="font-size: 0.85rem; color: var(--aap-text-muted);">6 hours · In-person · From $1,200</p>
-    </a>
-
-    <!-- Shamanic Bodywork -->
-    <a href="/offerings/shamanic-bodywork/" style="display: block; padding: 2rem; border: 1px solid var(--aap-border); border-radius: 4px; margin-bottom: 1.5rem; text-decoration: none; transition: border-color 0.2s ease, transform 0.2s ease; background: var(--aap-bg-muted);"
-       onmouseover="this.style.borderColor='var(--aap-accent)'"
-       onmouseout="this.style.borderColor='var(--aap-border)'">
-      <h3 style="font-family: var(--aap-font-heading); font-size: 1.5rem; font-weight: 500; color: var(--aap-text-light); margin-bottom: 0.25rem;">Shamanic Bodywork</h3>
-      <p style="color: var(--aap-text-muted); margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.7; max-width: 100%;">Deep somatic healing through the body's living memory — restoring the sacred conversation between flesh, spirit, and land. The body as altar; sensation as oracle.</p>
-      <p style="font-size: 0.85rem; color: var(--aap-text-muted);">6 hours · In-person · From $1,600</p>
-    </a>
-
+  <!-- CORNERSTONE: THE DEEP WORK -->
+  <section class="cornerstone-section">
+    <div class="cornerstone-inner">
+      <span class="section-label">Cornerstone Offering</span>
+      <a href="/deep-work.html" class="cornerstone-card">
+        <div class="cornerstone-bg"></div>
+        <div class="cornerstone-content">
+          <span class="section-label">The Heart of This Practice</span>
+          <h3>Mythopoetic Living &mdash; Developmental Arcs</h3>
+          <p>A 3&ndash;24 month ceremonial developmental trajectory &mdash; weaving Sacred Breath sessions with Guidance &amp; Counsel into a living container for deep self-actualization and spiritual sovereignty.</p>
+          <span class="offering-link">Explore the Developmental Arc &rarr;</span>
+        </div>
+      </a>
+    </div>
   </section>
 
-  <!-- Begin Here CTA -->
-  <section class="aap-content" style="text-align: center; padding-bottom: var(--aap-space-3xl);">
-    <p style="color: var(--aap-text-muted); margin-bottom: 1.5rem;">Every journey begins with a conversation.</p>
-    <a href="/book/?intake=true" class="aap-btn aap-btn--begin">Begin Here</a>
-    <p style="font-size: 0.8rem; color: var(--aap-text-muted); margin-top: 0.75rem;">Schedule an Intake & Inquiry Call</p>
-  </section>
-
-  <footer class="aap-footer">
-    <div class="aap-footer__content">
-      <div class="aap-footer__copyright">
-        &copy; 2026 The Animist Apothecary. All rights reserved.<br>
-        Topanga Canyon, Los Angeles, California
+  <!-- OFFERINGS GRID -->
+  <section class="offerings-index-grid">
+    <div class="offerings-container">
+      <div class="grid-intro">
+        <span class="section-label">Individual Offerings</span>
+        <h2 class="section-title">Sacred <em>Sessions</em></h2>
+        <p class="section-body">Each offering is a doorway. Choose the one that calls to the depth of your readiness.</p>
       </div>
+
+      <div class="offerings-list">
+
+        <!-- Pl&aacute;ticas -->
+        <a href="/platicas.html" class="offering-index-card">
+          <span class="offering-tag">Guidance &middot; Counsel</span>
+          <h3>Pl&aacute;ticas</h3>
+          <p class="card-subtitle">Sacred Conversation &amp; Strategic Counsel</p>
+          <p>Sacred conversation at the threshold of knowing. Strategic spiritual counsel. A space to be witnessed, guided, and met with honesty and devotion.</p>
+          <div class="card-meta">90 minutes &middot; Virtual &middot; Sliding Scale</div>
+          <span class="card-link">Learn More &rarr;</span>
+        </a>
+
+        <!-- Divinations -->
+        <a href="/divinations.html" class="offering-index-card">
+          <span class="offering-tag">Ancestral &middot; Elemental</span>
+          <h3>Ancestral &amp; Elemental Divinations</h3>
+          <p>Readings and transmissions from the ancestral and elemental realms &mdash; a mirror held by those who walked before you, for clarity at the crossroads.</p>
+          <div class="card-meta">2 hours &middot; Virtual &middot; Sliding Scale</div>
+          <span class="card-link">Learn More &rarr;</span>
+        </a>
+
+        <!-- Ceremonial Therapeutics -->
+        <a href="/ceremonial-therapeutics.html" class="offering-index-card">
+          <span class="offering-tag">Somatic &middot; Sacred</span>
+          <h3>Ceremonial Therapeutics</h3>
+          <p>A holistic integrated synergy of Sacramental Entheogenic Breath, Somatic Bodywork, Generative Trance, and Shamanic Guidance in a specialized state of consciousness.</p>
+          <div class="card-meta">3 hours &middot; In-person &middot; Sliding Scale</div>
+          <span class="card-link">Learn More &rarr;</span>
+        </a>
+
+        <!-- Personal Immersions -->
+        <a href="/personal-immersions.html" class="offering-index-card">
+          <span class="offering-tag">Multi-Day &middot; Immersive</span>
+          <h3>Personal Immersions</h3>
+          <p>Extended containers for those ready to go all the way in &mdash; multi-day experiences of radical presence, ceremony, and spiritual reclamation.</p>
+          <div class="card-meta">Multi-day &middot; In-person &middot; Sliding Scale</div>
+          <span class="card-link">Learn More &rarr;</span>
+        </a>
+
+        <!-- Shamanic Bodywork -->
+        <a href="/shamanic-bodywork.html" class="offering-index-card">
+          <span class="offering-tag">Somatic &middot; Sacred</span>
+          <h3>Shamanic Bodywork</h3>
+          <p>Deep somatic healing through the body's living memory &mdash; restoring the sacred conversation between flesh, spirit, and land. The body as altar; sensation as oracle.</p>
+          <div class="card-meta">6 hours &middot; In-person &middot; Sliding Scale</div>
+          <span class="card-link">Learn More &rarr;</span>
+        </a>
+
+        <!-- Ceremonial Groups -->
+        <a href="/private-group-ceremonies.html" class="offering-index-card">
+          <span class="offering-tag">Collective &middot; Ritual</span>
+          <h3>Private &amp; Group Ceremonies</h3>
+          <p>Themed group trajectories, seasonal ceremonies, and collective healing containers &mdash; because the work of tending the life web is communal.</p>
+          <div class="card-meta">Group &middot; In-person &amp; Virtual &middot; Sliding Scale</div>
+          <span class="card-link">Learn More &rarr;</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="offerings-cta">
+    <div class="offerings-cta-inner">
+      <span class="section-label">Begin the Work</span>
+      <h2 class="section-title">Every journey begins<br><em>with a conversation.</em></h2>
+      <p>The first step is an Intake &amp; Inquiry call &mdash; a substantive consultation where we explore what brings you here and how this practice might serve your path.</p>
+      <a href="/book.html" class="btn-primary">Begin Here &mdash; Book Your Call</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/index.html" class="logo">The Animist <em class="logo-accent">Apothecary</em></a>
+        <p class="footer-tagline">Shamanic healing, somatic ceremony, and botanical medicine.<br>Based in Topanga Canyon, Los Angeles, California. Available worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/index.html#offerings">Offerings</a></li>
+            <li><a href="/community.html">Community</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="/book.html">Begin Here</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Offerings</h4>
+          <ul>
+            <li><a href="/deep-work.html">The Deep Work</a></li>
+            <li><a href="/shamanic-bodywork.html">Shamanic Bodywork</a></li>
+            <li><a href="/personal-immersions.html">Personal Immersions</a></li>
+            <li><a href="/ceremonial-therapeutics.html">Ceremonial Therapeutics</a></li>
+            <li><a href="/private-group-ceremonies.html">Private &amp; Group Ceremonies</a></li>
+            <li><a href="/platicas.html">Pl&aacute;ticas</a></li>
+            <li><a href="/divinations.html">Divinations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Living Web</h4>
+          <ul>
+            <li><a href="/community.html">Community Hubs</a></li>
+            <li><a href="/community.html#training">Ceremonialist Training</a></li>
+            <li><a href="/community.html#events">Events &amp; Gatherings</a></li>
+            <li><a href="/community.html#newsletter">Newsletter</a></li>
+            <li><a href="/book.html">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rights reserved.</p>
+      <p class="footer-credit">Adi Marie &middot; Topanga Canyon, Los Angeles, California</p>
     </div>
   </footer>
 
-  <script type="module">
-    import { initPublicPage } from '../shared/public-shell.js';
-    initPublicPage({ transparent: true, light: true, activePage: '/offerings/' });
-  </script>
+  <script src="/js/main.js"></script>
 </body>
 </html>

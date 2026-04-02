@@ -41,7 +41,12 @@ document.querySelectorAll('.accordion-header').forEach(header => {
 });
 
 // ── Fade-in on scroll (Intersection Observer) ────────
+// The .js-ready class on <html> gates the CSS opacity:0 rule so content
+// is always visible if JS hasn't loaded. A 3-second safety net ensures
+// everything becomes visible even if the observer never fires.
 if ('IntersectionObserver' in window) {
+  document.documentElement.classList.add('js-ready');
+
   const targets = document.querySelectorAll(
     'section, .offering-card, .modality-card, .community-card, .process-step, .vision-pillar, .cycle-phase'
   );
@@ -58,6 +63,12 @@ if ('IntersectionObserver' in window) {
   }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
 
   targets.forEach(el => io.observe(el));
+
+  // Safety net: make everything visible after 3 seconds in case
+  // IntersectionObserver doesn't fire (e.g. prerendered/headless view)
+  setTimeout(() => {
+    targets.forEach(el => el.classList.add('visible'));
+  }, 3000);
 }
 
 // ── Book form: client-side success state ─────────────

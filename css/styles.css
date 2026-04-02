@@ -83,6 +83,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2rem;
 }
 
 /* ===== LOGO ===== */
@@ -93,6 +94,7 @@ img { max-width: 100%; display: block; }
   color: var(--earth);
   letter-spacing: 0.02em;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .logo-accent {
@@ -106,6 +108,13 @@ img { max-width: 100%; display: block; }
   list-style: none;
   gap: 2.2rem;
   align-items: center;
+  flex-wrap: nowrap;
+}
+
+.main-nav {
+  flex-shrink: 1;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .main-nav a {
@@ -1703,13 +1712,18 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===== FADE-IN ANIMATION ===== */
-.fade-in {
+/* Content is visible by default. The .js-ready class (added by main.js)
+   activates the animation only when JS is confirmed working. This ensures
+   content is never invisible if JS fails, loads slowly, or the
+   IntersectionObserver doesn't fire. */
+.js-ready .fade-in {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.75s ease, transform 0.75s ease;
 }
 
-.fade-in.visible {
+.js-ready .fade-in.visible,
+.fade-in:not(.js-ready *) {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1717,6 +1731,13 @@ img { max-width: 100%; display: block; }
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .hero-title { font-size: 3.5rem; }
+
+  /* Header spacing for tablet/small desktop */
+  .header-inner { gap: 1.5rem; padding: 1.1rem 2rem; }
+  .logo { font-size: 1.2rem; }
+  .main-nav ul { gap: 1.5rem; }
+  .main-nav a { font-size: 0.72rem; }
+
   .nav-dropdown-inner { grid-template-columns: repeat(2, 180px); min-width: 400px; }
   .offerings-grid { grid-template-columns: repeat(2, 1fr); }
   .process-steps { grid-template-columns: repeat(2, 1fr); }
