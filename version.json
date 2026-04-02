@@ -1,12 +1,12 @@
 {
-  "version": "v260402.01 12:55a",
-  "release": 1,
-  "sha": "726be92",
-  "fullSha": "726be92289b8243ecc36689003760d0f0dadecd6",
+  "version": "v260402.02 2:29a",
+  "release": 2,
+  "sha": "a0cb3b4",
+  "fullSha": "a0cb3b495449dc1ccee727a250a5b4e22b5bbe03",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmrg6be",
-  "pushedAt": "2026-04-01T17:55:01-07:00",
-  "commits": [{"sha":"726be92","message":"Deploy portals with internal login system and fix footer buttons","author":"Adi Marie"}]
+  "pushedAt": "2026-04-01T19:29:40-07:00",
+  "commits": [{"sha":"a0cb3b4","message":"Restore corrupted pages and safely add footer portal buttons","author":"Adi Marie"}]
 }
