@@ -30,9 +30,9 @@
   --aap-text-muted: #8a7e72;      /* Muted/secondary */
 
   /* Accent — ceremonial gold */
-  --aap-accent: #b8943c;          /* Ceremonial gold */
+  --aap-accent: #c9a84c;          /* Ceremonial gold */
   --aap-accent-hover: #d4aa4a;    /* Gold hover (lighter) */
-  --aap-accent-light: rgba(184, 148, 60, 0.12); /* Gold tint */
+  --aap-accent-light: rgba(201, 168, 76, 0.12); /* Gold tint */
 
   /* Links */
   --aap-link: #c4a24e;            /* Gold link */

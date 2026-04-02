@@ -51,8 +51,8 @@ img { max-width: 100%; display: block; }
   --sage-dark:   #4A6344;
   --sage-light:  #8BA77F;
   --sage-pale:   #C5D9C6;
-  --gold:        #9e8b6e;
-  --gold-faint:  rgba(158,139,110,0.12);
+  --gold:        #c9a84c;
+  --gold-faint:  rgba(201,168,76,0.12);
   --border:      rgba(139,115,85,0.08);
   --border-mid:  rgba(139,115,85,0.15);
   --shadow-soft: 0 4px 25px rgba(0,0,0,0.04);
@@ -220,7 +220,7 @@ img { max-width: 100%; display: block; }
   text-align: center;
   gap: 0.5rem;
   padding: 1.75rem 1.5rem !important;
-  background: linear-gradient(160deg, rgba(158,139,110,0.06) 0%, rgba(91,117,83,0.04) 100%);
+  background: linear-gradient(160deg, rgba(201,168,76,0.06) 0%, rgba(91,117,83,0.04) 100%);
   border: 1px solid var(--border-mid);
   border-radius: 10px;
   text-decoration: none !important;
@@ -243,8 +243,8 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-drop-deepwork-card:hover {
-  background: linear-gradient(160deg, rgba(158,139,110,0.1) 0%, rgba(91,117,83,0.06) 100%);
-  border-color: rgba(158,139,110,0.25);
+  background: linear-gradient(160deg, rgba(201,168,76,0.1) 0%, rgba(91,117,83,0.06) 100%);
+  border-color: rgba(201,168,76,0.25);
   transform: translateY(-1px);
 }
 
@@ -437,6 +437,35 @@ img { max-width: 100%; display: block; }
   color: var(--cream);
   transform: translateY(-2px);
   box-shadow: 0 6px 25px rgba(91,117,83,0.25);
+}
+
+/* Gold outline button (used for cornerstone CTAs) */
+.btn-gold-outline {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 0.9rem;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  padding: 0.75rem 2rem;
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: 2px;
+  transition: all 0.35s ease;
+}
+.btn-gold-outline:hover {
+  background: rgba(201,168,76,0.08);
+  border-color: rgba(201,168,76,0.6);
+  transform: translateY(-2px);
+}
+
+/* Cornerstone highlight section */
+.section-cornerstone {
+  padding: 5rem 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, var(--gold-faint) 0%, transparent 100%);
+}
+.section-cornerstone .section-inner {
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 /* ===== TAGS ===== */
@@ -669,7 +698,7 @@ img { max-width: 100%; display: block; }
 .vision-divider {
   width: 50px;
   height: 1px;
-  background: rgba(158,139,110,0.4);
+  background: rgba(201,168,76,0.4);
   margin: 1.5rem auto 2rem;
 }
 
@@ -695,7 +724,7 @@ img { max-width: 100%; display: block; }
 
 .pillar-icon {
   font-size: 1.4rem;
-  color: rgba(158,139,110,0.45);
+  color: rgba(201,168,76,0.45);
   display: block;
   margin-bottom: 1rem;
   letter-spacing: 0.3em;
@@ -941,7 +970,7 @@ img { max-width: 100%; display: block; }
 .step-number {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.8rem;
-  color: rgba(158,139,110,0.22);
+  color: rgba(201,168,76,0.22);
   font-weight: 300;
   margin-bottom: 1rem;
   line-height: 1;
@@ -962,7 +991,7 @@ img { max-width: 100%; display: block; }
 .testimonial-quote-mark {
   font-family: 'Cormorant Garamond', serif;
   font-size: 7rem;
-  color: rgba(158,139,110,0.25);
+  color: rgba(201,168,76,0.25);
   line-height: 0.5;
   margin-bottom: 1rem;
 }
@@ -1071,7 +1100,7 @@ img { max-width: 100%; display: block; }
 .modality-number {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.9rem;
-  color: rgba(158,139,110,0.28);
+  color: rgba(201,168,76,0.28);
   font-weight: 300;
   display: block;
   margin-bottom: 0.5rem;
@@ -1108,7 +1137,7 @@ img { max-width: 100%; display: block; }
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  border: 1px solid rgba(158,139,110,0.3);
+  border: 1px solid rgba(201,168,76,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1131,7 +1160,7 @@ img { max-width: 100%; display: block; }
   border-top: 1px solid rgba(255,255,255,0.06);
 }
 
-.cycle-symbol { font-size: 4rem; color: rgba(158,139,110,0.35); margin-bottom: 1rem; }
+.cycle-symbol { font-size: 4rem; color: rgba(201,168,76,0.35); margin-bottom: 1rem; }
 
 .cycle-note {
   font-family: 'Cormorant Garamond', serif;
@@ -1631,7 +1660,7 @@ img { max-width: 100%; display: block; }
 .booking-step-num {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.5rem;
-  color: rgba(158,139,110,0.22);
+  color: rgba(201,168,76,0.22);
   margin-bottom: 0.8rem;
   line-height: 1;
 }
@@ -1692,6 +1721,45 @@ img { max-width: 100%; display: block; }
 }
 
 .footer-col a:hover { color: rgba(255,255,255,0.9); }
+
+/* Footer portal links */
+.footer-portals {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-portal-link {
+  display: inline-block;
+  padding: 11px 28px;
+  border-radius: 2px;
+  color: rgba(255,255,255,0.8);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+  background: transparent;
+}
+.footer-portal-link--client {
+  border: 1px solid rgba(145,163,134,0.5);
+}
+.footer-portal-link--client:hover {
+  border-color: rgba(145,163,134,0.85);
+  color: rgba(255,255,255,0.95);
+  background: rgba(91,117,83,0.12);
+}
+.footer-portal-link--admin {
+  border: 1px solid rgba(201,168,76,0.4);
+}
+.footer-portal-link--admin:hover {
+  border-color: rgba(201,168,76,0.75);
+  color: rgba(255,255,255,0.95);
+  background: rgba(201,168,76,0.1);
+}
 
 .footer-bottom {
   max-width: 1200px;

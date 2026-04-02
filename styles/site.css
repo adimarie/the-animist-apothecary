@@ -25,9 +25,9 @@
   --aap-text: #e8e0d4;
   --aap-text-light: #f5f0e8;
   --aap-text-muted: #8a7e72;
-  --aap-accent: #b8943c;
+  --aap-accent: #c9a84c;
   --aap-accent-hover: #d4aa4a;
-  --aap-accent-light: rgba(184, 148, 60, 0.12);
+  --aap-accent-light: rgba(201, 168, 76, 0.12);
   --aap-link: #c4a24e;
   --aap-link-hover: #d4aa4a;
   --aap-border: #2e2924;
@@ -143,7 +143,7 @@ li {
 }
 
 ::selection {
-  background: rgba(184, 148, 60, 0.3);
+  background: rgba(201, 168, 76, 0.3);
   color: var(--aap-text-light);
 }
 
@@ -517,7 +517,7 @@ li {
 
 .aap-nav__dropdown-link:hover {
   color: var(--aap-accent);
-  background: rgba(184, 148, 60, 0.08);
+  background: rgba(201, 168, 76, 0.08);
 }
 
 /* ---- Mobile nav: expandable offerings ---- */
@@ -803,7 +803,7 @@ li {
 .aap-content a {
   color: var(--aap-accent);
   text-decoration: underline;
-  text-decoration-color: rgba(184, 148, 60, 0.3);
+  text-decoration-color: rgba(201, 168, 76, 0.3);
   text-underline-offset: 3px;
   transition: text-decoration-color var(--aap-transition), color var(--aap-transition);
 }
@@ -819,7 +819,7 @@ li {
 }
 
 .aap-warning {
-  background-color: rgba(184, 148, 60, 0.08);
+  background-color: rgba(201, 168, 76, 0.08);
   border-left: 3px solid var(--aap-accent);
   padding: var(--aap-space-sm) var(--aap-space-md);
   margin: var(--aap-space-md) 0;
@@ -912,14 +912,14 @@ li {
   background-color: var(--aap-accent);
   color: #141210;
   border-color: var(--aap-accent);
-  box-shadow: 0 1px 3px rgba(184, 148, 60, 0.25);
+  box-shadow: 0 1px 3px rgba(201, 168, 76, 0.25);
 }
 
 .aap-btn--primary:hover {
   background-color: var(--aap-accent-hover);
   border-color: var(--aap-accent-hover);
   color: #141210;
-  box-shadow: 0 4px 12px rgba(184, 148, 60, 0.3);
+  box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3);
   transform: translateY(-1px);
 }
 
@@ -1075,7 +1075,7 @@ li {
 .aap-form__textarea:focus {
   outline: none;
   border-color: var(--aap-accent);
-  box-shadow: 0 0 0 3px rgba(184, 148, 60, 0.15);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
 }
 
 .aap-form__input::placeholder,

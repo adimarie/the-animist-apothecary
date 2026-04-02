@@ -13,7 +13,7 @@ import { initAuth, getAuthState, signOut } from './auth.js';
 
 // Image URLs - transparent PNGs from Supabase storage
 const LOGO_BASE = 'https://wdecjlrfulsdklqeetqb.supabase.co/storage/v1/object/public/housephotos/logos';
-const ICON_FALLBACK = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><rect width="30" height="30" rx="4" fill="none"/><text x="15" y="20" text-anchor="middle" font-size="10" font-family="Georgia,serif" fill="#b8943c">AA</text></svg>');
+const ICON_FALLBACK = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><rect width="30" height="30" rx="4" fill="none"/><text x="15" y="20" text-anchor="middle" font-size="10" font-family="Georgia,serif" fill="#c9a84c">AA</text></svg>');
 const WORDMARK_FALLBACK = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 28"><rect width="220" height="28" fill="none"/><text x="0" y="20" font-size="14" font-family="Georgia,serif" fill="#e8e0d4">The Animist Apothecary</text></svg>');
 const IMAGES = {
   // Property head icon (transparent PNGs)
