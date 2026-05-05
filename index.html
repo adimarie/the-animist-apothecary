@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body data-content-page="home">
 
   <header class="site-header">
     <div class="header-inner">
@@ -57,14 +57,16 @@
 
   <!-- &mdash;&mdash;&mdash; HERO &mdash;&mdash;&mdash; -->
   <section class="hero-fullbleed">
-    <div class="hero-image" role="img" aria-label="Sunlight streaming through the great living canopy of the Topanga chaparral"></div>
+    <div class="hero-image" role="img"
+         aria-label="Sunlight streaming through the great living canopy of the Topanga chaparral"
+         data-content="hero.image" data-content-type="image" data-content-alt="hero.image_alt"></div>
     <div class="hero-content">
-      <span class="hero-eyebrow">Shamanic Healing &middot; Somatic Ceremony &middot; Botanical Medicine</span>
-      <h1 class="hero-title">Where ancient wisdom meets<br>the <em>living body</em></h1>
-      <p class="hero-subtitle">Somatic healing, sacred ceremony, and botanical medicine &mdash; woven together in devotion to your wholeness and the healing of the living world.</p>
+      <span class="hero-eyebrow" data-content="hero.eyebrow">Shamanic Healing &middot; Somatic Ceremony &middot; Botanical Medicine</span>
+      <h1 class="hero-title" data-content="hero.title" data-content-type="html">Where ancient wisdom meets<br>the <em>living body</em></h1>
+      <p class="hero-subtitle" data-content="hero.subtitle">Somatic healing, sacred ceremony, and botanical medicine &mdash; woven together in devotion to your wholeness and the healing of the living world.</p>
       <div class="hero-actions">
-        <a href="#offerings" class="btn-primary">Explore the Work</a>
-        <a href="book.html" class="btn-ghost">Begin Here</a>
+        <a href="#offerings" class="btn-primary" data-content="hero.cta_primary_text" data-content-href="hero.cta_primary_url">Explore the Work</a>
+        <a href="book.html" class="btn-ghost" data-content="hero.cta_secondary_text" data-content-href="hero.cta_secondary_url">Begin Here</a>
       </div>
     </div>
   </section>
@@ -353,5 +355,6 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/content-loader.js" defer></script>
 </body>
 </html>

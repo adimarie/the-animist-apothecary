@@ -1,0 +1,15 @@
+# Home page editable content
+# Edit this file via /studio/ — saves commit to GitHub and deploy automatically.
+# This file is read at page load by /js/content-loader.js and injected into the DOM.
+# If this file is missing or broken, index.html falls back to its hard-coded content (safe).
+
+hero:
+  eyebrow: "Shamanic Healing · Somatic Ceremony · Botanical Medicine"
+  title: "Where ancient wisdom meets<br>the <em>living body</em>"
+  subtitle: "Somatic healing, sacred ceremony, and botanical medicine — woven together in devotion to your wholeness and the healing of the living world."
+  cta_primary_text: "Explore the Work"
+  cta_primary_url: "#offerings"
+  cta_secondary_text: "Begin Here"
+  cta_secondary_url: "book.html"
+  image: "/images/hero-canopy.jpg"
+  image_alt: "Sunlight streaming through the great living canopy of the Topanga chaparral"

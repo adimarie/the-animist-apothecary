@@ -1,0 +1,52 @@
+# Decap CMS configuration
+# Docs: https://decapcms.org/docs/configuration-options/
+#
+# This file controls what's editable through /studio/.
+# Adding a new editable page = add a new entry under `collections > files`.
+
+backend:
+  name: github
+  repo: adimarie/the-animist-apothecary
+  branch: main
+  # OAuth proxy on Supabase Edge Functions (handles the GitHub OAuth handshake).
+  base_url: https://wdecjlrfulsdklqeetqb.supabase.co
+  auth_endpoint: functions/v1/decap-oauth
+
+# Direct-to-main commits. To enable drafts + PR review, uncomment:
+# publish_mode: editorial_workflow
+
+# Where uploaded media goes (in the repo + on the live site).
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Site identity in the editor UI.
+site_url: https://theanimistapothecary.com
+display_url: https://theanimistapothecary.com
+logo_url: /assets/branding/wordmark-white-transparent.png
+
+# Branded login screen.
+locale: "en"
+
+collections:
+  - name: "pages"
+    label: "Site Pages"
+    description: "Edit the words and images on each page of theanimistapothecary.com. Saves commit to GitHub and deploy automatically."
+    files:
+      - file: "_content/home.yml"
+        label: "Home Page"
+        name: "home"
+        format: "yaml"
+        fields:
+          - label: "Hero (top of page)"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Eyebrow (small caps text above title)", name: "eyebrow", widget: "string"}
+              - {label: "Main Title (use <em>word</em> for italic accent)", name: "title", widget: "string", hint: "HTML allowed for line breaks <br> and italic <em>"}
+              - {label: "Subtitle / Description", name: "subtitle", widget: "text"}
+              - {label: "Primary Button Text", name: "cta_primary_text", widget: "string"}
+              - {label: "Primary Button URL", name: "cta_primary_url", widget: "string"}
+              - {label: "Secondary Button Text", name: "cta_secondary_text", widget: "string"}
+              - {label: "Secondary Button URL", name: "cta_secondary_url", widget: "string"}
+              - {label: "Background Image", name: "image", widget: "image", required: false, hint: "Recommended: tall, atmospheric image. Saved to /images/uploads/."}
+              - {label: "Image Description (for screen readers)", name: "image_alt", widget: "string", required: false}
