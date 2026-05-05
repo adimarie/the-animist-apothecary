@@ -1,12 +1,12 @@
 {
-  "version": "v260404.02 5:40p",
-  "release": 2,
-  "sha": "9624e29",
-  "fullSha": "9624e294d298dc38e5291a2e1d6b5b5befd48f1a",
+  "version": "v260505.01 11:57p",
+  "release": 1,
+  "sha": "f30d9ca",
+  "fullSha": "f30d9ca5705cc9228de2e03d1bcf5ea9e5227a60",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm727z3",
-  "pushedAt": "2026-04-04T10:40:02-07:00",
-  "commits": [{"sha":"9624e29","message":"Update divinations page with Dagara tradition content from Google Doc","author":"adimarie"}]
+  "machine": "runnervmeorf1",
+  "pushedAt": "2026-05-05T16:57:21-07:00",
+  "commits": [{"sha":"53ab5a9","message":"Refine home + about + community","author":"Adi Marie"},{"sha":"f30d9ca","message":"Install Decap CMS at /studio/ with Supabase OAuth proxy","author":"Adi Marie"}]
 }
