@@ -17,31 +17,42 @@
     Login uses GitHub OAuth proxied through a Supabase Edge Function.
   -->
   <script>
-    // OAuth handoff fallback: if window.opener was severed during the
-    // GitHub→Supabase→main-site redirect chain, the popup can't postMessage
-    // us directly. Listen for a localStorage write from the popup
-    // (auth.html) and re-dispatch it as a postMessage to ourselves so
-    // Decap's auth listener picks it up.
+    // OAuth handoff fallbacks. window.opener can be severed during the
+    // GitHub→Supabase→main-site redirect chain. We listen on three channels
+    // (postMessage, localStorage 'storage' event, BroadcastChannel) and
+    // re-dispatch any received auth message as a postMessage to ourselves
+    // so Decap's listener catches it.
     (function () {
-      function consume(value) {
+      function dispatch(message) {
+        if (typeof message !== 'string') return;
+        window.postMessage(message, window.location.origin);
+      }
+
+      function consumeStorage(value) {
         if (!value) return;
         try {
           var parsed = JSON.parse(value);
-          if (parsed && typeof parsed.message === 'string') {
-            window.postMessage(parsed.message, window.location.origin);
-          }
-        } catch (e) { /* ignore malformed values */ }
+          if (parsed && typeof parsed.message === 'string') dispatch(parsed.message);
+        } catch (e) {}
         try { localStorage.removeItem('decap-oauth-result'); } catch (e) {}
       }
 
-      // Catch results that landed before this script ran.
-      try { consume(localStorage.getItem('decap-oauth-result')); } catch (e) {}
+      // Catch any value already in localStorage from a popup that closed before this script ran.
+      try { consumeStorage(localStorage.getItem('decap-oauth-result')); } catch (e) {}
 
       window.addEventListener('storage', function (e) {
-        if (e.key === 'decap-oauth-result' && e.newValue) {
-          consume(e.newValue);
-        }
+        if (e.key === 'decap-oauth-result' && e.newValue) consumeStorage(e.newValue);
       });
+
+      // BroadcastChannel — designed for cross-tab communication, doesn't depend on opener.
+      try {
+        if (typeof BroadcastChannel === 'function') {
+          var ch = new BroadcastChannel('decap-oauth');
+          ch.onmessage = function (e) {
+            if (e && e.data && typeof e.data.message === 'string') dispatch(e.data.message);
+          };
+        }
+      } catch (e) {}
     })();
   </script>
   <script src="https://unpkg.com/decap-cms@^3.8.4/dist/decap-cms.js"></script>

@@ -5,83 +5,133 @@
   <title>Authentication complete</title>
   <meta name="robots" content="noindex,nofollow">
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; padding: 3rem; text-align: center; color: #444; }
-    p { margin-top: 1rem; }
-    .err { color: #c53030; }
-    .hint { color: #888; font-size: 0.9rem; margin-top: 2rem; }
+    body { font-family: system-ui, -apple-system, sans-serif; padding: 2rem; color: #333; max-width: 640px; margin: 0 auto; }
+    h2 { margin-top: 0; }
+    .status { padding: 0.75rem 1rem; border-radius: 6px; margin: 1rem 0; }
+    .ok { background: #e6f4ea; color: #1e7e34; }
+    .err { background: #fde7e7; color: #c53030; }
+    .info { background: #f1f3f5; color: #495057; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; word-break: break-all; }
+    button { background: #2c5530; color: white; border: 0; padding: 0.6rem 1.25rem; border-radius: 4px; cursor: pointer; font-size: 0.95rem; }
+    button:hover { background: #1e3a21; }
+    .small { color: #666; font-size: 0.85rem; margin-top: 1.5rem; }
   </style>
 </head>
 <body>
-  <p id="msg">Finishing sign-in…</p>
-  <p class="hint" id="hint"></p>
+  <h2 id="title">Finishing sign-in…</h2>
+  <div id="status"></div>
+  <div id="diag" class="status info" style="display:none"></div>
+  <p class="small">If the editor tab does not advance on its own, click the button below to retry the handoff:</p>
+  <button id="retry" disabled>Retry handoff</button>
   <script>
     (function () {
-      var msgEl = document.getElementById('msg');
-      var hintEl = document.getElementById('hint');
-      var params = new URLSearchParams(location.hash.slice(1));
+      var titleEl = document.getElementById('title');
+      var statusEl = document.getElementById('status');
+      var diagEl = document.getElementById('diag');
+      var retryBtn = document.getElementById('retry');
+      var diag = [];
+
+      function log(line) { diag.push(line); diagEl.textContent = diag.join('\n'); diagEl.style.display = 'block'; }
+      function setStatus(text, cls) { statusEl.textContent = text; statusEl.className = 'status ' + cls; }
+
+      var hash = location.hash || '';
+      log('hash on load: ' + (hash || '(empty)'));
+      log('referrer: ' + (document.referrer || '(none)'));
+      log('opener: ' + (window.opener ? 'present' : 'NULL'));
+
+      var params = new URLSearchParams(hash.slice(1));
       var token = params.get('token');
       var error = params.get('error');
 
       if (error) {
-        msgEl.className = 'err';
-        msgEl.textContent = 'Sign-in failed: ' + error;
-        return;
-      }
-      if (!token) {
-        msgEl.className = 'err';
-        msgEl.textContent = 'Sign-in failed: no token in callback URL.';
+        titleEl.textContent = 'Sign-in failed';
+        setStatus(error, 'err');
         return;
       }
 
-      // Strip the token from the URL so it doesn't sit in browser history.
-      try { history.replaceState(null, '', location.pathname); } catch (e) {}
+      // If no token in URL but we previously stored one, recover it.
+      if (!token) {
+        try {
+          var saved = sessionStorage.getItem('decap-oauth-token');
+          if (saved) { token = saved; log('recovered token from sessionStorage'); }
+        } catch (e) {}
+      }
+
+      if (!token) {
+        titleEl.textContent = 'Sign-in failed';
+        setStatus('No token in callback URL. Did you arrive at this page directly instead of through the GitHub login flow?', 'err');
+        return;
+      }
+
+      // Persist into sessionStorage in case we need to retry.
+      try { sessionStorage.setItem('decap-oauth-token', token); } catch (e) {}
 
       var payload = JSON.stringify({ token: token, provider: 'github' });
       var message = 'authorization:github:success:' + payload;
 
-      // Channel 1: postMessage to opener (the standard Decap path).
-      // Works when window.opener is still connected.
       function notifyOpener() {
         try {
           if (window.opener && !window.opener.closed) {
             window.opener.postMessage(message, '*');
+            log('postMessage: sent to opener');
             return true;
           }
-        } catch (e) { /* opener may be cross-origin or gone */ }
+          log('postMessage: opener absent or closed');
+        } catch (e) { log('postMessage: error ' + e.message); }
         return false;
       }
 
-      // Channel 2: localStorage bridge. Same-origin tabs receive a 'storage'
-      // event when localStorage changes — the studio tab picks this up and
-      // re-dispatches as a postMessage to itself. Survives severed window.opener.
       function notifyViaStorage() {
         try {
-          // Use a timestamp suffix so writing the same value twice still fires the event.
-          localStorage.setItem('decap-oauth-result', JSON.stringify({
-            ts: Date.now(),
-            message: message
-          }));
-        } catch (e) { /* localStorage may be blocked */ }
+          localStorage.setItem('decap-oauth-result', JSON.stringify({ ts: Date.now(), message: message }));
+          log('localStorage: written');
+          return true;
+        } catch (e) { log('localStorage: error ' + e.message); }
+        return false;
       }
 
-      // Decap may also send 'authorizing:github' to the popup as a handshake;
-      // reply with the success message if so.
+      function notifyViaBroadcast() {
+        try {
+          if (typeof BroadcastChannel !== 'function') { log('BroadcastChannel: not supported'); return false; }
+          var ch = new BroadcastChannel('decap-oauth');
+          ch.postMessage({ message: message });
+          log('BroadcastChannel: sent');
+          return true;
+        } catch (e) { log('BroadcastChannel: error ' + e.message); }
+        return false;
+      }
+
+      function fireAll() {
+        var a = notifyOpener();
+        var b = notifyViaStorage();
+        var c = notifyViaBroadcast();
+        return a || b || c;
+      }
+
+      // Decap may handshake — reply to it.
       window.addEventListener('message', function (e) {
         if (typeof e.data === 'string' && e.data.indexOf('authorizing:github') === 0) {
-          notifyOpener();
-          notifyViaStorage();
+          log('received authorizing:github handshake');
+          fireAll();
         }
       }, false);
 
-      var openerWorked = notifyOpener();
-      notifyViaStorage();
+      var anyChannel = fireAll();
+      titleEl.textContent = 'Signed in';
+      setStatus(anyChannel
+        ? 'Token captured and sent. The editor tab should advance momentarily.'
+        : 'Token captured but no channel succeeded. Click "Retry handoff" or close this window and reload the studio tab.',
+        anyChannel ? 'ok' : 'err'
+      );
+      retryBtn.disabled = false;
+      retryBtn.addEventListener('click', function () { fireAll(); });
 
-      msgEl.textContent = 'Signed in. You can close this window.';
-      if (!openerWorked) {
-        hintEl.textContent = '(Returning you to the editor — you can close this tab if it does not close on its own.)';
+      // Strip token from URL only AFTER all channels fired (so a retry reload still has it via sessionStorage).
+      try { history.replaceState(null, '', location.pathname); } catch (e) {}
+
+      // Try to close after a brief moment, but don't if it would leave the user stranded.
+      if (anyChannel) {
+        setTimeout(function () { try { window.close(); } catch (e) {} }, 2500);
       }
-
-      setTimeout(function () { try { window.close(); } catch (e) {} }, 1500);
     })();
   </script>
 </body>
