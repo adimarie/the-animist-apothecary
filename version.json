@@ -1,12 +1,12 @@
 {
-  "version": "v260506.02 12:30a",
-  "release": 2,
-  "sha": "0d18257",
-  "fullSha": "0d182571177932a27256360acb2e757dd586a969",
+  "version": "v260506.03 12:42a",
+  "release": 3,
+  "sha": "dde0f14",
+  "fullSha": "dde0f1478d62eb81a678f5aed121a0f9bfe4ff0a",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-05T17:30:22-07:00",
-  "commits": [{"sha":"0d18257","message":"Add localStorage fallback for Decap OAuth popup handoff","author":"Adi Marie"}]
+  "pushedAt": "2026-05-05T17:42:39-07:00",
+  "commits": [{"sha":"dde0f14","message":"Add BroadcastChannel + diagnostic UI to Decap OAuth handoff","author":"Adi Marie"}]
 }
