@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Authentication complete</title>
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    body { font-family: system-ui, -apple-system, sans-serif; padding: 3rem; text-align: center; color: #444; }
+    p { margin-top: 1rem; }
+    .err { color: #c53030; }
+  </style>
+</head>
+<body>
+  <p id="msg">Finishing sign-in…</p>
+  <script>
+    (function () {
+      var msgEl = document.getElementById('msg');
+      var params = new URLSearchParams(location.hash.slice(1));
+      var token = params.get('token');
+      var error = params.get('error');
+
+      if (error) {
+        msgEl.className = 'err';
+        msgEl.textContent = 'Sign-in failed: ' + error;
+        return;
+      }
+      if (!token) {
+        msgEl.className = 'err';
+        msgEl.textContent = 'Sign-in failed: no token in callback URL.';
+        return;
+      }
+
+      // Strip the token from the URL so it doesn't sit in history.
+      try { history.replaceState(null, '', location.pathname); } catch (e) {}
+
+      var payload = JSON.stringify({ token: token, provider: 'github' });
+      var message = 'authorization:github:success:' + payload;
+
+      function notify() {
+        if (window.opener) {
+          window.opener.postMessage(message, '*');
+        }
+      }
+
+      // Decap sends 'authorizing:github' — we reply with the success message.
+      window.addEventListener('message', function (e) {
+        if (typeof e.data === 'string' && e.data.indexOf('authorizing:github') === 0) {
+          notify();
+        }
+      }, false);
+
+      notify();
+      msgEl.textContent = 'Signed in. You can close this window.';
+      setTimeout(function () { try { window.close(); } catch (e) {} }, 1500);
+    })();
+  </script>
+</body>
+</html>
