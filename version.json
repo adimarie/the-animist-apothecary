@@ -1,12 +1,12 @@
 {
-  "version": "v260506.03 12:42a",
-  "release": 3,
-  "sha": "dde0f14",
-  "fullSha": "dde0f1478d62eb81a678f5aed121a0f9bfe4ff0a",
+  "version": "v260506.04 12:50a",
+  "release": 4,
+  "sha": "1e6f67f",
+  "fullSha": "1e6f67fefdeb971c8be2aa0efc1ff538325d555e",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-05T17:42:39-07:00",
-  "commits": [{"sha":"dde0f14","message":"Add BroadcastChannel + diagnostic UI to Decap OAuth handoff","author":"Adi Marie"}]
+  "pushedAt": "2026-05-05T17:49:47-07:00",
+  "commits": [{"sha":"1e6f67f","message":"Bypass OAuth: add token-paste sign-in form to /studio/","author":"Adi Marie"}]
 }
