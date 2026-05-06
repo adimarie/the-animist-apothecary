@@ -8,13 +8,16 @@
     body { font-family: system-ui, -apple-system, sans-serif; padding: 3rem; text-align: center; color: #444; }
     p { margin-top: 1rem; }
     .err { color: #c53030; }
+    .hint { color: #888; font-size: 0.9rem; margin-top: 2rem; }
   </style>
 </head>
 <body>
   <p id="msg">Finishing sign-in…</p>
+  <p class="hint" id="hint"></p>
   <script>
     (function () {
       var msgEl = document.getElementById('msg');
+      var hintEl = document.getElementById('hint');
       var params = new URLSearchParams(location.hash.slice(1));
       var token = params.get('token');
       var error = params.get('error');
@@ -30,27 +33,54 @@
         return;
       }
 
-      // Strip the token from the URL so it doesn't sit in history.
+      // Strip the token from the URL so it doesn't sit in browser history.
       try { history.replaceState(null, '', location.pathname); } catch (e) {}
 
       var payload = JSON.stringify({ token: token, provider: 'github' });
       var message = 'authorization:github:success:' + payload;
 
-      function notify() {
-        if (window.opener) {
-          window.opener.postMessage(message, '*');
-        }
+      // Channel 1: postMessage to opener (the standard Decap path).
+      // Works when window.opener is still connected.
+      function notifyOpener() {
+        try {
+          if (window.opener && !window.opener.closed) {
+            window.opener.postMessage(message, '*');
+            return true;
+          }
+        } catch (e) { /* opener may be cross-origin or gone */ }
+        return false;
       }
 
-      // Decap sends 'authorizing:github' — we reply with the success message.
+      // Channel 2: localStorage bridge. Same-origin tabs receive a 'storage'
+      // event when localStorage changes — the studio tab picks this up and
+      // re-dispatches as a postMessage to itself. Survives severed window.opener.
+      function notifyViaStorage() {
+        try {
+          // Use a timestamp suffix so writing the same value twice still fires the event.
+          localStorage.setItem('decap-oauth-result', JSON.stringify({
+            ts: Date.now(),
+            message: message
+          }));
+        } catch (e) { /* localStorage may be blocked */ }
+      }
+
+      // Decap may also send 'authorizing:github' to the popup as a handshake;
+      // reply with the success message if so.
       window.addEventListener('message', function (e) {
         if (typeof e.data === 'string' && e.data.indexOf('authorizing:github') === 0) {
-          notify();
+          notifyOpener();
+          notifyViaStorage();
         }
       }, false);
 
-      notify();
+      var openerWorked = notifyOpener();
+      notifyViaStorage();
+
       msgEl.textContent = 'Signed in. You can close this window.';
+      if (!openerWorked) {
+        hintEl.textContent = '(Returning you to the editor — you can close this tab if it does not close on its own.)';
+      }
+
       setTimeout(function () { try { window.close(); } catch (e) {} }, 1500);
     })();
   </script>
