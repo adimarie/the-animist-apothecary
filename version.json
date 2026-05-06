@@ -1,12 +1,12 @@
 {
-  "version": "v260505.01 11:57p",
+  "version": "v260506.01 12:19a",
   "release": 1,
-  "sha": "f30d9ca",
-  "fullSha": "f30d9ca5705cc9228de2e03d1bcf5ea9e5227a60",
+  "sha": "51b9874",
+  "fullSha": "51b987483c4481f0f7f9caa562302c92a2b132fd",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-05T16:57:21-07:00",
-  "commits": [{"sha":"53ab5a9","message":"Refine home + about + community","author":"Adi Marie"},{"sha":"f30d9ca","message":"Install Decap CMS at /studio/ with Supabase OAuth proxy","author":"Adi Marie"}]
+  "pushedAt": "2026-05-05T17:19:21-07:00",
+  "commits": [{"sha":"51b9874","message":"Fix Decap OAuth popup: redirect to /studio/auth.html for postMessage","author":"Adi Marie"}]
 }
