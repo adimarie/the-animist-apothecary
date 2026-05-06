@@ -72,6 +72,18 @@
       var value = getByPath(content, el.dataset.contentHref);
       if (value !== undefined && value !== null) el.href = value;
     });
+
+    // Background-position substitution (e.g. "center 30%")
+    document.querySelectorAll('[data-content-bgpos]').forEach(function (el) {
+      var value = getByPath(content, el.dataset.contentBgpos);
+      if (value) el.style.backgroundPosition = String(value);
+    });
+
+    // Background-size substitution (e.g. "cover" / "contain")
+    document.querySelectorAll('[data-content-bgsize]').forEach(function (el) {
+      var value = getByPath(content, el.dataset.contentBgsize);
+      if (value) el.style.backgroundSize = String(value);
+    });
   }
 
   fetch('/_content/' + page + '.yml', { cache: 'no-cache' })

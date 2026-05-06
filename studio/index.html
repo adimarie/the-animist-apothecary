@@ -32,113 +32,67 @@
       background: white;
       border-right: 1px solid var(--line);
       padding: 1.75rem 1.25rem;
-      position: sticky;
-      top: 0;
+      position: sticky; top: 0;
       height: 100vh;
       overflow-y: auto;
     }
-    aside h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
-      font-size: 1.4rem;
-      color: var(--sage-dark);
-      margin: 0 0 0.25rem;
-    }
+    aside h1 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.4rem; color: var(--sage-dark); margin: 0 0 0.25rem; }
     aside .sub { font-size: 0.78rem; color: var(--earth-light); margin-bottom: 1.5rem; }
-    aside h3 {
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--earth-light);
-      margin: 1.5rem 0 0.5rem;
-      font-weight: 500;
-    }
+    aside h3 { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--earth-light); margin: 1.5rem 0 0.5rem; font-weight: 500; }
     aside ul { list-style: none; padding: 0; margin: 0; }
     aside li { margin: 0.1rem 0; }
-    aside a {
-      display: block;
-      padding: 0.5rem 0.75rem;
-      color: var(--earth);
-      text-decoration: none;
-      border-radius: 4px;
-      font-size: 0.92rem;
-      transition: background 0.12s;
-    }
+    aside a { display: block; padding: 0.5rem 0.75rem; color: var(--earth); text-decoration: none; border-radius: 4px; font-size: 0.92rem; transition: background 0.12s; }
     aside a:hover { background: var(--cream); }
     aside a.active { background: var(--sage); color: white; }
     aside a.stub { color: #aaa; cursor: not-allowed; }
     aside a.stub::after { content: ' (soon)'; font-size: 0.7rem; }
-    main {
-      padding: 2.5rem 3rem;
-      max-width: 820px;
-    }
-    main h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
-      font-size: 2rem;
-      color: var(--sage-dark);
-      margin: 0 0 0.25rem;
-    }
-    main .crumb { font-size: 0.85rem; color: var(--earth-light); margin-bottom: 2rem; }
-    section.group {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 1.5rem 1.75rem;
-      margin-bottom: 1.5rem;
-    }
-    section.group h3 {
-      margin: 0 0 1rem;
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 500;
-      font-size: 1.25rem;
-      color: var(--sage-dark);
-    }
+    main { padding: 2.5rem 3rem; max-width: 860px; }
+    main h2 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 2rem; color: var(--sage-dark); margin: 0 0 0.25rem; }
+    main .crumb { font-size: 0.85rem; color: var(--earth-light); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+    section.group { background: white; border: 1px solid var(--line); border-radius: 6px; padding: 1.5rem 1.75rem; margin-bottom: 1.5rem; }
+    section.group h3 { margin: 0 0 1rem; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.25rem; color: var(--sage-dark); }
     .field { margin-bottom: 1.25rem; }
     .field label { display: block; font-size: 0.85rem; font-weight: 500; color: var(--earth); margin-bottom: 0.3rem; }
     .field .hint { display: block; font-size: 0.78rem; color: var(--earth-light); margin-bottom: 0.4rem; font-weight: 400; }
-    .field input[type="text"], .field textarea {
-      width: 100%;
-      padding: 0.6rem 0.75rem;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      font-family: inherit;
-      font-size: 0.95rem;
-      background: white;
-      color: var(--earth);
+    .field input[type="text"], .field textarea, .field select {
+      width: 100%; padding: 0.6rem 0.75rem;
+      border: 1px solid var(--line); border-radius: 4px;
+      font-family: inherit; font-size: 0.95rem;
+      background: white; color: var(--earth);
     }
     .field textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
-    .field input:focus, .field textarea:focus { outline: 2px solid var(--sage); outline-offset: -1px; }
+    .field select { appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%235a544c' stroke-width='1.5'><path d='M1 1l5 5 5-5'/></svg>"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2rem; }
+    .field input:focus, .field textarea:focus, .field select:focus { outline: 2px solid var(--sage); outline-offset: -1px; }
+
+    /* Image field */
+    .image-field { }
+    .image-preview { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+    .image-preview img { max-width: 280px; max-height: 180px; border-radius: 4px; border: 1px solid var(--line); object-fit: cover; background: var(--cream); }
+    .image-preview .meta { font-size: 0.8rem; color: var(--earth-light); flex: 1; min-width: 200px; }
+    .image-preview .meta code { background: var(--cream); padding: 0.1rem 0.35rem; border-radius: 3px; font-size: 0.75rem; word-break: break-all; }
+    .file-row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+    .file-row label.file-btn { background: white; border: 1px solid var(--sage-dark); color: var(--sage-dark); padding: 0.45rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.88rem; transition: background 0.12s; display: inline-block; margin-bottom: 0; font-weight: 500; }
+    .file-row label.file-btn:hover { background: var(--cream); }
+    .file-row input[type="file"] { display: none; }
+    .upload-status { font-size: 0.82rem; }
+    .upload-status.ok { color: var(--ok); }
+    .upload-status.err { color: var(--warn); }
+    .empty-img { width: 280px; height: 180px; display: flex; align-items: center; justify-content: center; color: var(--earth-light); font-size: 0.85rem; border: 1px dashed var(--line); border-radius: 4px; background: var(--cream); }
+
     .actions {
-      position: sticky;
-      bottom: 0;
+      position: sticky; bottom: 0;
       background: linear-gradient(to top, var(--cream) 70%, transparent);
-      padding: 1.5rem 0 1rem;
-      margin-top: 1rem;
-      display: flex;
-      gap: 0.75rem;
-      align-items: center;
+      padding: 1.5rem 0 1rem; margin-top: 1rem;
+      display: flex; gap: 0.75rem; align-items: center;
     }
-    button {
-      background: var(--sage-dark);
-      color: white;
-      border: 0;
-      padding: 0.65rem 1.5rem;
-      border-radius: 4px;
-      font-family: inherit;
-      font-size: 0.95rem;
-      cursor: pointer;
-      transition: background 0.12s;
-    }
+    button { background: var(--sage-dark); color: white; border: 0; padding: 0.65rem 1.5rem; border-radius: 4px; font-family: inherit; font-size: 0.95rem; cursor: pointer; transition: background 0.12s; }
     button:hover { background: var(--earth); }
     button:disabled { background: #aaa; cursor: not-allowed; }
     button.ghost { background: transparent; color: var(--earth-light); border: 1px solid var(--line); }
     .status { font-size: 0.88rem; margin-left: 0.5rem; }
     .status.ok { color: var(--ok); }
     .status.err { color: var(--warn); }
-    .empty { color: var(--earth-light); padding: 2rem 0; }
-    .loading { color: var(--earth-light); padding: 1rem 0; }
-    .changed-mark { color: var(--warn); font-size: 0.8rem; margin-left: 0.5rem; }
+    .empty, .loading { color: var(--earth-light); padding: 1.5rem 0; }
     a.live-link { color: var(--sage-dark); font-size: 0.85rem; text-decoration: none; margin-left: auto; }
     a.live-link:hover { text-decoration: underline; }
   </style>
@@ -148,31 +102,34 @@
     <h1>Studio</h1>
     <div class="sub">The Animist Apothecary</div>
 
-    <h3>Wired up</h3>
-    <ul id="navWired">
-      <li><a href="#home" data-page="home">Home Page</a></li>
-    </ul>
+    <h3>Pages</h3>
+    <ul id="navList"></ul>
 
     <h3>Coming next</h3>
-    <ul>
-      <li><a class="stub">About</a></li>
-      <li><a class="stub">Community</a></li>
-      <li><a class="stub">Sacred Reciprocity</a></li>
-      <li><a class="stub">Book / Begin Here</a></li>
-      <li><a class="stub">Offerings (12 pages)</a></li>
-    </ul>
+    <ul id="navStubs"></ul>
   </aside>
 
-  <main id="main">
-    <div class="empty">Select a page on the left to start editing.</div>
-  </main>
+  <main id="main"><div class="empty">Select a page on the left to start editing.</div></main>
 
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
   <script>
     const API = 'https://wdecjlrfulsdklqeetqb.supabase.co/functions/v1/studio-api';
+    const POSITION_OPTIONS = [
+      { value: 'center top', label: 'Top' },
+      { value: 'center 25%', label: 'Upper third' },
+      { value: 'center 30%', label: 'Upper-mid (default)' },
+      { value: 'center', label: 'Center' },
+      { value: 'center 70%', label: 'Lower-mid' },
+      { value: 'center bottom', label: 'Bottom' },
+    ];
 
-    // Schema mirrors studio/config.yml. Adding a new page = add an entry here
-    // and a corresponding _content/<slug>.yml file in the repo.
+    const SIZE_OPTIONS = [
+      { value: 'cover', label: 'Cover (fills, may crop edges)' },
+      { value: 'contain', label: 'Contain (fits whole image, may show empty space)' },
+    ];
+
+    // Schemas: structured definition of every editable page.
+    // Add a new entry here + a corresponding _content/<slug>.yml file in the repo.
     const SCHEMAS = {
       home: {
         title: 'Home Page',
@@ -180,21 +137,35 @@
         path: '_content/home.yml',
         groups: [
           {
-            heading: 'Hero (top of page)',
+            heading: 'Hero — top of page',
             fields: [
-              { name: 'hero.eyebrow', label: 'Eyebrow', hint: 'Small caps text above the title', widget: 'text' },
+              { name: 'hero.eyebrow', label: 'Eyebrow', hint: 'Small caps line above the title', widget: 'text' },
               { name: 'hero.title', label: 'Main Title', hint: 'Use <em>word</em> for italic, <br> for line break', widget: 'text' },
               { name: 'hero.subtitle', label: 'Subtitle / Description', widget: 'textarea' },
               { name: 'hero.cta_primary_text', label: 'Primary Button — Text', widget: 'text' },
               { name: 'hero.cta_primary_url', label: 'Primary Button — Link URL', widget: 'text' },
               { name: 'hero.cta_secondary_text', label: 'Secondary Button — Text', widget: 'text' },
               { name: 'hero.cta_secondary_url', label: 'Secondary Button — Link URL', widget: 'text' },
+              { name: 'hero.image', label: 'Hero Image', hint: 'Drop or pick a JPG/PNG/WebP. Recommended ~1600px wide.', widget: 'image' },
               { name: 'hero.image_alt', label: 'Image — Description for screen readers', widget: 'text' },
+              { name: 'hero.image_position', label: 'Image — Vertical Position', hint: 'Where the visual focus of the image sits in the frame', widget: 'select', options: POSITION_OPTIONS },
+              { name: 'hero.image_size', label: 'Image — Sizing Mode', widget: 'select', options: SIZE_OPTIONS },
             ],
           },
         ],
       },
     };
+
+    // Pages on the roadmap but not yet wired (shown as stubs)
+    const STUB_PAGES = [
+      'About',
+      'Community',
+      'Sacred Reciprocity',
+      'Book / Begin Here',
+      'Divinations',
+      'Deep Work',
+      'Offerings (12 individual pages)',
+    ];
 
     function getNested(obj, path) {
       return path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), obj);
@@ -208,6 +179,7 @@
       }
       cur[parts[parts.length - 1]] = value;
     }
+    function escapeAttr(v) { return String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
 
     let state = { slug: null, schema: null, data: null, sha: null, dirty: false };
 
@@ -217,6 +189,21 @@
       el.textContent = msg || '';
       el.className = 'status ' + (cls || '');
     }
+    function markDirty() {
+      state.dirty = true;
+      const sb = document.getElementById('saveBtn'); if (sb) sb.disabled = false;
+      const db = document.getElementById('discardBtn'); if (db) db.disabled = false;
+      setStatus('Unsaved changes', 'err');
+    }
+
+    function buildNav() {
+      const wired = document.getElementById('navList');
+      wired.innerHTML = Object.entries(SCHEMAS).map(([slug, s]) =>
+        `<li><a href="#${slug}" data-page="${slug}">${s.title}</a></li>`
+      ).join('');
+      const stubs = document.getElementById('navStubs');
+      stubs.innerHTML = STUB_PAGES.map(name => `<li><a class="stub">${name}</a></li>`).join('');
+    }
 
     async function loadPage(slug) {
       const schema = SCHEMAS[slug];
@@ -225,14 +212,10 @@
       state.schema = schema;
       const main = document.getElementById('main');
       main.innerHTML = '<div class="loading">Loading…</div>';
-
-      // highlight nav
       document.querySelectorAll('aside a').forEach(a => a.classList.toggle('active', a.dataset.page === slug));
 
       try {
-        const res = await fetch(`${API}/file?path=${encodeURIComponent(schema.path)}`, {
-          headers: { 'Accept': 'application/json' },
-        });
+        const res = await fetch(`${API}/file?path=${encodeURIComponent(schema.path)}`, { headers: { Accept: 'application/json' } });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const { content, sha } = await res.json();
         state.sha = sha;
@@ -263,30 +246,109 @@
           <span id="saveStatus" class="status"></span>
         </div>
       `;
-      // Wire up inputs
-      schema.groups.forEach(g => g.fields.forEach(f => {
-        const inp = document.getElementById('f-' + f.name);
-        if (!inp) return;
-        inp.addEventListener('input', () => {
-          setNested(state.data, f.name, inp.value);
-          state.dirty = true;
-          document.getElementById('saveBtn').disabled = false;
-          document.getElementById('discardBtn').disabled = false;
-          setStatus('Unsaved changes', 'err');
-        });
-      }));
+      schema.groups.forEach(g => g.fields.forEach(f => wireField(f)));
       document.getElementById('saveBtn').addEventListener('click', save);
       document.getElementById('discardBtn').addEventListener('click', () => loadPage(state.slug));
     }
 
     function fieldHtml(f, value) {
-      const id = 'f-' + f.name;
-      const safe = String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+      const id = 'f-' + f.name.replace(/\./g, '-');
       const hint = f.hint ? `<span class="hint">${f.hint}</span>` : '';
-      const input = f.widget === 'textarea'
-        ? `<textarea id="${id}">${safe}</textarea>`
-        : `<input type="text" id="${id}" value="${safe}" />`;
-      return `<div class="field"><label for="${id}">${f.label}</label>${hint}${input}</div>`;
+      let inner = '';
+      if (f.widget === 'textarea') {
+        inner = `<textarea id="${id}">${escapeAttr(value)}</textarea>`;
+      } else if (f.widget === 'select') {
+        const opts = f.options.map(o => `<option value="${escapeAttr(o.value)}" ${o.value === value ? 'selected' : ''}>${o.label}</option>`).join('');
+        inner = `<select id="${id}">${opts}</select>`;
+      } else if (f.widget === 'image') {
+        const v = String(value || '');
+        const previewImg = v
+          ? `<img id="${id}-preview" src="${escapeAttr(v)}" alt="">`
+          : `<div id="${id}-preview" class="empty-img">No image yet</div>`;
+        inner = `
+          <div class="image-preview">
+            ${previewImg}
+            <div class="meta">
+              <div>Current: <code id="${id}-current">${v ? escapeAttr(v) : '(none)'}</code></div>
+              <div style="margin-top: 0.5rem; font-size: 0.78rem;">Replace by uploading a new file:</div>
+            </div>
+          </div>
+          <div class="file-row">
+            <label class="file-btn" for="${id}-file">Choose image…</label>
+            <input type="file" id="${id}-file" accept="image/jpeg,image/png,image/webp,image/gif" />
+            <span class="upload-status" id="${id}-status"></span>
+          </div>
+          <input type="hidden" id="${id}" value="${escapeAttr(v)}">
+        `;
+      } else {
+        inner = `<input type="text" id="${id}" value="${escapeAttr(value)}" />`;
+      }
+      return `<div class="field"${f.widget === 'image' ? ' image-field' : ''}><label for="${id}">${f.label}</label>${hint}${inner}</div>`;
+    }
+
+    function wireField(f) {
+      const id = 'f-' + f.name.replace(/\./g, '-');
+      if (f.widget === 'image') {
+        const fileInput = document.getElementById(id + '-file');
+        if (!fileInput) return;
+        fileInput.addEventListener('change', async (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+          await uploadImage(file, f, id);
+          fileInput.value = '';
+        });
+        return;
+      }
+      const inp = document.getElementById(id);
+      if (!inp) return;
+      const event = (f.widget === 'select') ? 'change' : 'input';
+      inp.addEventListener(event, () => {
+        setNested(state.data, f.name, inp.value);
+        markDirty();
+      });
+    }
+
+    async function uploadImage(file, f, id) {
+      const statusEl = document.getElementById(id + '-status');
+      const setUS = (msg, cls) => { statusEl.textContent = msg; statusEl.className = 'upload-status ' + (cls || ''); };
+      if (file.size > 6_000_000) { setUS('File too large (max 6 MB)', 'err'); return; }
+      if (!/^image\//.test(file.type)) { setUS('Not an image', 'err'); return; }
+      setUS('Uploading…', '');
+      try {
+        const dataUrl = await new Promise((resolve, reject) => {
+          const r = new FileReader();
+          r.onload = () => resolve(r.result);
+          r.onerror = reject;
+          r.readAsDataURL(file);
+        });
+        const base64 = String(dataUrl).split(',')[1];
+        const res = await fetch(`${API}/upload`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ filename: file.name, data_base64: base64 }),
+        });
+        const json = await res.json();
+        if (!res.ok) throw new Error(json.error || `HTTP ${res.status}`);
+        const url = json.path ? '/' + json.path : null;
+        if (!url) throw new Error('no path returned');
+        // Update hidden field + state + preview
+        document.getElementById(id).value = url;
+        setNested(state.data, f.name, url);
+        const prev = document.getElementById(id + '-preview');
+        if (prev) {
+          if (prev.tagName === 'IMG') {
+            prev.src = url;
+          } else {
+            prev.outerHTML = `<img id="${id}-preview" src="${escapeAttr(url)}" alt="">`;
+          }
+        }
+        const cur = document.getElementById(id + '-current');
+        if (cur) cur.textContent = url;
+        setUS('Uploaded. Click Save below to publish.', 'ok');
+        markDirty();
+      } catch (e) {
+        setUS('Upload failed: ' + e.message, 'err');
+      }
     }
 
     async function save() {
@@ -309,7 +371,7 @@
         if (!res.ok) throw new Error(json.error || `HTTP ${res.status}`);
         state.sha = json.newSha || state.sha;
         state.dirty = false;
-        document.getElementById('discardBtn').disabled = true;
+        const db = document.getElementById('discardBtn'); if (db) db.disabled = true;
         setStatus('Saved. Live in 1–2 minutes.', 'ok');
       } catch (e) {
         btn.disabled = false;
@@ -317,21 +379,18 @@
       }
     }
 
-    // Routing — URL hash determines current page.
     function handleHash() {
       const slug = (location.hash || '#home').slice(1);
       if (SCHEMAS[slug]) loadPage(slug);
     }
     window.addEventListener('hashchange', handleHash);
-
-    // Confirm-before-leave if dirty
     window.addEventListener('beforeunload', e => {
       if (state.dirty) { e.preventDefault(); e.returnValue = ''; }
     });
 
-    // Wait for js-yaml then start.
     (function start() {
       if (typeof jsyaml === 'undefined') { setTimeout(start, 50); return; }
+      buildNav();
       handleHash();
     })();
   </script>
