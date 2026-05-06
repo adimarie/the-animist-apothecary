@@ -6,120 +6,333 @@
   <title>Studio &mdash; The Animist Apothecary</title>
   <link rel="icon" href="/favicon.ico" />
   <meta name="robots" content="noindex, nofollow" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #f8f5f0; }
-    .signin {
-      max-width: 520px;
-      margin: 4rem auto;
-      padding: 2.5rem 2rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    :root {
+      --sage: #6b7d5a;
+      --sage-dark: #2c5530;
+      --cream: #f8f5f0;
+      --earth: #2d2a26;
+      --earth-light: #5a544c;
+      --line: #e2dccf;
+      --warn: #c53030;
+      --ok: #1e7e34;
     }
-    .signin h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; margin: 0 0 0.5rem; color: #2c5530; }
-    .signin p { color: #555; line-height: 1.55; margin: 0.5rem 0; font-size: 0.95rem; }
-    .signin ol { color: #555; line-height: 1.6; padding-left: 1.25rem; font-size: 0.92rem; }
-    .signin a { color: #2c5530; }
-    .signin label { display: block; margin-top: 1.5rem; font-weight: 500; color: #333; font-size: 0.9rem; }
-    .signin input[type="password"] { width: 100%; padding: 0.65rem 0.75rem; border: 1px solid #ccc; border-radius: 4px; font-family: ui-monospace, monospace; font-size: 0.9rem; box-sizing: border-box; margin-top: 0.35rem; }
-    .signin button { margin-top: 1.25rem; padding: 0.7rem 1.5rem; background: #2c5530; color: white; border: 0; border-radius: 4px; cursor: pointer; font-size: 0.95rem; }
-    .signin button:hover { background: #1e3a21; }
-    .signin .err { color: #c53030; font-size: 0.9rem; margin-top: 0.75rem; }
-    .signin .small { color: #888; font-size: 0.82rem; }
-    details { margin-top: 1rem; }
-    summary { cursor: pointer; color: #666; font-size: 0.88rem; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--earth);
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+    aside {
+      background: white;
+      border-right: 1px solid var(--line);
+      padding: 1.75rem 1.25rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    aside h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: var(--sage-dark);
+      margin: 0 0 0.25rem;
+    }
+    aside .sub { font-size: 0.78rem; color: var(--earth-light); margin-bottom: 1.5rem; }
+    aside h3 {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--earth-light);
+      margin: 1.5rem 0 0.5rem;
+      font-weight: 500;
+    }
+    aside ul { list-style: none; padding: 0; margin: 0; }
+    aside li { margin: 0.1rem 0; }
+    aside a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      color: var(--earth);
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.92rem;
+      transition: background 0.12s;
+    }
+    aside a:hover { background: var(--cream); }
+    aside a.active { background: var(--sage); color: white; }
+    aside a.stub { color: #aaa; cursor: not-allowed; }
+    aside a.stub::after { content: ' (soon)'; font-size: 0.7rem; }
+    main {
+      padding: 2.5rem 3rem;
+      max-width: 820px;
+    }
+    main h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 2rem;
+      color: var(--sage-dark);
+      margin: 0 0 0.25rem;
+    }
+    main .crumb { font-size: 0.85rem; color: var(--earth-light); margin-bottom: 2rem; }
+    section.group {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    section.group h3 {
+      margin: 0 0 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 1.25rem;
+      color: var(--sage-dark);
+    }
+    .field { margin-bottom: 1.25rem; }
+    .field label { display: block; font-size: 0.85rem; font-weight: 500; color: var(--earth); margin-bottom: 0.3rem; }
+    .field .hint { display: block; font-size: 0.78rem; color: var(--earth-light); margin-bottom: 0.4rem; font-weight: 400; }
+    .field input[type="text"], .field textarea {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: white;
+      color: var(--earth);
+    }
+    .field textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
+    .field input:focus, .field textarea:focus { outline: 2px solid var(--sage); outline-offset: -1px; }
+    .actions {
+      position: sticky;
+      bottom: 0;
+      background: linear-gradient(to top, var(--cream) 70%, transparent);
+      padding: 1.5rem 0 1rem;
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    button {
+      background: var(--sage-dark);
+      color: white;
+      border: 0;
+      padding: 0.65rem 1.5rem;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.12s;
+    }
+    button:hover { background: var(--earth); }
+    button:disabled { background: #aaa; cursor: not-allowed; }
+    button.ghost { background: transparent; color: var(--earth-light); border: 1px solid var(--line); }
+    .status { font-size: 0.88rem; margin-left: 0.5rem; }
+    .status.ok { color: var(--ok); }
+    .status.err { color: var(--warn); }
+    .empty { color: var(--earth-light); padding: 2rem 0; }
+    .loading { color: var(--earth-light); padding: 1rem 0; }
+    .changed-mark { color: var(--warn); font-size: 0.8rem; margin-left: 0.5rem; }
+    a.live-link { color: var(--sage-dark); font-size: 0.85rem; text-decoration: none; margin-left: auto; }
+    a.live-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <!-- Token-based sign-in. We write Decap's expected localStorage key directly,
-       skipping the popup OAuth flow entirely. -->
-  <div id="signin" class="signin" style="display:none">
-    <h1>Sign in to the editor</h1>
-    <p>Paste a GitHub personal access token below. You'll only need to do this once per browser.</p>
+  <aside>
+    <h1>Studio</h1>
+    <div class="sub">The Animist Apothecary</div>
 
-    <details>
-      <summary>How to generate a token (30 seconds, one time)</summary>
-      <ol>
-        <li>Open <a href="https://github.com/settings/tokens/new" target="_blank" rel="noopener">github.com/settings/tokens/new</a> in a new tab.</li>
-        <li>Note: <code>The Animist Apothecary editor</code></li>
-        <li>Expiration: pick something long like <strong>1 year</strong> (you can revoke any time).</li>
-        <li>Scopes: check <strong>repo</strong> (top-level checkbox — gives full repo access).</li>
-        <li>Click <strong>Generate token</strong> at the bottom. Copy the token (starts with <code>ghp_</code>).</li>
-        <li>Paste it below.</li>
-      </ol>
-    </details>
+    <h3>Wired up</h3>
+    <ul id="navWired">
+      <li><a href="#home" data-page="home">Home Page</a></li>
+    </ul>
 
-    <form id="tokenForm">
-      <label for="tokenInput">GitHub token</label>
-      <input type="password" id="tokenInput" placeholder="ghp_..." autocomplete="off" required />
-      <button type="submit">Sign in</button>
-      <div id="errMsg" class="err" style="display:none"></div>
-    </form>
+    <h3>Coming next</h3>
+    <ul>
+      <li><a class="stub">About</a></li>
+      <li><a class="stub">Community</a></li>
+      <li><a class="stub">Sacred Reciprocity</a></li>
+      <li><a class="stub">Book / Begin Here</a></li>
+      <li><a class="stub">Offerings (12 pages)</a></li>
+    </ul>
+  </aside>
 
-    <p class="small" style="margin-top: 2rem;">Your token is stored only in this browser's localStorage and sent only to GitHub when you save edits. Sign-out: clear the site's data.</p>
-  </div>
+  <main id="main">
+    <div class="empty">Select a page on the left to start editing.</div>
+  </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
   <script>
-    (function () {
-      var DECAP_USER_KEY = 'netlify-cms-user';
+    const API = 'https://wdecjlrfulsdklqeetqb.supabase.co/functions/v1/studio-api';
 
-      // If we already have valid auth in localStorage, skip the form.
-      var existing = null;
-      try { existing = JSON.parse(localStorage.getItem(DECAP_USER_KEY) || 'null'); } catch (e) {}
+    // Schema mirrors studio/config.yml. Adding a new page = add an entry here
+    // and a corresponding _content/<slug>.yml file in the repo.
+    const SCHEMAS = {
+      home: {
+        title: 'Home Page',
+        liveUrl: 'https://theanimistapothecary.com/',
+        path: '_content/home.yml',
+        groups: [
+          {
+            heading: 'Hero (top of page)',
+            fields: [
+              { name: 'hero.eyebrow', label: 'Eyebrow', hint: 'Small caps text above the title', widget: 'text' },
+              { name: 'hero.title', label: 'Main Title', hint: 'Use <em>word</em> for italic, <br> for line break', widget: 'text' },
+              { name: 'hero.subtitle', label: 'Subtitle / Description', widget: 'textarea' },
+              { name: 'hero.cta_primary_text', label: 'Primary Button — Text', widget: 'text' },
+              { name: 'hero.cta_primary_url', label: 'Primary Button — Link URL', widget: 'text' },
+              { name: 'hero.cta_secondary_text', label: 'Secondary Button — Text', widget: 'text' },
+              { name: 'hero.cta_secondary_url', label: 'Secondary Button — Link URL', widget: 'text' },
+              { name: 'hero.image_alt', label: 'Image — Description for screen readers', widget: 'text' },
+            ],
+          },
+        ],
+      },
+    };
 
-      if (!existing || !existing.token || !existing.backendName) {
-        document.getElementById('signin').style.display = 'block';
+    function getNested(obj, path) {
+      return path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), obj);
+    }
+    function setNested(obj, path, value) {
+      const parts = path.split('.');
+      let cur = obj;
+      for (let i = 0; i < parts.length - 1; i++) {
+        if (cur[parts[i]] == null || typeof cur[parts[i]] !== 'object') cur[parts[i]] = {};
+        cur = cur[parts[i]];
       }
+      cur[parts[parts.length - 1]] = value;
+    }
 
-      var form = document.getElementById('tokenForm');
-      var input = document.getElementById('tokenInput');
-      var errMsg = document.getElementById('errMsg');
+    let state = { slug: null, schema: null, data: null, sha: null, dirty: false };
 
-      form.addEventListener('submit', async function (ev) {
-        ev.preventDefault();
-        errMsg.style.display = 'none';
-        var token = input.value.trim();
-        if (!token) return;
+    function setStatus(msg, cls) {
+      const el = document.getElementById('saveStatus');
+      if (!el) return;
+      el.textContent = msg || '';
+      el.className = 'status ' + (cls || '');
+    }
 
-        // Validate the token by hitting the GitHub API.
-        try {
-          var resp = await fetch('https://api.github.com/user', {
-            headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github+json' }
-          });
-          if (!resp.ok) {
-            errMsg.textContent = 'Token rejected by GitHub (status ' + resp.status + '). Check that the token is valid and has "repo" scope.';
-            errMsg.style.display = 'block';
-            return;
-          }
-          var user = await resp.json();
-          var record = {
-            token: token,
-            backendName: 'github',
-            login: user.login,
-            name: user.name || user.login,
-            email: user.email || '',
-            avatar_url: user.avatar_url || ''
-          };
-          localStorage.setItem(DECAP_USER_KEY, JSON.stringify(record));
-          location.reload();
-        } catch (e) {
-          errMsg.textContent = 'Network error: ' + e.message;
-          errMsg.style.display = 'block';
-        }
-      });
-    })();
-  </script>
+    async function loadPage(slug) {
+      const schema = SCHEMAS[slug];
+      if (!schema) return;
+      state.slug = slug;
+      state.schema = schema;
+      const main = document.getElementById('main');
+      main.innerHTML = '<div class="loading">Loading…</div>';
 
-  <!-- Decap CMS only loads if auth was found above (otherwise the form is shown). -->
-  <script>
-    (function () {
-      var existing = null;
-      try { existing = JSON.parse(localStorage.getItem('netlify-cms-user') || 'null'); } catch (e) {}
-      if (existing && existing.token && existing.backendName) {
-        var s = document.createElement('script');
-        s.src = 'https://unpkg.com/decap-cms@^3.8.4/dist/decap-cms.js';
-        document.body.appendChild(s);
+      // highlight nav
+      document.querySelectorAll('aside a').forEach(a => a.classList.toggle('active', a.dataset.page === slug));
+
+      try {
+        const res = await fetch(`${API}/file?path=${encodeURIComponent(schema.path)}`, {
+          headers: { 'Accept': 'application/json' },
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const { content, sha } = await res.json();
+        state.sha = sha;
+        state.data = jsyaml.load(content) || {};
+        state.dirty = false;
+        renderEditor();
+      } catch (e) {
+        main.innerHTML = `<div class="empty" style="color:var(--warn)">Failed to load: ${e.message}</div>`;
       }
+    }
+
+    function renderEditor() {
+      const { schema, data } = state;
+      const main = document.getElementById('main');
+      const groupsHtml = schema.groups.map(g => `
+        <section class="group">
+          <h3>${g.heading}</h3>
+          ${g.fields.map(f => fieldHtml(f, getNested(data, f.name) ?? '')).join('')}
+        </section>
+      `).join('');
+      main.innerHTML = `
+        <h2>${schema.title}</h2>
+        <div class="crumb">Editing <code>${schema.path}</code> · saves commit to GitHub and deploy automatically (1–2 min) <a class="live-link" href="${schema.liveUrl}" target="_blank">view live page ↗</a></div>
+        ${groupsHtml}
+        <div class="actions">
+          <button id="saveBtn" disabled>Save</button>
+          <button class="ghost" id="discardBtn" disabled>Discard changes</button>
+          <span id="saveStatus" class="status"></span>
+        </div>
+      `;
+      // Wire up inputs
+      schema.groups.forEach(g => g.fields.forEach(f => {
+        const inp = document.getElementById('f-' + f.name);
+        if (!inp) return;
+        inp.addEventListener('input', () => {
+          setNested(state.data, f.name, inp.value);
+          state.dirty = true;
+          document.getElementById('saveBtn').disabled = false;
+          document.getElementById('discardBtn').disabled = false;
+          setStatus('Unsaved changes', 'err');
+        });
+      }));
+      document.getElementById('saveBtn').addEventListener('click', save);
+      document.getElementById('discardBtn').addEventListener('click', () => loadPage(state.slug));
+    }
+
+    function fieldHtml(f, value) {
+      const id = 'f-' + f.name;
+      const safe = String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+      const hint = f.hint ? `<span class="hint">${f.hint}</span>` : '';
+      const input = f.widget === 'textarea'
+        ? `<textarea id="${id}">${safe}</textarea>`
+        : `<input type="text" id="${id}" value="${safe}" />`;
+      return `<div class="field"><label for="${id}">${f.label}</label>${hint}${input}</div>`;
+    }
+
+    async function save() {
+      const btn = document.getElementById('saveBtn');
+      btn.disabled = true;
+      setStatus('Saving…', '');
+      const yaml = jsyaml.dump(state.data, { lineWidth: 100, noRefs: true });
+      try {
+        const res = await fetch(`${API}/file`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            path: state.schema.path,
+            content: yaml,
+            sha: state.sha,
+            message: `Edit ${state.schema.title.toLowerCase()} via studio`,
+          }),
+        });
+        const json = await res.json();
+        if (!res.ok) throw new Error(json.error || `HTTP ${res.status}`);
+        state.sha = json.newSha || state.sha;
+        state.dirty = false;
+        document.getElementById('discardBtn').disabled = true;
+        setStatus('Saved. Live in 1–2 minutes.', 'ok');
+      } catch (e) {
+        btn.disabled = false;
+        setStatus('Save failed: ' + e.message, 'err');
+      }
+    }
+
+    // Routing — URL hash determines current page.
+    function handleHash() {
+      const slug = (location.hash || '#home').slice(1);
+      if (SCHEMAS[slug]) loadPage(slug);
+    }
+    window.addEventListener('hashchange', handleHash);
+
+    // Confirm-before-leave if dirty
+    window.addEventListener('beforeunload', e => {
+      if (state.dirty) { e.preventDefault(); e.returnValue = ''; }
+    });
+
+    // Wait for js-yaml then start.
+    (function start() {
+      if (typeof jsyaml === 'undefined') { setTimeout(start, 50); return; }
+      handleHash();
     })();
   </script>
 </body>
