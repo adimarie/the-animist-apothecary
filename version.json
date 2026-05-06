@@ -1,12 +1,12 @@
 {
-  "version": "v260506.05 10:37p",
-  "release": 5,
-  "sha": "0465e92",
-  "fullSha": "0465e92dc55d258ea495b14801825a2c2274c1a1",
+  "version": "v260506.06 11:01p",
+  "release": 6,
+  "sha": "683b73d",
+  "fullSha": "683b73dd735c85a661e982405cd5b47668425c4b",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-06T15:37:31-07:00",
-  "commits": [{"sha":"0465e92","message":"Replace /studio/ with custom server-side-auth editor","author":"Adi Marie"}]
+  "pushedAt": "2026-05-06T16:00:51-07:00",
+  "commits": [{"sha":"683b73d","message":"Edit home page via studio","author":"adimarie"}]
 }
