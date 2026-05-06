@@ -7,54 +7,120 @@
   <link rel="icon" href="/favicon.ico" />
   <meta name="robots" content="noindex, nofollow" />
   <style>
-    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: #f8f5f0; }
+    .signin {
+      max-width: 520px;
+      margin: 4rem auto;
+      padding: 2.5rem 2rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .signin h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; margin: 0 0 0.5rem; color: #2c5530; }
+    .signin p { color: #555; line-height: 1.55; margin: 0.5rem 0; font-size: 0.95rem; }
+    .signin ol { color: #555; line-height: 1.6; padding-left: 1.25rem; font-size: 0.92rem; }
+    .signin a { color: #2c5530; }
+    .signin label { display: block; margin-top: 1.5rem; font-weight: 500; color: #333; font-size: 0.9rem; }
+    .signin input[type="password"] { width: 100%; padding: 0.65rem 0.75rem; border: 1px solid #ccc; border-radius: 4px; font-family: ui-monospace, monospace; font-size: 0.9rem; box-sizing: border-box; margin-top: 0.35rem; }
+    .signin button { margin-top: 1.25rem; padding: 0.7rem 1.5rem; background: #2c5530; color: white; border: 0; border-radius: 4px; cursor: pointer; font-size: 0.95rem; }
+    .signin button:hover { background: #1e3a21; }
+    .signin .err { color: #c53030; font-size: 0.9rem; margin-top: 0.75rem; }
+    .signin .small { color: #888; font-size: 0.82rem; }
+    details { margin-top: 1rem; }
+    summary { cursor: pointer; color: #666; font-size: 0.88rem; }
   </style>
 </head>
 <body>
-  <!--
-    Decap CMS — content editor for The Animist Apothecary.
-    Loads from CDN; configuration lives in /studio/config.yml.
-    Login uses GitHub OAuth proxied through a Supabase Edge Function.
-  -->
+  <!-- Token-based sign-in. We write Decap's expected localStorage key directly,
+       skipping the popup OAuth flow entirely. -->
+  <div id="signin" class="signin" style="display:none">
+    <h1>Sign in to the editor</h1>
+    <p>Paste a GitHub personal access token below. You'll only need to do this once per browser.</p>
+
+    <details>
+      <summary>How to generate a token (30 seconds, one time)</summary>
+      <ol>
+        <li>Open <a href="https://github.com/settings/tokens/new" target="_blank" rel="noopener">github.com/settings/tokens/new</a> in a new tab.</li>
+        <li>Note: <code>The Animist Apothecary editor</code></li>
+        <li>Expiration: pick something long like <strong>1 year</strong> (you can revoke any time).</li>
+        <li>Scopes: check <strong>repo</strong> (top-level checkbox — gives full repo access).</li>
+        <li>Click <strong>Generate token</strong> at the bottom. Copy the token (starts with <code>ghp_</code>).</li>
+        <li>Paste it below.</li>
+      </ol>
+    </details>
+
+    <form id="tokenForm">
+      <label for="tokenInput">GitHub token</label>
+      <input type="password" id="tokenInput" placeholder="ghp_..." autocomplete="off" required />
+      <button type="submit">Sign in</button>
+      <div id="errMsg" class="err" style="display:none"></div>
+    </form>
+
+    <p class="small" style="margin-top: 2rem;">Your token is stored only in this browser's localStorage and sent only to GitHub when you save edits. Sign-out: clear the site's data.</p>
+  </div>
+
   <script>
-    // OAuth handoff fallbacks. window.opener can be severed during the
-    // GitHub→Supabase→main-site redirect chain. We listen on three channels
-    // (postMessage, localStorage 'storage' event, BroadcastChannel) and
-    // re-dispatch any received auth message as a postMessage to ourselves
-    // so Decap's listener catches it.
     (function () {
-      function dispatch(message) {
-        if (typeof message !== 'string') return;
-        window.postMessage(message, window.location.origin);
+      var DECAP_USER_KEY = 'netlify-cms-user';
+
+      // If we already have valid auth in localStorage, skip the form.
+      var existing = null;
+      try { existing = JSON.parse(localStorage.getItem(DECAP_USER_KEY) || 'null'); } catch (e) {}
+
+      if (!existing || !existing.token || !existing.backendName) {
+        document.getElementById('signin').style.display = 'block';
       }
 
-      function consumeStorage(value) {
-        if (!value) return;
+      var form = document.getElementById('tokenForm');
+      var input = document.getElementById('tokenInput');
+      var errMsg = document.getElementById('errMsg');
+
+      form.addEventListener('submit', async function (ev) {
+        ev.preventDefault();
+        errMsg.style.display = 'none';
+        var token = input.value.trim();
+        if (!token) return;
+
+        // Validate the token by hitting the GitHub API.
         try {
-          var parsed = JSON.parse(value);
-          if (parsed && typeof parsed.message === 'string') dispatch(parsed.message);
-        } catch (e) {}
-        try { localStorage.removeItem('decap-oauth-result'); } catch (e) {}
-      }
-
-      // Catch any value already in localStorage from a popup that closed before this script ran.
-      try { consumeStorage(localStorage.getItem('decap-oauth-result')); } catch (e) {}
-
-      window.addEventListener('storage', function (e) {
-        if (e.key === 'decap-oauth-result' && e.newValue) consumeStorage(e.newValue);
-      });
-
-      // BroadcastChannel — designed for cross-tab communication, doesn't depend on opener.
-      try {
-        if (typeof BroadcastChannel === 'function') {
-          var ch = new BroadcastChannel('decap-oauth');
-          ch.onmessage = function (e) {
-            if (e && e.data && typeof e.data.message === 'string') dispatch(e.data.message);
+          var resp = await fetch('https://api.github.com/user', {
+            headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github+json' }
+          });
+          if (!resp.ok) {
+            errMsg.textContent = 'Token rejected by GitHub (status ' + resp.status + '). Check that the token is valid and has "repo" scope.';
+            errMsg.style.display = 'block';
+            return;
+          }
+          var user = await resp.json();
+          var record = {
+            token: token,
+            backendName: 'github',
+            login: user.login,
+            name: user.name || user.login,
+            email: user.email || '',
+            avatar_url: user.avatar_url || ''
           };
+          localStorage.setItem(DECAP_USER_KEY, JSON.stringify(record));
+          location.reload();
+        } catch (e) {
+          errMsg.textContent = 'Network error: ' + e.message;
+          errMsg.style.display = 'block';
         }
-      } catch (e) {}
+      });
     })();
   </script>
-  <script src="https://unpkg.com/decap-cms@^3.8.4/dist/decap-cms.js"></script>
+
+  <!-- Decap CMS only loads if auth was found above (otherwise the form is shown). -->
+  <script>
+    (function () {
+      var existing = null;
+      try { existing = JSON.parse(localStorage.getItem('netlify-cms-user') || 'null'); } catch (e) {}
+      if (existing && existing.token && existing.backendName) {
+        var s = document.createElement('script');
+        s.src = 'https://unpkg.com/decap-cms@^3.8.4/dist/decap-cms.js';
+        document.body.appendChild(s);
+      }
+    })();
+  </script>
 </body>
 </html>
