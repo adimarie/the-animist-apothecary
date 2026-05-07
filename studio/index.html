@@ -158,6 +158,33 @@
       { name: 'title', label: 'Step Title', widget: 'text' },
       { name: 'description', label: 'Description', widget: 'textarea' },
     ];
+    const MUSINGS_ITEM_FIELDS = [
+      { name: 'title', label: 'Accordion Title', widget: 'text' },
+      { name: 'paragraph_1', label: 'Paragraph 1', widget: 'textarea' },
+      { name: 'paragraph_2', label: 'Paragraph 2', widget: 'textarea' },
+      { name: 'cta_text', label: 'Button Text', widget: 'text' },
+      { name: 'cta_url', label: 'Button URL', widget: 'text' },
+    ];
+    const COMMUNITY_CARD_FIELDS = [
+      { name: 'image', label: 'Card Image', widget: 'image' },
+      { name: 'tag', label: 'Tag (small caps eyebrow)', widget: 'text' },
+      { name: 'title', label: 'Card Title', widget: 'text' },
+      { name: 'description', label: 'Card Description', widget: 'textarea' },
+      { name: 'link_text', label: 'Link Text', widget: 'text' },
+      { name: 'link_url', label: 'Link URL', widget: 'text' },
+    ];
+    const TIER_FIELDS = [
+      { name: 'eyebrow', label: 'Eyebrow (e.g. "Tier One")', widget: 'text' },
+      { name: 'name', label: 'Tier Name', widget: 'text' },
+      { name: 'color', label: 'Color (visual reference only)', widget: 'select', options: [
+        { value: 'gold', label: 'Gold' },
+        { value: 'green', label: 'Green' },
+        { value: 'blue', label: 'Blue' },
+        { value: 'purple', label: 'Purple' },
+      ]},
+      { name: 'description', label: 'Description', widget: 'textarea' },
+      { name: 'note', label: 'Note line', hint: 'HTML allowed (<strong>)', widget: 'textarea' },
+    ];
 
     const SCHEMAS = {
       home: {
@@ -277,6 +304,207 @@
               { name: 'cta_section.body', label: 'Body', widget: 'textarea' },
               { name: 'cta_section.cta_text', label: 'Button Text', widget: 'text' },
               { name: 'cta_section.cta_url', label: 'Button URL', widget: 'text' },
+            ],
+          },
+        ],
+      },
+      about: {
+        title: 'About Page',
+        liveUrl: 'https://theanimistapothecary.com/about.html',
+        path: '_content/about.yml',
+        groups: [
+          {
+            heading: 'Hero — page title banner',
+            fields: [
+              { name: 'hero.eyebrow', label: 'Eyebrow', widget: 'text' },
+              { name: 'hero.title', label: 'Title', widget: 'text' },
+              { name: 'hero.subtitle', label: 'Subtitle', widget: 'text' },
+              { name: 'hero.image', label: 'Hero Image', widget: 'image' },
+              { name: 'hero.image_position', label: 'Image — Position', widget: 'select', options: POSITION_OPTIONS },
+            ],
+          },
+          {
+            heading: 'Bio — main about content',
+            fields: [
+              { name: 'bio.section_label', label: 'Section Label', widget: 'text' },
+              { name: 'bio.title', label: 'Title', hint: 'HTML allowed (<em>, <br>)', widget: 'text' },
+              { name: 'bio.paragraph_1', label: 'Paragraph 1', widget: 'textarea' },
+              { name: 'bio.paragraph_2', label: 'Paragraph 2', widget: 'textarea' },
+              { name: 'bio.paragraph_3', label: 'Paragraph 3', widget: 'textarea' },
+              { name: 'bio.paragraph_4', label: 'Paragraph 4', widget: 'textarea' },
+              { name: 'bio.paragraph_5', label: 'Paragraph 5', widget: 'textarea' },
+              { name: 'bio.quote', label: 'Pull Quote', hint: 'HTML allowed', widget: 'textarea' },
+              { name: 'bio.paragraph_6', label: 'Paragraph 6 (closing)', widget: 'textarea' },
+              { name: 'bio.image', label: 'Side Photo', widget: 'image' },
+              { name: 'bio.image_position', label: 'Photo — Position', widget: 'select', options: POSITION_OPTIONS },
+              { name: 'bio.quals_label', label: 'Qualifications Label', widget: 'text' },
+              { name: 'bio.quals', label: 'Qualifications', widget: 'strlist', itemLabel: 'Qualification' },
+            ],
+          },
+          {
+            heading: 'Musings, Writing & More — accordion items',
+            hint: 'Reorder, edit, or add accordion sections',
+            fields: [
+              { name: 'musings.section_label', label: 'Section Label', widget: 'text' },
+              { name: 'musings.items', label: 'Accordion Items', widget: 'list', itemLabel: 'Item', fields: MUSINGS_ITEM_FIELDS },
+            ],
+          },
+          {
+            heading: 'Bottom CTA',
+            fields: [
+              { name: 'cta_section.title', label: 'Title', hint: 'HTML allowed', widget: 'text' },
+              { name: 'cta_section.body', label: 'Body', widget: 'textarea' },
+              { name: 'cta_section.cta_text', label: 'Button Text', widget: 'text' },
+              { name: 'cta_section.cta_url', label: 'Button URL', widget: 'text' },
+            ],
+          },
+        ],
+      },
+      community: {
+        title: 'Community Page',
+        liveUrl: 'https://theanimistapothecary.com/community.html',
+        path: '_content/community.yml',
+        groups: [
+          {
+            heading: 'Hero — page banner',
+            fields: [
+              { name: 'hero.eyebrow', label: 'Eyebrow', widget: 'text' },
+              { name: 'hero.title', label: 'Title', hint: 'HTML allowed (<em>, <br>)', widget: 'text' },
+              { name: 'hero.subtitle', label: 'Subtitle', widget: 'textarea' },
+              { name: 'hero.image', label: 'Hero Image', widget: 'image' },
+              { name: 'hero.image_position', label: 'Image — Position', widget: 'select', options: POSITION_OPTIONS },
+            ],
+          },
+          {
+            heading: 'Intro — the concept',
+            fields: [
+              { name: 'intro.section_label', label: 'Section Label', widget: 'text' },
+              { name: 'intro.title', label: 'Title', hint: 'HTML allowed', widget: 'text' },
+              { name: 'intro.paragraph_1', label: 'Paragraph 1', widget: 'textarea' },
+              { name: 'intro.paragraph_2', label: 'Paragraph 2', widget: 'textarea' },
+            ],
+          },
+          {
+            heading: 'Community Cards — six grid cards',
+            hint: 'Reorder, edit, or replace any of the community cards',
+            fields: [
+              { name: 'cards', label: 'Community Cards', widget: 'list', itemLabel: 'Card', fields: COMMUNITY_CARD_FIELDS },
+            ],
+          },
+          {
+            heading: 'Newsletter — signup section',
+            fields: [
+              { name: 'newsletter.section_label', label: 'Section Label', widget: 'text' },
+              { name: 'newsletter.title', label: 'Title', hint: 'HTML allowed', widget: 'text' },
+              { name: 'newsletter.body', label: 'Body', widget: 'textarea' },
+              { name: 'newsletter.placeholder', label: 'Email Placeholder', widget: 'text' },
+              { name: 'newsletter.button_text', label: 'Button Text', widget: 'text' },
+            ],
+          },
+          {
+            heading: 'Bottom CTA',
+            fields: [
+              { name: 'cta_section.title', label: 'Title', hint: 'HTML allowed', widget: 'text' },
+              { name: 'cta_section.body', label: 'Body', widget: 'textarea' },
+              { name: 'cta_section.cta_text', label: 'Button Text', widget: 'text' },
+              { name: 'cta_section.cta_url', label: 'Button URL', widget: 'text' },
+            ],
+          },
+        ],
+      },
+      sacred_reciprocity: {
+        title: 'Sacred Reciprocity Page',
+        liveUrl: 'https://theanimistapothecary.com/sacred-reciprocity.html',
+        path: '_content/sacred_reciprocity.yml',
+        groups: [
+          {
+            heading: 'Hero — page banner',
+            fields: [
+              { name: 'hero.title', label: 'Title', hint: 'HTML allowed (<em>)', widget: 'text' },
+              { name: 'hero.subtitle', label: 'Subtitle', widget: 'text' },
+              { name: 'hero.image', label: 'Hero Image', widget: 'image' },
+            ],
+          },
+          {
+            heading: 'Introduction — top prose',
+            fields: [
+              { name: 'intro.paragraph_1', label: 'Paragraph 1', widget: 'textarea' },
+              { name: 'intro.paragraph_2', label: 'Paragraph 2', widget: 'textarea' },
+            ],
+          },
+          {
+            heading: 'The Four Tiers',
+            hint: 'Edit each tier. Note: card colors (gold/green/blue/purple) are fixed by position — reordering will not change colors.',
+            fields: [
+              { name: 'tiers_section.heading', label: 'Section Heading', widget: 'text' },
+              { name: 'tiers_section.tiers', label: 'Tiers', widget: 'list', itemLabel: 'Tier', fields: TIER_FIELDS },
+            ],
+          },
+          {
+            heading: 'Personal Note (callout box)',
+            fields: [
+              { name: 'note_section.body', label: 'Body', widget: 'textarea' },
+              { name: 'note_section.contact_text', label: 'Contact Link Text', widget: 'text' },
+              { name: 'note_section.contact_url', label: 'Contact Link URL', hint: 'mailto: or https://', widget: 'text' },
+            ],
+          },
+          {
+            heading: 'Bottom CTA',
+            fields: [
+              { name: 'cta_section.title', label: 'Title', widget: 'text' },
+              { name: 'cta_section.body', label: 'Body', widget: 'textarea' },
+              { name: 'cta_section.cta_text', label: 'Button Text', widget: 'text' },
+              { name: 'cta_section.cta_url', label: 'Button URL', widget: 'text' },
+            ],
+          },
+        ],
+      },
+      book: {
+        title: 'Begin Here / Booking Page',
+        liveUrl: 'https://theanimistapothecary.com/book.html',
+        path: '_content/book.yml',
+        groups: [
+          {
+            heading: 'Hero — top of page',
+            fields: [
+              { name: 'hero.eyebrow', label: 'Eyebrow', widget: 'text' },
+              { name: 'hero.title', label: 'Title', widget: 'text' },
+              { name: 'hero.subtitle', label: 'Subtitle', widget: 'text' },
+              { name: 'hero.image', label: 'Hero Image', widget: 'image' },
+            ],
+          },
+          {
+            heading: 'Booking Intro — above the form',
+            fields: [
+              { name: 'booking_intro.section_label', label: 'Section Label', widget: 'text' },
+              { name: 'booking_intro.title', label: 'Title', hint: 'HTML allowed (<em>)', widget: 'text' },
+              { name: 'booking_intro.body', label: 'Body', widget: 'textarea' },
+            ],
+          },
+          {
+            heading: 'Form Labels',
+            hint: 'Visible label text. Form input placeholders and option lists are wired in YAML but not yet rendered dynamically — edit the HTML directly for those.',
+            fields: [
+              { name: 'form_labels.first_name', label: 'First Name label', widget: 'text' },
+              { name: 'form_labels.last_name', label: 'Last Name label', widget: 'text' },
+              { name: 'form_labels.email', label: 'Email label', widget: 'text' },
+              { name: 'form_labels.phone', label: 'Phone label', widget: 'text' },
+              { name: 'form_labels.offerings_label', label: 'Offerings checkbox label', widget: 'text' },
+              { name: 'form_labels.format_label', label: 'Format radio label', widget: 'text' },
+              { name: 'form_labels.investment_label', label: 'Investment Range label', widget: 'text' },
+              { name: 'form_labels.start_date_label', label: 'Start Date label', widget: 'text' },
+              { name: 'form_labels.message_label', label: 'Message textarea label', widget: 'text' },
+              { name: 'form_labels.referral_label', label: 'Referral label', widget: 'text' },
+              { name: 'form_labels.submit_text', label: 'Submit button text', widget: 'text' },
+              { name: 'form_labels.submit_note', label: 'Note below submit', widget: 'text' },
+            ],
+          },
+          {
+            heading: 'What Happens Next — three steps',
+            fields: [
+              { name: 'steps_section.section_label', label: 'Section Label', widget: 'text' },
+              { name: 'steps_section.title', label: 'Title', hint: 'HTML allowed', widget: 'text' },
+              { name: 'steps_section.steps', label: 'Steps', widget: 'list', itemLabel: 'Step', fields: PROCESS_STEP_FIELDS },
             ],
           },
         ],

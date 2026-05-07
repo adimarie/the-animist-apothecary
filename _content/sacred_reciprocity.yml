@@ -1,0 +1,47 @@
+# Sacred Reciprocity page editable content — every section editable via /studio/.
+# Saves commit to GitHub and deploy automatically.
+# js/content-loader.js reads this and patches sacred-reciprocity.html.
+
+hero:
+  image: "https://images.unsplash.com/photo-1597498431021-8a955ef92727?w=1600&h=900&fit=crop&q=80"
+  title: "Sacred <em>Reciprocity</em>"
+  subtitle: "A sliding scale rooted in mutual care"
+
+intro:
+  paragraph_1: "The sliding scale at The Animist Apothecary is not charity. It is not a discount. It is a practice of sacred reciprocity — an acknowledgment that healing work exists within an ecosystem of relationship, and that the exchange between practitioner and participant must honor both."
+  paragraph_2: "When you choose your tier, you are not simply selecting a price. You are making a statement about your relationship to this work, your current means, and your willingness to participate in a system where those with more help sustain access for those with less."
+
+tiers_section:
+  heading: "The Four Tiers"
+  tiers:
+    - eyebrow: "Tier One"
+      name: "Patron"
+      color: "gold"
+      description: "You are choosing to invest at a level that directly sustains this practice and makes lower-tier sessions possible for others."
+      note: "<strong>For those with capacity to invest generously</strong> in sustaining healing accessibility within the community."
+    - eyebrow: "Tier Two"
+      name: "Abundance"
+      color: "green"
+      description: "This rate reflects a comfortable investment in your healing work, honoring both your means and the practitioner's offering."
+      note: "<strong>For those with stable income</strong> who wish to invest meaningfully in their healing journey."
+    - eyebrow: "Tier Three"
+      name: "Community"
+      color: "blue"
+      description: "A supported rate for those navigating financial transitions while still prioritizing their ceremonial and healing work."
+      note: "<strong>For those in transition</strong> who remain committed to their healing practice."
+    - eyebrow: "Tier Four"
+      name: "Accessibility"
+      color: "purple"
+      description: "Reserved for those experiencing genuine financial hardship. Limited slots available each season."
+      note: "<strong>For those in genuine need</strong> of healing access during times of financial hardship."
+
+note_section:
+  body: "If none of these tiers are accessible to you right now, please reach out. I would rather find a path forward together than have finances be the reason you don't receive the care you need."
+  contact_text: "hello@theanimistapothecary.com"
+  contact_url: "mailto:hello@theanimistapothecary.com"
+
+cta_section:
+  title: "Ready to Begin?"
+  body: "The first step is an Intake & Inquiry call — a 90-minute Pláticas session where we explore what brings you here and how this practice might serve your path."
+  cta_text: "Begin Here"
+  cta_url: "book.html"

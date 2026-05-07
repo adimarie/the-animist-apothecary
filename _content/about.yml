@@ -1,0 +1,66 @@
+# About page editable content — every section editable via /studio/.
+# Saves commit to GitHub and deploy automatically.
+# js/content-loader.js reads this and patches about.html.
+
+hero:
+  image: "images/adi-hero-portrait.jpg"
+  image_position: "center 25%"
+  eyebrow: "About the Practice"
+  title: "Adi Marie"
+  subtitle: "Medicine Woman · Ceremonialist · Somatic Healer"
+
+bio:
+  image: "images/adi-hero-portrait.jpg"
+  image_position: "center top"
+  section_label: "Sixteen Years of Devoted Service"
+  title: "A medicine basket <em>carefully tended</em>"
+  paragraph_1: "Adi Marie is a shamanic healer, ceremonialist, and somatic medium with sixteen years of practice rooted in the wild hills of Topanga Canyon, Los Angeles. What began as deep hands-on bodywork and therapeutic touch evolved — through initiation, study, and the relentless demands of a genuine calling — into something far more encompassing."
+  paragraph_2: "Her training spans multiple lineages and traditions. She is an initiated diviner in the Dagara tradition of West Africa, a lineage that carries ancient technologies of ancestral connection, elemental medicine, and communal healing. She is also trained in somatic therapeutic arts, entheogenic medicine facilitation, expressive arts, generative hypnosis, ceremonial design, and the botanical healing arts."
+  paragraph_3: "Her medicine basket is vast and carefully tended. But what defines her practice is not the accumulation of techniques — it is the quality of presence she brings to every session, every ceremony, every threshold crossing. She has the rare ability to hold space at the edge of the known world, where the personal becomes mythic and the mythic becomes liveable."
+  paragraph_4: "Adi Marie works with doctors, medicine people, therapists, artists, leaders of industry, and those whose decisions shape the trajectory of this earth ship. Her clients come from all walks of life and all spiritual backgrounds. What unites them is a shared commitment to going deeper — to the kind of healing that changes the shape of a life, not just the surface of it."
+  paragraph_5: "She is known for her ferocious love, her uncommon insight, and her capacity to hold the full spectrum of the human experience without flinching. She believes that the personal is planetary — that each person who heals becomes medicine for the world."
+  quote: "'The earth is asking for healers. The times are asking for those willing to go into the underworld and come back with something real. This work is my answer to that call — and it is an honor to walk that path alongside those who are ready.' <strong>— Adi Marie</strong>"
+  paragraph_6: "Based in the canyon lands of Topanga, Los Angeles, Adi offers private sessions and intensives in person, and is available worldwide for virtual sessions, private travel engagements, and select community events."
+  quals_label: "Qualifications & Training"
+  quals:
+    - "Therapeutic Coach"
+    - "Entheogenic Medicine"
+    - "Ceremonial & Ritual Stewardship"
+    - "Interdimensional Intermediary & Guide"
+    - "Somatic Medium & Diviner"
+    - "Shamanic Bodyworker"
+    - "Massage Therapist"
+    - "Expressive Arts Facilitator"
+    - "Dagara Lineage Diviner"
+    - "Botanical Medicine"
+    - "Generative Hypnosis"
+
+musings:
+  section_label: "Musings, Writing & More"
+  items:
+    - title: "Writing, Musings & Poetics"
+      paragraph_1: "Adi Marie writes from the interworlds — from the place where the personal dissolves into the mythic, where language strains to hold what the ceremony already knows. Her writing spans reflective essays, poetic transmissions, and candid meditations on the nature of healing, initiation, and the living world."
+      paragraph_2: "Current writing is being gathered and will be published here in ongoing installments. Subscribe to the newsletter to be notified when new pieces arrive."
+      cta_text: "Join the Newsletter"
+      cta_url: "community.html#newsletter"
+    - title: "Workshops & Teaching"
+      paragraph_1: "Adi Marie offers workshops and intensive teaching programs for those developing their own ceremonial and healing practice. Teaching topics include: Introduction to Animist Cosmology & Earth-Based Practice, Sacred Breath Facilitation Training, Ceremonial Design & Ritual Architecture, Ancestral Healing & Lineage Repair, Somatic Awareness for Healing Practitioners, Expressive Arts as Ceremonial Tool."
+      paragraph_2: "Upcoming dates announced via newsletter. Private teaching engagements available for groups of 6 or more."
+      cta_text: "Inquire About Teaching"
+      cta_url: "book.html"
+    - title: "Appearances & Speaking"
+      paragraph_1: "Adi Marie is available for speaking engagements, panel participation, podcast appearances, and ceremonial leadership at events. She speaks with power and accessibility on: animist worldviews and their relevance to the current moment, the intersection of indigenous wisdom and contemporary healing, ceremonial culture as medicine for the collective, somatic awareness and the body's intelligence, earth-based spirituality and ecological grief."
+      paragraph_2: "To book Adi for an appearance, use the contact form and describe your event."
+      cta_text: "Invite Adi to Speak"
+      cta_url: "book.html"
+    - title: "Blog & Journal"
+      paragraph_1: "The journal is a living document — reflections from the practice, dispatches from the road, transmissions from the in-between worlds. Written in the heat of the experience, close to the bone."
+      paragraph_2: "Recent topics: On the grief of the living world and why we must feel it. What the body knows that the mind hasn't caught up to yet. The difference between spirituality and spiritual bypassing. Canyon medicine: what Topanga teaches those who listen."
+      cta_text: "Subscribe for Updates"
+      cta_url: "community.html#newsletter"
+
+cta_section:
+  title: "Ready to work <em>together</em>?"
+  body: "Book an introductory call and we'll explore what kind of container is right for where you are."
+  cta_text: "Book an Introductory Call"
+  cta_url: "book.html"

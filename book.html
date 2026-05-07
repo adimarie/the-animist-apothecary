@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body data-content-page="book">
 
   <header class="site-header">
     <div class="header-inner">
@@ -55,21 +55,22 @@
     </div>
   </header>
 
-  <section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1672196799313-047c77f87f80?w=1400&h=600&fit=crop&q=80'); padding-top: 80px; min-height: 40vh;">
+  <section class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1672196799313-047c77f87f80?w=1400&h=600&fit=crop&q=80'); padding-top: 80px; min-height: 40vh;"
+           data-content="hero.image" data-content-type="image">
     <div class="hero-inner">
-      <p class="hero-eyebrow">Begin Here</p>
-      <h1 class="page-hero-title">Let's explore what's possible</h1>
-      <p class="page-hero-subtitle">A conversation first. Always.</p>
+      <p class="hero-eyebrow" data-content="hero.eyebrow">Begin Here</p>
+      <h1 class="page-hero-title" data-content="hero.title">Let's explore what's possible</h1>
+      <p class="page-hero-subtitle" data-content="hero.subtitle">A conversation first. Always.</p>
     </div>
   </section>
 
   <section class="booking-section" style="background: #F7F5F0;">
     <div class="booking-inner">
       <div class="booking-intro">
-        <p class="section-label">Your Inquiry</p>
-        <h2 class="section-title">Tell us a little <em>about yourself</em></h2>
+        <p class="section-label" data-content="booking_intro.section_label">Your Inquiry</p>
+        <h2 class="section-title" data-content="booking_intro.title" data-content-type="html">Tell us a little <em>about yourself</em></h2>
         <div class="section-body" style="max-width: 560px; margin: 0 auto;">
-          <p>If you're called to this work, complete the form below. We'll review your message and be in touch within 48 hours to schedule a free introductory call.</p>
+          <p data-content="booking_intro.body">If you're called to this work, complete the form below. We'll review your message and be in touch within 48 hours to schedule a free introductory call.</p>
         </div>
       </div>
 
@@ -77,22 +78,22 @@
 
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label" for="first-name">First Name</label>
+            <label class="form-label" for="first-name" data-content="form_labels.first_name">First Name</label>
             <input class="form-input" type="text" id="first-name" name="first_name" placeholder="Your first name" required>
           </div>
           <div class="form-group">
-            <label class="form-label" for="last-name">Last Name</label>
+            <label class="form-label" for="last-name" data-content="form_labels.last_name">Last Name</label>
             <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Your last name" required>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label" for="email">Email Address</label>
+            <label class="form-label" for="email" data-content="form_labels.email">Email Address</label>
             <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required>
           </div>
           <div class="form-group">
-            <label class="form-label" for="phone">Phone (optional)</label>
+            <label class="form-label" for="phone" data-content="form_labels.phone">Phone (optional)</label>
             <input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
           </div>
         </div>
@@ -100,7 +101,7 @@
         <div class="form-divider"></div>
 
         <div class="form-group">
-          <label class="form-label">What offerings are you drawn to? (select all that apply)</label>
+          <label class="form-label" data-content="form_labels.offerings_label">What offerings are you drawn to? (select all that apply)</label>
           <div class="checkbox-grid">
             <label class="check-label">
               <input type="checkbox" name="offerings" value="developmental_arc">
@@ -140,7 +141,7 @@
         <div class="form-divider"></div>
 
         <div class="form-group">
-          <label class="form-label">How would you like to work?</label>
+          <label class="form-label" data-content="form_labels.format_label">How would you like to work?</label>
           <div class="radio-group">
             <label class="radio-label">
               <input type="radio" name="format" value="solo">
@@ -165,7 +166,7 @@
 
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label" for="investment">Investment Range</label>
+            <label class="form-label" for="investment" data-content="form_labels.investment_label">Investment Range</label>
             <select class="form-select" id="investment" name="investment">
               <option value="" disabled selected>Select a range</option>
               <option value="1500-3000">$1,500 &mdash; $3,000</option>
@@ -175,7 +176,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label" for="start-date">Preferred Start Date</label>
+            <label class="form-label" for="start-date" data-content="form_labels.start_date_label">Preferred Start Date</label>
             <input class="form-input" type="date" id="start-date" name="start_date">
           </div>
         </div>
@@ -183,18 +184,18 @@
         <div class="form-divider"></div>
 
         <div class="form-group">
-          <label class="form-label" for="message">What are you carrying? What are you seeking?</label>
+          <label class="form-label" for="message" data-content="form_labels.message_label">What are you carrying? What are you seeking?</label>
           <textarea class="form-textarea" id="message" name="message" placeholder="Tell us a bit about where you are, what you're navigating, and what you're hoping to find. There is no wrong thing to say &mdash; only the true thing."></textarea>
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="referral">How did you hear about The Animist Apothecary?</label>
+          <label class="form-label" for="referral" data-content="form_labels.referral_label">How did you hear about The Animist Apothecary?</label>
           <input class="form-input" type="text" id="referral" name="referral" placeholder="Referral, social media, search, word of mouth...">
         </div>
 
         <div class="form-submit">
-          <button type="submit" class="btn-primary">Send Your Inquiry</button>
-          <p class="form-note">We read every message and respond within 48 hours.</p>
+          <button type="submit" class="btn-primary" data-content="form_labels.submit_text">Send Your Inquiry</button>
+          <p class="form-note" data-content="form_labels.submit_note">We read every message and respond within 48 hours.</p>
         </div>
 
       </form>
@@ -203,13 +204,13 @@
 
   <section class="booking-steps" style="background: #EFEDE6;">
     <div class="booking-steps-inner" style="text-align: center;">
-      <p class="section-label">What Happens Next</p>
-      <h2 class="section-title">A conversation first. <em>Always.</em></h2>
-      <div class="booking-steps-grid">
-        <div class="booking-step">
-          <div class="booking-step-num">01</div>
-          <h3>We Read Your Message</h3>
-          <p>Every inquiry is read personally. We take the time to understand what you're carrying before responding.</p>
+      <p class="section-label" data-content="steps_section.section_label">What Happens Next</p>
+      <h2 class="section-title" data-content="steps_section.title" data-content-type="html">A conversation first. <em>Always.</em></h2>
+      <div class="booking-steps-grid" data-content-list="steps_section.steps">
+        <div class="booking-step" data-content-list-template>
+          <div class="booking-step-num" data-content=".number">01</div>
+          <h3 data-content=".title">We Read Your Message</h3>
+          <p data-content=".description">Every inquiry is read personally. We take the time to understand what you're carrying before responding.</p>
         </div>
         <div class="booking-step">
           <div class="booking-step-num">02</div>
