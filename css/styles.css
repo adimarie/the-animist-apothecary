@@ -639,16 +639,21 @@ img { max-width: 100%; display: block; }
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 5rem;
-  align-items: center;
+  grid-template-columns: 0.85fr 1.4fr;
+  gap: 4rem;
+  align-items: start;
 }
 
-.story-image-wrap { position: relative; }
+.story-image-wrap {
+  position: sticky;
+  top: 6rem;
+}
 
 .story-image-inner {
   width: 100%;
-  height: 620px;
+  max-width: 460px;
+  aspect-ratio: 4 / 3;
+  height: auto;
   background-size: cover;
   background-position: center;
   border-radius: 6px;
@@ -1831,7 +1836,8 @@ img { max-width: 100%; display: block; }
   .about-bio-inner,
   .offering-detail-inner { grid-template-columns: 1fr; gap: 2.5rem; }
 
-  .story-image-inner,
+  .story-image-inner { aspect-ratio: 4 / 3; height: auto; max-width: 100%; }
+  .story-image-wrap { position: static; }
   .practitioner-image-home { height: 320px; }
 
   .about-image {
