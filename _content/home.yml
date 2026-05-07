@@ -11,11 +11,11 @@ hero:
   image: /images/uploads/2026-05-07-pexels-fahad-khan-489970498-34541950.jpg
   image_alt: Sunlight streaming through the great living canopy of the Topanga chaparral
   image_position: center 30%
-  image_size: cover
+  image_size: contain
 metamorphosis:
   image: /images/uploads/2026-05-07-1777185257768.jpeg
   image_position: center
-  section_label: A Metamorphosis Has Been Underway
+  section_label: We live in a time of Great Awakening
   title: From bodywork to<br><em>deep soul tending</em>
   paragraph_1: >-
     After 16 years of service as a Somatic Touch Therapist and Hands-on Spiritual Practitioner — my
