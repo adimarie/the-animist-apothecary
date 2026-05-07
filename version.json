@@ -1,12 +1,12 @@
 {
-  "version": "v260506.07 11:02p",
-  "release": 7,
-  "sha": "855d433",
-  "fullSha": "855d4330f62f40e4a89962ffe8b70d4223758f79",
+  "version": "v260507.01 12:06a",
+  "release": 1,
+  "sha": "bf84779",
+  "fullSha": "bf84779ed6e4710bad4e1804c6f43c35748d6a00",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-06T16:02:22-07:00",
-  "commits": [{"sha":"855d433","message":"Edit home page via studio","author":"adimarie"}]
+  "pushedAt": "2026-05-06T17:05:39-07:00",
+  "commits": [{"sha":"bf84779","message":"Studio: image upload widget, position/size controls","author":"Adi Marie"}]
 }
