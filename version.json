@@ -1,12 +1,12 @@
 {
-  "version": "v260507.11 2:41p",
-  "release": 11,
-  "sha": "4935162",
-  "fullSha": "49351620c9d0282a4f7fc7272f73079156f855bc",
+  "version": "v260507.12 2:48p",
+  "release": 12,
+  "sha": "7be9657",
+  "fullSha": "7be96571cea03bec4b40986c6f796a15d3ff9ae3",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-07T07:41:19-07:00",
-  "commits": [{"sha":"4935162","message":"Remove studio test upload","author":"adimarie"}]
+  "pushedAt": "2026-05-07T07:48:14-07:00",
+  "commits": [{"sha":"7be9657","message":"Studio: clearer upload errors + HEIC message + image/* accept","author":"Adi Marie"}]
 }
