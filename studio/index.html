@@ -29,12 +29,9 @@
       min-height: 100vh;
     }
     aside {
-      background: white;
-      border-right: 1px solid var(--line);
+      background: white; border-right: 1px solid var(--line);
       padding: 1.75rem 1.25rem;
-      position: sticky; top: 0;
-      height: 100vh;
-      overflow-y: auto;
+      position: sticky; top: 0; height: 100vh; overflow-y: auto;
     }
     aside h1 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.4rem; color: var(--sage-dark); margin: 0 0 0.25rem; }
     aside .sub { font-size: 0.78rem; color: var(--earth-light); margin-bottom: 1.5rem; }
@@ -46,30 +43,30 @@
     aside a.active { background: var(--sage); color: white; }
     aside a.stub { color: #aaa; cursor: not-allowed; }
     aside a.stub::after { content: ' (soon)'; font-size: 0.7rem; }
-    main { padding: 2.5rem 3rem; max-width: 860px; }
+
+    main { padding: 2.5rem 3rem 6rem; max-width: 880px; }
     main h2 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 2rem; color: var(--sage-dark); margin: 0 0 0.25rem; }
     main .crumb { font-size: 0.85rem; color: var(--earth-light); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+
     section.group { background: white; border: 1px solid var(--line); border-radius: 6px; padding: 1.5rem 1.75rem; margin-bottom: 1.5rem; }
     section.group h3 { margin: 0 0 1rem; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.25rem; color: var(--sage-dark); }
+    section.group .group-hint { font-size: 0.82rem; color: var(--earth-light); margin: -0.6rem 0 1rem; }
+
     .field { margin-bottom: 1.25rem; }
     .field label { display: block; font-size: 0.85rem; font-weight: 500; color: var(--earth); margin-bottom: 0.3rem; }
     .field .hint { display: block; font-size: 0.78rem; color: var(--earth-light); margin-bottom: 0.4rem; font-weight: 400; }
     .field input[type="text"], .field textarea, .field select {
-      width: 100%; padding: 0.6rem 0.75rem;
-      border: 1px solid var(--line); border-radius: 4px;
-      font-family: inherit; font-size: 0.95rem;
-      background: white; color: var(--earth);
+      width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--line); border-radius: 4px;
+      font-family: inherit; font-size: 0.95rem; background: white; color: var(--earth);
     }
     .field textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
     .field select { appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%235a544c' stroke-width='1.5'><path d='M1 1l5 5 5-5'/></svg>"); background-repeat: no-repeat; background-position: right 0.75rem center; padding-right: 2rem; }
     .field input:focus, .field textarea:focus, .field select:focus { outline: 2px solid var(--sage); outline-offset: -1px; }
 
-    /* Image field */
-    .image-field { }
     .image-preview { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
     .image-preview img { max-width: 280px; max-height: 180px; border-radius: 4px; border: 1px solid var(--line); object-fit: cover; background: var(--cream); }
     .image-preview .meta { font-size: 0.8rem; color: var(--earth-light); flex: 1; min-width: 200px; }
-    .image-preview .meta code { background: var(--cream); padding: 0.1rem 0.35rem; border-radius: 3px; font-size: 0.75rem; word-break: break-all; }
+    .image-preview .meta code { background: var(--cream); padding: 0.1rem 0.35rem; border-radius: 3px; font-size: 0.72rem; word-break: break-all; }
     .file-row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
     .file-row label.file-btn { background: white; border: 1px solid var(--sage-dark); color: var(--sage-dark); padding: 0.45rem 1rem; border-radius: 4px; cursor: pointer; font-size: 0.88rem; transition: background 0.12s; display: inline-block; margin-bottom: 0; font-weight: 500; }
     .file-row label.file-btn:hover { background: var(--cream); }
@@ -78,6 +75,23 @@
     .upload-status.ok { color: var(--ok); }
     .upload-status.err { color: var(--warn); }
     .empty-img { width: 280px; height: 180px; display: flex; align-items: center; justify-content: center; color: var(--earth-light); font-size: 0.85rem; border: 1px dashed var(--line); border-radius: 4px; background: var(--cream); }
+
+    /* List widget */
+    .list-items { display: flex; flex-direction: column; gap: 0.75rem; }
+    .list-item { background: var(--cream); border: 1px solid var(--line); border-radius: 5px; padding: 1rem 1.25rem; }
+    .list-item-head { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; }
+    .list-item-head strong { flex: 1; font-size: 0.92rem; color: var(--sage-dark); font-weight: 500; }
+    .list-item-head button { background: transparent; color: var(--earth-light); border: 1px solid var(--line); padding: 0.3rem 0.6rem; font-size: 0.78rem; }
+    .list-item-head button:hover { background: white; color: var(--earth); }
+    .list-item-head button.danger:hover { color: var(--warn); border-color: var(--warn); }
+    .list-add { background: white; color: var(--sage-dark); border: 1px dashed var(--sage-dark); padding: 0.6rem 1rem; font-size: 0.88rem; margin-top: 0.5rem; }
+    .list-add:hover { background: var(--cream); }
+
+    /* String list (simple array of strings, e.g. quals) */
+    .strlist-items { display: flex; flex-direction: column; gap: 0.4rem; }
+    .strlist-row { display: flex; gap: 0.5rem; }
+    .strlist-row input { flex: 1; padding: 0.5rem 0.75rem; border: 1px solid var(--line); border-radius: 4px; font-family: inherit; font-size: 0.92rem; background: white; }
+    .strlist-row button { padding: 0.4rem 0.6rem; font-size: 0.78rem; background: transparent; color: var(--earth-light); border: 1px solid var(--line); }
 
     .actions {
       position: sticky; bottom: 0;
@@ -101,10 +115,8 @@
   <aside>
     <h1>Studio</h1>
     <div class="sub">The Animist Apothecary</div>
-
     <h3>Pages</h3>
     <ul id="navList"></ul>
-
     <h3>Coming next</h3>
     <ul id="navStubs"></ul>
   </aside>
@@ -122,14 +134,31 @@
       { value: 'center 70%', label: 'Lower-mid' },
       { value: 'center bottom', label: 'Bottom' },
     ];
-
     const SIZE_OPTIONS = [
-      { value: 'cover', label: 'Cover (fills, may crop edges)' },
-      { value: 'contain', label: 'Contain (fits whole image, may show empty space)' },
+      { value: 'cover', label: 'Cover (fills, may crop)' },
+      { value: 'contain', label: 'Contain (fits whole image)' },
     ];
 
-    // Schemas: structured definition of every editable page.
-    // Add a new entry here + a corresponding _content/<slug>.yml file in the repo.
+    // Reusable subschemas for repeating items
+    const PILLAR_FIELDS = [
+      { name: 'title', label: 'Title', widget: 'text' },
+      { name: 'icon', label: 'Icon (decorative dashes)', hint: 'e.g. — or —— or ———', widget: 'text' },
+      { name: 'description', label: 'Description', widget: 'textarea' },
+    ];
+    const OFFERING_CARD_FIELDS = [
+      { name: 'image', label: 'Card Image', widget: 'image' },
+      { name: 'tag', label: 'Tag (small caps eyebrow)', widget: 'text' },
+      { name: 'title', label: 'Card Title', widget: 'text' },
+      { name: 'description', label: 'Card Description', widget: 'textarea' },
+      { name: 'link_text', label: 'Link Text', widget: 'text' },
+      { name: 'link_url', label: 'Link URL', widget: 'text' },
+    ];
+    const PROCESS_STEP_FIELDS = [
+      { name: 'number', label: 'Step Number', widget: 'text' },
+      { name: 'title', label: 'Step Title', widget: 'text' },
+      { name: 'description', label: 'Description', widget: 'textarea' },
+    ];
+
     const SCHEMAS = {
       home: {
         title: 'Home Page',
@@ -139,32 +168,124 @@
           {
             heading: 'Hero — top of page',
             fields: [
-              { name: 'hero.eyebrow', label: 'Eyebrow', hint: 'Small caps line above the title', widget: 'text' },
+              { name: 'hero.eyebrow', label: 'Eyebrow', hint: 'Small caps line above title', widget: 'text' },
               { name: 'hero.title', label: 'Main Title', hint: 'Use <em>word</em> for italic, <br> for line break', widget: 'text' },
-              { name: 'hero.subtitle', label: 'Subtitle / Description', widget: 'textarea' },
+              { name: 'hero.subtitle', label: 'Subtitle', widget: 'textarea' },
               { name: 'hero.cta_primary_text', label: 'Primary Button — Text', widget: 'text' },
-              { name: 'hero.cta_primary_url', label: 'Primary Button — Link URL', widget: 'text' },
+              { name: 'hero.cta_primary_url', label: 'Primary Button — Link', widget: 'text' },
               { name: 'hero.cta_secondary_text', label: 'Secondary Button — Text', widget: 'text' },
-              { name: 'hero.cta_secondary_url', label: 'Secondary Button — Link URL', widget: 'text' },
-              { name: 'hero.image', label: 'Hero Image', hint: 'Drop or pick a JPG/PNG/WebP. Recommended ~1600px wide.', widget: 'image' },
-              { name: 'hero.image_alt', label: 'Image — Description for screen readers', widget: 'text' },
-              { name: 'hero.image_position', label: 'Image — Vertical Position', hint: 'Where the visual focus of the image sits in the frame', widget: 'select', options: POSITION_OPTIONS },
-              { name: 'hero.image_size', label: 'Image — Sizing Mode', widget: 'select', options: SIZE_OPTIONS },
+              { name: 'hero.cta_secondary_url', label: 'Secondary Button — Link', widget: 'text' },
+              { name: 'hero.image', label: 'Hero Image', widget: 'image' },
+              { name: 'hero.image_alt', label: 'Image — Alt text (screen readers)', widget: 'text' },
+              { name: 'hero.image_position', label: 'Image — Vertical Position', widget: 'select', options: POSITION_OPTIONS },
+              { name: 'hero.image_size', label: 'Image — Sizing', widget: 'select', options: SIZE_OPTIONS },
+            ],
+          },
+          {
+            heading: 'Metamorphosis — story section',
+            fields: [
+              { name: 'metamorphosis.section_label', label: 'Section Label (small caps)', widget: 'text' },
+              { name: 'metamorphosis.title', label: 'Title', hint: 'HTML allowed (<em>, <br>)', widget: 'text' },
+              { name: 'metamorphosis.paragraph_1', label: 'Paragraph 1', widget: 'textarea' },
+              { name: 'metamorphosis.paragraph_2', label: 'Paragraph 2', widget: 'textarea' },
+              { name: 'metamorphosis.paragraph_3', label: 'Paragraph 3', widget: 'textarea' },
+              { name: 'metamorphosis.quote', label: 'Pull Quote', hint: 'HTML allowed', widget: 'textarea' },
+              { name: 'metamorphosis.evolution_intro', label: 'Evolution intro line', widget: 'text' },
+              { name: 'metamorphosis.evolution_name', label: 'Evolution — name (bold accent)', widget: 'text' },
+              { name: 'metamorphosis.image', label: 'Side Image', widget: 'image' },
+              { name: 'metamorphosis.image_position', label: 'Image — Position', widget: 'select', options: POSITION_OPTIONS },
+            ],
+          },
+          {
+            heading: 'Vision — the greater calling',
+            fields: [
+              { name: 'vision.section_label', label: 'Section Label', widget: 'text' },
+              { name: 'vision.title', label: 'Title', widget: 'text' },
+              { name: 'vision.body_1', label: 'Body Paragraph 1', widget: 'textarea' },
+              { name: 'vision.body_2', label: 'Body Paragraph 2', widget: 'textarea' },
+              { name: 'vision.pillars', label: 'Three Pillars', widget: 'list', itemLabel: 'Pillar', fields: PILLAR_FIELDS },
+            ],
+          },
+          {
+            heading: 'Offerings — sacred pathways',
+            fields: [
+              { name: 'offerings.section_label', label: 'Section Label', widget: 'text' },
+              { name: 'offerings.title', label: 'Title', widget: 'text' },
+              { name: 'offerings.body', label: 'Intro Body', widget: 'textarea' },
+            ],
+          },
+          {
+            heading: 'Offerings — Featured (Cornerstone)',
+            fields: [
+              { name: 'offerings.featured.label', label: 'Card Label', widget: 'text' },
+              { name: 'offerings.featured.title', label: 'Card Title', widget: 'text' },
+              { name: 'offerings.featured.description_1', label: 'Description Paragraph 1', widget: 'textarea' },
+              { name: 'offerings.featured.description_2', label: 'Description Paragraph 2', widget: 'textarea' },
+              { name: 'offerings.featured.meta', label: 'Meta line (separated by ·)', widget: 'text' },
+              { name: 'offerings.featured.cta_text', label: 'Button Text', widget: 'text' },
+              { name: 'offerings.featured.cta_url', label: 'Button URL', widget: 'text' },
+              { name: 'offerings.featured.image', label: 'Featured Image', widget: 'image' },
+              { name: 'offerings.featured.image_position', label: 'Image — Position', widget: 'select', options: POSITION_OPTIONS },
+            ],
+          },
+          {
+            heading: 'Offerings — six grid cards',
+            hint: 'Reorder, edit, or replace any of the six offering cards',
+            fields: [
+              { name: 'offerings.cards', label: 'Offering Cards', widget: 'list', itemLabel: 'Card', fields: OFFERING_CARD_FIELDS },
+            ],
+          },
+          {
+            heading: 'Practitioner — Adi Marie',
+            fields: [
+              { name: 'practitioner.section_label', label: 'Section Label', widget: 'text' },
+              { name: 'practitioner.title', label: 'Title', hint: 'HTML allowed', widget: 'text' },
+              { name: 'practitioner.quals', label: 'Qualifications', widget: 'strlist', itemLabel: 'Qualification' },
+              { name: 'practitioner.paragraph_1', label: 'Paragraph 1', widget: 'textarea' },
+              { name: 'practitioner.paragraph_2', label: 'Paragraph 2', widget: 'textarea' },
+              { name: 'practitioner.location', label: 'Location line', widget: 'textarea' },
+              { name: 'practitioner.cta_text', label: 'Button Text', widget: 'text' },
+              { name: 'practitioner.cta_url', label: 'Button URL', widget: 'text' },
+              { name: 'practitioner.image', label: 'Practitioner Photo', widget: 'image' },
+              { name: 'practitioner.image_position', label: 'Photo — Position', widget: 'select', options: POSITION_OPTIONS },
+            ],
+          },
+          {
+            heading: 'Process — how to begin',
+            fields: [
+              { name: 'process.section_label', label: 'Section Label', widget: 'text' },
+              { name: 'process.title', label: 'Title', widget: 'text' },
+              { name: 'process.intro', label: 'Intro Body', widget: 'textarea' },
+              { name: 'process.questions', label: 'Inquiry Questions', widget: 'strlist', itemLabel: 'Question' },
+              { name: 'process.steps', label: 'The Four Steps', widget: 'list', itemLabel: 'Step', fields: PROCESS_STEP_FIELDS },
+              { name: 'process.cta_text', label: 'Button Text', widget: 'text' },
+              { name: 'process.cta_url', label: 'Button URL', widget: 'text' },
+            ],
+          },
+          {
+            heading: 'Testimonial',
+            fields: [
+              { name: 'testimonial.text', label: 'Testimonial Text', widget: 'textarea' },
+              { name: 'testimonial.author', label: 'Author', widget: 'text' },
+            ],
+          },
+          {
+            heading: 'Bottom CTA — call to action',
+            fields: [
+              { name: 'cta_section.section_label', label: 'Section Label', widget: 'text' },
+              { name: 'cta_section.title', label: 'Title', hint: 'HTML allowed', widget: 'text' },
+              { name: 'cta_section.body', label: 'Body', widget: 'textarea' },
+              { name: 'cta_section.cta_text', label: 'Button Text', widget: 'text' },
+              { name: 'cta_section.cta_url', label: 'Button URL', widget: 'text' },
             ],
           },
         ],
       },
     };
 
-    // Pages on the roadmap but not yet wired (shown as stubs)
     const STUB_PAGES = [
-      'About',
-      'Community',
-      'Sacred Reciprocity',
-      'Book / Begin Here',
-      'Divinations',
-      'Deep Work',
-      'Offerings (12 individual pages)',
+      'About', 'Community', 'Sacred Reciprocity', 'Book / Begin Here',
+      'Divinations', 'Deep Work', 'Offerings (12 individual pages)',
     ];
 
     function getNested(obj, path) {
@@ -174,7 +295,9 @@
       const parts = path.split('.');
       let cur = obj;
       for (let i = 0; i < parts.length - 1; i++) {
-        if (cur[parts[i]] == null || typeof cur[parts[i]] !== 'object') cur[parts[i]] = {};
+        if (cur[parts[i]] == null || typeof cur[parts[i]] !== 'object') {
+          cur[parts[i]] = /^\d+$/.test(parts[i + 1]) ? [] : {};
+        }
         cur = cur[parts[i]];
       }
       cur[parts[parts.length - 1]] = value;
@@ -182,13 +305,7 @@
     function escapeAttr(v) { return String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
 
     let state = { slug: null, schema: null, data: null, sha: null, dirty: false };
-
-    function setStatus(msg, cls) {
-      const el = document.getElementById('saveStatus');
-      if (!el) return;
-      el.textContent = msg || '';
-      el.className = 'status ' + (cls || '');
-    }
+    function setStatus(msg, cls) { const el = document.getElementById('saveStatus'); if (el) { el.textContent = msg || ''; el.className = 'status ' + (cls || ''); } }
     function markDirty() {
       state.dirty = true;
       const sb = document.getElementById('saveBtn'); if (sb) sb.disabled = false;
@@ -197,23 +314,18 @@
     }
 
     function buildNav() {
-      const wired = document.getElementById('navList');
-      wired.innerHTML = Object.entries(SCHEMAS).map(([slug, s]) =>
-        `<li><a href="#${slug}" data-page="${slug}">${s.title}</a></li>`
-      ).join('');
-      const stubs = document.getElementById('navStubs');
-      stubs.innerHTML = STUB_PAGES.map(name => `<li><a class="stub">${name}</a></li>`).join('');
+      document.getElementById('navList').innerHTML = Object.entries(SCHEMAS).map(([slug, s]) =>
+        `<li><a href="#${slug}" data-page="${slug}">${s.title}</a></li>`).join('');
+      document.getElementById('navStubs').innerHTML = STUB_PAGES.map(name => `<li><a class="stub">${name}</a></li>`).join('');
     }
 
     async function loadPage(slug) {
       const schema = SCHEMAS[slug];
       if (!schema) return;
-      state.slug = slug;
-      state.schema = schema;
+      state.slug = slug; state.schema = schema;
       const main = document.getElementById('main');
       main.innerHTML = '<div class="loading">Loading…</div>';
       document.querySelectorAll('aside a').forEach(a => a.classList.toggle('active', a.dataset.page === slug));
-
       try {
         const res = await fetch(`${API}/file?path=${encodeURIComponent(schema.path)}`, { headers: { Accept: 'application/json' } });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -228,84 +340,194 @@
     }
 
     function renderEditor() {
-      const { schema, data } = state;
+      const { schema } = state;
       const main = document.getElementById('main');
-      const groupsHtml = schema.groups.map(g => `
-        <section class="group">
-          <h3>${g.heading}</h3>
-          ${g.fields.map(f => fieldHtml(f, getNested(data, f.name) ?? '')).join('')}
-        </section>
-      `).join('');
       main.innerHTML = `
         <h2>${schema.title}</h2>
-        <div class="crumb">Editing <code>${schema.path}</code> · saves commit to GitHub and deploy automatically (1–2 min) <a class="live-link" href="${schema.liveUrl}" target="_blank">view live page ↗</a></div>
-        ${groupsHtml}
+        <div class="crumb">Editing <code>${schema.path}</code> · saves commit + deploy automatically (1–2 min) <a class="live-link" href="${schema.liveUrl}" target="_blank">view live page ↗</a></div>
+        <div id="formRoot"></div>
         <div class="actions">
           <button id="saveBtn" disabled>Save</button>
           <button class="ghost" id="discardBtn" disabled>Discard changes</button>
           <span id="saveStatus" class="status"></span>
         </div>
       `;
-      schema.groups.forEach(g => g.fields.forEach(f => wireField(f)));
+      const root = document.getElementById('formRoot');
+      schema.groups.forEach((g, gi) => {
+        const sec = document.createElement('section');
+        sec.className = 'group';
+        sec.innerHTML = `<h3>${g.heading}</h3>${g.hint ? `<div class="group-hint">${g.hint}</div>` : ''}`;
+        g.fields.forEach(f => sec.appendChild(renderField(f)));
+        root.appendChild(sec);
+      });
       document.getElementById('saveBtn').addEventListener('click', save);
       document.getElementById('discardBtn').addEventListener('click', () => loadPage(state.slug));
     }
 
-    function fieldHtml(f, value) {
+    // Render any field. Returns a DOM element.
+    function renderField(f) {
+      const wrap = document.createElement('div');
+      wrap.className = 'field';
+      const value = getNested(state.data, f.name);
+
+      if (f.widget === 'list') {
+        wrap.innerHTML = `<label>${f.label}</label>${f.hint ? `<span class="hint">${f.hint}</span>` : ''}<div class="list-items" data-list-root="${f.name}"></div><button type="button" class="list-add" data-list-add="${f.name}">+ Add ${f.itemLabel || 'item'}</button>`;
+        const root = wrap.querySelector(`[data-list-root="${f.name}"]`);
+        const items = Array.isArray(value) ? value : [];
+        items.forEach((_, i) => root.appendChild(renderListItem(f, i)));
+        wrap.querySelector(`[data-list-add="${f.name}"]`).addEventListener('click', () => {
+          const arr = (getNested(state.data, f.name) || []);
+          const blank = {};
+          (f.fields || []).forEach(sub => { blank[sub.name] = ''; });
+          arr.push(blank);
+          setNested(state.data, f.name, arr);
+          markDirty();
+          root.appendChild(renderListItem(f, arr.length - 1));
+        });
+        return wrap;
+      }
+
+      if (f.widget === 'strlist') {
+        wrap.innerHTML = `<label>${f.label}</label>${f.hint ? `<span class="hint">${f.hint}</span>` : ''}<div class="strlist-items" data-strlist-root="${f.name}"></div><button type="button" class="list-add" data-strlist-add="${f.name}">+ Add ${f.itemLabel || 'item'}</button>`;
+        const root = wrap.querySelector(`[data-strlist-root="${f.name}"]`);
+        const items = Array.isArray(value) ? value : [];
+        items.forEach((_, i) => root.appendChild(renderStrListItem(f, i)));
+        wrap.querySelector(`[data-strlist-add="${f.name}"]`).addEventListener('click', () => {
+          const arr = (getNested(state.data, f.name) || []);
+          arr.push('');
+          setNested(state.data, f.name, arr);
+          markDirty();
+          root.appendChild(renderStrListItem(f, arr.length - 1));
+        });
+        return wrap;
+      }
+
+      // Single-value field
       const id = 'f-' + f.name.replace(/\./g, '-');
-      const hint = f.hint ? `<span class="hint">${f.hint}</span>` : '';
-      let inner = '';
+      const label = `<label for="${id}">${f.label}</label>${f.hint ? `<span class="hint">${f.hint}</span>` : ''}`;
       if (f.widget === 'textarea') {
-        inner = `<textarea id="${id}">${escapeAttr(value)}</textarea>`;
+        wrap.innerHTML = `${label}<textarea id="${id}">${escapeAttr(value)}</textarea>`;
+        wrap.querySelector('textarea').addEventListener('input', e => { setNested(state.data, f.name, e.target.value); markDirty(); });
       } else if (f.widget === 'select') {
         const opts = f.options.map(o => `<option value="${escapeAttr(o.value)}" ${o.value === value ? 'selected' : ''}>${o.label}</option>`).join('');
-        inner = `<select id="${id}">${opts}</select>`;
+        wrap.innerHTML = `${label}<select id="${id}">${opts}</select>`;
+        wrap.querySelector('select').addEventListener('change', e => { setNested(state.data, f.name, e.target.value); markDirty(); });
       } else if (f.widget === 'image') {
-        const v = String(value || '');
-        const previewImg = v
-          ? `<img id="${id}-preview" src="${escapeAttr(v)}" alt="">`
-          : `<div id="${id}-preview" class="empty-img">No image yet</div>`;
-        inner = `
-          <div class="image-preview">
-            ${previewImg}
-            <div class="meta">
-              <div>Current: <code id="${id}-current">${v ? escapeAttr(v) : '(none)'}</code></div>
-              <div style="margin-top: 0.5rem; font-size: 0.78rem;">Replace by uploading a new file:</div>
-            </div>
-          </div>
-          <div class="file-row">
-            <label class="file-btn" for="${id}-file">Choose image…</label>
-            <input type="file" id="${id}-file" accept="image/jpeg,image/png,image/webp,image/gif" />
-            <span class="upload-status" id="${id}-status"></span>
-          </div>
-          <input type="hidden" id="${id}" value="${escapeAttr(v)}">
-        `;
+        wrap.appendChild(buildImageField(f, value, id, label));
+        return wrap;
       } else {
-        inner = `<input type="text" id="${id}" value="${escapeAttr(value)}" />`;
+        wrap.innerHTML = `${label}<input type="text" id="${id}" value="${escapeAttr(value)}" />`;
+        wrap.querySelector('input').addEventListener('input', e => { setNested(state.data, f.name, e.target.value); markDirty(); });
       }
-      return `<div class="field"${f.widget === 'image' ? ' image-field' : ''}><label for="${id}">${f.label}</label>${hint}${inner}</div>`;
+      return wrap;
     }
 
-    function wireField(f) {
-      const id = 'f-' + f.name.replace(/\./g, '-');
-      if (f.widget === 'image') {
-        const fileInput = document.getElementById(id + '-file');
-        if (!fileInput) return;
-        fileInput.addEventListener('change', async (e) => {
-          const file = e.target.files[0];
-          if (!file) return;
-          await uploadImage(file, f, id);
-          fileInput.value = '';
-        });
-        return;
-      }
-      const inp = document.getElementById(id);
-      if (!inp) return;
-      const event = (f.widget === 'select') ? 'change' : 'input';
-      inp.addEventListener(event, () => {
-        setNested(state.data, f.name, inp.value);
+    // Build image field as a separate DOM tree (so list-item images get wired correctly)
+    function buildImageField(f, value, id, label) {
+      const v = String(value || '');
+      const div = document.createElement('div');
+      div.innerHTML = `${label}
+        <div class="image-preview">
+          ${v ? `<img id="${id}-preview" src="${escapeAttr(v)}" alt="">` : `<div id="${id}-preview" class="empty-img">No image yet</div>`}
+          <div class="meta">
+            <div>Current: <code id="${id}-current">${v ? escapeAttr(v) : '(none)'}</code></div>
+            <div style="margin-top: 0.5rem; font-size: 0.78rem;">Replace by uploading a new file:</div>
+          </div>
+        </div>
+        <div class="file-row">
+          <label class="file-btn" for="${id}-file">Choose image…</label>
+          <input type="file" id="${id}-file" accept="image/jpeg,image/png,image/webp,image/gif" />
+          <span class="upload-status" id="${id}-status"></span>
+        </div>
+        <input type="hidden" id="${id}" value="${escapeAttr(v)}">
+      `;
+      div.querySelector(`#${id}-file`).addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (file) await uploadImage(file, f, id);
+        e.target.value = '';
+      });
+      return div;
+    }
+
+    function renderListItem(f, index) {
+      const item = document.createElement('div');
+      item.className = 'list-item';
+      const head = document.createElement('div');
+      head.className = 'list-item-head';
+      head.innerHTML = `<strong>${f.itemLabel || 'Item'} ${index + 1}</strong>
+        <button type="button" data-act="up">↑</button>
+        <button type="button" data-act="down">↓</button>
+        <button type="button" class="danger" data-act="del">Remove</button>`;
+      item.appendChild(head);
+
+      // Build sub-fields with nested name (e.g. offerings.cards.0.title)
+      const subFields = (f.fields || []).map(sub => ({ ...sub, name: `${f.name}.${index}.${sub.name}` }));
+      subFields.forEach(sub => item.appendChild(renderField(sub)));
+
+      head.querySelector('[data-act="del"]').addEventListener('click', () => {
+        const arr = getNested(state.data, f.name) || [];
+        arr.splice(index, 1);
+        setNested(state.data, f.name, arr);
+        markDirty();
+        // Re-render the whole list (simplest correct path)
+        const root = item.parentElement;
+        root.innerHTML = '';
+        arr.forEach((_, i) => root.appendChild(renderListItem(f, i)));
+      });
+      head.querySelector('[data-act="up"]').addEventListener('click', () => moveListItem(f, index, -1, item));
+      head.querySelector('[data-act="down"]').addEventListener('click', () => moveListItem(f, index, +1, item));
+      return item;
+    }
+
+    function moveListItem(f, index, delta, itemEl) {
+      const arr = getNested(state.data, f.name) || [];
+      const newIdx = index + delta;
+      if (newIdx < 0 || newIdx >= arr.length) return;
+      [arr[index], arr[newIdx]] = [arr[newIdx], arr[index]];
+      setNested(state.data, f.name, arr);
+      markDirty();
+      const root = itemEl.parentElement;
+      root.innerHTML = '';
+      arr.forEach((_, i) => root.appendChild(renderListItem(f, i)));
+    }
+
+    function renderStrListItem(f, index) {
+      const row = document.createElement('div');
+      row.className = 'strlist-row';
+      const value = (getNested(state.data, f.name) || [])[index] ?? '';
+      row.innerHTML = `<input type="text" value="${escapeAttr(value)}" placeholder="${f.itemLabel || ''}">
+        <button type="button" data-act="up">↑</button>
+        <button type="button" data-act="down">↓</button>
+        <button type="button" data-act="del">×</button>`;
+      row.querySelector('input').addEventListener('input', e => {
+        const arr = getNested(state.data, f.name) || [];
+        arr[index] = e.target.value;
+        setNested(state.data, f.name, arr);
         markDirty();
       });
+      row.querySelector('[data-act="del"]').addEventListener('click', () => {
+        const arr = getNested(state.data, f.name) || [];
+        arr.splice(index, 1);
+        setNested(state.data, f.name, arr);
+        markDirty();
+        const root = row.parentElement;
+        root.innerHTML = '';
+        arr.forEach((_, i) => root.appendChild(renderStrListItem(f, i)));
+      });
+      row.querySelector('[data-act="up"]').addEventListener('click', () => moveStrItem(f, index, -1, row));
+      row.querySelector('[data-act="down"]').addEventListener('click', () => moveStrItem(f, index, +1, row));
+      return row;
+    }
+    function moveStrItem(f, index, delta, rowEl) {
+      const arr = getNested(state.data, f.name) || [];
+      const newIdx = index + delta;
+      if (newIdx < 0 || newIdx >= arr.length) return;
+      [arr[index], arr[newIdx]] = [arr[newIdx], arr[index]];
+      setNested(state.data, f.name, arr);
+      markDirty();
+      const root = rowEl.parentElement;
+      root.innerHTML = '';
+      arr.forEach((_, i) => root.appendChild(renderStrListItem(f, i)));
     }
 
     async function uploadImage(file, f, id) {
@@ -331,20 +553,16 @@
         if (!res.ok) throw new Error(json.error || `HTTP ${res.status}`);
         const url = json.path ? '/' + json.path : null;
         if (!url) throw new Error('no path returned');
-        // Update hidden field + state + preview
         document.getElementById(id).value = url;
         setNested(state.data, f.name, url);
         const prev = document.getElementById(id + '-preview');
         if (prev) {
-          if (prev.tagName === 'IMG') {
-            prev.src = url;
-          } else {
-            prev.outerHTML = `<img id="${id}-preview" src="${escapeAttr(url)}" alt="">`;
-          }
+          if (prev.tagName === 'IMG') prev.src = url;
+          else prev.outerHTML = `<img id="${id}-preview" src="${escapeAttr(url)}" alt="">`;
         }
         const cur = document.getElementById(id + '-current');
         if (cur) cur.textContent = url;
-        setUS('Uploaded. Click Save below to publish.', 'ok');
+        setUS('Uploaded. Click Save to publish.', 'ok');
         markDirty();
       } catch (e) {
         setUS('Upload failed: ' + e.message, 'err');
@@ -384,9 +602,7 @@
       if (SCHEMAS[slug]) loadPage(slug);
     }
     window.addEventListener('hashchange', handleHash);
-    window.addEventListener('beforeunload', e => {
-      if (state.dirty) { e.preventDefault(); e.returnValue = ''; }
-    });
+    window.addEventListener('beforeunload', e => { if (state.dirty) { e.preventDefault(); e.returnValue = ''; } });
 
     (function start() {
       if (typeof jsyaml === 'undefined') { setTimeout(start, 50); return; }

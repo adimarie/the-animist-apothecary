@@ -1,21 +1,31 @@
 /*
  * content-loader.js
  *
- * Lightweight runtime patcher: fetches /_content/<page>.yml and injects
- * the values into DOM elements marked with data-content="path.to.field".
+ * Reads /_content/<page>.yml and patches DOM elements via data-content attrs.
+ *
+ * Single-value pattern (text / html / image / link href / bg position / bg size):
+ *   <span data-content="hero.eyebrow">fallback</span>
+ *   <h1 data-content="hero.title" data-content-type="html">fallback</h1>
+ *   <div class="hero-bg" data-content="hero.image" data-content-type="image"
+ *        data-content-bgpos="hero.image_position" data-content-bgsize="hero.image_size"></div>
+ *   <a data-content="cta_text" data-content-href="cta_url">fallback</a>
+ *
+ * List pattern (repeating items from a YAML array):
+ *   <ul data-content-list="practitioner.quals">
+ *     <li data-content-list-template data-content=".">Fallback qual</li>
+ *   </ul>
+ *
+ *   <div class="cards" data-content-list="offerings.cards">
+ *     <div class="card" data-content-list-template>
+ *       <div class="card-img" data-content=".image" data-content-type="image"></div>
+ *       <h3 data-content=".title">Fallback title</h3>
+ *       <p data-content=".description">Fallback description</p>
+ *       <a data-content=".link_text" data-content-href=".link_url">Learn more</a>
+ *     </div>
+ *   </div>
  *
  * The HTML always ships with hard-coded fallback content, so if this script
- * fails (network error, malformed YAML, etc.) the page still renders correctly.
- *
- * Usage in HTML:
- *   <body data-content-page="home">
- *     <span class="hero-eyebrow" data-content="hero.eyebrow">fallback text</span>
- *     <h1 data-content="hero.title" data-content-type="html">fallback <em>html</em></h1>
- *     <div class="hero-bg" data-content="hero.image" data-content-type="image"></div>
- *     <a href="#fallback" data-content="hero.cta_text" data-content-href="hero.cta_url">CTA</a>
- *   </body>
- *
- * Edited by Adi via /studio/ (Decap CMS).
+ * fails, the page still renders.
  */
 
 (function () {
@@ -23,6 +33,8 @@
 
   var page = (document.body && document.body.dataset.contentPage) || null;
   if (!page) return;
+
+  var ATTR_TARGETS = ['content', 'contentHref', 'contentAlt', 'contentBgpos', 'contentBgsize'];
 
   function loadJsYaml() {
     return new Promise(function (resolve, reject) {
@@ -37,15 +49,63 @@
 
   function getByPath(obj, path) {
     if (!obj || !path) return undefined;
+    if (path === '.') return obj;
     return path.split('.').reduce(function (acc, key) {
       return acc == null ? undefined : acc[key];
     }, obj);
   }
 
-  function applyContent(content) {
+  // Rewrite a relative path like ".title" or "." to absolute "<base>.<index>.title" / "<base>.<index>"
+  function absolutize(rel, base, index) {
+    if (rel === '.') return base + '.' + index;
+    if (rel.charAt(0) === '.') return base + '.' + index + rel;
+    return rel; // already absolute
+  }
+
+  // Expand list templates BEFORE running the value pass.
+  function expandLists(content, root) {
+    var lists = (root || document).querySelectorAll('[data-content-list]');
+    lists.forEach(function (parent) {
+      var basePath = parent.dataset.contentList;
+      var arr = getByPath(content, basePath);
+      if (!Array.isArray(arr)) return;
+
+      var template = parent.querySelector('[data-content-list-template]');
+      if (!template) return;
+      // Detach template from DOM (we'll clone from it)
+      template.removeAttribute('data-content-list-template');
+      var tplClone = template.cloneNode(true);
+      tplClone.style.display = '';
+      template.parentNode.removeChild(template);
+
+      // Remove any previous clones (for hot-reload safety)
+      parent.querySelectorAll('[data-content-list-clone]').forEach(function (c) { c.remove(); });
+
+      arr.forEach(function (_, i) {
+        var clone = tplClone.cloneNode(true);
+        clone.setAttribute('data-content-list-clone', '');
+        // Rewrite data-content* attrs whose value is relative
+        ATTR_TARGETS.forEach(function (attr) {
+          if (clone.dataset && clone.dataset[attr]) {
+            clone.dataset[attr] = absolutize(clone.dataset[attr], basePath, i);
+          }
+          var camelToData = attr.replace(/[A-Z]/g, function (m) { return '-' + m.toLowerCase(); });
+          clone.querySelectorAll('[data-' + camelToData + ']').forEach(function (el) {
+            el.dataset[attr] = absolutize(el.dataset[attr], basePath, i);
+          });
+        });
+        parent.appendChild(clone);
+      });
+    });
+  }
+
+  function applyValues(content, root) {
+    var ctx = root || document;
+
     // Text / HTML / image background substitution
-    document.querySelectorAll('[data-content]').forEach(function (el) {
-      var value = getByPath(content, el.dataset.content);
+    ctx.querySelectorAll('[data-content]').forEach(function (el) {
+      var path = el.dataset.content;
+      var value = getByPath(content, path);
       if (value === undefined || value === null) return;
 
       var type = el.dataset.contentType || 'text';
@@ -68,22 +128,27 @@
     });
 
     // Anchor href substitution
-    document.querySelectorAll('[data-content-href]').forEach(function (el) {
+    ctx.querySelectorAll('[data-content-href]').forEach(function (el) {
       var value = getByPath(content, el.dataset.contentHref);
       if (value !== undefined && value !== null) el.href = value;
     });
 
-    // Background-position substitution (e.g. "center 30%")
-    document.querySelectorAll('[data-content-bgpos]').forEach(function (el) {
+    // Background-position substitution
+    ctx.querySelectorAll('[data-content-bgpos]').forEach(function (el) {
       var value = getByPath(content, el.dataset.contentBgpos);
       if (value) el.style.backgroundPosition = String(value);
     });
 
-    // Background-size substitution (e.g. "cover" / "contain")
-    document.querySelectorAll('[data-content-bgsize]').forEach(function (el) {
+    // Background-size substitution
+    ctx.querySelectorAll('[data-content-bgsize]').forEach(function (el) {
       var value = getByPath(content, el.dataset.contentBgsize);
       if (value) el.style.backgroundSize = String(value);
     });
+  }
+
+  function applyContent(content) {
+    expandLists(content);
+    applyValues(content);
   }
 
   fetch('/_content/' + page + '.yml', { cache: 'no-cache' })
@@ -93,7 +158,6 @@
     })
     .then(applyContent)
     .catch(function (err) {
-      // Silent: HTML fallback content is what users see.
       if (window.console && window.console.warn) console.warn('[content-loader]', err.message || err);
     });
 })();
