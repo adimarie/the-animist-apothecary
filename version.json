@@ -1,12 +1,12 @@
 {
-  "version": "v260507.01 12:06a",
-  "release": 1,
-  "sha": "bf84779",
-  "fullSha": "bf84779ed6e4710bad4e1804c6f43c35748d6a00",
+  "version": "v260507.02 12:20a",
+  "release": 2,
+  "sha": "7ce316f",
+  "fullSha": "7ce316f28e345ad58f56084e1c8de2c1bbf44734",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-06T17:05:39-07:00",
-  "commits": [{"sha":"bf84779","message":"Studio: image upload widget, position/size controls","author":"Adi Marie"}]
+  "pushedAt": "2026-05-06T17:19:44-07:00",
+  "commits": [{"sha":"7ce316f","message":"Studio: every section on home editable; list widget for repeating items","author":"Adi Marie"}]
 }
