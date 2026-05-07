@@ -1,12 +1,12 @@
 {
-  "version": "v260507.04 2:15p",
-  "release": 4,
-  "sha": "58e4786",
-  "fullSha": "58e4786e66f04b40b2742218b68b7c8ad5ad680c",
+  "version": "v260507.05 2:20p",
+  "release": 5,
+  "sha": "9e612e6",
+  "fullSha": "9e612e680f01337d894f002fd3d48b5b35ffc7cd",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-07T07:14:49-07:00",
-  "commits": [{"sha":"58e4786","message":"Upload 2026-05-07-1777185257768.jpeg via studio","author":"adimarie"}]
+  "pushedAt": "2026-05-07T07:20:06-07:00",
+  "commits": [{"sha":"9e612e6","message":"Metamorphosis section: landscape image, smaller, sticky on scroll","author":"Adi Marie"}]
 }
