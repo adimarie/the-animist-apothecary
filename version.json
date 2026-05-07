@@ -1,12 +1,12 @@
 {
-  "version": "v260507.10 2:39p",
-  "release": 10,
-  "sha": "489e21b",
-  "fullSha": "489e21b2ec2e240b0450e0ed4fdcf7c71233c4fa",
+  "version": "v260507.11 2:41p",
+  "release": 11,
+  "sha": "4935162",
+  "fullSha": "49351620c9d0282a4f7fc7272f73079156f855bc",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-07T07:38:53-07:00",
-  "commits": [{"sha":"489e21b","message":"Upload 2026-05-07-test-tiny.png via studio","author":"adimarie"}]
+  "pushedAt": "2026-05-07T07:41:19-07:00",
+  "commits": [{"sha":"4935162","message":"Remove studio test upload","author":"adimarie"}]
 }
