@@ -1,151 +1,207 @@
-# Home page editable content — every section editable via /studio/.
-# Saves commit to GitHub and deploy automatically.
-# js/content-loader.js reads this and patches index.html.
-
 hero:
-  eyebrow: "Shamanic Healing · Somatic Ceremony · Botanical Medicine"
-  title: "Where ancient wisdom meets<br>the <em>living body</em>"
-  subtitle: "Somatic healing, sacred ceremony, and botanical medicine — woven together in devotion to your wholeness and the healing of the living world."
-  cta_primary_text: "Explore the Work"
-  cta_primary_url: "#offerings"
-  cta_secondary_text: "Begin Here"
-  cta_secondary_url: "book.html"
-  image: "/images/adi-hero-portrait.jpg"
-  image_alt: "Sunlight streaming through the great living canopy of the Topanga chaparral"
-  image_position: "center 30%"
-  image_size: "cover"
-
+  eyebrow: Shamanic Healing · Somatic Ceremony · Botanical Medicine
+  title: Where ancient wisdom meets<br>the <em>living body</em>
+  subtitle: >-
+    Somatic healing, sacred ceremony, and botanical medicine — woven together in devotion to your
+    wholeness and the healing of the living world.
+  cta_primary_text: Explore the Work
+  cta_primary_url: '#offerings'
+  cta_secondary_text: Begin Here
+  cta_secondary_url: book.html
+  image: /images/uploads/2026-05-07-pexels-fahad-khan-489970498-34541950.jpg
+  image_alt: Sunlight streaming through the great living canopy of the Topanga chaparral
+  image_position: center 30%
+  image_size: cover
 metamorphosis:
-  image: "https://images.unsplash.com/photo-1579101451346-4d0cd752f4b8?w=800&h=1000&fit=crop&q=80"
-  image_position: "center"
-  section_label: "A Metamorphosis Has Been Underway"
-  title: "From bodywork to<br><em>deep soul tending</em>"
-  paragraph_1: "After 16 years of service as a Somatic Touch Therapist and Hands-on Spiritual Practitioner — my work through Bodywork & Botanicals has come into a new evolution of specialized offerings and curation."
-  paragraph_2: "The many people who came seeking respite on the massage table almost always had deeper wounds that needed attending to — expressing as physical symptoms of disharmony within their system as pain."
-  paragraph_3: "After over a decade of devoted study, initiation, and maturation as an answer to the deeper calling of my gifts in service to the world, I now have a richer set of specialized skills to provide the much needed deep work to bring about life changing contact with the inner domains of Spirit and Self."
-  quote: "What has always been here remains: deep somatic tending, sacred space, relational care, and the devoted art of helping people return to themselves. <strong>And something new is arriving, too.</strong>"
-  evolution_intro: "Bodywork & Botanicals has become the next evolution of shamanic care:"
-  evolution_name: "The Animist Apothecary"
-
+  image: /images/uploads/2026-05-07-1777185257768.jpeg
+  image_position: center
+  section_label: A Metamorphosis Has Been Underway
+  title: From bodywork to<br><em>deep soul tending</em>
+  paragraph_1: >-
+    After 16 years of service as a Somatic Touch Therapist and Hands-on Spiritual Practitioner — my
+    work through Bodywork & Botanicals has come into a new evolution of specialized offerings and
+    curation.
+  paragraph_2: >-
+    The many people who came seeking respite on the massage table almost always had deeper wounds
+    that needed attending to — expressing as physical symptoms of disharmony within their system as
+    pain.
+  paragraph_3: >-
+    After over a decade of devoted study, initiation, and maturation as an answer to the deeper
+    calling of my gifts in service to the world, I now have a richer set of specialized skills to
+    provide the much needed deep work to bring about life changing contact with the inner domains of
+    Spirit and Self.
+  quote: >-
+    What has always been here remains: deep somatic tending, sacred space, relational care, and the
+    devoted art of helping people return to themselves. <strong>And something new is arriving,
+    too.</strong>
+  evolution_intro: 'Bodywork & Botanicals has become the next evolution of shamanic care:'
+  evolution_name: The Animist Apothecary
 vision:
-  section_label: "The Greater Calling"
-  title: "Healing the earth grid.<br><em>One ceremony at a time.</em>"
-  body_1: "The great work of our time is not only personal — it is planetary. Adi Marie is cultivating communities of ceremonialists, building collective healing containers, and weaving systems of sacred resourcing in service to this precious planet and all sacred kin."
-  body_2: "The work is scaling — into group trajectories, community hubs, and training pathways — because the earth grid needs woven networks of healers, ceremonialists, and devotees of the living world."
+  section_label: The Greater Calling
+  title: Healing the earth grid.<br><em>One ceremony at a time.</em>
+  body_1: >-
+    The great work of our time is not only personal — it is planetary. Adi Marie is cultivating
+    communities of ceremonialists, building collective healing containers, and weaving systems of
+    sacred resourcing in service to this precious planet and all sacred kin.
+  body_2: >-
+    The work is scaling — into group trajectories, community hubs, and training pathways — because
+    the earth grid needs woven networks of healers, ceremonialists, and devotees of the living
+    world.
   pillars:
-    - title: "Solo Intensives"
-      icon: "—"
-      description: "One-on-one Acolyte journeys for deep personal transformation and spiritual sovereignty — held with full presence and devotion."
-    - title: "Community & Groups"
-      icon: "— —"
-      description: "Themed group trajectories, eco-immersions, firesides, and collective healing containers in devoted service to the life web."
-    - title: "Private Engagements"
-      icon: "———"
-      description: "Bespoke ceremonial work, retreats, and consulting for leaders, organizations, and communities of practitioners."
-
+    - title: Solo Intensives
+      icon: —
+      description: >-
+        One-on-one Acolyte journeys for deep personal transformation and spiritual sovereignty —
+        held with full presence and devotion.
+    - title: Community & Groups
+      icon: — —
+      description: >-
+        Themed group trajectories, eco-immersions, firesides, and collective healing containers in
+        devoted service to the life web.
+    - title: Private Engagements
+      icon: ———
+      description: >-
+        Bespoke ceremonial work, retreats, and consulting for leaders, organizations, and
+        communities of practitioners.
 offerings:
-  section_label: "Current Offerings"
-  title: "Sacred pathways of <em>transformation</em>"
-  body: "Each offering is a doorway. Choose the one that calls to the depth of your readiness — from single sessions to year-long developmental arcs."
+  section_label: Current Offerings
+  title: Sacred pathways of <em>transformation</em>
+  body: >-
+    Each offering is a doorway. Choose the one that calls to the depth of your readiness — from
+    single sessions to year-long developmental arcs.
   featured:
-    image: "https://images.unsplash.com/photo-1762755126280-6d8a4f9d1115?w=1400&h=600&fit=crop&q=80"
-    image_position: "center"
-    label: "Cornerstone Offering"
-    title: "Mythopoetic Living — Developmental Arcs"
-    description_1: "A 3—24 month ceremonial developmental trajectory — weaving Sacred Breath sessions with Guidance & Counsel into a living container for deep self-actualization and spiritual sovereignty."
-    description_2: "12-session progressions, built around your season of readiness."
-    meta: "Solo Acolyte Intensives · Group Trajectories · 3—24 Month Containers"
-    cta_text: "Explore the Developmental Arc —"
-    cta_url: "mythopoetic.html"
+    image: https://images.unsplash.com/photo-1762755126280-6d8a4f9d1115?w=1400&h=600&fit=crop&q=80
+    image_position: center
+    label: Cornerstone Offering
+    title: Mythopoetic Living — Developmental Arcs
+    description_1: >-
+      A 3—24 month ceremonial developmental trajectory — weaving Sacred Breath sessions with
+      Guidance & Counsel into a living container for deep self-actualization and spiritual
+      sovereignty.
+    description_2: 12-session progressions, built around your season of readiness.
+    meta: Solo Acolyte Intensives · Group Trajectories · 3—24 Month Containers
+    cta_text: Explore the Developmental Arc —
+    cta_url: mythopoetic.html
   cards:
-    - image: "https://images.unsplash.com/photo-1492552181161-62217fc3076d?w=600&h=400&fit=crop&q=80"
-      tag: "Somatic · Sacred"
-      title: "Shamanic Bodywork"
-      description: "Deep somatic healing through the body's living memory — restoring the sacred conversation between flesh, spirit, and land. The body as altar; sensation as oracle."
-      link_text: "Learn More —"
-      link_url: "shamanic-bodywork.html"
-    - image: "https://images.unsplash.com/photo-1579101451346-4d0cd752f4b8?w=600&h=400&fit=crop&q=80"
-      tag: "Multi-Day · Immersive"
-      title: "Personal Immersions"
-      description: "Extended containers for those ready to go all the way in — multi-day experiences of radical presence, ceremony, and spiritual reclamation."
-      link_text: "Learn More —"
-      link_url: "personal-immersions.html"
-    - image: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&h=400&fit=crop&q=80"
-      tag: "Collective · Ritual"
-      title: "Ceremonial & Ritual Groups"
-      description: "Themed group trajectories, seasonal ceremonies, and collective healing containers — because the work of tending the life web is communal."
-      link_text: "Learn More —"
-      link_url: "ceremonial-groups.html"
-    - image: "https://images.unsplash.com/photo-1601922046210-41e129a3e64a?w=600&h=400&fit=crop&q=80"
-      tag: "Guidance · Counsel"
-      title: "Pláticas"
-      description: "Sacred conversation at the threshold of knowing. Strategic spiritual counsel. A space to be witnessed, guided, and met with honesty and devotion."
-      link_text: "Learn More —"
-      link_url: "platicas.html"
-    - image: "https://images.unsplash.com/photo-1627769916425-74c2344a3439?w=600&h=400&fit=crop&q=80"
-      tag: "Ancestral · Elemental"
-      title: "Ancestral & Elemental Divinations"
-      description: "Readings and transmissions from the ancestral and elemental realms — a mirror held by those who walked before you, for clarity at the crossroads."
-      link_text: "Learn More —"
-      link_url: "divinations.html"
-    - image: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&h=400&fit=crop&q=80"
-      tag: "Open Access · Reciprocity"
-      title: "Community Clinics"
-      description: "Sliding-scale gatherings and accessible group sessions held in service to the wider community — entry points for those called to begin, attuned to Sacred Reciprocity so the work meets all who need it."
-      link_text: "Learn More —"
-      link_url: "community-clinics.html"
-
+    - image: https://images.unsplash.com/photo-1492552181161-62217fc3076d?w=600&h=400&fit=crop&q=80
+      tag: Somatic · Sacred
+      title: Shamanic Bodywork
+      description: >-
+        Deep somatic healing through the body's living memory — restoring the sacred conversation
+        between flesh, spirit, and land. The body as altar; sensation as oracle.
+      link_text: Learn More —
+      link_url: shamanic-bodywork.html
+    - image: https://images.unsplash.com/photo-1579101451346-4d0cd752f4b8?w=600&h=400&fit=crop&q=80
+      tag: Multi-Day · Immersive
+      title: Personal Immersions
+      description: >-
+        Extended containers for those ready to go all the way in — multi-day experiences of radical
+        presence, ceremony, and spiritual reclamation.
+      link_text: Learn More —
+      link_url: personal-immersions.html
+    - image: https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&h=400&fit=crop&q=80
+      tag: Collective · Ritual
+      title: Ceremonial & Ritual Groups
+      description: >-
+        Themed group trajectories, seasonal ceremonies, and collective healing containers — because
+        the work of tending the life web is communal.
+      link_text: Learn More —
+      link_url: ceremonial-groups.html
+    - image: https://images.unsplash.com/photo-1601922046210-41e129a3e64a?w=600&h=400&fit=crop&q=80
+      tag: Guidance · Counsel
+      title: Pláticas
+      description: >-
+        Sacred conversation at the threshold of knowing. Strategic spiritual counsel. A space to be
+        witnessed, guided, and met with honesty and devotion.
+      link_text: Learn More —
+      link_url: platicas.html
+    - image: https://images.unsplash.com/photo-1627769916425-74c2344a3439?w=600&h=400&fit=crop&q=80
+      tag: Ancestral · Elemental
+      title: Ancestral & Elemental Divinations
+      description: >-
+        Readings and transmissions from the ancestral and elemental realms — a mirror held by those
+        who walked before you, for clarity at the crossroads.
+      link_text: Learn More —
+      link_url: divinations.html
+    - image: https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&h=400&fit=crop&q=80
+      tag: Open Access · Reciprocity
+      title: Community Clinics
+      description: >-
+        Sliding-scale gatherings and accessible group sessions held in service to the wider
+        community — entry points for those called to begin, attuned to Sacred Reciprocity so the
+        work meets all who need it.
+      link_text: Learn More —
+      link_url: community-clinics.html
 practitioner:
-  image: "/images/adi-hero-portrait.jpg"
-  image_position: "center top"
-  section_label: "The Practitioner"
-  title: "<em>Adi Marie</em>"
+  image: /images/adi-hero-portrait.jpg
+  image_position: center top
+  section_label: The Practitioner
+  title: <em>Adi Marie</em>
   quals:
-    - "Therapeutic Coach"
-    - "Entheogenic Medicine"
-    - "Ceremonial & Ritual Stewardship"
-    - "Interdimensional Intermediary & Guide"
-    - "Somatic Medium & Diviner"
-    - "Shamanic Bodyworker"
-    - "Massage Therapist"
-    - "Expressive Arts"
-  paragraph_1: "After 16 years of devoted service and over a decade of initiation, study, and maturation — Adi Marie carries a medicine basket woven from traditional herbalism, animist cosmology, somatic awareness, shamanic practice, and the sacred arts of ceremony."
-  paragraph_2: "Working with doctors, medicine people, therapists, leaders of industry, and those whose decisions shape the trajectory of this earth ship — both as individuals and within the many constellations of their communities."
-  location: "Based in Topanga Canyon, Los Angeles — available worldwide for virtual sessions, private engagements, and in person for those called to the land."
-  cta_text: "Read the Full Story"
-  cta_url: "about.html"
-
+    - Therapeutic Coach
+    - Entheogenic Medicine
+    - Ceremonial & Ritual Stewardship
+    - Interdimensional Intermediary & Guide
+    - Somatic Medium & Diviner
+    - Shamanic Bodyworker
+    - Massage Therapist
+    - Expressive Arts
+  paragraph_1: >-
+    After 16 years of devoted service and over a decade of initiation, study, and maturation — Adi
+    Marie carries a medicine basket woven from traditional herbalism, animist cosmology, somatic
+    awareness, shamanic practice, and the sacred arts of ceremony.
+  paragraph_2: >-
+    Working with doctors, medicine people, therapists, leaders of industry, and those whose
+    decisions shape the trajectory of this earth ship — both as individuals and within the many
+    constellations of their communities.
+  location: >-
+    Based in Topanga Canyon, Los Angeles — available worldwide for virtual sessions, private
+    engagements, and in person for those called to the land.
+  cta_text: Read the Full Story
+  cta_url: about.html
 process:
-  section_label: "How to Begin"
-  title: "Your path forward,<br><em>step by step</em>"
-  intro: "The work begins with a simple, honest inquiry. From there, a path reveals itself."
+  section_label: How to Begin
+  title: Your path forward,<br><em>step by step</em>
+  intro: The work begins with a simple, honest inquiry. From there, a path reveals itself.
   questions:
-    - "Awakening or Healing?"
-    - "Solo or Groups?"
-    - "Once or Ongoing?"
+    - Awakening or Healing?
+    - Solo or Groups?
+    - Once or Ongoing?
   steps:
-    - number: "01"
-      title: "Intake & Inquiry"
-      description: "A paid Intake & Inquiry session (Pláticas rate) to feel the resonance, share your needs, assess readiness, and outline a path forward together. This is a substantive consultation — not a brief intro call."
-    - number: "02"
-      title: "Choose Your Path"
-      description: "Together we identify whether a Solo Acolyte intensive, group trajectory, or individual session best meets your readiness."
-    - number: "03"
-      title: "Commit & Begin"
-      description: "A deposit opens the container and signals your readiness. Dates are set. The work is engaged with full intention."
-    - number: "04"
-      title: "Aftercare & Integration"
-      description: "The work continues in the weaving. Integration practices and follow-up support are woven throughout every offering."
-  cta_text: "Begin Here — Book Your Call"
-  cta_url: "book.html"
-
+    - number: '01'
+      title: Intake & Inquiry
+      description: >-
+        A paid Intake & Inquiry session (Pláticas rate) to feel the resonance, share your needs,
+        assess readiness, and outline a path forward together. This is a substantive consultation —
+        not a brief intro call.
+    - number: '02'
+      title: Choose Your Path
+      description: >-
+        Together we identify whether a Solo Acolyte intensive, group trajectory, or individual
+        session best meets your readiness.
+    - number: '03'
+      title: Commit & Begin
+      description: >-
+        A deposit opens the container and signals your readiness. Dates are set. The work is engaged
+        with full intention.
+    - number: '04'
+      title: Aftercare & Integration
+      description: >-
+        The work continues in the weaving. Integration practices and follow-up support are woven
+        throughout every offering.
+  cta_text: Begin Here — Book Your Call
+  cta_url: book.html
 testimonial:
-  text: "Working with Adi is like having the most skilled, loving, ferocious medicine person as your guide. She sees what others miss, holds what others drop, and moves you through the underworld with uncommon grace. My life is unrecognizably more alive."
-  author: "M.K. — Physician & Medicine Woman, New Mexico"
-
+  text: >-
+    Working with Adi is like having the most skilled, loving, ferocious medicine person as your
+    guide. She sees what others miss, holds what others drop, and moves you through the underworld
+    with uncommon grace. My life is unrecognizably more alive.
+  author: M.K. — Physician & Medicine Woman, New Mexico
 cta_section:
-  section_label: "Begin the Work"
-  title: "The earth grid needs<br><em>your medicine.</em>"
-  body: "Whether you're here for your own healing or to train as a ceremonialist in service to the living web — your season begins now."
-  cta_text: "Work With Us"
-  cta_url: "book.html"
+  section_label: Begin the Work
+  title: The earth grid needs<br><em>your medicine.</em>
+  body: >-
+    Whether you're here for your own healing or to train as a ceremonialist in service to the living
+    web — your season begins now.
+  cta_text: Work With Us
+  cta_url: book.html
