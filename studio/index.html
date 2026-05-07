@@ -202,7 +202,7 @@
               { name: 'hero.cta_primary_url', label: 'Primary Button — Link', widget: 'text' },
               { name: 'hero.cta_secondary_text', label: 'Secondary Button — Text', widget: 'text' },
               { name: 'hero.cta_secondary_url', label: 'Secondary Button — Link', widget: 'text' },
-              { name: 'hero.image', label: 'Hero Image', widget: 'image' },
+              { name: 'hero.image', label: 'Hero Image', hint: 'JPG/PNG/WebP up to 50 MB. Larger photos auto-resize to 2400px and recompress for web; PNG transparency preserved.', widget: 'image' },
               { name: 'hero.image_alt', label: 'Image — Alt text (screen readers)', widget: 'text' },
               { name: 'hero.image_position', label: 'Image — Vertical Position', widget: 'select', options: POSITION_OPTIONS },
               { name: 'hero.image_size', label: 'Image — Sizing', widget: 'select', options: SIZE_OPTIONS },
@@ -758,24 +758,88 @@
       arr.forEach((_, i) => root.appendChild(renderStrListItem(f, i)));
     }
 
+    // Image pipeline: accept up to 50 MB raw camera/phone files, auto-resize
+    // anything bigger than 2400px on its longest edge, and re-encode JPEG at
+    // quality 0.9 so the upload stays a manageable size and the live page
+    // loads fast. PNG keeps PNG (preserves transparency); WebP keeps WebP;
+    // SVG and GIF are passed through untouched.
+    async function loadImageFromFile(file) {
+      return new Promise((resolve, reject) => {
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = () => { URL.revokeObjectURL(url); resolve(img); };
+        img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('could not decode image')); };
+        img.src = url;
+      });
+    }
+    async function blobToBase64(blob) {
+      return new Promise((res, rej) => {
+        const r = new FileReader();
+        r.onload = () => {
+          const s = String(r.result || '');
+          const i = s.indexOf(',');
+          res(i >= 0 ? s.slice(i + 1) : s);
+        };
+        r.onerror = rej;
+        r.readAsDataURL(blob);
+      });
+    }
+    async function maybeResize(file, maxDim = 2400, jpgQuality = 0.9) {
+      // Skip resize for SVG/GIF (canvas can't roundtrip these reliably).
+      if (/\.(svg|gif)$/i.test(file.name) || file.type === 'image/svg+xml' || file.type === 'image/gif') {
+        return { blob: file, name: file.name, type: file.type, w: null, h: null, resized: false };
+      }
+      let img;
+      try { img = await loadImageFromFile(file); }
+      catch { return { blob: file, name: file.name, type: file.type, w: null, h: null, resized: false }; }
+      const ow = img.naturalWidth, oh = img.naturalHeight;
+      const tooBig = ow > maxDim || oh > maxDim;
+      // If already small AND under 2 MB, don't re-encode.
+      if (!tooBig && file.size < 2_000_000) {
+        return { blob: file, name: file.name, type: file.type, w: ow, h: oh, resized: false };
+      }
+      let nw = ow, nh = oh;
+      if (tooBig) {
+        const s = maxDim / Math.max(ow, oh);
+        nw = Math.round(ow * s); nh = Math.round(oh * s);
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = nw; canvas.height = nh;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, nw, nh);
+      const isPng = /\.png$/i.test(file.name) || file.type === 'image/png';
+      const isWebp = /\.webp$/i.test(file.name) || file.type === 'image/webp';
+      const outType = isPng ? 'image/png' : (isWebp ? 'image/webp' : 'image/jpeg');
+      const outExt = isPng ? '.png' : (isWebp ? '.webp' : '.jpg');
+      const outName = file.name.replace(/\.[a-z0-9]+$/i, '') + outExt;
+      const blob = await new Promise((res) => canvas.toBlob((b) => res(b || file), outType, jpgQuality));
+      return { blob, name: outName, type: outType, w: nw, h: nh, resized: tooBig };
+    }
+    function fmtMb(bytes) { return (bytes / 1_000_000).toFixed(bytes < 1_000_000 ? 2 : 1) + ' MB'; }
+
     async function uploadImage(file, f, id) {
       const statusEl = document.getElementById(id + '-status');
       const setUS = (msg, cls) => { statusEl.textContent = msg; statusEl.className = 'upload-status ' + (cls || ''); };
-      if (file.size > 6_000_000) { setUS('File too large (max 6 MB)', 'err'); return; }
-      if (!/^image\//.test(file.type)) { setUS('Not an image', 'err'); return; }
-      setUS('Uploading…', '');
+      if (file.size > 50_000_000) { setUS('File too large (max 50 MB raw)', 'err'); return; }
+      if (!/^image\//.test(file.type) && !/\.(svg)$/i.test(file.name)) { setUS('Not an image', 'err'); return; }
+
+      setUS('Optimizing…', '');
+      let opt;
+      try { opt = await maybeResize(file); }
+      catch (e) { setUS('Optimization failed: ' + e.message, 'err'); return; }
+
+      const dims = opt.w ? ` (${opt.w}×${opt.h})` : '';
+      const sizeNote = opt.resized
+        ? `${fmtMb(opt.blob.size)}${dims}, optimized from ${fmtMb(file.size)}`
+        : `${fmtMb(opt.blob.size)}${dims}`;
+      setUS(`Uploading ${sizeNote}…`, '');
+
       try {
-        const dataUrl = await new Promise((resolve, reject) => {
-          const r = new FileReader();
-          r.onload = () => resolve(r.result);
-          r.onerror = reject;
-          r.readAsDataURL(file);
-        });
-        const base64 = String(dataUrl).split(',')[1];
+        const base64 = await blobToBase64(opt.blob);
         const res = await fetch(`${API}/upload`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ filename: file.name, data_base64: base64 }),
+          body: JSON.stringify({ filename: opt.name, data_base64: base64 }),
         });
         const json = await res.json();
         if (!res.ok) throw new Error(json.error || `HTTP ${res.status}`);
@@ -790,7 +854,7 @@
         }
         const cur = document.getElementById(id + '-current');
         if (cur) cur.textContent = url;
-        setUS('Uploaded. Click Save to publish.', 'ok');
+        setUS(`Uploaded — ${sizeNote}. Click Save to publish.`, 'ok');
         markDirty();
       } catch (e) {
         setUS('Upload failed: ' + e.message, 'err');
