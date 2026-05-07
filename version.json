@@ -1,12 +1,12 @@
 {
-  "version": "v260507.06 2:29p",
-  "release": 6,
-  "sha": "3104bf7",
-  "fullSha": "3104bf77175c5292d4119b1eaf150fba3861b11b",
+  "version": "v260507.07 2:32p",
+  "release": 7,
+  "sha": "796520a",
+  "fullSha": "796520a41db2d65c74f48db149d9bfe758fc09c6",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-07T07:28:40-07:00",
-  "commits": [{"sha":"3104bf7","message":"Studio: 50 MB image upload + auto-optimize for web","author":"Adi Marie"}]
+  "pushedAt": "2026-05-07T07:32:07-07:00",
+  "commits": [{"sha":"796520a","message":"Upload 2026-05-07-pexels-fahad-khan-489970498-34541950.jpg via studio","author":"adimarie"}]
 }
