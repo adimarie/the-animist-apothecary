@@ -1,12 +1,12 @@
 {
-  "version": "v260507.02 12:20a",
-  "release": 2,
-  "sha": "7ce316f",
-  "fullSha": "7ce316f28e345ad58f56084e1c8de2c1bbf44734",
+  "version": "v260507.03 4:18a",
+  "release": 3,
+  "sha": "0be4bde",
+  "fullSha": "0be4bde3dea27ecbda227699cfd5513948443830",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-06T17:19:44-07:00",
-  "commits": [{"sha":"7ce316f","message":"Studio: every section on home editable; list widget for repeating items","author":"Adi Marie"}]
+  "pushedAt": "2026-05-06T21:18:28-07:00",
+  "commits": [{"sha":"0be4bde","message":"Studio: wire about, community, sacred-reciprocity, book pages","author":"Adi Marie"}]
 }
