@@ -664,7 +664,7 @@
         </div>
         <div class="file-row">
           <label class="file-btn" for="${id}-file">Choose image…</label>
-          <input type="file" id="${id}-file" accept="image/jpeg,image/png,image/webp,image/gif" />
+          <input type="file" id="${id}-file" accept="image/*" />
           <span class="upload-status" id="${id}-status"></span>
         </div>
         <input type="hidden" id="${id}" value="${escapeAttr(v)}">
@@ -820,13 +820,24 @@
     async function uploadImage(file, f, id) {
       const statusEl = document.getElementById(id + '-status');
       const setUS = (msg, cls) => { statusEl.textContent = msg; statusEl.className = 'upload-status ' + (cls || ''); };
+      console.log('[studio] uploadImage', { name: file.name, type: file.type, size: file.size });
       if (file.size > 50_000_000) { setUS('File too large (max 50 MB raw)', 'err'); return; }
-      if (!/^image\//.test(file.type) && !/\.(svg)$/i.test(file.name)) { setUS('Not an image', 'err'); return; }
+      if (/\.(heic|heif)$/i.test(file.name)) {
+        setUS('iPhone HEIC photos aren’t supported by web browsers. On iPhone: Settings → Camera → Formats → Most Compatible. Or open the photo in Preview and File → Export As JPG.', 'err');
+        return;
+      }
+      if (!/\.(jpe?g|png|webp|gif|svg|bmp|tiff?|avif)$/i.test(file.name)) {
+        setUS('Unsupported file type: ' + file.name + '. Try JPG, PNG, WebP, GIF, or SVG.', 'err');
+        return;
+      }
 
       setUS('Optimizing…', '');
       let opt;
       try { opt = await maybeResize(file); }
-      catch (e) { setUS('Optimization failed: ' + e.message, 'err'); return; }
+      catch (e) {
+        console.warn('[studio] resize failed, will try uploading original', e);
+        opt = { blob: file, name: file.name, type: file.type, w: null, h: null, resized: false };
+      }
 
       const dims = opt.w ? ` (${opt.w}×${opt.h})` : '';
       const sizeNote = opt.resized
@@ -842,6 +853,7 @@
           body: JSON.stringify({ filename: opt.name, data_base64: base64 }),
         });
         const json = await res.json();
+        console.log('[studio] upload response', res.status, json);
         if (!res.ok) throw new Error(json.error || `HTTP ${res.status}`);
         const url = json.path ? '/' + json.path : null;
         if (!url) throw new Error('no path returned');
