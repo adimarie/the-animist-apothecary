@@ -1,12 +1,12 @@
 {
-  "version": "v260513.04 8:54p",
-  "release": 4,
-  "sha": "c846e95",
-  "fullSha": "c846e95b9bb178da04c3bed779300f9e7b36fbe8",
+  "version": "v260513.05 9:01p",
+  "release": 5,
+  "sha": "3219e72",
+  "fullSha": "3219e729bc991ec856d2d44452cb3b48007b512c",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-13T13:54:24-07:00",
-  "commits": [{"sha":"c846e95","message":"Hero: text hovers just above midpoint, fully centered (Polish v30)","author":"Adi Marie"}]
+  "pushedAt": "2026-05-13T14:00:58-07:00",
+  "commits": [{"sha":"3219e72","message":"Hero: true flex-centering with -3% translate (Polish v30 rewrite)","author":"Adi Marie"}]
 }
