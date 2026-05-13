@@ -1,12 +1,12 @@
 {
-  "version": "v260507.12 2:48p",
-  "release": 12,
-  "sha": "7be9657",
-  "fullSha": "7be96571cea03bec4b40986c6f796a15d3ff9ae3",
+  "version": "v260513.01 7:45p",
+  "release": 1,
+  "sha": "1c16346",
+  "fullSha": "1c1634658553538ddb399f5221b7d2bee0514298",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-07T07:48:14-07:00",
-  "commits": [{"sha":"7be9657","message":"Studio: clearer upload errors + HEIC message + image/* accept","author":"Adi Marie"}]
+  "pushedAt": "2026-05-13T12:45:29-07:00",
+  "commits": [{"sha":"1c16346","message":"Hero: lower title + subtitle by 5vh (Polish v30)","author":"Adi Marie"}]
 }
