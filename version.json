@@ -1,12 +1,12 @@
 {
-  "version": "v260513.07 9:37p",
-  "release": 7,
-  "sha": "8063394",
-  "fullSha": "806339423b170a88f64d4ed704df4e640fdd8801",
+  "version": "v260513.08 9:39p",
+  "release": 8,
+  "sha": "ba8cc13",
+  "fullSha": "ba8cc1379d82b87f3f331bbd2cc655b6feb595f8",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-13T14:36:57-07:00",
-  "commits": [{"sha":"8063394","message":"Hero: shift text into the lower half (translate -3% → +10%)","author":"Adi Marie"}]
+  "pushedAt": "2026-05-13T14:39:08-07:00",
+  "commits": [{"sha":"ba8cc13","message":"Hero: push text further into lower half (translateY 10% → 20%)","author":"Adi Marie"}]
 }
