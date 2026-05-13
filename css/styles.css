@@ -5084,19 +5084,47 @@ section.fade-in {
 }
 
 /* =====================================================================
-   POLISH v30 — Lower hero title + subtitle by 5% of viewport
-   Bumps the .hero-content top padding from 14vh to 19vh so the words
-   settle a touch lower into the canopy. Button remains pinned at 75vh
-   (Polish v26) — only the text block moves.
+   POLISH v30 — Lower hero title + subtitle deep into the canopy (75%)
+   Drops the .hero-content top padding from 14vh to ~58vh so the words
+   sit in the lower portion of the hero, breathing right above the
+   button at 75vh. The text block + button now form a single grouping
+   at the base of the trunk.
+   Title sizing pulled in a touch so the heavier composition reads.
    ===================================================================== */
 
 .hero-content {
-  padding-top: 19vh !important;
+  padding-top: 58vh !important;
+  padding-bottom: 4rem !important;
+  gap: .9rem !important;
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 5.4vw, 4.6rem) !important;
+  line-height: 1.04 !important;
+  margin-bottom: .35rem !important;
+}
+
+.hero-subtitle {
+  max-width: 44rem !important;
+  margin-top: 0 !important;
+}
+
+/* Tighten the radial pocket so it tracks the lowered text block */
+.hero-content::before {
+  background: radial-gradient(
+    ellipse 70% 55% at 50% 70%,
+    rgba(8, 5, 2, 0.55) 0%,
+    rgba(8, 5, 2, 0.30) 40%,
+    rgba(8, 5, 2, 0.10) 70%,
+    rgba(8, 5, 2, 0) 92%
+  ) !important;
 }
 
 @media (max-width: 1024px) {
-  .hero-content { padding-top: 17vh !important; }
+  .hero-content { padding-top: 52vh !important; }
+  .hero-title   { font-size: clamp(2.1rem, 6vw, 3.4rem) !important; }
 }
 @media (max-width: 600px) {
-  .hero-content { padding-top: 15vh !important; }
+  .hero-content { padding-top: 44vh !important; }
+  .hero-title   { font-size: clamp(1.9rem, 7vw, 2.6rem) !important; }
 }
