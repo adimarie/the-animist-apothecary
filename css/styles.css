@@ -5084,18 +5084,25 @@ section.fade-in {
 }
 
 /* =====================================================================
-   POLISH v30 — Hero text hovers just above the midpoint, centered
-   Title + subtitle sit as a single centered block whose visual center
-   falls a touch above 50vh — the words float in the upper canopy,
-   horizontally centered to the column. Button stays at 75vh (Polish v26).
+   POLISH v30 — Hero text vertically centered, nudged just above midpoint
+   The hero section uses a fixed pixel height in some viewports, so vh
+   padding misbehaves. Switch to true flex centering (justify-content:
+   center) and use a small translateY to lift the block ~6% above the
+   exact middle — the words sit in the red-zone the user drew.
+   Horizontal centering enforced everywhere.
    ===================================================================== */
 
 .hero-content {
-  padding-top: 38vh !important;
-  padding-bottom: 4rem !important;
-  gap: .9rem !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  gap: 1.1rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
   align-items: center !important;
   text-align: center !important;
+  /* Lift the centered block a touch above the exact middle of the hero */
+  transform: translateY(-3%) !important;
 }
 
 .hero-title,
@@ -5109,17 +5116,19 @@ section.fade-in {
   font-size: clamp(2.4rem, 5.4vw, 4.6rem) !important;
   line-height: 1.04 !important;
   margin-bottom: .35rem !important;
+  margin-top: 0 !important;
 }
 
 .hero-subtitle {
   max-width: 44rem !important;
   margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 /* Radial pocket tracks the new mid-height text position */
 .hero-content::before {
   background: radial-gradient(
-    ellipse 70% 50% at 50% 48%,
+    ellipse 70% 55% at 50% 47%,
     rgba(8, 5, 2, 0.50) 0%,
     rgba(8, 5, 2, 0.28) 40%,
     rgba(8, 5, 2, 0.10) 70%,
@@ -5128,10 +5137,8 @@ section.fade-in {
 }
 
 @media (max-width: 1024px) {
-  .hero-content { padding-top: 34vh !important; }
-  .hero-title   { font-size: clamp(2.1rem, 6vw, 3.4rem) !important; }
+  .hero-title { font-size: clamp(2.1rem, 6vw, 3.4rem) !important; }
 }
 @media (max-width: 600px) {
-  .hero-content { padding-top: 30vh !important; }
-  .hero-title   { font-size: clamp(1.9rem, 7vw, 2.6rem) !important; }
+  .hero-title { font-size: clamp(1.9rem, 7vw, 2.6rem) !important; }
 }
