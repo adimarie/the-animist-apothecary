@@ -631,33 +631,45 @@ img { max-width: 100%; display: block; }
 
 /* ===== STORY / METAMORPHOSIS ===== */
 .section-story {
-  padding: 8rem 3rem;
+  padding: 5rem 3rem 6rem;
   background: var(--cream);
 }
 
 .story-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 0.85fr 1.4fr;
-  gap: 4rem;
-  align-items: start;
+  display: block;
 }
 
+/* Float image left so text wraps around it */
 .story-image-wrap {
-  position: sticky;
-  top: 6rem;
+  float: left;
+  width: 44%;
+  margin: 0 2.5rem 1.5rem 0;
+  position: static;
 }
 
 .story-image-inner {
   width: 100%;
-  max-width: 460px;
-  aspect-ratio: 4 / 3;
+  max-width: none;
+  aspect-ratio: 4 / 5;
   height: auto;
   background-size: cover;
   background-position: center;
   border-radius: 6px;
   box-shadow: var(--shadow-deep);
+}
+
+.story-text {
+  /* Text flows naturally; clear after the image so block elements
+     below the image don't bleed into the next section. */
+}
+
+/* Clear the float at the end of the story block */
+.story-text::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .story-text p {
@@ -684,7 +696,7 @@ img { max-width: 100%; display: block; }
 /* ===== VISION (dark bg) ===== */
 .section-vision {
   position: relative;
-  padding: 8rem 3rem;
+  padding: 5rem 3rem;
   background:
     linear-gradient(rgba(18,24,14,0.88), rgba(18,24,14,0.93)),
     url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1400&h=700&fit=crop&q=80') center/cover no-repeat;
@@ -749,7 +761,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== OFFERINGS ===== */
 .section-offerings {
-  padding: 8rem 3rem;
+  padding: 5rem 3rem;
   background: var(--cream-dark);
 }
 
@@ -897,7 +909,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== PRACTITIONER ===== */
 .section-practitioner {
-  padding: 8rem 3rem;
+  padding: 5rem 3rem;
   background: var(--cream);
 }
 
@@ -939,7 +951,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== PROCESS ===== */
 .section-process {
-  padding: 8rem 3rem;
+  padding: 5rem 3rem;
   background: var(--cream-dark);
 }
 
@@ -987,7 +999,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== TESTIMONIAL ===== */
 .section-testimonial {
-  padding: 7rem 3rem;
+  padding: 4.5rem 3rem;
   background: linear-gradient(135deg, var(--cream-dark) 0%, var(--cream-deep) 100%);
 }
 
@@ -1031,7 +1043,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== CTA BANNER ===== */
 .section-cta {
-  padding: 8rem 3rem;
+  padding: 5rem 3rem;
   background:
     linear-gradient(rgba(28,42,22,0.88), rgba(28,42,22,0.93)),
     url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&h=600&fit=crop&q=80') center/cover no-repeat;
@@ -1051,7 +1063,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== MODALITIES ===== */
 .section-modalities {
-  padding: 8rem 3rem;
+  padding: 5rem 3rem;
   background: var(--cream);
 }
 
@@ -1117,7 +1129,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== OUROBOROS CYCLE ===== */
 .section-cycle {
-  padding: 8rem 3rem;
+  padding: 5rem 3rem;
   background: linear-gradient(135deg, #2D2A26 0%, #1a1816 100%);
   color: #fff;
 }
@@ -1176,7 +1188,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== ABOUT PAGE ===== */
 .about-bio {
-  padding: 8rem 3rem;
+  padding: 5rem 3rem;
   background: var(--cream);
 }
 
@@ -1836,8 +1848,8 @@ img { max-width: 100%; display: block; }
   .about-bio-inner,
   .offering-detail-inner { grid-template-columns: 1fr; gap: 2.5rem; }
 
-  .story-image-inner { aspect-ratio: 4 / 3; height: auto; max-width: 100%; }
-  .story-image-wrap { position: static; }
+  .story-image-wrap { float: none; width: 100%; margin: 0 0 2rem 0; }
+  .story-image-inner { aspect-ratio: 4 / 5; max-width: 100%; }
   .practitioner-image-home { height: 320px; }
 
   .about-image {
@@ -1900,4 +1912,3191 @@ img { max-width: 100%; display: block; }
   border-color: rgba(255, 255, 255, 0.6);
   color: rgba(255, 255, 255, 0.95) !important;
   background: rgba(255, 255, 255, 0.06);
+}
+
+/* =====================================================================
+   POLISH LAYER — editorial / parchment / sigil treatment
+   Applied as a refinement over the base stylesheet. This layer:
+   - Shifts the palette warmer (parchment / bark / gold-bronze)
+   - Adds subtle paper grain to the body so nothing feels flat
+   - Introduces Cormorant SC for eyebrows + a real ornament system
+   - Refines cards from generic "soft-shadow" to editorial image+caption
+   - Drop caps, quote treatment, refined buttons, vine dividers
+   ===================================================================== */
+
+:root {
+  /* Polish-layer aliases — every supplementary token maps to a live-palette
+     token from the original :root block above (--cream/--earth/--sage/--gold).
+     This keeps the editorial structure while pinning every color to the
+     brand palette already on the live site. */
+  --parchment:        var(--cream);
+  --parchment-soft:   var(--cream-dark);
+  --parchment-deep:   var(--cream-deep);
+  --paper:            var(--cream);
+  --bark:             var(--earth);
+  --bark-deep:        var(--earth);
+  --bark-soft:        var(--earth-mid);
+  --forest-deep:      var(--sage-dark);
+  --gold-bronze:      var(--gold);
+  --gold-warm:        var(--gold);
+  --gold-pale:        #DBC079;
+  --rule:             rgba(201, 168, 76, 0.42);
+  --rule-soft:        rgba(201, 168, 76, 0.18);
+  --shadow-warm:      var(--shadow-soft);
+  --shadow-warm-deep: var(--shadow-deep);
+  --glow:             rgba(201, 168, 76, 0.14);
+}
+
+html, body {
+  background: var(--paper);
+  color: var(--earth);
+}
+
+/* Paper grain — subtle warm noise so backgrounds aren't flat */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .25  0 0 0 0 .12  0 0 0 .10 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: .42;
+  mix-blend-mode: multiply;
+}
+header, main, section, footer { position: relative; z-index: 2; }
+
+/* ----- Typography refinement ----- */
+body { font-family: 'Inter', -apple-system, sans-serif; font-weight: 300; line-height: 1.78; font-size: 1.0625rem; }
+h1, h2, h3, h4 { font-family: 'Cormorant Garamond', 'Georgia', serif; font-weight: 400; line-height: 1.08; letter-spacing: -.005em; }
+em, i { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--earth-mid); }
+
+/* Section labels become refined SC eyebrows with optional sigil */
+.section-label, .hero-eyebrow {
+  font-family: 'Cormorant SC', serif !important;
+  font-weight: 400 !important;
+  font-size: .78rem !important;
+  letter-spacing: .42em !important;
+  color: var(--gold) !important;
+  text-transform: none !important;
+  display: block;
+  margin-bottom: 1.4rem !important;
+}
+
+/* Sigil — 8-pointed star used as ornament */
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 11px; height: 11px;
+  margin-right: .65rem;
+  vertical-align: middle;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path d='M10 0 L11 9 L20 10 L11 11 L10 20 L9 11 L0 10 L9 9 Z' fill='%23c9a84c'/></svg>") center/contain no-repeat;
+  opacity: .75;
+  position: relative; top: -1px;
+}
+
+/* ----- Hero refinement ----- */
+.hero-fullbleed {
+  background: var(--bark);
+  min-height: 100vh;
+  position: relative;
+}
+.hero-image {
+  position: absolute;
+  inset: 0;
+  background: url('images/uploads/hero-tree-of-life.jpg') center 60%/cover no-repeat;
+  z-index: 1;
+}
+.hero-image::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(15,10,6,.20) 0%, rgba(15,10,6,.55) 60%, rgba(15,10,6,.85) 100%),
+    linear-gradient(180deg, rgba(15,10,6,.50) 0%, rgba(15,10,6,.35) 50%, rgba(15,10,6,.85) 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 6rem 2rem 4rem;
+  color: var(--parchment);
+}
+.hero-eyebrow { color: var(--gold-pale) !important; }
+.hero-title {
+  font-size: clamp(3rem, 6.4vw, 5.8rem) !important;
+  color: #fff !important;
+  font-weight: 300 !important;
+  margin-bottom: 2rem !important;
+  letter-spacing: -.012em;
+  line-height: 1.04 !important;
+}
+.hero-title em { color: var(--gold-pale) !important; font-weight: 400; }
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: clamp(1.2rem, 1.6vw, 1.55rem) !important;
+  color: rgba(244, 234, 211, .92) !important;
+  max-width: 620px;
+  margin: 0 auto 2.8rem !important;
+  line-height: 1.55 !important;
+}
+.hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ----- Buttons refined (no box-shadow; intentional kerning) ----- */
+.btn-primary, .btn-ghost, .btn-outline {
+  font-family: 'Cormorant SC', serif !important;
+  font-weight: 400 !important;
+  font-size: .82rem !important;
+  letter-spacing: .32em !important;
+  padding: 1rem 2.2rem !important;
+  border-radius: 0 !important;
+  border: 1px solid !important;
+  text-transform: none !important;
+  transition: all .5s cubic-bezier(.2,.7,.3,1) !important;
+  box-shadow: none !important;
+}
+.btn-primary {
+  background: var(--bark) !important;
+  color: var(--parchment) !important;
+  border-color: var(--bark) !important;
+}
+.btn-primary:hover {
+  background: transparent !important;
+  color: var(--parchment) !important;
+  box-shadow: 0 0 0 1px var(--parchment) inset !important;
+  transform: none !important;
+}
+.btn-ghost {
+  background: transparent !important;
+  color: var(--parchment) !important;
+  border-color: rgba(244, 234, 211, .55) !important;
+}
+.btn-ghost:hover {
+  background: rgba(244, 234, 211, .10) !important;
+  border-color: var(--parchment) !important;
+}
+.btn-outline {
+  background: transparent !important;
+  color: var(--bark) !important;
+  border-color: var(--bark) !important;
+}
+.btn-outline:hover {
+  background: var(--bark) !important;
+  color: var(--parchment) !important;
+}
+
+/* ----- Section backgrounds shift to parchment family ----- */
+.section-story    { background: var(--paper) !important; }
+.section-vision   {
+  background:
+    linear-gradient(rgba(8, 12, 8, .85), rgba(14, 20, 12, .92)) !important;
+  color: var(--parchment) !important;
+}
+.section-vision .section-label { color: var(--gold-pale) !important; }
+.section-vision .vision-title  { color: var(--parchment) !important; }
+.section-vision .vision-title em { color: var(--gold-pale) !important; }
+.section-vision .vision-body  { color: rgba(244, 234, 211, .82) !important; }
+.section-vision .vision-pillar h3 { color: var(--parchment) !important; }
+.section-vision .vision-pillar p  { color: rgba(244, 234, 211, .76) !important; }
+.section-vision .pillar-icon     { color: var(--gold-pale) !important; }
+
+.section-offerings    { background: var(--parchment-deep) !important; }
+.section-practitioner { background: var(--paper) !important; }
+.section-process      { background: var(--parchment-deep) !important; }
+.section-testimonial  { background: var(--parchment) !important; }
+
+.section-cta {
+  background: linear-gradient(rgba(8, 12, 8, .88), rgba(14, 20, 12, .95)),
+              url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1600&q=85') center/cover no-repeat !important;
+  color: var(--parchment) !important;
+}
+.section-cta h2, .section-cta h2 em { color: var(--parchment) !important; }
+.section-cta h2 em { color: var(--gold-pale) !important; }
+.section-cta p { color: rgba(244, 234, 211, .85) !important; }
+.section-cta .section-label { color: var(--gold-pale) !important; }
+
+/* ----- Vine divider between sections (added programmatically below) ----- */
+.section-story::before,
+.section-offerings::before,
+.section-practitioner::before,
+.section-process::before,
+.section-testimonial::before,
+.section-cta::before {
+  content: "";
+  display: block;
+  width: 220px; height: 22px;
+  margin: 0 auto 4rem;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 24'><path d='M0 12 L70 12' stroke='%23c9a84c' stroke-width='.6'/><path d='M75 12 Q80 6 86 9 Q90 11 88 14 Q86 17 82 15' stroke='%23c9a84c' stroke-width='.6' fill='none'/><circle cx='100' cy='12' r='2' fill='%23c9a84c'/><path d='M104 12 Q110 8 116 12 Q120 14 118 17 Q114 19 112 15' stroke='%23c9a84c' stroke-width='.6' fill='none'/><path d='M130 12 L200 12' stroke='%23c9a84c' stroke-width='.6'/></svg>") center/contain no-repeat;
+  opacity: .55;
+}
+.section-vision::before, .section-cta::before { filter: brightness(1.6); opacity: .65; }
+
+/* ----- Story / Metamorphosis: drop cap + refined quote ----- */
+.story-text p:first-of-type::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 4.2rem;
+  line-height: .85;
+  float: left;
+  padding: .55rem .55rem 0 0;
+  color: var(--gold-bronze);
+}
+.story-quote, blockquote.testimonial-text, .testimonial-quote {
+  border-left: 1px solid var(--gold-bronze);
+  padding: .6rem 0 .6rem 2.2rem;
+  margin: 2.6rem 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--bark);
+  font-weight: 400;
+  position: relative;
+}
+.story-quote::before {
+  content: "";
+  position: absolute;
+  left: -7px; top: 50%;
+  transform: translateY(-50%);
+  width: 13px; height: 13px;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path d='M10 0 L11 9 L20 10 L11 11 L10 20 L9 11 L0 10 L9 9 Z' fill='%23c9a84c'/></svg>") center/contain no-repeat,
+    var(--paper);
+  padding: 3px;
+}
+
+/* ----- Story evolution line refined ----- */
+.story-evolution {
+  margin-top: 2.4rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--rule-soft);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.4rem;
+  align-items: baseline;
+}
+.story-evolution span:first-child {
+  font-family: 'Cormorant SC', serif;
+  font-weight: 400;
+  font-size: .74rem;
+  letter-spacing: .34em;
+  color: var(--gold);
+}
+.story-evolution strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.7rem;
+  color: var(--bark);
+}
+
+/* ----- Offering cards: editorial image + caption (no Material-style boxes) ----- */
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem 2.5rem !important;
+}
+.offering-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+}
+.offering-card:hover { transform: none !important; box-shadow: none !important; }
+.offering-image {
+  width: 100%;
+  height: 320px !important;
+  border-radius: 2px;
+  filter: saturate(.9) contrast(1.02);
+  transition: filter .5s ease;
+}
+.offering-card:hover .offering-image {
+  filter: saturate(1) contrast(1.05) brightness(1.02);
+  transform: none !important;
+}
+.offering-content { padding: 1.4rem 0 0 !important; }
+.offering-tag {
+  font-family: 'Cormorant SC', serif !important;
+  font-weight: 400 !important;
+  font-size: .68rem !important;
+  letter-spacing: .32em !important;
+  color: var(--gold) !important;
+  text-transform: none !important;
+}
+.offering-card h3 {
+  font-size: 1.7rem !important;
+  font-weight: 400 !important;
+  color: var(--bark) !important;
+  margin: .6rem 0 .8rem !important;
+}
+.offering-card p {
+  color: var(--earth-mid) !important;
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+}
+.offering-link {
+  font-family: 'Cormorant SC', serif !important;
+  font-weight: 400 !important;
+  font-size: .76rem !important;
+  letter-spacing: .3em !important;
+  color: var(--bark) !important;
+  border-bottom: 1px solid var(--gold-bronze) !important;
+  padding-bottom: .35rem !important;
+  display: inline-block;
+  margin-top: .6rem;
+  transition: all .4s ease;
+}
+.offering-link:hover {
+  color: var(--gold-bronze) !important;
+  border-color: var(--bark) !important;
+}
+
+/* ----- Featured offering — refined, less generic ----- */
+.offering-featured-card {
+  margin-bottom: 4rem !important;
+  border-radius: 2px !important;
+  min-height: 420px;
+}
+.ofc-overlay {
+  background: linear-gradient(to top,
+    rgba(8, 6, 4, .92) 0%,
+    rgba(8, 6, 4, .50) 45%,
+    rgba(8, 6, 4, .15) 100%) !important;
+}
+.ofc-content .section-label { color: var(--gold-pale) !important; }
+.ofc-content h3 { color: var(--parchment) !important; }
+.ofc-content p { color: rgba(244, 234, 211, .80) !important; }
+
+/* ----- Practitioner section ----- */
+.section-practitioner h2 { font-style: italic; }
+.qual-tag {
+  font-family: 'Cormorant SC', serif !important;
+  font-weight: 400 !important;
+  font-size: .72rem !important;
+  letter-spacing: .28em !important;
+  padding: .45rem 1rem !important;
+  background: var(--parchment-soft) !important;
+  border: 1px solid var(--rule) !important;
+  color: var(--earth-mid) !important;
+  text-transform: none !important;
+}
+
+/* ----- Process steps refined ----- */
+.step-number {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic;
+  font-size: 1.7rem !important;
+  color: var(--gold-bronze) !important;
+  font-weight: 500 !important;
+}
+.process-step h3 {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  color: var(--bark) !important;
+}
+
+/* ----- Testimonial refined ----- */
+.section-testimonial blockquote, .testimonial-text {
+  font-size: clamp(1.5rem, 2.4vw, 2rem) !important;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--bark) !important;
+  border: none !important;
+  padding: 0 !important;
+}
+.testimonial-author span {
+  font-family: 'Cormorant SC', serif !important;
+  font-weight: 400 !important;
+  font-size: .78rem !important;
+  letter-spacing: .32em !important;
+  color: var(--gold) !important;
+  text-transform: none !important;
+}
+
+/* ----- Header refined ----- */
+.site-header { background: rgba(247, 239, 217, .88) !important; backdrop-filter: saturate(140%) blur(14px); }
+.site-header .logo { color: var(--bark) !important; }
+.site-header .logo-accent { color: var(--gold) !important; }
+.main-nav a {
+  font-family: 'Cormorant SC', serif !important;
+  font-weight: 400 !important;
+  font-size: .76rem !important;
+  letter-spacing: .28em !important;
+  color: var(--earth-mid) !important;
+  text-transform: none !important;
+}
+.main-nav a:hover { color: var(--bark) !important; }
+.nav-cta {
+  border: 1px solid var(--bark) !important;
+  background: transparent !important;
+  color: var(--bark) !important;
+  padding: .6rem 1.4rem !important;
+}
+.nav-cta:hover { background: var(--bark) !important; color: var(--parchment) !important; }
+
+/* ----- Footer refined ----- */
+.site-footer { background: var(--bark) !important; }
+.footer-col h4 {
+  font-family: 'Cormorant SC', serif !important;
+  font-size: .76rem !important;
+  letter-spacing: .32em !important;
+  color: var(--gold-pale) !important;
+}
+.footer-col a { font-family: 'Cormorant Garamond', serif !important; color: rgba(244, 234, 211, .72) !important; }
+.footer-col a:hover { color: var(--gold-pale) !important; }
+
+/* =====================================================================
+   POLISH v2 — senior-level refinement
+   - Modular type scale (1.333 perfect-fourth ratio)
+   - Magazine-cover hero (single-CTA emphasis, scroll cue, parallax)
+   - Section header rhythm: eyebrow + title + thin gold rule + body
+   - Custom selection / smooth scroll / refined fade easing
+   - Image treatment: subtle thin frames, refined captions
+   - Asymmetric grid pulls where appropriate
+   ===================================================================== */
+
+/* ---------- Type scale (modular, 1.333 ratio) ---------- */
+:root {
+  --fs-1: 0.78rem;    /* eyebrow */
+  --fs-2: 1rem;       /* small */
+  --fs-3: 1.0625rem;  /* body */
+  --fs-4: 1.333rem;   /* lead / lift */
+  --fs-5: 1.777rem;   /* h4 */
+  --fs-6: 2.369rem;   /* h3 */
+  --fs-7: 3.157rem;   /* h2 */
+  --fs-8: 4.209rem;   /* h1 */
+
+  --leading-tight: 1.04;
+  --leading-snug: 1.2;
+  --leading-relaxed: 1.78;
+
+  /* Body / paragraph color tokens — aliased to the live palette */
+  --ink:      var(--earth);
+  --ink-soft: var(--earth-mid);
+  --ink-deep: var(--earth);
+}
+
+/* ---------- Site-wide refinements ---------- */
+html { scroll-behavior: smooth; }
+::selection { background: var(--gold-pale); color: var(--ink); }
+::-moz-selection { background: var(--gold-pale); color: var(--ink); }
+
+body {
+  color: var(--ink-soft);
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1 { font-size: var(--fs-8); line-height: var(--leading-tight); letter-spacing: -.012em; }
+h2 { font-size: var(--fs-7); line-height: var(--leading-tight); letter-spacing: -.008em; }
+h3 { font-size: var(--fs-6); line-height: var(--leading-snug); letter-spacing: -.005em; }
+h4 { font-size: var(--fs-5); line-height: var(--leading-snug); }
+
+p { font-size: var(--fs-3); line-height: var(--leading-relaxed); }
+.eyebrow, .section-label, .hero-eyebrow { font-size: var(--fs-1) !important; }
+
+/* ---------- Refined fade-in: longer, gentler ---------- */
+.js-ready .fade-in {
+  transition: opacity 1.2s cubic-bezier(.2, .7, .3, 1), transform 1.2s cubic-bezier(.2, .7, .3, 1) !important;
+  transform: translateY(20px) !important;
+}
+
+/* ---------- Hero: magazine-cover proportions ---------- */
+.hero-fullbleed {
+  min-height: 100vh;
+  overflow: hidden;
+}
+.hero-image {
+  /* Subtle slow zoom-in over time on hero image; gives a felt sense
+     of breath without being kinetic. */
+  animation: hero-breathe 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes hero-breathe {
+  from { transform: scale(1); }
+  to   { transform: scale(1.035); }
+}
+
+.hero-image::after {
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(8,5,2,.04) 0%, rgba(8,5,2,.22) 55%, rgba(8,5,2,.50) 100%),
+    linear-gradient(180deg, rgba(8,5,2,.20) 0%, rgba(8,5,2,.10) 50%, rgba(8,5,2,.55) 100%) !important;
+}
+
+.hero-content {
+  padding: 8rem 2rem 6rem !important;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+/* Title slightly smaller, more proportion to photograph */
+.hero-title {
+  font-size: clamp(2.6rem, 5.4vw, 4.6rem) !important;
+  letter-spacing: -.018em !important;
+  margin-bottom: 1.6rem !important;
+}
+
+/* Eyebrow with sigil ABOVE the title sits centered (overrides earlier rule) */
+.hero-eyebrow {
+  display: inline-block !important;
+  position: relative;
+  padding-top: 1.8rem !important;
+  margin-bottom: 1.6rem !important;
+  color: rgba(222, 193, 137, .82) !important;
+}
+.hero-eyebrow::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 14px; height: 14px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path d='M10 0 L11 9 L20 10 L11 11 L10 20 L9 11 L0 10 L9 9 Z' fill='%23DBC079'/></svg>") center/contain no-repeat;
+  opacity: .85;
+}
+
+/* Subtitle smaller, more refined */
+.hero-subtitle {
+  font-size: clamp(1.1rem, 1.45vw, 1.4rem) !important;
+  max-width: 580px !important;
+  margin: 0 auto 2.6rem !important;
+  color: rgba(244, 234, 211, .86) !important;
+  letter-spacing: .005em !important;
+}
+
+/* Single primary CTA emphasis: the secondary becomes a subtle text link */
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem !important;
+}
+.hero-actions .btn-primary {
+  background: transparent !important;
+  border: 1px solid rgba(244, 234, 211, .8) !important;
+  color: var(--parchment) !important;
+  padding: 1.05rem 2.6rem !important;
+  font-size: .76rem !important;
+  letter-spacing: .36em !important;
+  position: relative;
+}
+.hero-actions .btn-primary:hover {
+  background: rgba(244, 234, 211, .08) !important;
+  border-color: var(--parchment) !important;
+}
+.hero-actions .btn-ghost {
+  background: transparent !important;
+  border: none !important;
+  color: rgba(244, 234, 211, .68) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 1rem !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  padding: .25rem 0 !important;
+  border-bottom: 1px solid rgba(244, 234, 211, .25) !important;
+  border-radius: 0 !important;
+  text-decoration: none;
+}
+.hero-actions .btn-ghost:hover {
+  color: var(--parchment) !important;
+  border-bottom-color: rgba(244, 234, 211, .6) !important;
+}
+
+/* Refined scroll indicator */
+.hero-fullbleed::after {
+  content: "";
+  position: absolute;
+  bottom: 2.6rem; left: 50%;
+  transform: translateX(-50%);
+  width: 1px; height: 56px;
+  background: linear-gradient(180deg, rgba(244, 234, 211, .55), transparent);
+  z-index: 3;
+  animation: scroll-breath 3.5s ease-in-out infinite;
+}
+@keyframes scroll-breath {
+  0%, 100% { opacity: .45; transform: translateX(-50%) scaleY(.85); }
+  50%      { opacity: 1;   transform: translateX(-50%) scaleY(1);    }
+}
+
+/* ---------- Consistent section-header rhythm ---------- */
+.section-label,
+.eyebrow {
+  display: inline-block !important;
+}
+
+/* Thin gold rule under primary section titles */
+.story-text h2::after,
+.vision-title::after,
+.offerings-header h2::after,
+.section-practitioner h2::after,
+.process-header h2::after,
+.section-cta h2::after {
+  content: "";
+  display: block;
+  width: 48px; height: 1px;
+  background: var(--gold-bronze);
+  margin-top: 1.4rem;
+  opacity: .7;
+}
+.section-cta h2::after,
+.vision-title::after { background: var(--gold-pale); margin-left: auto; margin-right: auto; }
+.offerings-header h2::after,
+.process-header h2::after { margin-left: auto; margin-right: auto; }
+
+/* ---------- Story / Metamorphosis: tighter & refined ---------- */
+.section-story { padding: 6rem 0 7rem !important; }
+.story-container {
+  max-width: 1120px !important;
+  padding: 0 3rem;
+}
+.story-image-wrap { width: 42% !important; margin: 0 2.5rem 1rem 0 !important; }
+.story-image-inner {
+  aspect-ratio: 4 / 5 !important;
+  box-shadow: 0 30px 80px rgba(20, 12, 5, .18), 0 0 0 1px rgba(159, 123, 73, .12) !important;
+}
+.story-image-inner::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(244, 234, 211, .25);
+  pointer-events: none;
+  display: none;
+}
+.story-text {
+  font-size: var(--fs-3);
+  line-height: var(--leading-relaxed);
+}
+.story-text p { color: var(--ink-soft) !important; }
+.story-text p:first-of-type::first-letter {
+  font-size: 5rem !important;
+  padding: .35rem .55rem 0 0 !important;
+  line-height: .82 !important;
+  font-weight: 500 !important;
+}
+
+/* ---------- Vision: tighten + add asymmetric pull ---------- */
+.section-vision {
+  padding: 6.5rem 3rem !important;
+  position: relative;
+  overflow: hidden;
+}
+.section-vision::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 25%, rgba(216, 185, 138, .07), transparent 50%),
+    radial-gradient(ellipse at 85% 75%, rgba(122, 140, 115, .06), transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+.section-vision > * { position: relative; z-index: 2; }
+.vision-pillars {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem 2.5rem;
+}
+.vision-pillar {
+  padding: 0;
+  background: transparent;
+  border: none;
+  text-align: left;
+}
+.vision-pillar h3 {
+  font-size: var(--fs-5) !important;
+  margin: .5rem 0 .8rem !important;
+}
+.pillar-icon {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--gold-pale) !important;
+  font-size: 1.2rem;
+  letter-spacing: .25em;
+}
+
+/* ---------- Offerings as editorial gallery ---------- */
+.section-offerings { padding: 6.5rem 0 !important; }
+.offerings-container { padding: 0 3rem; }
+.offerings-header { margin-bottom: 4.5rem !important; }
+.offerings-grid {
+  gap: 4rem 2.5rem !important;
+}
+.offering-image {
+  aspect-ratio: 4 / 5;
+  height: auto !important;
+  position: relative;
+}
+.offering-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(159, 123, 73, .0);
+  transition: border-color .5s ease, inset .5s ease;
+  pointer-events: none;
+}
+.offering-card:hover .offering-image::after {
+  inset: 8px;
+  border-color: rgba(244, 234, 211, .65);
+}
+.offering-content { padding: 1.6rem 0 0 !important; }
+.offering-card h3 { font-size: var(--fs-5) !important; }
+
+/* ---------- Featured offering: refined editorial banner ---------- */
+.offering-featured-card {
+  min-height: 480px !important;
+  margin-bottom: 5rem !important;
+  border-radius: 0 !important;
+  position: relative;
+}
+.offering-featured-card::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(244, 234, 211, .30);
+  pointer-events: none;
+  z-index: 3;
+}
+.ofc-content {
+  padding: 4rem 4rem 3.5rem !important;
+}
+.ofc-content h3 {
+  font-size: clamp(2rem, 3.4vw, 2.8rem) !important;
+  margin-bottom: 1.2rem !important;
+  letter-spacing: -.005em;
+}
+
+/* ---------- Practitioner section: refined profile layout ---------- */
+.section-practitioner { padding: 6.5rem 3rem !important; }
+.practitioner-container {
+  max-width: 1200px !important;
+  display: grid;
+  grid-template-columns: 0.95fr 1.5fr;
+  gap: 4.5rem;
+  align-items: start;
+}
+.practitioner-image-home {
+  aspect-ratio: 4 / 5 !important;
+  height: auto !important;
+  background-position: center top !important;
+  box-shadow: 0 30px 80px rgba(20, 12, 5, .18), 0 0 0 1px rgba(159, 123, 73, .12);
+  position: sticky;
+  top: 7rem;
+}
+.practitioner-content-home h2 {
+  font-size: clamp(2.6rem, 4vw, 3.6rem) !important;
+  font-style: italic !important;
+  margin-bottom: 1rem !important;
+}
+.prac-quals,
+.practitioner-quals-home {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem !important;
+  margin: 1.8rem 0 2rem !important;
+}
+.qual-tag {
+  background: transparent !important;
+  border: 1px solid rgba(159, 123, 73, .35) !important;
+}
+.qual-tag:hover { border-color: var(--gold-bronze) !important; background: rgba(159, 123, 73, .06) !important; }
+.practitioner-content-home p { color: var(--ink-soft) !important; line-height: var(--leading-relaxed) !important; }
+
+/* ---------- Process: tighter + numbered rhythm ---------- */
+.section-process { padding: 6.5rem 3rem !important; }
+.process-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 4rem;
+}
+.process-questions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  margin: 1.8rem 0 0;
+}
+.process-q {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 1.15rem !important;
+  color: var(--gold) !important;
+  letter-spacing: 0 !important;
+}
+.pq-dot { color: var(--gold-bronze); opacity: .6; }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.process-step {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  position: relative;
+}
+.process-step::before {
+  content: "";
+  position: absolute;
+  top: 1.7rem;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(159, 123, 73, .3) 30%, rgba(159, 123, 73, .3) 70%, transparent);
+  z-index: 0;
+}
+.process-step:first-child::before { left: 50%; }
+.process-step:last-child::before { right: 50%; }
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1px solid var(--gold-bronze);
+  color: var(--gold-bronze) !important;
+  font-size: 1.2rem !important;
+  margin-bottom: 1.4rem !important;
+  position: relative;
+  z-index: 1;
+}
+.process-step h3 { font-size: var(--fs-5) !important; margin-bottom: .6rem !important; }
+.process-step p { color: var(--ink-soft) !important; font-size: .98rem !important; }
+.process-cta { text-align: center; margin-top: 4rem; }
+
+/* ---------- Testimonial refined ---------- */
+.section-testimonial { padding: 5.5rem 3rem !important; }
+.testimonial-container {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.testimonial-container::before {
+  content: """;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 5rem;
+  color: var(--gold-bronze);
+  line-height: 1;
+  display: block;
+  margin-bottom: -1.5rem;
+  opacity: .65;
+}
+.testimonial-quote-mark { display: none; }
+.testimonial-text {
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem) !important;
+  line-height: 1.5 !important;
+  color: var(--bark) !important;
+  border: none !important;
+  padding: 0 !important;
+}
+.testimonial-author {
+  margin-top: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+}
+.testimonial-line {
+  width: 48px; height: 1px;
+  background: var(--gold-bronze);
+  opacity: .55;
+}
+.testimonial-author span {
+  font-family: 'Cormorant SC', serif !important;
+  font-size: .76rem !important;
+  letter-spacing: .32em !important;
+  color: var(--gold) !important;
+}
+
+/* ---------- CTA section refined ---------- */
+.section-cta { padding: 7rem 3rem !important; }
+.cta-container { max-width: 760px; margin: 0 auto; text-align: center; }
+.cta-container h2 {
+  font-size: clamp(2.4rem, 4.4vw, 3.6rem) !important;
+  margin: 1rem 0 1.4rem !important;
+}
+.cta-container p {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 1.3rem !important;
+  margin-bottom: 2.6rem !important;
+}
+.section-cta .btn-primary {
+  background: transparent !important;
+  border: 1px solid rgba(244, 234, 211, .8) !important;
+  color: var(--parchment) !important;
+}
+.section-cta .btn-primary:hover {
+  background: rgba(244, 234, 211, .08) !important;
+  border-color: var(--parchment) !important;
+}
+
+/* ---------- Logo refinement ---------- */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: 1.25rem !important;
+  letter-spacing: .015em;
+}
+.logo::before {
+  content: "";
+  display: inline-block;
+  width: 12px; height: 12px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path d='M10 0 L11 9 L20 10 L11 11 L10 20 L9 11 L0 10 L9 9 Z' fill='%23c9a84c'/></svg>") center/contain no-repeat;
+  opacity: .75;
+}
+
+/* ---------- Responsive — preserve refinement on tablet/mobile ---------- */
+@media (max-width: 1024px) {
+  .practitioner-container { grid-template-columns: 1fr; gap: 2.5rem; }
+  .practitioner-image-home { position: static; aspect-ratio: 4 / 3 !important; }
+  .vision-pillars { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .process-step::before { display: none; }
+  .offerings-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 3rem 2rem !important; }
+  .ofc-content { padding: 3rem 2.5rem 2.5rem !important; }
+}
+@media (max-width: 600px) {
+  .vision-pillars { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .offerings-grid { grid-template-columns: 1fr !important; }
+  .story-image-wrap { float: none !important; width: 100% !important; margin: 0 0 2rem 0 !important; }
+  .story-image-inner { aspect-ratio: 4 / 5 !important; }
+  .hero-content { padding: 6rem 1.5rem 4rem !important; }
+}
+
+/* =====================================================================
+   CALENDAR / THE WHEEL — page styles
+   ===================================================================== */
+
+.section-migratory {
+  padding: 6rem 3rem 4rem;
+  background: var(--paper);
+}
+.migratory-inner { max-width: 1080px; margin: 0 auto; }
+
+.migratory-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.5rem;
+}
+.migratory-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-top: 1rem;
+}
+
+.migratory-flow {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 2.4rem 0 0;
+  border-top: 1px solid var(--rule-soft);
+  position: relative;
+}
+.migratory-flow::before {
+  content: "";
+  position: absolute;
+  top: -7px; left: 50%;
+  transform: translateX(-50%);
+  width: 13px; height: 13px;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path d='M10 0 L11 9 L20 10 L11 11 L10 20 L9 11 L0 10 L9 9 Z' fill='%23c9a84c'/></svg>") center/contain no-repeat,
+    var(--paper);
+  padding: 3px;
+}
+
+.migratory-stop {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  padding-right: 1.5rem;
+  position: relative;
+}
+.migratory-stop:not(:last-child)::after {
+  content: "—";
+  position: absolute;
+  right: 0; top: 1.6rem;
+  color: var(--gold-bronze);
+  opacity: .6;
+  font-family: 'Cormorant Garamond', serif;
+}
+.stop-season {
+  font-family: 'Cormorant SC', serif;
+  font-size: .72rem;
+  letter-spacing: .32em;
+  color: var(--gold-bronze);
+}
+.stop-place {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--bark);
+  line-height: 1.15;
+}
+.stop-months {
+  font-family: 'Cormorant SC', serif;
+  font-size: .74rem;
+  letter-spacing: .28em;
+  color: var(--gold);
+}
+.stop-note {
+  font-size: .95rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-top: .4rem;
+}
+
+/* ── Events list ── */
+.section-events {
+  padding: 5rem 3rem 6.5rem;
+  background: var(--parchment-deep);
+}
+.events-inner { max-width: 1080px; margin: 0 auto; }
+
+.events-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+.events-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.18rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-top: 1rem;
+}
+
+.events-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-item {
+  display: grid;
+  grid-template-columns: 130px 1fr 200px;
+  gap: 2rem;
+  align-items: start;
+  padding: 2rem 0;
+  border-top: 1px solid var(--rule-soft);
+  transition: padding-left .35s ease;
+}
+.event-item:hover { padding-left: .6rem; }
+.event-item:last-child { border-bottom: 1px solid var(--rule-soft); }
+
+.event-date {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  padding-top: .25rem;
+}
+.event-date-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 2rem;
+  color: var(--bark);
+  line-height: 1;
+  font-weight: 500;
+}
+.event-date-full {
+  font-family: 'Cormorant SC', serif;
+  font-size: .68rem;
+  letter-spacing: .26em;
+  color: var(--gold);
+}
+
+.event-body { padding-top: .15rem; }
+.event-tag {
+  font-family: 'Cormorant SC', serif;
+  font-size: .68rem;
+  letter-spacing: .32em;
+  color: var(--gold);
+  display: block;
+  margin-bottom: .4rem;
+}
+.event-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: var(--bark);
+  line-height: 1.15;
+  margin-bottom: .35rem;
+  letter-spacing: -.005em;
+}
+.event-location {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--gold);
+  margin-bottom: .65rem;
+}
+.event-description {
+  color: var(--ink-soft);
+  font-size: .98rem;
+  line-height: 1.65;
+  max-width: 540px;
+}
+
+.event-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  padding-top: .25rem;
+}
+.event-status {
+  font-family: 'Cormorant SC', serif;
+  font-size: .68rem;
+  letter-spacing: .3em;
+  padding: .35rem .85rem;
+  border: 1px solid var(--gold-bronze);
+  color: var(--gold-bronze);
+  background: transparent;
+}
+/* Status variants — JS adds data-status attribute based on text */
+.event-status[data-status="waitlist"] { color: var(--gold); border-color: var(--gold); }
+.event-status[data-status="inquiry"]  { color: var(--gold); border-color: var(--rule); }
+.event-status[data-status="closed"]   { color: var(--earth-light, #5A5650); border-color: var(--rule); opacity: .65; }
+
+.event-cta {
+  font-family: 'Cormorant SC', serif;
+  font-size: .72rem;
+  letter-spacing: .3em;
+  color: var(--bark);
+  border-bottom: 1px solid var(--gold-bronze);
+  padding-bottom: .35rem;
+  display: inline-block;
+  transition: all .4s ease;
+}
+.event-cta:hover {
+  color: var(--gold-bronze);
+  border-bottom-color: var(--bark);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .event-item {
+    grid-template-columns: 100px 1fr;
+    gap: 1.4rem;
+  }
+  .event-aside {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0;
+    margin-top: .8rem;
+  }
+  .migratory-stop:not(:last-child)::after { display: none; }
+}
+@media (max-width: 600px) {
+  .section-migratory, .section-events { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .event-item { grid-template-columns: 1fr; gap: 1rem; }
+  .event-date { flex-direction: row; align-items: baseline; gap: .8rem; }
+}
+
+/* =====================================================================
+   POLISH v3 — modernization pass
+   The principle: less chrome, more confidence. Old-world elegance held
+   through typography + materials + restraint, not through ornaments
+   stacked on every element.
+   ===================================================================== */
+
+/* ── Restrained ornament: sigil reserved for hero only ─────────────── */
+.section-label::before { display: none !important; }
+
+/* Replace per-section sigil with a thin gold rule before each section label */
+.section-label {
+  position: relative;
+  padding-top: 1.4rem !important;
+  font-weight: 400 !important;
+  letter-spacing: .32em !important;
+}
+.section-label::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 32px; height: 1px;
+  background: var(--gold-bronze);
+  opacity: .65;
+}
+/* Center the rule when label is centered (offerings, process, cta, calendar) */
+.offerings-header .section-label::after,
+.containers-intro .section-label::after,
+.events-header .section-label::after,
+.migratory-header .section-label::after,
+.section-cta .section-label::after,
+.cta-container .section-label::after,
+.process-header .section-label::after,
+.testimonial-container .section-label::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Drop the section vine dividers — too much ornament per page */
+.section-story::before,
+.section-offerings::before,
+.section-practitioner::before,
+.section-process::before,
+.section-testimonial::before,
+.section-cta::before,
+.section-migratory::before,
+.section-events::before {
+  display: none !important;
+}
+
+/* ── Sharper, more confident hero ─────────────────────────────────── */
+.hero-title {
+  font-size: clamp(2.6rem, 5vw, 4.5rem) !important;
+  letter-spacing: -.02em !important;
+  font-weight: 300 !important;
+}
+.hero-eyebrow {
+  letter-spacing: .38em !important;
+  font-weight: 400 !important;
+  font-size: .72rem !important;
+}
+.page-hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.page-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300 !important;
+  font-size: clamp(2.4rem, 4.6vw, 4rem) !important;
+  letter-spacing: -.018em !important;
+  line-height: 1.04;
+  color: var(--parchment) !important;
+}
+.page-hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.45vw, 1.4rem) !important;
+  color: rgba(244, 234, 211, .85) !important;
+  max-width: 560px;
+  margin: 1.4rem auto 0 !important;
+  line-height: 1.55;
+}
+
+/* ── Sharp edges on imagery (editorial / print feel) ──────────────── */
+.story-image-inner,
+.ofc-image,
+.offering-image,
+.practitioner-image-home,
+.about-image,
+.offering-featured-card {
+  border-radius: 0 !important;
+}
+
+/* ── Asymmetric Vision section ─────────────────────────────────────── */
+/* Pull title and body left; let pillars sit in their own grid */
+.section-vision {
+  padding: 7rem 3rem 6.5rem !important;
+}
+.section-vision > .section-label,
+.section-vision > .vision-title,
+.section-vision > .vision-body {
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 1080px;
+  display: block;
+}
+.section-vision > .vision-title {
+  margin-bottom: 1.6rem !important;
+  max-width: 880px;
+}
+.section-vision > .vision-body {
+  max-width: 680px !important;
+  margin-bottom: 1rem !important;
+}
+.section-vision .vision-title::after {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.section-vision .vision-divider { display: none; }
+.section-vision .vision-pillars {
+  margin-top: 4.5rem !important;
+}
+
+/* ── More confident type contrast: tighten body, push display ───── */
+body { font-size: 1.05rem; }
+p { line-height: 1.72; }
+.story-text p, .practitioner-content-home p, .vision-body, .cta-container p {
+  font-size: 1.04rem;
+}
+
+/* ── Generous text column widths (cap reading line length) ────────── */
+.story-text {
+  max-width: none;
+}
+.story-text > * { max-width: 640px; }
+.story-text .story-quote { max-width: 720px; }
+
+/* ── Tighter offerings card hover (modern subtlety) ──────────────── */
+.offering-card:hover .offering-image {
+  filter: saturate(1.04) contrast(1.04) brightness(1.02);
+  transform: scale(1.005) !important;
+  transition: transform 1.2s ease, filter .8s ease !important;
+}
+.offering-card:hover .offering-image::after {
+  inset: 10px !important;
+  border-color: rgba(244, 234, 211, .55) !important;
+}
+
+/* ── Header refinement: tighter, more confident ─────────────────── */
+.site-header { padding: 1.1rem 0 !important; }
+.site-header.scrolled { padding: .8rem 0 !important; }
+.main-nav a {
+  font-size: .72rem !important;
+  letter-spacing: .32em !important;
+}
+.logo {
+  font-size: 1.2rem !important;
+  letter-spacing: .015em;
+}
+
+/* ── Footer modernized ─────────────────────────────────────────────── */
+.site-footer { padding: 5rem 3rem 2rem !important; }
+.footer-col h4 {
+  font-size: .72rem !important;
+  letter-spacing: .32em !important;
+}
+
+/* ── Selection refinement ──────────────────────────────────────────── */
+::selection { background: var(--gold-bronze); color: var(--parchment); }
+::-moz-selection { background: var(--gold-bronze); color: var(--parchment); }
+
+/* ── Subtle scroll-cue rest position (less restless) ──────────────── */
+.hero-fullbleed::after { animation-duration: 5s !important; }
+
+/* =====================================================================
+   STORY / METAMORPHOSIS — image-less variant
+   When the section has class .section-story--no-image, the body of the
+   story becomes a centered, single-column manifesto.
+   ===================================================================== */
+
+.section-story--no-image .story-container {
+  max-width: 760px !important;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-story--no-image .story-text {
+  max-width: none !important;
+  margin: 0 auto;
+}
+
+.section-story--no-image .story-text > * {
+  max-width: none !important;
+}
+
+.section-story--no-image .section-label {
+  text-align: center;
+  display: block;
+  margin: 0 auto 1.4rem !important;
+  padding-top: 1.4rem !important;
+}
+.section-story--no-image .section-label::after {
+  left: 50% !important;
+  transform: translateX(-50%);
+}
+
+.section-story--no-image .section-title {
+  text-align: center;
+  margin-bottom: 2.4rem !important;
+}
+.section-story--no-image .section-title::after {
+  margin: 1.4rem auto 0 !important;
+}
+
+.section-story--no-image .story-text p {
+  text-align: left;
+  font-size: 1.06rem;
+  line-height: 1.78;
+}
+
+/* Drop cap stays — but only on first paragraph in the no-image variant */
+.section-story--no-image .story-text p:first-of-type::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 4.6rem;
+  line-height: .82;
+  float: left;
+  padding: .35rem .55rem 0 0;
+  color: var(--gold);
+}
+
+.section-story--no-image .story-quote {
+  margin: 3rem auto;
+  max-width: none;
+  text-align: left;
+}
+
+.section-story--no-image .story-evolution {
+  margin-top: 2.6rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule-soft);
+  text-align: center;
+  display: block;
+}
+.section-story--no-image .story-evolution span {
+  display: block;
+  margin-bottom: .5rem;
+  font-family: 'Cormorant SC', serif;
+  font-size: .76rem;
+  letter-spacing: .32em;
+  color: var(--gold);
+}
+.section-story--no-image .story-evolution strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.85rem;
+  color: var(--earth);
+}
+
+@media (max-width: 600px) {
+  .section-story--no-image .story-container { padding: 0 1.5rem; }
+  .section-story--no-image .story-text p:first-of-type::first-letter { font-size: 3.6rem; }
+}
+
+/* =====================================================================
+   POLISH v4 — SECTION RHYTHM
+   Unify the vertical breath between every section to a single rhythm.
+   No more 5/5.5/6/6.5/7rem patchwork. Generous and consistent.
+   ===================================================================== */
+
+:root {
+  --rhythm-y:        7rem;    /* vertical breath, top + bottom of major sections */
+  --rhythm-y-tight:  5rem;    /* tighter rhythm for contained sections (testimonial) */
+  --rhythm-y-grand:  9rem;    /* extra breath for full statements (final CTA, hero adjacency) */
+  --rhythm-x:        3rem;    /* horizontal padding */
+}
+
+/* Apply once, override every patchwork value above */
+.section-story,
+.section-vision,
+.section-offerings,
+.section-practitioner,
+.section-process,
+.section-cta,
+.section-migratory,
+.section-events,
+.section-fit,
+.section-threshold,
+.section-containers,
+.section-time,
+.section-reciprocity,
+.section-arc,
+.section-begin,
+.section-testimonial-hero,
+.about-bio,
+.about-sections {
+  padding-top:    var(--rhythm-y) !important;
+  padding-bottom: var(--rhythm-y) !important;
+  padding-left:   var(--rhythm-x) !important;
+  padding-right:  var(--rhythm-x) !important;
+}
+
+/* Tighter for the inline testimonial (it's a single quote, not a section's worth) */
+.section-testimonial,
+.testimonial-inline {
+  padding-top:    var(--rhythm-y-tight) !important;
+  padding-bottom: var(--rhythm-y-tight) !important;
+  padding-left:   var(--rhythm-x) !important;
+  padding-right:  var(--rhythm-x) !important;
+}
+
+/* The final CTA gets a touch more breath as the page's closing statement */
+.section-cta {
+  padding-top:    var(--rhythm-y-grand) !important;
+  padding-bottom: var(--rhythm-y-grand) !important;
+}
+
+/* Story / metamorphosis — slightly tighter top since it follows the hero */
+.section-story {
+  padding-top: var(--rhythm-y-tight) !important;
+}
+
+/* Mobile rhythm — proportionally less */
+@media (max-width: 1024px) {
+  :root {
+    --rhythm-y:        5rem;
+    --rhythm-y-tight:  3.75rem;
+    --rhythm-y-grand:  6rem;
+    --rhythm-x:        2rem;
+  }
+}
+@media (max-width: 600px) {
+  :root {
+    --rhythm-x: 1.5rem;
+  }
+}
+
+/* =====================================================================
+   POLISH v5 — TYPOGRAPHY FOR THE HERO + TITLE MOMENTS
+   Calligraphic treatment: the image leads; the type sings quietly.
+   ===================================================================== */
+
+/* Hero title — fully italic Cormorant, larger, tighter, more breath */
+.hero-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-weight: 300 !important;
+  font-size: clamp(2.8rem, 6.6vw, 5.8rem) !important;
+  letter-spacing: -.022em !important;
+  line-height: 1.02 !important;
+  margin-bottom: 1.8rem !important;
+}
+/* The em accent inside the italic title becomes the moment of color/contrast */
+.hero-title em {
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: var(--gold-pale) !important;
+}
+
+/* Hero eyebrow — slightly smaller and wider, like a nameplate */
+.hero-eyebrow {
+  font-family: 'Cormorant SC', serif !important;
+  font-size: .68rem !important;
+  letter-spacing: .46em !important;
+  font-weight: 400 !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Hero subtitle — keep upright Cormorant italic but pull contrast up */
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-weight: 300 !important;
+  font-size: clamp(1.1rem, 1.45vw, 1.35rem) !important;
+  letter-spacing: .005em !important;
+  line-height: 1.5 !important;
+  max-width: 540px !important;
+  margin: 0 auto 2.8rem !important;
+}
+
+/* Page-hero (about / community / sacred-reciprocity / book / calendar) */
+.page-hero-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-weight: 300 !important;
+  font-size: clamp(2.2rem, 5.4vw, 4.6rem) !important;
+  letter-spacing: -.018em !important;
+  line-height: 1.04 !important;
+}
+.page-hero-title em {
+  font-weight: 400 !important;
+  color: var(--gold-pale) !important;
+}
+
+/* Major section titles — keep upright but push display weight contrast */
+.section-title,
+.vision-title,
+.story-text h2,
+.section-cta h2,
+.cta-container h2,
+.offerings-header h2,
+.process-header h2,
+.containers-intro h2,
+.events-header h2,
+.migratory-header h2 {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 300 !important;
+  font-size: clamp(2rem, 4.4vw, 3.4rem) !important;
+  letter-spacing: -.012em !important;
+  line-height: 1.06 !important;
+}
+/* The italic accent inside section titles gets the warmth */
+.section-title em,
+.vision-title em,
+.story-text h2 em,
+.section-cta h2 em,
+.cta-container h2 em,
+.offerings-header h2 em,
+.process-header h2 em,
+.containers-intro h2 em {
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: var(--earth-mid) !important;
+}
+/* Dark-section titles use lighter italic accent */
+.section-vision .vision-title em,
+.section-cta h2 em {
+  color: var(--gold-pale) !important;
+}
+
+/* Pull quotes refined */
+.story-quote, blockquote.testimonial-text, .testimonial-text {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: clamp(1.4rem, 2.4vw, 2rem) !important;
+  letter-spacing: -.005em !important;
+  line-height: 1.4 !important;
+}
+
+/* Body refinements: light Inter, slightly more leading, kerning */
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 1.78;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+}
+p { font-size: 1.05rem; line-height: 1.78; }
+
+/* Eyebrows — single SC system everywhere */
+.section-label,
+.eyebrow {
+  font-family: 'Cormorant SC', serif !important;
+  font-weight: 400 !important;
+  font-size: .72rem !important;
+  letter-spacing: .38em !important;
+  text-transform: none !important;
+}
+
+/* Buttons — refined small-caps with generous kerning */
+.btn-primary, .btn-ghost, .btn-outline {
+  font-family: 'Cormorant SC', serif !important;
+  font-weight: 400 !important;
+  font-size: .76rem !important;
+  letter-spacing: .36em !important;
+  text-transform: none !important;
+  padding: 1.05rem 2.4rem !important;
+}
+
+/* =====================================================================
+   POLISH v6 — DEEP SHADOWS ON HERO TYPE
+   Multi-layer text-shadow gives the type weight and atmospheric depth
+   against image backgrounds. The image leads; the type is grounded.
+   ===================================================================== */
+
+.hero-eyebrow {
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.65),
+    0 4px 28px rgba(0, 0, 0, 0.45) !important;
+}
+
+.hero-title {
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.55),
+    0 8px 32px rgba(0, 0, 0, 0.50),
+    0 16px 64px rgba(0, 0, 0, 0.35) !important;
+}
+
+.hero-subtitle {
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.55),
+    0 4px 24px rgba(0, 0, 0, 0.40) !important;
+}
+
+/* Hero CTA buttons get a refined depth shadow on the parchment border */
+.hero-actions .btn-primary,
+.hero-actions .btn-ghost {
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.35),
+    0 12px 40px rgba(0, 0, 0, 0.20) !important;
+}
+
+/* Same treatment on page-hero (about, community, etc.) heros */
+.page-hero-title,
+.page-hero-subtitle {
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.55),
+    0 6px 24px rgba(0, 0, 0, 0.40),
+    0 14px 50px rgba(0, 0, 0, 0.30) !important;
+}
+.page-hero .hero-eyebrow {
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.60),
+    0 4px 24px rgba(0, 0, 0, 0.40) !important;
+}
+
+/* Calendar / events hero matching */
+.section-events .events-header,
+.section-migratory .migratory-header {
+  /* No shadow here — these aren’t over an image */
+}
+
+/* =====================================================================
+   POLISH v7 — TIGHT TEXT SHADOWS + LIGHT FLOODING THROUGH
+   Shadow hugs the letters as a feature, not an overlay over the image.
+   Hero overlay opens up so the rays through the tree flood the page.
+   ===================================================================== */
+
+/* Open the hero overlay — let the light flood through */
+.hero-image::after {
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(8,5,2,0) 0%, rgba(8,5,2,.04) 55%, rgba(8,5,2,.20) 100%),
+    linear-gradient(180deg, rgba(8,5,2,.06) 0%, rgba(8,5,2,0) 45%, rgba(8,5,2,.32) 100%) !important;
+}
+
+/* Tight halo around the letters — defined edge, no atmospheric haze */
+.hero-eyebrow {
+  text-shadow:
+    0 0 6px rgba(0, 0, 0, 0.85),
+    0 0 2px rgba(0, 0, 0, 1),
+    0 1px 1px rgba(0, 0, 0, 0.95) !important;
+}
+
+.hero-title {
+  text-shadow:
+    0 0 12px rgba(0, 0, 0, 0.85),
+    0 0 4px rgba(0, 0, 0, 0.95),
+    0 1px 2px rgba(0, 0, 0, 1) !important;
+}
+
+.hero-subtitle {
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.80),
+    0 0 3px rgba(0, 0, 0, 0.90),
+    0 1px 2px rgba(0, 0, 0, 0.95) !important;
+}
+
+/* Hero CTAs: tight shadow on the button itself, not atmospheric */
+.hero-actions .btn-primary,
+.hero-actions .btn-ghost {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.45) !important;
+  text-shadow:
+    0 0 6px rgba(0, 0, 0, 0.75),
+    0 1px 1px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Same treatment on page-hero typography */
+.page-hero-title {
+  text-shadow:
+    0 0 12px rgba(0, 0, 0, 0.85),
+    0 0 4px rgba(0, 0, 0, 0.95),
+    0 1px 2px rgba(0, 0, 0, 1) !important;
+}
+.page-hero-subtitle,
+.page-hero .hero-eyebrow {
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.80),
+    0 0 3px rgba(0, 0, 0, 0.90),
+    0 1px 2px rgba(0, 0, 0, 0.95) !important;
+}
+
+/* =====================================================================
+   POLISH v8 — TEXT TREATMENT REFINED
+   Drop the tight halo (it was stamping the letterforms). Replace with:
+   - A single soft drop shadow on type (atmospheric, not stamped)
+   - A subtle radial "presence" behind the hero-content area itself, so
+     the type sits in a quiet pocket of darkness while the image floods
+     through everywhere else.
+   ===================================================================== */
+
+/* Remove the tight halo */
+.hero-eyebrow,
+.hero-title,
+.hero-subtitle,
+.page-hero-title,
+.page-hero-subtitle {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55) !important;
+}
+.hero-actions .btn-primary,
+.hero-actions .btn-ghost {
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.30) !important;
+}
+.page-hero .hero-eyebrow {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55) !important;
+}
+
+/* Soft radial pocket of presence behind the hero-content area.
+   Image floods through everywhere; type sits in quiet stillness. */
+.hero-content,
+.page-hero-content {
+  position: relative;
+}
+.hero-content::before,
+.page-hero-content::before {
+  content: "";
+  position: absolute;
+  inset: -8% -14%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(8, 5, 2, 0.55) 0%,
+    rgba(8, 5, 2, 0.30) 38%,
+    rgba(8, 5, 2, 0.10) 65%,
+    rgba(8, 5, 2, 0) 88%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-content > *,
+.page-hero-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =====================================================================
+   POLISH v9 — OFFERINGS as EDITORIAL STACK
+   Each offering is its own moment. Image / content alternate sides.
+   Title, italic tagline, body, "For" + "Shape" meta rows, link.
+   ===================================================================== */
+
+.section-offerings .offerings-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.section-offerings .offering-card {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 5rem !important;
+  align-items: center !important;
+  padding: 5.5rem 0 !important;
+  border-top: 1px solid var(--rule-soft) !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  transition: padding-left 0.4s ease !important;
+}
+.section-offerings .offering-card:last-child {
+  border-bottom: 1px solid var(--rule-soft) !important;
+}
+.section-offerings .offering-card:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Alternate sides: even-indexed cards put image on the right */
+.section-offerings .offering-card:nth-child(even) .offering-image-wrap { order: 2; }
+.section-offerings .offering-card:nth-child(even) .offering-content    { order: 1; }
+
+/* Image wrap so the image element can be aspect-ratio constrained */
+.section-offerings .offering-image-wrap {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.section-offerings .offering-image {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 4 / 5 !important;
+  background-size: cover !important;
+  background-position: center !important;
+  transition: transform 1.2s cubic-bezier(.2, .7, .3, 1), filter .8s ease !important;
+  filter: saturate(.92) contrast(1.02) !important;
+}
+.section-offerings .offering-card:hover .offering-image {
+  transform: scale(1.025) !important;
+  filter: saturate(1.04) contrast(1.04) brightness(1.02) !important;
+}
+/* Drop the polish-v3 inset frame hover — the new layout doesn't need it */
+.section-offerings .offering-image::after { display: none !important; }
+
+/* Content side: hierarchy + breathing */
+.section-offerings .offering-content {
+  padding: 0 !important;
+}
+.section-offerings .offering-tag {
+  font-family: 'Cormorant SC', serif;
+  font-size: .68rem;
+  letter-spacing: .38em;
+  color: var(--gold);
+  margin-bottom: .9rem;
+  display: block;
+}
+.section-offerings .offering-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 300 !important;
+  font-size: clamp(1.8rem, 3vw, 2.6rem) !important;
+  letter-spacing: -.012em !important;
+  line-height: 1.06 !important;
+  color: var(--earth) !important;
+  margin: 0 0 .85rem !important;
+}
+.section-offerings .offering-tagline {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: 1.25rem !important;
+  line-height: 1.45 !important;
+  color: var(--gold) !important;
+  margin: 0 0 1.4rem !important;
+  max-width: 32ch;
+}
+.section-offerings .offering-description {
+  font-size: 1.02rem !important;
+  line-height: 1.78 !important;
+  color: var(--earth-mid) !important;
+  margin-bottom: 1.8rem !important;
+  max-width: 56ch;
+}
+
+/* Meta rows: For / Shape */
+.section-offerings .offering-meta {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: .6rem 1.5rem;
+  margin: 0 0 2rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--rule-soft);
+  font-size: .96rem;
+}
+.section-offerings .offering-meta-label {
+  font-family: 'Cormorant SC', serif;
+  font-weight: 400;
+  font-size: .68rem;
+  letter-spacing: .32em;
+  color: var(--gold);
+  margin: 0;
+  padding-top: .15rem;
+}
+.section-offerings .offering-meta-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--earth);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* The "Read on —" link refined */
+.section-offerings .offering-link {
+  font-family: 'Cormorant SC', serif !important;
+  font-weight: 400 !important;
+  font-size: .74rem !important;
+  letter-spacing: .34em !important;
+  color: var(--earth) !important;
+  border-bottom: 1px solid var(--gold) !important;
+  padding-bottom: .35rem !important;
+  display: inline-block;
+  margin-top: .4rem;
+  transition: all .4s ease;
+}
+.section-offerings .offering-link:hover {
+  color: var(--gold) !important;
+  border-bottom-color: var(--earth) !important;
+}
+
+/* Subtle hover lift on whole card */
+.section-offerings .offering-card:hover {
+  padding-left: .4rem !important;
+}
+
+/* Responsive: stack vertically on smaller screens */
+@media (max-width: 960px) {
+  .section-offerings .offering-card {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    padding: 3.5rem 0 !important;
+  }
+  .section-offerings .offering-card:nth-child(even) .offering-image-wrap { order: 1; }
+  .section-offerings .offering-card:nth-child(even) .offering-content    { order: 2; }
+  .section-offerings .offering-image { aspect-ratio: 3 / 2 !important; }
+  .section-offerings .offering-meta { grid-template-columns: 60px 1fr; gap: .4rem 1rem; }
+}
+
+/* =====================================================================
+   POLISH v10 — OFFERINGS as quiet GALLERY of modalities
+   These are not products. They are modalities in the medicine basket.
+   Treat them as inventory: brief, observed, restful. No per-card CTA,
+   no meta rows, no alternating layout. Three-column gallery, light.
+
+   Plus design-critique fixes:
+   - Eyebrow legibility: bump size + tighten letterspacing sitewide
+   - Color contrast: eyebrows in earth-mid on light bg (gold fails WCAG)
+   - Less italic: descriptions become upright; italic reserved for accents
+   ===================================================================== */
+
+/* ----- Offerings: gallery grid, simpler cards ----- */
+.section-offerings .offerings-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 4rem 2.5rem !important;
+  flex-direction: unset !important;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.section-offerings .offering-card {
+  display: block !important;
+  grid-template-columns: none !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  align-items: stretch !important;
+  transition: none !important;
+}
+.section-offerings .offering-card:last-child {
+  border-bottom: none !important;
+}
+.section-offerings .offering-card:hover {
+  transform: none !important;
+  padding-left: 0 !important;
+}
+
+/* Square image — settles into a calm gallery rhythm */
+.section-offerings .offering-image {
+  aspect-ratio: 1 / 1 !important;
+  width: 100% !important;
+  height: auto !important;
+  background-size: cover !important;
+  background-position: center !important;
+  filter: saturate(.92) contrast(1.02) !important;
+  transition: filter .8s ease !important;
+  margin-bottom: 1.4rem;
+}
+.section-offerings .offering-card:hover .offering-image {
+  filter: saturate(1.04) contrast(1.04) brightness(1.02) !important;
+  transform: none !important;
+}
+.section-offerings .offering-image::after { display: none !important; }
+.section-offerings .offering-image-wrap { display: contents; } /* unwrap if leftover */
+
+/* Content side: tag + title + tagline only */
+.section-offerings .offering-content {
+  padding: 0 !important;
+}
+.section-offerings .offering-tag {
+  font-family: 'Cormorant SC', serif;
+  font-size: .78rem !important;
+  letter-spacing: .28em !important;
+  color: var(--earth-mid) !important;
+  margin-bottom: .55rem !important;
+  display: block;
+  font-weight: 400 !important;
+}
+.section-offerings .offering-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 400 !important;
+  font-size: 1.55rem !important;
+  letter-spacing: -.008em !important;
+  line-height: 1.12 !important;
+  color: var(--earth) !important;
+  margin: 0 0 .5rem !important;
+  font-style: normal !important;
+}
+.section-offerings .offering-tagline {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 1.08rem !important;
+  line-height: 1.45 !important;
+  color: var(--earth-mid) !important;
+  margin: 0 !important;
+  max-width: 32ch;
+}
+
+/* Hide the meta + link rendering even if older HTML still has them */
+.section-offerings .offering-description,
+.section-offerings .offering-meta,
+.section-offerings .offering-link {
+  display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .section-offerings .offerings-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 3rem 2rem !important;
+  }
+}
+@media (max-width: 600px) {
+  .section-offerings .offerings-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+}
+
+/* =====================================================================
+   POLISH v10b — sitewide readability fixes per design critique
+   ===================================================================== */
+
+/* Eyebrow legibility everywhere — bigger, tighter spacing, real contrast */
+.section-label,
+.eyebrow,
+.hero-eyebrow {
+  font-size: .78rem !important;
+  letter-spacing: .28em !important;
+}
+
+/* On light backgrounds: eyebrow in earth-mid (passes WCAG) */
+.section-story .section-label,
+.section-offerings .section-label,
+.section-practitioner .section-label,
+.section-process .section-label,
+.section-testimonial .section-label,
+.section-migratory .section-label,
+.section-events .section-label,
+.about-bio .section-label,
+.about-sections .section-label {
+  color: var(--earth-mid) !important;
+}
+
+/* On dark backgrounds: eyebrow in gold-pale (high contrast) */
+.section-vision .section-label,
+.section-cta .section-label,
+.section-cta .eyebrow,
+.section-arc .section-label {
+  color: var(--gold-pale) !important;
+}
+
+/* Page-hero eyebrows over photographs: gold-pale */
+.page-hero .hero-eyebrow {
+  color: var(--gold-pale) !important;
+}
+
+/* Reduce italic load: hero subtitle becomes upright Cormorant */
+.hero-subtitle,
+.page-hero-subtitle {
+  font-style: normal !important;
+}
+
+/* Reduce italic load: process intro and other "subtitle-like" copy stays upright */
+.process-header .section-body,
+.containers-intro p,
+.events-intro,
+.migratory-intro {
+  font-style: normal !important;
+}
+
+/* Section titles' italic accent: keep italic (this is the one moment per section) */
+/* No change needed — em already italic */
+
+/* =====================================================================
+   POLISH v11 — TIGHTEN BLANK SPACE
+   Cut the section rhythm tokens roughly in half. Tighten internal gaps
+   between section headers and their content. The page reads continuously,
+   not as widely-spaced islands.
+   ===================================================================== */
+
+:root {
+  --rhythm-y:        4rem !important;
+  --rhythm-y-tight:  2.75rem !important;
+  --rhythm-y-grand:  5.5rem !important;
+}
+
+/* Internal gaps within sections — tighten the long pauses */
+.offerings-header { margin-bottom: 2.5rem !important; }
+.containers-intro { margin-bottom: 2.5rem !important; }
+.process-header { margin-bottom: 2.5rem !important; }
+.events-header { margin-bottom: 2rem !important; }
+.migratory-header { margin-bottom: 2.5rem !important; }
+.threshold-header { margin-bottom: 3rem !important; }
+
+/* Vision: tighten title->body->pillars gaps */
+.section-vision > .vision-title { margin-bottom: 1.2rem !important; }
+.section-vision > .vision-body { margin-bottom: .8rem !important; }
+.section-vision .vision-pillars { margin-top: 3rem !important; }
+
+/* Offerings stack: tighter card spacing */
+.section-offerings .offerings-grid { gap: 3rem 2.5rem !important; }
+
+/* Featured offering: tighter bottom gap */
+.offering-featured-card { margin-bottom: 3rem !important; }
+
+/* Story / metamorphosis: tighter rhythm so it tucks closer to hero */
+.section-story { padding-top: var(--rhythm-y-tight) !important; padding-bottom: var(--rhythm-y) !important; }
+
+/* Practitioner: tighten the column gap */
+.practitioner-container { gap: 3rem !important; }
+
+/* Process steps: tighter row gap */
+.process-steps { gap: 1.6rem !important; }
+.process-cta { margin-top: 2.5rem !important; }
+
+/* Hero scroll cue closer to bottom */
+.hero-fullbleed::after { bottom: 1.6rem !important; height: 38px !important; }
+
+/* Tighter mobile rhythm */
+@media (max-width: 1024px) {
+  :root {
+    --rhythm-y:        3rem !important;
+    --rhythm-y-tight:  2rem !important;
+    --rhythm-y-grand:  4rem !important;
+  }
+}
+
+/* =====================================================================
+   POLISH v12 — KILL THE BLANK
+   1) The 7-card offerings grid leaves an orphan row. Switch to
+      flex-wrap so the last row centers naturally, no empty cells.
+   2) Process section is too tall for what it holds. Tighten.
+   3) Tighten the rhythm token further so adjacent sections don't
+      stack to a void.
+   ===================================================================== */
+
+/* Offerings grid: flex-wrap with centered last row */
+.section-offerings .offerings-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 2.5rem !important;
+  flex-direction: row !important;
+}
+.section-offerings .offering-card {
+  flex: 0 1 calc(33.333% - 1.7rem) !important;
+  max-width: 340px !important;
+  min-width: 260px !important;
+  display: block !important;
+}
+
+@media (max-width: 960px) {
+  .section-offerings .offering-card {
+    flex: 0 1 calc(50% - 1.25rem) !important;
+    max-width: none !important;
+  }
+}
+@media (max-width: 600px) {
+  .section-offerings .offering-card {
+    flex: 0 1 100% !important;
+  }
+}
+
+/* Process section: tighten, the steps don't need a sprawling section */
+.section-process {
+  padding-top:    2.5rem !important;
+  padding-bottom: 3rem !important;
+}
+.process-header { margin-bottom: 1.8rem !important; }
+.process-steps { gap: 1.2rem !important; margin-top: 2rem !important; }
+.process-step h3 { font-size: 1.2rem !important; margin-bottom: .35rem !important; }
+.process-step p  { font-size: .92rem !important; line-height: 1.55 !important; }
+.process-cta { margin-top: 2rem !important; }
+
+/* Rhythm tokens — pull tighter */
+:root {
+  --rhythm-y:        3rem !important;
+  --rhythm-y-tight:  2rem !important;
+  --rhythm-y-grand:  4rem !important;
+}
+
+/* Inline testimonial section — it's a single quote, doesn't need
+   the same breath as a content section */
+.section-testimonial {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+/* =====================================================================
+   POLISH v13 — KILL PHANTOM SPACE + INTERACTIVE VISION PILLARS
+   1) Sections render at full opacity always (no fade-in stuck states)
+   2) Reset any leftover min-heights / phantom heights
+   3) Vision pillars become real clickable options (Community / Solo /
+      Private), with hover states that signal action
+   ===================================================================== */
+
+/* (1) Sections always full opacity — fade-in stays on cards/pillars only */
+.js-ready section.fade-in,
+.js-ready section { opacity: 1 !important; transform: none !important; }
+section { min-height: 0 !important; }
+
+/* (2) Offerings reset: no phantom heights anywhere */
+.section-offerings .offerings-grid { min-height: 0 !important; }
+.section-offerings .offering-card { min-height: 0 !important; height: auto !important; }
+.section-offerings .offering-image { min-height: 0 !important; }
+.section-offerings .offering-content { min-height: 0 !important; }
+.offering-featured-card { min-height: 360px !important; }
+
+/* (3) Vision pillars as actionable options */
+.vision-pillars {
+  margin-top: 2rem !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1rem !important;
+}
+
+.vision-pillar {
+  display: block !important;
+  background: rgba(244, 234, 211, .04) !important;
+  border: 1px solid rgba(216, 185, 138, .22) !important;
+  padding: 2.2rem 1.8rem 2rem !important;
+  text-align: left !important;
+  transition: all .4s cubic-bezier(.2, .7, .3, 1) !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  cursor: pointer;
+  position: relative;
+}
+.vision-pillar:hover {
+  background: rgba(244, 234, 211, .08) !important;
+  border-color: var(--gold-pale) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 14px 40px rgba(0,0,0,.30) !important;
+}
+
+.vision-pillar .pillar-icon {
+  display: block !important;
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--gold-pale) !important;
+  font-size: 1rem;
+  letter-spacing: .25em;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+.vision-pillar h3 {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 400 !important;
+  font-size: 1.6rem !important;
+  color: var(--parchment) !important;
+  margin: 0 0 .65rem !important;
+  letter-spacing: -.005em !important;
+}
+.vision-pillar p {
+  font-size: .96rem !important;
+  line-height: 1.62 !important;
+  color: rgba(244, 234, 211, .76) !important;
+  margin: 0 0 1.4rem !important;
+}
+.vision-pillar .pillar-cta {
+  font-family: 'Cormorant SC', serif;
+  font-size: .72rem;
+  letter-spacing: .3em;
+  color: var(--gold-pale);
+  border-bottom: 1px solid var(--gold-pale);
+  padding-bottom: .25rem;
+  display: inline-block;
+  transition: all .3s ease;
+}
+.vision-pillar:hover .pillar-cta {
+  color: var(--parchment);
+  border-bottom-color: var(--parchment);
+}
+
+@media (max-width: 900px) {
+  .vision-pillars { grid-template-columns: 1fr !important; gap: 1rem !important; }
+}
+
+/* =====================================================================
+   POLISH v14 — OFFERINGS SECTION DEVELOPMENT
+   - Cornerstone gets more presence (bigger, more dramatic, refined frame)
+   - Connecting visual links Cornerstone → "what's inside" → modalities
+   - Modalities get Roman numerals as quiet position markers
+   - Refined hover with gold accent
+   - More breath in the rhythm
+   ===================================================================== */
+
+/* ----- Cornerstone (featured) — develop the presence ----- */
+.offering-featured-card {
+  margin-bottom: 0 !important;
+  min-height: 460px !important;
+  position: relative;
+  overflow: hidden;
+}
+.offering-featured-card::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(244, 234, 211, 0.32);
+  pointer-events: none;
+  z-index: 3;
+}
+.offering-featured-card .ofc-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(15, 10, 6, 0.94) 0%,
+    rgba(15, 10, 6, 0.55) 45%,
+    rgba(15, 10, 6, 0.18) 100%
+  ) !important;
+}
+.offering-featured-card .ofc-content {
+  padding: 4rem 4rem 3.6rem !important;
+  max-width: 760px;
+  position: relative;
+  z-index: 4;
+}
+.offering-featured-card .section-label {
+  font-family: 'Cormorant SC', serif;
+  font-size: 0.74rem !important;
+  letter-spacing: 0.32em !important;
+  color: var(--gold-pale) !important;
+  margin-bottom: 1rem !important;
+  padding-top: 0 !important;
+}
+.offering-featured-card .section-label::after {
+  display: none;
+}
+.offering-featured-card h3 {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 300 !important;
+  font-size: clamp(2.2rem, 4vw, 3.2rem) !important;
+  letter-spacing: -.012em !important;
+  line-height: 1.05 !important;
+  color: var(--parchment) !important;
+  margin-bottom: 1.2rem !important;
+}
+.offering-featured-card p {
+  color: rgba(244, 234, 211, 0.85) !important;
+  font-size: 1rem !important;
+  line-height: 1.72 !important;
+  max-width: 60ch;
+}
+.offering-featured-card .ofc-meta {
+  font-family: 'Cormorant SC', serif !important;
+  font-size: 0.66rem !important;
+  letter-spacing: 0.32em !important;
+  color: rgba(216, 185, 138, 0.82) !important;
+  margin: 1.6rem 0 1.5rem !important;
+}
+.offering-featured-card .btn-ghost {
+  border-color: var(--gold-pale) !important;
+  color: var(--gold-pale) !important;
+  letter-spacing: .32em !important;
+}
+.offering-featured-card .btn-ghost:hover {
+  background: rgba(216, 185, 138, 0.12) !important;
+  color: var(--parchment) !important;
+  border-color: var(--parchment) !important;
+}
+
+/* ----- Connecting visual: "Inside the basket —" ----- */
+.offerings-bridge {
+  text-align: center;
+  margin: 3rem auto 2.5rem;
+  position: relative;
+  max-width: 680px;
+}
+.offerings-bridge::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 50px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(180deg, transparent, var(--gold) 50%, transparent);
+}
+.offerings-bridge-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--earth-mid);
+  line-height: 1.5;
+  display: inline-block;
+}
+
+/* ----- Modalities grid: numbered cards, refined hover ----- */
+.section-offerings .offerings-grid {
+  margin-top: 1rem !important;
+  gap: 3rem 2.5rem !important;
+}
+
+.section-offerings .offering-card {
+  position: relative;
+  padding-top: 1.6rem !important;
+  border-top: 1px solid var(--rule-soft);
+  transition: padding-top .4s ease, border-color .4s ease !important;
+}
+.section-offerings .offering-card:hover {
+  border-top-color: var(--gold) !important;
+}
+
+/* Roman numeral position marker */
+.section-offerings .offering-card::before {
+  content: "";
+  position: absolute;
+  top: -7px; left: 0;
+  width: 10px; height: 10px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path d='M10 0 L11 9 L20 10 L11 11 L10 20 L9 11 L0 10 L9 9 Z' fill='%23c9a84c'/></svg>") center/contain no-repeat,
+              var(--cream);
+  padding: 2px;
+  opacity: .8;
+}
+
+/* Tighten and refine card content */
+.section-offerings .offering-image {
+  margin-bottom: 1.2rem !important;
+  filter: saturate(.88) contrast(1.04) !important;
+}
+.section-offerings .offering-card:hover .offering-image {
+  filter: saturate(1) contrast(1.06) brightness(1.02) !important;
+}
+
+.section-offerings .offering-tag {
+  font-family: 'Cormorant SC', serif !important;
+  font-size: .72rem !important;
+  letter-spacing: .32em !important;
+  color: var(--gold) !important;
+  margin-bottom: .5rem !important;
+  display: block;
+  font-weight: 400 !important;
+}
+.section-offerings .offering-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 400 !important;
+  font-size: 1.55rem !important;
+  letter-spacing: -.005em !important;
+  line-height: 1.12 !important;
+  color: var(--earth) !important;
+  margin: 0 0 .5rem !important;
+}
+.section-offerings .offering-tagline {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 1.04rem !important;
+  line-height: 1.5 !important;
+  color: var(--earth-mid) !important;
+  margin: 0 !important;
+}
+
+/* Subtle gold rule under each modality on hover */
+.section-offerings .offering-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width .5s cubic-bezier(.2, .7, .3, 1);
+}
+.section-offerings .offering-card:hover::after { width: 32px; }
+
+/* Rhythm */
+.section-offerings { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+.offerings-header { margin-bottom: 3rem !important; }
+
+@media (max-width: 720px) {
+  .offering-featured-card .ofc-content { padding: 3rem 2rem 2.6rem !important; }
+}
+
+/* =====================================================================
+   POLISH v15 — PROCESS as VERTICAL TIMELINE
+   Five richer steps want to be walked, not glanced at in a row.
+   Numbered circles connected by a vertical gold line. Content beside.
+   ===================================================================== */
+
+.process-steps {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2.4rem !important;
+  max-width: 720px !important;
+  margin: 0 auto !important;
+  position: relative;
+  padding-left: 0 !important;
+  padding-top: .5rem;
+}
+
+/* Vertical connecting line — gold, threading through circles */
+.process-steps::before {
+  content: "";
+  position: absolute;
+  left: 27px;
+  top: 28px;
+  bottom: 28px;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--gold) 6%, var(--gold) 94%, transparent);
+  opacity: .45;
+  z-index: 0;
+}
+
+.process-step {
+  display: grid !important;
+  grid-template-columns: 56px 1fr !important;
+  gap: 1.8rem !important;
+  align-items: start !important;
+  position: relative;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  z-index: 1;
+}
+.process-step::before { display: none !important; }
+
+.process-step .step-number {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;
+  background: var(--cream) !important;
+  border: 1px solid var(--gold) !important;
+  color: var(--gold) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.process-step h3 {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 400 !important;
+  font-size: 1.4rem !important;
+  color: var(--earth) !important;
+  margin: .3rem 0 .55rem !important;
+  letter-spacing: -.005em;
+  line-height: 1.15;
+}
+
+.process-step p {
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+  color: var(--earth-mid) !important;
+  margin: 0 !important;
+  max-width: 56ch;
+}
+
+/* Process header refinement — more breath since the timeline is taller */
+.process-header {
+  text-align: center !important;
+  max-width: 720px;
+  margin: 0 auto 3rem !important;
+}
+.process-header .section-label::after { left: 50%; transform: translateX(-50%); }
+.process-questions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin: 1.6rem 0 0;
+}
+.process-q {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 1.05rem !important;
+  color: var(--earth-mid) !important;
+  letter-spacing: 0 !important;
+}
+.pq-dot { color: var(--gold); opacity: .7; }
+
+.process-cta { text-align: center; margin-top: 3rem !important; }
+
+/* Section rhythm */
+.section-process {
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+
+@media (max-width: 600px) {
+  .process-step { grid-template-columns: 44px 1fr !important; gap: 1.2rem !important; }
+  .process-step .step-number { width: 44px !important; height: 44px !important; font-size: 1rem !important; }
+  .process-steps::before { left: 21px; }
+}
+
+/* =====================================================================
+   POLISH v16 — KILL FADE-IN OPACITY (FIX FOR INVISIBLE CARDS)
+   The fade-in animation is hiding YAML-rendered list items because
+   IntersectionObserver was initialized before content-loader injected
+   them. New clones inherit .fade-in/opacity:0 but never get .visible.
+   Force everything visible. The animation isn't worth the cost.
+   ===================================================================== */
+
+.js-ready .fade-in,
+.js-ready .fade-in.visible,
+.fade-in,
+.fade-in.visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* =====================================================================
+   POLISH v17 — PROCESS STEPS as 5 COLUMNS LEADING INTO EACH OTHER
+   Horizontal flow on desktop. Each step is a column. A thin gold line
+   runs through the circles connecting them, making the sequence
+   feel like a continuous path rather than five isolated boxes.
+   ===================================================================== */
+
+/* Override the vertical timeline back to a horizontal column flow */
+.process-steps {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 1.2rem !important;
+  flex-direction: row !important;
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  position: relative;
+  padding: 1rem 1rem 0 !important;
+}
+
+/* The connecting gold line runs through the centers of the circles */
+.process-steps::before {
+  content: "";
+  position: absolute;
+  top: calc(1rem + 28px);  /* padding-top + half circle height */
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--gold) 8%,
+    var(--gold) 92%,
+    transparent);
+  opacity: .5;
+  z-index: 0;
+}
+
+.process-step {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  grid-template-columns: none !important;
+  gap: 0 !important;
+  padding: 0 .6rem !important;
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+  border: none !important;
+}
+
+.process-step .step-number {
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;
+  background: var(--cream) !important;
+  border: 1px solid var(--gold) !important;
+  color: var(--gold) !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 1.3rem !important;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0 !important;
+}
+
+.process-step h3 {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 400 !important;
+  font-size: 1.18rem !important;
+  color: var(--earth) !important;
+  margin: 0 0 .5rem !important;
+  letter-spacing: -.005em;
+  line-height: 1.2;
+  max-width: 100%;
+}
+
+.process-step p {
+  font-size: .92rem !important;
+  line-height: 1.55 !important;
+  color: var(--earth-mid) !important;
+  margin: 0 !important;
+  max-width: 24ch;
+}
+
+/* Tablet: 5 columns becomes 2 rows (3+2 with the second row centered) */
+@media (max-width: 1024px) and (min-width: 700px) {
+  .process-steps {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2.4rem 1rem !important;
+  }
+  .process-steps::before { display: none; }  /* horizontal line doesn't make sense across rows */
+  .process-step:nth-child(4) { grid-column: 1 / 2; grid-row: 2; }
+  .process-step:nth-child(5) { grid-column: 2 / 3; grid-row: 2; }
+}
+
+/* Mobile: return to vertical timeline */
+@media (max-width: 699px) {
+  .process-steps {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    gap: 2rem !important;
+    max-width: 480px !important;
+    padding: .5rem 0 0 !important;
+  }
+  .process-steps::before {
+    top: 28px;
+    bottom: 28px;
+    left: 27px;
+    right: auto;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(180deg, transparent, var(--gold) 6%, var(--gold) 94%, transparent);
+  }
+  .process-step {
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    display: grid !important;
+    grid-template-columns: 56px 1fr !important;
+    gap: 1.4rem !important;
+  }
+  .process-step .step-number { margin: 0 !important; }
+  .process-step h3 { margin-top: .4rem !important; }
+  .process-step p { max-width: none; }
+}
+
+/* =====================================================================
+   POLISH v18 — PROCESS as THREE MOVEMENTS (was five steps)
+   Phases I / II / III, larger numerals (Roman), wider reading width
+   per phase since the prose now consolidates what was 5 sub-steps.
+   ===================================================================== */
+
+.process-steps {
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2rem !important;
+  max-width: 1080px !important;
+}
+
+/* Connecting line spans only the 3 circles now */
+.process-steps::before {
+  left: 16% !important;
+  right: 16% !important;
+}
+
+/* Larger Roman-numeral circles — they carry more weight as phases */
+.process-step .step-number {
+  width: 64px !important;
+  height: 64px !important;
+  font-size: 1.4rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Adjust connecting line top to match larger circle */
+.process-steps::before {
+  top: calc(1rem + 32px) !important;
+}
+
+/* Phase title is more substantial */
+.process-step h3 {
+  font-size: 1.5rem !important;
+  margin-bottom: .75rem !important;
+}
+
+/* Body prose gets a comfortable reading width */
+.process-step p {
+  font-size: .98rem !important;
+  line-height: 1.65 !important;
+  max-width: 36ch !important;
+}
+
+/* Tablet: 3 columns still works at most widths; only collapse below 700 */
+@media (max-width: 1024px) and (min-width: 700px) {
+  .process-steps {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.4rem !important;
+  }
+  .process-steps::before { display: block !important; left: 14% !important; right: 14% !important; }
+  .process-step:nth-child(4),
+  .process-step:nth-child(5) {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+}
+
+/* Mobile: vertical timeline still */
+@media (max-width: 699px) {
+  .process-step .step-number { width: 48px !important; height: 48px !important; font-size: 1.1rem !important; }
+  .process-steps::before { left: 23px !important; }
+  .process-step { grid-template-columns: 48px 1fr !important; }
+}
+
+/* =====================================================================
+   POLISH v19 — ZERO MOTION
+   No animations. No transitions. No smooth scroll. Page is static and
+   fully loaded. Static positioning transforms (centering, etc.) stay,
+   but no movement, no breathing, no fade.
+   ===================================================================== */
+
+*, *::before, *::after {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  animation-name: none !important;
+  transition: none !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+}
+
+html { scroll-behavior: auto !important; }
+
+/* Hide animated scroll cue at hero bottom */
+.hero-fullbleed::after,
+.hero-scroll { display: none !important; }
+
+/* Make sure nothing renders at opacity 0 */
+.fade-in,
+.fade-in.visible,
+.js-ready .fade-in,
+.js-ready .fade-in.visible,
+section.fade-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* =====================================================================
+   POLISH v20 — HIDE EMPTY ELEMENTS
+   When YAML clears a field, the matching element renders empty. Hide
+   those rather than leaving phantom space.
+   ===================================================================== */
+
+.section-label:empty,
+.hero-eyebrow:empty,
+.eyebrow:empty,
+.hero-actions a:empty,
+.btn-ghost:empty,
+.btn-primary:empty,
+.btn-outline:empty,
+.offering-tag:empty,
+.offering-tagline:empty {
+  display: none !important;
+}
+
+/* =====================================================================
+   POLISH v21 — LET THE LIGHT THROUGH
+   Image brightness lifted; overlay opens further so the rays through
+   the tree carry the page. The text-pocket gradient behind the
+   hero-content keeps the type legible regardless.
+   ===================================================================== */
+
+.hero-image {
+  filter: brightness(1.10) contrast(1.04) saturate(1.05) !important;
+}
+
+.hero-image::after {
+  background:
+    radial-gradient(ellipse at 50% 38%,
+      rgba(8, 5, 2, 0) 0%,
+      rgba(8, 5, 2, 0) 50%,
+      rgba(8, 5, 2, .08) 100%),
+    linear-gradient(180deg,
+      rgba(8, 5, 2, .04) 0%,
+      rgba(8, 5, 2, 0) 50%,
+      rgba(8, 5, 2, .22) 100%) !important;
+}
+
+/* =====================================================================
+   POLISH v22 — HERO BUTTON ANCHORED LOW
+   Pull the Let's Begin button out of the centered text flow and pin it
+   near the base of the tree image (around the ladder visual).
+   ===================================================================== */
+
+.hero-fullbleed { position: relative; }
+
+.hero-actions {
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 11% !important;
+  transform: translateX(-50%) !important;
+  z-index: 5 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 1rem !important;
+}
+
+/* The button gets a slightly stronger shadow so it reads against any
+   point on the image — bright canopy or dark trunk */
+.hero-actions .btn-primary {
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.35),
+    0 1px 3px rgba(0, 0, 0, 0.45) !important;
+}
+
+@media (max-width: 700px) {
+  .hero-actions { bottom: 8% !important; }
+}
+
+/* =====================================================================
+   POLISH v23 — Drop button lower toward the very base of the hero
+   ===================================================================== */
+
+.hero-actions {
+  bottom: 4% !important;
+}
+
+@media (max-width: 700px) {
+  .hero-actions { bottom: 4% !important; }
+}
+
+/* =====================================================================
+   POLISH v24 — Hero button at 25% from bottom
+   ===================================================================== */
+
+.hero-actions {
+  bottom: 25% !important;
+}
+
+@media (max-width: 700px) {
+  .hero-actions { bottom: 25% !important; }
+}
+
+/* =====================================================================
+   POLISH v25 — Drop button further (10% from bottom)
+   ===================================================================== */
+
+.hero-actions {
+  bottom: 10% !important;
+}
+
+@media (max-width: 700px) {
+  .hero-actions { bottom: 8% !important; }
+}
+
+/* =====================================================================
+   POLISH v26 — Anchor button by VIEWPORT, not container
+   The hero container is taller than 100vh due to inner min-heights, so
+   percentage-from-bottom doesn't put the button where the eye expects.
+   Switching to viewport-relative top positioning so the button always
+   lands at the same visual point regardless of container height.
+   ===================================================================== */
+
+.hero-actions {
+  top: 75vh !important;
+  bottom: auto !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  position: absolute !important;
+}
+
+@media (max-width: 700px) {
+  .hero-actions { top: 75vh !important; bottom: auto !important; }
+}
+
+/* =====================================================================
+   POLISH v27 — More light + words up into the canopy shadows
+   1) Brighten image further; let rays burn through
+   2) Open overlay even more
+   3) Move hero title/subtitle UP into the upper canopy area (where the
+      leaves and branches give natural shadow contrast). Button stays
+      where it is at 75vh.
+   ===================================================================== */
+
+.hero-image {
+  filter: brightness(1.18) contrast(1.05) saturate(1.06) !important;
+}
+
+.hero-image::after {
+  background:
+    radial-gradient(ellipse at 50% 30%,
+      rgba(8, 5, 2, 0) 0%,
+      rgba(8, 5, 2, 0) 60%,
+      rgba(8, 5, 2, .04) 100%),
+    linear-gradient(180deg,
+      rgba(8, 5, 2, 0) 0%,
+      rgba(8, 5, 2, 0) 60%,
+      rgba(8, 5, 2, .12) 100%) !important;
+}
+
+/* Pull the hero title/subtitle UP into the upper canopy */
+.hero-content {
+  justify-content: flex-start !important;
+  padding-top: 14vh !important;
+  padding-bottom: 6rem !important;
+}
+
+/* The radial pocket of darkness behind text moves with it — keeps
+   readability where the words now sit (against the leaves) */
+.hero-content::before {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(8, 5, 2, 0.50) 0%,
+    rgba(8, 5, 2, 0.28) 38%,
+    rgba(8, 5, 2, 0.10) 65%,
+    rgba(8, 5, 2, 0) 88%
+  ) !important;
+}
+
+/* =====================================================================
+   POLISH v28 — Opacity overlay nearly removed
+   Just a whisper of darkness at the very bottom for the button area.
+   The rest of the image carries itself.
+   ===================================================================== */
+
+.hero-image::after {
+  background: linear-gradient(180deg,
+    rgba(8, 5, 2, 0) 0%,
+    rgba(8, 5, 2, 0) 80%,
+    rgba(8, 5, 2, .04) 100%) !important;
+}
+
+/* =====================================================================
+   POLISH v29 — PRACTITIONER IMAGE as FULL-WIDTH TOP BANNER
+   The 2-column sticky portrait is replaced by an edge-to-edge image
+   at the top of the section. Bio content flows below in a centered
+   reading column.
+   ===================================================================== */
+
+.section-practitioner {
+  padding-top: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  padding-bottom: var(--rhythm-y) !important;
+}
+
+.practitioner-container {
+  display: block !important;
+  grid-template-columns: none !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+}
+
+.practitioner-image-home {
+  width: 100% !important;
+  height: 70vh !important;
+  min-height: 480px !important;
+  aspect-ratio: auto !important;
+  margin: 0 0 4rem 0 !important;
+  position: static !important;
+  background-size: cover !important;
+  background-position: center 22% !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.practitioner-content-home {
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  padding: 0 3rem !important;
+}
+
+@media (max-width: 1024px) {
+  .practitioner-image-home { height: 56vh !important; min-height: 380px !important; }
+  .practitioner-content-home { padding: 0 1.5rem !important; }
+}
+@media (max-width: 600px) {
+  .practitioner-image-home { height: 48vh !important; min-height: 320px !important; }
+}
+
+/* =====================================================================
+   POLISH v30 — Lower hero title + subtitle by 5% of viewport
+   Bumps the .hero-content top padding from 14vh to 19vh so the words
+   settle a touch lower into the canopy. Button remains pinned at 75vh
+   (Polish v26) — only the text block moves.
+   ===================================================================== */
+
+.hero-content {
+  padding-top: 19vh !important;
+}
+
+@media (max-width: 1024px) {
+  .hero-content { padding-top: 17vh !important; }
+}
+@media (max-width: 600px) {
+  .hero-content { padding-top: 15vh !important; }
 }
