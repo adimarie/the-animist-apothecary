@@ -1,137 +1,163 @@
 hero:
-  eyebrow: Shamanic Healing · Somatic Ceremony · Botanical Medicine
-  title: Where ancient wisdom meets<br>the <em>living body</em>
+  eyebrow: ""
+  title: Formidable gifts for<br>an <em>era of awakening</em>
   subtitle: >-
-    Somatic healing, sacred ceremony, and botanical medicine — woven together in devotion to your
-    wholeness and the healing of the living world.
-  cta_primary_text: Explore the Work
-  cta_primary_url: '#offerings'
-  cta_secondary_text: Begin Here
-  cta_secondary_url: book.html
-  image: /images/uploads/2026-05-07-pexels-fahad-khan-489970498-34541950.jpg
-  image_alt: Sunlight streaming through the great living canopy of the Topanga chaparral
-  image_position: center 30%
-  image_size: contain
+    An immersive and intentional cultivation through direct-experiences with ceremony & ritual —
+    to grow in skill, depth, presence, and ability as we grow to participate more fully within the
+    Weaves of Creation.
+  cta_primary_text: Let's Begin
+  cta_primary_url: '#begin'
+  cta_secondary_text: ""
+  cta_secondary_url: ""
+  image: /images/uploads/hero-tree-of-life.jpg
+  image_alt: An ancient tree with a moss-covered trunk, sunlight streaming in long rays through the canopy and the morning mist
+  image_position: center 60%
+  image_size: cover
 metamorphosis:
   image: /images/uploads/2026-05-07-1777185257768.jpeg
   image_position: center
-  section_label: We live in a time of Great Awakening
-  title: From bodywork to<br><em>deep soul tending</em>
+  section_label: A Calling of These Times
+  title: We are living through<br>a <em>Great Awakening</em>.
   paragraph_1: >-
-    After 16 years of service as a Somatic Touch Therapist and Hands-on Spiritual Practitioner — my
-    work through Bodywork & Botanicals has come into a new evolution of specialized offerings and
-    curation.
+    We are in the turning of the Kali Yuga page. Things are maximizing in their darkness, and at the
+    same moment something ancient is stirring back through the layers of rupture. The dormant
+    lineages of power are reawakening. Old ancestral families exiled from this realm are reaching
+    through, asking to be midwifed home. Gaia is dreaming us awake. The more-than-human kin are
+    speaking. The earth grid is calling out to the ones who can hold it.
   paragraph_2: >-
-    The many people who came seeking respite on the massage table almost always had deeper wounds
-    that needed attending to — expressing as physical symptoms of disharmony within their system as
-    pain.
+    I believe this is real, and not a metaphor. I believe the great work of our time is not only
+    personal, it is planetary. I believe the body and the earth are not two things. I believe
+    healing the small wound and healing the world are the same fire. I believe lineage is being
+    asked to flow again, and that the medicine people who can carry that flow are being called
+    forward now.
   paragraph_3: >-
-    After over a decade of devoted study, initiation, and maturation as an answer to the deeper
-    calling of my gifts in service to the world, I now have a richer set of specialized skills to
-    provide the much needed deep work to bring about life changing contact with the inner domains of
-    Spirit and Self.
+    For sixteen years I have been listening to this on the massage table, and for more than a decade
+    in the deeper rooms of initiation, study, and maturation. The medicine basket has widened to
+    meet what is being asked of us.
   quote: >-
     What has always been here remains: deep somatic tending, sacred space, relational care, and the
     devoted art of helping people return to themselves. <strong>And something new is arriving,
     too.</strong>
-  evolution_intro: 'Bodywork & Botanicals has become the next evolution of shamanic care:'
+  evolution_intro: The next evolution of this work
   evolution_name: The Animist Apothecary
 vision:
-  section_label: The Greater Calling
-  title: Healing the earth grid.<br><em>One ceremony at a time.</em>
+  section_label: What This Work Tends
+  title: Healing the earth grid,<br><em>one ceremony at a time</em>.
   body_1: >-
-    The great work of our time is not only personal — it is planetary. Adi Marie is cultivating
-    communities of ceremonialists, building collective healing containers, and weaving systems of
-    sacred resourcing in service to this precious planet and all sacred kin.
+    The great work of our time is not only personal — it is planetary. The body and the earth are
+    not two things; healing the small wound and healing the world are the same fire. This practice
+    is shaped to that truth.
   body_2: >-
-    The work is scaling — into group trajectories, community hubs, and training pathways — because
-    the earth grid needs woven networks of healers, ceremonialists, and devotees of the living
-    world.
+    The work moves in three shapes — solo containers held with full devotion, communal fires that
+    weave the kin together, and bespoke engagements for those whose decisions shape the world.
   pillars:
-    - title: Solo Intensives
+    - title: The Solo Path
       icon: —
       description: >-
-        One-on-one Acolyte journeys for deep personal transformation and spiritual sovereignty —
-        held with full presence and devotion.
-    - title: Community & Groups
+        One-on-one acolyte work for deep personal transformation, spiritual sovereignty, and the
+        long arc of becoming. Held with full presence.
+      link_text: Apply for solo work
+      link_url: book.html
+    - title: The Communal Fire
       icon: — —
       description: >-
-        Themed group trajectories, eco-immersions, firesides, and collective healing containers in
-        devoted service to the life web.
-    - title: Private Engagements
+        Themed group trajectories, seasonal ceremonies, eco-immersions, and clinics in devoted
+        service to the living web.
+      link_text: See community work
+      link_url: community.html
+    - title: Bespoke Engagements
       icon: ———
       description: >-
-        Bespoke ceremonial work, retreats, and consulting for leaders, organizations, and
-        communities of practitioners.
+        Private ceremonial work, retreats, and counsel for leaders, organizations, and the
+        constellations of practitioners they hold.
+      link_text: Inquire for private work
+      link_url: book.html
 offerings:
-  section_label: Current Offerings
-  title: Sacred pathways of <em>transformation</em>
+  section_label: The Medicine Basket
+  title: What lives inside the <em>work</em>
   body: >-
-    Each offering is a doorway. Choose the one that calls to the depth of your readiness — from
-    single sessions to year-long developmental arcs.
+    These are the modalities I carry — practices that come forward inside Seasons of Change, and
+    within any bespoke container we shape together. They are not menu items to be selected; they
+    arrive as the season of the work calls them.
   featured:
-    image: https://images.unsplash.com/photo-1762755126280-6d8a4f9d1115?w=1400&h=600&fit=crop&q=80
+    image: https://images.unsplash.com/photo-1762755126280-6d8a4f9d1115?w=1600&h=900&fit=crop&q=80
     image_position: center
-    label: Cornerstone Offering
-    title: Mythopoetic Living — Developmental Arcs
+    label: The Cornerstone
+    title: Seasons of Change — The Metamorphic Year
     description_1: >-
-      A 3—24 month ceremonial developmental trajectory — weaving Sacred Breath sessions with
-      Guidance & Counsel into a living container for deep self-actualization and spiritual
-      sovereignty.
-    description_2: 12-session progressions, built around your season of readiness.
-    meta: Solo Acolyte Intensives · Group Trajectories · 3—24 Month Containers
-    cta_text: Explore the Developmental Arc —
+      A year-long ceremonial trajectory walked through the wheel of the year. Lineage teachings,
+      group ceremony, prep and aftercare calls, firesides, and bespoke individual support woven
+      throughout.
+    description_2: >-
+      Held with twelve in a single circle. The deepest container — and the one inside which the
+      whole medicine basket comes forward.
+    meta: Twelve-Month Cohort · Held on the Wheel · Application Required
+    cta_text: Walk the Year —
     cta_url: mythopoetic.html
   cards:
-    - image: https://images.unsplash.com/photo-1492552181161-62217fc3076d?w=600&h=400&fit=crop&q=80
+    - image: https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&h=900&fit=crop&q=80
+      tag: Threshold · Readying
+      title: Intake & Preparation
+      tagline: Before the work, the readying.
+      description: ""
+      for_whom: ""
+      shape: ""
+      link_text: ""
+      link_url: ""
+    - image: https://images.unsplash.com/photo-1601922046210-41e129a3e64a?w=900&h=900&fit=crop&q=80
+      tag: Counsel · Threshold
+      title: Guidance & Counsel
+      tagline: Sacred conversation at the threshold of knowing.
+      description: ""
+      for_whom: ""
+      shape: ""
+      link_text: ""
+      link_url: ""
+    - image: https://images.unsplash.com/photo-1627769916425-74c2344a3439?w=900&h=900&fit=crop&q=80
+      tag: Ancestral · Elemental
+      title: Mediumship & Divination
+      tagline: A mirror held by those who walked before.
+      description: ""
+      for_whom: ""
+      shape: ""
+      link_text: ""
+      link_url: ""
+    - image: https://images.unsplash.com/photo-1492552181161-62217fc3076d?w=900&h=900&fit=crop&q=80
       tag: Somatic · Sacred
       title: Shamanic Bodywork
-      description: >-
-        Deep somatic healing through the body's living memory — restoring the sacred conversation
-        between flesh, spirit, and land. The body as altar; sensation as oracle.
-      link_text: Learn More —
-      link_url: shamanic-bodywork.html
-    - image: https://images.unsplash.com/photo-1579101451346-4d0cd752f4b8?w=600&h=400&fit=crop&q=80
-      tag: Multi-Day · Immersive
-      title: Personal Immersions
-      description: >-
-        Extended containers for those ready to go all the way in — multi-day experiences of radical
-        presence, ceremony, and spiritual reclamation.
-      link_text: Learn More —
-      link_url: personal-immersions.html
-    - image: https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&h=400&fit=crop&q=80
-      tag: Collective · Ritual
-      title: Ceremonial & Ritual Groups
-      description: >-
-        Themed group trajectories, seasonal ceremonies, and collective healing containers — because
-        the work of tending the life web is communal.
-      link_text: Learn More —
-      link_url: ceremonial-groups.html
-    - image: https://images.unsplash.com/photo-1601922046210-41e129a3e64a?w=600&h=400&fit=crop&q=80
-      tag: Guidance · Counsel
-      title: Pláticas
-      description: >-
-        Sacred conversation at the threshold of knowing. Strategic spiritual counsel. A space to be
-        witnessed, guided, and met with honesty and devotion.
-      link_text: Learn More —
-      link_url: platicas.html
-    - image: https://images.unsplash.com/photo-1627769916425-74c2344a3439?w=600&h=400&fit=crop&q=80
-      tag: Ancestral · Elemental
-      title: Ancestral & Elemental Divinations
-      description: >-
-        Readings and transmissions from the ancestral and elemental realms — a mirror held by those
-        who walked before you, for clarity at the crossroads.
-      link_text: Learn More —
-      link_url: divinations.html
-    - image: https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&h=400&fit=crop&q=80
-      tag: Open Access · Reciprocity
-      title: Community Clinics
-      description: >-
-        Sliding-scale gatherings and accessible group sessions held in service to the wider
-        community — entry points for those called to begin, attuned to Sacred Reciprocity so the
-        work meets all who need it.
-      link_text: Learn More —
-      link_url: community-clinics.html
+      tagline: The body as altar. Sensation as oracle.
+      description: ""
+      for_whom: ""
+      shape: ""
+      link_text: ""
+      link_url: ""
+    - image: https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=900&h=900&fit=crop&q=80
+      tag: Plant Medicine · Ceremony
+      title: Entheogenic Ceremony
+      tagline: When the medicine asks to be met with reverence.
+      description: ""
+      for_whom: ""
+      shape: ""
+      link_text: ""
+      link_url: ""
+    - image: https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=900&h=900&fit=crop&q=80
+      tag: Earth · Element
+      title: Elemental & Nature-Based Rituals
+      tagline: Rites tended in conversation with the living world.
+      description: ""
+      for_whom: ""
+      shape: ""
+      link_text: ""
+      link_url: ""
+    - image: https://images.unsplash.com/photo-1502810365585-cad7e8db77b9?w=900&h=900&fit=crop&q=80
+      tag: Aftercare · Weaving
+      title: Integration & Aftercare
+      tagline: After the threshold, the weaving.
+      description: ""
+      for_whom: ""
+      shape: ""
+      link_text: ""
+      link_url: ""
 practitioner:
   image: /images/adi-hero-portrait.jpg
   image_position: center top
@@ -151,45 +177,48 @@ practitioner:
     Marie carries a medicine basket woven from traditional herbalism, animist cosmology, somatic
     awareness, shamanic practice, and the sacred arts of ceremony.
   paragraph_2: >-
-    Working with doctors, medicine people, therapists, leaders of industry, and those whose
-    decisions shape the trajectory of this earth ship — both as individuals and within the many
-    constellations of their communities.
+    The work is held with doctors, medicine people, therapists, leaders of industry, and those
+    whose decisions shape the trajectory of this earth ship — both as individuals and within the
+    many constellations of their communities. The practice follows a migratory rhythm between
+    Topanga and the wider lands, with seasons of deep nature retreat where the inner work is
+    tended, and where the depths of the practice are kept fed.
   location: >-
-    Based in Topanga Canyon, Los Angeles — available worldwide for virtual sessions, private
-    engagements, and in person for those called to the land.
-  cta_text: Read the Full Story
+    Based in Topanga Canyon, Los Angeles. Available worldwide for virtual sessions and private
+    engagements, and in person along the migratory route, for those called to the land.
+  cta_text: Read the longer story
   cta_url: about.html
 process:
-  section_label: How to Begin
-  title: Your path forward,<br><em>step by step</em>
-  intro: The work begins with a simple, honest inquiry. From there, a path reveals itself.
+  section_label: ""
+  title: Three movements of the <em>work</em>
+  intro: >-
+    I work with those ready to step in as stewards of the land and stewards of this work. We enter
+    the special realms that open themselves to us — respectfully, reverentially — building
+    relationship with those worlds, so that the space is beautifully tended for the many
+    generations to come.
   questions:
-    - Awakening or Healing?
-    - Solo or Groups?
-    - Once or Ongoing?
+    - Awakening or healing?
+    - Solo or in kinship?
+    - Once, or ongoing?
   steps:
-    - number: '01'
-      title: Intake & Inquiry
+    - number: I
+      title: The Inquiry
       description: >-
-        A paid Intake & Inquiry session (Pláticas rate) to feel the resonance, share your needs,
-        assess readiness, and outline a path forward together. This is a substantive consultation —
-        not a brief intro call.
-    - number: '02'
-      title: Choose Your Path
+        Listen for what is calling — let the readiness rise. Schedule a 90-minute paid Intake &
+        Inquiry conversation, and write an introductory letter giving a full picture of what brings
+        you to this work and what you are looking for. Putting it into words is part of the
+        preparation; the process begins before we meet.
+    - number: II
+      title: The Work
       description: >-
-        Together we identify whether a Solo Acolyte intensive, group trajectory, or individual
-        session best meets your readiness.
-    - number: '03'
-      title: Commit & Begin
+        A preparatory process held with care. The ceremony itself, or a series of works tended in
+        their season. Then integration and aftercare calls. The work moves through its full arc,
+        attended at every turn.
+    - number: III
+      title: The Living Web
       description: >-
-        A deposit opens the container and signals your readiness. Dates are set. The work is engaged
-        with full intention.
-    - number: '04'
-      title: Aftercare & Integration
-      description: >-
-        The work continues in the weaving. Integration practices and follow-up support are woven
-        throughout every offering.
-  cta_text: Begin Here — Book Your Call
+        What you have walked is part of an ancient process that continues to awaken and grow. You
+        become kin within a wider weaving — practitioners, lineages, and the worlds themselves.
+  cta_text: Apply for the Inquiry
   cta_url: book.html
 testimonial:
   text: >-
@@ -199,9 +228,9 @@ testimonial:
   author: M.K. — Physician & Medicine Woman, New Mexico
 cta_section:
   section_label: Begin the Work
-  title: The earth grid needs<br><em>your medicine.</em>
+  title: The earth grid needs<br><em>your medicine</em>.
   body: >-
-    Whether you're here for your own healing or to train as a ceremonialist in service to the living
-    web — your season begins now.
-  cta_text: Work With Us
+    Some come for their own healing. Some come to walk a year as a ceremonialist in service to the
+    living web. Either way, the season begins at the threshold.
+  cta_text: Apply to Begin
   cta_url: book.html
