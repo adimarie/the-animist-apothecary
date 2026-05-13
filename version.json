@@ -1,12 +1,12 @@
 {
-  "version": "v260513.03 7:58p",
-  "release": 3,
-  "sha": "e654824",
-  "fullSha": "e654824f0f9f4bad38749f35841a55405feaba0b",
+  "version": "v260513.04 8:54p",
+  "release": 4,
+  "sha": "c846e95",
+  "fullSha": "c846e95b9bb178da04c3bed779300f9e7b36fbe8",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-13T12:57:43-07:00",
-  "commits": [{"sha":"e654824","message":"Hero: bump .hero-content padding-top 58vh → 66vh","author":"Adi Marie"}]
+  "pushedAt": "2026-05-13T13:54:24-07:00",
+  "commits": [{"sha":"c846e95","message":"Hero: text hovers just above midpoint, fully centered (Polish v30)","author":"Adi Marie"}]
 }
