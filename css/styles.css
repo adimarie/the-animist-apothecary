@@ -5084,18 +5084,25 @@ section.fade-in {
 }
 
 /* =====================================================================
-   POLISH v30 — Lower hero title + subtitle deep into the canopy (75%)
-   Drops the .hero-content top padding from 14vh to ~58vh so the words
-   sit in the lower portion of the hero, breathing right above the
-   button at 75vh. The text block + button now form a single grouping
-   at the base of the trunk.
-   Title sizing pulled in a touch so the heavier composition reads.
+   POLISH v30 — Hero text hovers just above the midpoint, centered
+   Title + subtitle sit as a single centered block whose visual center
+   falls a touch above 50vh — the words float in the upper canopy,
+   horizontally centered to the column. Button stays at 75vh (Polish v26).
    ===================================================================== */
 
 .hero-content {
-  padding-top: 66vh !important;
+  padding-top: 38vh !important;
   padding-bottom: 4rem !important;
   gap: .9rem !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.hero-title,
+.hero-subtitle {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .hero-title {
@@ -5109,22 +5116,22 @@ section.fade-in {
   margin-top: 0 !important;
 }
 
-/* Tighten the radial pocket so it tracks the lowered text block */
+/* Radial pocket tracks the new mid-height text position */
 .hero-content::before {
   background: radial-gradient(
-    ellipse 70% 55% at 50% 70%,
-    rgba(8, 5, 2, 0.55) 0%,
-    rgba(8, 5, 2, 0.30) 40%,
+    ellipse 70% 50% at 50% 48%,
+    rgba(8, 5, 2, 0.50) 0%,
+    rgba(8, 5, 2, 0.28) 40%,
     rgba(8, 5, 2, 0.10) 70%,
     rgba(8, 5, 2, 0) 92%
   ) !important;
 }
 
 @media (max-width: 1024px) {
-  .hero-content { padding-top: 60vh !important; }
+  .hero-content { padding-top: 34vh !important; }
   .hero-title   { font-size: clamp(2.1rem, 6vw, 3.4rem) !important; }
 }
 @media (max-width: 600px) {
-  .hero-content { padding-top: 50vh !important; }
+  .hero-content { padding-top: 30vh !important; }
   .hero-title   { font-size: clamp(1.9rem, 7vw, 2.6rem) !important; }
 }
