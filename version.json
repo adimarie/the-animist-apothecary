@@ -1,12 +1,12 @@
 {
-  "version": "v260513.02 7:47p",
-  "release": 2,
-  "sha": "336503d",
-  "fullSha": "336503d95e0973785a5faff2341560e8a1ac9470",
+  "version": "v260513.03 7:58p",
+  "release": 3,
+  "sha": "e654824",
+  "fullSha": "e654824f0f9f4bad38749f35841a55405feaba0b",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-13T12:46:58-07:00",
-  "commits": [{"sha":"336503d","message":"Hero: drop title + subtitle 75% into the canopy (Polish v30 revised)","author":"Adi Marie"}]
+  "pushedAt": "2026-05-13T12:57:43-07:00",
+  "commits": [{"sha":"e654824","message":"Hero: bump .hero-content padding-top 58vh → 66vh","author":"Adi Marie"}]
 }
