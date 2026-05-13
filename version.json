@@ -1,12 +1,12 @@
 {
-  "version": "v260513.01 7:45p",
-  "release": 1,
-  "sha": "1c16346",
-  "fullSha": "1c1634658553538ddb399f5221b7d2bee0514298",
+  "version": "v260513.02 7:47p",
+  "release": 2,
+  "sha": "336503d",
+  "fullSha": "336503d95e0973785a5faff2341560e8a1ac9470",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-13T12:45:29-07:00",
-  "commits": [{"sha":"1c16346","message":"Hero: lower title + subtitle by 5vh (Polish v30)","author":"Adi Marie"}]
+  "pushedAt": "2026-05-13T12:46:58-07:00",
+  "commits": [{"sha":"336503d","message":"Hero: drop title + subtitle 75% into the canopy (Polish v30 revised)","author":"Adi Marie"}]
 }
