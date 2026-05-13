@@ -1,12 +1,12 @@
 {
-  "version": "v260513.06 9:36p",
-  "release": 6,
-  "sha": "016548a",
-  "fullSha": "016548a36d799fe3f4a057223c7adca0ecd732f7",
+  "version": "v260513.07 9:37p",
+  "release": 7,
+  "sha": "8063394",
+  "fullSha": "806339423b170a88f64d4ed704df4e640fdd8801",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-13T14:36:10-07:00",
-  "commits": [{"sha":"016548a","message":"Hero: title → 'Formidable gifts for an era of awakening'","author":"Adi Marie"}]
+  "pushedAt": "2026-05-13T14:36:57-07:00",
+  "commits": [{"sha":"8063394","message":"Hero: shift text into the lower half (translate -3% → +10%)","author":"Adi Marie"}]
 }
