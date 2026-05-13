@@ -1,12 +1,12 @@
 {
-  "version": "v260513.08 9:39p",
-  "release": 8,
-  "sha": "ba8cc13",
-  "fullSha": "ba8cc1379d82b87f3f331bbd2cc655b6feb595f8",
+  "version": "v260513.09 10:57p",
+  "release": 9,
+  "sha": "6db7fdb",
+  "fullSha": "6db7fdb861d6387ddc16433d4f867249d6641713",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-13T14:39:08-07:00",
-  "commits": [{"sha":"ba8cc13","message":"Hero: push text further into lower half (translateY 10% → 20%)","author":"Adi Marie"}]
+  "pushedAt": "2026-05-13T15:57:27-07:00",
+  "commits": [{"sha":"6db7fdb","message":"Hero: position text in upper-third + bust CSS cache","author":"Adi Marie"}]
 }
