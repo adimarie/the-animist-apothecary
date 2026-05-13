@@ -5101,8 +5101,8 @@ section.fade-in {
   justify-content: center !important;
   align-items: center !important;
   text-align: center !important;
-  /* Lift the centered block a touch above the exact middle of the hero */
-  transform: translateY(-3%) !important;
+  /* Push the centered block down into the lower half of the hero */
+  transform: translateY(10%) !important;
 }
 
 .hero-title,
@@ -5125,10 +5125,10 @@ section.fade-in {
   margin-bottom: 0 !important;
 }
 
-/* Radial pocket tracks the new mid-height text position */
+/* Radial pocket tracks the lower-half text position */
 .hero-content::before {
   background: radial-gradient(
-    ellipse 70% 55% at 50% 47%,
+    ellipse 70% 55% at 50% 60%,
     rgba(8, 5, 2, 0.50) 0%,
     rgba(8, 5, 2, 0.28) 40%,
     rgba(8, 5, 2, 0.10) 70%,
