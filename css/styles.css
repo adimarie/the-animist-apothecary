@@ -5125,15 +5125,80 @@ section.fade-in {
   margin-bottom: 0 !important;
 }
 
-/* Radial pocket tracks the upper-third text position */
+/* Feathered dark rectangle backdrop — covers the text block.
+   Horizontal feather via background gradient (left/right edges fade).
+   Vertical feather via mask-image (top/bottom edges fade).
+   Reads as a softly shaded panel rather than a hard rectangle, so
+   the image breathes through and around it. */
 .hero-content::before {
-  background: radial-gradient(
-    ellipse 70% 55% at 50% 32%,
-    rgba(8, 5, 2, 0.50) 0%,
-    rgba(8, 5, 2, 0.28) 40%,
-    rgba(8, 5, 2, 0.10) 70%,
-    rgba(8, 5, 2, 0) 92%
+  top: 14% !important;
+  right: 8% !important;
+  bottom: 44% !important;  /* Stop above the button area */
+  left: 8% !important;
+  width: auto !important;
+  height: auto !important;
+  background: linear-gradient(
+    to right,
+    rgba(8, 5, 2, 0) 0%,
+    rgba(8, 5, 2, 0.78) 14%,
+    rgba(8, 5, 2, 0.78) 86%,
+    rgba(8, 5, 2, 0) 100%
   ) !important;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 14%,
+    rgba(0, 0, 0, 1) 86%,
+    rgba(0, 0, 0, 0) 100%
+  ) !important;
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 14%,
+    rgba(0, 0, 0, 1) 86%,
+    rgba(0, 0, 0, 0) 100%
+  ) !important;
+  z-index: 0 !important;
+}
+
+/* Second feathered patch behind the button so it reads against the
+   bright sunburst area without needing the giant darkening rectangle */
+.hero-content::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 53% !important;
+  bottom: 32% !important;
+  left: 28% !important;
+  right: 28% !important;
+  background: linear-gradient(
+    to right,
+    rgba(8, 5, 2, 0) 0%,
+    rgba(8, 5, 2, 0.70) 18%,
+    rgba(8, 5, 2, 0.70) 82%,
+    rgba(8, 5, 2, 0) 100%
+  ) !important;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0) 100%
+  ) !important;
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0) 100%
+  ) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* Make sure text + button render above the backdrop */
+.hero-content > * {
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 1024px) {
