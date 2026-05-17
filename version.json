@@ -1,12 +1,12 @@
 {
-  "version": "v260513.09 10:57p",
-  "release": 9,
-  "sha": "6db7fdb",
-  "fullSha": "6db7fdb861d6387ddc16433d4f867249d6641713",
+  "version": "v260517.01 7:29p",
+  "release": 1,
+  "sha": "68b4414",
+  "fullSha": "68b44140e61d771b826b8344df695e725dcbb5f0",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervmeorf1",
-  "pushedAt": "2026-05-13T15:57:27-07:00",
-  "commits": [{"sha":"6db7fdb","message":"Hero: position text in upper-third + bust CSS cache","author":"Adi Marie"}]
+  "machine": "runnervmrw5os",
+  "pushedAt": "2026-05-17T12:29:29-07:00",
+  "commits": [{"sha":"68b4414","message":"Hero: feathered dark backdrop behind text + button for readability","author":"Adi Marie"}]
 }
