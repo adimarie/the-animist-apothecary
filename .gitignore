@@ -80,3 +80,6 @@ images/ChatGPT Image*.png
 
 # Local IDE launch config
 .claude/launch.json
+
+# Project memory / decisions (workflow files, not public content)
+memory/
