@@ -117,7 +117,7 @@
     <div class="sub">The Animist Apothecary</div>
     <h3>Pages</h3>
     <ul id="navList"></ul>
-    <h3>Coming next</h3>
+    <h3>In the loom</h3>
     <ul id="navStubs"></ul>
   </aside>
 
@@ -144,12 +144,17 @@
       { name: 'title', label: 'Title', widget: 'text' },
       { name: 'icon', label: 'Icon (decorative dashes)', hint: 'e.g. — or —— or ———', widget: 'text' },
       { name: 'description', label: 'Description', widget: 'textarea' },
+      { name: 'link_text', label: 'Button Text', hint: 'e.g. "Apply for solo work"', widget: 'text' },
+      { name: 'link_url', label: 'Button URL', hint: 'e.g. book.html or community.html', widget: 'text' },
     ];
     const OFFERING_CARD_FIELDS = [
       { name: 'image', label: 'Card Image', widget: 'image' },
       { name: 'tag', label: 'Tag (small caps eyebrow)', widget: 'text' },
       { name: 'title', label: 'Card Title', widget: 'text' },
-      { name: 'description', label: 'Card Description', widget: 'textarea' },
+      { name: 'tagline', label: 'Tagline (italic one-liner)', hint: 'A short poetic line that sits under the title', widget: 'text' },
+      { name: 'description', label: 'Description', widget: 'textarea' },
+      { name: 'for_whom', label: 'For Whom', hint: 'One phrase: who this offering meets', widget: 'text' },
+      { name: 'shape', label: 'Shape', hint: 'Duration / format. e.g. "60–90 minutes · virtual or in person"', widget: 'text' },
       { name: 'link_text', label: 'Link Text', widget: 'text' },
       { name: 'link_url', label: 'Link URL', widget: 'text' },
     ];
@@ -509,6 +514,72 @@
           },
         ],
       },
+
+      calendar: {
+        title: 'The Wheel — Calendar',
+        liveUrl: 'https://theanimistapothecary.com/calendar.html',
+        path: '_content/calendar.yml',
+        groups: [
+          {
+            heading: 'Hero — top of page',
+            fields: [
+              { name: 'hero.eyebrow', label: 'Eyebrow', widget: 'text' },
+              { name: 'hero.title', label: 'Title', hint: 'HTML allowed (<em>, <br>)', widget: 'text' },
+              { name: 'hero.subtitle', label: 'Subtitle', widget: 'text' },
+              { name: 'hero.image', label: 'Hero Image', widget: 'image' },
+              { name: 'hero.image_position', label: 'Image — Vertical Position', widget: 'select', options: POSITION_OPTIONS },
+            ],
+          },
+          {
+            heading: 'Migratory Route',
+            hint: 'Where you’ll be through the year. Reorder, add, or remove stops.',
+            fields: [
+              { name: 'migratory.section_label', label: 'Section Label', widget: 'text' },
+              { name: 'migratory.intro', label: 'Intro Body', widget: 'textarea' },
+              { name: 'migratory.stops', label: 'Stops', widget: 'list', itemLabel: 'Stop', fields: [
+                { name: 'season', label: 'Season (eyebrow)', widget: 'text' },
+                { name: 'place', label: 'Place', widget: 'text' },
+                { name: 'months', label: 'Months', hint: 'e.g. “March — May”', widget: 'text' },
+                { name: 'note', label: 'Note', widget: 'textarea' },
+              ] },
+            ],
+          },
+          {
+            heading: 'Events Section Header',
+            fields: [
+              { name: 'events_section_label', label: 'Section Label', widget: 'text' },
+              { name: 'events_intro', label: 'Intro Body', widget: 'textarea' },
+            ],
+          },
+          {
+            heading: 'Events',
+            hint: 'Each event becomes a row. Reorder by date by dragging up/down. Status options: Open, Waitlist, By inquiry, Closed.',
+            fields: [
+              { name: 'events', label: 'Events', widget: 'list', itemLabel: 'Event', fields: [
+                { name: 'date_text', label: 'Date (short)', hint: 'e.g. “Mar 20”', widget: 'text' },
+                { name: 'date_full', label: 'Date (full / season)', hint: 'e.g. “Spring Equinox · 2026”', widget: 'text' },
+                { name: 'title', label: 'Event Title', widget: 'text' },
+                { name: 'location', label: 'Location', widget: 'text' },
+                { name: 'type', label: 'Type (eyebrow tag)', hint: 'e.g. Public Ceremony, Cohort, Travel, Retreat', widget: 'text' },
+                { name: 'status', label: 'Status', hint: 'Open / Waitlist / By inquiry / Closed', widget: 'text' },
+                { name: 'description', label: 'Description', widget: 'textarea' },
+                { name: 'cta_text', label: 'Button Text', widget: 'text' },
+                { name: 'cta_url', label: 'Button URL', widget: 'text' },
+              ] },
+            ],
+          },
+          {
+            heading: 'Bottom CTA',
+            fields: [
+              { name: 'cta_section.eyebrow', label: 'Eyebrow', widget: 'text' },
+              { name: 'cta_section.title', label: 'Title', hint: 'HTML allowed', widget: 'text' },
+              { name: 'cta_section.body', label: 'Body', widget: 'textarea' },
+              { name: 'cta_section.cta_text', label: 'Button Text', widget: 'text' },
+              { name: 'cta_section.cta_url', label: 'Button URL', widget: 'text' },
+            ],
+          },
+        ],
+      },
     };
 
     const STUB_PAGES = [
@@ -572,7 +643,7 @@
       const main = document.getElementById('main');
       main.innerHTML = `
         <h2>${schema.title}</h2>
-        <div class="crumb">Editing <code>${schema.path}</code> · saves commit + deploy automatically (1–2 min) <a class="live-link" href="${schema.liveUrl}" target="_blank">view live page ↗</a></div>
+        <div class="crumb">Tending <code>${schema.path}</code> · changes reach the world within 1–2 minutes of saving <a class="live-link" href="${schema.liveUrl}" target="_blank">view the live page ↗</a></div>
         <div id="formRoot"></div>
         <div class="actions">
           <button id="saveBtn" disabled>Save</button>
@@ -894,7 +965,7 @@
         state.sha = json.newSha || state.sha;
         state.dirty = false;
         const db = document.getElementById('discardBtn'); if (db) db.disabled = true;
-        setStatus('Saved. Live in 1–2 minutes.', 'ok');
+        setStatus('Saved. The change reaches the world in 1–2 minutes.', 'ok');
       } catch (e) {
         btn.disabled = false;
         setStatus('Save failed: ' + e.message, 'err');

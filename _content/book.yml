@@ -1,87 +1,63 @@
-# Begin Here / Booking page editable content — every section editable via /studio/.
-# Saves commit to GitHub and deploy automatically.
+# Begin Here gateway page editable content. Saves commit to GitHub via /studio/.
 # js/content-loader.js reads this and patches book.html.
+# Phase 1 rebuild 2026-05-18 based on Tier-1 peer research findings.
 
 hero:
   image: "https://images.unsplash.com/photo-1672196799313-047c77f87f80?w=1400&h=600&fit=crop&q=80"
-  eyebrow: "Begin Here"
-  title: "Let's explore what's possible"
+  image_alt: "The threshold image for Begin Here, the gateway to The Animist Apothecary."
+  image_position: "center"
+  image_size: "cover"
+  eyebrow: "Cross the Threshold"
+  title: "Begin <em>here</em>"
   subtitle: "A conversation first. Always."
 
-booking_intro:
-  section_label: "Your Inquiry"
-  title: "Tell us a little <em>about yourself</em>"
-  body: "If you're called to this work, complete the form below. We'll review your message and be in touch within 48 hours to schedule a free introductory call."
+intro:
+  section_label: "The Threshold"
+  title: "Three doors. <em>Each an honest beginning.</em>"
+  body: "Begin Here is the entry to working with Adi Marie. Three ways to come close to the work, in order of depth. The conversation comes first, always."
 
-form_labels:
-  first_name: "First Name"
-  first_name_placeholder: "Your first name"
-  last_name: "Last Name"
-  last_name_placeholder: "Your last name"
-  email: "Email Address"
-  email_placeholder: "your@email.com"
-  phone: "Phone (optional)"
-  phone_placeholder: "+1 (555) 000-0000"
-  offerings_label: "What offerings are you drawn to? (select all that apply)"
-  format_label: "How would you like to work?"
-  investment_label: "Investment Range"
-  start_date_label: "Preferred Start Date"
-  message_label: "What are you carrying? What are you seeking?"
-  message_placeholder: "Tell us a bit about where you are, what you're navigating, and what you're hoping to find. There is no wrong thing to say — only the true thing."
-  referral_label: "How did you hear about The Animist Apothecary?"
-  referral_placeholder: "Referral, social media, search, word of mouth..."
-  submit_text: "Send Your Inquiry"
-  submit_note: "We read every message and respond within 48 hours."
+doors:
+  section_label: "Three Doors"
+  title: "How would you like to <em>begin.</em>"
+  body: "Choose the door that matches where you stand."
 
-form_options:
-  offerings:
-    - value: "developmental_arc"
-      label: "Mythopoetic Living — Developmental Arc"
-    - value: "shamanic_bodywork"
-      label: "Shamanic Bodywork"
-    - value: "personal_immersions"
-      label: "Personal Immersions"
-    - value: "ceremonial_groups"
-      label: "Ceremonial & Ritual Groups"
-    - value: "platicas"
-      label: "Pláticas — Guidance & Counsel"
-    - value: "divinations"
-      label: "Ancestral & Elemental Divinations"
-    - value: "training"
-      label: "Ceremonialist Training"
-    - value: "not_sure"
-      label: "Not sure yet — help me find my entry point"
-  formats:
-    - value: "solo"
-      label: "Solo — just me"
-    - value: "group"
-      label: "Group — with others"
-    - value: "both"
-      label: "Both — open to either"
-    - value: "not_sure"
-      label: "Not sure yet"
-  investment_ranges:
-    - value: ""
-      label: "Select a range"
-    - value: "1500-3000"
-      label: "$1,500 — $3,000"
-    - value: "3000-8000"
-      label: "$3,000 — $8,000"
-    - value: "8000-15000"
-      label: "$8,000 — $15,000"
-    - value: "open"
-      label: "I don't have a set budget — let's talk"
+practitioner:
+  image: "images/adi-hero-portrait.jpg"
+  image_position: "center top"
+  section_label: "The Practitioner"
+  title: "<em>Adi Marie.</em>"
+  body_1: "Adi Marie carries a medicine basket woven from traditional herbalism, animist cosmology, somatic awareness, shamanic practice, and the sacred arts of ceremony. Sixteen years of devoted service, over a decade of initiation and study."
+  body_2: "She works with doctors, medicine people, therapists, leaders, and those whose decisions shape the trajectory of this earth ship. Solo and in community."
+  location: "Based in Southern California. Available worldwide for virtual work, in person for those called to the land."
+  cta_text: "Read the full story &rarr;"
+
+reciprocity:
+  section_label: "Sacred Reciprocity"
+  title: "Rates flow from the <em>work that takes shape.</em>"
+  body: "The conversation itself is a paid one, held in sacred reciprocity. Rates vary by format (group, solo session, developmental arcs, classes, ongoing work). What is right is shaped in the Intake & Inquiry conversation, where the work itself begins to take form."
+  cta_text: "Read more about Sacred Reciprocity &rarr;"
+
+testimonial:
+  mark: "&ldquo;"
+  text: "Working with Adi is like having the most skilled, loving, ferocious medicine person as your guide. She sees what others miss, holds what others drop, and moves you through the underworld with uncommon grace. My life is unrecognizably more alive."
+  author: "M.K., Physician & Medicine Woman, New Mexico"
 
 steps_section:
-  section_label: "What Happens Next"
+  section_label: "How the Work Begins"
   title: "A conversation first. <em>Always.</em>"
   steps:
     - number: "01"
-      title: "We Read Your Message"
-      description: "Every inquiry is read personally. We take the time to understand what you're carrying before responding."
+      title: "We Read Your Note"
+      description: "Every inquiry is read by hand. We take the time to understand what you're carrying before we respond."
     - number: "02"
-      title: "We Schedule a Call"
-      description: "A free 20-minute introductory call to feel the resonance, ask questions, and outline a path forward together."
+      title: "We Find an Hour"
+      description: "A short introductory call. To feel the resonance, ask the questions, and see what shape the work might take."
     - number: "03"
-      title: "We Find Your Path"
-      description: "If it feels right for both of us, we design the container together — and the work begins on your terms."
+      title: "We Shape the Container"
+      description: "If it's right for both of us, we design the container together. The work begins on your terms."
+
+subscribe:
+  section_label: "Seasonal Letters"
+  title: "Stay close to the <em>work.</em>"
+  body: "Slow letters from the practice. Sent with the seasons. Free, no obligation."
+  cta_text: "Subscribe"

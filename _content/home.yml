@@ -1,84 +1,124 @@
 hero:
-  eyebrow: ""
+  eyebrow: "Ceremonial &amp; Ritual Stewardship<br>Interdimensional Intermediary &amp; Guide"
   title: Formidable gifts for<br>an <em>era of awakening</em>
   subtitle: >-
-    An immersive and intentional cultivation through direct-experiences with ceremony & ritual —
-    to grow in skill, depth, presence, and ability as we grow to participate more fully within the
-    Weaves of Creation.
-  cta_primary_text: Let's Begin
-  cta_primary_url: '#begin'
-  cta_secondary_text: ""
-  cta_secondary_url: ""
-  image: /images/uploads/hero-tree-of-life.jpg
-  image_alt: An ancient tree with a moss-covered trunk, sunlight streaming in long rays through the canopy and the morning mist
-  image_position: center 60%
+    A place of ritual and ceremonial practice — for those becoming interdimensional intermediaries
+    in service to the well-being, restoration, and healing of this world.
+  cta_primary_text: Personal Work
+  cta_primary_url: solo-work.html
+  cta_secondary_text: The Training Grounds
+  cta_secondary_url: training-grounds.html
+  image: /images/uploads/adi-hero-temple-grounds.jpg
+  image_alt: Adi Marie in a navy patterned shawl seated in a soft-lit adobe temple sanctuary
+  image_position: center
   image_size: cover
 metamorphosis:
-  image: /images/uploads/2026-05-07-1777185257768.jpeg
+  image: /images/uploads/longer-story-milky-canyon.jpg
   image_position: center
-  section_label: A Calling of These Times
-  title: We are living through<br>a <em>Great Awakening</em>.
+  section_label: The Longer Story
+  title: Welcome to an eternal edge of infinite horizons
+  intro: An invitation to the thresholds of life's great work.
   paragraph_1: >-
-    We are in the turning of the Kali Yuga page. Things are maximizing in their darkness, and at the
-    same moment something ancient is stirring back through the layers of rupture. The dormant
+    We are in the turning of the Great Wheels of Time. Things are maximizing in their darkness, and
+    at the same moment something ancient is stirring back through the layers of rupture. The dormant
     lineages of power are reawakening. Old ancestral families exiled from this realm are reaching
     through, asking to be midwifed home. Gaia is dreaming us awake. The more-than-human kin are
-    speaking. The earth grid is calling out to the ones who can hold it.
+    speaking. The earth grid is calling out to the ones who can hold and embody it as they walk this
+    world.
   paragraph_2: >-
-    I believe this is real, and not a metaphor. I believe the great work of our time is not only
-    personal, it is planetary. I believe the body and the earth are not two things. I believe
-    healing the small wound and healing the world are the same fire. I believe lineage is being
-    asked to flow again, and that the medicine people who can carry that flow are being called
-    forward now.
+    I believe that this is real, and ever more fully underway. I believe the great
+    work of our time is not only personal, it is planetary. I believe the body and the earth are
+    connected by the light of our sacred flames; and that healing the wounds and wars within
+    brings healing and peace to the world throughout. I believe these lineages are being called to
+    flow again, and that the people of medicine and power who can be anchors and conduits to that
+    flow are being called forward now.
   paragraph_3: >-
-    For sixteen years I have been listening to this on the massage table, and for more than a decade
-    in the deeper rooms of initiation, study, and maturation. The medicine basket has widened to
-    meet what is being asked of us.
+    We are each so deeply guided, and held in the currents of the Divine Plan. May we take our place
+    within the pantheon and bring the blessings of our grace. May you find yourself deepening as you
+    enter this space.
   quote: >-
-    What has always been here remains: deep somatic tending, sacred space, relational care, and the
-    devoted art of helping people return to themselves. <strong>And something new is arriving,
-    too.</strong>
-  evolution_intro: The next evolution of this work
+    <p>You are the scintillating poetry of Creation; woven of Waters, Earth, and Sky. The
+    Miraculous Dream living within the embrace of The Infinite Seas.</p>
+    <p>I walk with you through the darkness, and keep steady vigil of your growing light. Holding
+    faith in the quiet alchemy unfolding within your own metamorphosis.</p>
+  evolution_intro: Is this what your path has been calling for?
   evolution_name: The Animist Apothecary
 vision:
-  section_label: What This Work Tends
-  title: Healing the earth grid,<br><em>one ceremony at a time</em>.
+  section_label: Community Ceremonies
+  title: Ceremony and Ritual
+  subtitle: >-
+    Rites of passage, initiation, healing, learning, and awakening — through interdimensional
+    and ceremonial journey work.
   body_1: >-
-    The great work of our time is not only personal — it is planetary. The body and the earth are
-    not two things; healing the small wound and healing the world are the same fire. This practice
-    is shaped to that truth.
+    Sacred space tended with full reverence. Solo containers and group ceremonies woven for those
+    called to the deeper waters of the work. Held with the lineages, with the elements, and with
+    the Spirit Worlds as collaborators.
   body_2: >-
-    The work moves in three shapes — solo containers held with full devotion, communal fires that
-    weave the kin together, and bespoke engagements for those whose decisions shape the world.
-  pillars:
-    - title: The Solo Path
-      icon: —
-      description: >-
-        One-on-one acolyte work for deep personal transformation, spiritual sovereignty, and the
-        long arc of becoming. Held with full presence.
-      link_text: Apply for solo work
-      link_url: book.html
-    - title: The Communal Fire
-      icon: — —
-      description: >-
-        Themed group trajectories, seasonal ceremonies, eco-immersions, and clinics in devoted
-        service to the living web.
-      link_text: See community work
-      link_url: community.html
-    - title: Bespoke Engagements
-      icon: ———
-      description: >-
-        Private ceremonial work, retreats, and counsel for leaders, organizations, and the
-        constellations of practitioners they hold.
-      link_text: Inquire for private work
-      link_url: book.html
-offerings:
-  section_label: The Medicine Basket
-  title: What lives inside the <em>work</em>
+    Open enrollment for community gatherings. Private ceremony available through Seasons of Change.
+    Required first conversation: the Intake & Inquiry — for attunement, alignment, and safety
+    assessment.
+  cta_text: Enter the Ceremony
+  cta_url: community.html
+private_ceremonies:
+  section_label: Bespoke Containers
+  title: Private Ceremonies
+  subtitle: Custom-tended ceremonial retreats and multi-day rituals.
   body: >-
-    These are the modalities I carry — practices that come forward inside Seasons of Change, and
-    within any bespoke container we shape together. They are not menu items to be selected; they
-    arrive as the season of the work calls them.
+    Unique and custom bespoke ceremonial experiences — for individuals, couples, families, and
+    small groups. Multi-day rituals, immersive retreats, and one-of-a-kind ceremonies tended
+    fully to your needs.
+  types_label: Forms It Can Take
+  types:
+    - Multi-Day Intensives
+    - Custom Rites of Passage
+    - Family Ceremonies
+    - Couple's Rites
+    - Threshold Work
+    - Private Retreats
+  meta: By Application · Held on Location · Travel Available
+  cta_text: Inquire for a Private Ceremony
+  cta_url: "https://new.theanimistapothecary.com/contact/inquiry"
+  image: https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1600&h=900&fit=crop&q=80
+  image_position: center
+metamorphic_year:
+  section_label: Premium Cohort
+  title: The Metamorphic Year
+  subtitle: A Gathered Counsel
+  body: >-
+    A premium community cultivation program for visionary leaders coming together to make impact
+    in their local regions — by generating the communities their lands have been waiting for.
+  meta: Twelve-Month Cohort · Curated Counsel · By Application
+  cta_text: Inquire for the Counsel
+  cta_url: "https://new.theanimistapothecary.com/apply"
+  image: https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1600&h=900&fit=crop&q=80
+  image_position: center
+seasons_of_change:
+  section_label: Private Containers
+  title: Seasons of Change
+  subtitle: Ceremonially-Assisted Coaching Containers
+  body: >-
+    Private one-on-one containers for deep personal transformation — therapeutic coaching woven
+    with ceremonial assistance, held across the seasons of your becoming.
+  reasons_label: Three Paths In
+  reasons:
+    - title: Therapeutic Processes
+      description: Trauma-informed healing.
+    - title: Personal Development
+      description: Skill-building of self or spiritual gifts.
+    - title: Spiritual Awakenings
+      description: Direct revelation and integration.
+  meta: Solo Acolyte Work · 3–24 Month Containers · By Application
+  cta_text: Inquire for the Path
+  cta_url: "https://new.theanimistapothecary.com/apply"
+  image: https://images.unsplash.com/photo-1762755126280-6d8a4f9d1115?w=1600&h=900&fit=crop&q=80
+  image_position: center
+offerings:
+  section_label: The School
+  title: The Training Grounds
+  subtitle: A School of Somatic Shamanic Arts
+  body: >-
+    Six cohort trajectories — each a developmental arc of study, practice, and embodiment,
+    held on the wheel of the year.
   featured:
     image: https://images.unsplash.com/photo-1762755126280-6d8a4f9d1115?w=1600&h=900&fit=crop&q=80
     image_position: center
@@ -95,142 +135,177 @@ offerings:
     cta_text: Walk the Year —
     cta_url: mythopoetic.html
   cards:
-    - image: https://images.unsplash.com/photo-1455390582262-044cdead277a?w=900&h=900&fit=crop&q=80
-      tag: Threshold · Readying
-      title: Intake & Preparation
-      tagline: Before the work, the readying.
-      description: ""
+    - image: https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?w=900&h=900&fit=crop&q=80
+      tag: Narrative · Storywork
+      title: Mythopoetic Being
+      tagline: Choose a magical story. Live like your life depends on it.
+      description: >-
+        Attending and rewriting the myths and narratives that shape and define who we are
+        becoming.
       for_whom: ""
       shape: ""
       link_text: ""
       link_url: ""
-    - image: https://images.unsplash.com/photo-1601922046210-41e129a3e64a?w=900&h=900&fit=crop&q=80
-      tag: Counsel · Threshold
-      title: Guidance & Counsel
-      tagline: Sacred conversation at the threshold of knowing.
-      description: ""
-      for_whom: ""
-      shape: ""
-      link_text: ""
-      link_url: ""
-    - image: https://images.unsplash.com/photo-1627769916425-74c2344a3439?w=900&h=900&fit=crop&q=80
-      tag: Ancestral · Elemental
-      title: Mediumship & Divination
-      tagline: A mirror held by those who walked before.
-      description: ""
-      for_whom: ""
-      shape: ""
-      link_text: ""
-      link_url: ""
-    - image: https://images.unsplash.com/photo-1492552181161-62217fc3076d?w=900&h=900&fit=crop&q=80
-      tag: Somatic · Sacred
+    - image: https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=900&h=900&fit=crop&q=80
+      tag: Bodywork · Spirit Touch
       title: Shamanic Bodywork
-      tagline: The body as altar. Sensation as oracle.
-      description: ""
+      tagline: Bring hands-on healing into medicine work.
+      description: >-
+        For bodyworkers and massage therapists deepening their gifts and cultivating their offerings
+        with spirit work.
       for_whom: ""
       shape: ""
       link_text: ""
       link_url: ""
-    - image: https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=900&h=900&fit=crop&q=80
-      tag: Plant Medicine · Ceremony
-      title: Entheogenic Ceremony
-      tagline: When the medicine asks to be met with reverence.
-      description: ""
+    - image: https://images.unsplash.com/photo-1551244072-5d12893278ab?w=900&h=900&fit=crop&q=80
+      tag: Guardian · Stewardship
+      title: Ceremonialist Training
+      tagline: How to hold the sacred container.
+      description: >-
+        How to be a guardian and supportive guide — for those who want to help hold the work.
       for_whom: ""
       shape: ""
       link_text: ""
       link_url: ""
-    - image: https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=900&h=900&fit=crop&q=80
-      tag: Earth · Element
-      title: Elemental & Nature-Based Rituals
-      tagline: Rites tended in conversation with the living world.
-      description: ""
+    - image: https://images.unsplash.com/photo-1466354424719-343280fe118b?w=900&h=900&fit=crop&q=80
+      tag: Creative · Expression
+      title: Expressive Arts
+      tagline: Let the wild thing speak through you.
+      description: >-
+        Voice, movement, color, and song — for those reclaiming the creative life-force as a
+        medicine path.
       for_whom: ""
       shape: ""
       link_text: ""
       link_url: ""
-    - image: https://images.unsplash.com/photo-1502810365585-cad7e8db77b9?w=900&h=900&fit=crop&q=80
-      tag: Aftercare · Weaving
-      title: Integration & Aftercare
-      tagline: After the threshold, the weaving.
-      description: ""
+    - image: https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=900&h=900&fit=crop&q=80
+      tag: Mediumship · Intercession
+      title: Spirit Mediation
+      tagline: Bridge the worlds. Carry the messages.
+      description: >-
+        Working as an intermediary between the human world and the Spirit Worlds — for those
+        called to translate, mediate, and serve as channel.
+      for_whom: ""
+      shape: ""
+      link_text: ""
+      link_url: ""
+    - image: https://images.unsplash.com/photo-1505765050516-f72dcac9c60a?w=900&h=900&fit=crop&q=80
+      tag: Creation · Vessel
+      title: Basins of Creation
+      tagline: The sacred containers we make and tend.
+      description: >-
+        Working with the basins, vessels, and containers that hold creation — for those who
+        steward the work of bringing forth.
       for_whom: ""
       shape: ""
       link_text: ""
       link_url: ""
 practitioner:
-  image: /images/adi-hero-portrait.jpg
+  image: /images/uploads/practitioner-midnight-sorceress.jpg
   image_position: center top
-  section_label: The Practitioner
+  section_label: Your Practitioner
   title: <em>Adi Marie</em>
   quals:
-    - Therapeutic Coach
-    - Entheogenic Medicine
-    - Ceremonial & Ritual Stewardship
     - Interdimensional Intermediary & Guide
-    - Somatic Medium & Diviner
-    - Shamanic Bodyworker
-    - Massage Therapist
-    - Expressive Arts
+    - Somatic Medium & Oracular Diviner
+    - Ceremonial & Ritual Stewardship
   paragraph_1: >-
-    After 16 years of devoted service and over a decade of initiation, study, and maturation — Adi
-    Marie carries a medicine basket woven from traditional herbalism, animist cosmology, somatic
-    awareness, shamanic practice, and the sacred arts of ceremony.
+    This work is based in Southern California with a regular migratory route along the North
+    American West Coast. Adi Marie is flown around the world serving individuals and communities
+    ready to embark upon and enact great change — first and foremost within themselves, to then
+    do so to the world around.
   paragraph_2: >-
-    The work is held with doctors, medicine people, therapists, leaders of industry, and those
-    whose decisions shape the trajectory of this earth ship — both as individuals and within the
-    many constellations of their communities. The practice follows a migratory rhythm between
-    Topanga and the wider lands, with seasons of deep nature retreat where the inner work is
-    tended, and where the depths of the practice are kept fed.
-  location: >-
-    Based in Topanga Canyon, Los Angeles. Available worldwide for virtual sessions and private
-    engagements, and in person along the migratory route, for those called to the land.
+    Adi has always had an immense power and gift in the spoken word, serving as an oracular poet,
+    mythmaker, and storyteller — synthesizing and cohering the messages from the otherworlds into
+    a tapestry of tales for us to live within. This gift has been formalized through her initiation
+    as a voice diviner, having been chosen for the role by the Spirit World.
+  paragraph_3: >-
+    Her gifts of somatic mediumship led her into medical, therapeutic, and shamanic bodywork,
+    providing deep spiritual and emotional openings for physicalization and somatic expression and
+    embodiment of the psyche and soul. Adi Marie has over 19 years of experience in the world of
+    medicines of the wilds, specializing in entheogenic sacraments — guiding others through
+    specialized and extraordinary states of visionary consciousness.
+  serves_quote_epigraph: >-
+    For those whose inner work moves outward — and impacts thousands of lives — whose healing
+    shapes collective fields of community and industry — for the innovators, the creators, and
+    the world shapers, this work is for you.
+  serves_quote_stanza_1: >-
+    Adi Marie works with visionary leaders and masters of craft — those passionate in their
+    disciplines, ready to step deeper into the mysteries of the ineffable within their inner
+    worlds, and to plunge the depths to bring more light to the worlds we share.
+  serves_quote_stanza_2: >-
+    She also works with established communities to further their healing — so that those who are
+    ready may begin to step into their leadership and elderhood, forming nutritive and nourishing
+    ecosystems within which the children, the troubled, the lost, and the youth may heal and be
+    held, thrive and grow, and bring forth hope for the restoration of the village amidst the
+    urban sprawl.
+  serves_quote_stanza_3: >-
+    She helps those ready to hone their burgeoning spiritual gifts into formidable powers — to be
+    wielded benevolently in the shaping of a more beautiful world we all know is possible.
   cta_text: Read the longer story
   cta_url: about.html
 process:
-  section_label: ""
-  title: Three movements of the <em>work</em>
+  section_label: How to Begin
+  title: Three ways to enter the <em>work</em>
   intro: >-
-    I work with those ready to step in as stewards of the land and stewards of this work. We enter
-    the special realms that open themselves to us — respectfully, reverentially — building
-    relationship with those worlds, so that the space is beautifully tended for the many
-    generations to come.
-  questions:
-    - Awakening or healing?
-    - Solo or in kinship?
-    - Once, or ongoing?
+    Three doorways. Two are stand-alone services you can engage with directly. The third —
+    Intake & Inquiry — is the required gate for ceremony and cohort enrollment.
   steps:
-    - number: I
-      title: The Inquiry
+    - title: Guidance & Counsel
       description: >-
-        Listen for what is calling — let the readiness rise. Schedule a 90-minute paid Intake &
-        Inquiry conversation, and write an introductory letter giving a full picture of what brings
-        you to this work and what you are looking for. Putting it into words is part of the
-        preparation; the process begins before we meet.
-    - number: II
-      title: The Work
+        Therapeutic coaching, mentorship, and triage care — for those who want a steady guide
+        walking alongside them in the work.
+      link_text: "Read more →"
+      link_url: platicas.html
+    - title: Ancestral & Elemental Divination
       description: >-
-        A preparatory process held with care. The ceremony itself, or a series of works tended in
-        their season. Then integration and aftercare calls. The work moves through its full arc,
-        attended at every turn.
-    - number: III
-      title: The Living Web
+        Dagara stick and voice divination — for those who come to seek the counsel of the
+        Spirit Worlds.
+      link_text: "Read more →"
+      link_url: divinations.html
+    - title: Intake & Inquiry
       description: >-
-        What you have walked is part of an ancient process that continues to awaken and grow. You
-        become kin within a wider weaving — practitioners, lineages, and the worlds themselves.
-  cta_text: Apply for the Inquiry
-  cta_url: book.html
+        The required first step for those looking to sit in journey work — attunement,
+        alignment, and safety assessment. Opens the path to ceremony and class cohort enrollment.
+      link_text: "Begin the inquiry →"
+      link_url: book.html
+  cta_text: Schedule the Intake & Inquiry
+  cta_url: "https://new.theanimistapothecary.com/apply"
+  cta_note: The required first conversation for ceremony or cohort enrollment.
 testimonial:
   text: >-
     Working with Adi is like having the most skilled, loving, ferocious medicine person as your
     guide. She sees what others miss, holds what others drop, and moves you through the underworld
     with uncommon grace. My life is unrecognizably more alive.
   author: M.K. — Physician & Medicine Woman, New Mexico
+fern_feature:
+  image: images/uploads/tree-of-light-and-life.jpg
+  image_position: center
+  # TODO: swap to images/uploads/fern-labyrinth.jpg once Adi saves the file
 cta_section:
   section_label: Begin the Work
-  title: The earth grid needs<br><em>your medicine</em>.
+  title: Rites of passage for <em>modern humans</em>.
+  subtitle: Are you ready to step in?
   body: >-
-    Some come for their own healing. Some come to walk a year as a ceremonialist in service to the
-    living web. Either way, the season begins at the threshold.
+    Some come for their own healing. Some come for the deeper training. Some come because they
+    hold a community in need, a ceremony to be led, or a gathering to be tended. Either way, the
+    season begins at the threshold.
   cta_text: Apply to Begin
-  cta_url: book.html
+  cta_url: "https://new.theanimistapothecary.com/apply"
+  cta_secondary_text: Send a Message
+  cta_secondary_url: "https://new.theanimistapothecary.com/contact/inquiry"
+  cta_primary_note: For yourself or the deeper path
+  cta_secondary_note: For your community, organization, or private engagement
+  credentials: >-
+    19 years devoted service · Initiated medicine woman · Lineage-trained · Southern
+    California-based
+newsletter:
+  section_label: Seasonal Letters
+  title: Water, Milk, and Honey
+  body: >-
+    Tender reflections, sacred teachings, and updates from the practice — workshops, public
+    gatherings, the occasional surprise offering.
+  cta_text: Subscribe
+  trust_line: Held with care, never shared.
+  intake_pointer_text: For ceremony or private work, begin with an Intake & Inquiry Call
+  intake_pointer_url: book.html

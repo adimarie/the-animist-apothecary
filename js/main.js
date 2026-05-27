@@ -40,36 +40,14 @@ document.querySelectorAll('.accordion-header').forEach(header => {
   });
 });
 
-// ── Fade-in on scroll (Intersection Observer) ────────
-// The .js-ready class on <html> gates the CSS opacity:0 rule so content
-// is always visible if JS hasn't loaded. A 3-second safety net ensures
-// everything becomes visible even if the observer never fires.
-if ('IntersectionObserver' in window) {
-  document.documentElement.classList.add('js-ready');
-
-  const targets = document.querySelectorAll(
-    'section, .offering-card, .modality-card, .community-card, .process-step, .vision-pillar, .cycle-phase'
-  );
-
-  targets.forEach(el => el.classList.add('fade-in'));
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
-
-  targets.forEach(el => io.observe(el));
-
-  // Safety net: make everything visible after 3 seconds in case
-  // IntersectionObserver doesn't fire (e.g. prerendered/headless view)
-  setTimeout(() => {
-    targets.forEach(el => el.classList.add('visible'));
-  }, 3000);
-}
+// ── Fade-in on scroll DISABLED ──────────────────────
+// Was hiding YAML-rendered list items because the IntersectionObserver
+// was set up at page load on the hardcoded elements; when content-loader
+// replaced them with clones, the new ones inherited opacity:0 from
+// .fade-in but never got .visible. Polish v16 CSS kills the rule.
+// We still set .js-ready (other CSS may key off it) but no longer add
+// the .fade-in class anywhere.
+document.documentElement.classList.add('js-ready');
 
 // ── Book form: client-side success state ─────────────
 const bookForm = document.getElementById('booking-form');
@@ -87,3 +65,28 @@ if (bookForm) {
     }
   });
 }
+
+// ── Calendar: cue status badge color by text ────────
+// Runs after content-loader has populated the events list.
+(function () {
+  function applyStatusColors() {
+    document.querySelectorAll('.event-status').forEach(function (el) {
+      var t = (el.textContent || '').trim().toLowerCase();
+      if (t.indexOf('waitlist') !== -1) el.dataset.status = 'waitlist';
+      else if (t.indexOf('inquiry') !== -1) el.dataset.status = 'inquiry';
+      else if (t.indexOf('closed') !== -1 || t.indexOf('full') !== -1) el.dataset.status = 'closed';
+      else if (t.indexOf('open') !== -1) el.dataset.status = 'open';
+    });
+  }
+  // Run once on DOMContentLoaded, and again after a short delay so it
+  // catches content that content-loader injected asynchronously.
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    applyStatusColors();
+    setTimeout(applyStatusColors, 800);
+  } else {
+    document.addEventListener('DOMContentLoaded', function () {
+      applyStatusColors();
+      setTimeout(applyStatusColors, 800);
+    });
+  }
+})();

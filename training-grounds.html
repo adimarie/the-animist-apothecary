@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Training Grounds &middot; The Animist Apothecary</title>
+  <meta name="description" content="A school of somatic shamanic arts — six cohort trajectories, each a developmental arc of study, practice, and embodiment.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500&family=Inter:wght@300;400;500&family=Tangerine&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v04">
+  <style>
+    body[data-content-page^="offering-"] { background: #FAF8F3; color: var(--ink-deep, #2D2A26); }
+    .offering-hero { position: relative; min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 6rem 3rem; overflow: hidden; background: #F5F3ED; }
+    .offering-hero-inner { position: relative; z-index: 3; max-width: 880px; text-align: center; color: var(--ink-deep, #2D2A26); }
+    .offering-hero-eyebrow { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 1rem; }
+    .offering-hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(3.2rem, 6.5vw, 5.8rem); line-height: 1.05; margin: 0.4rem 0 0.8rem; letter-spacing: -0.005em; }
+    .offering-hero-subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.6rem); line-height: 1.55; color: var(--ink-quiet, #5A554C); margin: 0 auto; max-width: 720px; }
+    .offering-body { padding: 5rem 3rem; }
+    .offering-body-inner { max-width: 1300px; margin: 0 auto; }
+    .offering-intro { max-width: 760px; margin: 0 auto 4rem; text-align: center; }
+    .offering-intro p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; line-height: 1.75; color: var(--ink-soft, #3D3A36); margin: 0; font-style: italic; }
+    .cohorts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+    @media (max-width: 980px) { .cohorts-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .cohorts-grid { grid-template-columns: 1fr; } }
+    .cohort-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; cursor: pointer; transition: transform 0.25s; }
+    .cohort-card:hover { transform: translateY(-3px); }
+    .cohort-card:hover .cohort-image { box-shadow: 0 26px 50px rgba(0,0,0,0.18); }
+    .cohort-card:hover .cohort-apply { color: var(--ink-deep, #2D2A26); border-color: var(--ink-deep, #2D2A26); }
+    .cohort-image { aspect-ratio: 4/5; background-size: cover; background-position: center; border-radius: 2px; margin-bottom: 1.4rem; box-shadow: 0 18px 40px rgba(0,0,0,0.12); transition: box-shadow 0.25s; }
+    .cohort-tag { font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 0.5rem; }
+    .cohort-title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.6rem; line-height: 1.15; color: var(--ink-deep, #2D2A26); margin: 0 0 0.6rem; }
+    .cohort-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.08rem; line-height: 1.5; color: var(--ink-soft, #3D3A36); margin: 0 0 0.8rem; }
+    .cohort-desc { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.6; color: var(--ink-soft, #3D3A36); opacity: 0.85; margin: 0 0 1rem; flex-grow: 1; }
+    .cohort-apply { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold, #c9a84c); padding-bottom: 0.3rem; border-bottom: 1px solid var(--gold, #c9a84c); align-self: flex-start; transition: color 0.25s, border-color 0.25s; }
+    .offering-final-cta { padding: 5rem 3rem; background: #2D2A26; color: #F5F3ED; text-align: center; }
+    .offering-final-cta h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.2; color: #F5F3ED; margin: 0.4rem 0 1.2rem; }
+    .offering-final-cta p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: rgba(245, 243, 237, 0.85); max-width: 600px; margin: 0 auto 2rem; }
+  </style>
+</head>
+<body data-content-page="offering-training-grounds">
+
+    <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span></a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+        <ul>
+          <li class="nav-dropdown-parent"><a href="index.html">Home <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="index.html">Welcome</a><a href="about.html">The Practitioner</a><a href="https://new.theanimistapothecary.com/apply">Begin Here</a></div></li>
+          <li class="nav-dropdown-parent"><a href="about.html">About <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="about.html">Adi Marie</a><a href="about.html#practice">The Practice</a><a href="about.html#lineage">Lineage &amp; Training</a></div></li>
+          <li class="nav-dropdown-parent"><a href="solo-work.html">Solo Work <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="solo-work.html">Overview</a><a href="seasons-of-change.html">Seasons of Change</a><a href="ceremony-and-ritual.html#private">Private Ceremonies</a><a href="https://new.theanimistapothecary.com/apply">Schedule the Intake</a></div></li>
+          <li class="nav-dropdown-parent"><a href="group-work.html">Group Work <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="group-work.html">Overview</a><a href="ceremony-and-ritual.html#community">Community Ceremonies</a><a href="metamorphic-year.html">The Metamorphic Year</a><a href="calendar.html">Calendar of Gatherings</a></div></li>
+          <li class="nav-dropdown-parent"><a href="training-grounds.html">The School <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="training-grounds.html">Overview</a><a href="training-grounds.html#cohorts">The Six Cohorts</a><a href="https://new.theanimistapothecary.com/apply">Apply to Begin</a></div></li>
+          <li class="nav-dropdown-parent"><a href="writings.html">Resources <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="calendar.html">The Calendar</a><a href="writings.html">Writings &amp; Letters</a><a href="sacred-reciprocity.html">Sacred Reciprocity</a><a href="platicas.html">Pl&aacute;ticas</a></div></li>
+        </ul>
+      </nav>
+      <a href="https://new.theanimistapothecary.com/apply" class="nav-cta apply-btn">Apply</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="offering-hero">
+    <div class="offering-hero-inner">
+      <span class="offering-hero-eyebrow">The School</span>
+      <h1 class="offering-hero-title">The Training Grounds</h1>
+      <p class="offering-hero-subtitle">A School of Somatic Shamanic Arts.</p>
+    </div>
+  </section>
+
+  <section class="offering-body" id="cohorts">
+    <div class="offering-body-inner">
+
+      <div class="offering-intro">
+        <p>Six cohort trajectories &mdash; each a developmental arc of study, practice, and embodiment, held on the wheel of the year. Where students of the medicine come to study and embody the practices.</p>
+      </div>
+
+      <div class="cohorts-grid">
+
+        <a href="#" class="cohort-card" data-modal-open
+           data-eyebrow="Narrative &middot; Storywork"
+           data-title="Mythopoetic Being"
+           data-desc="Attending and rewriting the myths and narratives that shape and define who we are becoming. Choose a magical story — live like your life depends on it. A cohort trajectory walking the narrative arc together."
+           data-reciprocity="Cohort enrollment by application · Reciprocity disclosed in application call"
+           data-inquire-email-subject="Mythopoetic Being Cohort — Application">
+          <div class="cohort-image" style="background-image: url('https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?w=900&h=900&fit=crop&q=80');"></div>
+          <span class="cohort-tag">Narrative &middot; Storywork</span>
+          <h3 class="cohort-title">Mythopoetic Being</h3>
+          <p class="cohort-tagline">Choose a magical story. Live like your life depends on it.</p>
+          <p class="cohort-desc">Attending and rewriting the myths and narratives that shape and define who we are becoming.</p>
+          <span class="cohort-apply">Apply to the Cohort &rarr;</span>
+        </a>
+
+        <a href="#" class="cohort-card" data-modal-open
+           data-eyebrow="Bodywork &middot; Spirit Touch"
+           data-title="Shamanic Bodywork"
+           data-desc="For bodyworkers and massage therapists deepening their gifts and cultivating their offerings with spirit work. Hands-on healing brought into medicine work. Cohort trajectory with hands-on practice components."
+           data-reciprocity="Cohort enrollment by application · Reciprocity disclosed in application call"
+           data-inquire-email-subject="Shamanic Bodywork Cohort — Application">
+          <div class="cohort-image" style="background-image: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=900&h=900&fit=crop&q=80');"></div>
+          <span class="cohort-tag">Bodywork &middot; Spirit Touch</span>
+          <h3 class="cohort-title">Shamanic Bodywork</h3>
+          <p class="cohort-tagline">Bring hands-on healing into medicine work.</p>
+          <p class="cohort-desc">For bodyworkers and massage therapists deepening their gifts and cultivating their offerings with spirit work.</p>
+          <span class="cohort-apply">Apply to the Cohort &rarr;</span>
+        </a>
+
+        <a href="#" class="cohort-card" data-modal-open
+           data-eyebrow="Guardian &middot; Stewardship"
+           data-title="Ceremonialist Training"
+           data-desc="How to be a guardian and supportive guide — for those who want to help hold the work. The container, the protocol, the witness. Trains practitioners in the art of holding sacred space for others."
+           data-reciprocity="Cohort enrollment by application · Reciprocity disclosed in application call"
+           data-inquire-email-subject="Ceremonialist Training Cohort — Application">
+          <div class="cohort-image" style="background-image: url('https://images.unsplash.com/photo-1551244072-5d12893278ab?w=900&h=900&fit=crop&q=80');"></div>
+          <span class="cohort-tag">Guardian &middot; Stewardship</span>
+          <h3 class="cohort-title">Ceremonialist Training</h3>
+          <p class="cohort-tagline">How to hold the sacred container.</p>
+          <p class="cohort-desc">How to be a guardian and supportive guide &mdash; for those who want to help hold the work.</p>
+          <span class="cohort-apply">Apply to the Cohort &rarr;</span>
+        </a>
+
+        <a href="#" class="cohort-card" data-modal-open
+           data-eyebrow="Creative &middot; Expression"
+           data-title="Expressive Arts"
+           data-desc="Voice, movement, color, and song — for those reclaiming the creative life-force as a medicine path. A cohort that lets the wild thing speak through you. For artists, makers, and anyone retrieving their voice."
+           data-reciprocity="Cohort enrollment by application · Reciprocity disclosed in application call"
+           data-inquire-email-subject="Expressive Arts Cohort — Application">
+          <div class="cohort-image" style="background-image: url('https://images.unsplash.com/photo-1466354424719-343280fe118b?w=900&h=900&fit=crop&q=80');"></div>
+          <span class="cohort-tag">Creative &middot; Expression</span>
+          <h3 class="cohort-title">Expressive Arts</h3>
+          <p class="cohort-tagline">Let the wild thing speak through you.</p>
+          <p class="cohort-desc">Voice, movement, color, and song &mdash; for those reclaiming the creative life-force as a medicine path.</p>
+          <span class="cohort-apply">Apply to the Cohort &rarr;</span>
+        </a>
+
+        <a href="#" class="cohort-card" data-modal-open
+           data-eyebrow="Mediumship &middot; Intercession"
+           data-title="Spirit Mediation"
+           data-desc="Working as an intermediary between the human world and the Spirit Worlds — for those called to translate, mediate, and serve as channel. Bridge the worlds. Carry the messages. Cohort trains discernment and intercessory practice."
+           data-reciprocity="Cohort enrollment by application · Reciprocity disclosed in application call"
+           data-inquire-email-subject="Spirit Mediation Cohort — Application">
+          <div class="cohort-image" style="background-image: url('https://images.unsplash.com/photo-1505765050516-f72dcac9c60a?w=900&h=900&fit=crop&q=80');"></div>
+          <span class="cohort-tag">Mediumship &middot; Intercession</span>
+          <h3 class="cohort-title">Spirit Mediation</h3>
+          <p class="cohort-tagline">Bridge the worlds. Carry the messages.</p>
+          <p class="cohort-desc">Working as an intermediary between the human world and the Spirit Worlds &mdash; for those called to translate, mediate, and serve as channel.</p>
+          <span class="cohort-apply">Apply to the Cohort &rarr;</span>
+        </a>
+
+        <a href="#" class="cohort-card" data-modal-open
+           data-eyebrow="Creation &middot; Vessel"
+           data-title="Basins of Creation"
+           data-desc="Working with the basins, vessels, and containers that hold creation — for those who steward the work of bringing forth. Cohort for makers, midwives, founders, and tenders of new emergence."
+           data-reciprocity="Cohort enrollment by application · Reciprocity disclosed in application call"
+           data-inquire-email-subject="Basins of Creation Cohort — Application">
+          <div class="cohort-image" style="background-image: url('https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=900&h=900&fit=crop&q=80');"></div>
+          <span class="cohort-tag">Creation &middot; Vessel</span>
+          <h3 class="cohort-title">Basins of Creation</h3>
+          <p class="cohort-tagline">The sacred containers we make and tend.</p>
+          <p class="cohort-desc">Working with the basins, vessels, and containers that hold creation &mdash; for those who steward the work of bringing forth.</p>
+          <span class="cohort-apply">Apply to the Cohort &rarr;</span>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="offering-final-cta">
+    <h2>Apply to the <em>Training Grounds</em>.</h2>
+    <p>Cohorts open on the wheel of the year. The first conversation, always, is the Intake &amp; Inquiry &mdash; for attunement, alignment, and safety assessment.</p>
+    <a href="https://new.theanimistapothecary.com/apply" class="btn-primary">Apply to Begin</a>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="https://new.theanimistapothecary.com/apply">Apply / Intake</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="divinations.html">Divinations</a></li>
+            <li><a href="https://new.theanimistapothecary.com/contact/inquiry">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/content-loader.js" defer></script>
+  <script src="js/booking-modal.js" defer></script>
+</body>
+</html>

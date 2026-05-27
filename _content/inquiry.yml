@@ -1,0 +1,37 @@
+# Inquiry form page editable content. Saves commit to GitHub via /studio/.
+# js/content-loader.js reads this and patches inquiry.html.
+# Form wiring is queued for Phase 3 (edge function, captcha, contact upsert, email templates).
+
+hero:
+  image: "https://images.unsplash.com/photo-1672196799313-047c77f87f80?w=1400&h=600&fit=crop&q=80"
+  image_alt: "Imagery for the first note, the inquiry page at The Animist Apothecary."
+  image_position: "center"
+  image_size: "cover"
+  eyebrow: "The First Note"
+  title: "Write to <em>us</em>."
+  subtitle: "Every message is read by hand."
+
+form_intro:
+  title: "Tell us what <em>brings you</em>."
+  body: "If you're called to this work, write to us below. Every note is read by hand. We respond within 48 hours to set a quiet hour together."
+
+form_labels:
+  first_name: "First Name"
+  first_name_placeholder: "Your first name"
+  last_name: "Last Name"
+  last_name_placeholder: "Your last name"
+  email: "Email Address"
+  email_placeholder: "your@email.com"
+  phone: "Phone (optional)"
+  phone_placeholder: "+1 (555) 000-0000"
+  referral_label: "How did you find out about The Animist Apothecary?"
+  referral_placeholder: "Referral, social, search, word of mouth..."
+  carrying_label: "What are you carrying? What are you seeking?"
+  carrying_placeholder: "Where you are, what you're navigating, what you're hoping to find. There is no wrong thing to say. Only the true thing."
+  aligned_label: "What about this work feels aligned for you?"
+  offerings_label: "What are you looking for? (Select all that apply.)"
+  format_label: "How would you like to work?"
+  timing_label: "Time-sensitivity"
+  care_label: "Anything important to know to meet you with care?"
+  submit_text: "Send the Note"
+  submit_note: "Every message is read by hand. We respond within 48 hours."

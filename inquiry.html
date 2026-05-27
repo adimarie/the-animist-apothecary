@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The first note to Adi Marie at The Animist Apothecary. A short inquiry before the Intake and Inquiry conversation.">
+  <title>The First Note &middot; The Animist Apothecary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v04">
+</head>
+<body data-content-page="inquiry">
+
+      <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span>
+      </a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+        <ul>
+          <li class="nav-dropdown-parent"><a href="index.html">Home <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="index.html">Welcome</a><a href="about.html">The Practitioner</a><a href="https://new.theanimistapothecary.com/apply">Begin Here</a></div></li>
+          <li class="nav-dropdown-parent"><a href="about.html">About <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="about.html">Adi Marie</a><a href="about.html#practice">The Practice</a><a href="about.html#lineage">Lineage &amp; Training</a></div></li>
+          <li class="nav-dropdown-parent"><a href="solo-work.html">Solo Work <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="solo-work.html">Overview</a><a href="seasons-of-change.html">Seasons of Change</a><a href="ceremony-and-ritual.html#private">Private Ceremonies</a><a href="https://new.theanimistapothecary.com/apply">Schedule the Intake</a></div></li>
+          <li class="nav-dropdown-parent"><a href="group-work.html">Group Work <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="group-work.html">Overview</a><a href="ceremony-and-ritual.html#community">Community Ceremonies</a><a href="metamorphic-year.html">The Metamorphic Year</a><a href="calendar.html">Calendar of Gatherings</a></div></li>
+          <li class="nav-dropdown-parent"><a href="training-grounds.html">The School <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="training-grounds.html">Overview</a><a href="training-grounds.html#cohorts">The Six Cohorts</a><a href="https://new.theanimistapothecary.com/apply">Apply to Begin</a></div></li>
+          <li class="nav-dropdown-parent"><a href="writings.html">Resources <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="calendar.html">The Calendar</a><a href="writings.html">Writings &amp; Letters</a><a href="sacred-reciprocity.html">Sacred Reciprocity</a><a href="platicas.html">Pl&aacute;ticas</a></div></li>
+        </ul>
+      </nav>
+      <a href="https://new.theanimistapothecary.com/apply" class="nav-cta apply-btn">Apply</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-fullbleed">
+    <div class="hero-image" role="img"
+         aria-label="Imagery for the first note, the inquiry page at The Animist Apothecary."
+         data-content="hero.image" data-content-type="image"
+         data-content-alt="hero.image_alt"
+         data-content-bgpos="hero.image_position"
+         data-content-bgsize="hero.image_size"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow" data-content="hero.eyebrow">The First Note</span>
+      <h1 class="hero-title" data-content="hero.title" data-content-type="html">Write to <em>us</em>.</h1>
+      <p class="hero-subtitle" data-content="hero.subtitle">Every message is read by hand.</p>
+    </div>
+  </section>
+
+  <!-- FORM SECTION -->
+  <section class="booking-section" style="background: #F7F5F0;">
+    <div class="booking-inner">
+      <div class="booking-intro">
+        <h2 class="section-title" data-content="form_intro.title" data-content-type="html">Tell us what <em>brings you</em>.</h2>
+        <div class="section-body" style="max-width: 560px; margin: 0 auto;">
+          <p data-content="form_intro.body">If you're called to this work, write to us below. Every note is read by hand. We respond within 48 hours to set a quiet hour together.</p>
+        </div>
+      </div>
+
+      <!-- Form is not yet wired. Submit handler in js/main.js currently shows a confirmation only; Phase 3 wiring (edge function, captcha, email templates, contact upsert with do-not-include-in-retreats tag) is queued. -->
+      <form id="booking-form" onsubmit="handleBookingSubmit(event)">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="first-name" data-content="form_labels.first_name">First Name</label>
+            <input class="form-input" type="text" id="first-name" name="first_name" placeholder="Your first name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="last-name" data-content="form_labels.last_name">Last Name</label>
+            <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Your last name" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="email" data-content="form_labels.email">Email Address</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone" data-content="form_labels.phone">Phone (optional)</label>
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
+          <label class="form-label" for="referral" data-content="form_labels.referral_label">How did you find out about The Animist Apothecary?</label>
+          <input class="form-input" type="text" id="referral" name="referral" placeholder="Referral, social, search, word of mouth...">
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
+          <label class="form-label" for="carrying" data-content="form_labels.carrying_label">What are you carrying? What are you seeking?</label>
+          <textarea class="form-textarea" id="carrying" name="carrying" placeholder="Where you are, what you're navigating, what you're hoping to find. There is no wrong thing to say — only the true thing."></textarea>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
+          <label class="form-label" for="aligned" data-content="form_labels.aligned_label">What about this work feels aligned for you?</label>
+          <textarea class="form-textarea" id="aligned" name="aligned"></textarea>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
+          <label class="form-label" data-content="form_labels.offerings_label">What are you looking for? (Select all that apply.)</label>
+          <div class="checkbox-grid">
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="developmental_arc">
+              Mythopoetic Living — Developmental Arc
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="shamanic_bodywork">
+              Shamanic Bodywork
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="personal_immersions">
+              Personal Immersions
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="ceremonial_groups">
+              Ceremonial &amp; Ritual Groups
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="platicas">
+              Pl&aacute;ticas &mdash; Guidance &amp; Counsel
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="divinations">
+              Ancestral &amp; Elemental Divinations
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="training">
+              Ceremonialist Training
+            </label>
+            <label class="check-label">
+              <input type="checkbox" name="offerings" value="not_sure">
+              Not sure yet — help me find my entry point
+            </label>
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
+          <label class="form-label" data-content="form_labels.format_label">How would you like to work?</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="format" value="solo">
+              Solo — just me
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="format" value="group">
+              Group — with others
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="format" value="both">
+              Both — open to either
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="format" value="not_sure">
+              Not sure yet
+            </label>
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
+          <label class="form-label" data-content="form_labels.timing_label">Time-sensitivity</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="timing" value="steady">
+              Steady, exploring
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="timing" value="active">
+              Actively needing support soon
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="timing" value="other">
+              Other
+            </label>
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
+          <label class="form-label" for="care" data-content="form_labels.care_label">Anything important to know to meet you with care?</label>
+          <textarea class="form-textarea" id="care" name="care"></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-primary" data-content="form_labels.submit_text">Send the Note</button>
+          <p class="form-note" data-content="form_labels.submit_note">Every message is read by hand. We respond within 48 hours.</p>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="https://new.theanimistapothecary.com/apply">Apply / Intake</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="divinations.html">Divinations</a></li>
+            <li><a href="https://new.theanimistapothecary.com/contact/inquiry">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/content-loader.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ceremony &amp; Ritual &middot; The Animist Apothecary</title>
+  <meta name="description" content="Sacred space tended with full reverence — community circles, private ceremonies, multi-day rituals, and bespoke ceremonial retreats.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500&family=Inter:wght@300;400;500&family=Tangerine&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v04">
+  <style>
+    /* Dedicated offering page — shared template styles. */
+    body[data-content-page^="offering-"] {
+      background: #FAF8F3;
+      color: var(--ink-deep, #2D2A26);
+    }
+    .offering-hero {
+      position: relative;
+      min-height: 65vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 3rem;
+      overflow: hidden;
+    }
+    .offering-hero-image {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      z-index: 1;
+    }
+    .offering-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(rgba(20, 18, 14, 0.62), rgba(28, 24, 18, 0.72));
+      z-index: 2;
+    }
+    .offering-hero-inner {
+      position: relative; z-index: 3;
+      max-width: 880px;
+      text-align: center;
+      color: #F5F3ED;
+    }
+    .offering-hero-eyebrow {
+      display: inline-block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold-pale, #DCC178);
+      margin-bottom: 1rem;
+    }
+    .offering-hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(3.2rem, 6.5vw, 5.8rem);
+      line-height: 1.05;
+      margin: 0.4rem 0 0.8rem;
+      letter-spacing: -0.005em;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.3);
+    }
+    .offering-hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+      line-height: 1.55;
+      color: var(--gold-pale, #DCC178);
+      margin: 0;
+      max-width: 720px;
+      margin-left: auto; margin-right: auto;
+    }
+
+    .offering-body { padding: 6rem 3rem; }
+    .offering-body-inner { max-width: 900px; margin: 0 auto; }
+    .offering-section { margin-bottom: 5rem; }
+    .offering-section:last-child { margin-bottom: 0; }
+    .offering-section-label {
+      display: inline-block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.74rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold, #c9a84c);
+      margin-bottom: 0.8rem;
+    }
+    .offering-section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      line-height: 1.15;
+      color: var(--ink-deep, #2D2A26);
+      margin: 0.4rem 0 1.4rem;
+    }
+    .offering-body p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      line-height: 1.75;
+      color: var(--ink-soft, #3D3A36);
+      margin: 0 0 1.4rem;
+    }
+    /* Sub-offering grid: clickable cards that open the booking modal (private)
+       or link to the calendar (community). */
+    .sub-offering-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .sub-offering-card {
+      display: flex;
+      flex-direction: column;
+      padding: 1.4rem 1.4rem 1.2rem;
+      background: var(--paper, #FAF8F3);
+      border: 1px solid rgba(201, 168, 76, 0.28);
+      border-radius: 3px;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .sub-offering-card:hover {
+      border-color: var(--gold, #c9a84c);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(45, 42, 38, 0.08);
+    }
+    .sub-offering-eyebrow {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold, #c9a84c);
+      margin-bottom: 0.4rem;
+    }
+    .sub-offering-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 1.15rem;
+      line-height: 1.2;
+      color: var(--ink-deep, #2D2A26);
+      margin: 0 0 0.5rem;
+    }
+    .sub-offering-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--ink-soft, #3D3A36);
+      margin: 0 0 1rem;
+      flex-grow: 1;
+    }
+    .sub-offering-cta {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold, #c9a84c);
+      margin-top: auto;
+    }
+    /* Legacy chip style kept for backward compat with other pages */
+    .offering-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .offering-tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft, #3D3A36);
+      background: rgba(201, 168, 76, 0.06);
+      border: 1px solid rgba(201, 168, 76, 0.42);
+      border-radius: 999px;
+    }
+    .offering-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 2rem 0 0;
+    }
+    .offering-divider {
+      width: 80px;
+      height: 1px;
+      background: var(--gold, #c9a84c);
+      opacity: 0.5;
+      margin: 4rem auto;
+    }
+    .offering-final-cta {
+      padding: 5rem 3rem;
+      background: #2D2A26;
+      color: #F5F3ED;
+      text-align: center;
+    }
+    .offering-final-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      line-height: 1.2;
+      color: #F5F3ED;
+      margin: 0.4rem 0 1.2rem;
+    }
+    .offering-final-cta p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: rgba(245, 243, 237, 0.85);
+      max-width: 600px; margin: 0 auto 2rem;
+    }
+  </style>
+</head>
+<body data-content-page="offering-ceremony-and-ritual">
+
+    <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span>
+      </a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+        <ul>
+          <li class="nav-dropdown-parent"><a href="index.html">Home <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="index.html">Welcome</a><a href="about.html">The Practitioner</a><a href="https://new.theanimistapothecary.com/apply">Begin Here</a></div></li>
+          <li class="nav-dropdown-parent"><a href="about.html">About <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="about.html">Adi Marie</a><a href="about.html#practice">The Practice</a><a href="about.html#lineage">Lineage &amp; Training</a></div></li>
+          <li class="nav-dropdown-parent"><a href="solo-work.html">Solo Work <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="solo-work.html">Overview</a><a href="seasons-of-change.html">Seasons of Change</a><a href="ceremony-and-ritual.html#private">Private Ceremonies</a><a href="https://new.theanimistapothecary.com/apply">Schedule the Intake</a></div></li>
+          <li class="nav-dropdown-parent"><a href="group-work.html">Group Work <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="group-work.html">Overview</a><a href="ceremony-and-ritual.html#community">Community Ceremonies</a><a href="metamorphic-year.html">The Metamorphic Year</a><a href="calendar.html">Calendar of Gatherings</a></div></li>
+          <li class="nav-dropdown-parent"><a href="training-grounds.html">The School <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="training-grounds.html">Overview</a><a href="training-grounds.html#cohorts">The Six Cohorts</a><a href="https://new.theanimistapothecary.com/apply">Apply to Begin</a></div></li>
+          <li class="nav-dropdown-parent"><a href="writings.html">Resources <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="calendar.html">The Calendar</a><a href="writings.html">Writings &amp; Letters</a><a href="sacred-reciprocity.html">Sacred Reciprocity</a><a href="platicas.html">Pl&aacute;ticas</a></div></li>
+        </ul>
+      </nav>
+      <a href="https://new.theanimistapothecary.com/apply" class="nav-cta apply-btn">Apply</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- &mdash;&mdash;&mdash; HERO &mdash;&mdash;&mdash; -->
+  <section class="offering-hero">
+    <div class="offering-hero-image" style="background-image: url('images/uploads/hero-smoke-and-moss.jpg');"></div>
+    <div class="offering-hero-overlay"></div>
+    <div class="offering-hero-inner">
+      <span class="offering-hero-eyebrow">Community + Private Ceremony</span>
+      <h1 class="offering-hero-title">Ceremony and Ritual</h1>
+      <p class="offering-hero-subtitle">Rites of passage, initiation, healing, learning, and awakening &mdash; through interdimensional and ceremonial journey work.</p>
+    </div>
+  </section>
+
+  <!-- &mdash;&mdash;&mdash; BODY &mdash;&mdash;&mdash; -->
+  <section class="offering-body">
+    <div class="offering-body-inner">
+
+      <div class="offering-section">
+        <p>Sacred space tended with full reverence. Held with the lineages, with the elements, and with the Spirit Worlds as collaborators. Ceremony is the technology our ancestors carried for thresholds, transformations, and the deepest work of becoming &mdash; it is what the soul remembers.</p>
+      </div>
+
+      <!-- COMMUNITY CEREMONIES -->
+      <div class="offering-section" id="community">
+        <span class="offering-section-label">Community Offerings</span>
+        <h2 class="offering-section-title">Gather in the circle.</h2>
+        <p>Open enrollment for community gatherings. Where the kin come together to tend the work as one &mdash; in seasonal ceremony, women's and men's circles, grief and healing circles, prayers for peace, and rites of passage held throughout the wheel of the year.</p>
+        <div class="sub-offering-grid">
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">Monthly</span>
+            <h3 class="sub-offering-title">Moon Circles</h3>
+            <p class="sub-offering-desc">Aligned with each new and full moon. The lunar rhythm tended in circle.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">Seasonal &middot; 8 turning points</span>
+            <h3 class="sub-offering-title">Wheel of the Year</h3>
+            <p class="sub-offering-desc">Solstices, equinoxes, cross-quarters. Held in seasonal ceremony with the land.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">Drop-in</span>
+            <h3 class="sub-offering-title">Healing Circles</h3>
+            <p class="sub-offering-desc">Held space for collective healing. A circle for the weight that asks to be carried by more than one.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">By Threshold</span>
+            <h3 class="sub-offering-title">Rites of Passage</h3>
+            <p class="sub-offering-desc">Marking life thresholds in community &mdash; birth, coming-of-age, marriage, eldership, death.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">Cohorted</span>
+            <h3 class="sub-offering-title">Women&rsquo;s &amp; Men&rsquo;s Work</h3>
+            <p class="sub-offering-desc">Gender-aligned circles. Deep work in the company of kin who share the territory.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">Themed</span>
+            <h3 class="sub-offering-title">Prayers for Peace</h3>
+            <p class="sub-offering-desc">Collective prayer for the world, the lands, the people. Convened in moments of need.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">By Tradition</span>
+            <h3 class="sub-offering-title">EntheoEcology</h3>
+            <p class="sub-offering-desc">Plant medicine in earth-relation. Ceremonial education on entheogens and the living world.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">Somatic</span>
+            <h3 class="sub-offering-title">Emotional Progressions</h3>
+            <p class="sub-offering-desc">Cohorted somatic work moving through the emotional terrain in deliberate sequence.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">By Tradition</span>
+            <h3 class="sub-offering-title">Mesoamerica Diaspora</h3>
+            <p class="sub-offering-desc">Lineage-honoring circles for those reclaiming ancestral threads from Mesoamerica.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+        </div>
+        <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--ink-quiet, #5A554C); margin: 1.5rem 0 0;">All community ceremonies are listed on the Calendar with their dates, format, and reciprocity. Register from the calendar event itself.</p>
+      </div>
+
+      <div class="offering-divider" aria-hidden="true"></div>
+
+      <!-- PRIVATE CEREMONIES -->
+      <div class="offering-section" id="private">
+        <span class="offering-section-label">Bespoke Containers</span>
+        <h2 class="offering-section-title">Custom-tended ceremony.</h2>
+        <p>Unique and custom bespoke ceremonial experiences &mdash; for individuals, couples, families, and small groups. Multi-day rituals, immersive retreats, and one-of-a-kind ceremonies tended fully to your needs.</p>
+        <div class="sub-offering-grid">
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Multi-Day Private"
+             data-title="Multi-Day Intensives"
+             data-desc="2–7 day private ceremonial retreats, custom-tended to your moment. Held on the land, in your home, or at a venue arranged together. Reciprocity scales with duration and travel."
+             data-reciprocity="By inquiry · Reciprocity discussed at Intake & Inquiry"
+             data-inquire-email-subject="Multi-Day Intensive — Inquiry">
+            <span class="sub-offering-eyebrow">Multi-Day &middot; Private</span>
+            <h3 class="sub-offering-title">Multi-Day Intensives</h3>
+            <p class="sub-offering-desc">2&ndash;7 day private ceremonial retreats. Held on the land, custom-tended.</p>
+            <span class="sub-offering-cta">Schedule &amp; Inquire &rarr;</span>
+          </a>
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="By Threshold"
+             data-title="Custom Rites of Passage"
+             data-desc="Marriage, birth, death, transition, eldership. Held with full ceremonial reverence for the threshold you're crossing. Each rite custom-built with you and the field around you."
+             data-reciprocity="By inquiry · Reciprocity custom to the rite"
+             data-inquire-email-subject="Custom Rite of Passage — Inquiry">
+            <span class="sub-offering-eyebrow">By Threshold</span>
+            <h3 class="sub-offering-title">Custom Rites of Passage</h3>
+            <p class="sub-offering-desc">Marriage, birth, death, transition &mdash; each rite held with full ceremonial reverence.</p>
+            <span class="sub-offering-cta">Schedule &amp; Inquire &rarr;</span>
+          </a>
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Family Field"
+             data-title="Family Ceremonies"
+             data-desc="Ceremony held for the whole family field at once. For blended families, families in repair, families crossing thresholds together. The work that meets the entire system."
+             data-reciprocity="By inquiry · Reciprocity by group size and scope"
+             data-inquire-email-subject="Family Ceremony — Inquiry">
+            <span class="sub-offering-eyebrow">Family Field</span>
+            <h3 class="sub-offering-title">Family Ceremonies</h3>
+            <p class="sub-offering-desc">Held for the whole family system at once. For repair, transition, and crossing thresholds together.</p>
+            <span class="sub-offering-cta">Schedule &amp; Inquire &rarr;</span>
+          </a>
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Partnership"
+             data-title="Couple's Rites"
+             data-desc="Partnership ceremony for couples in transition, repair, deepening, or renewal. Held with both partners present and the relationship itself as the third presence in the room."
+             data-reciprocity="By inquiry · Reciprocity discussed at Intake"
+             data-inquire-email-subject="Couple's Rite — Inquiry">
+            <span class="sub-offering-eyebrow">Partnership</span>
+            <h3 class="sub-offering-title">Couple&rsquo;s Rites</h3>
+            <p class="sub-offering-desc">Partnership ceremony for transition, repair, deepening, or renewal.</p>
+            <span class="sub-offering-cta">Schedule &amp; Inquire &rarr;</span>
+          </a>
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Singular"
+             data-title="Threshold Work"
+             data-desc="A single sacred moment, held. For the one specific passage that asks for ceremony. Not a series, not a retreat — one held container for one threshold."
+             data-reciprocity="By inquiry · Single-session reciprocity"
+             data-inquire-email-subject="Threshold Work — Inquiry">
+            <span class="sub-offering-eyebrow">Singular</span>
+            <h3 class="sub-offering-title">Threshold Work</h3>
+            <p class="sub-offering-desc">A single sacred moment, held. One container for one specific threshold.</p>
+            <span class="sub-offering-cta">Schedule &amp; Inquire &rarr;</span>
+          </a>
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Immersion"
+             data-title="Private Retreats"
+             data-desc="Adi held for you alone. Multi-day immersion in the practice — set on your land, at a venue, or by arrangement in Southern California. Designed entirely to your needs over the arc."
+             data-reciprocity="By inquiry · Reciprocity by duration and location"
+             data-inquire-email-subject="Private Retreat — Inquiry">
+            <span class="sub-offering-eyebrow">Immersion</span>
+            <h3 class="sub-offering-title">Private Retreats</h3>
+            <p class="sub-offering-desc">Adi held for you alone. Multi-day immersion designed entirely to your arc.</p>
+            <span class="sub-offering-cta">Schedule &amp; Inquire &rarr;</span>
+          </a>
+
+        </div>
+        <p style="font-family: 'Cormorant SC', serif; font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold, #c9a84c); margin: 1.5rem 0 0;">By Application &middot; Held on Location &middot; Travel Available</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- &mdash;&mdash;&mdash; FINAL CTA &mdash;&mdash;&mdash; -->
+  <section class="offering-final-cta">
+    <h2>The first conversation, always, is the <em>Intake &amp; Inquiry</em>.</h2>
+    <p>For attunement, alignment, and safety assessment &mdash; the required first step for ceremony enrollment.</p>
+    <a href="https://new.theanimistapothecary.com/apply" class="btn-primary">Schedule the Intake &amp; Inquiry</a>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="https://new.theanimistapothecary.com/apply">Apply / Intake</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="divinations.html">Divinations</a></li>
+            <li><a href="https://new.theanimistapothecary.com/contact/inquiry">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/content-loader.js" defer></script>
+  <script src="js/booking-modal.js" defer></script>
+</body>
+</html>

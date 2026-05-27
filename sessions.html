@@ -1,0 +1,2291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Session &middot; Adi Marie</title>
+  <meta name="description" content="Book a session directly with Adi Marie. Intake &amp; Inquiry (90 min) or Ancestral &amp; Elemental Divination (2 hr). Sliding scale. Virtual worldwide or in person by arrangement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v04">
+
+  <style>
+    /* ============================================================
+       SESSIONS PAGE — scoped styles
+       ============================================================ */
+    body[data-content-page="sessions"] .sessions-intro {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4.5rem 2rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+    body[data-content-page="sessions"] .sessions-intro::before {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: var(--gold, #c9a84c);
+      opacity: 0.55;
+      margin: 0 auto 2rem;
+    }
+    body[data-content-page="sessions"] .sessions-intro p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.22rem;
+      line-height: 1.8;
+      color: var(--bark, #2D2A26);
+      opacity: 0.9;
+      margin: 0;
+    }
+    body[data-content-page="sessions"] .sessions-intro a {
+      color: var(--gold, #c9a84c) !important;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,168,76,0.4);
+      transition: border-color 0.25s ease;
+    }
+    body[data-content-page="sessions"] .sessions-intro a:hover {
+      border-bottom-color: var(--gold, #c9a84c);
+    }
+
+    body[data-content-page="sessions"] .sessions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    body[data-content-page="sessions"] .session-card {
+      background: var(--paper, #F7F5F0);
+      border: 1px solid rgba(201, 168, 76, 0.18);
+      border-radius: 2px;
+      padding: 2.75rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    body[data-content-page="sessions"] .session-card .session-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold, #c9a84c);
+      margin: 0;
+    }
+
+    body[data-content-page="sessions"] .session-card .session-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.85rem, 2.6vw, 2.4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--bark, #2D2A26);
+      margin: 0;
+    }
+
+    body[data-content-page="sessions"] .session-card .session-title em {
+      font-style: italic;
+      color: var(--gold-pale, #DBC079);
+    }
+
+    body[data-content-page="sessions"] .session-card .session-meta {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bark, #2D2A26);
+      opacity: 0.62;
+      margin: 0;
+    }
+
+    body[data-content-page="sessions"] .session-card .session-description {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--bark, #2D2A26);
+      opacity: 0.86;
+      margin: 0;
+    }
+
+    body[data-content-page="sessions"] .session-card .session-divider {
+      height: 1px;
+      background: rgba(201, 168, 76, 0.25);
+      margin: 0.5rem 0;
+    }
+
+    body[data-content-page="sessions"] .session-card h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bark, #2D2A26);
+      opacity: 0.7;
+      margin: 0 0 0.75rem;
+    }
+
+    body[data-content-page="sessions"] .session-card .what-to-bring {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    body[data-content-page="sessions"] .session-card .what-to-bring li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.02rem;
+      line-height: 1.7;
+      color: var(--bark, #2D2A26);
+      opacity: 0.82;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    body[data-content-page="sessions"] .session-card .what-to-bring li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--gold, #c9a84c);
+      opacity: 0.7;
+    }
+
+    body[data-content-page="sessions"] .session-card .sliding-scale {
+      list-style: none;
+      padding: 1rem 1.25rem;
+      margin: 0;
+      background: rgba(255,255,255,0.5);
+      border-left: 2px solid rgba(201,168,76,0.35);
+    }
+    body[data-content-page="sessions"] .session-card .sliding-scale li {
+      font-family: 'Cinzel', serif;
+      font-size: 0.92rem;
+      line-height: 1.95;
+      color: var(--bark, #2D2A26);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    body[data-content-page="sessions"] .session-card .sliding-scale .tier-amt {
+      font-weight: 500;
+      color: var(--bark, #2D2A26);
+    }
+    body[data-content-page="sessions"] .session-card .sliding-scale .tier-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bark, #2D2A26);
+      opacity: 0.65;
+      align-self: center;
+    }
+    body[data-content-page="sessions"] .session-card .sliding-scale-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--bark, #2D2A26);
+      opacity: 0.65;
+      margin: 0.75rem 0 0;
+    }
+
+    /* Scheduler embed — click-to-load to avoid simultaneous heavy iframe loads */
+    body[data-content-page="sessions"] .scheduler-wrap {
+      margin-top: 0.5rem;
+      background: #fff;
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    body[data-content-page="sessions"] .scheduler-placeholder {
+      width: 100%;
+      min-height: 220px;
+      border: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.6), rgba(201,168,76,0.06)),
+        repeating-linear-gradient(
+          45deg,
+          rgba(201,168,76,0.04) 0,
+          rgba(201,168,76,0.04) 12px,
+          transparent 12px,
+          transparent 24px
+        );
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      cursor: pointer;
+      padding: 2.5rem 1.5rem;
+      transition: background 0.25s ease, transform 0.25s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    body[data-content-page="sessions"] .scheduler-placeholder:hover {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.4), rgba(201,168,76,0.14)),
+        repeating-linear-gradient(
+          45deg,
+          rgba(201,168,76,0.08) 0,
+          rgba(201,168,76,0.08) 12px,
+          transparent 12px,
+          transparent 24px
+        );
+    }
+    body[data-content-page="sessions"] .scheduler-placeholder:hover .ph-glyph {
+      transform: rotate(45deg) scale(1.08);
+      opacity: 0.95;
+    }
+    body[data-content-page="sessions"] .scheduler-placeholder:hover .ph-label {
+      color: var(--gold, #c9a84c);
+    }
+    body[data-content-page="sessions"] .scheduler-placeholder:focus-visible {
+      outline: 2px solid var(--gold, #c9a84c);
+      outline-offset: 2px;
+    }
+    body[data-content-page="sessions"] .scheduler-placeholder .ph-glyph {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--gold, #c9a84c);
+      line-height: 1;
+      opacity: 0.75;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    body[data-content-page="sessions"] .scheduler-placeholder .ph-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bark, #2D2A26);
+      font-weight: 500;
+      transition: color 0.25s ease;
+    }
+    body[data-content-page="sessions"] .scheduler-placeholder .ph-hint {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--bark, #2D2A26);
+      opacity: 0.65;
+      max-width: 320px;
+      text-align: center;
+      line-height: 1.5;
+      margin: 0;
+    }
+    /* ---------- CARD JUMP-LINK to scheduler ---------- */
+    body[data-content-page="sessions"] .card-schedule-jump {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1rem 1.25rem;
+      background: var(--bark, #2D2A26);
+      color: var(--paper, #F7F5F0);
+      text-decoration: none;
+      border-radius: 2px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background 0.25s ease, transform 0.2s ease;
+    }
+    body[data-content-page="sessions"] .card-schedule-jump:hover {
+      background: var(--gold, #c9a84c);
+      color: var(--bark, #2D2A26);
+      transform: translateY(-1px);
+    }
+    body[data-content-page="sessions"] .card-schedule-jump .jump-glyph {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    body[data-content-page="sessions"] .card-schedule-jump .jump-label {
+      flex: 1;
+      font-weight: 500;
+    }
+    body[data-content-page="sessions"] .card-schedule-jump .jump-arrow {
+      opacity: 0.7;
+      font-size: 1rem;
+    }
+
+    /* ---------- SCHEDULE SECTION (tabbed) ---------- */
+    body[data-content-page="sessions"] .schedule-section {
+      background:
+        radial-gradient(ellipse at top, rgba(201,168,76,0.06), transparent 60%),
+        var(--bark, #2D2A26);
+      color: var(--paper, #F7F5F0);
+      padding: 5.5rem 2rem 6.5rem;
+      scroll-margin-top: 80px;
+      position: relative;
+    }
+    body[data-content-page="sessions"] .schedule-section::before {
+      content: "";
+      position: absolute;
+      top: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 1px;
+      background: rgba(201,168,76,0.4);
+    }
+    body[data-content-page="sessions"] .schedule-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    body[data-content-page="sessions"] .schedule-section .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold, #c9a84c);
+      display: block;
+      margin: 0 0 1rem;
+    }
+    body[data-content-page="sessions"] .schedule-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.2vw, 2.6rem);
+      font-weight: 300;
+      color: var(--paper, #F7F5F0);
+      margin: 0 0 1rem;
+      line-height: 1.2;
+    }
+    body[data-content-page="sessions"] .schedule-section h2 em {
+      font-style: italic;
+      color: var(--gold-pale, #DBC079);
+    }
+    body[data-content-page="sessions"] .schedule-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: rgba(245,241,232,0.78);
+      margin: 0 0 2.5rem;
+    }
+
+    /* Tabs */
+    body[data-content-page="sessions"] .schedule-tabs {
+      display: inline-flex;
+      gap: 0;
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+      margin: 0 0 0;
+      padding: 0;
+    }
+    body[data-content-page="sessions"] .schedule-tab {
+      background: transparent;
+      border: 0;
+      padding: 1rem 2rem 1.1rem;
+      cursor: pointer;
+      color: rgba(245,241,232,0.6);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease, border-color 0.2s ease;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    body[data-content-page="sessions"] .schedule-tab .tab-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    body[data-content-page="sessions"] .schedule-tab .tab-meta {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+    body[data-content-page="sessions"] .schedule-tab:hover {
+      color: var(--paper, #F7F5F0);
+    }
+    body[data-content-page="sessions"] .schedule-tab[aria-selected="true"] {
+      color: var(--gold-pale, #DBC079);
+      border-bottom-color: var(--gold, #c9a84c);
+    }
+
+    /* Calendar frame — wide & full-bleed feel */
+    body[data-content-page="sessions"] .schedule-frame {
+      margin: 2.5rem auto 0;
+      background: #fff;
+      border-radius: 2px;
+      overflow: hidden;
+      min-height: 700px;
+      max-width: 1200px;
+      box-shadow: 0 14px 48px rgba(0,0,0,0.28);
+    }
+    body[data-content-page="sessions"] .schedule-frame iframe {
+      width: 100%;
+      min-height: 700px;
+      border: 0;
+      display: block;
+    }
+
+    /* Empty-state prompt — sacred threshold, not placeholder */
+    body[data-content-page="sessions"] .schedule-prompt {
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      color: var(--bark, #2D2A26);
+      padding: 4rem 1.5rem;
+      background:
+        radial-gradient(ellipse at center,
+          rgba(255,255,255,1) 0%,
+          rgba(244,239,229,0.6) 60%,
+          rgba(201,168,76,0.05) 100%);
+      position: relative;
+    }
+    body[data-content-page="sessions"] .schedule-prompt::before,
+    body[data-content-page="sessions"] .schedule-prompt::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 1px;
+      background: rgba(201,168,76,0.3);
+    }
+    body[data-content-page="sessions"] .schedule-prompt::before { top: 2rem; }
+    body[data-content-page="sessions"] .schedule-prompt::after  { bottom: 2rem; }
+    body[data-content-page="sessions"] .schedule-prompt .prompt-glyph {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      color: var(--gold, #c9a84c);
+      line-height: 1;
+      opacity: 0.7;
+      animation: gentle-pulse 3.5s ease-in-out infinite;
+    }
+    @keyframes gentle-pulse {
+      0%, 100% { opacity: 0.55; transform: scale(1); }
+      50%      { opacity: 0.85; transform: scale(1.04); }
+    }
+    body[data-content-page="sessions"] .schedule-prompt .prompt-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--bark, #2D2A26);
+      opacity: 0.78;
+      margin: 0;
+      text-align: center;
+      max-width: 420px;
+      line-height: 1.55;
+    }
+    body[data-content-page="sessions"] .schedule-prompt .prompt-hint {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--bark, #2D2A26);
+      opacity: 0.45;
+      margin: 0;
+      text-align: center;
+    }
+
+    /* Mobile tab stacking */
+    @media (max-width: 560px) {
+      body[data-content-page="sessions"] .schedule-tabs {
+        flex-direction: column;
+        border-bottom: none;
+        width: 100%;
+      }
+      body[data-content-page="sessions"] .schedule-tab {
+        border-bottom: 1px solid rgba(201,168,76,0.15);
+        border-left: 2px solid transparent;
+        padding: 1rem 1.25rem;
+        margin-bottom: 0;
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: flex-start;
+      }
+      body[data-content-page="sessions"] .schedule-tab[aria-selected="true"] {
+        border-bottom-color: rgba(201,168,76,0.15);
+        border-left-color: var(--gold, #c9a84c);
+      }
+    }
+
+    body[data-content-page="sessions"] .payment-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    body[data-content-page="sessions"] .payment-row a {
+      flex: 1;
+      min-width: 110px;
+      padding: 0.7rem 1rem;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bark, #2D2A26);
+      background: transparent;
+      border: 1px solid rgba(45, 42, 38, 0.35);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    body[data-content-page="sessions"] .payment-row a:hover {
+      background: var(--bark, #2D2A26);
+      color: var(--paper, #F7F5F0);
+      border-color: var(--bark, #2D2A26);
+    }
+
+    body[data-content-page="sessions"] .session-deeper-link {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      color: var(--bark, #2D2A26);
+      opacity: 0.7;
+      text-decoration: none;
+      align-self: flex-start;
+    }
+    body[data-content-page="sessions"] .session-deeper-link:hover {
+      color: var(--gold, #c9a84c);
+      opacity: 1;
+    }
+
+    /* ============================================================
+       PATHWAY WINDOWS — two image-led portals at the top
+       ============================================================ */
+    body[data-content-page="sessions"] .pathway-windows {
+      background: var(--paper, #F7F5F0);
+      padding: 1rem 2rem 2.5rem;
+    }
+    body[data-content-page="sessions"] .pathway-windows-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    body[data-content-page="sessions"] .pathway-window {
+      background: #fff;
+      border: 1px solid rgba(201,168,76,0.18);
+      border-radius: 2px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    body[data-content-page="sessions"] .pathway-window:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 38px rgba(0,0,0,0.12);
+    }
+
+    /* Image with hover overlay (also serves as scheduler jump-link) */
+    body[data-content-page="sessions"] .pathway-image-link {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3 / 2;
+      background: #2D2A26;
+    }
+    body[data-content-page="sessions"] .pathway-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
+      filter: saturate(0.92) brightness(0.96);
+    }
+    body[data-content-page="sessions"] .pathway-image-link:hover .pathway-image {
+      transform: scale(1.04);
+      filter: saturate(1) brightness(1);
+    }
+    body[data-content-page="sessions"] .pathway-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(45,42,38,0) 45%, rgba(45,42,38,0.90) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 1.6rem;
+      gap: 0.5rem;
+      color: var(--paper, #F7F5F0);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    body[data-content-page="sessions"] .pathway-image-link:hover .pathway-image-overlay,
+    body[data-content-page="sessions"] .pathway-image-link:focus-visible .pathway-image-overlay {
+      opacity: 1;
+    }
+    body[data-content-page="sessions"] .pathway-image-overlay .overlay-glyph {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--gold-pale, #DBC079);
+      line-height: 1;
+      transition: transform 0.4s ease;
+    }
+    body[data-content-page="sessions"] .pathway-image-link:hover .pathway-image-overlay .overlay-glyph {
+      transform: rotate(180deg);
+    }
+    body[data-content-page="sessions"] .pathway-image-overlay .overlay-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.74rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* Content beneath the image */
+    body[data-content-page="sessions"] .pathway-content {
+      padding: 2.5rem 2.5rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      flex: 1;
+    }
+    body[data-content-page="sessions"] .pathway-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold, #c9a84c);
+      margin: 0;
+    }
+    body[data-content-page="sessions"] .pathway-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 2.6vw, 2.4rem);
+      font-weight: 400;
+      color: var(--bark, #2D2A26);
+      margin: 0;
+      line-height: 1.15;
+    }
+    body[data-content-page="sessions"] .pathway-title em {
+      font-style: italic;
+      color: var(--gold, #c9a84c);
+    }
+    body[data-content-page="sessions"] .pathway-meta {
+      font-family: 'Cinzel', serif;
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bark, #2D2A26);
+      opacity: 0.6;
+      margin: 0;
+    }
+    body[data-content-page="sessions"] .pathway-description {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--bark, #2D2A26);
+      opacity: 0.88;
+      margin: 0.4rem 0 0;
+    }
+    body[data-content-page="sessions"] .pathway-bring {
+      margin-top: 0.5rem;
+    }
+    body[data-content-page="sessions"] .pathway-bring h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bark, #2D2A26);
+      opacity: 0.65;
+      margin: 0 0 0.85rem;
+    }
+    body[data-content-page="sessions"] .pathway-bring-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: var(--bark, #2D2A26);
+      opacity: 0.7;
+      margin: 1rem 0 0;
+      padding-top: 0.9rem;
+      border-top: 1px solid rgba(201,168,76,0.18);
+    }
+
+    /* Pathway sliding scale — 4 color-coded tiles in 2x2 grid */
+    body[data-content-page="sessions"] .pathway-scale {
+      margin-top: 0.5rem;
+      padding: 1.25rem 1.25rem 1.4rem;
+      background: rgba(201,168,76,0.04);
+      border-radius: 2px;
+    }
+    body[data-content-page="sessions"] .pathway-scale h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold, #c9a84c);
+      text-align: center;
+      margin: 0 0 1rem;
+    }
+
+    body[data-content-page="sessions"] .scale-tiles {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.65rem;
+      margin: 0 0 1rem;
+    }
+    body[data-content-page="sessions"] .scale-tile {
+      background: #fff;
+      border-top: 2px solid var(--gold, #c9a84c);
+      padding: 0.85rem 0.9rem 0.95rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border-radius: 2px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    }
+    body[data-content-page="sessions"] .scale-tile:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    body[data-content-page="sessions"] .scale-tile.tier-gold   { border-top-color: #c9a84c; }
+    body[data-content-page="sessions"] .scale-tile.tier-green  { border-top-color: #6b8f5e; }
+    body[data-content-page="sessions"] .scale-tile.tier-blue   { border-top-color: #5a7fa0; }
+    body[data-content-page="sessions"] .scale-tile.tier-purple { border-top-color: #7b6b8a; }
+
+    body[data-content-page="sessions"] .scale-tile .tile-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      opacity: 0.78;
+    }
+    body[data-content-page="sessions"] .scale-tile.tier-gold   .tile-eyebrow { color: #c9a84c; }
+    body[data-content-page="sessions"] .scale-tile.tier-green  .tile-eyebrow { color: #6b8f5e; }
+    body[data-content-page="sessions"] .scale-tile.tier-blue   .tile-eyebrow { color: #5a7fa0; }
+    body[data-content-page="sessions"] .scale-tile.tier-purple .tile-eyebrow { color: #7b6b8a; }
+
+    body[data-content-page="sessions"] .scale-tile .tile-amt {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--bark, #2D2A26);
+      line-height: 1;
+      font-feature-settings: 'tnum';
+      white-space: nowrap;
+    }
+
+    body[data-content-page="sessions"] .scale-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.92rem;
+      color: var(--bark, #2D2A26);
+      opacity: 0.7;
+      margin: 0;
+      text-align: center;
+      line-height: 1.55;
+    }
+    body[data-content-page="sessions"] .scale-note a {
+      color: var(--gold, #c9a84c);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,168,76,0.4);
+    }
+    body[data-content-page="sessions"] .scale-note a:hover {
+      border-bottom-color: var(--gold, #c9a84c);
+    }
+
+    /* On very narrow pathway widths, fall back to 1-column stack */
+    @media (max-width: 480px) {
+      body[data-content-page="sessions"] .scale-tiles {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    body[data-content-page="sessions"] .pathway-deeper-link {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--bark, #2D2A26);
+      opacity: 0.7;
+      text-decoration: none;
+      margin-top: auto;
+      padding-top: 1rem;
+    }
+    body[data-content-page="sessions"] .pathway-deeper-link:hover {
+      color: var(--gold, #c9a84c);
+      opacity: 1;
+    }
+
+    /* ============================================================
+       PAY HEADER (top half of merged Pay+Reciprocity section)
+       ============================================================ */
+    body[data-content-page="sessions"] .pay-header {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    body[data-content-page="sessions"] .pay-header .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold, #c9a84c);
+      margin: 0;
+    }
+    body[data-content-page="sessions"] .pay-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.7rem, 2.4vw, 2.1rem);
+      font-weight: 400;
+      color: var(--bark, #2D2A26);
+      margin: 0;
+      line-height: 1.2;
+    }
+    body[data-content-page="sessions"] .pay-header h2 em {
+      font-style: italic;
+      color: var(--gold, #c9a84c);
+    }
+    body[data-content-page="sessions"] .pay-line {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.02rem;
+      line-height: 1.6;
+      color: var(--bark, #2D2A26);
+      opacity: 0.75;
+      margin: 0 0 0.4rem;
+    }
+    body[data-content-page="sessions"] .pay-buttons {
+      display: flex;
+      gap: 0.85rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 0.4rem;
+    }
+    body[data-content-page="sessions"] .pay-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.18rem;
+      padding: 0.7rem 1.6rem;
+      min-width: 170px;
+      background: var(--bark, #2D2A26);
+      color: var(--paper, #F7F5F0);
+      border: 1px solid var(--bark, #2D2A26);
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    }
+    body[data-content-page="sessions"] .pay-button:hover {
+      background: var(--gold, #c9a84c);
+      border-color: var(--gold, #c9a84c);
+      color: var(--bark, #2D2A26);
+      transform: translateY(-1px);
+    }
+    body[data-content-page="sessions"] .pay-button-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+    body[data-content-page="sessions"] .pay-button-handle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.78;
+    }
+
+    /* Divider between Pay (top) and Sacred Reciprocity (bottom) */
+    body[data-content-page="sessions"] .pay-reciprocity-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 3.5rem auto 3rem;
+      position: relative;
+      max-width: 480px;
+    }
+    body[data-content-page="sessions"] .pay-reciprocity-divider::before,
+    body[data-content-page="sessions"] .pay-reciprocity-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.35), transparent);
+    }
+    body[data-content-page="sessions"] .pay-reciprocity-divider .divider-glyph {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--gold, #c9a84c);
+      opacity: 0.7;
+      padding: 0 1.5rem;
+      line-height: 1;
+    }
+
+    /* ============================================================
+       PRACTICAL NOTES — Zoom + email (2-card grid)
+       ============================================================ */
+    body[data-content-page="sessions"] .practical-notes {
+      background: #F4EFE5;
+      padding: 6rem 2rem;
+    }
+    body[data-content-page="sessions"] .practical-notes-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    body[data-content-page="sessions"] .practical-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 3.5rem;
+    }
+    body[data-content-page="sessions"] .practical-notes .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold, #c9a84c);
+      display: block;
+      margin: 0 0 1rem;
+    }
+    body[data-content-page="sessions"] .practical-notes h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.2vw, 2.6rem);
+      font-weight: 300;
+      color: var(--bark, #2D2A26);
+      margin: 0 0 1rem;
+      line-height: 1.15;
+    }
+    body[data-content-page="sessions"] .practical-notes h2 em {
+      font-style: italic;
+      color: var(--gold, #c9a84c);
+    }
+    body[data-content-page="sessions"] .practical-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--bark, #2D2A26);
+      opacity: 0.75;
+      margin: 0;
+    }
+
+    body[data-content-page="sessions"] .practical-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.75rem;
+      justify-content: center;
+    }
+    body[data-content-page="sessions"] .practical-grid .practical-card {
+      flex: 1 1 320px;
+      min-width: 280px;
+      max-width: 380px;
+    }
+    /* legacy modifier kept harmless for any other booking pages that still use it */
+    body[data-content-page="sessions"] .practical-grid--2up {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    body[data-content-page="sessions"] .practical-card {
+      background: #fff;
+      padding: 2.5rem 2.25rem 2.25rem;
+      border-radius: 2px;
+      border-top: 3px solid var(--gold, #c9a84c);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    body[data-content-page="sessions"] .practical-card .card-glyph {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--gold, #c9a84c);
+      margin: 0 0 0.25rem;
+      line-height: 1;
+      opacity: 0.85;
+    }
+    body[data-content-page="sessions"] .practical-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 400;
+      color: var(--bark, #2D2A26);
+      margin: 0 0 0.5rem;
+      line-height: 1.2;
+    }
+    body[data-content-page="sessions"] .practical-card h3 em {
+      font-style: italic;
+      color: var(--gold, #c9a84c);
+    }
+    body[data-content-page="sessions"] .practical-card p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: #3a3530;
+      margin: 0;
+    }
+    body[data-content-page="sessions"] .practical-card .card-lead {
+      font-weight: 500;
+      color: var(--bark, #2D2A26);
+    }
+    body[data-content-page="sessions"] .practical-card .card-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.98rem;
+      color: var(--bark, #2D2A26);
+      opacity: 0.78;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(201,168,76,0.18);
+    }
+    body[data-content-page="sessions"] .practical-card .card-note a {
+      color: var(--gold, #c9a84c);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,168,76,0.4);
+    }
+    body[data-content-page="sessions"] .practical-card .card-postscript {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.92rem;
+      color: var(--bark, #2D2A26);
+      opacity: 0.65;
+      margin-top: auto;
+      padding-top: 0.85rem;
+    }
+    body[data-content-page="sessions"] .practical-card .card-closing {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      color: var(--bark, #2D2A26);
+      opacity: 0.7;
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+
+    /* Rate block inside Payment card */
+    body[data-content-page="sessions"] .rate-block {
+      background: #F4EFE5;
+      padding: 1.1rem 1.25rem 1.25rem;
+      border-left: 2px solid rgba(201,168,76,0.45);
+      margin: 0.4rem 0;
+    }
+    body[data-content-page="sessions"] .rate-block-label {
+      font-family: 'Cinzel', serif !important;
+      font-size: 0.7rem !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      color: var(--bark, #2D2A26) !important;
+      opacity: 0.65 !important;
+      margin: 0 0 0.75rem !important;
+      font-style: normal !important;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    body[data-content-page="sessions"] .rate-block-label-dynamic {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 0.95rem !important;
+      text-transform: none !important;
+      letter-spacing: 0 !important;
+      color: var(--gold, #c9a84c) !important;
+      opacity: 1 !important;
+    }
+    body[data-content-page="sessions"] .rate-block-label-dynamic:not(:empty)::before {
+      content: '· ';
+      opacity: 0.5;
+      margin-right: 0.2rem;
+    }
+    body[data-content-page="sessions"] .rate-block-prompt {
+      padding: 1rem 0 0.4rem;
+    }
+    body[data-content-page="sessions"] .rate-block-prompt p {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 0.95rem !important;
+      color: var(--bark, #2D2A26) !important;
+      opacity: 0.55 !important;
+      margin: 0 !important;
+      text-align: center;
+      line-height: 1.5;
+    }
+    body[data-content-page="sessions"] .rate-block[data-state="filled"] {
+      background: #fff;
+      border-left-color: var(--gold, #c9a84c);
+      transition: background 0.4s ease;
+    }
+    body[data-content-page="sessions"] .rate-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    body[data-content-page="sessions"] .rate-list li {
+      font-family: 'Cinzel', serif;
+      font-size: 0.92rem;
+      line-height: 1.85;
+      color: var(--bark, #2D2A26);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    body[data-content-page="sessions"] .rate-list .rate-amt {
+      font-weight: 500;
+    }
+    body[data-content-page="sessions"] .rate-list .rate-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.65;
+    }
+
+    /* Zoom block inside Where We Meet card */
+    body[data-content-page="sessions"] .zoom-block {
+      background: var(--bark, #2D2A26);
+      color: var(--paper, #F7F5F0);
+      padding: 1.5rem 1.5rem;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 0.4rem 0;
+    }
+    body[data-content-page="sessions"] .zoom-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      background: var(--gold, #c9a84c);
+      color: var(--bark, #2D2A26);
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: background 0.25s ease, transform 0.2s ease;
+    }
+    body[data-content-page="sessions"] .zoom-link:hover {
+      background: var(--gold-pale, #DBC079);
+      transform: translateY(-1px);
+    }
+    body[data-content-page="sessions"] .zoom-link-arrow {
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+    body[data-content-page="sessions"] .zoom-details {
+      margin: 0;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(201,168,76,0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    body[data-content-page="sessions"] .zoom-detail-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-family: 'Cinzel', serif;
+    }
+    body[data-content-page="sessions"] .zoom-detail-row dt {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin: 0;
+    }
+    body[data-content-page="sessions"] .zoom-detail-row dd {
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--gold-pale, #DBC079);
+      margin: 0;
+      font-feature-settings: 'tnum';
+    }
+
+    /* Cancellation policy block — 3-tier structured list */
+    body[data-content-page="sessions"] .policy-block {
+      background: rgba(201,168,76,0.05);
+      border-left: 2px solid rgba(201,168,76,0.4);
+      padding: 1rem 1.1rem 1.1rem;
+      margin: 0.4rem 0;
+    }
+    body[data-content-page="sessions"] .policy-heading {
+      font-family: 'Cinzel', serif !important;
+      font-size: 0.65rem !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      color: var(--gold, #c9a84c) !important;
+      margin: 0 0 0.7rem !important;
+      font-style: normal !important;
+    }
+    body[data-content-page="sessions"] .policy-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    body[data-content-page="sessions"] .policy-list li {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px dotted rgba(201,168,76,0.22);
+    }
+    body[data-content-page="sessions"] .policy-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    body[data-content-page="sessions"] .policy-list li:first-child {
+      padding-top: 0;
+    }
+    body[data-content-page="sessions"] .policy-when {
+      font-family: 'Cinzel', serif;
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bark, #2D2A26);
+      opacity: 0.7;
+    }
+    body[data-content-page="sessions"] .policy-what {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.4;
+      color: var(--bark, #2D2A26);
+    }
+
+    /* "After You Book" block inside Questions card */
+    body[data-content-page="sessions"] .after-book-block {
+      background: rgba(201,168,76,0.05);
+      border-left: 2px solid rgba(201,168,76,0.4);
+      padding: 1rem 1.1rem 1.1rem;
+      margin: 0.4rem 0;
+    }
+    body[data-content-page="sessions"] .after-book-heading {
+      font-family: 'Cinzel', serif !important;
+      font-size: 0.65rem !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      color: var(--gold, #c9a84c) !important;
+      margin: 0 0 0.7rem !important;
+      font-style: normal !important;
+    }
+    body[data-content-page="sessions"] .after-book-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    body[data-content-page="sessions"] .after-book-list li {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px dotted rgba(201,168,76,0.22);
+    }
+    body[data-content-page="sessions"] .after-book-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    body[data-content-page="sessions"] .after-book-list li:first-child {
+      padding-top: 0;
+    }
+    body[data-content-page="sessions"] .after-book-when {
+      font-family: 'Cinzel', serif;
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bark, #2D2A26);
+      opacity: 0.7;
+    }
+    body[data-content-page="sessions"] .after-book-what {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--bark, #2D2A26);
+    }
+
+    /* Email link inside Questions card */
+    body[data-content-page="sessions"] .email-link {
+      display: block;
+      padding: 0.85rem 1rem;
+      background: var(--paper, #F7F5F0);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 2px;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.92rem;
+      color: var(--bark, #2D2A26);
+      text-decoration: none;
+      transition: background 0.25s ease, color 0.25s ease;
+      word-break: break-all;
+      margin: 0.4rem 0;
+    }
+    body[data-content-page="sessions"] .email-link:hover {
+      background: var(--gold, #c9a84c);
+      color: var(--bark, #2D2A26);
+    }
+
+    /* ============================================================
+       SACRED RECIPROCITY NOTE — 4-tier quick descriptor
+       ============================================================ */
+    body[data-content-page="sessions"] .reciprocity-note {
+      background: #FAF7F1;
+      padding: 6rem 2rem;
+    }
+    body[data-content-page="sessions"] .reciprocity-note-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    body[data-content-page="sessions"] .reciprocity-note-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 3rem;
+    }
+    body[data-content-page="sessions"] .reciprocity-note .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold, #c9a84c);
+      display: block;
+      margin: 0 0 1rem;
+    }
+    body[data-content-page="sessions"] .reciprocity-note h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      font-weight: 300;
+      color: var(--bark, #2D2A26);
+      margin: 0 0 1.5rem;
+      line-height: 1.15;
+    }
+    body[data-content-page="sessions"] .reciprocity-note h2 em {
+      font-style: italic;
+      color: var(--gold, #c9a84c);
+    }
+    body[data-content-page="sessions"] .reciprocity-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #3a3530;
+      margin: 0 0 1.5rem;
+    }
+    body[data-content-page="sessions"] .reciprocity-intro a {
+      color: var(--gold, #c9a84c);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,168,76,0.4);
+    }
+    body[data-content-page="sessions"] .reciprocity-intro a:hover {
+      border-bottom-color: var(--gold, #c9a84c);
+    }
+    body[data-content-page="sessions"] .reciprocity-subhead {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bark, #2D2A26);
+      opacity: 0.55;
+      margin: 0;
+    }
+
+    /* 4-tier grid */
+    body[data-content-page="sessions"] .reciprocity-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin: 0 0 3rem;
+    }
+    body[data-content-page="sessions"] .recip-tier {
+      background: #fff;
+      padding: 2rem 1.75rem 2rem;
+      border-top: 3px solid var(--gold, #c9a84c);
+      border-radius: 2px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    body[data-content-page="sessions"] .recip-tier:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+    }
+    body[data-content-page="sessions"] .recip-tier-gold   { border-top-color: #c9a84c; }
+    body[data-content-page="sessions"] .recip-tier-green  { border-top-color: #6b8f5e; }
+    body[data-content-page="sessions"] .recip-tier-blue   { border-top-color: #5a7fa0; }
+    body[data-content-page="sessions"] .recip-tier-purple { border-top-color: #7b6b8a; }
+
+    body[data-content-page="sessions"] .recip-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin: 0;
+    }
+    body[data-content-page="sessions"] .recip-tier-gold   .recip-eyebrow { color: #c9a84c; }
+    body[data-content-page="sessions"] .recip-tier-green  .recip-eyebrow { color: #6b8f5e; }
+    body[data-content-page="sessions"] .recip-tier-blue   .recip-eyebrow { color: #5a7fa0; }
+    body[data-content-page="sessions"] .recip-tier-purple .recip-eyebrow { color: #7b6b8a; }
+
+    body[data-content-page="sessions"] .recip-tier h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--bark, #2D2A26);
+      margin: 0;
+      line-height: 1.15;
+    }
+    body[data-content-page="sessions"] .recip-tier h3 em {
+      font-style: italic;
+    }
+    body[data-content-page="sessions"] .recip-tier-gold   h3 em { color: #c9a84c; }
+    body[data-content-page="sessions"] .recip-tier-green  h3 em { color: #6b8f5e; }
+    body[data-content-page="sessions"] .recip-tier-blue   h3 em { color: #5a7fa0; }
+    body[data-content-page="sessions"] .recip-tier-purple h3 em { color: #7b6b8a; }
+
+    body[data-content-page="sessions"] .recip-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: #3a3530;
+      margin: 0;
+    }
+
+    body[data-content-page="sessions"] .reciprocity-closing {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: #3a3530;
+      max-width: 820px;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    /* Actions row */
+    body[data-content-page="sessions"] .reciprocity-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201,168,76,0.2);
+    }
+    body[data-content-page="sessions"] .reciprocity-actions .btn-primary {
+      align-self: center;
+    }
+    body[data-content-page="sessions"] .reciprocity-pay {
+      text-align: center;
+      width: 100%;
+      max-width: 460px;
+    }
+    body[data-content-page="sessions"] .reciprocity-pay .pay-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--bark, #2D2A26);
+      opacity: 0.6;
+      display: block;
+      margin: 0 0 0.9rem;
+    }
+
+    /* ============================================================
+       NEWSLETTER — Seasonal Letters (rich version with bg image + card)
+       Matches the homepage staple pattern.
+       ============================================================ */
+    body[data-content-page="sessions"] .section-newsletter {
+      background: url('images/uploads/newsletter-adi-altar-forest.jpg') center/cover no-repeat !important;
+      min-height: 700px !important;
+      padding: 4rem 10% 4rem 0 !important;
+      display: flex !important;
+      justify-content: flex-end !important;
+      align-items: center !important;
+      text-align: left !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-inner {
+      width: 32% !important;
+      min-width: 380px !important;
+      max-width: 460px !important;
+      margin: 0 !important;
+      padding: 3rem 2.4rem !important;
+      background: rgba(245, 243, 237, 0.97) !important;
+      border-radius: 4px !important;
+      text-align: center !important;
+      box-shadow: 0 28px 72px rgba(0, 0, 0, 0.32), 0 4px 12px rgba(0, 0, 0, 0.18) !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .section-label {
+      font-family: 'Cinzel', serif !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.28em !important;
+      text-transform: uppercase !important;
+      color: var(--gold, #c9a84c) !important;
+      display: block !important;
+      margin: 0 0 1rem !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-title {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
+      font-weight: 400 !important;
+      font-size: clamp(2.8rem, 3.8vw, 4.2rem) !important;
+      line-height: 1.05 !important;
+      color: var(--bark, #2D2A26) !important;
+      margin: 0.5rem 0 1rem !important;
+      letter-spacing: 0 !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-body {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 1.1rem !important;
+      line-height: 1.65 !important;
+      color: var(--bark, #2D2A26) !important;
+      margin: 0 0 1.8rem !important;
+      max-width: 100% !important;
+      text-wrap: balance !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-form {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.85rem !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-form-names {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 0.85rem !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-form input {
+      padding: 0.95rem 1.1rem !important;
+      border: 1px solid rgba(45,42,38,0.22) !important;
+      background: rgba(255,255,255,0.85) !important;
+      color: var(--bark, #2D2A26) !important;
+      border-radius: 4px !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.95rem !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      transition: border-color 0.15s, background 0.15s !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-form input:focus {
+      outline: none !important;
+      border-color: var(--gold, #c9a84c) !important;
+      background: rgba(255,255,255,0.92) !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-submit {
+      padding: 0.95rem 1.8rem !important;
+      margin-top: 0.5rem !important;
+      cursor: pointer !important;
+      font-family: 'Cinzel', serif !important;
+      font-size: 0.78rem !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      font-weight: 500 !important;
+      background: var(--bark, #2D2A26) !important;
+      color: var(--paper, #F7F5F0) !important;
+      border: 1px solid var(--bark, #2D2A26) !important;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.15s ease !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-submit:hover {
+      background: var(--gold, #c9a84c) !important;
+      border-color: var(--gold, #c9a84c) !important;
+      color: var(--bark, #2D2A26) !important;
+      transform: translateY(-1px) !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-submit:disabled {
+      opacity: 0.6 !important;
+      cursor: wait !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-trust {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 0.85rem !important;
+      color: var(--bark, #2D2A26) !important;
+      opacity: 0.85 !important;
+      margin: 1.4rem 0 0 !important;
+      line-height: 1.6 !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-trust a {
+      color: var(--gold, #c9a84c) !important;
+      text-decoration: none !important;
+      border-bottom: 1px solid rgba(201,168,76,0.4) !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-status {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 1rem !important;
+      color: var(--gold, #c9a84c) !important;
+      margin: 1.2rem 0 0 !important;
+      min-height: 1.5em !important;
+    }
+    body[data-content-page="sessions"] .section-newsletter .newsletter-status.error {
+      color: #a04848 !important;
+    }
+
+    /* Mobile: card centered, image as background still */
+    @media (max-width: 880px) {
+      body[data-content-page="sessions"] .section-newsletter {
+        padding: 3rem 1.25rem !important;
+        justify-content: center !important;
+      }
+      body[data-content-page="sessions"] .section-newsletter .newsletter-inner {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 480px !important;
+      }
+    }
+    @media (max-width: 480px) {
+      body[data-content-page="sessions"] .section-newsletter .newsletter-form-names {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* Deep work referral band */
+    body[data-content-page="sessions"] .deeper-paths {
+      background: var(--bark, #2D2A26);
+      color: var(--paper, #F7F5F0);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    body[data-content-page="sessions"] .deeper-paths .inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    body[data-content-page="sessions"] .deeper-paths .section-label {
+      color: var(--gold, #c9a84c);
+      margin-bottom: 1rem;
+    }
+    body[data-content-page="sessions"] .deeper-paths h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--paper, #F7F5F0);
+      margin: 0 0 1.5rem;
+    }
+    body[data-content-page="sessions"] .deeper-paths h2 em {
+      font-style: italic;
+      color: var(--gold-pale, #DBC079);
+    }
+    body[data-content-page="sessions"] .deeper-paths p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.18rem;
+      line-height: 1.85;
+      color: var(--paper, #F7F5F0);
+      opacity: 0.88;
+      margin: 0 0 2rem;
+    }
+    /* Small reassuring note under the intake-form ask */
+    body[data-content-page="sessions"] .deeper-paths .intake-once-note {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 0.95rem !important;
+      color: var(--gold-pale, #DBC079) !important;
+      opacity: 0.75 !important;
+      margin: 0 auto 2rem !important;
+      max-width: 540px !important;
+      line-height: 1.55 !important;
+    }
+
+    body[data-content-page="sessions"] .deeper-paths a.btn-outline {
+      color: var(--paper, #F7F5F0);
+      border-color: var(--paper, #F7F5F0);
+    }
+    body[data-content-page="sessions"] .deeper-paths a.btn-outline:hover {
+      background: var(--paper, #F7F5F0);
+      color: var(--bark, #2D2A26);
+    }
+
+    /* ============================================================
+       RESPONSIVE — pathway windows, reciprocity grid, calendar
+       ============================================================ */
+    /* Tablet: reciprocity 4-up → 2x2, practical 3-up → 1 column */
+    @media (max-width: 980px) {
+      body[data-content-page="sessions"] .reciprocity-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      body[data-content-page="sessions"] .practical-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 720px;
+        margin: 0 auto;
+      }
+    }
+    /* Pathway windows stack at narrower viewports */
+    @media (max-width: 880px) {
+      body[data-content-page="sessions"] .pathway-windows {
+        padding: 1rem 1.25rem 3rem;
+      }
+      body[data-content-page="sessions"] .pathway-windows-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      body[data-content-page="sessions"] .pathway-content {
+        padding: 2rem 1.5rem 1.75rem;
+      }
+      body[data-content-page="sessions"] .schedule-frame {
+        min-height: 560px;
+      }
+      body[data-content-page="sessions"] .schedule-frame iframe {
+        min-height: 560px;
+      }
+    }
+    /* Mobile: reciprocity → 1 column, tighter padding */
+    @media (max-width: 600px) {
+      body[data-content-page="sessions"] .reciprocity-note {
+        padding: 4rem 1.25rem;
+      }
+      body[data-content-page="sessions"] .reciprocity-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      body[data-content-page="sessions"] .recip-tier {
+        padding: 1.5rem 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body data-content-page="sessions">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span>
+      </a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+        <ul>
+          <li class="nav-dropdown-parent"><a href="index.html">Home <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="index.html">Welcome</a><a href="about.html">The Practitioner</a><a href="https://new.theanimistapothecary.com/apply">Begin Here</a></div></li>
+          <li class="nav-dropdown-parent"><a href="about.html">About <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="about.html">Adi Marie</a><a href="about.html#practice">The Practice</a><a href="about.html#lineage">Lineage &amp; Training</a></div></li>
+          <li class="nav-dropdown-parent"><a href="solo-work.html">Solo Work <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="solo-work.html">Overview</a><a href="seasons-of-change.html">Seasons of Change</a><a href="ceremony-and-ritual.html#private">Private Ceremonies</a><a href="sessions.html">Book a Session</a></div></li>
+          <li class="nav-dropdown-parent"><a href="group-work.html">Group Work <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="group-work.html">Overview</a><a href="ceremony-and-ritual.html#community">Community Ceremonies</a><a href="metamorphic-year.html">The Metamorphic Year</a><a href="calendar.html">Calendar of Gatherings</a></div></li>
+          <li class="nav-dropdown-parent"><a href="training-grounds.html">The School <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="training-grounds.html">Overview</a><a href="training-grounds.html#cohorts">The Six Cohorts</a><a href="inquiry.html">Begin a Conversation</a></div></li>
+          <li class="nav-dropdown-parent"><a href="writings.html">Resources <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="calendar.html">The Calendar</a><a href="writings.html">Writings &amp; Letters</a><a href="sacred-reciprocity.html">Sacred Reciprocity</a><a href="sessions.html">Book a Session</a></div></li>
+        </ul>
+      </nav>
+      <a href="sessions.html" class="nav-cta apply-btn">Book</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============================================================
+       HERO
+       ============================================================= -->
+  <section class="page-hero" style="background-image: linear-gradient(rgba(28,22,16,0.55), rgba(28,22,16,0.6)), url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1600&h=800&fit=crop&q=80'); padding-top: 80px; min-height: 50vh;">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">The Sessions</p>
+      <h1 class="page-hero-title">Two doors open <em>directly</em>.</h1>
+      <p class="page-hero-subtitle">Both begin with sitting together.</p>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       INTRO
+       ============================================================= -->
+  <section class="sessions-intro">
+    <p>Two of the offerings open directly to scheduling &mdash; choose your hour, send your reciprocity, and we meet. For the deeper paths &mdash; Seasons of Change, the Metamorphic Year, ceremony commissions, community engagements &mdash; the work begins in conversation. <a href="inquiry.html" style="color: var(--gold, #c9a84c); text-decoration: none;">Begin one here &rarr;</a></p>
+  </section>
+
+  <!-- =============================================================
+       PATHWAY WINDOWS — two image-led portals into the offerings
+       ============================================================= -->
+  <section class="pathway-windows">
+    <div class="pathway-windows-inner">
+
+      <!-- ===== PATHWAY 1: INTAKE & INQUIRY ===== -->
+      <article class="pathway-window" id="intake-and-inquiry">
+        <a href="#schedule" data-tab-target="intake" class="pathway-image-link" aria-label="Jump to Intake &amp; Inquiry scheduler">
+          <img src="https://images.unsplash.com/photo-1601922046210-41e129a3e64a?w=900&h=600&fit=crop&q=80"
+               alt="Candlelit altar — the quiet beginning of conversation"
+               class="pathway-image"
+               width="900" height="600"
+               loading="lazy">
+          <div class="pathway-image-overlay">
+            <span class="overlay-glyph" aria-hidden="true">&#9737;</span>
+            <span class="overlay-label">Enter the Scheduler</span>
+          </div>
+        </a>
+        <div class="pathway-content">
+          <p class="pathway-eyebrow">Open Door &middot; First</p>
+          <h2 class="pathway-title">Intake &amp; <em>Inquiry</em></h2>
+          <p class="pathway-meta">90 minutes &middot; Virtual worldwide &middot; In person by arrangement</p>
+          <p class="pathway-description">A first paid session to meet, listen, and discern the path forward. The conversation that has been waiting &mdash; held with care, without rushing, without fixing. From here, the deeper work (or no work at all) finds its honest shape.</p>
+
+          <div class="pathway-bring">
+            <h4>What these calls support</h4>
+            <ul class="what-to-bring">
+              <li>Verbal and Emotional Processing</li>
+              <li>Ceremonial Preparation and Aftercare</li>
+              <li>Spiritual &amp; Life Support</li>
+              <li>Consultations, Intake &amp; Inquiry</li>
+            </ul>
+            <p class="pathway-bring-note">These sessions are available as support sessions for deeper ceremonial containers, and for ongoing community care.</p>
+          </div>
+
+          <div class="pathway-scale">
+            <h4>Sliding Scale</h4>
+            <div class="scale-tiles">
+              <article class="scale-tile tier-gold">
+                <span class="tile-eyebrow">Patron</span>
+                <span class="tile-amt">&ge;&nbsp;$400</span>
+              </article>
+              <article class="scale-tile tier-green">
+                <span class="tile-eyebrow">Abundance</span>
+                <span class="tile-amt">&ge;&nbsp;$300</span>
+              </article>
+              <article class="scale-tile tier-blue">
+                <span class="tile-eyebrow">Community</span>
+                <span class="tile-amt">&ge;&nbsp;$250</span>
+              </article>
+              <article class="scale-tile tier-purple">
+                <span class="tile-eyebrow">Accessibility</span>
+                <span class="tile-amt">&ge;&nbsp;$200</span>
+              </article>
+            </div>
+            <p class="scale-note">Choose the tier that&rsquo;s true for you. <a href="sacred-reciprocity.html">Read about Sacred Reciprocity &rarr;</a></p>
+          </div>
+
+          <a href="inquiry.html" class="pathway-deeper-link">Have questions first? Begin a conversation &rarr;</a>
+        </div>
+      </article>
+
+      <!-- ===== PATHWAY 2: ANCESTRAL DIVINATION ===== -->
+      <article class="pathway-window" id="divination">
+        <a href="#schedule" data-tab-target="divination" class="pathway-image-link" aria-label="Jump to Ancestral Divination scheduler">
+          <img src="https://images.unsplash.com/photo-1627769916425-74c2344a3439?w=900&h=600&fit=crop&q=80"
+               alt="Divination kit — shells, stones, sacred objects on cloth"
+               class="pathway-image"
+               width="900" height="600"
+               loading="lazy">
+          <div class="pathway-image-overlay">
+            <span class="overlay-glyph" aria-hidden="true">&#9737;</span>
+            <span class="overlay-label">Enter the Scheduler</span>
+          </div>
+        </a>
+        <div class="pathway-content">
+          <p class="pathway-eyebrow">Open Door &middot; Ancestral</p>
+          <h2 class="pathway-title">Ancestral &amp; Elemental <em>Divination</em></h2>
+          <p class="pathway-meta">2 hours &middot; Virtual worldwide &middot; In person by arrangement</p>
+          <p class="pathway-description">An ancestral divination in the Dagara tradition. Spirit hears through the coin you whisper your question into, and answers through the diviner&rsquo;s kit. A ceremony of listening and revelation &mdash; insight, guidance, and procedural ritual instruction for the path ahead.</p>
+
+          <div class="pathway-bring">
+            <h4>What to bring</h4>
+            <ul class="what-to-bring">
+              <li>A quarter, or any 25&cent; coin</li>
+              <li>Two open hours, undisturbed</li>
+              <li>A journal and a recording device (or we record on Zoom)</li>
+              <li>An openness to what arrives</li>
+            </ul>
+            <p class="pathway-bring-note">These divinations are entry points into ancestral dialogue, and may be returned to seasonally as the path unfolds.</p>
+          </div>
+
+          <div class="pathway-scale">
+            <h4>Sliding Scale</h4>
+            <div class="scale-tiles">
+              <article class="scale-tile tier-gold">
+                <span class="tile-eyebrow">Patron</span>
+                <span class="tile-amt">&ge;&nbsp;$500</span>
+              </article>
+              <article class="scale-tile tier-green">
+                <span class="tile-eyebrow">Abundance</span>
+                <span class="tile-amt">&ge;&nbsp;$400</span>
+              </article>
+              <article class="scale-tile tier-blue">
+                <span class="tile-eyebrow">Community</span>
+                <span class="tile-amt">&ge;&nbsp;$350</span>
+              </article>
+              <article class="scale-tile tier-purple">
+                <span class="tile-eyebrow">Accessibility</span>
+                <span class="tile-amt">&ge;&nbsp;$300</span>
+              </article>
+            </div>
+            <p class="scale-note">Choose the tier that&rsquo;s true for you. <a href="sacred-reciprocity.html">Read about Sacred Reciprocity &rarr;</a></p>
+          </div>
+
+          <a href="divinations.html" class="pathway-deeper-link">Read the full lineage story &rarr;</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =============================================================
+       PAY + SACRED RECIPROCITY — merged section
+       (top: payment action · bottom: philosophy + 4-tier descriptor)
+       ============================================================= -->
+  <section class="reciprocity-note" id="reciprocity">
+    <div class="reciprocity-note-inner">
+
+      <!-- ===== PART 1 · PAY FOR YOUR SESSION ===== -->
+      <header class="pay-header">
+        <span class="section-label">Sacred Exchange</span>
+        <h2>Pay for <em>your session</em></h2>
+        <p class="pay-line">Complete payment in full at the time of booking. Sliding scale rates are listed with each offering above.</p>
+        <div class="pay-buttons">
+          <a href="https://venmo.com/code?user_id=1910309354733568721&created=1760814633" target="_blank" rel="noopener" class="pay-button">
+            <span class="pay-button-label">Venmo</span>
+            <span class="pay-button-handle">@WellnessArts</span>
+          </a>
+          <a href="https://paypal.me/ahtheemaree" target="_blank" rel="noopener" class="pay-button">
+            <span class="pay-button-label">PayPal</span>
+            <span class="pay-button-handle">@ahtheemaree</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- ===== visual divider between Pay and Reciprocity ===== -->
+      <div class="pay-reciprocity-divider" aria-hidden="true">
+        <span class="divider-glyph">&#9737;</span>
+      </div>
+
+      <!-- ===== PART 2 · A NOTE ON SACRED RECIPROCITY ===== -->
+      <header class="reciprocity-note-header">
+        <span class="section-label">A Note On</span>
+        <h2>Sacred <em>Reciprocity</em></h2>
+        <p class="reciprocity-intro">For an in-depth acquaintance with my economic community model and considerations, please take a moment to review the <a href="sacred-reciprocity.html">Sacred Reciprocity page</a>. If you&rsquo;d like to go into more depth in this regard, please <a href="mailto:its.adimarie@gmail.com?subject=Sacred%20Reciprocity%20%E2%80%94%20Sustainable%20Path">reach out</a> so we can find a sustainable path together.</p>
+        <p class="reciprocity-subhead">Here&rsquo;s what each tier means, in simplified terms:</p>
+      </header>
+
+      <div class="reciprocity-grid">
+        <article class="recip-tier recip-tier-gold">
+          <p class="recip-eyebrow">Tier One</p>
+          <h3>Patron <em>Rate</em></h3>
+          <p class="recip-desc">For those who feel resourced and want to offer abundance, stewardship, and patronage &mdash; not just paying for a session, but helping support the work in the world. A blend of gratitude and generosity &mdash; one of the ways the accessibility rates are possible at all.</p>
+        </article>
+
+        <article class="recip-tier recip-tier-green">
+          <p class="recip-eyebrow">Tier Two</p>
+          <h3>Abundance <em>Rate</em></h3>
+          <p class="recip-desc">The standard &ldquo;I can meet the full value of this support&rdquo; tier. It reflects the real cost of my time, materials, preparation, and the depth of skill I bring. It also helps keep the community model steady.</p>
+        </article>
+
+        <article class="recip-tier recip-tier-blue">
+          <p class="recip-eyebrow">Tier Three</p>
+          <h3>Community <em>Rate</em></h3>
+          <p class="recip-desc">For people who are part of the broader web with me: community members, peers and other holistic professionals, folks closer to the work of healing, or those in mutual alliance with these modalities. This is where I break even &mdash; supportive, fair, sustainable.</p>
+        </article>
+
+        <article class="recip-tier recip-tier-purple">
+          <p class="recip-eyebrow">Tier Four</p>
+          <h3>Accessibility <em>Rate</em></h3>
+          <p class="recip-desc">The &ldquo;I need support and money is tight&rdquo; tier. I offer a limited number, and to be transparent: it doesn&rsquo;t fully cover the true cost. It&rsquo;s essentially a scholarship rate, held because care should remain reachable during hard seasons.</p>
+        </article>
+      </div>
+
+      <p class="reciprocity-closing">The social economics of this model help offset scholarship and accessibility sessions, so the work can remain available to people in different seasons of life. The model is fluid &mdash; sometimes someone comes when resources are thin, and later, when life opens, they choose to give at Abundance or Patron as a way of giving back to the web that held them.</p>
+
+      <div class="reciprocity-actions">
+        <a href="sacred-reciprocity.html" class="btn-primary">Read the full Sacred Reciprocity page &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================================
+       SCHEDULE A SESSION — full-width inline calendar, tabbed
+       ============================================================= -->
+  <section class="schedule-section" id="schedule">
+    <div class="schedule-inner">
+      <span class="section-label">Schedule a Session</span>
+      <h2>Pick your hour. <em>Pick your offering.</em></h2>
+      <p class="schedule-intro">Bookings flow directly into Adi&rsquo;s calendar. Choose a tab below to load the scheduler.</p>
+
+      <div class="schedule-tabs" role="tablist" aria-label="Choose an offering to schedule">
+        <button type="button" class="schedule-tab" data-tab="intake" role="tab" aria-selected="false">
+          <span class="tab-title">Intake &amp; Inquiry</span>
+          <span class="tab-meta">90 min</span>
+        </button>
+        <button type="button" class="schedule-tab" data-tab="divination" role="tab" aria-selected="false">
+          <span class="tab-title">Ancestral Divination</span>
+          <span class="tab-meta">2 hours</span>
+        </button>
+      </div>
+
+      <div class="schedule-frame" id="scheduleFrame" aria-live="polite">
+        <div class="schedule-prompt">
+          <span class="prompt-glyph" aria-hidden="true">&#9737;</span>
+          <p class="prompt-text">Choose an offering above &mdash; the scheduler will appear here.</p>
+          <p class="prompt-hint">Your booking flows directly into Adi&rsquo;s calendar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       PRACTICAL NOTES — payment, where we meet, contact + reply time
+       Lives between the calendar and the deeper reciprocity context.
+       ============================================================= -->
+  <section class="practical-notes" id="practical">
+    <div class="practical-notes-inner">
+
+      <header class="practical-header">
+        <span class="section-label">Before We Meet</span>
+        <h2>Practical <em>Notes</em></h2>
+        <p class="practical-intro">Everything you need for our session together &mdash; payment timing, where we meet, and how to reach me.</p>
+      </header>
+
+      <div class="practical-grid">
+
+        <!-- CARD: CANCELLATION & RESCHEDULE -->
+        <article class="practical-card">
+          <p class="card-glyph">&#8634;</p>
+          <h3>Cancellation &amp; <em>Reschedule</em></h3>
+          <p class="card-lead">Life moves. Please give as much notice as you&rsquo;re able.</p>
+
+          <div class="policy-block">
+            <p class="policy-heading">Intake &amp; Inquiry Sessions</p>
+            <ul class="policy-list">
+              <li>
+                <span class="policy-when">More than 1 week before</span>
+                <span class="policy-what">Full cancellation, full refund</span>
+              </li>
+              <li>
+                <span class="policy-when">Within 3&ndash;7 days</span>
+                <span class="policy-what">Reschedule only, no cancellation</span>
+              </li>
+              <li>
+                <span class="policy-when">Within 48 hours or no-show</span>
+                <span class="policy-what">Forfeit of session &amp; reciprocity</span>
+              </li>
+            </ul>
+          </div>
+
+          <p class="card-note">Ceremonies, retreats, rituals, and immersions follow a different cancellation structure &mdash; agreements are reviewed at intake.</p>
+
+          <p>To reschedule, use the link in your confirmation email or <a href="mailto:adimarie@bodyworkandbotanicals.com?subject=Reschedule%20Request">email me directly</a>.</p>
+        </article>
+
+        <!-- CARD: QUESTIONS & REPLY TIME -->
+        <article class="practical-card">
+          <p class="card-glyph">&#9993;</p>
+          <h3>Questions &amp; <em>Reply Time</em></h3>
+          <p class="card-lead">Please email any questions or inquiries to:</p>
+
+          <a href="mailto:adimarie@bodyworkandbotanicals.com" class="email-link">adimarie@bodyworkandbotanicals.com</a>
+
+          <p>As my path is woven with deep ceremonial work and extended retreats, please allow <strong>3&ndash;5 days for a reply</strong>.</p>
+
+          <div class="after-book-block">
+            <p class="after-book-heading">After You Book</p>
+            <ul class="after-book-list">
+              <li>
+                <span class="after-book-when">Immediately</span>
+                <span class="after-book-what">A confirmation email with the Zoom link for our video call</span>
+              </li>
+              <li>
+                <span class="after-book-when">Day before</span>
+                <span class="after-book-what">A gentle reminder email so you arrive ready</span>
+              </li>
+            </ul>
+          </div>
+
+          <p class="card-closing">Thank you for your patience and reverence for the rhythm of this work.</p>
+        </article>
+
+        <!-- CARD: CONFIDENTIALITY & RECORDING -->
+        <article class="practical-card">
+          <p class="card-glyph">&#9670;</p>
+          <h3>Confidentiality &amp; <em>Recording</em></h3>
+          <p class="card-lead">What is shared in session remains in session.</p>
+
+          <p>Notes and reflections are private. Sessions are held in confidence in accordance with the ethics of this work.</p>
+
+          <p>Recordings are available upon request &mdash; Zoom can record automatically, or we can use a separate device of your choosing. <strong>The recording is yours; I keep no copy.</strong></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       NEWSLETTER — Seasonal Letters (rich staple version)
+       Matches the homepage's bg-image + card-on-right pattern.
+       ============================================================= -->
+  <section id="subscribe" class="section-newsletter">
+    <div class="newsletter-inner">
+      <span class="section-label">Seasonal Letters</span>
+      <h2 class="newsletter-title">Water, Milk, and Honey</h2>
+      <p class="newsletter-body">Tender reflections, sacred teachings, and updates from the practice &mdash; workshops, public gatherings, the occasional surprise offering.</p>
+
+      <form id="newsletter-form" class="newsletter-form" novalidate data-source="sessions">
+        <div class="newsletter-form-names">
+          <input type="text" name="first_name" placeholder="First Name" required autocomplete="given-name" aria-label="First Name">
+          <input type="text" name="last_name" placeholder="Last Name" required autocomplete="family-name" aria-label="Last Name">
+        </div>
+        <input type="email" name="email" placeholder="Email Address" required autocomplete="email" aria-label="Email Address">
+        <button type="submit" class="newsletter-submit">Subscribe</button>
+      </form>
+
+      <p class="newsletter-trust">
+        <span>Held with care, never shared.</span>
+        <span aria-hidden="true"> &middot; </span>
+        <a href="https://new.theanimistapothecary.com/apply">For ceremony or private work, begin with an Intake &amp; Inquiry Call</a> &rarr;
+      </p>
+
+      <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       DEEPER PATHS BAND
+       ============================================================= -->
+  <section class="deeper-paths">
+    <div class="inner">
+      <span class="section-label">For the Deeper Paths</span>
+      <h2>Some work requires <em>more context</em>.</h2>
+      <p>Please fill in a deeper inquiry and self-reflection to indicate your safety, health screening, and readiness for this work.</p>
+      <p class="intake-once-note">This intake form needs only to be completed once.</p>
+      <a href="https://new.theanimistapothecary.com/intake" class="intake-cta-btn" target="_blank" rel="noopener">
+        <span class="intake-cta-label">Complete the Immersion Intake</span>
+        <span class="intake-cta-arrow">&nearr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       FOOTER
+       ============================================================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="sessions.html">Book a Session</a></li>
+            <li><a href="inquiry.html">Begin a Conversation</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="https://new.theanimistapothecary.com/contact/inquiry">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/newsletter.js" defer></script>
+  <script>
+    // ============================================================
+    //  Tabbed scheduler — one Google Calendar embed at a time.
+    //  Iframe is only created when a tab is clicked, preventing
+    //  the multi-embed crash and keeping initial page load light.
+    // ============================================================
+    (function () {
+      var EMBED_URLS = {
+        'intake': 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3dyFbMlqfjfF4pWZK_2y_ofqVJe5gbom-16JgdkZsRBDdn4o0_swhsNgDDemWzSlZ68mTzsEym?gv=true',
+        'divination': 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0b2zdByYbBmsK3Vk9w4cGkfUNENaWDFAKzPleOY_8rHX5SN0bZvNB1WeFBftJBwjyknT1dLkk4?gv=true'
+      };
+      var TITLES = {
+        'intake': 'Schedule an Intake & Inquiry session',
+        'divination': 'Schedule an Ancestral Divination'
+      };
+      // Per-offering sliding-scale rates. Keep in sync with pathway-window rates above.
+      var RATES = {
+        'intake': {
+          label: 'Intake & Inquiry · 90 min',
+          patron: 400, abundance: 300, community: 250, accessibility: 200
+        },
+        'divination': {
+          label: 'Ancestral Divination · 2 hr',
+          patron: 500, abundance: 400, community: 350, accessibility: 300
+        }
+      };
+
+      var tabs = document.querySelectorAll('.schedule-tab');
+      var frame = document.getElementById('scheduleFrame');
+      if (!tabs.length || !frame) return;
+
+      function updateDynamicRates(target) {
+        var rates = RATES[target];
+        var block = document.getElementById('dynamicRateBlock');
+        var prompt = document.getElementById('dynamicRatePrompt');
+        var list = document.getElementById('dynamicRateList');
+        var labelEl = document.getElementById('dynamicRateLabel');
+        if (!rates || !block || !list) return;
+        // Update each amount
+        list.querySelectorAll('.rate-amt').forEach(function (el) {
+          var tier = el.dataset.tier;
+          if (tier && rates[tier]) el.innerHTML = '&ge; $' + rates[tier];
+        });
+        // Show list, hide prompt, set offering label
+        if (labelEl) labelEl.textContent = rates.label;
+        if (prompt) prompt.hidden = true;
+        list.hidden = false;
+        block.dataset.state = 'filled';
+      }
+
+      function activateTab(target) {
+        var url = EMBED_URLS[target];
+        if (!url) return;
+        // Update aria-selected on every tab
+        tabs.forEach(function (t) {
+          t.setAttribute('aria-selected', t.dataset.tab === target ? 'true' : 'false');
+        });
+        // Replace frame contents with a single iframe
+        frame.innerHTML = '';
+        var iframe = document.createElement('iframe');
+        iframe.src = url;
+        iframe.title = TITLES[target] || 'Schedule';
+        iframe.loading = 'lazy';
+        iframe.referrerPolicy = 'no-referrer-when-downgrade';
+        frame.appendChild(iframe);
+        // Also update the dynamic Practical Notes rate block
+        updateDynamicRates(target);
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          activateTab(tab.dataset.tab);
+        });
+      });
+
+      // Card jump-links auto-activate the matching tab on click
+      document.querySelectorAll('.card-schedule-jump').forEach(function (link) {
+        link.addEventListener('click', function () {
+          var target = link.dataset.tabTarget;
+          if (target) {
+            setTimeout(function () { activateTab(target); }, 250);
+          }
+        });
+      });
+
+      // Pathway image-links (top of page) also auto-activate the matching tab
+      document.querySelectorAll('.pathway-image-link').forEach(function (link) {
+        link.addEventListener('click', function () {
+          var target = link.dataset.tabTarget;
+          if (target) {
+            setTimeout(function () { activateTab(target); }, 250);
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

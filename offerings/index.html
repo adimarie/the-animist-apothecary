@@ -18,7 +18,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css?v=v32">
+  <link rel="stylesheet" href="/css/site-header.css?v=v04">
   <style>
     /* ===== Offerings Index — Page-Specific Styles ===== */
 
@@ -225,46 +226,91 @@
 </head>
 <body>
 
-  <header class="site-header">
+      <header class="site-header">
     <div class="header-inner">
-      <a href="/index.html" class="logo">The Animist <em class="logo-accent">Apothecary</em></a>
+      <a href="/index.html" class="logo">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span>
+      </a>
+      <div class="header-nav-row">
       <nav class="main-nav">
         <ul>
-          <li><a href="/index.html">Home</a></li>
           <li class="nav-dropdown-parent">
-            <a href="#" class="nav-active">Offerings <span class="nav-arrow">&#9662;</span></a>
+            <a href="/index.html">Home <span class="nav-arrow">&#9662;</span></a>
             <div class="nav-dropdown">
+              <a href="/index.html">Welcome</a>
+              <a href="/index.html#offerings">This Practice</a>
+              <a href="/about.html">The Practitioner</a>
+              <a href="/book.html">Begin Here</a>
+            </div>
+          </li>
+          <li class="nav-dropdown-parent">
+            <a href="/about.html">About <span class="nav-arrow">&#9662;</span></a>
+            <div class="nav-dropdown">
+              <a href="/about.html">Adi Marie</a>
+              <a href="/about.html#practice">The Practice</a>
+              <a href="/about.html#lineage">Lineage &amp; Training</a>
+              <a href="/about.html#press">Press &amp; Mentions</a>
+            </div>
+          </li>
+          <li class="nav-dropdown-parent nav-dropdown-mega">
+            <a href="#">Offerings <span class="nav-arrow">&#9662;</span></a>
+            <div class="nav-dropdown nav-dropdown--mega">
               <div class="nav-dropdown-inner">
-                <div class="nav-drop-col nav-drop-col--cornerstone">
-                  <a href="/deep-work.html" class="nav-drop-deepwork-card">
-                    <span class="nav-drop-label">The Deep Work</span>
-                    <span class="nav-drop-deepwork-desc">Sustained containers of 3&ndash;24 months for those called to genuine transformation. The heart of this practice.</span>
-                    <span class="nav-drop-deepwork-cta">Explore initiating paths &rarr;</span>
-                  </a>
+                <div class="nav-drop-col">
+                  <span class="nav-drop-label">Developmental Arcs</span>
+                  <a href="/mythopoetic.html">Mythopoetic Living</a>
+                  <a href="#">Seasons of Change</a>
+                  <a href="#">The Long Work</a>
+                  <a href="#">Solo Acolyte</a>
+                  <a href="#">Group Trajectories</a>
                 </div>
                 <div class="nav-drop-col">
-                  <span class="nav-drop-label">Sacred Sessions</span>
-                  <a href="/shamanic-bodywork.html">Shamanic Bodywork</a>
-                  <a href="/personal-immersions.html">Personal Immersions</a>
-                  <a href="/ceremonial-therapeutics.html">Ceremonial Therapeutics</a>
-                  <a href="/platicas.html">Pl&aacute;ticas &mdash; Guidance &amp; Counsel</a>
+                  <span class="nav-drop-label">Oracular Divination</span>
                   <a href="/divinations.html">Ancestral &amp; Elemental Divinations</a>
+                  <a href="/platicas.html">Pl&aacute;ticas &mdash; Guidance &amp; Counsel</a>
+                  <a href="#">Tarot &amp; Card Reading</a>
+                  <a href="#">Bone &amp; Stone Casting</a>
                 </div>
                 <div class="nav-drop-col">
-                  <span class="nav-drop-label">The Living Web</span>
-                  <a href="/private-group-ceremonies.html">Private &amp; Group Ceremonies</a>
-                  <a href="/community.html">Community Hubs</a>
+                  <span class="nav-drop-label">Entheo Ecology</span>
+                  <a href="#">Plant Medicine Foundations</a>
+                  <a href="/sacred-reciprocity.html">Sacred Reciprocity</a>
+                  <a href="#">Earth-Based Practices</a>
+                  <a href="#">The Living Web</a>
+                </div>
+                <div class="nav-drop-col">
+                  <span class="nav-drop-label">The Hearth</span>
+                  <a href="/community.html">Community Hub</a>
+                  <a href="/calendar.html">The Wheel</a>
+                  <a href="/community.html#events">Gatherings</a>
                   <a href="/community.html#training">Ceremonialist Training</a>
                 </div>
               </div>
             </div>
           </li>
-          <li><a href="/community.html">Community</a></li>
-          <li><a href="/about.html">About</a></li>
-          <li><a href="/sacred-reciprocity.html">Sacred Reciprocity</a></li>
-          <li><a href="/book.html" class="nav-cta">Begin Here</a></li>
+          <li class="nav-dropdown-parent">
+            <a href="#">The School <span class="nav-arrow">&#9662;</span></a>
+            <div class="nav-dropdown">
+              <a href="#">Curriculum</a>
+              <a href="#">The Apprenticeship</a>
+              <a href="#">Faculty</a>
+              <a href="#">How to Join</a>
+            </div>
+          </li>
+          <li class="nav-dropdown-parent">
+            <a href="#">Resources <span class="nav-arrow">&#9662;</span></a>
+            <div class="nav-dropdown">
+              <a href="#">Library</a>
+              <a href="#">Writings</a>
+              <a href="#">Podcasts &amp; Talks</a>
+              <a href="#">Practice Guides</a>
+              <a href="/platicas.html">Pl&aacute;ticas</a>
+            </div>
+          </li>
         </ul>
       </nav>
+      <a href="/book.html" class="nav-cta apply-btn">Apply</a>
+      </div>
     </div>
   </header>
 
@@ -378,7 +424,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <a href="/index.html" class="logo">The Animist <em class="logo-accent">Apothecary</em></a>
-        <p class="footer-tagline">Shamanic healing, somatic ceremony, and botanical medicine.<br>Based in Topanga Canyon, Los Angeles, California. Available worldwide.</p>
+        <p class="footer-tagline">Shamanic healing, somatic ceremony, and botanical medicine.<br>Based in Southern California. Available worldwide.</p>
       </div>
       <nav class="footer-nav">
         <div class="footer-col">
@@ -418,7 +464,7 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; 2025 The Animist Apothecary. All rights reserved.</p>
-      <p class="footer-credit">Adi Marie &middot; Topanga Canyon, Los Angeles, California</p>
+      <p class="footer-credit">Adi Marie &middot; Southern California</p>
     </div>
   </footer>
 

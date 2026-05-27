@@ -72,14 +72,21 @@
 
       var template = parent.querySelector('[data-content-list-template]');
       if (!template) return;
-      // Detach template from DOM (we'll clone from it)
+      // Cache the template, then clear all matching fallback siblings.
       template.removeAttribute('data-content-list-template');
       var tplClone = template.cloneNode(true);
       tplClone.style.display = '';
-      template.parentNode.removeChild(template);
 
-      // Remove any previous clones (for hot-reload safety)
-      parent.querySelectorAll('[data-content-list-clone]').forEach(function (c) { c.remove(); });
+      // Remove the template AND any hardcoded sibling fallbacks that match the
+      // template's tag + class signature exactly. (Match by class so non-matching
+      // separators like `<span class="pq-dot">` between question items stay.)
+      var tagName = template.tagName;
+      var tplClass = String(template.className || '');
+      Array.prototype.slice.call(parent.children).forEach(function (child) {
+        if (child.tagName === tagName && String(child.className || '') === tplClass) {
+          parent.removeChild(child);
+        }
+      });
 
       arr.forEach(function (_, i) {
         var clone = tplClone.cloneNode(true);

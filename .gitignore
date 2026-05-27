@@ -58,3 +58,25 @@ pai-discord/node_modules/
 # Gmail OAuth credentials (secret)
 scripts/gmail-credentials.json
 .gstack/
+
+# Internal planning, drafts, and raw materials — local only
+mockups/
+Working Images/
+ceremony-docs/
+.studio-drafts/
+HANDOFF-FROM-COWORK.md
+Developmental Arc Agreements*.md
+docs/audits/
+docs/design-brief.md
+docs/palette.md
+docs/site-flow.html
+docs/site-flow.md
+docs/custom-calendar-spec.md
+
+# Large raw photo folders — not referenced by the site, kept local only
+images/Adi Practitioner Photos/
+images/Additional Images/
+images/ChatGPT Image*.png
+
+# Local IDE launch config
+.claude/launch.json

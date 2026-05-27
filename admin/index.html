@@ -570,6 +570,9 @@
       <button class="sidebar-item" data-view="ceremony-admin">
         <span class="sidebar-icon">&#9830;</span> Ceremonies
       </button>
+      <button class="sidebar-item" data-view="contacts">
+        <span class="sidebar-icon">&#9993;</span> Contacts
+      </button>
       <div class="sidebar-spacer"></div>
       <button class="sidebar-item" id="sign-out-btn">
         <span class="sidebar-icon">&#8617;</span> Sign Out
@@ -644,6 +647,44 @@
           <div class="matrix-wrapper">
             <div class="progression-matrix" id="progression-matrix"></div>
           </div>
+        </div>
+      </div>
+
+      <!-- ===== CONTACTS VIEW ===== -->
+      <div id="view-contacts" class="admin-view" style="display:none;">
+        <div class="admin-header">
+          <h1>Contacts</h1>
+          <p>Newsletter subscribers from the homepage. Ceremony intake & inquiry leads live separately.</p>
+        </div>
+
+        <div class="table-card" id="newsletter-card">
+          <div class="table-card-header">
+            <h3>Newsletter Subscribers</h3>
+            <span id="newsletter-count" style="color:var(--earth-faint);font-size:13px;"></span>
+          </div>
+          <div class="search-bar">
+            <input type="text" id="newsletter-search" placeholder="Search by name or email...">
+            <select id="newsletter-filter">
+              <option value="">All Statuses</option>
+              <option value="active">Active</option>
+              <option value="unsubscribed">Unsubscribed</option>
+              <option value="bounced">Bounced</option>
+            </select>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Source</th>
+                <th>Status</th>
+                <th>Subscribed</th>
+              </tr>
+            </thead>
+            <tbody id="newsletter-tbody">
+              <tr><td colspan="5" class="empty-state">Loading subscribers&hellip;</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -732,6 +773,8 @@
         document.getElementById('view-' + view).style.display = 'block';
         document.querySelectorAll('.sidebar-item').forEach(s => s.classList.remove('active'));
         document.querySelectorAll(`.sidebar-item[data-view="${view}"]`).forEach(s => s.classList.add('active'));
+        // Load data when entering specific views
+        if (view === 'contacts') loadNewsletterSubscribers();
       });
     });
 
@@ -954,6 +997,73 @@
         </tr>
       `).join('');
     }
+
+    // ── Newsletter Subscribers (Contacts view) ──
+    async function loadNewsletterSubscribers() {
+      const tbody = document.getElementById('newsletter-tbody');
+      const countEl = document.getElementById('newsletter-count');
+      tbody.innerHTML = '<tr><td colspan="5" class="empty-state">Loading subscribers&hellip;</td></tr>';
+
+      const { data, error } = await supabase
+        .from('newsletter_subscribers')
+        .select('id, first_name, last_name, email, source, status, created_at')
+        .order('created_at', { ascending: false })
+        .limit(1000);
+
+      if (error) {
+        console.error('Failed to load newsletter subscribers:', error);
+        tbody.innerHTML = `<tr><td colspan="5" class="empty-state">Failed to load &mdash; ${escapeHtml(error.message || 'unknown error')}</td></tr>`;
+        countEl.textContent = '';
+        return;
+      }
+
+      const subscribers = data || [];
+      window.__newsletterSubscribers = subscribers;
+      countEl.textContent = subscribers.length === 1 ? '1 subscriber' : subscribers.length + ' subscribers';
+      renderNewsletterRows(subscribers);
+    }
+
+    function renderNewsletterRows(subscribers) {
+      const tbody = document.getElementById('newsletter-tbody');
+      if (!subscribers || subscribers.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No subscribers yet</td></tr>';
+        return;
+      }
+      tbody.innerHTML = subscribers.map(s => {
+        const name = [s.first_name, s.last_name].filter(Boolean).join(' ') || '—';
+        const date = s.created_at
+          ? new Date(s.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+          : '—';
+        return `<tr>
+          <td>${escapeHtml(name)}</td>
+          <td><a href="mailto:${escapeHtml(s.email)}" style="color:var(--earth-mid);">${escapeHtml(s.email)}</a></td>
+          <td>${escapeHtml(s.source || '—')}</td>
+          <td>${tagHtml(s.status || 'active')}</td>
+          <td>${date}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    function applyNewsletterFilters() {
+      const all = window.__newsletterSubscribers || [];
+      const term = (document.getElementById('newsletter-search')?.value || '').trim().toLowerCase();
+      const statusFilter = document.getElementById('newsletter-filter')?.value || '';
+      const filtered = all.filter(s => {
+        if (statusFilter && s.status !== statusFilter) return false;
+        if (term) {
+          const haystack = [s.first_name, s.last_name, s.email].filter(Boolean).join(' ').toLowerCase();
+          if (!haystack.includes(term)) return false;
+        }
+        return true;
+      });
+      renderNewsletterRows(filtered);
+    }
+
+    // Wire search/filter on DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('newsletter-search')?.addEventListener('input', applyNewsletterFilters);
+      document.getElementById('newsletter-filter')?.addEventListener('change', applyNewsletterFilters);
+    });
 
     // ── Ceremony Admin ──
     async function loadCeremonyAdmin() {

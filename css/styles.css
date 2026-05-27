@@ -1700,6 +1700,7 @@ img { max-width: 100%; display: block; }
   gap: 4rem;
   padding-bottom: 4rem;
   border-bottom: 1px solid rgba(255,255,255,0.07);
+  align-items: start;
 }
 
 .footer-brand .logo {
@@ -1709,8 +1710,23 @@ img { max-width: 100%; display: block; }
   margin-bottom: 1.2rem;
 }
 
+/* Override the global .logo::before star — the footer uses an image logo, not the typeset wordmark. */
+.footer-brand .logo::before {
+  display: none !important;
+  content: none !important;
+}
+
 .footer-brand .logo-accent { color: var(--sage-light); }
 .footer-tagline { font-size: 0.88rem; line-height: 1.75; color: rgba(255,255,255,0.42); }
+
+/* Horizontal lockup logo in footer (trio + wordmark, 3:1 landscape). Gold-on-transparent reads cleanly on dark bark. */
+.footer-brand .footer-logo-img {
+  display: block;
+  max-width: 480px;
+  width: 100%;
+  height: auto;
+  margin: 0 0 1.2rem;
+}
 
 .footer-nav {
   display: grid;
@@ -1945,6 +1961,47 @@ img { max-width: 100%; display: block; }
   --shadow-warm:      var(--shadow-soft);
   --shadow-warm-deep: var(--shadow-deep);
   --glow:             rgba(201, 168, 76, 0.14);
+}
+
+/* ===== TOUCHSTONE PALETTE (docs/palette.md, 2026-05-19) =====
+   Extracted from four reference images: smoking smudge in moss,
+   Adi in wool shawl, fern + labyrinth, dark forest interior.
+   Extends the legacy tokens above without replacing them.
+   See docs/palette.md for pairings, usage notes, and "don't use" list. */
+:root {
+  /* Earth & Bark */
+  --bark-deep:        #1F1612;
+  --bark-warm:        #3C2A1A;
+  --clay:             #5C4530;
+  --umber:            #7A5A40;
+  --sand:             #B89070;
+
+  /* Forest & Moss */
+  --moss-deep:        #1A2218;
+  --moss:             #2E5234;
+  --pine:             #3D6E30;
+  --leaf:             #5C8A48;
+  --leaf-pale:        #8AA678;
+
+  /* Smoke, Mist & Light */
+  --parchment-warm:   #F4EAD3;
+  --light-catch:      #E2D8B8;
+  --mist:             #C8C9C5;
+  --smoke-warm:       #B6A788;
+
+  /* Stone & Shadow */
+  --slate:            #2E2A20;
+  --stone:            #4A5C42;
+  --pebble:           #6E7866;
+
+  /* Signature Accents (extends --gold #c9a84c from legacy block) */
+  --amber:            #C99A75;
+  --copper:           #886039;
+
+  /* Functional */
+  --ink-quiet:        #5A554C;
+  --backdrop-warm:    rgba(247, 239, 217, 0.94);
+  --backdrop-dark-overlay: linear-gradient(rgba(18, 24, 14, 0.88), rgba(18, 24, 14, 0.93));
 }
 
 html, body {
@@ -3265,7 +3322,7 @@ p { line-height: 1.72; }
 .site-header { padding: 1.1rem 0 !important; }
 .site-header.scrolled { padding: .8rem 0 !important; }
 .main-nav a {
-  font-size: .72rem !important;
+  font-size: .88rem !important;
   letter-spacing: .32em !important;
 }
 .logo {

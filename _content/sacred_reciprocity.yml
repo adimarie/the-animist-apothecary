@@ -4,15 +4,16 @@
 
 hero:
   image: "https://images.unsplash.com/photo-1597498431021-8a955ef92727?w=1600&h=900&fit=crop&q=80"
+  eyebrow: "On Exchange"
   title: "Sacred <em>Reciprocity</em>"
-  subtitle: "A sliding scale rooted in mutual care"
+  subtitle: "A sliding scale, rooted in mutual care."
 
 intro:
   paragraph_1: "The sliding scale at The Animist Apothecary is not charity. It is not a discount. It is a practice of sacred reciprocity — an acknowledgment that healing work exists within an ecosystem of relationship, and that the exchange between practitioner and participant must honor both."
   paragraph_2: "When you choose your tier, you are not simply selecting a price. You are making a statement about your relationship to this work, your current means, and your willingness to participate in a system where those with more help sustain access for those with less."
 
 tiers_section:
-  heading: "The Four Tiers"
+  heading: "The <em>Four Tiers</em>"
   tiers:
     - eyebrow: "Tier One"
       name: "Patron"
@@ -41,7 +42,8 @@ note_section:
   contact_url: "mailto:hello@theanimistapothecary.com"
 
 cta_section:
-  title: "Ready to Begin?"
-  body: "The first step is an Intake & Inquiry call — a 90-minute Pláticas session where we explore what brings you here and how this practice might serve your path."
-  cta_text: "Begin Here"
-  cta_url: "book.html"
+  eyebrow: "When You're Ready"
+  title: "Cross the <em>threshold</em>"
+  body: "The first step is a Pláticas call — ninety minutes to hear what brings you here and see whether this practice can meet you."
+  cta_text: "Apply to Begin"
+  cta_url: "https://new.theanimistapothecary.com/apply"

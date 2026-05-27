@@ -218,7 +218,7 @@
       if (!currentCeremony) return;
 
       document.getElementById('metaDate').textContent = fmtDateLong(currentCeremony.ceremony_date);
-      document.getElementById('metaLocation').textContent = currentCeremony.location || 'Topanga Canyon';
+      document.getElementById('metaLocation').textContent = currentCeremony.location || 'Southern California';
       document.getElementById('metaCapacity').textContent = `${participants.length} / ${currentCeremony.max_participants || '?'}`;
 
       // Calculate readiness

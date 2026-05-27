@@ -1,0 +1,187 @@
+/* ===========================================================
+   The Animist Apothecary — Site Header (shared)
+   Single-row layout: logo on the LEFT, nav center/right, Apply
+   button on the far right. Loaded by every public marketing page
+   in addition to styles.css.
+   =========================================================== */
+
+.site-header {
+  background: var(--backdrop-warm, rgba(247, 239, 217, 0.94)) !important;
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+}
+
+.site-header .header-inner {
+  padding: 0 3.5rem !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 2rem !important;
+  min-height: auto !important;
+  max-width: 1640px;
+  margin: 0 auto;
+}
+
+/* ===== Logo (left): trio symbols fitting the nav bar height edge-to-edge ===== */
+.site-header .logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  text-decoration: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 0 !important;
+}
+.site-header .logo::before {
+  display: none !important;
+  content: none !important;
+}
+.site-header .logo-mark {
+  display: block !important;
+  height: 96px !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-shrink: 0 !important;
+}
+@media (max-width: 1200px) {
+  .site-header .logo-mark { height: 80px !important; }
+}
+@media (max-width: 960px) {
+  .site-header .logo-mark { height: 64px !important; }
+}
+/* Wordmark text hidden — the trio is the brand mark now. */
+.site-header .logo-text { display: none !important; }
+.site-header .logo-text em,
+.site-header .logo-accent { display: none !important; }
+
+/* ===== Right side: nav + Apply ===== */
+.site-header .header-nav-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2.25rem;
+}
+
+.site-header .main-nav ul { gap: 2.4rem !important; align-items: center; }
+.site-header .main-nav li { position: relative; }
+.site-header .main-nav > ul > li > a {
+  font-family: 'Cinzel', 'Cormorant SC', serif !important;
+  font-size: 0.84rem !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  color: var(--bark) !important;
+  padding: 0.5rem 0 !important;
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  transition: color 0.2s;
+}
+.site-header .main-nav > ul > li > a:hover { color: var(--gold) !important; }
+.site-header .main-nav .nav-arrow { font-size: 0.6rem; opacity: 0.5; }
+
+.site-header .apply-btn {
+  font-family: 'Cinzel', 'Cormorant SC', serif !important;
+  font-size: 0.84rem !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  color: var(--bark) !important;
+  padding: 0.7rem 1.6rem !important;
+  border: 1px solid var(--bark) !important;
+  border-radius: 2px !important;
+  background: transparent !important;
+  text-decoration: none !important;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1;
+}
+.site-header .apply-btn:hover {
+  background: var(--bark) !important;
+  color: var(--parchment-warm) !important;
+}
+
+/* ===== Dropdown panel (simple single-column) ===== */
+.site-header .nav-dropdown-parent .nav-dropdown {
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(-4px) !important;
+  min-width: 220px !important;
+  background: #fdfaf3 !important;
+  border: 1px solid rgba(45,42,38,0.08) !important;
+  box-shadow: 0 14px 36px rgba(45,42,38,0.10) !important;
+  padding: 0.6rem 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.18s, transform 0.18s, visibility 0.18s !important;
+  z-index: 100 !important;
+}
+.site-header .nav-dropdown-parent:hover .nav-dropdown,
+.site-header .nav-dropdown-parent:focus-within .nav-dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateX(-50%) translateY(0) !important;
+}
+.site-header .nav-dropdown a {
+  display: block;
+  padding: 0.6rem 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.98rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--bark);
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.site-header .nav-dropdown a:hover { background: rgba(201,168,76,0.08); color: var(--gold); }
+
+/* ===== Mega dropdown: 4-column Offerings panel ===== */
+.site-header .nav-dropdown--mega {
+  min-width: 880px !important;
+  padding: 1.5rem 1.25rem !important;
+}
+.site-header .nav-dropdown--mega .nav-dropdown-inner {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 1.5rem !important;
+}
+.site-header .nav-dropdown--mega .nav-drop-col {
+  display: flex; flex-direction: column; gap: 0.25rem;
+  padding: 0 0.5rem;
+}
+.site-header .nav-dropdown--mega .nav-drop-label {
+  display: block;
+  font-family: 'Cinzel', 'Cormorant SC', serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule-soft, rgba(201,168,76,0.18));
+}
+.site-header .nav-dropdown--mega a {
+  padding: 0.36rem 0;
+  font-size: 0.92rem;
+  white-space: normal;
+}
+
+/* Nav bar height = logo height (zero padding around it). Body padding matches exactly. */
+body { padding-top: 96px; }
+
+@media (max-width: 1200px) {
+  .site-header .header-inner { padding: 1.1rem 2rem !important; gap: 1.2rem !important; }
+  .site-header .main-nav ul { gap: 1.6rem !important; }
+  .site-header .main-nav > ul > li > a { font-size: 0.78rem !important; letter-spacing: 0.16em !important; }
+  .site-header .apply-btn { font-size: 0.78rem !important; letter-spacing: 0.16em !important; padding: 0.6rem 1.2rem !important; }
+  .site-header .logo-text { font-size: 1.35rem !important; }
+}
+@media (max-width: 1200px) {
+  body { padding-top: 80px; }
+}
+@media (max-width: 960px) {
+  .site-header .header-inner { padding: 0 1.5rem !important; }
+  .site-header .header-nav-row { gap: 1.25rem; }
+  .site-header .main-nav ul { gap: 1.1rem !important; }
+  body { padding-top: 64px; }
+}

@@ -1,0 +1,118 @@
+# The Wheel — calendar of gatherings and the migratory route
+# Edit via /studio/. Every event below is editable; reorder, add, or
+# remove via the studio's list widget. Saves commit to GitHub and the
+# change reaches the world in 1–2 minutes.
+
+hero:
+  image: "/images/uploads/hero-tree-canopy.jpg"
+  image_position: "center 35%"
+  eyebrow: "The Wheel"
+  title: "The coming <em>season</em>"
+  subtitle: "Where the work meets the year — and where I'll be when."
+
+migratory:
+  section_label: "The Migratory Route"
+  intro: >-
+    The practice follows a migratory rhythm — the home canyon as anchor, the wider lands as
+    called. Each season carries its own work; each landing, its own gatherings.
+  stops:
+    - place: "Southern California"
+      season: "Spring"
+      months: "March – May"
+      note: "Anchor practice. Sacred Breath, Pláticas, weekly clinics."
+    - place: "Santa Fe & Taos"
+      season: "High Summer"
+      months: "Late June – Mid July"
+      note: "Private engagements. Retreat in the high desert."
+    - place: "Southern California"
+      season: "Late Summer"
+      months: "Late July – September"
+      note: "Cohort intakes. Fall preparation."
+    - place: "Mexico City & Oaxaca"
+      season: "Autumn"
+      months: "October"
+      note: "Pilgrimage. Ancestral and elemental work."
+    - place: "Southern California"
+      season: "Winter"
+      months: "November – February"
+      note: "Solstice ceremonies. Year-long cohorts continue."
+
+events_section_label: "The Coming Year"
+events_intro: >-
+  Below: gatherings, ceremonies, and cohort openings as they arrive on the wheel.
+  If a date is full, ask anyway — the container shapes itself around the right people.
+
+events:
+  - date_text: "Mar 20"
+    date_full: "Spring Equinox · 2026"
+    title: "Spring Equinox Fire Circle"
+    location: "Southern California"
+    type: "Public Ceremony"
+    status: "Open"
+    description: "An evening fire on the chaparral as the year turns toward light. Sliding-scale clinic, open to all who feel called."
+    cta_text: "Reserve a place"
+    cta_url: "https://new.theanimistapothecary.com/apply"
+  - date_text: "Apr 4"
+    date_full: "Opens · 2026"
+    title: "A Metamorphic Year — Cohort Begins"
+    location: "Virtual + Southern California retreats"
+    type: "Cohort"
+    status: "Waitlist"
+    description: "Twelve months on the wheel. Lineage teachings, group ceremony, prep and aftercare calls, firesides. Held with twelve in a single circle."
+    cta_text: "Join the waitlist"
+    cta_url: "https://new.theanimistapothecary.com/apply"
+  - date_text: "Jun 15"
+    date_full: "Jun 15 – 22 · 2026"
+    title: "On the Road — Santa Fe"
+    location: "Santa Fe, New Mexico"
+    type: "Travel"
+    status: "By inquiry"
+    description: "Private engagements. A handful of Pláticas hours released for those in the high desert; inquire for one."
+    cta_text: "Inquire for an hour"
+    cta_url: "https://new.theanimistapothecary.com/apply"
+  - date_text: "Jun 20"
+    date_full: "Summer Solstice · 2026"
+    title: "Summer Solstice Ceremony"
+    location: "Southern California"
+    type: "Public Ceremony"
+    status: "Open"
+    description: "A daylong solstice held with sound, breath, fire, and the long light. Limited circle of fifteen."
+    cta_text: "Reserve a place"
+    cta_url: "https://new.theanimistapothecary.com/apply"
+  - date_text: "Sep 22"
+    date_full: "Autumn Equinox · 2026"
+    title: "Autumn Equinox Fire Circle"
+    location: "Southern California"
+    type: "Public Ceremony"
+    status: "Open"
+    description: "An evening fire as the year turns inward. Sliding-scale clinic, open to all who feel called."
+    cta_text: "Reserve a place"
+    cta_url: "https://new.theanimistapothecary.com/apply"
+  - date_text: "Oct 10"
+    date_full: "Oct 10 – 18 · 2026"
+    title: "On the Road — Mexico City & Oaxaca"
+    location: "Mexico"
+    type: "Travel"
+    status: "By inquiry"
+    description: "Pilgrimage and ancestral work. Open to existing acolytes and to a small number who travel into the work."
+    cta_text: "Inquire to join"
+    cta_url: "https://new.theanimistapothecary.com/apply"
+  - date_text: "Dec 21"
+    date_full: "Winter Solstice · 2026"
+    title: "Winter Solstice Ceremony"
+    location: "Southern California"
+    type: "Public Ceremony"
+    status: "Open"
+    description: "The longest night, tended in fire and song. The year's deepest threshold. Limited circle of fifteen."
+    cta_text: "Reserve a place"
+    cta_url: "https://new.theanimistapothecary.com/apply"
+
+cta_section:
+  eyebrow: "Hold a Place"
+  title: "Find your way <em>in</em>"
+  body: >-
+    If a date calls to you — even one marked Waitlist — reach out. The container
+    shapes itself around the right people, and there is often more room than the
+    page can hold.
+  cta_text: "Begin Here"
+  cta_url: "https://new.theanimistapothecary.com/apply"

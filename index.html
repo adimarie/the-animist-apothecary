@@ -2,83 +2,1901 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Animist Apothecary &mdash; Shamanic healing, somatic ceremony, and botanical medicine with Adi Marie. Topanga Canyon, Los Angeles. Available worldwide.">
-  <title>The Animist Apothecary &mdash; Adi Marie &middot; Topanga Canyon</title>
+  <meta name="description" content="Adi Marie &mdash; Rites of Passage for Modern Humans. Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide. The Animist Apothecary. Based in Southern California. Available and serving worldwide.">
+  <title>Adi Marie &mdash; Rites of Passage for Modern Humans</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=v30b">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v04">
+  <style>
+    /* Home page hero: clean, 16:9 widescreen with practitioner portrait */
+    body[data-content-page="home"] .hero-image::after,
+    body[data-content-page="home"] .hero-image::before { display: none !important; content: none !important; }
+    body[data-content-page="home"] .hero-fullbleed {
+      background: transparent !important;
+      aspect-ratio: 16 / 9 !important;
+      min-height: auto !important;
+      height: auto !important;
+      max-height: 85vh !important;
+      width: 100% !important;
+      position: relative !important;
+      overflow: hidden !important;
+      margin-top: 0 !important;
+    }
+    body[data-content-page="home"] .hero-image {
+      width: 100% !important;
+      height: 100% !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      image-rendering: -webkit-optimize-contrast;
+      filter: none !important;
+    }
+
+    /* Hero text overlay — sits over the dark left side of the portrait.
+       Soft gradient on the left protects legibility without darkening the portrait on the right. */
+    body[data-content-page="home"] .hero-overlay {
+      position: absolute !important;
+      inset: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      pointer-events: none;
+      background: none !important;
+      z-index: 2;
+    }
+    body[data-content-page="home"] .hero-overlay-inner {
+      max-width: 880px !important;
+      padding: 0 4rem 0 8rem !important;
+      margin: 0 !important;
+      text-align: left !important;
+      color: var(--paper);
+      pointer-events: auto;
+    }
+    /* Brand title at the top of the hero — Cinzel uppercase with italic gold "Apothecary" */
+    body[data-content-page="home"] .hero-brand {
+      display: inline-block;
+      text-decoration: none !important;
+      margin-bottom: 0.9rem;
+      pointer-events: auto;
+    }
+    body[data-content-page="home"] .hero-brand-text {
+      font-family: 'Cinzel', 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--paper);
+      line-height: 1.15;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.4);
+    }
+    /* "Apothecary" matches "The Animist" exactly — same color, weight, style, spacing. */
+    body[data-content-page="home"] .hero-brand-text em,
+    body[data-content-page="home"] .hero-brand-accent {
+      font-family: 'Cinzel', 'Cormorant Garamond', serif !important;
+      font-size: inherit !important;
+      font-style: normal !important;
+      font-weight: 500 !important;
+      color: var(--paper) !important;
+      letter-spacing: 0.32em !important;
+    }
+    body[data-content-page="home"] .hero-brand-rule {
+      display: block;
+      width: 56px;
+      height: 1px;
+      background: var(--gold-pale, #DCC178);
+      opacity: 0.55;
+      margin: 0 0 1.6rem;
+    }
+    /* Kill the inherited star decoration above the eyebrow on the home hero */
+    body[data-content-page="home"] .hero-overlay .hero-eyebrow::before {
+      display: none !important;
+      content: none !important;
+    }
+    body[data-content-page="home"] .hero-overlay .hero-eyebrow {
+      display: block !important;
+      font-family: 'Cinzel', 'Cormorant SC', serif !important;
+      font-size: 0.9rem !important;
+      letter-spacing: 0.26em !important;
+      text-transform: uppercase !important;
+      color: var(--gold-pale, #DCC178) !important;
+      padding-top: 0 !important;
+      margin: 0 0 1.8rem !important;
+      line-height: 1.6 !important;
+      text-align: left !important;
+      max-width: none !important;
+    }
+    body[data-content-page="home"] .hero-overlay .hero-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 400 !important;
+      font-size: 6rem !important;
+      line-height: 1.08 !important;
+      letter-spacing: -0.005em !important;
+      color: var(--paper) !important;
+      margin: 0 0 1.6rem !important;
+      text-align: left !important;
+      max-width: none !important;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.35);
+    }
+    body[data-content-page="home"] .hero-overlay .hero-title em {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      font-size: 1.4em !important;
+      line-height: 0.9 !important;
+      color: var(--gold-pale, #DCC178) !important;
+    }
+    body[data-content-page="home"] .hero-overlay .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 1.5rem !important;
+      line-height: 1.62 !important;
+      color: var(--light-catch) !important;
+      opacity: 0.94 !important;
+      margin: 0 !important;
+      max-width: 640px !important;
+      text-align: left !important;
+      letter-spacing: 0 !important;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.45);
+    }
+    /* Hero text reverted to original proportions (clamp/vw). No mobile reflow restored. */
+
+    /* Hero CTA buttons — primary (filled gold) + secondary (outline) for dark hero overlay. */
+    body[data-content-page="home"] .hero-overlay .hero-cta-row {
+      display: flex !important;
+      gap: 1.2rem !important;
+      margin-top: 2.5rem !important;
+      flex-wrap: wrap !important;
+    }
+    body[data-content-page="home"] .hero-overlay .hero-btn {
+      padding: 1rem 1.9rem !important;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.82rem !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      border-radius: 2px !important;
+      display: inline-block !important;
+      transition: all 0.2s ease !important;
+    }
+    body[data-content-page="home"] .hero-overlay .hero-btn-primary {
+      background: transparent !important;
+      color: var(--gold, #c9a84c) !important;
+      border: 1px solid var(--gold, #c9a84c) !important;
+    }
+    body[data-content-page="home"] .hero-overlay .hero-btn-primary:hover {
+      background: rgba(201, 168, 76, 0.12) !important;
+      color: var(--gold-pale, #DCC178) !important;
+      border-color: var(--gold-pale, #DCC178) !important;
+    }
+    body[data-content-page="home"] .hero-overlay .hero-btn-secondary {
+      background: transparent !important;
+      color: var(--light-catch, #F5F3ED) !important;
+      border: 1px solid rgba(245, 243, 237, 0.45) !important;
+    }
+    body[data-content-page="home"] .hero-overlay .hero-btn-secondary:hover {
+      border-color: var(--gold, #c9a84c) !important;
+      color: var(--gold-pale, #DCC178) !important;
+    }
+    body[data-content-page="home"] .hero-overlay .hero-btn-secondary::after {
+      content: " \2192" !important;
+      margin-left: 0.4em !important;
+      color: var(--gold, #c9a84c) !important;
+    }
+
+    /* Sticky scroll CTA — quiet pill in bottom-right, appears after hero scrolls past. */
+    body[data-content-page="home"] .sticky-cta {
+      position: fixed !important;
+      bottom: 1.8rem !important;
+      right: 1.8rem !important;
+      z-index: 200 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.6rem !important;
+      padding: 0.9rem 1.4rem !important;
+      background: rgba(245, 243, 237, 0.98) !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.78rem !important;
+      letter-spacing: 0.2em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      border: 1px solid var(--gold, #c9a84c) !important;
+      border-radius: 2px !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      transform: translateY(8px) !important;
+      transition: opacity 0.35s ease, transform 0.35s ease, background 0.2s, color 0.2s !important;
+    }
+    body[data-content-page="home"] .sticky-cta.visible {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      transform: translateY(0) !important;
+    }
+    body[data-content-page="home"] .sticky-cta:hover {
+      background: var(--gold, #c9a84c) !important;
+      color: #FFFFFF !important;
+    }
+    body[data-content-page="home"] .sticky-cta-arrow {
+      color: var(--gold, #c9a84c) !important;
+      transition: color 0.2s !important;
+    }
+    body[data-content-page="home"] .sticky-cta:hover .sticky-cta-arrow {
+      color: #FFFFFF !important;
+    }
+
+    /* THE WORK — unified 3-path overview section. Replaces Four Paths grid + individual offering sections. */
+    body[data-content-page="home"] .section-the-work {
+      padding: 7rem 3rem !important;
+      background: #F5F3ED !important;
+      text-align: center !important;
+    }
+    body[data-content-page="home"] .the-work-inner {
+      max-width: 1500px !important;
+      margin: 0 auto !important;
+    }
+    body[data-content-page="home"] .the-work-label {
+      color: var(--gold, #c9a84c) !important;
+    }
+    body[data-content-page="home"] .the-work-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 400 !important;
+      font-size: clamp(2.8rem, 4.5vw, 4rem) !important;
+      line-height: 1.1 !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      margin: 0.6rem 0 1.2rem !important;
+      letter-spacing: -0.005em !important;
+    }
+    body[data-content-page="home"] .the-work-intro {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 1.25rem !important;
+      line-height: 1.6 !important;
+      color: var(--ink-quiet, #5A554C) !important;
+      margin: 0 auto 4rem !important;
+      max-width: 720px !important;
+    }
+    body[data-content-page="home"] .the-work-paths {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 3rem !important;
+    }
+    @media (max-width: 980px) {
+      body[data-content-page="home"] .the-work-paths {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    body[data-content-page="home"] .work-path {
+      display: flex !important;
+      flex-direction: column !important;
+      text-decoration: none !important;
+      color: inherit !important;
+      text-align: left !important;
+      transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+    body[data-content-page="home"] .work-path:hover {
+      transform: translateY(-4px) !important;
+    }
+    body[data-content-page="home"] .work-path-image-wrap {
+      width: 100% !important;
+      aspect-ratio: 4 / 5 !important;
+      overflow: hidden !important;
+      margin: 0 0 1.6rem !important;
+      border-radius: 2px !important;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.14) !important;
+    }
+    body[data-content-page="home"] .work-path-image {
+      width: 100% !important;
+      height: 100% !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      transition: transform 0.6s ease !important;
+    }
+    body[data-content-page="home"] .work-path:hover .work-path-image {
+      transform: scale(1.04) !important;
+    }
+    body[data-content-page="home"] .work-path-eyebrow {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      color: var(--gold, #c9a84c) !important;
+      margin-bottom: 0.6rem !important;
+    }
+    body[data-content-page="home"] .work-path-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 400 !important;
+      font-size: 1.85rem !important;
+      line-height: 1.15 !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      margin: 0 0 0.7rem !important;
+    }
+    body[data-content-page="home"] .work-path-desc {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 1.08rem !important;
+      line-height: 1.6 !important;
+      color: var(--ink-soft, #3D3A36) !important;
+      margin: 0 0 1rem !important;
+    }
+    /* Sub-offering bullets beneath each Work card description — light, quiet. */
+    body[data-content-page="home"] .work-path-bullets {
+      list-style: none !important;
+      padding: 0 !important;
+      margin: 0 0 1.4rem !important;
+      flex-grow: 1 !important;
+      border-top: 1px solid rgba(201, 168, 76, 0.18) !important;
+      padding-top: 1rem !important;
+    }
+    body[data-content-page="home"] .work-path-bullets li {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-size: 0.92rem !important;
+      line-height: 1.5 !important;
+      color: var(--ink-quiet, #5A554C) !important;
+      margin: 0 0 0.4rem !important;
+      padding-left: 1rem !important;
+      position: relative !important;
+    }
+    body[data-content-page="home"] .work-path-bullets li::before {
+      content: '·' !important;
+      color: var(--gold, #c9a84c) !important;
+      font-size: 1.4rem !important;
+      position: absolute !important;
+      left: 0 !important;
+      top: -0.2rem !important;
+      line-height: 1 !important;
+    }
+    body[data-content-page="home"] .work-path-bullets li:last-child {
+      margin-bottom: 0 !important;
+    }
+    body[data-content-page="home"] .work-path-cta {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.78rem !important;
+      letter-spacing: 0.2em !important;
+      text-transform: uppercase !important;
+      color: var(--gold, #c9a84c) !important;
+      margin-top: auto !important;
+    }
+
+    /* Process / "Choose how you begin" — two doorways (Intake + Divination). */
+    body[data-content-page="home"] .begin-doorways {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 1.6rem !important;
+      max-width: 880px !important;
+      margin: 3rem auto 0 !important;
+    }
+    @media (max-width: 720px) {
+      body[data-content-page="home"] .begin-doorways { grid-template-columns: 1fr !important; }
+    }
+    body[data-content-page="home"] .begin-doorway {
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 2.2rem 2rem !important;
+      background: #FAF8F3 !important;
+      border: 1px solid rgba(201, 168, 76, 0.28) !important;
+      border-radius: 3px !important;
+      text-decoration: none !important;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s !important;
+    }
+    body[data-content-page="home"] .begin-doorway:hover {
+      border-color: var(--gold, #c9a84c) !important;
+      transform: translateY(-3px) !important;
+      box-shadow: 0 14px 30px rgba(45,42,38,0.08) !important;
+    }
+    body[data-content-page="home"] .begin-doorway-eyebrow {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.26em !important;
+      text-transform: uppercase !important;
+      color: var(--gold, #c9a84c) !important;
+      margin-bottom: 0.7rem !important;
+    }
+    body[data-content-page="home"] .begin-doorway-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 500 !important;
+      font-size: 1.55rem !important;
+      line-height: 1.2 !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      margin: 0 0 0.8rem !important;
+    }
+    body[data-content-page="home"] .begin-doorway-desc {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-size: 1.02rem !important;
+      line-height: 1.55 !important;
+      color: var(--ink-soft, #3D3A36) !important;
+      margin: 0 0 1.4rem !important;
+      flex-grow: 1 !important;
+    }
+    body[data-content-page="home"] .begin-doorway-cta {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.78rem !important;
+      letter-spacing: 0.2em !important;
+      text-transform: uppercase !important;
+      color: var(--gold, #c9a84c) !important;
+      margin-top: auto !important;
+    }
+
+    /* "Choose how you begin" — 50/50 split layout.
+       Labyrinth fern image flanks the title + doorways on the left, full-bleed vertical.
+       Title is left-aligned (not centered) so it reads as a paired composition. */
+    body[data-content-page="home"] .process-container--split {
+      display: grid !important;
+      grid-template-columns: minmax(500px, 1.7fr) 0.7fr !important;
+      gap: clamp(2rem, 4vw, 4rem) !important;
+      max-width: 1340px !important;
+      align-items: stretch !important;
+      margin: 0 auto !important;
+    }
+    body[data-content-page="home"] .process-image-col {
+      display: flex !important;
+      align-self: stretch !important;
+    }
+    body[data-content-page="home"] .process-image-frame {
+      width: 100% !important;
+      min-height: 720px !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      border-radius: 4px !important;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.22), 0 6px 14px rgba(0,0,0,0.12) !important;
+    }
+    body[data-content-page="home"] .process-content-col {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      text-align: left !important;
+    }
+    /* Inside the split, override the default centered .process-header layout. */
+    body[data-content-page="home"] .process-container--split .process-header {
+      text-align: left !important;
+      margin-bottom: 2.4rem !important;
+    }
+    body[data-content-page="home"] .process-container--split .process-header h2 {
+      text-align: left !important;
+    }
+    /* Anchor the gold under-rule under the H2 to the left (default rule centers it). */
+    body[data-content-page="home"] .process-container--split .process-header h2::after {
+      margin-left: 0 !important;
+      margin-right: auto !important;
+    }
+    body[data-content-page="home"] .process-container--split .process-header .section-body {
+      max-width: none !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+    /* Doorways inside the narrow right column: stack vertically instead of side-by-side. */
+    body[data-content-page="home"] .process-container--split .begin-doorways {
+      grid-template-columns: 1fr !important;
+      gap: 1rem !important;
+      margin: 1.6rem 0 0 !important;
+      max-width: none !important;
+    }
+    @media (max-width: 880px) {
+      body[data-content-page="home"] .process-container--split {
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem !important;
+      }
+      body[data-content-page="home"] .process-image-frame {
+        min-height: 340px !important;
+        max-height: 440px !important;
+      }
+      body[data-content-page="home"] .process-container--split .process-header,
+      body[data-content-page="home"] .process-container--split .process-header h2 {
+        text-align: center !important;
+      }
+      body[data-content-page="home"] .process-container--split .process-header h2::after {
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+    }
+
+    /* Testimonial — Mayan glyph whisper overlay behind the witness quote.
+       Honors heritage as a faint sacred inscription. ~7% opacity, centered,
+       contained so the full glyph reads without distortion. Text sits above
+       via z-index. Uses ::after so the existing ::before vine ornament stays. */
+    body[data-content-page="home"] .section-testimonial {
+      position: relative !important;
+      overflow: hidden !important;
+    }
+    body[data-content-page="home"] .section-testimonial {
+      min-height: 540px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    /* Testimonial carousel: 3 slides cross-fade, prev/next arrows on the sides, dots at the bottom. */
+    body[data-content-page="home"] .testimonial-carousel {
+      position: relative !important;
+      max-width: 1100px !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+      padding: 1rem 5rem !important;
+      z-index: 1 !important;
+    }
+    body[data-content-page="home"] .testimonial-slides {
+      position: relative !important;
+      min-height: 280px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    body[data-content-page="home"] .testimonial-slide {
+      position: absolute !important;
+      inset: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      opacity: 0 !important;
+      transition: opacity 0.7s ease !important;
+      pointer-events: none !important;
+    }
+    body[data-content-page="home"] .testimonial-slide.is-active {
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    /* Arrows — high-contrast sigil glyphs (❮ ❯) inscribed in deep bark ink.
+       No border, no circle — just the mark itself, like a carved petroglyph. */
+    body[data-content-page="home"] .testimonial-arrow {
+      position: absolute !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      width: auto !important;
+      height: auto !important;
+      padding: 0.4rem 0.7rem !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      font-family: 'Cormorant Garamond', 'Cinzel', serif !important;
+      font-size: 2.6rem !important;
+      font-weight: 300 !important;
+      line-height: 1 !important;
+      cursor: pointer !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: color 0.25s, transform 0.25s, text-shadow 0.25s !important;
+      z-index: 2 !important;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.4) !important;
+    }
+    body[data-content-page="home"] .testimonial-arrow:hover {
+      color: var(--gold, #c9a84c) !important;
+      transform: translateY(-50%) scale(1.15) !important;
+      text-shadow: 0 2px 6px rgba(201, 168, 76, 0.35) !important;
+    }
+    body[data-content-page="home"] .testimonial-arrow--prev {
+      left: -0.5rem !important;
+    }
+    body[data-content-page="home"] .testimonial-arrow--next {
+      right: -0.5rem !important;
+    }
+    body[data-content-page="home"] .testimonial-arrow--prev:hover {
+      transform: translateY(-50%) scale(1.15) translateX(-3px) !important;
+    }
+    body[data-content-page="home"] .testimonial-arrow--next:hover {
+      transform: translateY(-50%) scale(1.15) translateX(3px) !important;
+    }
+    /* Dot pagination — tiny gold dots below the quote. */
+    body[data-content-page="home"] .testimonial-dots {
+      display: flex !important;
+      justify-content: center !important;
+      gap: 0.6rem !important;
+      margin: 2rem 0 0 !important;
+    }
+    body[data-content-page="home"] .testimonial-dot {
+      width: 8px !important;
+      height: 8px !important;
+      border-radius: 50% !important;
+      background: rgba(201, 168, 76, 0.25) !important;
+      border: none !important;
+      cursor: pointer !important;
+      padding: 0 !important;
+      transition: background 0.25s, transform 0.25s !important;
+    }
+    body[data-content-page="home"] .testimonial-dot.is-active {
+      background: var(--gold, #c9a84c) !important;
+      transform: scale(1.3) !important;
+    }
+    body[data-content-page="home"] .testimonial-dot:hover {
+      background: var(--gold, #c9a84c) !important;
+    }
+    @media (max-width: 720px) {
+      body[data-content-page="home"] .testimonial-carousel { padding: 1rem 3rem !important; }
+      body[data-content-page="home"] .testimonial-arrow { width: 36px !important; height: 36px !important; }
+    }
+    body[data-content-page="home"] .section-testimonial::after {
+      content: "" !important;
+      position: absolute !important;
+      inset: 0 !important;
+      /* Umber-tinted glyph with transparent background (preprocessed via PIL,
+         color #6B4226 baked in, alpha channel from source brightness).
+         No CSS filter needed — color and transparency are in the file. */
+      background-image: url('images/uploads/mayan-glyph-umber.png') !important;
+      background-size: cover !important;
+      background-position: center center !important;
+      background-repeat: no-repeat !important;
+      opacity: 0.08 !important;
+      pointer-events: none !important;
+      z-index: 0 !important;
+    }
+    body[data-content-page="home"] .section-testimonial .testimonial-container {
+      position: relative !important;
+      z-index: 1 !important;
+    }
+
+    /* Final CTA — moss/smoke image, NO heavy overlay, text flanks the smudge.
+       A soft radial vignette darkens the left + right edges (for text legibility)
+       while leaving the center bright so the smoking smudge reads clearly. */
+    /* CTA section — polished editorial layout.
+       Asymmetric vignette darkens LEFT side (where text lives) for legibility,
+       leaving the right two-thirds clear so the smudge bundle reads as the focal image. */
+    body[data-content-page="home"] .section-cta {
+      background: linear-gradient(105deg,
+                    rgba(14,10,6,0.82) 0%,
+                    rgba(18,14,10,0.65) 28%,
+                    rgba(20,16,12,0.25) 48%,
+                    rgba(20,16,12,0.05) 65%,
+                    rgba(20,16,12,0.05) 100%),
+                  url('images/uploads/cta-moss-smoke.jpg') center/cover no-repeat !important;
+      padding: clamp(6rem, 12vh, 11rem) clamp(2.5rem, 5vw, 5rem) clamp(4rem, 8vh, 7rem) !important;
+      min-height: 92vh !important;
+      display: flex !important;
+      align-items: stretch !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-container {
+      max-width: 1440px !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+      display: grid !important;
+      grid-template-columns: minmax(360px, 0.85fr) 1.15fr !important;
+      grid-template-rows: 1fr auto !important;
+      grid-template-areas:
+        "topleft  ."
+        "bottom   bottom" !important;
+      column-gap: clamp(4rem, 10vw, 10rem) !important;
+      row-gap: clamp(4rem, 10vh, 8rem) !important;
+      align-items: start !important;
+      text-align: left !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-topleft {
+      grid-area: topleft !important;
+      max-width: 520px !important;
+      padding-top: clamp(1rem, 4vh, 3rem) !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-topleft .section-label {
+      display: block !important;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.74rem !important;
+      letter-spacing: 0.36em !important;
+      text-transform: uppercase !important;
+      color: var(--gold-pale, #DCC178) !important;
+      margin-bottom: 1.8rem !important;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.55) !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-topleft h2 {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 300 !important;
+      font-size: clamp(2.4rem, 4.2vw, 3.6rem) !important;
+      line-height: 1.05 !important;
+      letter-spacing: -0.01em !important;
+      color: #F5F3ED !important;
+      margin: 0 0 1.2rem !important;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.6) !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-topleft h2 em {
+      font-style: italic !important;
+      color: var(--gold-pale, #DCC178) !important;
+      font-weight: 300 !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-subtitle {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: clamp(1.1rem, 1.4vw, 1.3rem) !important;
+      line-height: 1.5 !important;
+      color: rgba(245, 243, 237, 0.78) !important;
+      margin: 0 !important;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5) !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-button-stack {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 1.8rem !important;
+      margin-top: clamp(2.5rem, 5vh, 3.6rem) !important;
+      padding-top: clamp(2rem, 4vh, 2.8rem) !important;
+      border-top: 1px solid rgba(220, 193, 120, 0.22) !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-button-row-item {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 0.55rem !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-button-row-item .btn-primary,
+    body[data-content-page="home"] .section-cta .cta-button-row-item .btn-secondary {
+      min-width: 220px !important;
+      text-align: center !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-button-note {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 0.95rem !important;
+      line-height: 1.4 !important;
+      color: rgba(245, 243, 237, 0.65) !important;
+      margin: 0 !important;
+      padding-left: 0.15rem !important;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.5) !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-bottom {
+      grid-area: bottom !important;
+      text-align: center !important;
+      max-width: 760px !important;
+      margin: 0 auto !important;
+      padding-top: clamp(2rem, 4vh, 3rem) !important;
+      border-top: 1px solid rgba(245, 243, 237, 0.12) !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-body-text {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: clamp(1rem, 1.3vw, 1.18rem) !important;
+      line-height: 1.7 !important;
+      color: rgba(245, 243, 237, 0.85) !important;
+      margin: 0 0 1.6rem !important;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5) !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-credentials {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-style: normal !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      color: rgba(220, 193, 120, 0.6) !important;
+      margin: 0 !important;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.5) !important;
+    }
+    @media (max-width: 880px) {
+      body[data-content-page="home"] .section-cta {
+        padding: 5rem 1.6rem 4rem !important;
+        min-height: auto !important;
+        background: linear-gradient(180deg,
+                      rgba(20,16,12,0.78) 0%,
+                      rgba(20,16,12,0.45) 40%,
+                      rgba(20,16,12,0.65) 100%),
+                    url('images/uploads/cta-moss-smoke.jpg') center/cover no-repeat !important;
+      }
+      body[data-content-page="home"] .section-cta .cta-container {
+        grid-template-columns: 1fr !important;
+        grid-template-areas: "topleft" "bottom" !important;
+        column-gap: 0 !important;
+        row-gap: 3rem !important;
+      }
+      body[data-content-page="home"] .section-cta .cta-topleft {
+        max-width: none !important;
+        text-align: center !important;
+        padding-top: 0 !important;
+      }
+      body[data-content-page="home"] .section-cta .cta-button-stack {
+        align-items: center !important;
+      }
+      body[data-content-page="home"] .section-cta .cta-button-row-item {
+        align-items: center !important;
+      }
+      body[data-content-page="home"] .section-cta .cta-button-row-item .btn-primary,
+      body[data-content-page="home"] .section-cta .cta-button-row-item .btn-secondary {
+        min-width: 260px !important;
+      }
+    }
+
+    /* Final CTA credentials micro-bar — small italic on the dark CTA background. */
+    body[data-content-page="home"] .section-cta .cta-credentials {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 0.92rem !important;
+      color: rgba(245, 243, 237, 0.72) !important;
+      margin: 2.4rem 0 0 !important;
+      letter-spacing: 0.02em !important;
+    }
+    /* Final CTA — subtitle "Are you ready to step in?" + dual-button row (personal / community). */
+    body[data-content-page="home"] .section-cta .cta-subtitle {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: clamp(1.4rem, 2vw, 1.8rem) !important;
+      line-height: 1.4 !important;
+      color: var(--gold-pale, #DCC178) !important;
+      margin: 0.6rem 0 1.4rem !important;
+      letter-spacing: 0.005em !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-button-row {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: stretch !important;
+      gap: 0 !important;
+      margin: 2rem auto 0 !important;
+      max-width: 760px !important;
+      flex-wrap: wrap !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-button-col {
+      flex: 1 1 280px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      padding: 0 1.5rem !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-button-divider {
+      width: 1px !important;
+      background: rgba(245, 243, 237, 0.18) !important;
+      margin: 0.4rem 0 !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-button-col .btn-primary,
+    body[data-content-page="home"] .section-cta .cta-button-col .btn-secondary {
+      display: inline-block !important;
+      padding: 1rem 2rem !important;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.82rem !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      border-radius: 2px !important;
+      transition: all 0.2s ease !important;
+      white-space: nowrap !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-button-col .btn-secondary {
+      color: var(--light-catch, #F5F3ED) !important;
+      background: transparent !important;
+      border: 1px solid rgba(245, 243, 237, 0.5) !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-button-col .btn-secondary:hover {
+      border-color: var(--gold-pale, #DCC178) !important;
+      color: var(--gold-pale, #DCC178) !important;
+    }
+    body[data-content-page="home"] .section-cta .cta-button-note {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 0.9rem !important;
+      color: rgba(245, 243, 237, 0.7) !important;
+      margin: 0.9rem 0 0 !important;
+      max-width: 240px !important;
+      line-height: 1.4 !important;
+      text-align: center !important;
+    }
+    @media (max-width: 720px) {
+      body[data-content-page="home"] .section-cta .cta-button-divider {
+        display: none !important;
+      }
+      body[data-content-page="home"] .section-cta .cta-button-col {
+        padding: 1.5rem 0 !important;
+      }
+    }
+
+    /* Training Grounds — super-large title + italic subtitle. */
+    body[data-content-page="home"] .training-grounds-header {
+      text-align: center !important;
+      max-width: 1100px !important;
+      margin: 0 auto !important;
+    }
+    body[data-content-page="home"] .training-grounds-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 400 !important;
+      font-size: clamp(3.5rem, 7vw, 6.5rem) !important;
+      line-height: 1.05 !important;
+      letter-spacing: -0.005em !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      margin: 0.6rem 0 0.4rem !important;
+    }
+    body[data-content-page="home"] .training-grounds-subtitle {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: clamp(1.4rem, 2vw, 1.85rem) !important;
+      line-height: 1.4 !important;
+      color: var(--ink-quiet, #5A554C) !important;
+      margin: 0 0 0.5rem !important;
+      letter-spacing: 0.01em !important;
+    }
+    body[data-content-page="home"] .training-grounds-header .section-body {
+      max-width: 760px !important;
+      margin: 0 auto !important;
+      font-family: 'Cormorant Garamond', serif !important;
+      font-size: 1.15rem !important;
+      line-height: 1.7 !important;
+      color: var(--ink-soft, #3D3A36) !important;
+    }
+
+    /* Seasons of Change — premium standalone cornerstone section. */
+    body[data-content-page="home"] .section-seasons-of-change {
+      position: relative !important;
+      min-height: 720px !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+    }
+    body[data-content-page="home"] .section-seasons-of-change .seasons-inner {
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-height: 720px !important;
+      padding: 6rem 3rem !important;
+    }
+    body[data-content-page="home"] .seasons-image {
+      position: absolute !important;
+      inset: 0 !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      z-index: 1 !important;
+    }
+    body[data-content-page="home"] .seasons-overlay {
+      position: absolute !important;
+      inset: 0 !important;
+      background: linear-gradient(rgba(20, 16, 12, 0.62), rgba(20, 16, 12, 0.72)) !important;
+      z-index: 2 !important;
+    }
+    body[data-content-page="home"] .seasons-content {
+      position: relative !important;
+      z-index: 3 !important;
+      max-width: 780px !important;
+      text-align: center !important;
+      color: var(--light-catch, #F5F3ED) !important;
+    }
+    body[data-content-page="home"] .seasons-label {
+      color: var(--gold-pale, #DCC178) !important;
+      display: inline-block !important;
+      margin-bottom: 1rem !important;
+    }
+    body[data-content-page="home"] .seasons-label::after {
+      background: var(--gold-pale, #DCC178) !important;
+      opacity: 0.8 !important;
+    }
+    body[data-content-page="home"] .seasons-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 400 !important;
+      font-size: clamp(3rem, 6vw, 5.5rem) !important;
+      line-height: 1.05 !important;
+      color: var(--light-catch, #F5F3ED) !important;
+      margin: 0.5rem 0 0.4rem !important;
+      letter-spacing: -0.005em !important;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4) !important;
+    }
+    body[data-content-page="home"] .seasons-subtitle {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
+      font-weight: 400 !important;
+      font-size: clamp(2.5rem, 4vw, 3.6rem) !important;
+      line-height: 1 !important;
+      color: var(--gold-pale, #DCC178) !important;
+      margin: 0 0 1.8rem !important;
+      letter-spacing: 0 !important;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4) !important;
+    }
+    body[data-content-page="home"] .seasons-body {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: clamp(1.2rem, 1.6vw, 1.5rem) !important;
+      line-height: 1.6 !important;
+      color: rgba(245, 243, 237, 0.92) !important;
+      margin: 0 auto 1.6rem !important;
+      max-width: 640px !important;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5) !important;
+      text-wrap: balance !important;
+    }
+    body[data-content-page="home"] .seasons-meta {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.82rem !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      color: rgba(245, 243, 237, 0.7) !important;
+      margin: 0 0 2.2rem !important;
+    }
+    body[data-content-page="home"] .seasons-cta {
+      display: inline-block !important;
+      padding: 1.05rem 2.2rem !important;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.86rem !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      color: #2D2A26 !important;
+      background: var(--gold-pale, #DCC178) !important;
+      border: 1px solid var(--gold-pale, #DCC178) !important;
+      border-radius: 2px !important;
+      transition: all 0.2s ease !important;
+    }
+    body[data-content-page="home"] .seasons-cta:hover {
+      background: transparent !important;
+      color: var(--gold-pale, #DCC178) !important;
+    }
+
+    /* Metamorphic Year — slightly different overlay tone so the two stacked dark sections feel distinct. */
+    body[data-content-page="home"] .section-metamorphic-year .seasons-overlay.metamorphic-overlay {
+      background: linear-gradient(rgba(28, 20, 14, 0.68), rgba(40, 28, 16, 0.78)) !important;
+    }
+    /* Private Ceremonies — cooler/deeper overlay to distinguish from Seasons (warm green) and Metamorphic (warm brown). */
+    body[data-content-page="home"] .section-private-ceremonies .seasons-overlay.private-ceremonies-overlay {
+      background: linear-gradient(rgba(14, 18, 24, 0.72), rgba(22, 26, 32, 0.80)) !important;
+    }
+    /* Private Ceremonies "Forms It Can Take" chips — match the ceremony-type-tag treatment. */
+    body[data-content-page="home"] .private-ceremonies-types {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 0.55rem !important;
+      max-width: 620px !important;
+      margin: 0 auto !important;
+    }
+
+    /* Bespoke Engagements — quiet inquiry CTA section between Seasons of Change and Training Grounds.
+       For community leaders, retreat hosts, organizations seeking private engagements. */
+    body[data-content-page="home"] .section-bespoke {
+      padding: 5.5rem 3rem !important;
+      background: #F5F3ED !important;
+      text-align: center !important;
+    }
+    body[data-content-page="home"] .bespoke-inner {
+      max-width: 820px !important;
+      margin: 0 auto !important;
+    }
+    body[data-content-page="home"] .bespoke-flourish {
+      width: 60px !important;
+      height: 1px !important;
+      background: var(--gold, #c9a84c) !important;
+      opacity: 0.7 !important;
+      margin: 0 auto 1.6rem !important;
+    }
+    body[data-content-page="home"] .bespoke-label {
+      color: var(--gold, #c9a84c) !important;
+      display: block !important;
+      margin-bottom: 1rem !important;
+    }
+    body[data-content-page="home"] .bespoke-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 400 !important;
+      font-size: clamp(2rem, 3vw, 2.8rem) !important;
+      line-height: 1.15 !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      margin: 0.4rem 0 1.2rem !important;
+      letter-spacing: -0.005em !important;
+    }
+    body[data-content-page="home"] .bespoke-body {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 1.15rem !important;
+      line-height: 1.65 !important;
+      color: var(--ink-quiet, #5A554C) !important;
+      max-width: 680px !important;
+      margin: 0 auto 1.8rem !important;
+      text-wrap: balance !important;
+    }
+    body[data-content-page="home"] .bespoke-types {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 0.55rem !important;
+      margin: 0 auto 2.4rem !important;
+      max-width: 680px !important;
+    }
+    body[data-content-page="home"] .bespoke-type-tag {
+      display: inline-block !important;
+      padding: 0.3rem 0.85rem !important;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.7rem !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      color: var(--ink-soft, #3D3A36) !important;
+      background: rgba(201, 168, 76, 0.08) !important;
+      border: 1px solid rgba(201, 168, 76, 0.38) !important;
+      border-radius: 999px !important;
+    }
+    body[data-content-page="home"] .bespoke-cta {
+      display: inline-block !important;
+      padding: 0.95rem 2rem !important;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.82rem !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      text-decoration: none !important;
+      color: #2D2A26 !important;
+      background: transparent !important;
+      border: 1px solid var(--gold, #c9a84c) !important;
+      border-radius: 2px !important;
+      transition: all 0.2s ease !important;
+    }
+    body[data-content-page="home"] .bespoke-cta:hover {
+      background: var(--gold, #c9a84c) !important;
+      color: #FFFFFF !important;
+    }
+
+    /* Quote Pause — quiet contemplative section between offerings, placeholder for an editorial quote. */
+    body[data-content-page="home"] .section-quote-pause {
+      padding: 5.5rem 3rem !important;
+      background: #F5F3ED !important;
+      text-align: center !important;
+    }
+    body[data-content-page="home"] .quote-pause-inner {
+      max-width: 720px !important;
+      margin: 0 auto !important;
+    }
+    body[data-content-page="home"] .quote-pause-flourish {
+      width: 60px !important;
+      height: 1px !important;
+      background: var(--gold, #c9a84c) !important;
+      opacity: 0.7 !important;
+      margin: 0 auto 2rem !important;
+    }
+    body[data-content-page="home"] .quote-pause-text {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: clamp(1.4rem, 2vw, 1.8rem) !important;
+      line-height: 1.55 !important;
+      color: var(--ink-quiet, #5A554C) !important;
+      margin: 0 !important;
+      letter-spacing: 0.005em !important;
+      text-wrap: balance !important;
+    }
+
+    /* Seasons of Change — "Three Paths In" reasons block (Therapeutic / Personal Dev / Spiritual). */
+    body[data-content-page="home"] .seasons-reasons-wrap {
+      margin: 1.4rem 0 1.8rem !important;
+    }
+    body[data-content-page="home"] .seasons-reasons-label {
+      display: block !important;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.28em !important;
+      text-transform: uppercase !important;
+      color: var(--gold-pale, #DCC178) !important;
+      opacity: 0.85 !important;
+      margin: 0 0 1rem !important;
+    }
+    body[data-content-page="home"] .seasons-reasons {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 1rem !important;
+      max-width: 680px !important;
+      margin: 0 auto !important;
+    }
+    body[data-content-page="home"] .seasons-reason {
+      padding: 1rem 0.75rem !important;
+      border: 1px solid rgba(245, 243, 237, 0.18) !important;
+      border-radius: 2px !important;
+      background: rgba(245, 243, 237, 0.04) !important;
+      text-align: center !important;
+    }
+    body[data-content-page="home"] .seasons-reason-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 500 !important;
+      font-size: 1.1rem !important;
+      line-height: 1.2 !important;
+      color: var(--gold-pale, #DCC178) !important;
+      margin: 0 0 0.35rem !important;
+      letter-spacing: 0 !important;
+    }
+    body[data-content-page="home"] .seasons-reason-desc {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 0.9rem !important;
+      line-height: 1.4 !important;
+      color: rgba(245, 243, 237, 0.85) !important;
+      margin: 0 !important;
+    }
+    @media (max-width: 740px) {
+      body[data-content-page="home"] .seasons-reasons {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* Ceremony and Ritual section — promoted title + italic subtitle. */
+    body[data-content-page="home"] .section-ceremony-ritual .vision-title.ceremony-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 400 !important;
+      font-size: clamp(3rem, 5.5vw, 5.2rem) !important;
+      line-height: 1.05 !important;
+      letter-spacing: -0.005em !important;
+      margin: 0.4rem 0 0.4rem !important;
+    }
+    body[data-content-page="home"] .section-ceremony-ritual .ceremony-subtitle {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: clamp(1.15rem, 1.5vw, 1.4rem) !important;
+      line-height: 1.55 !important;
+      color: var(--ink-quiet, #5A554C) !important;
+      margin: 0 0 1rem !important;
+      max-width: 540px !important;
+    }
+    body[data-content-page="home"] .section-ceremony-ritual .ceremony-cta-row {
+      margin-top: 2rem !important;
+    }
+
+    /* Ceremony types — small chip-tabs showing what's offered.
+       Higher contrast palette: pale gold text on subtle cream wash, brighter gold border
+       so chips read cleanly against the dark forest Ceremony & Ritual section background. */
+    body[data-content-page="home"] .ceremony-types {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 0.6rem !important;
+      margin: 1.2rem 0 1.8rem !important;
+    }
+    body[data-content-page="home"] .ceremony-type-tag {
+      display: inline-block !important;
+      padding: 0.4rem 1rem !important;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.74rem !important;
+      letter-spacing: 0.18em !important;
+      text-transform: uppercase !important;
+      color: var(--gold-pale, #DCC178) !important;
+      background: rgba(220, 193, 120, 0.08) !important;
+      border: 1px solid rgba(220, 193, 120, 0.55) !important;
+      border-radius: 999px !important;
+      transition: background 0.2s, border-color 0.2s, color 0.2s !important;
+    }
+    body[data-content-page="home"] .ceremony-type-tag:hover {
+      background: rgba(220, 193, 120, 0.18) !important;
+      border-color: var(--gold-pale, #DCC178) !important;
+      color: var(--light-catch, #F5F3ED) !important;
+    }
+
+    /* Ceremony & Ritual section — typography contrast bumps for readability on dark green. */
+    body[data-content-page="home"] .section-ceremony-ritual .ceremony-subtitle {
+      color: var(--gold-pale, #DCC178) !important;
+      opacity: 0.92 !important;
+    }
+    body[data-content-page="home"] .section-ceremony-ritual .vision-body {
+      color: rgba(245, 243, 237, 0.92) !important;
+      opacity: 1 !important;
+    }
+    body[data-content-page="home"] .section-ceremony-ritual .vision-title.ceremony-title {
+      color: var(--light-catch, #F5F3ED) !important;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3) !important;
+    }
+    body[data-content-page="home"] .section-ceremony-ritual .section-label {
+      color: var(--gold-pale, #DCC178) !important;
+      opacity: 0.95 !important;
+    }
+    body[data-content-page="home"] .section-ceremony-ritual .ceremony-cta-row .btn-outline {
+      color: var(--light-catch, #F5F3ED) !important;
+      border-color: rgba(220, 193, 120, 0.6) !important;
+    }
+    body[data-content-page="home"] .section-ceremony-ritual .ceremony-cta-row .btn-outline:hover {
+      border-color: var(--gold-pale, #DCC178) !important;
+      color: var(--gold-pale, #DCC178) !important;
+    }
+
+    /* Four Paths overview — small grid section between Practitioner and Ceremony & Ritual. */
+    body[data-content-page="home"] .section-four-paths {
+      padding: 5rem 3rem 4rem !important;
+      text-align: center !important;
+      background: #F5F3ED !important;
+    }
+    body[data-content-page="home"] .four-paths-inner {
+      max-width: 1280px !important;
+      margin: 0 auto !important;
+    }
+    body[data-content-page="home"] .four-paths-feature-image,
+    body[data-content-page="home"] .process-feature-image {
+      display: block !important;
+      max-width: 1000px !important;
+      width: 100% !important;
+      height: auto !important;
+      margin: 0 auto 3rem !important;
+      border-radius: 4px !important;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.22), 0 6px 14px rgba(0, 0, 0, 0.12) !important;
+    }
+    body[data-content-page="home"] .four-paths-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 400 !important;
+      font-size: clamp(2.4rem, 3.8vw, 3.4rem) !important;
+      line-height: 1.1 !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      margin: 0.4rem 0 0.6rem !important;
+      letter-spacing: -0.005em !important;
+    }
+    body[data-content-page="home"] .four-paths-intro {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 1.15rem !important;
+      color: var(--ink-quiet, #5A554C) !important;
+      margin: 0 0 3rem !important;
+    }
+    body[data-content-page="home"] .four-paths-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 1.5rem !important;
+    }
+    @media (max-width: 1000px) {
+      body[data-content-page="home"] .four-paths-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+    body[data-content-page="home"] .path-card {
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 2rem 1.6rem !important;
+      background: rgba(255, 255, 255, 0.75) !important;
+      border: 1px solid rgba(201, 168, 76, 0.28) !important;
+      border-radius: 4px !important;
+      text-decoration: none !important;
+      color: inherit !important;
+      text-align: left !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+    }
+    body[data-content-page="home"] .path-card:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12) !important;
+      border-color: var(--gold, #c9a84c) !important;
+    }
+    body[data-content-page="home"] .path-card-eyebrow {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.7rem !important;
+      letter-spacing: 0.22em !important;
+      text-transform: uppercase !important;
+      color: var(--gold, #c9a84c) !important;
+      margin-bottom: 0.6rem !important;
+    }
+    body[data-content-page="home"] .path-card-title {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-weight: 500 !important;
+      font-size: 1.5rem !important;
+      line-height: 1.2 !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      margin: 0 0 0.7rem !important;
+    }
+    body[data-content-page="home"] .path-card-desc {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 0.98rem !important;
+      line-height: 1.55 !important;
+      color: var(--ink-soft, #3D3A36) !important;
+      margin: 0 0 1.2rem !important;
+      flex-grow: 1 !important;
+    }
+    body[data-content-page="home"] .path-card-cta {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-size: 0.75rem !important;
+      letter-spacing: 0.2em !important;
+      text-transform: uppercase !important;
+      color: var(--gold, #c9a84c) !important;
+      margin-top: auto !important;
+    }
+
+    /* Training Grounds offering card descriptions (the 1–2 line course intro). */
+    body[data-content-page="home"] .offering-card .offering-desc {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-size: 0.95rem !important;
+      line-height: 1.55 !important;
+      color: var(--ink-soft, #3D3A36) !important;
+      margin: 0.5rem 0 0 !important;
+      opacity: 0.85 !important;
+    }
+
+    /* Metamorphosis: tree image as a contained rectangle on the left, text on the right.
+       50/50 split, image stretches to match text-column height. */
+    body[data-content-page="home"] .section-story { padding: 7rem 3rem !important; }
+    body[data-content-page="home"] .story-container.story-split {
+      max-width: 1500px !important;
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 5rem !important;
+      align-items: stretch !important;
+      margin: 0 auto !important;
+    }
+    /* DOM order is text-first; swap so the image sits on the left, text on the right. */
+    body[data-content-page="home"] .story-split .story-media { order: 0; width: 100%; height: 100%; }
+    body[data-content-page="home"] .story-split .story-text { order: 1; max-width: none; }
+    body[data-content-page="home"] .story-split .story-text > * { max-width: none !important; }
+    body[data-content-page="home"] .story-split .story-text::after { display: none !important; }
+    body[data-content-page="home"] .story-split .story-title {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
+      font-weight: 400 !important;
+      font-size: clamp(3.2rem, 5vw, 5.5rem) !important;
+      line-height: 1.05 !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      margin: 0.75rem 0 1.25rem !important;
+      letter-spacing: 0 !important;
+    }
+    body[data-content-page="home"] .story-split .story-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+      line-height: 1.7;
+      color: var(--ink-quiet) !important;
+      margin: 0.5rem 0 2rem;
+    }
+    body[data-content-page="home"] .story-split .story-media-frame {
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 600px !important;
+      aspect-ratio: auto !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      border-radius: 2px !important;
+      box-shadow: var(--shadow-deep, 0 30px 80px rgba(0,0,0,0.12)) !important;
+    }
+    /* Longer Story — type polish (Cormorant body, larger pull-quote, small-caps sign-off) */
+    body[data-content-page="home"] .story-split .story-text p {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-size: 1.2rem !important;
+      line-height: 1.78 !important;
+      margin: 0 0 1.3rem !important;
+      color: var(--ink-soft, #3D3A36) !important;
+    }
+    body[data-content-page="home"] .story-split .story-quote {
+      font-size: 2.15rem !important;
+      line-height: 1.55 !important;
+      font-style: italic !important;
+      border-left: 2px solid var(--gold, #C9A84C) !important;
+      padding-left: 2.4rem !important;
+      margin: 3.6rem 0 2.4rem !important;
+    }
+    body[data-content-page="home"] .story-split .story-quote p {
+      font-size: inherit !important;
+      font-family: inherit !important;
+      font-style: inherit !important;
+      line-height: inherit !important;
+      color: inherit !important;
+      margin: 0 0 1.6rem !important;
+    }
+    body[data-content-page="home"] .story-split .story-quote p:last-child {
+      margin-bottom: 0 !important;
+    }
+    body[data-content-page="home"] .story-split .story-evolution strong {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important;
+      font-style: normal !important;
+      font-weight: 500 !important;
+      font-size: 1.05rem !important;
+      letter-spacing: 0.2em !important;
+      text-transform: uppercase !important;
+      color: var(--gold, #C9A84C) !important;
+    }
+    /* Sign-off question (left column): italic Cormorant, quiet ink — reads as an invitation
+       rather than the original small-caps "next evolution of" eyebrow. */
+    body[data-content-page="home"] .story-split .story-evolution span:first-child {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-weight: 400 !important;
+      font-size: 1.35rem !important;
+      letter-spacing: 0 !important;
+      text-transform: none !important;
+      color: var(--ink-quiet, #5A554C) !important;
+    }
+    body[data-content-page="home"] .story-split .story-evolution {
+      align-items: center !important;
+    }
+    @media (max-width: 900px) {
+      body[data-content-page="home"] .story-container.story-split {
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem !important;
+        align-items: start !important;
+      }
+      body[data-content-page="home"] .story-split .story-media { order: 0; }
+      body[data-content-page="home"] .story-split .story-text { order: 1; max-width: none; }
+      body[data-content-page="home"] .story-split .story-media-frame {
+        height: auto;
+        aspect-ratio: 4 / 3;
+        min-height: 0;
+      }
+    }
+
+    /* Practitioner section: 2-col split — 50/50 image left, content right.
+       align-items: stretch so the image fills the text-column height. */
+    body[data-content-page="home"] .section-practitioner { padding: 7rem 3rem !important; }
+    body[data-content-page="home"] .practitioner-container {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 5rem !important;
+      align-items: stretch !important;
+      max-width: 1500px !important;
+      width: 100% !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
+    }
+    /* Practitioner bio paragraphs: slightly larger for readability. */
+    body[data-content-page="home"] .practitioner-content-home > p {
+      font-size: 1.25rem !important;
+      line-height: 1.7 !important;
+      margin: 0 0 1.5rem !important;
+    }
+    body[data-content-page="home"] .practitioner-image-home {
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 800px !important;
+      aspect-ratio: auto !important;
+      background-size: cover !important;
+      background-position: center top !important;
+      background-repeat: no-repeat !important;
+      border-radius: 2px !important;
+      box-shadow: var(--shadow-deep, 0 30px 80px rgba(0,0,0,0.12)) !important;
+    }
+    body[data-content-page="home"] .practitioner-content-home {
+      max-width: none !important;
+      align-self: center !important;
+    }
+
+    /* "Who She Serves" quote: full-width centered moment below the practitioner grid, before the CTA. */
+    body[data-content-page="home"] .practitioner-serves-quote {
+      max-width: 1500px !important;
+      margin: 5rem auto 0 !important;
+      padding: 0 3rem !important;
+      text-align: center !important;
+    }
+    body[data-content-page="home"] .practitioner-serves-flourish {
+      width: 60px !important;
+      height: 1px !important;
+      background: var(--gold, #c9a84c) !important;
+      margin: 0 auto 2.5rem !important;
+    }
+    body[data-content-page="home"] .practitioner-serves-epigraph {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 1.85rem !important;
+      line-height: 1.4 !important;
+      color: var(--gold, #c9a84c) !important;
+      margin: 0 auto 2.5rem !important;
+      max-width: 1100px !important;
+      text-wrap: balance !important;
+      letter-spacing: 0.01em !important;
+    }
+    body[data-content-page="home"] .practitioner-serves-stanza {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 1.55rem !important;
+      line-height: 1.55 !important;
+      color: var(--ink-soft, #3D3A36) !important;
+      margin: 0 auto 1.8rem !important;
+      max-width: 1400px !important;
+      text-wrap: balance !important;
+    }
+    body[data-content-page="home"] .practitioner-serves-stanza:last-child {
+      margin-bottom: 0 !important;
+    }
+    body[data-content-page="home"] .practitioner-cta-row {
+      text-align: center !important;
+      margin: 4rem 0 0 !important;
+    }
+
+    /* Tree-of-life divider: full-bleed image band between Longer Story and Practitioner. */
+    body[data-content-page="home"] .section-tree-divider {
+      width: 100% !important;
+      height: 70vh !important;
+      min-height: 480px !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    /* Vision section: two-column split — text on the left, smoke/moss image on the right. */
+    body[data-content-page="home"] .section-vision { text-align: left !important; }
+    body[data-content-page="home"] .vision-split {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr) !important;
+      gap: 5rem !important;
+      align-items: stretch !important;
+      max-width: 1500px !important;
+      margin: 0 auto 1rem !important;
+    }
+    body[data-content-page="home"] .vision-split .vision-text { max-width: 560px; }
+    body[data-content-page="home"] .vision-split .vision-title { text-align: left !important; }
+    body[data-content-page="home"] .vision-split .vision-title::after { margin-left: 0 !important; margin-right: auto !important; }
+    body[data-content-page="home"] .vision-split .vision-divider { margin-left: 0 !important; margin-right: 0 !important; }
+    body[data-content-page="home"] .vision-split .vision-body { margin-left: 0 !important; margin-right: 0 !important; max-width: none !important; }
+    body[data-content-page="home"] .vision-split .vision-media {
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 600px !important;
+      aspect-ratio: auto !important;
+      overflow: hidden !important;
+      border-radius: 2px !important;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.45) !important; /* heavier than --shadow-deep on dark bg */
+    }
+    body[data-content-page="home"] .vision-split .vision-media img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+    body[data-content-page="home"] .vision-pillars { text-align: center; }
+    @media (max-width: 900px) {
+      body[data-content-page="home"] .vision-split {
+        grid-template-columns: 1fr !important;
+        gap: 2.5rem !important;
+      }
+      body[data-content-page="home"] .vision-split .vision-text { max-width: none; }
+    }
+    /* Typography refinements — Adi Marie script, body unify, drop-cap, eyebrow */
+    body[data-content-page="home"] .practitioner-content-home .section-title,
+    body[data-content-page="home"] .practitioner-content-home .section-title em {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      font-size: clamp(4rem, 6.5vw, 7rem) !important;
+      line-height: 1.05 !important;
+      letter-spacing: 0 !important;
+    }
+    /* Unify body paragraphs to Cormorant Garamond across sections (Inter stays for nav/UI). */
+    body[data-content-page="home"] .practitioner-content-home p,
+    body[data-content-page="home"] .section-vision p,
+    body[data-content-page="home"] .vision-body,
+    body[data-content-page="home"] .section-offerings p,
+    body[data-content-page="home"] .section-cta p,
+    body[data-content-page="home"] .section-process p {
+      font-family: 'Cormorant Garamond', serif !important;
+    }
+    /* Drop cap: larger + Cinzel Decorative for illuminated-manuscript feel.
+       Direct-child selector so it doesn't leak into nested <p>s (e.g. inside the blockquote). */
+    body[data-content-page="home"] .story-split .story-text > p:first-of-type::first-letter {
+      font-family: 'Cinzel Decorative', 'Cormorant Garamond', serif !important;
+      font-size: 6.5rem !important;
+      line-height: 0.85 !important;
+      margin-right: 0.4rem !important;
+    }
+    /* Override: styles.css applies a drop-cap to any first-of-type <p>, which leaks into the
+       blockquote's first <p>. Explicitly reset the blockquote's first-letter back to normal. */
+    body[data-content-page="home"] .story-split .story-quote p::first-letter,
+    body[data-content-page="home"] .story-split .story-text blockquote p::first-letter {
+      font-family: inherit !important;
+      font-size: inherit !important;
+      line-height: inherit !important;
+      margin-right: 0 !important;
+      font-weight: inherit !important;
+      color: inherit !important;
+      float: none !important;
+    }
+    /* Eyebrow tighten: from 0.32em (generic-luxury) to 0.24em (deliberate). */
+    body[data-content-page="home"] .section-label {
+      letter-spacing: 0.24em !important;
+      font-weight: 500 !important;
+    }
+    /* Remove the little gold rule above THE PRACTITIONER eyebrow + shift everything up. */
+    body[data-content-page="home"] .section-practitioner .section-label::after {
+      display: none !important;
+    }
+    body[data-content-page="home"] .section-practitioner .section-label {
+      padding-top: 0 !important;
+    }
+
+    /* Newsletter section — between Vision and Offerings.
+       Full-bleed image of Adi at the forest altar; the form sits in the right third
+       inside a soft cream card so Adi's figure stays visible on the left. */
+    body[data-content-page="home"] .section-newsletter {
+      background: url('images/uploads/newsletter-adi-altar-forest.jpg') center/cover no-repeat !important;
+      min-height: 700px !important;
+      padding: 4rem 10% 4rem 0 !important;
+      display: flex !important;
+      justify-content: flex-end !important;
+      align-items: center !important;
+      text-align: left !important;
+    }
+    body[data-content-page="home"] .newsletter-inner {
+      width: 32% !important;
+      min-width: 380px !important;
+      max-width: 460px !important;
+      margin: 0 !important;
+      padding: 3rem 2.4rem !important;
+      background: rgba(245, 243, 237, 0.97) !important;
+      border-radius: 4px !important;
+      text-align: center !important;
+      box-shadow: 0 28px 72px rgba(0, 0, 0, 0.32), 0 4px 12px rgba(0, 0, 0, 0.18) !important;
+    }
+    body[data-content-page="home"] .section-newsletter .newsletter-title {
+      font-size: clamp(2.8rem, 3.8vw, 4.2rem) !important;
+      margin: 0.5rem 0 1rem !important;
+    }
+    body[data-content-page="home"] .section-newsletter .newsletter-body {
+      font-size: 1.1rem !important;
+      max-width: 100% !important;
+      margin: 0 0 1.8rem !important;
+    }
+    body[data-content-page="home"] .section-newsletter .newsletter-form {
+      max-width: 100% !important;
+    }
+    body[data-content-page="home"] .section-newsletter .newsletter-trust {
+      font-size: 0.85rem !important;
+      margin: 1.4rem 0 0 !important;
+    }
+    body[data-content-page="home"] .section-newsletter .section-label {
+      color: var(--gold, #c9a84c) !important;
+    }
+    body[data-content-page="home"] .newsletter-title {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
+      font-weight: 400 !important;
+      font-size: clamp(4rem, 6vw, 6rem) !important;
+      line-height: 1.05 !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      margin: 1rem 0 1.5rem !important;
+      letter-spacing: 0 !important;
+    }
+    body[data-content-page="home"] .newsletter-body {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 1.25rem !important;
+      line-height: 1.65 !important;
+      color: var(--ink-soft, #3D3A36) !important;
+      margin: 0 auto 2.5rem !important;
+      max-width: 540px !important;
+      text-wrap: balance !important;
+    }
+    body[data-content-page="home"] .newsletter-form {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.85rem !important;
+      max-width: 480px !important;
+      margin: 0 auto !important;
+    }
+    body[data-content-page="home"] .newsletter-form-names {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 0.85rem !important;
+    }
+    body[data-content-page="home"] .newsletter-form input {
+      padding: 0.95rem 1.1rem !important;
+      border: 1px solid rgba(45,42,38,0.22) !important;
+      background: rgba(255,255,255,0.85) !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      border-radius: 4px !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.95rem !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      transition: border-color 0.15s, background 0.15s !important;
+    }
+    body[data-content-page="home"] .newsletter-form input:focus {
+      outline: none !important;
+      border-color: var(--gold, #c9a84c) !important;
+      background: rgba(255,255,255,0.92) !important;
+    }
+    body[data-content-page="home"] .newsletter-submit {
+      padding: 0.95rem 1.8rem !important;
+      margin-top: 0.5rem !important;
+      cursor: pointer !important;
+    }
+    body[data-content-page="home"] .newsletter-submit:disabled {
+      opacity: 0.6 !important;
+      cursor: wait !important;
+    }
+    body[data-content-page="home"] .newsletter-trust {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 0.95rem !important;
+      color: var(--ink-quiet, #5A554C) !important;
+      margin: 1.75rem 0 0 !important;
+      opacity: 0.85 !important;
+      line-height: 1.6 !important;
+    }
+    body[data-content-page="home"] .newsletter-trust-sep {
+      color: var(--gold, #c9a84c) !important;
+      margin: 0 0.4rem !important;
+      opacity: 0.7 !important;
+    }
+    body[data-content-page="home"] .newsletter-intake-link {
+      color: var(--gold, #c9a84c) !important;
+      text-decoration: none !important;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.35) !important;
+      transition: border-color 0.15s !important;
+    }
+    body[data-content-page="home"] .newsletter-intake-link:hover {
+      border-bottom-color: var(--gold, #c9a84c) !important;
+    }
+    body[data-content-page="home"] .newsletter-status {
+      margin-top: 1.2rem !important;
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 1.1rem !important;
+      min-height: 1.5em !important;
+    }
+    body[data-content-page="home"] .newsletter-status-success {
+      color: var(--gold, #c9a84c) !important;
+    }
+    body[data-content-page="home"] .newsletter-status-error {
+      color: #a04545 !important;
+    }
+  </style>
 </head>
 <body data-content-page="home">
 
-  <header class="site-header">
+    <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="logo">The Animist <em class="logo-accent">Apothecary</em></a>
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span>
+      </a>
+      <div class="header-nav-row">
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html" class="nav-active">Home</a></li>
           <li class="nav-dropdown-parent">
-            <a href="#">Offerings <span class="nav-arrow">&#9662;</span></a>
+            <a href="index.html">Home <span class="nav-arrow">&#9662;</span></a>
             <div class="nav-dropdown">
-              <div class="nav-dropdown-inner">
-                <div class="nav-drop-col nav-drop-col--cornerstone">
-                  <a href="deep-work.html" class="nav-drop-deepwork-card">
-                    <span class="nav-drop-label">The Deep Work</span>
-                    <span class="nav-drop-deepwork-desc">Sustained containers of 3&ndash;24 months for those called to genuine transformation. The heart of this practice.</span>
-                    <span class="nav-drop-deepwork-cta">Explore initiating paths &rarr;</span>
-                  </a>
-                </div>
-                <div class="nav-drop-col">
-                  <span class="nav-drop-label">Sacred Sessions</span>
-                  <a href="shamanic-bodywork.html">Shamanic Bodywork</a>
-                  <a href="personal-immersions.html">Personal Immersions</a>
-                  <a href="ceremonial-therapeutics.html">Ceremonial Therapeutics</a>
-                  <a href="platicas.html">Pl&aacute;ticas &mdash; Guidance &amp; Counsel</a>
-                  <a href="divinations.html">Ancestral &amp; Elemental Divinations</a>
-                </div>
-                <div class="nav-drop-col">
-                  <span class="nav-drop-label">The Living Web</span>
-                  <a href="private-group-ceremonies.html">Private &amp; Group Ceremonies</a>
-                  <a href="community.html">Community Hubs</a>
-                  <a href="community.html#training">Ceremonialist Training</a>
-                </div>
-              </div>
+              <a href="index.html">Welcome</a>
+              <a href="about.html">The Practitioner</a>
+              <a href="https://new.theanimistapothecary.com/apply">Begin Here</a>
             </div>
           </li>
-          <li><a href="calendar.html">The Wheel</a></li>          <li><a href="community.html">Community</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
-          <li><a href="book.html" class="nav-cta">Apply</a></li>
+          <li class="nav-dropdown-parent">
+            <a href="about.html">About <span class="nav-arrow">&#9662;</span></a>
+            <div class="nav-dropdown">
+              <a href="about.html">Adi Marie</a>
+              <a href="about.html#practice">The Practice</a>
+              <a href="about.html#lineage">Lineage &amp; Training</a>
+            </div>
+          </li>
+          <li class="nav-dropdown-parent">
+            <a href="solo-work.html">Solo Work <span class="nav-arrow">&#9662;</span></a>
+            <div class="nav-dropdown">
+              <a href="solo-work.html">Overview</a>
+              <a href="seasons-of-change.html">Seasons of Change</a>
+              <a href="ceremony-and-ritual.html#private">Private Ceremonies</a>
+              <a href="https://new.theanimistapothecary.com/apply">Schedule the Intake</a>
+            </div>
+          </li>
+          <li class="nav-dropdown-parent">
+            <a href="group-work.html">Group Work <span class="nav-arrow">&#9662;</span></a>
+            <div class="nav-dropdown">
+              <a href="group-work.html">Overview</a>
+              <a href="ceremony-and-ritual.html#community">Community Ceremonies</a>
+              <a href="metamorphic-year.html">The Metamorphic Year</a>
+              <a href="calendar.html">Calendar of Gatherings</a>
+            </div>
+          </li>
+          <li class="nav-dropdown-parent">
+            <a href="training-grounds.html">The School <span class="nav-arrow">&#9662;</span></a>
+            <div class="nav-dropdown">
+              <a href="training-grounds.html">Overview</a>
+              <a href="training-grounds.html#cohorts">The Six Cohorts</a>
+              <a href="https://new.theanimistapothecary.com/apply">Apply to Begin</a>
+            </div>
+          </li>
+          <li class="nav-dropdown-parent">
+            <a href="writings.html">Resources <span class="nav-arrow">&#9662;</span></a>
+            <div class="nav-dropdown">
+              <a href="calendar.html">The Calendar</a>
+              <a href="writings.html">Writings &amp; Letters</a>
+              <a href="sacred-reciprocity.html">Sacred Reciprocity</a>
+              <a href="platicas.html">Pl&aacute;ticas</a>
+            </div>
+          </li>
         </ul>
       </nav>
+      <a href="https://new.theanimistapothecary.com/apply" class="nav-cta apply-btn">Apply</a>
+      </div>
     </div>
   </header>
 
-  <!-- &mdash;&mdash;&mdash; HERO &mdash;&mdash;&mdash; -->
+  <!-- &mdash;&mdash;&mdash; HERO (portrait on right, text overlay on the dark left) &mdash;&mdash;&mdash; -->
   <section class="hero-fullbleed">
     <div class="hero-image" role="img"
-         aria-label="Sunlight streaming through the great living canopy of the Topanga chaparral"
+         aria-label="Adi Marie in a brown wool shawl, low-key portrait against an earthy interior wall"
          data-content="hero.image" data-content-type="image" data-content-alt="hero.image_alt"
          data-content-bgpos="hero.image_position" data-content-bgsize="hero.image_size"></div>
-    <div class="hero-content">
-      <span class="hero-eyebrow" data-content="hero.eyebrow">Shamanic Healing &middot; Somatic Ceremony &middot; Botanical Medicine</span>
-      <h1 class="hero-title" data-content="hero.title" data-content-type="html">Where ancient wisdom meets<br>the <em>living body</em></h1>
-      <p class="hero-subtitle" data-content="hero.subtitle">Somatic healing, sacred ceremony, and botanical medicine &mdash; woven together in devotion to your wholeness and the healing of the living world.</p>
-      <div class="hero-actions">
-        <a href="#offerings" class="btn-primary" data-content="hero.cta_primary_text" data-content-href="hero.cta_primary_url">Explore the Work</a>
-        <a href="book.html" class="btn-ghost" data-content="hero.cta_secondary_text" data-content-href="hero.cta_secondary_url">Begin Here</a>
+    <div class="hero-overlay">
+      <div class="hero-overlay-inner">
+        <a href="index.html" class="hero-brand" aria-label="The Animist Apothecary">
+          <span class="hero-brand-text">The Animist <em class="hero-brand-accent">Apothecary</em></span>
+        </a>
+        <span class="hero-brand-rule" aria-hidden="true"></span>
+        <span class="hero-eyebrow" data-content="hero.eyebrow" data-content-type="html">Ceremonial &amp; Ritual Stewardship<br>Interdimensional Intermediary &amp; Guide</span>
+        <h1 class="hero-title" data-content="hero.title" data-content-type="html">Formidable gifts for<br>an <em>era of awakening</em></h1>
+        <p class="hero-subtitle" data-content="hero.subtitle">A place of ritual and ceremonial practice &mdash; for those becoming interdimensional intermediaries in service to the well-being, restoration, and healing of this world.</p>
+        <div class="hero-cta-row">
+          <a href="solo-work.html" class="hero-btn hero-btn-primary" data-content="hero.cta_primary_text" data-content-href="hero.cta_primary_url">Personal Work</a>
+          <a href="training-grounds.html" class="hero-btn hero-btn-secondary" data-content="hero.cta_secondary_text" data-content-href="hero.cta_secondary_url">The Training Grounds</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- &mdash;&mdash;&mdash; METAMORPHOSIS &mdash;&mdash;&mdash; -->
-  <section class="section-story section-story--no-image">
-    <div class="story-container">
+  <section class="section-story">
+    <div class="story-container story-split">
       <div class="story-text">
-        <span class="section-label" data-content="metamorphosis.section_label">A Metamorphosis Has Been Underway</span>
-        <h2 class="section-title" data-content="metamorphosis.title" data-content-type="html">From bodywork to<br><em>deep soul tending</em></h2>
+        <div class="story-intro" data-content="metamorphosis.intro">An invitation to the thresholds of life's great work.</div>
         <div class="story-divider"></div>
+        <h2 class="story-title" data-content="metamorphosis.title">Welcome to an eternal edge of infinite horizons</h2>
         <p data-content="metamorphosis.paragraph_1">After 16 years of service as a Somatic Touch Therapist and Hands-on Spiritual Practitioner &mdash; my work through Bodywork &amp; Botanicals has come into a new evolution of specialized offerings and curation.</p>
         <p data-content="metamorphosis.paragraph_2">The many people who came seeking respite on the massage table almost always had deeper wounds that needed attending to &mdash; expressing as physical symptoms of disharmony within their system as pain.</p>
         <p data-content="metamorphosis.paragraph_3">After over a decade of devoted study, initiation, and maturation as an answer to the deeper calling of my gifts in service to the world, I now have a richer set of specialized skills to provide the much needed deep work to bring about life changing contact with the inner domains of Spirit and Self.</p>
@@ -86,279 +1904,404 @@
           What has always been here remains: deep somatic tending, sacred space, relational care, and the devoted art of helping people return to themselves. <strong>And something new is arriving, too.</strong>
         </blockquote>
         <div class="story-evolution">
-          <span data-content="metamorphosis.evolution_intro">Bodywork &amp; Botanicals has become the next evolution of shamanic care:</span>
+          <span data-content="metamorphosis.evolution_intro">Is this what your path has been calling for?</span>
           <strong data-content="metamorphosis.evolution_name">The Animist Apothecary</strong>
         </div>
       </div>
+      <aside class="story-media" aria-hidden="true">
+        <div class="story-media-frame"
+             data-content="metamorphosis.image" data-content-type="image" data-content-bgpos="metamorphosis.image_position"
+             style="background-image: url('images/uploads/longer-story-milky-canyon.jpg'); background-position: center;"></div>
+      </aside>
     </div>
   </section>
+
+  <!-- &mdash;&mdash;&mdash; TREE-OF-LIFE DIVIDER &mdash;&mdash;&mdash; -->
+  <section class="section-tree-divider" aria-hidden="true"
+           style="background-image: url('images/uploads/divider-milkyway-nuut-arch.jpg');"></section>
 
   <!-- &mdash;&mdash;&mdash; PRACTITIONER &mdash;&mdash;&mdash; -->
   <section class="section-practitioner">
     <div class="practitioner-container">
       <div class="practitioner-image-home" data-content="practitioner.image" data-content-type="image" data-content-bgpos="practitioner.image_position" style="background-image:url('images/adi-hero-portrait.jpg'); background-position: center top;"></div>
       <div class="practitioner-content-home">
-        <span class="section-label" data-content="practitioner.section_label">The Practitioner</span>
+        <span class="section-label" data-content="practitioner.section_label">Your Practitioner</span>
         <h2 class="section-title" data-content="practitioner.title" data-content-type="html"><em>Adi Marie</em></h2>
         <div class="story-divider"></div>
         <div class="practitioner-quals-home" data-content-list="practitioner.quals">
-          <span class="qual-tag" data-content-list-template data-content=".">Therapeutic Coach</span>
-          <span class="qual-tag">Entheogenic Medicine</span>
+          <span class="qual-tag" data-content-list-template data-content=".">Interdimensional Intermediary &amp; Guide</span>
+          <span class="qual-tag">Somatic Medium &amp; Oracular Diviner</span>
           <span class="qual-tag">Ceremonial &amp; Ritual Stewardship</span>
-          <span class="qual-tag">Interdimensional Intermediary &amp; Guide</span>
-          <span class="qual-tag">Somatic Medium &amp; Diviner</span>
-          <span class="qual-tag">Shamanic Bodyworker</span>
-          <span class="qual-tag">Massage Therapist</span>
-          <span class="qual-tag">Expressive Arts</span>
         </div>
-        <p data-content="practitioner.paragraph_1">After 16 years of devoted service and over a decade of initiation, study, and maturation &mdash; Adi Marie carries a medicine basket woven from traditional herbalism, animist cosmology, somatic awareness, shamanic practice, and the sacred arts of ceremony.</p>
-        <p data-content="practitioner.paragraph_2">Working with doctors, medicine people, therapists, leaders of industry, and those whose decisions shape the trajectory of this earth ship &mdash; both as individuals and within the many constellations of their communities.</p>
-        <p class="practitioner-location" data-content="practitioner.location">Based in Topanga Canyon, Los Angeles &mdash; available worldwide for virtual sessions, private engagements, and in person for those called to the land.</p>
-        <a href="about.html" class="btn-outline" data-content="practitioner.cta_text" data-content-href="practitioner.cta_url">Read the Full Story</a>
+        <p data-content="practitioner.paragraph_1">This work is based in Southern California with a regular migratory route along the North American West Coast. Adi Marie is flown around the world serving individuals and communities ready to embark upon and enact great change &mdash; first and foremost within themselves, to then do so to the world around.</p>
+        <p data-content="practitioner.paragraph_2">Adi has always had an immense power and gift in the spoken word, serving as an oracular poet, mythmaker, and storyteller &mdash; synthesizing and cohering the messages from the otherworlds into a tapestry of tales for us to live within. This gift has been formalized through her initiation as a voice diviner, having been chosen for the role by the Spirit World.</p>
+        <p data-content="practitioner.paragraph_3">Her gifts of somatic mediumship led her into medical, therapeutic, and shamanic bodywork, providing deep spiritual and emotional openings for physicalization and somatic expression and embodiment of the psyche and soul. Adi Marie has over 19 years of experience in the world of medicines of the wilds, specializing in entheogenic sacraments &mdash; guiding others through specialized and extraordinary states of visionary consciousness.</p>
       </div>
+    </div>
+
+    <div class="practitioner-serves-quote">
+      <div class="practitioner-serves-flourish" aria-hidden="true"></div>
+      <p class="practitioner-serves-epigraph" data-content="practitioner.serves_quote_epigraph">For those whose inner work moves outward &mdash; and impacts thousands of lives &mdash; whose healing shapes collective fields of community and industry &mdash; for the innovators, the creators, and the world shapers, this work is for you.</p>
+      <p class="practitioner-serves-stanza" data-content="practitioner.serves_quote_stanza_1">Adi Marie works with visionary leaders and masters of craft &mdash; those passionate in their disciplines, ready to step deeper into the mysteries of the ineffable within their inner worlds, and to plunge the depths to bring more light to the worlds we share.</p>
+      <p class="practitioner-serves-stanza" data-content="practitioner.serves_quote_stanza_2">She also works with established communities to further their healing &mdash; so that those who are ready may begin to step into their leadership and elderhood, forming nutritive and nourishing ecosystems within which the children, the troubled, the lost, and the youth may heal and be held, thrive and grow, and bring forth hope for the restoration of the village amidst the urban sprawl.</p>
+      <p class="practitioner-serves-stanza" data-content="practitioner.serves_quote_stanza_3">She helps those ready to hone their burgeoning spiritual gifts into formidable powers &mdash; to be wielded benevolently in the shaping of a more beautiful world we all know is possible.</p>
+    </div>
+
+    <div class="practitioner-cta-row">
+      <a href="about.html" class="btn-outline" data-content="practitioner.cta_text" data-content-href="practitioner.cta_url">Read the longer story</a>
     </div>
   </section>
 
-  <!-- &mdash;&mdash;&mdash; VISION &mdash;&mdash;&mdash; -->
-  <section class="section-vision">
-    <span class="section-label" data-content="vision.section_label">The Greater Calling</span>
-    <h2 class="vision-title" data-content="vision.title" data-content-type="html">Healing the earth grid.<br><em>One ceremony at a time.</em></h2>
-    <div class="vision-divider"></div>
-    <p class="vision-body" data-content="vision.body_1">The great work of our time is not only personal &mdash; it is planetary. Adi Marie is cultivating communities of ceremonialists, building collective healing containers, and weaving systems of sacred resourcing in service to this precious planet and all sacred kin.</p>
-    <p class="vision-body" data-content="vision.body_2">The work is scaling &mdash; into group trajectories, community hubs, and training pathways &mdash; because the earth grid needs woven networks of healers, ceremonialists, and devotees of the living world.</p>
-    <div class="vision-pillars" data-content-list="vision.pillars">
-      <a class="vision-pillar" href="book.html" data-content-list-template data-content-href=".link_url">
-        <span class="pillar-icon" data-content=".icon">&mdash;</span>
-        <h3 data-content=".title">The Solo Path</h3>
-        <p data-content=".description">One-on-one acolyte work for deep personal transformation and spiritual sovereignty.</p>
-        <span class="pillar-cta" data-content=".link_text">Apply for solo work &mdash;</span>
-      </a>
-      <a class="vision-pillar" href="community.html">
-        <span class="pillar-icon">&mdash; &mdash;</span>
-        <h3>The Communal Fire</h3>
-        <p>Themed group trajectories, seasonal ceremonies, and clinics in devoted service to the living web.</p>
-        <span class="pillar-cta">See community work &mdash;</span>
-      </a>
-      <a class="vision-pillar" href="book.html">
-        <span class="pillar-icon">&mdash;&mdash;&mdash;</span>
-        <h3>Bespoke Engagements</h3>
-        <p>Private ceremonial work, retreats, and counsel for leaders, organizations, and the constellations they hold.</p>
-        <span class="pillar-cta">Inquire for private work &mdash;</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- &mdash;&mdash;&mdash; OFFERINGS &mdash;&mdash;&mdash; -->
-  <section class="section-offerings" id="offerings">
-    <div class="offerings-container">
-      <div class="offerings-header">
-        <span class="section-label" data-content="offerings.section_label">Current Offerings</span>
-        <h2 class="section-title" data-content="offerings.title" data-content-type="html">Sacred pathways of <em>transformation</em></h2>
-        <p class="section-body" data-content="offerings.body">Each offering is a doorway. Choose the one that calls to the depth of your readiness &mdash; from single sessions to year-long developmental arcs.</p>
-      </div>
-
-      <div class="offering-featured-card">
-        <div class="ofc-image" data-content="offerings.featured.image" data-content-type="image" data-content-bgpos="offerings.featured.image_position" style="background-image:url('https://images.unsplash.com/photo-1762755126280-6d8a4f9d1115?w=1400&h=600&fit=crop&q=80');"></div>
-        <div class="ofc-overlay"></div>
-        <div class="ofc-content">
-          <span class="section-label" style="color:#C5D9C6; margin-bottom:0.6rem;" data-content="offerings.featured.label">Cornerstone Offering</span>
-          <h3 data-content="offerings.featured.title">Mythopoetic Living &mdash; Developmental Arcs</h3>
-          <p data-content="offerings.featured.description_1">A 3&mdash;24 month ceremonial developmental trajectory &mdash; weaving Sacred Breath sessions with Guidance &amp; Counsel into a living container for deep self-actualization and spiritual sovereignty.</p>
-          <p data-content="offerings.featured.description_2">12-session progressions, built around your season of readiness.</p>
-          <div class="ofc-meta" data-content="offerings.featured.meta">
-            <span>Solo Acolyte Intensives</span><span>&middot;</span>
-            <span>Group Trajectories</span><span>&middot;</span>
-            <span>3&mdash;24 Month Containers</span>
-          </div>
-          <a href="mythopoetic.html" class="btn-ghost" data-content="offerings.featured.cta_text" data-content-href="offerings.featured.cta_url">Walk the Year &mdash;</a>
-        </div>
-      </div>
-
-      <div class="offerings-bridge">
-        <span class="offerings-bridge-text">Inside, the medicine basket holds&hellip;</span>
-      </div>
-
-      <div class="offerings-grid" data-content-list="offerings.cards">
-        <div class="offering-card" data-content-list-template>
-          <div class="offering-image" data-content=".image" data-content-type="image" style="background-image:url('https://images.unsplash.com/photo-1492552181161-62217fc3076d?w=900&h=900&fit=crop&q=80');"></div>
-          <div class="offering-content">
-            <span class="offering-tag" data-content=".tag">Somatic &middot; Sacred</span>
-            <h3 class="offering-title" data-content=".title">Shamanic Bodywork</h3>
-            <p class="offering-tagline" data-content=".tagline">The body as altar. Sensation as oracle.</p>
-          </div>
-        </div>
-        <div class="offering-card">
-          <div class="offering-image" style="background-image:url('https://images.unsplash.com/photo-1579101451346-4d0cd752f4b8?w=600&h=400&fit=crop&q=80');"></div>
-          <div class="offering-content">
-            <span class="offering-tag">Multi-Day &middot; Immersive</span>
-            <h3>Personal Immersions</h3>
-            <p>Extended containers for those ready to go all the way in &mdash; multi-day experiences of radical presence, ceremony, and spiritual reclamation.</p>
-            <a href="personal-immersions.html" class="offering-link">Learn More &mdash;</a>
-          </div>
-        </div>
-        <div class="offering-card">
-          <!-- TODO: Replace with real Ceremonial & Ritual Groups photo (fire circle, gathering, altar) -->
-          <div class="offering-image" style="background-image:url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&h=400&fit=crop&q=80');"></div>
-          <div class="offering-content">
-            <span class="offering-tag">Collective &middot; Ritual</span>
-            <h3>Ceremonial &amp; Ritual Groups</h3>
-            <p>Themed group trajectories, seasonal ceremonies, and collective healing containers &mdash; because the work of tending the life web is communal.</p>
-            <a href="ceremonial-groups.html" class="offering-link">Learn More &mdash;</a>
-          </div>
-        </div>
-        <div class="offering-card">
-          <div class="offering-image" style="background-image:url('https://images.unsplash.com/photo-1601922046210-41e129a3e64a?w=600&h=400&fit=crop&q=80');"></div>
-          <div class="offering-content">
-            <span class="offering-tag">Guidance &middot; Counsel</span>
-            <h3>Pl&aacute;ticas</h3>
-            <p>Sacred conversation at the threshold of knowing. Strategic spiritual counsel. A space to be witnessed, guided, and met with honesty and devotion.</p>
-            <a href="platicas.html" class="offering-link">Learn More &mdash;</a>
-          </div>
-        </div>
-        <div class="offering-card">
-          <div class="offering-image" style="background-image:url('https://images.unsplash.com/photo-1627769916425-74c2344a3439?w=600&h=400&fit=crop&q=80');"></div>
-          <div class="offering-content">
-            <span class="offering-tag">Ancestral &middot; Elemental</span>
-            <h3>Ancestral &amp; Elemental Divinations</h3>
-            <p>Readings and transmissions from the ancestral and elemental realms &mdash; a mirror held by those who walked before you, for clarity at the crossroads.</p>
-            <a href="divinations.html" class="offering-link">Learn More &mdash;</a>
-          </div>
-        </div>
-        <div class="offering-card">
-          <!-- TODO: Replace with real Community Clinics photo (community gathering, plant medicine sharing, accessible space) -->
-          <div class="offering-image" style="background-image:url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&h=400&fit=crop&q=80');"></div>
-          <div class="offering-content">
-            <span class="offering-tag">Open Access &middot; Reciprocity</span>
-            <h3>Community Clinics</h3>
-            <p>Sliding-scale gatherings and accessible group sessions held in service to the wider community &mdash; entry points for those called to begin, attuned to Sacred Reciprocity so the work meets all who need it.</p>
-            <a href="community-clinics.html" class="offering-link">Learn More &mdash;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- &mdash;&mdash;&mdash; PROCESS &mdash;&mdash;&mdash; -->
-  <section class="section-process" id="begin">
-    <div class="process-container">
-      <div class="process-header">
-        <span class="section-label" data-content="process.section_label">How to Begin</span>
-        <h2 class="section-title" data-content="process.title" data-content-type="html">Your path forward,<br><em>step by step</em></h2>
-        <p class="section-body" data-content="process.intro">The work begins with a simple, honest inquiry. From there, a path reveals itself.</p>
-        <div class="process-questions" data-content-list="process.questions">
-          <span class="process-q" data-content-list-template data-content=".">Awakening or Healing?</span>
-          <span class="pq-dot">&middot;</span>
-          <span class="process-q">Solo or Groups?</span>
-          <span class="pq-dot">&middot;</span>
-          <span class="process-q">Once or Ongoing?</span>
-        </div>
-      </div>
-      <div class="process-steps" data-content-list="process.steps">
-        <div class="process-step" data-content-list-template>
-          <div class="step-number" data-content=".number">01</div>
-          <h3 data-content=".title">Intake &amp; Inquiry</h3>
-          <p data-content=".description">A paid Intake &amp; Inquiry session (Pl&aacute;ticas rate) to feel the resonance, share your needs, assess readiness, and outline a path forward together. This is a substantive consultation &mdash; not a brief intro call.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">02</div>
-          <h3>Choose Your Path</h3>
-          <p>Together we identify whether a Solo Acolyte intensive, group trajectory, or individual session best meets your readiness.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">03</div>
-          <h3>Commit &amp; Begin</h3>
-          <p>A deposit opens the container and signals your readiness. Dates are set. The work is engaged with full intention.</p>
-        </div>
-        <div class="process-step">
-          <div class="step-number">04</div>
-          <h3>Aftercare &amp; Integration</h3>
-          <p>The work continues in the weaving. Integration practices and follow-up support are woven throughout every offering.</p>
-        </div>
-      </div>
-      <div class="process-cta">
-        <a href="book.html" class="btn-primary" data-content="process.cta_text" data-content-href="process.cta_url">Begin Here &mdash; Book Your Call</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- &mdash;&mdash;&mdash; TESTIMONIAL &mdash;&mdash;&mdash; -->
-  <section class="section-testimonial">
-    <div class="testimonial-container">
-      <div class="testimonial-quote-mark">&mdash;</div>
-      <blockquote class="testimonial-text" data-content="testimonial.text">
-        Working with Adi is like having the most skilled, loving, ferocious medicine person as your guide. She sees what others miss, holds what others drop, and moves you through the underworld with uncommon grace. My life is unrecognizably more alive.
-      </blockquote>
-      <div class="testimonial-author">
-        <div class="testimonial-line"></div>
-        <span data-content="testimonial.author">M.K. &mdash; Physician &amp; Medicine Woman, New Mexico</span>
-        <div class="testimonial-line"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- &mdash;&mdash;&mdash; CTA &mdash;&mdash;&mdash; -->
+  <!-- CTA (peak conversion ask — title + buttons stacked top-left, smudge visible right, body + credentials along bottom) -->
   <section class="section-cta">
     <div class="cta-container">
-      <span class="section-label" style="color:rgba(197,217,198,0.65);" data-content="cta_section.section_label">Begin the Work</span>
-      <h2 data-content="cta_section.title" data-content-type="html">The earth grid needs<br><em>your medicine.</em></h2>
-      <p data-content="cta_section.body">Whether you're here for your own healing or to train as a ceremonialist in service to the living web &mdash; your season begins now.</p>
-      <a href="book.html" class="btn-primary" data-content="cta_section.cta_text" data-content-href="cta_section.cta_url">Work With Us</a>
+
+      <div class="cta-topleft">
+        <span class="section-label" style="color:rgba(220,193,120,0.78);" data-content="cta_section.section_label">Begin the Work</span>
+        <h2 data-content="cta_section.title" data-content-type="html">Rites of passage for <em>modern humans</em>.</h2>
+        <p class="cta-subtitle" data-content="cta_section.subtitle">Are you ready to step in?</p>
+
+        <div class="cta-button-stack">
+          <div class="cta-button-row-item">
+            <a href="https://new.theanimistapothecary.com/apply" class="btn-primary" data-content="cta_section.cta_text" data-content-href="cta_section.cta_url">Apply to Begin</a>
+            <p class="cta-button-note" data-content="cta_section.cta_primary_note">For yourself or the deeper path</p>
+          </div>
+          <div class="cta-button-row-item">
+            <a href="https://new.theanimistapothecary.com/contact/inquiry" class="btn-secondary" data-content="cta_section.cta_secondary_text" data-content-href="cta_section.cta_secondary_url">Send a Message</a>
+            <p class="cta-button-note" data-content="cta_section.cta_secondary_note">For your community, organization, or private engagement</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-bottom">
+        <p class="cta-body-text" data-content="cta_section.body">Some come for their own healing. Some come for the deeper training. Some come because they hold a community in need, a ceremony to be led, or a gathering to be tended. Either way, the season begins at the threshold.</p>
+        <p class="cta-credentials" data-content="cta_section.credentials">19 years devoted service &middot; Initiated medicine woman &middot; Lineage-trained &middot; Southern California-based</p>
+      </div>
+
     </div>
   </section>
+
+  <!-- &mdash;&mdash;&mdash; THE WORK — Unified three-path overview (replaces all individual offering sections) &mdash;&mdash;&mdash; -->
+  <section class="section-the-work">
+    <div class="the-work-inner">
+      <span class="section-label the-work-label">The Work</span>
+      <h2 class="the-work-title">Three ways to begin the work.</h2>
+      <p class="the-work-intro">Each is its own world. Each leads to its own dedicated container. The first conversation, always, is the Intake &amp; Inquiry.</p>
+
+      <div class="the-work-paths">
+        <a href="solo-work.html" class="work-path">
+          <div class="work-path-image-wrap">
+            <div class="work-path-image" style="background-image: url('images/uploads/the-work-ceremony.jpg'); background-position: center 35%;"></div>
+          </div>
+          <span class="work-path-eyebrow">One-on-One Containers</span>
+          <h3 class="work-path-title">Solo Work</h3>
+          <p class="work-path-desc">The long, private arc &mdash; sustained 1:1 ceremonial coaching and bespoke private ceremony, tended in singular relationship.</p>
+          <ul class="work-path-bullets">
+            <li>Seasons of Change &mdash; Ceremonial Coaching</li>
+            <li>Private Ceremonies &mdash; Custom Bespoke Rites</li>
+            <li>Pl&aacute;ticas &mdash; Guidance &amp; Counsel</li>
+          </ul>
+          <span class="work-path-cta">Enter Solo Work &rarr;</span>
+        </a>
+        <a href="group-work.html" class="work-path">
+          <div class="work-path-image-wrap">
+            <div class="work-path-image" style="background-image: url('images/uploads/the-work-seasons.jpg'); background-position: center center;"></div>
+          </div>
+          <span class="work-path-eyebrow">Communal Containers</span>
+          <h3 class="work-path-title">Group Work</h3>
+          <p class="work-path-desc">Where the village remembers itself &mdash; through ceremony, through circle, through the gathered counsel of leaders.</p>
+          <ul class="work-path-bullets">
+            <li>Community Ceremonies &mdash; Circles &amp; Gatherings</li>
+            <li>The Metamorphic Year &mdash; A Gathered Counsel</li>
+            <li>Calendar of Gatherings &mdash; Wheel of the Year</li>
+          </ul>
+          <span class="work-path-cta">Enter Group Work &rarr;</span>
+        </a>
+        <a href="training-grounds.html" class="work-path">
+          <div class="work-path-image-wrap">
+            <div class="work-path-image" style="background-image: url('images/uploads/the-work-training.jpg'); background-position: center 55%;"></div>
+          </div>
+          <span class="work-path-eyebrow">Cohort Trajectories</span>
+          <h3 class="work-path-title">The School</h3>
+          <p class="work-path-desc">A school of somatic shamanic arts &mdash; for those becoming practitioners themselves. Six cohort trajectories on the wheel of the year.</p>
+          <ul class="work-path-bullets">
+            <li>The Six Cohorts &mdash; Apply Per Trajectory</li>
+            <li>Wheel of the Year &mdash; Seasonal Enrollment</li>
+            <li>Ceremonialist Training &mdash; Steward the Work</li>
+          </ul>
+          <span class="work-path-cta">Apply to the School &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- &mdash;&mdash;&mdash; TESTIMONIAL (placed between Process and CTA — peak conversion moment) &mdash;&mdash;&mdash; -->
+  <section class="section-testimonial">
+    <div class="testimonial-carousel">
+
+      <button type="button" class="testimonial-arrow testimonial-arrow--prev" aria-label="Previous testimonial">&#10094;</button>
+
+      <div class="testimonial-slides">
+
+        <!-- Slide 1 — live testimonial from YAML (testimonial.text + testimonial.author) -->
+        <div class="testimonial-slide is-active">
+          <div class="testimonial-container">
+            <div class="testimonial-quote-mark">&mdash;</div>
+            <blockquote class="testimonial-text" data-content="testimonial.text">
+              Working with Adi is like having the most skilled, loving, ferocious medicine person as your guide. She sees what others miss, holds what others drop, and moves you through the underworld with uncommon grace. My life is unrecognizably more alive.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-line"></div>
+              <span data-content="testimonial.author">M.K. &mdash; Physician &amp; Medicine Woman, New Mexico</span>
+              <div class="testimonial-line"></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.testimonial-slides -->
+
+      <button type="button" class="testimonial-arrow testimonial-arrow--next" aria-label="Next testimonial">&#10095;</button>
+
+      <div class="testimonial-dots" role="tablist" aria-label="Testimonial navigation">
+        <button type="button" class="testimonial-dot is-active" data-slide="0" aria-label="Testimonial 1"></button>
+      </div>
+
+    </div>
+
+    <script>
+      (function() {
+        const slides = document.querySelectorAll('.section-testimonial .testimonial-slide');
+        const dots = document.querySelectorAll('.section-testimonial .testimonial-dot');
+        const prev = document.querySelector('.section-testimonial .testimonial-arrow--prev');
+        const next = document.querySelector('.section-testimonial .testimonial-arrow--next');
+        const carousel = document.querySelector('.section-testimonial .testimonial-carousel');
+        const dotsRow = document.querySelector('.section-testimonial .testimonial-dots');
+        if (!slides.length) return;
+        // Hide arrows + dots when there's only one testimonial — they have nothing to navigate.
+        if (slides.length <= 1) {
+          if (prev) prev.style.display = 'none';
+          if (next) next.style.display = 'none';
+          if (dotsRow) dotsRow.style.display = 'none';
+          return;
+        }
+        let idx = 0, timer = null;
+        const show = (n) => {
+          idx = ((n % slides.length) + slides.length) % slides.length;
+          slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+          dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+        };
+        const reset = () => { clearInterval(timer); timer = setInterval(() => show(idx + 1), 9000); };
+        const go = (n) => { show(n); reset(); };
+        prev && prev.addEventListener('click', () => go(idx - 1));
+        next && next.addEventListener('click', () => go(idx + 1));
+        dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+        carousel && carousel.addEventListener('mouseenter', () => clearInterval(timer));
+        carousel && carousel.addEventListener('mouseleave', reset);
+        reset();
+      })();
+    </script>
+  </section>
+
+  <!-- &mdash;&mdash;&mdash; PROCESS / CHOOSE HOW YOU BEGIN — 50/50 split: labyrinth fern image on left, title+doorways on right &mdash;&mdash;&mdash; -->
+  <section class="section-process" id="begin">
+    <div class="process-container process-container--split">
+
+      <aside class="process-image-col" aria-hidden="true">
+        <div class="process-image-frame"
+             style="background-image: url('images/uploads/four-paths-labyrinth-fern.jpg'); background-position: center;"></div>
+      </aside>
+
+      <div class="process-content-col">
+        <div class="process-header">
+          <span class="section-label">How to Begin</span>
+          <h2 class="section-title">Choose how you begin.</h2>
+          <p class="section-body">Two thresholds, both held with care. One opens through conversation. The other opens through oracular reading. Either is a clean way in.</p>
+        </div>
+
+        <div class="begin-doorways">
+          <a href="https://new.theanimistapothecary.com/apply" class="begin-doorway">
+            <span class="begin-doorway-eyebrow">The Standard Threshold</span>
+            <h3 class="begin-doorway-title">Intake &amp; Inquiry</h3>
+            <p class="begin-doorway-desc">A conversation for attunement, alignment, and safety assessment &mdash; the required first step before ceremony or cohort enrollment.</p>
+            <span class="begin-doorway-cta">Schedule the Intake &rarr;</span>
+          </a>
+          <a href="divinations.html" class="begin-doorway">
+            <span class="begin-doorway-eyebrow">The Oracular Threshold</span>
+            <h3 class="begin-doorway-title">Ancestral &amp; Elemental Divination</h3>
+            <p class="begin-doorway-desc">A reading drawn from spirit, ancestor, and element &mdash; for those whose first question is for the unseen, before the words come.</p>
+            <span class="begin-doorway-cta">Request a Divination &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- &mdash;&mdash;&mdash; NEWSLETTER (placed before final CTA — soft entry for warm leads not ready to apply) &mdash;&mdash;&mdash; -->
+  <section id="subscribe" class="section-newsletter">
+    <div class="newsletter-inner">
+      <span class="section-label" data-content="newsletter.section_label">Seasonal Letters</span>
+      <h2 class="newsletter-title" data-content="newsletter.title" data-content-type="html">Water, Milk, and Honey</h2>
+      <p class="newsletter-body" data-content="newsletter.body">Tender reflections, sacred teachings, and updates from the practice &mdash; workshops, public gatherings, the occasional surprise offering.</p>
+
+      <form id="newsletter-form" class="newsletter-form" novalidate>
+        <div class="newsletter-form-names">
+          <input type="text" name="first_name" placeholder="First Name" required autocomplete="given-name" aria-label="First Name">
+          <input type="text" name="last_name" placeholder="Last Name" required autocomplete="family-name" aria-label="Last Name">
+        </div>
+        <input type="email" name="email" placeholder="Email Address" required autocomplete="email" aria-label="Email Address">
+        <button type="submit" class="btn-primary newsletter-submit" data-content="newsletter.cta_text">Subscribe</button>
+      </form>
+
+      <p class="newsletter-trust">
+        <span data-content="newsletter.trust_line">Held with care, never shared.</span>
+        <span class="newsletter-trust-sep" aria-hidden="true"> &middot; </span>
+        <a href="https://new.theanimistapothecary.com/apply" class="newsletter-intake-link" data-content="newsletter.intake_pointer_text" data-content-href="newsletter.intake_pointer_url">For ceremony or private work, begin with an Intake &amp; Inquiry Call</a> &rarr;
+      </p>
+
+      <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- Sticky scroll CTA (appears after hero is scrolled past). Quiet, brand-aligned pill in the bottom-right corner. -->
+  <a href="https://new.theanimistapothecary.com/apply" id="sticky-cta" class="sticky-cta" aria-label="Apply to Begin">
+    <span class="sticky-cta-label">Apply to Begin</span>
+    <span class="sticky-cta-arrow" aria-hidden="true">&rarr;</span>
+  </a>
 
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="index.html" class="logo">The Animist <em class="logo-accent">Apothecary</em></a>
-        <p class="footer-tagline">Shamanic healing, somatic ceremony, and botanical medicine.<br>Based in Topanga Canyon, Los Angeles, California. Available worldwide.</p>
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
       </div>
       <nav class="footer-nav">
         <div class="footer-col">
-          <h4>The Site</h4>
+          <h4>The Practice</h4>
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#offerings">Offerings</a></li>
-            <li><a href="calendar.html">The Wheel</a></li>            <li><a href="community.html">Community</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
             <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
-            <li><a href="book.html">Apply</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>The Provisions</h4>
+          <h4>The Work</h4>
           <ul>
-            <li><a href="mythopoetic.html">The Deep Work</a></li>
-            <li><a href="shamanic-bodywork.html">Shamanic Bodywork</a></li>
-            <li><a href="personal-immersions.html">Personal Immersions</a></li>
-            <li><a href="ceremonial-therapeutics.html">Ceremonial Therapeutics</a></li>
-            <li><a href="private-group-ceremonies.html">Private &amp; Group Ceremonies</a></li>
-            <li><a href="platicas.html">Pl&aacute;ticas</a></li>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="https://new.theanimistapothecary.com/apply">Apply / Intake</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
             <li><a href="divinations.html">Divinations</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>The Living Web</h4>
-          <ul>
-            <li><a href="calendar.html">The Wheel</a></li>            <li><a href="community.html">Community Hubs</a></li>
-            <li><a href="community.html#training">Ceremonialist Training</a></li>
-            <li><a href="community.html#events">Events &amp; Gatherings</a></li>
-            <li><a href="community.html#newsletter">Newsletter</a></li>
-            <li><a href="book.html">Contact</a></li>
+            <li><a href="https://new.theanimistapothecary.com/contact/inquiry">Send a Message</a></li>
           </ul>
         </div>
       </nav>
     </div>
-    <div class="footer-portals">
-      <a href="/portal/" class="footer-portal-link footer-portal-link--client">Enter Your Portal</a>
-      <a href="/admin/" class="footer-portal-link footer-portal-link--admin">Facilitator Portal</a>
-    </div>
     <div class="footer-bottom">
-      <p>&copy; 2025 The Animist Apothecary. All rights reserved.</p>
-      <p class="footer-credit">Adi Marie &middot; Topanga Canyon, Los Angeles, California</p>
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
   <script src="js/content-loader.js" defer></script>
+
+  <script>
+    // Newsletter signup — POSTs to Supabase edge function `subscribe-newsletter`
+    (function () {
+      const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
+      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
+
+      const form = document.getElementById('newsletter-form');
+      const status = document.getElementById('newsletter-status');
+      if (!form || !status) return;
+
+      function setStatus(msg, kind) {
+        status.textContent = msg;
+        status.className = 'newsletter-status' + (kind ? ' newsletter-status-' + kind : '');
+      }
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const button = form.querySelector('button[type="submit"]');
+        const originalLabel = button.textContent;
+
+        const data = new FormData(form);
+        const payload = {
+          first_name: (data.get('first_name') || '').toString().trim(),
+          last_name: (data.get('last_name') || '').toString().trim(),
+          email: (data.get('email') || '').toString().trim(),
+          source: 'homepage',
+        };
+
+        // Basic client-side guard
+        if (!payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+          setStatus('Please enter a valid email address.', 'error');
+          return;
+        }
+
+        button.disabled = true;
+        button.textContent = 'Sending…';
+        setStatus('', '');
+
+        try {
+          const response = await fetch(SUPABASE_URL + '/functions/v1/subscribe-newsletter', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+            },
+            body: JSON.stringify(payload),
+          });
+          const result = await response.json().catch(function () { return {}; });
+
+          if (response.ok && result.success) {
+            form.style.display = 'none';
+            setStatus('Thank you. The first letter will arrive with the next harvest.', 'success');
+          } else {
+            throw new Error(result.error || ('Subscription failed (' + response.status + ')'));
+          }
+        } catch (err) {
+          console.error('Newsletter subscription error:', err);
+          button.disabled = false;
+          button.textContent = originalLabel;
+          setStatus('Something went wrong. Please try again, or write directly.', 'error');
+        }
+      });
+    })();
+
+    // Sticky scroll CTA — fade in after hero is mostly scrolled past.
+    (function () {
+      const cta = document.getElementById('sticky-cta');
+      const hero = document.querySelector('.hero-fullbleed');
+      if (!cta || !hero) return;
+      let ticking = false;
+      function update() {
+        const heroBottom = hero.getBoundingClientRect().bottom;
+        // Show when hero's bottom edge is above 100px from the viewport top
+        if (heroBottom < 100) {
+          cta.classList.add('visible');
+        } else {
+          cta.classList.remove('visible');
+        }
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(update);
+          ticking = true;
+        }
+      }, { passive: true });
+      update();
+    })();
+  </script>
+  <script src="js/newsletter.js" defer></script>
 </body>
 </html>
