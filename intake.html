@@ -139,10 +139,20 @@
       transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    /* Section (flowing, no card) */
-    .form-section { display: none; animation: fadeUp 0.5s ease; }
+    /* Section — single-page flow: every section visible at once */
+    .form-section { display: block !important; }
     .form-section.active { display: block; }
     @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+
+    /* Hide per-section Continue/Back nav (single-page mode) */
+    .section-nav { display: none !important; }
+    /* Hide multi-step progress bar — visitor sees the whole form */
+    .progress-header, .progress-track { display: none !important; }
+    /* Final submit lives in its own dedicated section at the bottom */
+    .final-submit-section { padding: 4rem 0 0; text-align: center; border-top: 1px solid rgba(201,168,76,0.3); margin-top: 3rem; }
+    .final-submit-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 2.6vw, 2.2rem); font-weight: 300; color: #2D2A26; margin: 0 0 0.8rem; line-height: 1.2; }
+    .final-submit-section h2 em { font-style: italic; color: #c9a84c; }
+    .final-submit-section p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: #3a3530; opacity: 0.78; margin: 0 0 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
 
     .section-card {
       background: transparent;
@@ -1367,8 +1377,17 @@
       </div>
       <div class="section-nav">
         <button type="button" class="btn-back" onclick="goBack()">Back</button>
-        <button type="button" class="btn-submit" id="submitBtn" onclick="handleSubmit()">Submit Immersion Intake</button>
+        <button type="button" class="btn-submit" id="submitBtnOld" onclick="handleSubmit()">Submit Immersion Intake</button>
       </div>
+    </div>
+
+    <!-- ============================================================
+         FINAL SUBMIT — single-page mode lives here at the bottom
+    ============================================================ -->
+    <div class="final-submit-section">
+      <h2>Ready to <em>step forward</em>?</h2>
+      <p>Take a breath. When the form feels true, submit your intake and we will continue from there.</p>
+      <button type="button" class="btn-submit" id="submitBtn" onclick="handleSubmit()">Submit Immersion Intake</button>
     </div>
 
   </form><!-- end #intakeForm -->
@@ -1455,8 +1474,16 @@
     updateProgress();
   }
 
+  // ============================================================
+  //  EDIT MODE — set to true to bypass ALL validation so you can
+  //  freely move between sections while editing copy/fields.
+  //  Set back to false (or delete this block) to re-enable
+  //  required-field checks before launch.
+  // ============================================================
+  const EDIT_MODE = true;
+
   function goNext() {
-    if (validateSection(currentSection)) {
+    if (EDIT_MODE || validateSection(currentSection)) {
       goTo(currentSection + 1);
     }
   }
@@ -1505,6 +1532,11 @@
 
   // &mdash;&mdash;&mdash; Validation &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
   function validateSection(n) {
+    // When EDIT_MODE is true, always pass — lets you preview every section
+    // without filling in required fields. Turn EDIT_MODE off (top of script)
+    // before launch to restore validation.
+    if (EDIT_MODE) return true;
+
     var valid = true;
 
     if (n === 1) {
@@ -1739,6 +1771,14 @@
 
   // &mdash;&mdash;&mdash; Submit &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
   async function handleSubmit() {
+    // EDIT_MODE guard: don't actually submit to Supabase while editing.
+    // Shows a friendly note instead. Turn EDIT_MODE off (top of script)
+    // before launch so real submissions are saved.
+    if (EDIT_MODE) {
+      alert('Edit mode is on \u2014 submission is disabled.\n\nTurn off EDIT_MODE at the top of the <script> block to enable real submissions before launch.');
+      return;
+    }
+
     var btn = document.getElementById('submitBtn');
     btn.disabled = true;
     btn.textContent = 'Submitting\u2026';
