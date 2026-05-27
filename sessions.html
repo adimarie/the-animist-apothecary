@@ -1677,6 +1677,38 @@
       opacity: 0.88;
       margin: 0 0 2rem;
     }
+    /* Prominent filled CTA button for the intake form ask */
+    body[data-content-page="sessions"] .deeper-paths .intake-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 1.05rem 2.4rem;
+      background: var(--gold, #c9a84c);
+      color: var(--bark, #2D2A26);
+      text-decoration: none;
+      border: 1px solid var(--gold, #c9a84c);
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+      box-shadow: 0 6px 20px rgba(201,168,76,0.18);
+    }
+    body[data-content-page="sessions"] .deeper-paths .intake-cta-btn:hover {
+      background: var(--gold-pale, #DBC079);
+      border-color: var(--gold-pale, #DBC079);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(201,168,76,0.28);
+    }
+    body[data-content-page="sessions"] .deeper-paths .intake-cta-btn .intake-cta-arrow {
+      font-size: 1rem;
+      transition: transform 0.25s ease;
+    }
+    body[data-content-page="sessions"] .deeper-paths .intake-cta-btn:hover .intake-cta-arrow {
+      transform: translate(2px, -2px);
+    }
+
     /* Small reassuring note under the intake-form ask */
     body[data-content-page="sessions"] .deeper-paths .intake-once-note {
       font-family: 'Cormorant Garamond', serif !important;
