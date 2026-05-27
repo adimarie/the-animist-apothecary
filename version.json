@@ -1,12 +1,12 @@
 {
-  "version": "v260527.01 10:55p",
-  "release": 1,
-  "sha": "f65c99b",
-  "fullSha": "f65c99b038962a85662e16260cc25778fd850405",
+  "version": "v260527.02 10:57p",
+  "release": 2,
+  "sha": "d076213",
+  "fullSha": "d076213f93a43ac4bdc36aabe45d347df6099848",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervmg397c",
-  "pushedAt": "2026-05-27T15:53:03-07:00",
-  "commits": [{"sha":"457ac61","message":"Launch: deploy current site to theanimistapothecary.com","author":"Adi Marie"},{"sha":"f65c99b","message":"Intake/sessions: copy refresh — 'Immersion Intake' rename, before-you-join framing","author":"Adi Marie"}]
+  "machine": "runnervm3jyl0",
+  "pushedAt": "2026-05-27T15:57:15-07:00",
+  "commits": [{"sha":"d076213","message":"Intake: single-page flow — show all sections at once, hide per-section nav","author":"Adi Marie"}]
 }
