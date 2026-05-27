@@ -1,12 +1,12 @@
 {
-  "version": "v260517.01 7:29p",
+  "version": "v260527.01 10:55p",
   "release": 1,
-  "sha": "68b4414",
-  "fullSha": "68b44140e61d771b826b8344df695e725dcbb5f0",
+  "sha": "f65c99b",
+  "fullSha": "f65c99b038962a85662e16260cc25778fd850405",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervmrw5os",
-  "pushedAt": "2026-05-17T12:29:29-07:00",
-  "commits": [{"sha":"68b4414","message":"Hero: feathered dark backdrop behind text + button for readability","author":"Adi Marie"}]
+  "machine": "runnervmg397c",
+  "pushedAt": "2026-05-27T15:53:03-07:00",
+  "commits": [{"sha":"457ac61","message":"Launch: deploy current site to theanimistapothecary.com","author":"Adi Marie"},{"sha":"f65c99b","message":"Intake/sessions: copy refresh — 'Immersion Intake' rename, before-you-join framing","author":"Adi Marie"}]
 }
