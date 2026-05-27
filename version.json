@@ -1,12 +1,12 @@
 {
-  "version": "v260527.02 10:57p",
-  "release": 2,
-  "sha": "d076213",
-  "fullSha": "d076213f93a43ac4bdc36aabe45d347df6099848",
+  "version": "v260527.03 11:24p",
+  "release": 3,
+  "sha": "ae493ce",
+  "fullSha": "ae493cec1b378ed398f83b9ddd196a428ff584ed",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-27T15:57:15-07:00",
-  "commits": [{"sha":"d076213","message":"Intake: single-page flow — show all sections at once, hide per-section nav","author":"Adi Marie"}]
+  "machine": "runnervmg397c",
+  "pushedAt": "2026-05-27T16:24:12-07:00",
+  "commits": [{"sha":"ae493ce","message":"Home: strip to bare-bones — Hero + Practitioner + Contact only","author":"Adi Marie"}]
 }
