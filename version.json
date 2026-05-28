@@ -1,12 +1,12 @@
 {
-  "version": "v260528.09 8:25a",
-  "release": 9,
-  "sha": "6053cca",
-  "fullSha": "6053ccab604b395feeabec06f7d5a396ef9dcf61",
+  "version": "v260528.10 8:27a",
+  "release": 10,
+  "sha": "3b39ca8",
+  "fullSha": "3b39ca86603e5a826394bacdda4068116a30924e",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T01:25:11-07:00",
-  "commits": [{"sha":"6053cca","message":"Home hero CTAs: 'Personal Work' → 'Book Now' (sessions.html); 'The Training Grounds' → 'Apply' (intake.html)","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T01:27:03-07:00",
+  "commits": [{"sha":"3b39ca8","message":"Nav FEATURED card: vellum invitation card design + hover-reveal CTA","author":"Adi Marie"}]
 }
