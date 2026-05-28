@@ -1,12 +1,12 @@
 {
-  "version": "v260528.07 7:53a",
-  "release": 7,
-  "sha": "4f1a062",
-  "fullSha": "4f1a0622609f276980dc73a4548f89a66dc3a376",
+  "version": "v260528.08 8:23a",
+  "release": 8,
+  "sha": "9e2d03e",
+  "fullSha": "9e2d03ef84c3c20a4b78a1325507612a831684db",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervmg397c",
-  "pushedAt": "2026-05-28T00:52:57-07:00",
-  "commits": [{"sha":"4f1a062","message":"Home CTAs → intake.html; featured tile gets transparent bg + gold frame","author":"Adi Marie"}]
+  "machine": "runnervm3jyl0",
+  "pushedAt": "2026-05-28T01:22:51-07:00",
+  "commits": [{"sha":"9e2d03e","message":"Intake: turn EDIT_MODE off + clean handleSubmit for pared-down form","author":"Adi Marie"}]
 }
