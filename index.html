@@ -116,6 +116,9 @@
     body[data-content-page="home"] .hero-overlay .hero-title {
       font-family: 'Cormorant Garamond', serif !important;
       font-weight: 400 !important;
+      /* Locked at 6rem on desktop (≥1500px) — Adi's design reference size.
+         Stepdowns below scale proportionally at narrower viewports so the
+         layout never breaks (title overrunning portrait, awkward wrap). */
       font-size: 6rem !important;
       line-height: 1.08 !important;
       letter-spacing: -0.005em !important;
@@ -124,6 +127,19 @@
       text-align: left !important;
       max-width: none !important;
       text-shadow: 0 2px 18px rgba(0,0,0,0.35);
+    }
+    /* Desktop stepdowns so the hero stays visually consistent at narrower windows. */
+    @media (max-width: 1500px) {
+      body[data-content-page="home"] .hero-overlay .hero-title { font-size: 5.2rem !important; }
+    }
+    @media (max-width: 1280px) {
+      body[data-content-page="home"] .hero-overlay .hero-title { font-size: 4.4rem !important; }
+    }
+    @media (max-width: 1024px) {
+      body[data-content-page="home"] .hero-overlay .hero-title { font-size: 3.6rem !important; }
+    }
+    @media (max-width: 880px) {
+      body[data-content-page="home"] .hero-overlay .hero-title { font-size: 3rem !important; }
     }
     body[data-content-page="home"] .hero-overlay .hero-title em {
       font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
