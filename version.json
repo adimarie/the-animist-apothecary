@@ -1,12 +1,12 @@
 {
-  "version": "v260528.17 5:55p",
-  "release": 17,
-  "sha": "f00ab7b",
-  "fullSha": "f00ab7bc7203220b4d2ff381c13d06bcc47ec29c",
+  "version": "v260528.18 6:01p",
+  "release": 18,
+  "sha": "4bfe8cb",
+  "fullSha": "4bfe8cb9e7cde7c3d7bf65a8cbd2a1eef51478b9",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T10:55:13-07:00",
-  "commits": [{"sha":"f00ab7b","message":"Homepage hero: lock title look across desktop widths","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T11:00:55-07:00",
+  "commits": [{"sha":"4bfe8cb","message":"Homepage hero title: revert all desktop stepdowns, lock 6rem at all widths","author":"Adi Marie"}]
 }
