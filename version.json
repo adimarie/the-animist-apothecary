@@ -1,12 +1,12 @@
 {
-  "version": "v260528.22 6:26p",
-  "release": 22,
-  "sha": "5c71ef1",
-  "fullSha": "5c71ef1273b2152b04aab3ee4e4cf0409889571b",
+  "version": "v260528.23 6:30p",
+  "release": 23,
+  "sha": "5d5786e",
+  "fullSha": "5d5786e14d61f7b46395d0f4f69f82bf8668d03a",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T11:26:18-07:00",
-  "commits": [{"sha":"5c71ef1","message":"Homepage hero: fix narrow-viewport layout — title presence + portrait balance","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T11:30:26-07:00",
+  "commits": [{"sha":"5d5786e","message":"Homepage hero narrow-viewport: stack content top/bottom around portrait","author":"Adi Marie"}]
 }
