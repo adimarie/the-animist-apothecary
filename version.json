@@ -1,12 +1,12 @@
 {
-  "version": "v260528.20 6:19p",
-  "release": 20,
-  "sha": "2d18af0",
-  "fullSha": "2d18af0249f04c90e61c0f152aa8684c39269d1a",
+  "version": "v260528.21 6:21p",
+  "release": 21,
+  "sha": "1f217fa",
+  "fullSha": "1f217fa7c973539065c46d1fb41767713518f777",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T11:19:33-07:00",
-  "commits": [{"sha":"2d18af0","message":"Homepage hero title: clamp(2.6rem, 5.6vw, 6rem) for proportional scaling","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T11:21:19-07:00",
+  "commits": [{"sha":"1f217fa","message":"Document proportional hero title rule as canonical site-wide pattern","author":"Adi Marie"}]
 }
