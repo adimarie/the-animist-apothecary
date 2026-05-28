@@ -117,17 +117,12 @@
       font-family: 'Cormorant Garamond', serif !important;
       font-weight: 400 !important;
       /* ============================================================
-         HOMEPAGE HERO TITLE — PROPORTIONAL SCALING
-         Uses clamp(min, vw, max) so the title scales smoothly with
-         viewport width, keeping the SAME visual ratio at every size:
-         title fills ~50% of viewport, portrait stays visible on right,
-         text wraps cleanly without overrunning Adi's face.
-            min: 2.6rem (42px) at very narrow viewports — readable floor
-            5.6vw: scales proportionally with viewport width
-            max: 6rem (96px) at ≥1700px viewport — reference look
-         At a 1700px window, 5.6vw = ~95px ≈ 6rem (the reference).
-         At a 1280px window, 5.6vw = 72px = ~4.5rem (proportional).
-         At a 1024px window, 5.6vw = 57px = ~3.6rem (proportional).
+         HOMEPAGE HERO TITLE — PROPORTIONAL SCALING WITH NARROW-VIEWPORT BOOST
+         Wide viewports (≥1500px): clamp gives the 6rem reference look.
+         Mid viewports (1024-1500px): scales proportionally with 5.6vw.
+         Narrow viewports (<1024px): media queries below bump the floor
+         + reduce hero padding + reposition background so the title
+         keeps visual presence and the portrait doesn't dominate.
          ============================================================ */
       font-size: clamp(2.6rem, 5.6vw, 6rem) !important;
       line-height: 1.08 !important;
@@ -137,6 +132,39 @@
       text-align: left !important;
       max-width: none !important;
       text-shadow: 0 2px 18px rgba(0,0,0,0.35);
+    }
+    /* ============================================================
+       NARROW-VIEWPORT HERO LAYOUT BOOSTS (≤1024px and ≤800px)
+       Fix the "portrait dominates, title shrinks too much" problem
+       at small windows. Reduce padding so text has more room, bump
+       title floor so it stays presence-y, shift background-position
+       so the portrait is less dominant.
+       ============================================================ */
+    @media (max-width: 1024px) {
+      body[data-content-page="home"] .hero-overlay-inner {
+        padding: 0 2rem 0 3rem !important;  /* was 0 4rem 0 8rem */
+      }
+      body[data-content-page="home"] .hero-overlay .hero-title {
+        /* Bump min from 2.6rem to 3.4rem so title stays substantial.
+           Bump vw ratio from 5.6 to 6.4 so it scales up at this range. */
+        font-size: clamp(3.4rem, 6.4vw, 5rem) !important;
+      }
+      body[data-content-page="home"] .hero-image {
+        /* Shift right so more of the architectural/wall area shows on the
+           left where the text lives, less of Adi's face dominating. */
+        background-position: 75% center !important;
+      }
+    }
+    @media (max-width: 800px) {
+      body[data-content-page="home"] .hero-overlay-inner {
+        padding: 0 1.5rem !important;
+      }
+      body[data-content-page="home"] .hero-overlay .hero-title {
+        font-size: clamp(2.6rem, 7.5vw, 3.6rem) !important;
+      }
+      body[data-content-page="home"] .hero-image {
+        background-position: 80% center !important;
+      }
     }
     body[data-content-page="home"] .hero-overlay .hero-title em {
       font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
