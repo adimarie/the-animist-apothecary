@@ -83,3 +83,6 @@ images/ChatGPT Image*.png
 
 # Project memory / decisions (workflow files, not public content)
 memory/
+
+# Private local backups of files removed for PII reasons (260528) — never commit
+private/
