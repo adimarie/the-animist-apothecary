@@ -37,6 +37,18 @@
       opacity: 0.55;
       margin: 0 auto 2rem;
     }
+    body[data-content-page="sessions"] .sessions-intro h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.95rem, 3vw, 2.55rem);
+      font-weight: 400;
+      line-height: 1.18;
+      color: var(--bark, #2D2A26);
+      margin: 0 0 1.75rem;
+    }
+    body[data-content-page="sessions"] .sessions-intro h2 em {
+      font-style: italic;
+      color: var(--gold, #c9a84c);
+    }
     body[data-content-page="sessions"] .sessions-intro p {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.22rem;
@@ -44,6 +56,9 @@
       color: var(--bark, #2D2A26);
       opacity: 0.9;
       margin: 0;
+    }
+    body[data-content-page="sessions"] .sessions-intro p + p {
+      margin-top: 1.25rem;
     }
     body[data-content-page="sessions"] .sessions-intro a {
       color: var(--gold, #c9a84c) !important;
@@ -613,6 +628,7 @@
       overflow: hidden;
       aspect-ratio: 3 / 2;
       background: #2D2A26;
+      border-radius: 10px;
     }
     body[data-content-page="sessions"] .pathway-image {
       width: 100%;
@@ -1829,7 +1845,7 @@
   <!-- =============================================================
        HERO
        ============================================================= -->
-  <section class="page-hero sessions-portrait-hero" style="background-image: linear-gradient(100deg, rgba(28,22,16,0.78) 0%, rgba(28,22,16,0.55) 38%, rgba(28,22,16,0.15) 60%, rgba(28,22,16,0) 80%), url('images/uploads/lounging-hero-green-gold.png'); background-position: right center; background-size: cover; padding-top: 80px; min-height: 75vh; display: flex; align-items: center;">
+  <section class="page-hero sessions-portrait-hero" style="background-image: linear-gradient(100deg, rgba(28,22,16,0.78) 0%, rgba(28,22,16,0.55) 38%, rgba(28,22,16,0.15) 60%, rgba(28,22,16,0) 80%), url('images/uploads/lounging-hero-green-gold.png'); background-position: right center; background-size: cover; padding-top: 1.5rem; padding-bottom: 1.5rem; aspect-ratio: 21 / 9; min-height: 540px; display: flex; align-items: center;">
     <div class="hero-inner sessions-portrait-inner" style="text-align: left; max-width: 1280px; width: 100%; margin: 0 auto; padding: 0 4rem;">
       <div style="max-width: 520px;">
         <p class="hero-eyebrow" style="color: var(--gold-pale, #DBC079);">The Sessions</p>
@@ -1843,7 +1859,9 @@
        INTRO
        ============================================================= -->
   <section class="sessions-intro">
-    <p>Two of the offerings open directly to scheduling &mdash; choose your hour, send your reciprocity, and we meet. For the deeper paths &mdash; Seasons of Change, the Metamorphic Year, ceremony commissions, community engagements &mdash; the work begins in conversation. <a href="inquiry.html" style="color: var(--gold, #c9a84c); text-decoration: none;">Begin one here &rarr;</a></p>
+    <h2>A place where anyone can <em>begin</em>.</h2>
+    <p>Two of the offerings open here directly. Choose your hour, send your reciprocity, and we meet.</p>
+    <p>The deeper paths ask differently. Seasons of Change, the Metamorphic Year, ceremony commissions, community engagements. These are carefully curated and intentionally tended fields, entered through acquaintance. <a href="intake.html">Begin one here &rarr;</a></p>
   </section>
 
   <!-- =============================================================
@@ -1855,10 +1873,9 @@
       <!-- ===== PATHWAY 1: INTAKE & INQUIRY ===== -->
       <article class="pathway-window" id="intake-and-inquiry">
         <a href="#schedule" data-tab-target="intake" class="pathway-image-link" aria-label="Jump to Intake &amp; Inquiry scheduler">
-          <img src="https://images.unsplash.com/photo-1601922046210-41e129a3e64a?w=900&h=600&fit=crop&q=80"
-               alt="Candlelit altar — the quiet beginning of conversation"
+          <img src="images/uploads/download.jpg"
+               alt="A stone resting in rippling sunlit water — the quiet beginning of conversation"
                class="pathway-image"
-               width="900" height="600"
                loading="lazy">
           <div class="pathway-image-overlay">
             <span class="overlay-glyph" aria-hidden="true">&#9737;</span>
@@ -1912,10 +1929,10 @@
       <!-- ===== PATHWAY 2: ANCESTRAL DIVINATION ===== -->
       <article class="pathway-window" id="divination">
         <a href="#schedule" data-tab-target="divination" class="pathway-image-link" aria-label="Jump to Ancestral Divination scheduler">
-          <img src="https://images.unsplash.com/photo-1627769916425-74c2344a3439?w=900&h=600&fit=crop&q=80"
-               alt="Divination kit — shells, stones, sacred objects on cloth"
+          <img src="images/uploads/divination-hands-medicine-bundle.jpg"
+               alt="Painted hands resting on a medicine bundle of cowrie shells, bone, feathers and braided cord"
                class="pathway-image"
-               width="900" height="600"
+               style="object-position: center 45%;"
                loading="lazy">
           <div class="pathway-image-overlay">
             <span class="overlay-glyph" aria-hidden="true">&#9737;</span>

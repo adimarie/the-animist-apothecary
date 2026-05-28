@@ -347,10 +347,11 @@
   margin-top: 0.7rem !important;
 }
 
-/* Nav bar = 52px logo. Body padding adds the nav height PLUS a 20px gap so
-   full-bleed hero images don't sit flush against the nav (and aren't visually
-   eclipsed by the cream backdrop blur). */
-body { padding-top: 72px !important; }
+/* Nav bar ≈ 87px (52px logo + 17.6px top/bottom padding from .header-inner).
+   Body padding-top = nav height + ~43px buffer so full-bleed hero images
+   sit beneath the nav with a clearly visible cream strip between (the
+   buffer reads as intentional breathing room, not a layout error). */
+body { padding-top: 130px !important; }
 
 /* Stronger nav bottom border for visual separation against light content */
 .site-header { border-bottom: 1px solid rgba(45, 42, 38, 0.10) !important; box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 2px 12px rgba(45, 42, 38, 0.04) !important; }
@@ -363,11 +364,13 @@ body { padding-top: 72px !important; }
   .site-header .logo-text { font-size: 1.35rem !important; }
 }
 @media (max-width: 1200px) {
-  body { padding-top: 66px !important; }
+  /* Nav ~80px at this breakpoint + ~40px buffer */
+  body { padding-top: 120px !important; }
 }
 @media (max-width: 960px) {
   .site-header .header-inner { padding: 0 1.5rem !important; }
   .site-header .header-nav-row { gap: 1.25rem; }
   .site-header .main-nav ul { gap: 1.1rem !important; }
-  body { padding-top: 60px !important; }
+  /* Nav ~75px at this breakpoint + ~35px buffer */
+  body { padding-top: 110px !important; }
 }

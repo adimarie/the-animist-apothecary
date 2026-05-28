@@ -17,6 +17,7 @@ body {
   font-weight: 300;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  /* padding-top is set by css/site-header.css to clear the fixed nav site-wide */
 }
 
 h1, h2, h3, h4 {
@@ -2078,12 +2079,14 @@ em, i { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var
 }
 .hero-eyebrow { color: var(--gold-pale) !important; }
 .hero-title {
-  font-size: clamp(3rem, 6.4vw, 5.8rem) !important;
+  /* Tamed clamp so long titles ("Formidable gifts for…") fit the 880px
+     content container at all viewport widths without overrunning. */
+  font-size: clamp(2.5rem, 5vw, 4.6rem) !important;
   color: #fff !important;
   font-weight: 300 !important;
   margin-bottom: 2rem !important;
   letter-spacing: -.012em;
-  line-height: 1.04 !important;
+  line-height: 1.08 !important;
 }
 .hero-title em { color: var(--gold-pale) !important; font-weight: 400; }
 .hero-subtitle {
