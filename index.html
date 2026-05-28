@@ -117,14 +117,19 @@
       font-family: 'Cormorant Garamond', serif !important;
       font-weight: 400 !important;
       /* ============================================================
-         HOMEPAGE HERO TITLE — LOCKED AT 6REM AT ALL DESKTOP WIDTHS
-         No stepdowns. No clamps. No vw scaling. The title is the
-         same big bold 6rem (96px) at every desktop viewport width.
-         The only override is the existing ≤720px mobile media query
-         further down in this file (for phones). On any window wider
-         than 720px, this 6rem MUST stand.
+         HOMEPAGE HERO TITLE — PROPORTIONAL SCALING
+         Uses clamp(min, vw, max) so the title scales smoothly with
+         viewport width, keeping the SAME visual ratio at every size:
+         title fills ~50% of viewport, portrait stays visible on right,
+         text wraps cleanly without overrunning Adi's face.
+            min: 2.6rem (42px) at very narrow viewports — readable floor
+            5.6vw: scales proportionally with viewport width
+            max: 6rem (96px) at ≥1700px viewport — reference look
+         At a 1700px window, 5.6vw = ~95px ≈ 6rem (the reference).
+         At a 1280px window, 5.6vw = 72px = ~4.5rem (proportional).
+         At a 1024px window, 5.6vw = 57px = ~3.6rem (proportional).
          ============================================================ */
-      font-size: 6rem !important;
+      font-size: clamp(2.6rem, 5.6vw, 6rem) !important;
       line-height: 1.08 !important;
       letter-spacing: -0.005em !important;
       color: var(--paper) !important;
