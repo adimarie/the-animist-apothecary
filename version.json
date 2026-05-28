@@ -1,12 +1,12 @@
 {
-  "version": "v260528.01 5:42a",
-  "release": 1,
-  "sha": "f9d094f",
-  "fullSha": "f9d094f20f28eadb79cd1c119146635b4f573b34",
+  "version": "v260528.02 6:43a",
+  "release": 2,
+  "sha": "2cc96f4",
+  "fullSha": "2cc96f468c034017416fe0f65369432a1305119c",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmg397c",
-  "pushedAt": "2026-05-27T22:41:37-07:00",
-  "commits": [{"sha":"f9d094f","message":"Restore full 11-section homepage + standardize nav site-wide","author":"Adi Marie"}]
+  "pushedAt": "2026-05-27T23:43:03-07:00",
+  "commits": [{"sha":"2cc96f4","message":"Tidy: 8 fixes from live-site audit + move lost.html behind admin/","author":"Adi Marie"}]
 }
