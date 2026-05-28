@@ -62,7 +62,11 @@
     .intake-hero h1 {
       font-family: 'Cormorant Garamond', serif;
       color: #2D2A26;
-      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      /* Proportional hero title rule (see css/styles.css L5282 design rule).
+         Same clamp pattern as homepage so the title scales consistently
+         across viewports. Slightly tighter cap at 5rem since this title
+         sits in a centered 720px container, not a full-bleed hero. */
+      font-size: clamp(2.6rem, 5.6vw, 5rem);
       font-weight: 300;
       margin: 0 0 0.6rem;
       line-height: 1.05;
@@ -103,6 +107,26 @@
       letter-spacing: 0.28em;
       text-transform: uppercase;
       opacity: 0.7;
+    }
+    /* Narrow-viewport hero image: shorten the aspect ratio so the apothecary
+       scene reads as a banner, not a wall of image, on phones and tablets. */
+    @media (max-width: 900px) {
+      .intake-hero-image {
+        aspect-ratio: 16 / 9;
+        min-height: 260px;
+      }
+      .intake-hero-copy {
+        padding: 2.5rem 1.5rem 0;
+      }
+    }
+    @media (max-width: 600px) {
+      .intake-hero-image {
+        aspect-ratio: 4 / 3;
+        min-height: 220px;
+      }
+      .intake-hero .hero-sub {
+        font-size: 1.1rem;
+      }
     }
     .intake-hero-image.has-photo {
       background: var(--hero-bg);
