@@ -1,12 +1,12 @@
 {
-  "version": "v260528.28 8:49p",
-  "release": 28,
-  "sha": "3086e53",
-  "fullSha": "3086e537dcbdfa2ca6fb87d7e544c97718d06ca7",
+  "version": "v260528.29 8:57p",
+  "release": 29,
+  "sha": "8ec1b81",
+  "fullSha": "8ec1b813c91c5256944ea4669572bde5ff3d2461",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T13:49:06-07:00",
-  "commits": [{"sha":"3086e53","message":"Home meta: align title/description with on-page hero copy","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T13:56:58-07:00",
+  "commits": [{"sha":"8ec1b81","message":"Site-wide social meta sweep: fix YOUR_DOMAIN placeholders, add og/twitter/JSON-LD, sitemap, robots","author":"Adi Marie"}]
 }
