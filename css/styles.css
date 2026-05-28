@@ -2079,9 +2079,10 @@ em, i { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var
 }
 .hero-eyebrow { color: var(--gold-pale) !important; }
 .hero-title {
-  /* Tamed clamp so long titles ("Formidable gifts for…") fit the 880px
-     content container at all viewport widths without overrunning. */
-  font-size: clamp(2.5rem, 5vw, 4.6rem) !important;
+  /* Locked at 4.6rem on desktop — does NOT scale with viewport width
+     (was clamp(2.5rem, 5vw, 4.6rem) which let it grow/shrink with vw).
+     Responsive overrides below handle tablet and mobile breakpoints. */
+  font-size: 4.6rem !important;
   color: #fff !important;
   font-weight: 300 !important;
   margin-bottom: 2rem !important;
@@ -2089,6 +2090,10 @@ em, i { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var
   line-height: 1.08 !important;
 }
 .hero-title em { color: var(--gold-pale) !important; font-weight: 400; }
+/* Hero title responsive step-downs (kept AFTER the desktop rule so they win at narrower viewports). */
+@media (max-width: 1024px) { .hero-title { font-size: 3.6rem !important; } }
+@media (max-width: 768px)  { .hero-title { font-size: 2.8rem !important; } }
+@media (max-width: 480px)  { .hero-title { font-size: 2.1rem !important; } }
 .hero-subtitle {
   font-family: 'Cormorant Garamond', serif !important;
   font-style: italic !important;
