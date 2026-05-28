@@ -134,62 +134,53 @@
       text-shadow: 0 2px 18px rgba(0,0,0,0.35);
     }
     /* ============================================================
-       NARROW-VIEWPORT HERO LAYOUT — TEXT WRAPS AROUND PORTRAIT
+       NARROW-VIEWPORT HERO — KEEP SIDE-BY-SIDE, IMPROVE LEGIBILITY
        ============================================================
-       Side-by-side layout (text left, portrait right) is preserved
-       at all desktop and tablet-landscape widths (>900px).
-       Below 900px, restructure the hero so:
-         - Brand + eyebrow + title + subtitle pull to the TOP
-           (overlaying the wall/niche space above Adi's head)
-         - CTA buttons pull to the BOTTOM
-           (overlaying the dark robe space below Adi's face)
-         - Adi's face sits in the visual middle of the hero
-       Overlay becomes a vertical flex column with space-between
-       distribution. Text centered horizontally so it sits
-       symmetrically across the architectural backdrop.
+       Side-by-side text-left / portrait-right is preserved at ALL
+       widths. Three narrow-viewport adjustments keep it clean:
+         1. Shrink overlay padding so text has more room
+         2. Shift background-position rightward so Adi moves further
+            right, freeing up the left side for text
+         3. Add a left-side dark scrim that ramps stronger at narrower
+            viewports so text never gets eaten by the portrait
        ============================================================ */
-    @media (max-width: 900px) {
-      body[data-content-page="home"] .hero-overlay {
-        align-items: stretch !important;
-      }
+    @media (max-width: 1200px) {
       body[data-content-page="home"] .hero-overlay-inner {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: space-between !important;
-        padding: 2.5rem 1.75rem !important;
-        max-width: 100% !important;
-        width: 100% !important;
-        text-align: center !important;
-        height: 100% !important;
-      }
-      body[data-content-page="home"] .hero-brand,
-      body[data-content-page="home"] .hero-brand-rule,
-      body[data-content-page="home"] .hero-overlay .hero-eyebrow,
-      body[data-content-page="home"] .hero-overlay .hero-title,
-      body[data-content-page="home"] .hero-overlay .hero-subtitle {
-        text-align: center !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        max-width: 100% !important;
-      }
-      body[data-content-page="home"] .hero-overlay .hero-title {
-        font-size: clamp(3rem, 6vw, 4.8rem) !important;
-      }
-      body[data-content-page="home"] .hero-overlay .hero-cta-row {
-        margin-top: auto !important;
-        padding-top: 1.5rem !important;
-        justify-content: center !important;
+        padding: 0 3rem 0 5rem !important;
       }
       body[data-content-page="home"] .hero-image {
-        background-position: center center !important;
+        background-position: 75% center !important;
       }
     }
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
       body[data-content-page="home"] .hero-overlay-inner {
-        padding: 2rem 1.25rem !important;
+        padding: 0 2rem 0 3rem !important;
+        max-width: 60% !important;
       }
-      body[data-content-page="home"] .hero-overlay .hero-title {
-        font-size: clamp(2.6rem, 7.2vw, 3.6rem) !important;
+      body[data-content-page="home"] .hero-image {
+        background-position: 85% center !important;
+      }
+      body[data-content-page="home"] .hero-overlay {
+        background: linear-gradient(90deg,
+          rgba(28,22,16,0.78) 0%,
+          rgba(28,22,16,0.55) 38%,
+          rgba(28,22,16,0.15) 60%,
+          rgba(28,22,16,0) 80%) !important;
+      }
+    }
+    @media (max-width: 700px) {
+      body[data-content-page="home"] .hero-overlay-inner {
+        padding: 0 1.5rem !important;
+        max-width: 80% !important;
+      }
+      body[data-content-page="home"] .hero-image {
+        background-position: 92% center !important;
+      }
+      body[data-content-page="home"] .hero-overlay {
+        background: linear-gradient(90deg,
+          rgba(28,22,16,0.88) 0%,
+          rgba(28,22,16,0.70) 60%,
+          rgba(28,22,16,0.35) 100%) !important;
       }
       body[data-content-page="home"] .hero-overlay .hero-cta-row {
         flex-direction: column !important;
