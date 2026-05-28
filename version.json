@@ -1,12 +1,12 @@
 {
-  "version": "v260528.21 6:21p",
-  "release": 21,
-  "sha": "1f217fa",
-  "fullSha": "1f217fa7c973539065c46d1fb41767713518f777",
+  "version": "v260528.22 6:26p",
+  "release": 22,
+  "sha": "5c71ef1",
+  "fullSha": "5c71ef1273b2152b04aab3ee4e4cf0409889571b",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T11:21:19-07:00",
-  "commits": [{"sha":"1f217fa","message":"Document proportional hero title rule as canonical site-wide pattern","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T11:26:18-07:00",
+  "commits": [{"sha":"5c71ef1","message":"Homepage hero: fix narrow-viewport layout — title presence + portrait balance","author":"Adi Marie"}]
 }
