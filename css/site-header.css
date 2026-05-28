@@ -39,17 +39,17 @@
 }
 .site-header .logo-mark {
   display: block !important;
-  height: 96px !important;
+  height: 52px !important;
   width: auto !important;
   margin: 0 !important;
   padding: 0 !important;
   flex-shrink: 0 !important;
 }
 @media (max-width: 1200px) {
-  .site-header .logo-mark { height: 80px !important; }
+  .site-header .logo-mark { height: 46px !important; }
 }
 @media (max-width: 960px) {
-  .site-header .logo-mark { height: 64px !important; }
+  .site-header .logo-mark { height: 40px !important; }
 }
 /* Wordmark text hidden — the trio is the brand mark now. */
 .site-header .logo-text { display: none !important; }
@@ -166,22 +166,92 @@
   white-space: normal;
 }
 
-/* Nav bar height = logo height (zero padding around it). Body padding matches exactly. */
-body { padding-top: 96px; }
+/* =============================================================
+   FEATURE BOX inside nav dropdowns — visually distinct flagship link
+   ============================================================= */
+.site-header .nav-dropdown .nav-feature {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.4rem !important;
+  padding: 1.1rem 1.25rem 1.15rem !important;
+  margin: 0.25rem 0 0.7rem !important;
+  background: linear-gradient(165deg, rgba(219, 192, 121, 0.10) 0%, rgba(201, 168, 76, 0.04) 100%) !important;
+  border: 1px solid rgba(201, 168, 76, 0.45) !important;
+  border-radius: 3px !important;
+  text-decoration: none !important;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.site-header .nav-dropdown .nav-feature::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0.55rem !important;
+  right: 0.7rem !important;
+  width: 22px !important;
+  height: 22px !important;
+  background:
+    linear-gradient(45deg, transparent 45%, rgba(201,168,76,0.5) 45%, rgba(201,168,76,0.5) 55%, transparent 55%) !important;
+  opacity: 0.5 !important;
+  pointer-events: none !important;
+}
+.site-header .nav-dropdown .nav-feature:hover {
+  background: linear-gradient(165deg, rgba(219, 192, 121, 0.18) 0%, rgba(201, 168, 76, 0.08) 100%) !important;
+  border-color: var(--gold, #c9a84c) !important;
+  box-shadow: 0 4px 14px rgba(201, 168, 76, 0.16), 0 1px 3px rgba(201, 168, 76, 0.08) !important;
+  transform: translateY(-1px) !important;
+}
+.site-header .nav-dropdown .nav-feature .feat-eyebrow {
+  font-family: 'Cinzel', serif !important;
+  font-size: 0.58rem !important;
+  letter-spacing: 0.3em !important;
+  text-transform: uppercase !important;
+  color: var(--gold, #c9a84c) !important;
+  font-weight: 500 !important;
+  opacity: 0.85 !important;
+}
+.site-header .nav-dropdown .nav-feature .feat-title {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 1.2rem !important;
+  font-weight: 500 !important;
+  color: var(--bark, #2D2A26) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.005em !important;
+  text-transform: none !important;
+}
+.site-header .nav-dropdown .nav-feature .feat-desc {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 0.86rem !important;
+  color: var(--bark, #2D2A26) !important;
+  opacity: 0.55 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  font-weight: 400 !important;
+}
+
+/* Nav bar = 52px logo. Body padding adds the nav height PLUS a 20px gap so
+   full-bleed hero images don't sit flush against the nav (and aren't visually
+   eclipsed by the cream backdrop blur). */
+body { padding-top: 72px !important; }
+
+/* Stronger nav bottom border for visual separation against light content */
+.site-header { border-bottom: 1px solid rgba(45, 42, 38, 0.10) !important; box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 2px 12px rgba(45, 42, 38, 0.04) !important; }
 
 @media (max-width: 1200px) {
-  .site-header .header-inner { padding: 1.1rem 2rem !important; gap: 1.2rem !important; }
+  .site-header .header-inner { padding: 0.5rem 2rem !important; gap: 1.2rem !important; }
   .site-header .main-nav ul { gap: 1.6rem !important; }
   .site-header .main-nav > ul > li > a { font-size: 0.78rem !important; letter-spacing: 0.16em !important; }
-  .site-header .apply-btn { font-size: 0.78rem !important; letter-spacing: 0.16em !important; padding: 0.6rem 1.2rem !important; }
+  .site-header .apply-btn { font-size: 0.78rem !important; letter-spacing: 0.16em !important; padding: 0.5rem 1.1rem !important; }
   .site-header .logo-text { font-size: 1.35rem !important; }
 }
 @media (max-width: 1200px) {
-  body { padding-top: 80px; }
+  body { padding-top: 66px !important; }
 }
 @media (max-width: 960px) {
   .site-header .header-inner { padding: 0 1.5rem !important; }
   .site-header .header-nav-row { gap: 1.25rem; }
   .site-header .main-nav ul { gap: 1.1rem !important; }
-  body { padding-top: 64px; }
+  body { padding-top: 60px !important; }
 }
