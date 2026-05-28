@@ -1,12 +1,12 @@
 {
-  "version": "v260528.03 7:01a",
-  "release": 3,
-  "sha": "437d034",
-  "fullSha": "437d034fae95d712026cf83e02a325090debdd87",
+  "version": "v260528.04 7:06a",
+  "release": 4,
+  "sha": "659e0d9",
+  "fullSha": "659e0d93c1c3b4d42225e8714dd762b8f0ec6329",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T00:00:38-07:00",
-  "commits": [{"sha":"437d034","message":"Nav: redesign featured tile + promote Leadership from the Soul","author":"Adi Marie"}]
+  "machine": "runnervmg397c",
+  "pushedAt": "2026-05-28T00:05:46-07:00",
+  "commits": [{"sha":"659e0d9","message":"Scrub real participant PII from ceremony-prep + practitioner-dashboard","author":"Adi Marie"}]
 }
