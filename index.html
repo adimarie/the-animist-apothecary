@@ -134,36 +134,67 @@
       text-shadow: 0 2px 18px rgba(0,0,0,0.35);
     }
     /* ============================================================
-       NARROW-VIEWPORT HERO LAYOUT BOOSTS (≤1024px and ≤800px)
-       Fix the "portrait dominates, title shrinks too much" problem
-       at small windows. Reduce padding so text has more room, bump
-       title floor so it stays presence-y, shift background-position
-       so the portrait is less dominant.
+       NARROW-VIEWPORT HERO LAYOUT — TEXT WRAPS AROUND PORTRAIT
+       ============================================================
+       At ≤1024px, restructure the hero so:
+         - Brand + eyebrow + title + subtitle pull to the TOP
+           (overlaying the wall/niche space above Adi's head)
+         - CTA buttons pull to the BOTTOM
+           (overlaying the dark robe space below Adi's face)
+         - Adi's face sits in the visual middle of the hero
+       Overlay becomes a vertical flex column with space-between
+       distribution. Text centered horizontally so it sits
+       symmetrically across the architectural backdrop.
        ============================================================ */
     @media (max-width: 1024px) {
+      body[data-content-page="home"] .hero-overlay {
+        align-items: stretch !important;
+      }
       body[data-content-page="home"] .hero-overlay-inner {
-        padding: 0 2rem 0 3rem !important;  /* was 0 4rem 0 8rem */
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        padding: 2.5rem 1.75rem !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        text-align: center !important;
+        height: 100% !important;
+      }
+      body[data-content-page="home"] .hero-brand,
+      body[data-content-page="home"] .hero-brand-rule,
+      body[data-content-page="home"] .hero-overlay .hero-eyebrow,
+      body[data-content-page="home"] .hero-overlay .hero-title,
+      body[data-content-page="home"] .hero-overlay .hero-subtitle {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 100% !important;
       }
       body[data-content-page="home"] .hero-overlay .hero-title {
-        /* Bump min from 2.6rem to 3.4rem so title stays substantial.
-           Bump vw ratio from 5.6 to 6.4 so it scales up at this range. */
-        font-size: clamp(3.4rem, 6.4vw, 5rem) !important;
+        font-size: clamp(3rem, 6vw, 4.8rem) !important;
+      }
+      body[data-content-page="home"] .hero-overlay .hero-cta-row {
+        margin-top: auto !important;
+        padding-top: 1.5rem !important;
+        justify-content: center !important;
       }
       body[data-content-page="home"] .hero-image {
-        /* Shift right so more of the architectural/wall area shows on the
-           left where the text lives, less of Adi's face dominating. */
-        background-position: 75% center !important;
+        background-position: center center !important;
       }
     }
     @media (max-width: 800px) {
       body[data-content-page="home"] .hero-overlay-inner {
-        padding: 0 1.5rem !important;
+        padding: 2rem 1.25rem !important;
       }
       body[data-content-page="home"] .hero-overlay .hero-title {
-        font-size: clamp(2.6rem, 7.5vw, 3.6rem) !important;
+        font-size: clamp(2.6rem, 7.2vw, 3.6rem) !important;
       }
-      body[data-content-page="home"] .hero-image {
-        background-position: 80% center !important;
+      body[data-content-page="home"] .hero-overlay .hero-cta-row {
+        flex-direction: column !important;
+        gap: 0.6rem !important;
+      }
+      body[data-content-page="home"] .hero-overlay .hero-btn {
+        width: 100% !important;
       }
     }
     body[data-content-page="home"] .hero-overlay .hero-title em {
