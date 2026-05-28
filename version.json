@@ -1,12 +1,12 @@
 {
-  "version": "v260528.10 8:27a",
-  "release": 10,
-  "sha": "3b39ca8",
-  "fullSha": "3b39ca86603e5a826394bacdda4068116a30924e",
+  "version": "v260528.11 5:32p",
+  "release": 11,
+  "sha": "57b6e40",
+  "fullSha": "57b6e40d5508bdee78061cf424a71eb377146ab3",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T01:27:03-07:00",
-  "commits": [{"sha":"3b39ca8","message":"Nav FEATURED card: vellum invitation card design + hover-reveal CTA","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T10:31:37-07:00",
+  "commits": [{"sha":"57b6e40","message":"Sessions polish + site-wide nav buffer + tamed homepage title","author":"Adi Marie"}]
 }
