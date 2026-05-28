@@ -1,12 +1,12 @@
 {
-  "version": "v260528.14 5:41p",
-  "release": 14,
-  "sha": "a43f312",
-  "fullSha": "a43f312cab85ec8f83e7b9f64bfdadf07571d4c9",
+  "version": "v260528.15 5:44p",
+  "release": 15,
+  "sha": "36e259b",
+  "fullSha": "36e259b767b3f99e703d9a3787b0a754adae1319",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T10:41:24-07:00",
-  "commits": [{"sha":"a43f312","message":"Hero title: drop to fixed 3.5rem — was 4.6rem, still overflowing into portrait","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T10:43:09-07:00",
+  "commits": [{"sha":"36e259b","message":"Intake hero: 'Before We Begin' eyebrow + new threshold copy","author":"Adi Marie"}]
 }
