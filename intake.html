@@ -530,7 +530,64 @@
         <div class="section-intro">
           <p>Welcome. This intake form is an invitation to pause, to reflect, and to offer the information that allows us to work together with care, intention, and appropriate safety. It covers a wide range of territory &mdash; physical, emotional, psychological, spiritual, and practical &mdash; because the work we may do together touches all of these dimensions.</p>
           <p>Take your time with each section. There are no correct answers. Your honest, unhurried responses are what matter most.</p>
-          <p>Begin by naming what draws you here, then your email.</p>
+          <p>Begin by naming your path here, then what draws you to this work, then your email.</p>
+        </div>
+
+        <!-- ─── SUB-GROUP · Your Path Here (moved from end of Section 2; now the first reflection block) ─── -->
+        <div class="sub-group">
+          <p class="sub-group-eyebrow">Your Path Here</p>
+
+          <div class="fg" id="fg_how_found">
+            <label for="how_found">How did you come to find my work, or to this offering? <span class="req">*</span></label>
+            <p class="helper">Please be specific. A person, a platform, a moment, a dream.</p>
+            <textarea id="how_found" name="how_found" placeholder="A friend, a podcast, a search, a synchronicity…"></textarea>
+            <div class="field-error-msg" id="err_how_found">Please share how you found this work.</div>
+          </div>
+
+          <div class="fg">
+            <label for="referred_by">Who referred you to this work?</label>
+            <p class="helper">If a person, practitioner, or community sent you here.</p>
+            <input type="text" id="referred_by" name="referred_by" placeholder="Name and how you know them" />
+          </div>
+
+          <div class="fg" id="fg_why_fit_now">
+            <label for="why_fit_now">Why is this work a fit for you right now? <span class="req">*</span></label>
+            <p class="helper">What tells you you&rsquo;re ready. What&rsquo;s calling you. What kind of experience, work, or threshold you&rsquo;re seeking.</p>
+            <textarea id="why_fit_now" name="why_fit_now" placeholder="What&rsquo;s awake in you, what&rsquo;s asking to be met…" style="min-height: 140px;"></textarea>
+            <div class="field-error-msg" id="err_why_fit_now">Please share what brings you to this work now.</div>
+          </div>
+
+          <div class="fg" id="fg_why_aligned">
+            <label for="why_aligned">Why does my work specifically feel aligned for you? <span class="req">*</span></label>
+            <p class="helper">What about my approach, pacing, style of care, or the ceremonial nature of this work feels like a match.</p>
+            <textarea id="why_aligned" name="why_aligned" placeholder="What you&rsquo;ve noticed in my work that resonates…" style="min-height: 140px;"></textarea>
+            <div class="field-error-msg" id="err_why_aligned">Please share what resonates.</div>
+          </div>
+
+          <div class="fg" id="fg_what_looking_for">
+            <label for="what_looking_for">What are you looking for? <span class="req">*</span></label>
+            <p class="helper">Support, counsel, bodywork, ceremonial work, integration, or something else.</p>
+            <textarea id="what_looking_for" name="what_looking_for" placeholder="The shape of what would meet you well…" style="min-height: 120px;"></textarea>
+            <div class="field-error-msg" id="err_what_looking_for">Please share what you&rsquo;re looking for.</div>
+          </div>
+
+          <div class="fg">
+            <label for="time_sensitivity">Any sense of timing. When would you like to schedule or begin?</label>
+            <p class="helper">Steady and exploring, or actively needing support soon. Whatever&rsquo;s true.</p>
+            <textarea id="time_sensitivity" name="time_sensitivity" placeholder="Soon, this season, when the right alignment arrives…" style="min-height: 100px;"></textarea>
+          </div>
+
+          <div class="fg">
+            <label for="meet_with_care">Anything important to know to meet you with care?</label>
+            <p class="helper">Sensitivities, awarenesses, attunements. What would help me hold you well.</p>
+            <textarea id="meet_with_care" name="meet_with_care" placeholder="What you&rsquo;d want me to know as we begin…" style="min-height: 120px;"></textarea>
+          </div>
+
+          <div class="fg">
+            <label for="additional_info">Anything else you wish to share at this time?</label>
+            <p class="helper">Optional. Anything that feels important to name as we begin.</p>
+            <textarea id="additional_info" name="additional_info" placeholder="Take as much space as you need." style="min-height: 140px;"></textarea>
+          </div>
         </div>
 
         <div class="fg" id="fg_deeper_work">
@@ -706,30 +763,6 @@
             <p class="helper">@handle or phone number associated with the app above.</p>
             <input type="text" id="app_username" name="app_username" placeholder="@yourname or +1 555 000 0000" />
             <div class="field-error-msg" id="err_app_username">Please enter your app username.</div>
-          </div>
-        </div>
-
-        <!-- ─── SUB-GROUP 4 · Your Path Here ─── -->
-        <div class="sub-group">
-          <p class="sub-group-eyebrow">Your Path Here</p>
-
-          <div class="fg" id="fg_how_found">
-            <label for="how_found">How did you come to find my work, or to this offering? <span class="req">*</span></label>
-            <p class="helper">Please be specific &mdash; a person, a platform, a moment, a dream.</p>
-            <textarea id="how_found" name="how_found" placeholder="A friend, a podcast, a search, a synchronicity…"></textarea>
-            <div class="field-error-msg" id="err_how_found">Please share how you found this work.</div>
-          </div>
-
-          <div class="fg">
-            <label for="referred_by">Who referred you to this work?</label>
-            <p class="helper">If a person, practitioner, or community sent you here.</p>
-            <input type="text" id="referred_by" name="referred_by" placeholder="Name and how you know them" />
-          </div>
-
-          <div class="fg">
-            <label for="additional_info">Anything else you wish to share at this time?</label>
-            <p class="helper">Optional &mdash; anything that feels important to name as we begin.</p>
-            <textarea id="additional_info" name="additional_info" placeholder="Take as much space as you need." style="min-height: 140px;"></textarea>
           </div>
         </div>
 
@@ -1025,6 +1058,12 @@
         languages: val('languages'),
         referred_by: val('referred_by'),
         additional_info: val('additional_info'),
+        // New discernment fields from the moved "Your Path Here" sub-group
+        why_fit_now: val('why_fit_now'),
+        why_aligned: val('why_aligned'),
+        what_looking_for: val('what_looking_for'),
+        time_sensitivity: val('time_sensitivity'),
+        meet_with_care: val('meet_with_care'),
         deeper_work: Array.from(document.querySelectorAll('input[name="deeper_work[]"]:checked')).map(function(el){ return el.value; })
       },
       section_4: {
