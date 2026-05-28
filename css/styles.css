@@ -5280,6 +5280,38 @@ section.fade-in {
 }
 
 /* ============================================================
+   SITE-WIDE DESIGN RULE — PROPORTIONAL HERO TITLES
+   ============================================================
+   Hero titles use clamp(min, vw, max) — NEVER fixed pixel sizes
+   alone — so the visual ratio between title, eyebrow, subtitle,
+   and any portrait/imagery stays consistent at every viewport
+   width. The title scales smoothly with the window, never
+   wrapping awkwardly or overrunning adjacent imagery.
+
+   Canonical formula:
+       font-size: clamp(<floor>, <Nvw>, <ceiling>) !important;
+
+   Live reference (index.html .hero-title):
+       font-size: clamp(2.6rem, 5.6vw, 6rem) !important;
+
+   At a ~1700px viewport, 5.6vw = 95px ≈ 6rem (Adi's design
+   reference look). At narrower windows the title scales down
+   proportionally so the title→portrait visual ratio holds.
+
+   To replicate on a NEW page hero, use the same formula and
+   keep line-height ~1.08 and max-width: none.
+
+   DO NOT use fixed font-size: 6rem (without clamp). The title
+   will wrap into 3+ awkward lines at narrower viewports.
+
+   DO NOT pick a vw ratio outside 4vw–7vw. Below 4vw the title
+   shrinks too much at wide viewports; above 7vw it grows too
+   aggressively and breaks the layout.
+
+   Floor of 2.6rem (42px) is the readable minimum on phones.
+   ============================================================ */
+
+/* ============================================================
    DROP-CAP DISABLED — first letter matches body text
    ============================================================
    The .story-text drop-cap rules (3 occurrences earlier in
