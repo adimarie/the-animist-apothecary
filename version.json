@@ -1,12 +1,12 @@
 {
-  "version": "v260528.19 6:05p",
-  "release": 19,
-  "sha": "578c472",
-  "fullSha": "578c47222f99df5469c2155d5bc3de022ac2bec6",
+  "version": "v260528.20 6:19p",
+  "release": 20,
+  "sha": "2d18af0",
+  "fullSha": "2d18af0249f04c90e61c0f152aa8684c39269d1a",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T11:04:54-07:00",
-  "commits": [{"sha":"578c472","message":"Disable .story-text drop-cap — first letter now matches body text","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T11:19:33-07:00",
+  "commits": [{"sha":"2d18af0","message":"Homepage hero title: clamp(2.6rem, 5.6vw, 6rem) for proportional scaling","author":"Adi Marie"}]
 }
