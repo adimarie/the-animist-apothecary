@@ -1,12 +1,12 @@
 {
-  "version": "v260528.02 6:43a",
-  "release": 2,
-  "sha": "2cc96f4",
-  "fullSha": "2cc96f468c034017416fe0f65369432a1305119c",
+  "version": "v260528.03 7:01a",
+  "release": 3,
+  "sha": "437d034",
+  "fullSha": "437d034fae95d712026cf83e02a325090debdd87",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervmg397c",
-  "pushedAt": "2026-05-27T23:43:03-07:00",
-  "commits": [{"sha":"2cc96f4","message":"Tidy: 8 fixes from live-site audit + move lost.html behind admin/","author":"Adi Marie"}]
+  "machine": "runnervm3jyl0",
+  "pushedAt": "2026-05-28T00:00:38-07:00",
+  "commits": [{"sha":"437d034","message":"Nav: redesign featured tile + promote Leadership from the Soul","author":"Adi Marie"}]
 }
