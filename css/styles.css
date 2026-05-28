@@ -2079,21 +2079,27 @@ em, i { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var
 }
 .hero-eyebrow { color: var(--gold-pale) !important; }
 .hero-title {
-  /* Locked at 4.6rem on desktop — does NOT scale with viewport width
-     (was clamp(2.5rem, 5vw, 4.6rem) which let it grow/shrink with vw).
-     Responsive overrides below handle tablet and mobile breakpoints. */
-  font-size: 4.6rem !important;
+  /* ============================================================
+     LOCKED HERO TITLE SIZE — DO NOT USE clamp() OR vw HERE
+     Fixed at 3.5rem (56px) on desktop. Does NOT scale with viewport
+     width. This size was set to match Cormorant Garamond's wider
+     character widths so "Formidable gifts for an era of awakening"
+     fits the .hero-content max-width: 880px container without any
+     overrun into Adi's portrait area on the right side of the hero.
+     Responsive step-downs below for tablet and mobile only.
+     ============================================================ */
+  font-size: 3.5rem !important;
   color: #fff !important;
   font-weight: 300 !important;
   margin-bottom: 2rem !important;
   letter-spacing: -.012em;
-  line-height: 1.08 !important;
+  line-height: 1.1 !important;
 }
 .hero-title em { color: var(--gold-pale) !important; font-weight: 400; }
-/* Hero title responsive step-downs (kept AFTER the desktop rule so they win at narrower viewports). */
-@media (max-width: 1024px) { .hero-title { font-size: 3.6rem !important; } }
-@media (max-width: 768px)  { .hero-title { font-size: 2.8rem !important; } }
-@media (max-width: 480px)  { .hero-title { font-size: 2.1rem !important; } }
+/* Responsive step-downs (kept AFTER the desktop rule so they win at narrower viewports). */
+@media (max-width: 1024px) { .hero-title { font-size: 2.8rem !important; } }
+@media (max-width: 768px)  { .hero-title { font-size: 2.3rem !important; } }
+@media (max-width: 480px)  { .hero-title { font-size: 1.9rem !important; } }
 .hero-subtitle {
   font-family: 'Cormorant Garamond', serif !important;
   font-style: italic !important;
