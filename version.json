@@ -1,12 +1,12 @@
 {
-  "version": "v260528.29 8:57p",
-  "release": 29,
-  "sha": "8ec1b81",
-  "fullSha": "8ec1b813c91c5256944ea4669572bde5ff3d2461",
+  "version": "v260528.30 10:20p",
+  "release": 30,
+  "sha": "93438ba",
+  "fullSha": "93438ba8fb6833a432813ea9c8efd07e5d64f8d1",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T13:56:58-07:00",
-  "commits": [{"sha":"8ec1b81","message":"Site-wide social meta sweep: fix YOUR_DOMAIN placeholders, add og/twitter/JSON-LD, sitemap, robots","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T15:19:49-07:00",
+  "commits": [{"sha":"93438ba","message":"Favicon: install ornate Animist Apothecary mark across all sizes","author":"Adi Marie"}]
 }
