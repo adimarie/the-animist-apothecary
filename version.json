@@ -1,12 +1,12 @@
 {
-  "version": "v260528.12 5:37p",
-  "release": 12,
-  "sha": "9854a9b",
-  "fullSha": "9854a9b096ba1ea88e6756a371e8ac9c2fb9e109",
+  "version": "v260528.13 5:39p",
+  "release": 13,
+  "sha": "7954314",
+  "fullSha": "7954314627c22904c422ed5625047bf54c7ddfb7",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T10:36:30-07:00",
-  "commits": [{"sha":"9854a9b","message":"Homepage hero: lock title size at 4.6rem (was viewport-scaling clamp)","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T10:38:31-07:00",
+  "commits": [{"sha":"7954314","message":"Document nav-buffer rule in site-header.css as canonical source of truth","author":"Adi Marie"}]
 }
