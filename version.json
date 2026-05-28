@@ -1,12 +1,12 @@
 {
-  "version": "v260528.08 8:23a",
-  "release": 8,
-  "sha": "9e2d03e",
-  "fullSha": "9e2d03ef84c3c20a4b78a1325507612a831684db",
+  "version": "v260528.09 8:25a",
+  "release": 9,
+  "sha": "6053cca",
+  "fullSha": "6053ccab604b395feeabec06f7d5a396ef9dcf61",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T01:22:51-07:00",
-  "commits": [{"sha":"9e2d03e","message":"Intake: turn EDIT_MODE off + clean handleSubmit for pared-down form","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T01:25:11-07:00",
+  "commits": [{"sha":"6053cca","message":"Home hero CTAs: 'Personal Work' → 'Book Now' (sessions.html); 'The Training Grounds' → 'Apply' (intake.html)","author":"Adi Marie"}]
 }
