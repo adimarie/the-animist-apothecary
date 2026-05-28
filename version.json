@@ -1,12 +1,12 @@
 {
-  "version": "v260528.25 6:55p",
-  "release": 25,
-  "sha": "0767278",
-  "fullSha": "076727879c98498fbad84baa111c81ff202b750e",
+  "version": "v260528.26 6:59p",
+  "release": 26,
+  "sha": "cd8c75c",
+  "fullSha": "cd8c75ca657a473c3ebed9c43f6de8e9e22a3fc2",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T11:55:18-07:00",
-  "commits": [{"sha":"0767278","message":"Intake hero: apply proportional title rule + narrow-viewport tweaks","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T11:59:24-07:00",
+  "commits": [{"sha":"cd8c75c","message":"Hero pattern unified: overlay-text-left across index + intake","author":"Adi Marie"}]
 }
