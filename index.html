@@ -136,7 +136,9 @@
     /* ============================================================
        NARROW-VIEWPORT HERO LAYOUT — TEXT WRAPS AROUND PORTRAIT
        ============================================================
-       At ≤1024px, restructure the hero so:
+       Side-by-side layout (text left, portrait right) is preserved
+       at all desktop and tablet-landscape widths (>900px).
+       Below 900px, restructure the hero so:
          - Brand + eyebrow + title + subtitle pull to the TOP
            (overlaying the wall/niche space above Adi's head)
          - CTA buttons pull to the BOTTOM
@@ -146,7 +148,7 @@
        distribution. Text centered horizontally so it sits
        symmetrically across the architectural backdrop.
        ============================================================ */
-    @media (max-width: 1024px) {
+    @media (max-width: 900px) {
       body[data-content-page="home"] .hero-overlay {
         align-items: stretch !important;
       }
