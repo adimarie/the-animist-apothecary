@@ -347,10 +347,32 @@
   margin-top: 0.7rem !important;
 }
 
-/* Nav bar ≈ 87px (52px logo + 17.6px top/bottom padding from .header-inner).
-   Body padding-top = nav height + ~43px buffer so full-bleed hero images
-   sit beneath the nav with a clearly visible cream strip between (the
-   buffer reads as intentional breathing room, not a layout error). */
+/* ============================================================
+   SITE-WIDE DESIGN RULE — TOP NAV BUFFER
+   ============================================================
+   Every public page must show a visible cream buffer strip
+   between the fixed nav (bottom edge) and the first content
+   section (top edge of hero or first body section).
+
+   The buffer reads as intentional breathing room and prevents
+   the dark hero from feeling like it's being eaten by the nav.
+
+   Math:  visible buffer = body.padding-top − nav height
+   Goal:  ~40px visible cream strip across all breakpoints
+
+   ┌──────────────┬─────────────┬────────────┬──────────────┐
+   │ Viewport     │ body pad-top│ nav height │ visible strip│
+   ├──────────────┼─────────────┼────────────┼──────────────┤
+   │ > 1200px     │ 130px       │ ~87px      │ ~43px        │
+   │ ≤ 1200px     │ 120px       │ ~80px      │ ~40px        │
+   │ ≤ 960px      │ 110px       │ ~75px      │ ~35px        │
+   └──────────────┴─────────────┴────────────┴──────────────┘
+
+   This is the SINGLE SOURCE OF TRUTH for nav→hero spacing.
+   Do NOT add page-level margin-top, body padding, or negative
+   margins that escape this. Anything that lands a hero flush
+   beneath the nav (or behind it) is a bug — fix it here.
+   ============================================================ */
 body { padding-top: 130px !important; }
 
 /* Stronger nav bottom border for visual separation against light content */
