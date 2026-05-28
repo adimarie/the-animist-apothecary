@@ -1,12 +1,12 @@
 {
-  "version": "v260528.24 6:32p",
-  "release": 24,
-  "sha": "adca85c",
-  "fullSha": "adca85ccbdf320ea44f20446dc3bd698bf2da9c5",
+  "version": "v260528.25 6:55p",
+  "release": 25,
+  "sha": "0767278",
+  "fullSha": "076727879c98498fbad84baa111c81ff202b750e",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T11:32:22-07:00",
-  "commits": [{"sha":"adca85c","message":"Homepage hero: move narrow-stack breakpoint from 1024px to 900px","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T11:55:18-07:00",
+  "commits": [{"sha":"0767278","message":"Intake hero: apply proportional title rule + narrow-viewport tweaks","author":"Adi Marie"}]
 }
