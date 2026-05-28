@@ -1,12 +1,12 @@
 {
-  "version": "v260527.03 11:24p",
-  "release": 3,
-  "sha": "ae493ce",
-  "fullSha": "ae493cec1b378ed398f83b9ddd196a428ff584ed",
+  "version": "v260528.01 5:42a",
+  "release": 1,
+  "sha": "f9d094f",
+  "fullSha": "f9d094f20f28eadb79cd1c119146635b4f573b34",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmg397c",
-  "pushedAt": "2026-05-27T16:24:12-07:00",
-  "commits": [{"sha":"ae493ce","message":"Home: strip to bare-bones — Hero + Practitioner + Contact only","author":"Adi Marie"}]
+  "pushedAt": "2026-05-27T22:41:37-07:00",
+  "commits": [{"sha":"f9d094f","message":"Restore full 11-section homepage + standardize nav site-wide","author":"Adi Marie"}]
 }
