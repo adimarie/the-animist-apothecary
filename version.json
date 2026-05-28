@@ -1,12 +1,12 @@
 {
-  "version": "v260528.06 7:46a",
-  "release": 6,
-  "sha": "3161d9a",
-  "fullSha": "3161d9a9f1ebbe61df44564fe58b0840ae6975cd",
+  "version": "v260528.07 7:53a",
+  "release": 7,
+  "sha": "4f1a062",
+  "fullSha": "4f1a0622609f276980dc73a4548f89a66dc3a376",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T00:46:33-07:00",
-  "commits": [{"sha":"3161d9a","message":"CTA: remove \"Send a Message\" secondary button on home","author":"Adi Marie"}]
+  "machine": "runnervmg397c",
+  "pushedAt": "2026-05-28T00:52:57-07:00",
+  "commits": [{"sha":"4f1a062","message":"Home CTAs → intake.html; featured tile gets transparent bg + gold frame","author":"Adi Marie"}]
 }
