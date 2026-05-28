@@ -1,12 +1,12 @@
 {
-  "version": "v260528.26 6:59p",
-  "release": 26,
-  "sha": "cd8c75c",
-  "fullSha": "cd8c75ca657a473c3ebed9c43f6de8e9e22a3fc2",
+  "version": "v260528.27 8:42p",
+  "release": 27,
+  "sha": "7cf029b",
+  "fullSha": "7cf029bd4f0db7b9afa2c59127fc3384544f7ee4",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T11:59:24-07:00",
-  "commits": [{"sha":"cd8c75c","message":"Hero pattern unified: overlay-text-left across index + intake","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T13:41:56-07:00",
+  "commits": [{"sha":"7cf029b","message":"Home meta: fix title/description + add Open Graph & Twitter cards","author":"Adi Marie"}]
 }
