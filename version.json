@@ -1,12 +1,12 @@
 {
-  "version": "v260528.27 8:42p",
-  "release": 27,
-  "sha": "7cf029b",
-  "fullSha": "7cf029bd4f0db7b9afa2c59127fc3384544f7ee4",
+  "version": "v260528.28 8:49p",
+  "release": 28,
+  "sha": "3086e53",
+  "fullSha": "3086e537dcbdfa2ca6fb87d7e544c97718d06ca7",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T13:41:56-07:00",
-  "commits": [{"sha":"7cf029b","message":"Home meta: fix title/description + add Open Graph & Twitter cards","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T13:49:06-07:00",
+  "commits": [{"sha":"3086e53","message":"Home meta: align title/description with on-page hero copy","author":"Adi Marie"}]
 }
