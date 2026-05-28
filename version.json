@@ -1,12 +1,12 @@
 {
-  "version": "v260528.15 5:44p",
-  "release": 15,
-  "sha": "36e259b",
-  "fullSha": "36e259b767b3f99e703d9a3787b0a754adae1319",
+  "version": "v260528.16 5:51p",
+  "release": 16,
+  "sha": "d990de8",
+  "fullSha": "d990de867a69154083bac8f78e693b7457235076",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T10:43:09-07:00",
-  "commits": [{"sha":"36e259b","message":"Intake hero: 'Before We Begin' eyebrow + new threshold copy","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T10:50:47-07:00",
+  "commits": [{"sha":"d990de8","message":"Intake: move Your Path Here to top of Section 1, add 5 discernment questions","author":"Adi Marie"}]
 }
