@@ -1,12 +1,12 @@
 {
-  "version": "v260528.13 5:39p",
-  "release": 13,
-  "sha": "7954314",
-  "fullSha": "7954314627c22904c422ed5625047bf54c7ddfb7",
+  "version": "v260528.14 5:41p",
+  "release": 14,
+  "sha": "a43f312",
+  "fullSha": "a43f312cab85ec8f83e7b9f64bfdadf07571d4c9",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T10:38:31-07:00",
-  "commits": [{"sha":"7954314","message":"Document nav-buffer rule in site-header.css as canonical source of truth","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T10:41:24-07:00",
+  "commits": [{"sha":"a43f312","message":"Hero title: drop to fixed 3.5rem — was 4.6rem, still overflowing into portrait","author":"Adi Marie"}]
 }
