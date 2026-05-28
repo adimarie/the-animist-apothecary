@@ -1,12 +1,12 @@
 {
-  "version": "v260528.04 7:06a",
-  "release": 4,
-  "sha": "659e0d9",
-  "fullSha": "659e0d93c1c3b4d42225e8714dd762b8f0ec6329",
+  "version": "v260528.05 7:24a",
+  "release": 5,
+  "sha": "5e4fbfe",
+  "fullSha": "5e4fbfef8d69e5e2cbc20593c2b1cca49a0c3b5e",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmg397c",
-  "pushedAt": "2026-05-28T00:05:46-07:00",
-  "commits": [{"sha":"659e0d9","message":"Scrub real participant PII from ceremony-prep + practitioner-dashboard","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T00:24:18-07:00",
+  "commits": [{"sha":"5e4fbfe","message":"Security: remove 4 files exposing real client/medical/financial data","author":"Adi Marie"}]
 }
