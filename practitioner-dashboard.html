@@ -636,8 +636,8 @@
         <!-- Title Section -->
         <div class="title-section">
             <div class="title-label">CEREMONY DASHBOARD</div>
-            <h1 class="title-heading">George Balteria &mdash; May 2026</h1>
-            <div class="title-subtitle">The Second Full Moon of May &middot; Santa Ysabel, CA</div>
+            <h1 class="title-heading">Sample Ceremony &mdash; [Month Year]</h1>
+            <div class="title-subtitle">[Ceremony Description] &middot; [Location]</div>
         </div>
 
         <!-- Ceremony Info Card -->
@@ -645,19 +645,19 @@
             <div class="ceremony-info">
                 <div class="ceremony-item">
                     <div class="ceremony-item-label">Dates</div>
-                    <div class="ceremony-item-value">May 29&ndash;31, 2026</div>
+                    <div class="ceremony-item-value">[Date Range]</div>
                 </div>
                 <div class="ceremony-item">
                     <div class="ceremony-item-label">Participants</div>
-                    <div class="ceremony-item-value">8 Confirmed</div>
+                    <div class="ceremony-item-value">[N] Confirmed</div>
                 </div>
                 <div class="ceremony-item">
                     <div class="ceremony-item-label">Guardian</div>
-                    <div class="ceremony-item-value">Ned</div>
+                    <div class="ceremony-item-value">[Sample Guardian]</div>
                 </div>
                 <div class="ceremony-item">
                     <div class="ceremony-item-label">Intake Calls</div>
-                    <div class="ceremony-item-value">Apr 27, 29, 30</div>
+                    <div class="ceremony-item-value">[Sample Dates]</div>
                 </div>
                 <div class="ceremony-item">
                     <div class="ceremony-item-label">Group Call</div>
@@ -740,18 +740,18 @@
             <h2 class="needs-attention-title">Needs Your Attention</h2>
             <div class="alert-cards">
                 <div class="alert-card">
-                    <div class="alert-card-name">James T.</div>
-                    <div class="alert-card-issue">Overdue medication disclosure &mdash; no response in 5 days</div>
+                    <div class="alert-card-name">Sample F.</div>
+                    <div class="alert-card-issue">Overdue disclosure &mdash; no response in [N] days</div>
                     <button class="alert-card-button">SEND REMINDER</button>
                 </div>
                 <div class="alert-card">
-                    <div class="alert-card-name">Carlos B.</div>
+                    <div class="alert-card-name">Sample H.</div>
                     <div class="alert-card-issue">No response since welcome email &mdash; may need follow-up</div>
                     <button class="alert-card-button">SEND REMINDER</button>
                 </div>
                 <div class="alert-card flagged">
-                    <div class="alert-card-name">Elena K.</div>
-                    <div class="alert-card-issue">Flagged SSRI use &mdash; important for integration planning</div>
+                    <div class="alert-card-name">Sample C.</div>
+                    <div class="alert-card-issue">[Sample flag] &mdash; review integration plan</div>
                     <button class="alert-card-button">VIEW DISCLOSURE</button>
                 </div>
             </div>
@@ -764,16 +764,16 @@
     </div>
 
     <script>
-        // Participant data
+        // Sample participant data — placeholders only, NEVER use real participant info here.
         const participants = [
-            { name: 'Sarah M.', steps: ['done', 'done', 'done', 'done', 'pending', 'pending', 'pending'], progress: 57 },
-            { name: 'David R.', steps: ['done', 'done', 'done', 'active', 'pending', 'pending', 'pending'], progress: 43 },
-            { name: 'Elena K.', steps: ['done', 'active', 'done', 'active', 'pending', 'pending', 'pending'], progress: 29 },
-            { name: 'Marcus J.', steps: ['done', 'active', 'active', 'pending', 'pending', 'pending', 'pending'], progress: 14 },
-            { name: 'Priya S.', steps: ['done', 'done', 'active', 'pending', 'pending', 'pending', 'pending'], progress: 29 },
-            { name: 'James T.', steps: ['overdue', 'pending', 'pending', 'pending', 'pending', 'pending', 'pending'], progress: 0 },
-            { name: 'Amara W.', steps: ['done', 'done', 'done', 'done', 'pending', 'pending', 'pending'], progress: 57 },
-            { name: 'Carlos B.', steps: ['overdue', 'pending', 'pending', 'pending', 'pending', 'pending', 'pending'], progress: 0 }
+            { name: 'Sample A.', steps: ['done', 'done', 'done', 'done', 'pending', 'pending', 'pending'], progress: 57 },
+            { name: 'Sample B.', steps: ['done', 'done', 'done', 'active', 'pending', 'pending', 'pending'], progress: 43 },
+            { name: 'Sample C.', steps: ['done', 'active', 'done', 'active', 'pending', 'pending', 'pending'], progress: 29 },
+            { name: 'Sample D.', steps: ['done', 'active', 'active', 'pending', 'pending', 'pending', 'pending'], progress: 14 },
+            { name: 'Sample E.', steps: ['done', 'done', 'active', 'pending', 'pending', 'pending', 'pending'], progress: 29 },
+            { name: 'Sample F.', steps: ['overdue', 'pending', 'pending', 'pending', 'pending', 'pending', 'pending'], progress: 0 },
+            { name: 'Sample G.', steps: ['done', 'done', 'done', 'done', 'pending', 'pending', 'pending'], progress: 57 },
+            { name: 'Sample H.', steps: ['overdue', 'pending', 'pending', 'pending', 'pending', 'pending', 'pending'], progress: 0 }
         ];
 
         const stepLabels = ['MEDS', 'DIETA', 'CALL', 'INTAKE', 'ORIENT', 'GROUP', 'INTEG'];
