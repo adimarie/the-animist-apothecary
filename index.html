@@ -1796,6 +1796,216 @@
     body[data-content-page="home"] .newsletter-status-error {
       color: #a04545 !important;
     }
+
+    /* ============================================================
+       MOBILE — Phase 2 fixes (v260527.01)
+       Scope: M1 (hero overflow), M2 (newsletter overflow), M3 (sticky CTA)
+       Yellow items M4/M5/M6 walked separately.
+       ============================================================ */
+    @media (max-width: 720px) {
+
+      /* ----- M1. Hero ----- */
+      /* Taller mobile aspect so the portrait reads properly. */
+      body[data-content-page="home"] .hero-fullbleed {
+        aspect-ratio: 4 / 5 !important;
+        max-height: none !important;
+      }
+      /* Shift focal point so Adi's face stays visible inside the portrait crop. */
+      body[data-content-page="home"] .hero-image {
+        background-position: 65% center !important;
+      }
+      /* Top-to-bottom scrim so overlay text reads against any portrait crop. */
+      body[data-content-page="home"] .hero-overlay::before {
+        content: "" !important;
+        position: absolute !important;
+        inset: 0 !important;
+        background: linear-gradient(180deg,
+                      rgba(0,0,0,0.55) 0%,
+                      rgba(0,0,0,0.18) 38%,
+                      rgba(0,0,0,0.18) 62%,
+                      rgba(0,0,0,0.60) 100%) !important;
+        pointer-events: none !important;
+        z-index: 1 !important;
+      }
+      body[data-content-page="home"] .hero-overlay-inner {
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 1.6rem 1.25rem !important;
+        max-width: 100% !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+      }
+      body[data-content-page="home"] .hero-brand {
+        margin-bottom: 0.6rem !important;
+      }
+      body[data-content-page="home"] .hero-brand-text {
+        font-size: 0.92rem !important;
+        letter-spacing: 0.22em !important;
+      }
+      body[data-content-page="home"] .hero-brand-text em,
+      body[data-content-page="home"] .hero-brand-accent {
+        letter-spacing: 0.22em !important;
+      }
+      body[data-content-page="home"] .hero-brand-rule {
+        margin: 0 auto 1.1rem !important;
+        width: 48px !important;
+      }
+      body[data-content-page="home"] .hero-overlay .hero-eyebrow {
+        font-size: 0.68rem !important;
+        letter-spacing: 0.24em !important;
+        margin: 0 0 1rem !important;
+        text-align: center !important;
+      }
+      body[data-content-page="home"] .hero-overlay .hero-title {
+        font-size: clamp(2rem, 8.5vw, 2.6rem) !important;
+        line-height: 1.12 !important;
+        margin: 0 0 1.1rem !important;
+        text-align: center !important;
+      }
+      body[data-content-page="home"] .hero-overlay .hero-title em {
+        font-size: 1.25em !important;
+        line-height: 0.95 !important;
+      }
+      body[data-content-page="home"] .hero-overlay .hero-subtitle {
+        font-size: 1.02rem !important;
+        line-height: 1.5 !important;
+        max-width: 100% !important;
+        text-align: center !important;
+      }
+      body[data-content-page="home"] .hero-overlay .hero-cta-row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0.7rem !important;
+        margin-top: 1.4rem !important;
+      }
+      body[data-content-page="home"] .hero-overlay .hero-btn {
+        padding: 0.85rem 1.2rem !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.2em !important;
+        text-align: center !important;
+      }
+
+      /* ----- M2. Newsletter — stop the 380px inner card from bleeding off the viewport edge. ----- */
+      body[data-content-page="home"] .section-newsletter {
+        padding: 3rem 1rem !important;
+        justify-content: center !important;
+        min-height: auto !important;
+        text-align: center !important;
+      }
+      body[data-content-page="home"] .newsletter-inner {
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        padding: 2.2rem 1.4rem !important;
+        margin: 0 auto !important;
+      }
+      body[data-content-page="home"] .newsletter-form-names {
+        grid-template-columns: 1fr !important;
+      }
+      body[data-content-page="home"] .section-newsletter .newsletter-title {
+        font-size: clamp(2.4rem, 9vw, 3rem) !important;
+      }
+      body[data-content-page="home"] .section-newsletter .newsletter-body {
+        font-size: 1rem !important;
+      }
+      body[data-content-page="home"] .newsletter-trust-sep {
+        display: block !important;
+        opacity: 0 !important;
+        height: 0.4rem !important;
+        margin: 0 !important;
+      }
+
+      /* ----- M3. Sticky CTA — hide on mobile (overlaps content; brief explicitly bans sticky CTAs). ----- */
+      body[data-content-page="home"] .sticky-cta {
+        display: none !important;
+      }
+
+      /* ----- M4. Practitioner — collapse grid, cap image height, shrink type, tighten qual-tag pills. ----- */
+      body[data-content-page="home"] .practitioner-container {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        max-width: 100% !important;
+      }
+      body[data-content-page="home"] .section-practitioner {
+        padding: 4rem 1.25rem !important;
+      }
+      body[data-content-page="home"] .practitioner-image-home {
+        min-height: 0 !important;
+        height: auto !important;
+        aspect-ratio: 4 / 5 !important;
+        max-height: 70vh !important;
+      }
+      body[data-content-page="home"] .practitioner-content-home .section-title,
+      body[data-content-page="home"] .practitioner-content-home .section-title em {
+        font-size: clamp(2.8rem, 14vw, 4.2rem) !important;
+      }
+      body[data-content-page="home"] .practitioner-content-home > p,
+      body[data-content-page="home"] .practitioner-content-home p {
+        font-size: 1.05rem !important;
+        line-height: 1.65 !important;
+        margin: 0 0 1.1rem !important;
+      }
+      body[data-content-page="home"] .practitioner-quals-home {
+        gap: 0.5rem !important;
+      }
+      body[data-content-page="home"] .practitioner-serves-quote {
+        margin: 3rem auto 0 !important;
+        padding: 0 1rem !important;
+      }
+      body[data-content-page="home"] .practitioner-serves-epigraph {
+        font-size: 1.2rem !important;
+        line-height: 1.45 !important;
+        margin: 0 auto 1.6rem !important;
+      }
+      body[data-content-page="home"] .practitioner-serves-stanza {
+        font-size: 1.05rem !important;
+        line-height: 1.55 !important;
+        margin: 0 auto 1.2rem !important;
+      }
+      body[data-content-page="home"] .practitioner-cta-row {
+        margin: 2.5rem 0 0 !important;
+      }
+
+      /* ----- M5. Story — shrink large editorial type for mobile, contain grid overflow. ----- */
+      body[data-content-page="home"] .section-story {
+        padding: 4.5rem 1.25rem !important;
+      }
+      /* Override styles.css default container padding & allow grid tracks to shrink below content min. */
+      body[data-content-page="home"] .story-container,
+      body[data-content-page="home"] .story-container.story-split {
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      body[data-content-page="home"] .story-split .story-text,
+      body[data-content-page="home"] .story-split .story-media,
+      body[data-content-page="home"] .story-split .story-media-frame {
+        min-width: 0 !important;
+      }
+      body[data-content-page="home"] .story-split .story-title {
+        font-size: clamp(2.4rem, 11vw, 3.4rem) !important;
+        margin: 0.5rem 0 1rem !important;
+      }
+      body[data-content-page="home"] .story-split .story-text p {
+        font-size: 1.05rem !important;
+        line-height: 1.7 !important;
+        margin: 0 0 1rem !important;
+      }
+      body[data-content-page="home"] .story-split .story-quote {
+        font-size: 1.35rem !important;
+        line-height: 1.5 !important;
+        padding-left: 1.4rem !important;
+        margin: 2.2rem 0 2rem !important;
+      }
+      body[data-content-page="home"] .story-split .story-evolution span:first-child {
+        font-size: 1.15rem !important;
+      }
+      body[data-content-page="home"] .story-split .story-media-frame {
+        aspect-ratio: 4 / 5 !important;
+        max-height: 60vh !important;
+      }
+
+    }
   </style>
 </head>
 <body data-content-page="home">
@@ -1812,7 +2022,7 @@
           <li><a href="index.html">Home</a></li>
           <li class="nav-dropdown-parent"><a href="about.html">About <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="about.html">Adi Marie</a><a href="about.html#practice">The Practice</a><a href="faq.html">Common Questions</a><a href="voices.html">Voices from the Work</a></div></li>
           <li class="nav-dropdown-parent"><a href="solo-work.html">Solo Work <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="seasons-of-change.html" class="nav-feature"><span class="feat-eyebrow">Featured</span><span class="feat-title">Seasons of Change</span><span class="feat-desc">Ceremonially assisted coaching</span></a><a href="solo-work.html">Overview</a><a href="platicas.html">Guidance &amp; Counsel</a><a href="divinations.html">Ancestral &amp; Elemental Divination</a><a href="ceremonial-coaching.html">Ceremonial Coaching</a><a href="ceremony-and-ritual.html#private">Private Engagements</a></div></li>
-          <li class="nav-dropdown-parent"><a href="group-work.html">Group Work <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="metamorphic-year.html" class="nav-feature"><span class="feat-eyebrow">Featured</span><span class="feat-title">The Metamorphic Year</span><span class="feat-desc">Year-long initiation in community</span></a><a href="conscious-leadership.html">Conscious Leadership</a><a href="ceremony-and-ritual.html#community">Community Ceremonies</a><a href="calendar.html">Calendar of Gatherings</a></div></li>
+          <li class="nav-dropdown-parent"><a href="group-work.html">Group Work <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="metamorphic-year.html" class="nav-feature"><span class="feat-eyebrow">Featured</span><span class="feat-title">The Metamorphic Year</span><span class="feat-desc">Year-long initiation in community</span></a><a href="conscious-leadership.html" class="nav-feature"><span class="feat-eyebrow">Featured</span><span class="feat-title">Leadership from the Soul</span><span class="feat-desc">For those leading the great work</span></a><a href="ceremony-and-ritual.html#community">Community Ceremonies</a><a href="calendar.html">Calendar of Gatherings</a></div></li>
           <li class="nav-dropdown-parent"><a href="training-grounds.html">The School <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="training-grounds.html">Overview</a><a href="training-grounds.html#mythopoetic-being">Mythopoetic Being</a><a href="training-grounds.html#shamanic-bodywork">Shamanic Bodywork</a><a href="training-grounds.html#ceremonialist-training">Ceremonialist Training</a><a href="training-grounds.html#expressive-arts">Expressive Arts</a><a href="training-grounds.html#spirit-mediation">Spirit Mediation</a><a href="training-grounds.html#basins-of-creation">Basins of Creation</a></div></li>
           <li class="nav-dropdown-parent"><a href="writings.html">Resources <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="calendar.html">The Calendar</a><a href="writings.html">Writings &amp; Letters</a><a href="sacred-reciprocity.html">Sacred Reciprocity</a></div></li>
         </ul>
