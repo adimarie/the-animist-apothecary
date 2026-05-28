@@ -5278,3 +5278,27 @@ section.fade-in {
 @media (max-width: 600px) {
   .hero-title { font-size: clamp(1.9rem, 7vw, 2.6rem) !important; }
 }
+
+/* ============================================================
+   DROP-CAP DISABLED — first letter matches body text
+   ============================================================
+   The .story-text drop-cap rules (3 occurrences earlier in
+   this file at ~line 2204, 2643, 3408) were styling the first
+   letter of the first paragraph as a larger italic bronze
+   floated-left element. That made the "Y" in "You are the
+   scintillating poetry..." read as a separate piece of design
+   from the rest of the paragraph. Neutralizing all of those
+   rules here at the end of the file so the first letter renders
+   identical to the body text.
+   ============================================================ */
+.story-text p:first-of-type::first-letter,
+.section-story--no-image .story-text p:first-of-type::first-letter {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-style: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  float: none !important;
+  padding: 0 !important;
+}
