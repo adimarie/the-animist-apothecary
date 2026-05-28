@@ -1,12 +1,12 @@
 {
-  "version": "v260528.16 5:51p",
-  "release": 16,
-  "sha": "d990de8",
-  "fullSha": "d990de867a69154083bac8f78e693b7457235076",
+  "version": "v260528.17 5:55p",
+  "release": 17,
+  "sha": "f00ab7b",
+  "fullSha": "f00ab7bc7203220b4d2ff381c13d06bcc47ec29c",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T10:50:47-07:00",
-  "commits": [{"sha":"d990de8","message":"Intake: move Your Path Here to top of Section 1, add 5 discernment questions","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T10:55:13-07:00",
+  "commits": [{"sha":"f00ab7b","message":"Homepage hero: lock title look across desktop widths","author":"Adi Marie"}]
 }
