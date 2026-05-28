@@ -1,12 +1,12 @@
 {
-  "version": "v260528.18 6:01p",
-  "release": 18,
-  "sha": "4bfe8cb",
-  "fullSha": "4bfe8cb9e7cde7c3d7bf65a8cbd2a1eef51478b9",
+  "version": "v260528.19 6:05p",
+  "release": 19,
+  "sha": "578c472",
+  "fullSha": "578c47222f99df5469c2155d5bc3de022ac2bec6",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T11:00:55-07:00",
-  "commits": [{"sha":"4bfe8cb","message":"Homepage hero title: revert all desktop stepdowns, lock 6rem at all widths","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T11:04:54-07:00",
+  "commits": [{"sha":"578c472","message":"Disable .story-text drop-cap — first letter now matches body text","author":"Adi Marie"}]
 }
