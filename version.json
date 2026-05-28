@@ -1,12 +1,12 @@
 {
-  "version": "v260528.11 5:32p",
-  "release": 11,
-  "sha": "57b6e40",
-  "fullSha": "57b6e40d5508bdee78061cf424a71eb377146ab3",
+  "version": "v260528.12 5:37p",
+  "release": 12,
+  "sha": "9854a9b",
+  "fullSha": "9854a9b096ba1ea88e6756a371e8ac9c2fb9e109",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T10:31:37-07:00",
-  "commits": [{"sha":"57b6e40","message":"Sessions polish + site-wide nav buffer + tamed homepage title","author":"Adi Marie"}]
+  "pushedAt": "2026-05-28T10:36:30-07:00",
+  "commits": [{"sha":"9854a9b","message":"Homepage hero: lock title size at 4.6rem (was viewport-scaling clamp)","author":"Adi Marie"}]
 }
