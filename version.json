@@ -1,12 +1,12 @@
 {
-  "version": "v260529.20 1:58p",
-  "release": 20,
-  "sha": "6bae249",
-  "fullSha": "6bae249b18cc9e5605f12c920309209c7e3fe000",
+  "version": "v260529.21 2:12p",
+  "release": 21,
+  "sha": "a42aaab",
+  "fullSha": "a42aaab747c6cd621192590dfcf965bdce18a37f",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-29T06:58:33-07:00",
-  "commits": [{"sha":"6bae249","message":"Training Grounds: remove Visiting Practitioners section, add inline mention in Studios","author":"Adi Marie"}]
+  "pushedAt": "2026-05-29T07:11:47-07:00",
+  "commits": [{"sha":"a42aaab","message":"Training Grounds: move Founder Letter between Ethics & Container and FAQ","author":"Adi Marie"}]
 }
