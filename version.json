@@ -1,12 +1,12 @@
 {
-  "version": "v260528.31 10:33p",
-  "release": 31,
-  "sha": "450b5dc",
-  "fullSha": "450b5dc487aab441909e8af62867165dedf941de",
+  "version": "v260529.01 7:04a",
+  "release": 1,
+  "sha": "e73b7c9",
+  "fullSha": "e73b7c90afa4a0ab78b8de7f4193829e68ebc7e7",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-28T15:33:20-07:00",
-  "commits": [{"sha":"450b5dc","message":"Favicon: re-render small sizes from high-res source with contrast boost","author":"Adi Marie"}]
+  "pushedAt": "2026-05-29T00:03:45-07:00",
+  "commits": [{"sha":"e73b7c9","message":"Training Grounds: rebuild as comprehensive deep page","author":"Adi Marie"}]
 }
