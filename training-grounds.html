@@ -480,18 +480,14 @@
        ============================================ */
     .tg-divider {
       position: relative;
-      height: 50vh;
-      min-height: 360px;
+      height: 65vh;        /* was 50vh — +30% taller */
+      min-height: 470px;   /* was 360px — +30% taller */
       background-size: cover;
       background-position: center;
       background-color: #1F1A18;
+      filter: brightness(1.12) contrast(1.05) saturate(1.08);
     }
-    .tg-divider::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(31,26,24,0.35) 0%, rgba(31,26,24,0.1) 50%, rgba(31,26,24,0.35) 100%);
-    }
+    /* dark overlay scrim removed — images render at full luminosity */
     .tg-divider-tree { background-image: url('images/uploads/tg-divider-tree.jpg'); }
     .tg-divider-smudge { background-image: url('images/uploads/tg-divider-smudge.png'); }
     .tg-divider-hands { background-image: url('images/uploads/tg-phase-2-hands.png'); }
@@ -1259,7 +1255,7 @@
       .tg-fit-col { padding: 1.8rem 1.4rem; }
       .tg-call-cta-row { flex-direction: column; gap: 0.8rem; }
       .tg-call-btn-primary, .tg-call-btn-secondary { width: 100%; }
-      .tg-divider { height: 35vh; min-height: 280px; }
+      .tg-divider { height: 45vh; min-height: 365px; }
       .tg-pathway-num { width: 70px; height: 70px; font-size: 2.8rem; }
     }
   </style>
