@@ -1,12 +1,12 @@
 {
-  "version": "v260529.05 7:50a",
-  "release": 5,
-  "sha": "b29f535",
-  "fullSha": "b29f5358a204e70d0bc70a0fdcf94cc9133ca12b",
+  "version": "v260529.06 7:53a",
+  "release": 6,
+  "sha": "6d67f9b",
+  "fullSha": "6d67f9be3d168d97dc91c2cdb15c240ab1152fe3",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-29T00:50:12-07:00",
-  "commits": [{"sha":"b29f535","message":"Training Grounds: hero upscaled to 4K JPEG (3840x1645, 951KB)","author":"Adi Marie"}]
+  "pushedAt": "2026-05-29T00:52:57-07:00",
+  "commits": [{"sha":"6d67f9b","message":"Training Grounds: swap Founder & Lineage portrait to emerald-green hand-on-cheek","author":"Adi Marie"}]
 }
