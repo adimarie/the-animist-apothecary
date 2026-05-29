@@ -1,12 +1,12 @@
 {
-  "version": "v260529.10 8:07a",
-  "release": 10,
-  "sha": "852e5f8",
-  "fullSha": "852e5f8c28d9290cc2220fc5400161c62bc54b93",
+  "version": "v260529.11 8:11a",
+  "release": 11,
+  "sha": "4fcbac1",
+  "fullSha": "4fcbac1119fec30a94dc6cfadb0050390c8cd7bd",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-29T01:07:08-07:00",
-  "commits": [{"sha":"852e5f8","message":"Training Grounds: Spirit Doctoring capacity + oak divider + fix broken thumbnails","author":"Adi Marie"}]
+  "pushedAt": "2026-05-29T01:11:12-07:00",
+  "commits": [{"sha":"4fcbac1","message":"Training Grounds: smoke divider before fit + brighter oak + new smudge between Pricing/Schedule","author":"Adi Marie"}]
 }
