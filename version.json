@@ -1,12 +1,12 @@
 {
-  "version": "v260529.21 2:12p",
-  "release": 21,
-  "sha": "a42aaab",
-  "fullSha": "a42aaab747c6cd621192590dfcf965bdce18a37f",
+  "version": "v260529.22 2:41p",
+  "release": 22,
+  "sha": "5c4f147",
+  "fullSha": "5c4f1479d0340971d40ee7e66ee818b19e029521",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-29T07:11:47-07:00",
-  "commits": [{"sha":"a42aaab","message":"Training Grounds: move Founder Letter between Ethics & Container and FAQ","author":"Adi Marie"}]
+  "pushedAt": "2026-05-29T07:40:43-07:00",
+  "commits": [{"sha":"5c4f147","message":"Training Grounds: Founder Letter moved between smudge divider and Schedule","author":"Adi Marie"}]
 }
