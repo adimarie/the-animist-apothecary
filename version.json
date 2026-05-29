@@ -1,12 +1,12 @@
 {
-  "version": "v260529.08 8:01a",
-  "release": 8,
-  "sha": "a8697ca",
-  "fullSha": "a8697ca2ebc5b009758a7c354553b5915af60227",
+  "version": "v260529.09 8:03a",
+  "release": 9,
+  "sha": "d6155a2",
+  "fullSha": "d6155a2fbd40e3c85aab39ad25152dc7e8151e63",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-29T01:01:07-07:00",
-  "commits": [{"sha":"a8697ca","message":"Training Grounds: founder letter portrait = 'Come outside with me' + larger","author":"Adi Marie"}]
+  "pushedAt": "2026-05-29T01:02:54-07:00",
+  "commits": [{"sha":"d6155a2","message":"Training Grounds: Tree of Life divider after Calling, doubled in height","author":"Adi Marie"}]
 }
