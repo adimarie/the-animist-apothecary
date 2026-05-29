@@ -1,12 +1,12 @@
 {
-  "version": "v260529.04 7:47a",
-  "release": 4,
-  "sha": "1982ab8",
-  "fullSha": "1982ab80946c3ee297efd7b206b88cab3e494d5c",
+  "version": "v260529.05 7:50a",
+  "release": 5,
+  "sha": "b29f535",
+  "fullSha": "b29f5358a204e70d0bc70a0fdcf94cc9133ca12b",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-29T00:47:10-07:00",
-  "commits": [{"sha":"1982ab8","message":"Training Grounds: reorder sections for high-ticket conversion architecture","author":"Adi Marie"}]
+  "pushedAt": "2026-05-29T00:50:12-07:00",
+  "commits": [{"sha":"b29f535","message":"Training Grounds: hero upscaled to 4K JPEG (3840x1645, 951KB)","author":"Adi Marie"}]
 }
