@@ -714,6 +714,30 @@
     .tg-benefit:hover .tg-benefit-glyph { color: #DCC178; border-bottom-color: rgba(201,168,76,0.7); }
     .tg-benefit-title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-style: italic; font-size: 1.35rem; line-height: 1.25; color: var(--earth); margin: 0 0 0.8rem; }
     .tg-benefit-body { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.6; color: var(--earth-mid); margin: 0; }
+    /* small circular thumbnail above each pillar */
+    .tg-benefit-image {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      transition: box-shadow 0.3s;
+    }
+    .tg-benefit:hover .tg-benefit-image {
+      box-shadow: 0 12px 35px rgba(0,0,0,0.18), 0 0 30px rgba(201,168,76,0.15);
+    }
+    /* small thumbnail above each include item */
+    .tg-include-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      margin: 0 0 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
 
     /* ============================================
        SECTION 9: WHAT THIS SCHOOL INCLUDES
@@ -1572,21 +1596,25 @@
       </div>
       <div class="tg-benefits-grid">
         <div class="tg-benefit">
+          <div class="tg-benefit-image" style="background-image: url('https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=400&h=400&fit=crop&q=80');"></div>
           <span class="tg-benefit-glyph">I</span>
           <h3 class="tg-benefit-title">Skilled mediation.</h3>
           <p class="tg-benefit-body">The artisan's touch of inspirationally skilled mastery, applied between the worlds.</p>
         </div>
         <div class="tg-benefit">
+          <div class="tg-benefit-image" style="background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&h=400&fit=crop&q=80');"></div>
           <span class="tg-benefit-glyph">II</span>
           <h3 class="tg-benefit-title">Fluency in the worlds.</h3>
           <p class="tg-benefit-body">Moving between the seen and the unseen with steadiness, etiquette, and discernment.</p>
         </div>
         <div class="tg-benefit">
+          <div class="tg-benefit-image" style="background-image: url('https://images.unsplash.com/photo-1488778948326-b09a86eea99e?w=400&h=400&fit=crop&q=80');"></div>
           <span class="tg-benefit-glyph">III</span>
           <h3 class="tg-benefit-title">Reclamation of lineage.</h3>
           <p class="tg-benefit-body">Coming into the inherent wisdom and medicine that is innately yours.</p>
         </div>
         <div class="tg-benefit">
+          <div class="tg-benefit-image" style="background-image: url('https://images.unsplash.com/photo-1505857642320-4ba7c10f1bcd?w=400&h=400&fit=crop&q=80');"></div>
           <span class="tg-benefit-glyph">IV</span>
           <h3 class="tg-benefit-title">Service in the world.</h3>
           <p class="tg-benefit-body">Anchoring the frequency back here &mdash; in the body, in the day, in the world.</p>
@@ -1606,26 +1634,32 @@
       </div>
       <div class="tg-includes-grid">
         <div class="tg-include">
+          <div class="tg-include-image" style="background-image: url('https://images.unsplash.com/photo-1529176043003-72ea5fa9c7a7?w=300&h=300&fit=crop&q=80');"></div>
           <h3 class="tg-include-title">Cohort teaching calls.</h3>
           <p class="tg-include-body"><span class="tg-placeholder">Frequency TBD</span> live cohort calls held on the wheel of the year, in community with fellow practitioners.</p>
         </div>
         <div class="tg-include">
+          <div class="tg-include-image" style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?w=300&h=300&fit=crop&q=80');"></div>
           <h3 class="tg-include-title">Pre-recorded foundational lessons.</h3>
           <p class="tg-include-body"><span class="tg-placeholder">Hours TBD</span> of pre-recorded teachings on cosmology, lineage, and method.</p>
         </div>
         <div class="tg-include">
+          <div class="tg-include-image" style="background-image: url('https://images.unsplash.com/photo-1545208723-fa2da08a6a26?w=300&h=300&fit=crop&q=80');"></div>
           <h3 class="tg-include-title">Practice &amp; ritual support calls.</h3>
           <p class="tg-include-body">Ongoing support calls for guided practice, ceremony rehearsal, and questions that arise mid-walk.</p>
         </div>
         <div class="tg-include">
+          <div class="tg-include-image" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&h=300&fit=crop&q=80');"></div>
           <h3 class="tg-include-title">One-on-one mentorship.</h3>
           <p class="tg-include-body"><span class="tg-placeholder">Sessions TBD</span> per cohort &mdash; private mentorship with Adi Marie for personal discernment.</p>
         </div>
         <div class="tg-include">
+          <div class="tg-include-image" style="background-image: url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=300&h=300&fit=crop&q=80');"></div>
           <h3 class="tg-include-title">Community of co-practitioners.</h3>
           <p class="tg-include-body">A held community of fellow students, with small breakout groups and asynchronous discussion.</p>
         </div>
         <div class="tg-include">
+          <div class="tg-include-image" style="background-image: url('https://images.unsplash.com/photo-1490127252417-7c393f993ee4?w=300&h=300&fit=crop&q=80');"></div>
           <h3 class="tg-include-title">Curated readings &amp; practices.</h3>
           <p class="tg-include-body">Reading lists, guided meditations, ritual practice instructions, and source material from across lineages.</p>
         </div>
@@ -1829,7 +1863,7 @@
           <a href="about.html" class="tg-cta-soft tg-faculty-link">Read about Adi Marie &rarr;</a>
         </div>
         <div class="tg-faculty-card">
-          <div class="tg-faculty-portrait" style="background-color: #E8E5DC;"></div>
+          <div class="tg-faculty-portrait" style="background-image: url('https://images.unsplash.com/photo-1490604001847-b712b0c2f967?w=400&h=400&fit=crop&q=80');"></div>
           <h3 class="tg-faculty-name">Visiting <em>Practitioners</em></h3>
           <span class="tg-faculty-role">Per Cohort</span>
           <p class="tg-faculty-body"><span class="tg-placeholder">Placeholder &mdash; faculty TBD</span> Guest practitioners from across lineages and traditions join specific cohorts to deepen study in their domain. Announced as each cohort takes shape.</p>
