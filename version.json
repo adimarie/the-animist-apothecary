@@ -1,12 +1,12 @@
 {
-  "version": "v260529.15 8:51a",
-  "release": 15,
-  "sha": "61d5790",
-  "fullSha": "61d5790046192ffc515e6b96ad060fd8b7d5c586",
+  "version": "v260529.16 8:56a",
+  "release": 16,
+  "sha": "2b9628c",
+  "fullSha": "2b9628c1de0d6b6db761bd3eb896d4ec6cd4d23e",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-29T01:50:52-07:00",
-  "commits": [{"sha":"61d5790","message":"Training Grounds: real pricing + cohort size + 1-8 year track structure","author":"Adi Marie"}]
+  "pushedAt": "2026-05-29T01:55:47-07:00",
+  "commits": [{"sha":"2b9628c","message":"Training Grounds: Sacred Reciprocity tier system applied to pricing","author":"Adi Marie"}]
 }
