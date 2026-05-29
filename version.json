@@ -1,12 +1,12 @@
 {
-  "version": "v260529.03 7:37a",
-  "release": 3,
-  "sha": "3fea399",
-  "fullSha": "3fea39920b670526499231bda81168c49d312844",
+  "version": "v260529.04 7:47a",
+  "release": 4,
+  "sha": "1982ab8",
+  "fullSha": "1982ab80946c3ee297efd7b206b88cab3e494d5c",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-29T00:37:17-07:00",
-  "commits": [{"sha":"3fea399","message":"Training Grounds: Unsplash filler imagery for visual flow","author":"Adi Marie"}]
+  "pushedAt": "2026-05-29T00:47:10-07:00",
+  "commits": [{"sha":"1982ab8","message":"Training Grounds: reorder sections for high-ticket conversion architecture","author":"Adi Marie"}]
 }
