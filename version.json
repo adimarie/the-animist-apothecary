@@ -1,12 +1,12 @@
 {
-  "version": "v260529.19 9:23a",
-  "release": 19,
-  "sha": "3c7618a",
-  "fullSha": "3c7618ac9418f17e0d5ccf4befae78d7d5093faf",
+  "version": "v260529.20 1:58p",
+  "release": 20,
+  "sha": "6bae249",
+  "fullSha": "6bae249b18cc9e5605f12c920309209c7e3fe000",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-29T02:22:48-07:00",
-  "commits": [{"sha":"3c7618a","message":"Training Grounds: Pass 1 — structural restructure to 12-section arc","author":"Adi Marie"}]
+  "pushedAt": "2026-05-29T06:58:33-07:00",
+  "commits": [{"sha":"6bae249","message":"Training Grounds: remove Visiting Practitioners section, add inline mention in Studios","author":"Adi Marie"}]
 }
