@@ -1,12 +1,12 @@
 {
-  "version": "v260529.09 8:03a",
-  "release": 9,
-  "sha": "d6155a2",
-  "fullSha": "d6155a2fbd40e3c85aab39ad25152dc7e8151e63",
+  "version": "v260529.10 8:07a",
+  "release": 10,
+  "sha": "852e5f8",
+  "fullSha": "852e5f8c28d9290cc2220fc5400161c62bc54b93",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-29T01:02:54-07:00",
-  "commits": [{"sha":"d6155a2","message":"Training Grounds: Tree of Life divider after Calling, doubled in height","author":"Adi Marie"}]
+  "pushedAt": "2026-05-29T01:07:08-07:00",
+  "commits": [{"sha":"852e5f8","message":"Training Grounds: Spirit Doctoring capacity + oak divider + fix broken thumbnails","author":"Adi Marie"}]
 }
