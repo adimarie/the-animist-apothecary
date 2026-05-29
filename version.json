@@ -1,12 +1,12 @@
 {
-  "version": "v260529.18 9:16a",
-  "release": 18,
-  "sha": "abfd42a",
-  "fullSha": "abfd42a2aa853230df131389f0fae349477f5f49",
+  "version": "v260529.19 9:23a",
+  "release": 19,
+  "sha": "3c7618a",
+  "fullSha": "3c7618ac9418f17e0d5ccf4befae78d7d5093faf",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-29T02:16:12-07:00",
-  "commits": [{"sha":"abfd42a","message":"Training Grounds: tier descriptions as distilled quoted taglines","author":"Adi Marie"}]
+  "pushedAt": "2026-05-29T02:22:48-07:00",
+  "commits": [{"sha":"3c7618a","message":"Training Grounds: Pass 1 — structural restructure to 12-section arc","author":"Adi Marie"}]
 }
