@@ -1,12 +1,12 @@
 {
-  "version": "v260529.13 8:35a",
-  "release": 13,
-  "sha": "9230eb1",
-  "fullSha": "9230eb1e5e33421c05abef3d15194acc3dd130d1",
+  "version": "v260529.14 8:47a",
+  "release": 14,
+  "sha": "a1cb7ec",
+  "fullSha": "a1cb7ec11560f9bce2b28efe36616b5678a35a83",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-05-29T01:35:34-07:00",
-  "commits": [{"sha":"9230eb1","message":"Training Grounds: Seasonal Letters banner — Adi at the apothecary desk","author":"Adi Marie"}]
+  "pushedAt": "2026-05-29T01:47:08-07:00",
+  "commits": [{"sha":"a1cb7ec","message":"Training Grounds: dividers 30% taller, no overlay, brighter","author":"Adi Marie"}]
 }
