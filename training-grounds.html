@@ -497,7 +497,12 @@
     .tg-divider-hands { background-image: url('images/uploads/tg-phase-2-hands.png'); }
     .tg-divider-milkyway { background-image: url('images/uploads/tg-divider-milkyway.jpeg'); }
     .tg-divider-heart { background-image: url('images/uploads/tg-divider-heart.png'); }
-    .tg-divider-altar { background-image: url('images/uploads/tg-divider-oak.jpg'); background-position: center 35%; }
+    .tg-divider-altar {
+      background-image: url('images/uploads/tg-divider-oak.jpg');
+      background-position: center 35%;
+      filter: brightness(1.22) saturate(1.05);
+    }
+    .tg-divider-smoke { background-image: url('images/uploads/tg-divider-smoke.jpg'); }
     /* tall modifier — double the standard divider height */
     .tg-divider-tall { height: 100vh; min-height: 720px; }
 
@@ -1745,7 +1750,7 @@
 <!-- ============================================
        ATMOSPHERIC DIVIDER — ceremonial smudge in forest
        ============================================ -->
-  <div class="tg-divider tg-divider-smudge" aria-hidden="true"></div>
+  <div class="tg-divider tg-divider-smoke" aria-hidden="true"></div>
 
 <!-- ============================================
        SECTION 10 — IS THIS FOR YOU / NOT FOR YOU (two-column)
@@ -1837,6 +1842,11 @@
 
     </div>
   </section>
+
+  <!-- ============================================
+       ATMOSPHERIC DIVIDER — ceremonial smudge in forest
+       ============================================ -->
+  <div class="tg-divider tg-divider-smudge" aria-hidden="true"></div>
 
 <!-- ============================================
        SECTION 13 — SCHEDULE & LOGISTICS
