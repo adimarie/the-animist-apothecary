@@ -1183,6 +1183,21 @@
     .tg-newsletter-form input:focus { outline: none; border-color: var(--sage); box-shadow: 0 0 0 3px rgba(91,117,83,0.15); }
     .tg-newsletter-form button { padding: 0.9rem 1.6rem; background: var(--earth); color: var(--cream); border: none; border-radius: 2px; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
     .tg-newsletter-form button:hover { background: var(--earth-mid); }
+    .tg-newsletter-banner {
+      width: 100%;
+      max-width: 1100px;
+      aspect-ratio: 21/9;
+      background-image: url('images/uploads/tg-newsletter-banner.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: #E8E5DC;
+      border-radius: 2px;
+      margin: 0 auto 3.5rem;
+      box-shadow: 0 22px 50px rgba(0,0,0,0.14);
+    }
+    @media (max-width: 720px) {
+      .tg-newsletter-banner { aspect-ratio: 16/9; margin-bottom: 2.5rem; }
+    }
 
     /* ---------- H2 ornament: ✧ centered below each section H2 ---------- */
     .tg-practice-inner > .tg-h2::after,
@@ -2054,6 +2069,7 @@
        SECTION 19 — SEASONAL LETTERS
        ============================================ -->
   <section class="tg-newsletter" id="subscribe">
+    <div class="tg-newsletter-banner" role="img" aria-label="Adi Marie at the apothecary writing desk"></div>
     <div class="tg-newsletter-inner">
       <span class="tg-eyebrow">Seasonal Letters</span>
       <h2 class="tg-h2">Stay close to the <em>work.</em></h2>
