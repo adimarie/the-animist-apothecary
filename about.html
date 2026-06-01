@@ -59,6 +59,14 @@
       "@type": "Organization",
       "name": "The Animist Apothecary",
       "url": "https://theanimistapothecary.com/"
+    },
+    "subjectOf": {
+      "@type": "VideoObject",
+      "name": "An interview with Adi Marie",
+      "description": "An interview from the practice — on the work, on lineage, and on what these times are asking of us.",
+      "embedUrl": "https://www.youtube.com/embed/Q5TN8UxmjZI",
+      "url": "https://www.youtube.com/watch?v=Q5TN8UxmjZI&list=PLLQ21laGR76fbMZxfi_iNw9g3te3CR9Jh",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Q5TN8UxmjZI/maxresdefault.jpg"
     }
   }
   </script>
@@ -209,6 +217,74 @@
     }
     .current-card:hover .current-card-cta {
       color: var(--gold-bronze, #C9A84C);
+    }
+
+    /* In Conversation — dark editorial band wrapping a YouTube embed */
+    .about-conversation {
+      padding: 7rem 3rem;
+      background: var(--bark-deep, #1F1A18);
+      color: var(--parchment, #F4EAD3);
+      text-align: center;
+    }
+    .about-conversation-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .about-conversation .section-label {
+      color: var(--gold-bronze, #C9A84C);
+    }
+    .about-conversation .section-title {
+      color: var(--parchment, #F4EAD3);
+    }
+    .about-conversation .section-title em {
+      color: var(--gold-bronze, #C9A84C);
+      font-style: italic;
+    }
+    .about-conversation .story-divider {
+      background: var(--gold-bronze, #C9A84C);
+      opacity: .65;
+      margin: 1rem auto 1.5rem;
+    }
+    .about-conversation .narrative-paragraph {
+      color: rgba(244, 234, 211, .85);
+      margin: 0 auto 1rem auto;
+      max-width: 620px;
+    }
+    .conversation-embed-wrap {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      max-width: 960px;
+      margin: 3rem auto 1.5rem;
+      background: #000;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+      overflow: hidden;
+    }
+    .conversation-embed {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    .conversation-playlist-link {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: .68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      color: var(--gold-bronze, #C9A84C);
+      text-decoration: none;
+      margin-top: 1.25rem;
+      padding-bottom: .35rem;
+      border-bottom: 1px solid rgba(201, 168, 76, .5);
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .conversation-playlist-link:hover {
+      border-bottom-color: var(--gold-bronze, #C9A84C);
+      opacity: .9;
     }
 
     /* Testimonial section styling — single-quote variant (carousel JS not loaded) */
@@ -372,7 +448,33 @@
     </div>
   </section>
 
-  <!-- SECTION 4. Lineage & Training. Three marquee tags + narrative with dates/lineage holders. -->
+  <!-- SECTION 4. In Conversation. Dark editorial band framing a YouTube interview embed. -->
+  <section class="about-conversation" id="conversation">
+    <div class="about-conversation-inner">
+      <span class="section-label" data-content="conversation.section_label">In Conversation</span>
+      <h2 class="section-title" data-content="conversation.title" data-content-type="html">Recent <em>conversations</em></h2>
+      <div class="story-divider"></div>
+      <p class="narrative-paragraph" data-content="conversation.intro">An interview from the practice &mdash; on the work, on lineage, and on what these times are asking of us.</p>
+
+      <div class="conversation-embed-wrap">
+        <iframe class="conversation-embed"
+                src="https://www.youtube-nocookie.com/embed/Q5TN8UxmjZI?list=PLLQ21laGR76fbMZxfi_iNw9g3te3CR9Jh&amp;rel=0"
+                title="An interview with Adi Marie"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+      </div>
+
+      <a class="conversation-playlist-link"
+         href="https://www.youtube.com/playlist?list=PLLQ21laGR76fbMZxfi_iNw9g3te3CR9Jh"
+         target="_blank" rel="noopener noreferrer"
+         data-content="conversation.playlist_link_text"
+         data-content-href="conversation.playlist_url">Watch the full series &rarr;</a>
+    </div>
+  </section>
+
+  <!-- SECTION 5. Lineage & Training. Three marquee tags + narrative with dates/lineage holders. -->
   <section class="about-lineage" id="lineage">
     <div class="about-lineage-inner">
       <span class="section-label" data-content="lineage.section_label">Lineage &amp; Training</span>
@@ -395,7 +497,7 @@
     </div>
   </section>
 
-  <!-- SECTION 5. Other Currents. 2x2 card grid (Writing / Workshops / Speaking / Journal). -->
+  <!-- SECTION 6. Other Currents. 2x2 card grid (Writing / Workshops / Speaking / Journal). -->
   <section class="about-currents">
     <div class="about-currents-inner">
       <span class="section-label" data-content="other_currents.section_label">Writing, Teaching, Other Currents</span>
@@ -437,7 +539,7 @@
     </div>
   </section>
 
-  <!-- SECTION 6. Testimonial. Currently in scaffold state (publishable "note from the practice").
+  <!-- SECTION 7. Testimonial. Currently in scaffold state (publishable "note from the practice").
        When a real testimony is offered with consent: replace YAML keys (testimonial.text,
        testimonial.author) and remove the "about-testimonial--scaffold" modifier class below. -->
   <section class="section-testimonial about-testimonial about-testimonial--scaffold">
@@ -460,7 +562,7 @@
     </div>
   </section>
 
-  <!-- SECTION 7. CTA. -->
+  <!-- SECTION 8. CTA. -->
   <section class="section-cta">
     <div class="cta-container">
       <span class="section-label" data-content="cta_section.eyebrow">When You&rsquo;re Ready</span>
