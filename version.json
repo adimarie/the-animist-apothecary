@@ -1,12 +1,12 @@
 {
-  "version": "v260601.03 10:52p",
-  "release": 3,
-  "sha": "5124e56",
-  "fullSha": "5124e561beb8969dd7ae396a994d1a7d76e0558b",
+  "version": "v260601.04 10:54p",
+  "release": 4,
+  "sha": "98a117a",
+  "fullSha": "98a117a1d814f9fc3cafb2c5b304400fcf58c94f",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-01T15:52:16-07:00",
-  "commits": [{"sha":"5124e56","message":"About: fix interview embed and credit interviewer","author":"Adi Marie"}]
+  "pushedAt": "2026-06-01T15:54:21-07:00",
+  "commits": [{"sha":"98a117a","message":"About: use YouTube's canonical share-code embed URL","author":"Adi Marie"}]
 }
