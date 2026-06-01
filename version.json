@@ -1,12 +1,12 @@
 {
-  "version": "v260601.04 10:54p",
-  "release": 4,
-  "sha": "98a117a",
-  "fullSha": "98a117a1d814f9fc3cafb2c5b304400fcf58c94f",
+  "version": "v260601.05 11:02p",
+  "release": 5,
+  "sha": "71684d1",
+  "fullSha": "71684d102e265b5c09aeada4f78f94b7a7ecffe4",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-01T15:54:21-07:00",
-  "commits": [{"sha":"98a117a","message":"About: use YouTube's canonical share-code embed URL","author":"Adi Marie"}]
+  "pushedAt": "2026-06-01T16:01:51-07:00",
+  "commits": [{"sha":"71684d1","message":"About: remove off-page \"Watch on YouTube\" CTA below interview embed","author":"Adi Marie"}]
 }
