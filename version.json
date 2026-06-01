@@ -1,12 +1,12 @@
 {
-  "version": "v260601.05 11:02p",
-  "release": 5,
-  "sha": "71684d1",
-  "fullSha": "71684d102e265b5c09aeada4f78f94b7a7ecffe4",
+  "version": "v260601.06 11:10p",
+  "release": 6,
+  "sha": "04e8a91",
+  "fullSha": "04e8a91868b7319e61eaa8ade0e82e0041678109",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-01T16:01:51-07:00",
-  "commits": [{"sha":"71684d1","message":"About: remove off-page \"Watch on YouTube\" CTA below interview embed","author":"Adi Marie"}]
+  "pushedAt": "2026-06-01T16:10:31-07:00",
+  "commits": [{"sha":"04e8a91","message":"Resources nav: add Preparatory & Intake, Interdimensional Work, Aftercare & Integration","author":"Adi Marie"}]
 }
