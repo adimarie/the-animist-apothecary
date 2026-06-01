@@ -1,12 +1,12 @@
 {
-  "version": "v260601.01 10:23p",
-  "release": 1,
-  "sha": "d9a618c",
-  "fullSha": "d9a618c6783aeec6fabd01486867cabb28573c3d",
+  "version": "v260601.02 10:31p",
+  "release": 2,
+  "sha": "898aec8",
+  "fullSha": "898aec86f25f1a461eb61f254261daab24b0d82a",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-01T15:22:58-07:00",
-  "commits": [{"sha":"d9a618c","message":"About: full Phase 1+2+4 rework — 7-section single-column rebuild","author":"Adi Marie"}]
+  "pushedAt": "2026-06-01T15:31:02-07:00",
+  "commits": [{"sha":"898aec8","message":"About: add \"In Conversation\" section with embedded YouTube interview","author":"Adi Marie"}]
 }
