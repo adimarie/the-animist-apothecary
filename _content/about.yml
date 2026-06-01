@@ -1,67 +1,88 @@
 # About page editable content — every section editable via /studio/.
 # Saves commit to GitHub and deploy automatically.
 # js/content-loader.js reads this and patches about.html.
+#
+# Phase 1 rework 2026-06-01 — see memory/decisions_about_260601.md for the
+# locked structural and voice decisions behind this layout.
 
 hero:
-  image: "images/adi-hero-portrait.jpg"
-  image_position: "center 25%"
+  image: "images/uploads/adi-hero-hillside-2026-05-22.jpg"
+  image_position: "center 30%"
   eyebrow: "The Hand Behind the Work"
   title: "Adi <em>Marie</em>"
-  subtitle: "Medicine woman, ceremonialist, somatic medium — Southern California."
+  subtitle: "Medicine woman, ceremonialist, somatic medium — serving worldwide."
 
 bio:
-  image: "images/adi-hero-portrait.jpg"
-  image_position: "center top"
   section_label: "Sixteen Years in the Work"
   title: "A medicine basket, <em>carefully tended</em>"
-  paragraph_1: "Adi Marie is a shamanic healer, ceremonialist, and somatic medium with sixteen years of practice rooted in the wild hills of Southern California. What began as deep hands-on bodywork and therapeutic touch evolved — through initiation, study, and the relentless demands of a genuine calling — into something far more encompassing."
+  paragraph_1: "Adi Marie is a shamanic healer, ceremonialist, and somatic medium with sixteen years of practice rooted in Southern California. What began as deep hands-on bodywork and therapeutic touch evolved — through initiation, study, and the relentless demands of a genuine calling — into something far more encompassing."
   paragraph_2: "Her training spans multiple lineages and traditions. She is an initiated diviner in the Dagara tradition of West Africa, a lineage that carries ancient technologies of ancestral connection, elemental medicine, and communal healing. She is also trained in somatic therapeutic arts, entheogenic medicine facilitation, expressive arts, generative hypnosis, ceremonial design, and the botanical healing arts."
   paragraph_3: "Her medicine basket is vast and carefully tended. But what defines her practice is not the accumulation of techniques — it is the quality of presence she brings to every session, every ceremony, every threshold crossing. She has the rare ability to hold space at the edge of the known world, where the personal becomes mythic and the mythic becomes liveable."
   paragraph_4: "Adi Marie works with doctors, medicine people, therapists, artists, leaders of industry, and those whose decisions shape the trajectory of this earth ship. Her clients come from all walks of life and all spiritual backgrounds. What unites them is a shared commitment to going deeper — to the kind of healing that changes the shape of a life, not just the surface of it."
-  paragraph_5: "She is known for her ferocious love, her uncommon insight, and her capacity to hold the full spectrum of the human experience without flinching. She believes that the personal is planetary — that each person who heals becomes medicine for the world."
   quote: "'The earth is asking for healers. The times are asking for those willing to go into the underworld and come back with something real. This work is my answer to that call — and it is an honor to walk that path alongside those who are ready.' <strong>— Adi Marie</strong>"
-  paragraph_6: "Based in the canyon lands of Southern California, Adi offers private sessions and intensives in person, and is available worldwide for virtual sessions, private travel engagements, and select community events."
-  quals_label: "Qualifications & Training"
-  quals:
-    - "Therapeutic Coach"
-    - "Entheogenic Medicine"
-    - "Ceremonial & Ritual Stewardship"
-    - "Interdimensional Intermediary & Guide"
-    - "Somatic Medium & Diviner"
-    - "Shamanic Bodyworker"
-    - "Massage Therapist"
-    - "Expressive Arts Facilitator"
-    - "Dagara Lineage Diviner"
-    - "Botanical Medicine"
-    - "Generative Hypnosis"
+  paragraph_5: "Based in the canyon lands of Southern California, Adi offers private sessions and intensives in person, and is available worldwide for virtual sessions, private travel engagements, and select community events."
+  image_1: "images/uploads/practitioner-portrait-2026-05-23.jpg"
+  image_1_alt: "Adi Marie in candid portrait"
+  image_2: "images/uploads/the-work-ceremony.jpg"
+  image_2_alt: "Ceremonial setting — candles, smoke, sacred objects gathered for the work"
 
-musings:
+practice:
+  section_label: "The Practice"
+  title: "Where the personal becomes <em>mythic</em>"
+  paragraph_1: "The Animist Apothecary is rooted in a single conviction — that all beings carry spirit, and that the work of healing is the work of restoring relationship between a person and the living world they belong to. The personal is planetary. Each person who heals becomes medicine for the world."
+  paragraph_2: "Adi Marie is known for her ferocious love, her uncommon insight, and her capacity to hold the full spectrum of the human experience without flinching. She works at the edges where bodywork meets ceremony, where therapeutic skill meets the unseen, and where the ones who carry weight find a place to set it down."
+  paragraph_3: "What unites every container — solo session, group ceremony, year-long arc — is the same intention. Slow, careful work. Sovereign decisions. Sacred reciprocity. No performance, no spiritual bypass. Only the kind of presence that lets a real thing happen."
+
+lineage:
+  section_label: "Lineage & Training"
+  title: "A path tended across <em>multiple traditions</em>"
+  tags:
+    - "Interdimensional Intermediary & Guide"
+    - "Somatic Medium & Oracular Diviner"
+    - "Ceremonial & Ritual Stewardship"
+  paragraph_1: "Adi Marie's practice has been tended without interruption since 2010 — sixteen years of devoted service, more than a decade of formal initiation and study, and an ongoing apprenticeship to the wild lands of Southern California. The foundation was laid as a licensed massage therapist and somatic bodyworker, and every layer since has been added one initiation at a time."
+  paragraph_2: "She is an initiated diviner in the Dagara tradition of West Africa, a lineage that carries ancient technologies of ancestral connection, elemental medicine, and communal healing. Her relationship with the lineage and its elders is ongoing — divinations are read, ceremonies are kept, and the medicine is returned to the living web that gave it."
+  paragraph_3: "Her formation continues across multiple disciplines — entheogenic medicine facilitation, generative hypnosis, expressive arts as ceremonial tool, ritual architecture, and the botanical healing arts. She trains with elders and lineage holders, and apprentices to the medicines themselves."
+  paragraph_4: "She trains and is trained by the practitioners who walk this terrain — doctors, medicine people, therapists, artists, and the leaders whose decisions shape the trajectory of this earth ship. The medicine basket is vast and carefully tended."
+
+other_currents:
   section_label: "Writing, Teaching, Other Currents"
-  items:
-    - title: "Writing & Poetics"
-      paragraph_1: "Adi Marie writes from the interworlds — from the place where the personal dissolves into the mythic, where language strains to hold what the ceremony already knows. Her writing spans reflective essays, poetic transmissions, and candid meditations on the nature of healing, initiation, and the living world."
-      paragraph_2: "Current writing is being gathered and will be published here in ongoing installments. Subscribe to the newsletter to be notified when new pieces arrive."
-      cta_text: "Receive the Dispatches —"
+  title: "Currents that run <em>alongside the practice</em>"
+  intro: "Beyond the one-to-one work, four currents run alongside — places where the practice meets writing, teaching, public speaking, and the slow gathering of a journal."
+  cards:
+    - eyebrow: "From the Interworlds"
+      title: "Writing & Poetics"
+      desc: "Reflective essays, poetic transmissions, and candid meditations on the nature of healing, initiation, and the living world. Gathered now — published in installments to come."
+      cta_text: "Receive the Dispatches →"
       cta_url: "community.html#newsletter"
-    - title: "Workshops & Teaching"
-      paragraph_1: "Adi Marie offers workshops and intensive teaching programs for those developing their own ceremonial and healing practice. Teaching topics include: Introduction to Animist Cosmology & Earth-Based Practice, Sacred Breath Facilitation Training, Ceremonial Design & Ritual Architecture, Ancestral Healing & Lineage Repair, Somatic Awareness for Healing Practitioners, Expressive Arts as Ceremonial Tool."
-      paragraph_2: "Upcoming dates announced via newsletter. Private teaching engagements available for groups of 6 or more."
-      cta_text: "Inquire About Teaching —"
-      cta_url: "https://new.theanimistapothecary.com/apply"
-    - title: "Appearances & Speaking"
-      paragraph_1: "Adi Marie is available for speaking engagements, panel participation, podcast appearances, and ceremonial leadership at events. She speaks with power and accessibility on: animist worldviews and their relevance to the current moment, the intersection of indigenous wisdom and contemporary healing, ceremonial culture as medicine for the collective, somatic awareness and the body's intelligence, earth-based spirituality and ecological grief."
-      paragraph_2: "To book Adi for an appearance, use the contact form and describe your event."
-      cta_text: "Invite Adi to Speak —"
-      cta_url: "https://new.theanimistapothecary.com/apply"
-    - title: "The Journal"
-      paragraph_1: "The journal is a living document — reflections from the practice, dispatches from the road, transmissions from the in-between worlds. Written in the heat of the experience, close to the bone."
-      paragraph_2: "Recent topics: On the grief of the living world and why we must feel it. What the body knows that the mind hasn't caught up to yet. The difference between spirituality and spiritual bypassing. Canyon medicine: what the wild lands teach those who listen."
-      cta_text: "Read on —"
+    - eyebrow: "For Practitioners"
+      title: "Workshops & Teaching"
+      desc: "Workshops and intensive teaching programs for those developing their own ceremonial and healing practice. Animist cosmology, sacred breath facilitation, ceremonial design, ancestral healing, somatic awareness, expressive arts as ritual. Private engagements available for groups of six or more."
+      cta_text: "Inquire About Teaching →"
+      cta_url: "intake.html"
+    - eyebrow: "For Event Organizers"
+      title: "Appearances & Speaking"
+      desc: "Speaking engagements, panel participation, podcast appearances, and ceremonial leadership at events. Animist worldviews, indigenous wisdom in contemporary healing, somatic intelligence, ecological grief, ceremonial culture as collective medicine."
+      cta_text: "Inquire by Email →"
+      cta_url: "mailto:adimarie@bodyworkandbotanicals.com?subject=Speaking%20Inquiry"
+    - eyebrow: "A Living Document"
+      title: "The Journal"
+      desc: "Recurring threads — the grief of the living world and why we must feel it; what the body knows that the mind hasn't caught up to yet; the difference between spirituality and spiritual bypassing; canyon medicine, and what the wild lands teach those who listen."
+      cta_text: "Read on →"
       cta_url: "community.html#newsletter"
+
+testimonial:
+  # Scaffold state — a publishable "note from the practice" stands in for a real
+  # testimonial until one is offered with consent. When a real testimony arrives:
+  #   1. Replace testimonial.text with the quote (using curly quotes).
+  #   2. Replace testimonial.author with initials + role + region (e.g. "M.K., Physician & Medicine Woman, New Mexico").
+  #   3. In about.html, remove the "about-testimonial--scaffold" modifier class from the section.
+  text: "Voices from this work live with the people who carry them. When a testimony is offered, and consent given, it appears here."
+  author: "A note from the practice"
 
 cta_section:
   eyebrow: "When You're Ready"
   title: "Cross the <em>threshold</em>"
   body: "Send a note. We'll find an hour, hear what you're carrying, and see whether the work is the right shape for where you are."
   cta_text: "Apply to Begin"
-  cta_url: "https://new.theanimistapothecary.com/apply"
+  cta_url: "intake.html"
