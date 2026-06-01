@@ -1,12 +1,12 @@
 {
-  "version": "v260601.02 10:31p",
-  "release": 2,
-  "sha": "898aec8",
-  "fullSha": "898aec86f25f1a461eb61f254261daab24b0d82a",
+  "version": "v260601.03 10:52p",
+  "release": 3,
+  "sha": "5124e56",
+  "fullSha": "5124e561beb8969dd7ae396a994d1a7d76e0558b",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-01T15:31:02-07:00",
-  "commits": [{"sha":"898aec8","message":"About: add \"In Conversation\" section with embedded YouTube interview","author":"Adi Marie"}]
+  "pushedAt": "2026-06-01T15:52:16-07:00",
+  "commits": [{"sha":"5124e56","message":"About: fix interview embed and credit interviewer","author":"Adi Marie"}]
 }
