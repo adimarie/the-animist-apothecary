@@ -39,9 +39,11 @@ conversation:
   intro: "A recent conversation with Iván Chocrón — on the work, on lineage, and on what these times are asking of those who can hold them."
   video_id: "Q5TN8UxmjZI"
   video_title: "Adi Marie in conversation with Iván Chocrón — An Unbelievable Comeback"
-  playlist_id: "PLLQ21laGR76fbMZxfi_iNw9g3te3CR9Jh"
-  playlist_link_text: "Watch the full series →"
-  playlist_url: "https://www.youtube.com/playlist?list=PLLQ21laGR76fbMZxfi_iNw9g3te3CR9Jh"
+  # Below CTA points to the YouTube share URL by default.
+  # If a public playlist of interviews is set up later, swap playlist_url
+  # back to a /playlist?list=... URL and update playlist_link_text accordingly.
+  playlist_link_text: "Watch on YouTube →"
+  playlist_url: "https://youtu.be/Q5TN8UxmjZI?si=oQWXzBqBBCd2ayeo"
 
 lineage:
   section_label: "Lineage & Training"
