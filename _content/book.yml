@@ -1,11 +1,12 @@
 # Begin Here gateway page editable content. Saves commit to GitHub via /studio/.
 # js/content-loader.js reads this and patches book.html.
 # Phase 1 rebuild 2026-05-18 based on Tier-1 peer research findings.
+# Phase 1 polish 2026-06-01: see memory/decisions_book_html_260601.md.
 
 hero:
-  image: "https://images.unsplash.com/photo-1672196799313-047c77f87f80?w=1400&h=600&fit=crop&q=80"
-  image_alt: "The threshold image for Begin Here, the gateway to The Animist Apothecary."
-  image_position: "center"
+  image: "images/uploads/newsletter-adi-altar-forest.jpg"
+  image_alt: "Adi Marie at an altar in the canyon forest — the threshold image for Begin Here."
+  image_position: "center 35%"
   image_size: "cover"
   eyebrow: "Cross the Threshold"
   title: "Begin <em>here</em>"
@@ -22,20 +23,32 @@ doors:
   body: "Choose the door that matches where you stand."
 
 practitioner:
-  image: "images/adi-hero-portrait.jpg"
+  image: "images/uploads/book-practitioner-260601.png"
   image_position: "center top"
   section_label: "The Practitioner"
   title: "<em>Adi Marie.</em>"
   body_1: "Adi Marie carries a medicine basket woven from traditional herbalism, animist cosmology, somatic awareness, shamanic practice, and the sacred arts of ceremony. Sixteen years of devoted service, over a decade of initiation and study."
   body_2: "She works with doctors, medicine people, therapists, leaders, and those whose decisions shape the trajectory of this earth ship. Solo and in community."
   location: "Based in Southern California. Available worldwide for virtual work, in person for those called to the land."
-  cta_text: "Read the full story &rarr;"
+  cta_text: "Read the full story →"
 
 reciprocity:
   section_label: "Sacred Reciprocity"
   title: "Rates flow from the <em>work that takes shape.</em>"
-  body: "The conversation itself is a paid one, held in sacred reciprocity. Rates vary by format (group, solo session, developmental arcs, classes, ongoing work). What is right is shaped in the Intake & Inquiry conversation, where the work itself begins to take form."
-  cta_text: "Read more about Sacred Reciprocity &rarr;"
+  body: "The conversation itself is a paid one, held in sacred reciprocity. Rates vary by format — group, solo session, developmental arcs, classes, ongoing work. What is right is shaped in the Intake & Inquiry conversation, where the work itself begins to take form."
+  # Three-tier scaffold — Hoffman precedent, voice in Adi's. Dollar amounts intentionally
+  # held off the gateway; they are shaped in conversation.
+  tiers:
+    - icon: "· · ·"
+      name: "Held in Generosity"
+      description: "For those whose path allows fuller offering. Your reciprocity sustains the practice and supports those in need."
+    - icon: "· ·"
+      name: "Held in Reciprocity"
+      description: "The standard. The conversation shapes what is right for the work and where you are."
+    - icon: "·"
+      name: "Held in Support"
+      description: "For those whose path needs receiving. Work-trade, scholarship, and other arrangements held in trust."
+  cta_text: "Read more about Sacred Reciprocity →"
 
 testimonial:
   mark: "&ldquo;"

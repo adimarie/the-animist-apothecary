@@ -11,11 +11,246 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Begin here. The gateway to working with Adi Marie at The Animist Apothecary.">
   <title>Begin Here &middot; The Animist Apothecary</title>
+  <link rel="canonical" href="https://theanimistapothecary.com/book.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Begin Here &middot; The Animist Apothecary">
+  <meta property="og:description" content="Begin here. The gateway to working with Adi Marie at The Animist Apothecary.">
+  <meta property="og:image" content="https://theanimistapothecary.com/images/uploads/newsletter-adi-altar-forest.jpg">
+  <meta property="og:url" content="https://theanimistapothecary.com/book.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Begin Here &middot; The Animist Apothecary">
+  <meta name="twitter:description" content="Begin here. The gateway to working with Adi Marie at The Animist Apothecary.">
+  <meta name="twitter:image" content="https://theanimistapothecary.com/images/uploads/newsletter-adi-altar-forest.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=v32">
   <link rel="stylesheet" href="css/site-header.css?v=v09">
+
+  <!-- Preload hero LCP image for fastest paint -->
+  <link rel="preload" as="image" href="images/uploads/newsletter-adi-altar-forest.jpg" fetchpriority="high">
+
+  <!-- JSON-LD: Service schema for the gateway -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Intake & Inquiry — The Animist Apothecary",
+    "url": "https://theanimistapothecary.com/book.html",
+    "description": "The gateway to working with Adi Marie at The Animist Apothecary. A first conversation, held in sacred reciprocity.",
+    "provider": {
+      "@type": "Person",
+      "name": "Adi Marie",
+      "url": "https://theanimistapothecary.com/about.html"
+    },
+    "areaServed": "Worldwide",
+    "serviceType": "Ceremonial Healing Intake"
+  }
+  </script>
+
+  <style>
+    /* book.html Phase 1 polish — page-scoped styles, replaces prior inline overrides */
+
+    /* Hero LCP image (Phase 2). Replaces background-image for proper fetchpriority. */
+    .hero-fullbleed { isolation: isolate; }
+    .hero-fullbleed-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      z-index: 0;
+    }
+    .hero-fullbleed .hero-overlay { z-index: 1; }
+    .hero-fullbleed .hero-content { z-index: 2; position: relative; }
+
+    /* Intro section — paper */
+    .book-intro {
+      padding: 6rem 2rem 4rem;
+      background: var(--paper, #F7F5F0);
+    }
+    .book-intro-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Practitioner section — paper (rhythm anchor after dark doors band) */
+    .book-practitioner-section {
+      background: var(--paper, #F7F5F0);
+    }
+
+    /* Reciprocity section — sand (rhythm shift). Literal hex bypasses --sand token (which is tan in styles.css). */
+    .book-reciprocity {
+      padding: 6rem 2rem;
+      background: #EFEDE6 !important;
+      color: var(--bark, #2D2A26);
+    }
+    .book-reciprocity-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .book-reciprocity .section-label {
+      color: var(--gold-bronze, #C9A84C);
+    }
+    .book-reciprocity h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      margin: 1rem 0 1.5rem;
+      color: var(--bark, #2D2A26);
+    }
+    .book-reciprocity .reciprocity-body {
+      color: var(--bark, #2D2A26);
+      opacity: 0.85;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin: 0 auto 2.5rem;
+      max-width: 720px;
+    }
+
+    /* Reciprocity tier cards — Hoffman-pattern, Adi voice */
+    .reciprocity-tiers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      margin: 2.5rem 0;
+      text-align: left;
+    }
+    .reciprocity-tier {
+      background: var(--paper, #F7F5F0);
+      padding: 2.25rem 1.75rem;
+      box-shadow: 0 4px 18px rgba(31, 26, 24, .06);
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      border-top: 2px solid rgba(201, 168, 76, .55);
+      text-align: center;
+    }
+    .tier-icon {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      letter-spacing: .35em;
+      color: var(--gold-bronze, #C9A84C);
+      margin-bottom: .25rem;
+    }
+    .tier-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 500;
+      font-style: italic;
+      color: var(--bark, #2D2A26);
+      margin: 0;
+      line-height: 1.25;
+    }
+    .tier-description {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: var(--bark, #2D2A26);
+      opacity: .85;
+      margin: 0;
+    }
+    .book-reciprocity .reciprocity-cta {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--bark, #2D2A26);
+      border-color: var(--bark, #2D2A26);
+    }
+
+    /* Testimonial section — parchment (rhythm shift). Override section-testimonial defaults. */
+    section.book-testimonial,
+    .section-testimonial.book-testimonial { background: #F4EAD3 !important; }
+
+    /* Process section — paper (rhythm shift back to anchor). Override section-process defaults. */
+    section.book-process,
+    .section-process.book-process { background: #F7F5F0 !important; }
+
+    /* Newsletter section — cream-deeper (no change but extracted to class) */
+    .book-subscribe {
+      background: #EFEDE6;
+      color: var(--bark, #2D2A26);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+    .book-subscribe-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .book-subscribe .section-label {
+      color: var(--gold-bronze, #C9A84C);
+    }
+    .book-subscribe h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      margin: 1rem 0 1.2rem;
+      color: var(--bark, #2D2A26);
+    }
+    .book-subscribe p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      opacity: 0.78;
+      margin-bottom: 2rem;
+      color: var(--bark, #2D2A26);
+    }
+    .book-subscribe-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 480px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .book-subscribe-form input[type="email"] {
+      flex: 1;
+      min-width: 240px;
+      padding: 0.95rem 1.2rem;
+      border: 1px solid rgba(45,42,38,0.25);
+      background: rgba(255,255,255,0.55);
+      color: var(--bark, #2D2A26);
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+    }
+    .book-subscribe-form button {
+      padding: 0.95rem 1.8rem;
+      white-space: nowrap;
+    }
+    .newsletter-status {
+      margin-top: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--bark, #2D2A26);
+    }
+
+    /* Three Doors dark band override */
+    .book-doors {
+      background: var(--bark, #2D2A26);
+    }
+    .book-doors .vision-pillars {
+      grid-template-columns: 1fr 1fr 1fr;
+      max-width: 1080px;
+      gap: 2rem;
+    }
+
+    @media (max-width: 820px) {
+      .reciprocity-tiers { grid-template-columns: 1fr; gap: 1.25rem; }
+      .book-doors .vision-pillars { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .book-intro,
+      .book-reciprocity,
+      .book-subscribe { padding: 4rem 1.5rem; }
+      .reciprocity-tier { padding: 1.75rem 1.5rem; }
+    }
+  </style>
 </head>
 <body data-content-page="book">
 
@@ -36,19 +271,20 @@
           <li class="nav-dropdown-parent"><a href="writings.html">Resources <span class="nav-arrow">&#9662;</span></a><div class="nav-dropdown"><a href="calendar.html">The Calendar</a><a href="preparatory-and-intake.html">Preparatory &amp; Intake</a><a href="interdimensional-work.html">Interdimensional Work</a><a href="aftercare-and-integration.html">Aftercare &amp; Integration</a><a href="writings.html">Writings &amp; Letters</a><a href="sacred-reciprocity.html">Sacred Reciprocity</a></div></li>
         </ul>
       </nav>
-      <a href="sessions.html" class="nav-cta apply-btn">Book</a>
+      <a href="book.html" class="nav-cta apply-btn nav-active">Begin Here</a>
       </div>
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- SECTION 1. Hero. LCP image migrated to <img fetchpriority="high"> for proper paint priority. -->
   <section class="hero-fullbleed">
-    <div class="hero-image" role="img"
-         aria-label="The threshold image for Begin Here, the gateway to The Animist Apothecary."
-         data-content="hero.image" data-content-type="image"
-         data-content-alt="hero.image_alt"
-         data-content-bgpos="hero.image_position"
-         data-content-bgsize="hero.image_size"></div>
+    <img class="hero-fullbleed-img"
+         src="images/uploads/newsletter-adi-altar-forest.jpg"
+         alt=""
+         fetchpriority="high"
+         decoding="async"
+         data-content="hero.image" data-content-type="image">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
       <span class="hero-eyebrow" data-content="hero.eyebrow">Cross the Threshold</span>
       <h1 class="hero-title" data-content="hero.title" data-content-type="html">Begin <em>here</em></h1>
@@ -56,9 +292,9 @@
     </div>
   </section>
 
-  <!-- INTRO -->
-  <section class="section-story section-story--no-image" style="padding: 6rem 2rem 4rem;">
-    <div class="story-container" style="max-width: 720px; text-align: center;">
+  <!-- SECTION 2. Intro. Paper. -->
+  <section class="book-intro">
+    <div class="book-intro-inner">
       <div class="story-text">
         <span class="section-label" data-content="intro.section_label">The Threshold</span>
         <h2 class="section-title" data-content="intro.title" data-content-type="html">Three doors. <em>Each an honest beginning.</em></h2>
@@ -68,13 +304,13 @@
     </div>
   </section>
 
-  <!-- THREE DOORS -->
-  <section class="section-vision" style="background: var(--bark, #2D2A26) !important;">
+  <!-- SECTION 3. Three Doors. Dark band. -->
+  <section class="section-vision book-doors">
     <span class="section-label" data-content="doors.section_label">Three Doors</span>
     <h2 class="vision-title" data-content="doors.title" data-content-type="html">How would you like to <em>begin.</em></h2>
     <div class="vision-divider"></div>
     <p class="vision-body" data-content="doors.body">Choose the door that matches where you stand.</p>
-    <div class="vision-pillars" style="grid-template-columns: 1fr 1fr 1fr !important; max-width: 1080px; gap: 2rem;">
+    <div class="vision-pillars">
       <a class="vision-pillar" href="inquiry.html">
         <span class="pillar-icon">&middot; &middot; &middot;</span>
         <h3>Intake &amp; Inquiry.</h3>
@@ -96,44 +332,61 @@
     </div>
   </section>
 
-  <!-- ABOUT ADI -->
-  <section class="section-practitioner">
+  <!-- SECTION 4. Practitioner. Paper (anchor after dark doors). 3-marquee qual-tags sitewide. -->
+  <section class="section-practitioner book-practitioner-section">
     <div class="practitioner-container">
       <div class="practitioner-image-home"
            data-content="practitioner.image" data-content-type="image"
            data-content-bgpos="practitioner.image_position"
-           style="background-image:url('images/adi-hero-portrait.jpg'); background-position: center top;"></div>
+           style="background-image:url('images/uploads/book-practitioner-260601.png'); background-position: center top;"></div>
       <div class="practitioner-content-home">
         <span class="section-label" data-content="practitioner.section_label">The Practitioner</span>
         <h2 class="section-title" data-content="practitioner.title" data-content-type="html"><em>Adi Marie.</em></h2>
         <div class="story-divider"></div>
         <div class="practitioner-quals-home">
-          <span class="qual-tag">Therapeutic Coach</span>
-          <span class="qual-tag">Entheogenic Medicine</span>
+          <span class="qual-tag">Interdimensional Intermediary &amp; Guide</span>
+          <span class="qual-tag">Somatic Medium &amp; Oracular Diviner</span>
           <span class="qual-tag">Ceremonial &amp; Ritual Stewardship</span>
-          <span class="qual-tag">Somatic Medium &amp; Diviner</span>
-          <span class="qual-tag">Shamanic Bodyworker</span>
         </div>
         <p data-content="practitioner.body_1">Adi Marie carries a medicine basket woven from traditional herbalism, animist cosmology, somatic awareness, shamanic practice, and the sacred arts of ceremony. Sixteen years of devoted service, over a decade of initiation and study.</p>
         <p data-content="practitioner.body_2">She works with doctors, medicine people, therapists, leaders, and those whose decisions shape the trajectory of this earth ship. Solo and in community.</p>
-        <p class="practitioner-location" data-content="practitioner.location">Based in Southern California. Available and serving worldwide for virtual work, in person by arrangement for those called to the land.</p>
+        <p class="practitioner-location" data-content="practitioner.location">Based in Southern California. Available worldwide for virtual work, in person for those called to the land.</p>
         <a href="about.html" class="btn-outline" data-content="practitioner.cta_text">Read the full story &rarr;</a>
       </div>
     </div>
   </section>
 
-  <!-- SACRED RECIPROCITY -->
-  <section class="section-cta" style="background: var(--paper) !important; color: var(--bark, #2D2A26); padding: 5rem 2rem;">
-    <div class="cta-container" style="max-width: 760px; margin: 0 auto; text-align: center;">
-      <span class="section-label" data-content="reciprocity.section_label" style="color: var(--gold, #c9a84c) !important;">Sacred Reciprocity</span>
-      <h2 data-content="reciprocity.title" data-content-type="html" style="color: var(--bark, #2D2A26); font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; margin: 1rem 0 1.5rem;">Rates flow from the <em>work that takes shape.</em></h2>
-      <p data-content="reciprocity.body" style="color: var(--bark, #2D2A26); opacity: 0.85; font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; line-height: 1.75; margin-bottom: 2rem;">The conversation itself is a paid one, held in sacred reciprocity. Rates vary by format (group, solo session, developmental arcs, classes, ongoing work). What is right is shaped in the Intake &amp; Inquiry conversation, where the work itself begins to take form.</p>
-      <a href="sacred-reciprocity.html" class="btn-outline" data-content="reciprocity.cta_text" style="color: var(--bark) !important; border-color: var(--bark) !important;">Read more about Sacred Reciprocity &rarr;</a>
+  <!-- SECTION 5. Sacred Reciprocity. Sand (rhythm shift). Three-tier card block per Hoffman precedent. -->
+  <section class="book-reciprocity">
+    <div class="book-reciprocity-inner">
+      <span class="section-label" data-content="reciprocity.section_label">Sacred Reciprocity</span>
+      <h2 data-content="reciprocity.title" data-content-type="html">Rates flow from the <em>work that takes shape.</em></h2>
+      <p class="reciprocity-body" data-content="reciprocity.body">The conversation itself is a paid one, held in sacred reciprocity. Rates vary by format &mdash; group, solo session, developmental arcs, classes, ongoing work. What is right is shaped in the Intake &amp; Inquiry conversation, where the work itself begins to take form.</p>
+
+      <div class="reciprocity-tiers" data-content-list="reciprocity.tiers">
+        <div class="reciprocity-tier" data-content-list-template>
+          <span class="tier-icon" data-content=".icon">&middot; &middot; &middot;</span>
+          <h3 class="tier-name" data-content=".name">Held in Generosity</h3>
+          <p class="tier-description" data-content=".description">For those whose path allows fuller offering. Your reciprocity sustains the practice and supports those in need.</p>
+        </div>
+        <div class="reciprocity-tier">
+          <span class="tier-icon">&middot; &middot;</span>
+          <h3 class="tier-name">Held in Reciprocity</h3>
+          <p class="tier-description">The standard. The conversation shapes what is right for the work and where you are.</p>
+        </div>
+        <div class="reciprocity-tier">
+          <span class="tier-icon">&middot;</span>
+          <h3 class="tier-name">Held in Support</h3>
+          <p class="tier-description">For those whose path needs receiving. Work-trade, scholarship, and other arrangements held in trust.</p>
+        </div>
+      </div>
+
+      <a href="sacred-reciprocity.html" class="btn-outline reciprocity-cta" data-content="reciprocity.cta_text">Read more about Sacred Reciprocity &rarr;</a>
     </div>
   </section>
 
-  <!-- TESTIMONIAL -->
-  <section class="section-testimonial">
+  <!-- SECTION 6. Testimonial. Parchment (rhythm shift). -->
+  <section class="section-testimonial book-testimonial">
     <div class="testimonial-container">
       <div class="testimonial-quote-mark" data-content="testimonial.mark">&ldquo;</div>
       <blockquote class="testimonial-text" data-content="testimonial.text">
@@ -147,8 +400,8 @@
     </div>
   </section>
 
-  <!-- HOW THE WORK BEGINS -->
-  <section class="section-process" id="begin" style="background: var(--paper) !important;">
+  <!-- SECTION 7. How the Work Begins. Paper (rhythm shift back to anchor). -->
+  <section class="section-process book-process" id="begin">
     <div class="process-container">
       <div class="process-header">
         <span class="section-label" data-content="steps_section.section_label">How the Work Begins</span>
@@ -163,30 +416,28 @@
         <div class="process-step">
           <div class="step-number">02</div>
           <h3>We Find an Hour</h3>
-          <p>A short introductory call — to feel the resonance, ask the questions, and see what shape the work might take.</p>
+          <p>A short introductory call. To feel the resonance, ask the questions, and see what shape the work might take.</p>
         </div>
         <div class="process-step">
           <div class="step-number">03</div>
           <h3>We Shape the Container</h3>
-          <p>If it's right for both of us, we design the container together — and the work begins on your terms.</p>
+          <p>If it's right for both of us, we design the container together. The work begins on your terms.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- NEWSLETTER -->
-  <section id="subscribe" style="background: #EFEDE6; color: var(--bark, #2D2A26); padding: 6rem 2rem; text-align: center;">
-    <div style="max-width: 600px; margin: 0 auto;">
-      <span class="section-label" data-content="subscribe.section_label" style="color: var(--gold, #c9a84c) !important;">Seasonal Letters</span>
-      <h2 data-content="subscribe.title" data-content-type="html" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; margin: 1rem 0 1.2rem; color: var(--bark, #2D2A26);">Stay close to the <em>work.</em></h2>
-      <p data-content="subscribe.body" style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; line-height: 1.65; opacity: 0.78; margin-bottom: 2rem; color: var(--bark, #2D2A26);">Slow letters from the practice. Sent with the seasons. Free, no obligation.</p>
-      <form id="newsletter-form" style="display: flex; gap: 0.75rem; max-width: 480px; margin: 0 auto; flex-wrap: wrap; justify-content: center;">
-        <input type="email" name="email" placeholder="Enter your email" required
-               style="flex: 1; min-width: 240px; padding: 0.95rem 1.2rem; border: 1px solid rgba(45,42,38,0.25); background: rgba(255,255,255,0.55); color: var(--bark, #2D2A26); border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 0.95rem;">
-        <button type="submit" class="btn-primary" data-content="subscribe.cta_text"
-                style="padding: 0.95rem 1.8rem; white-space: nowrap;">Subscribe</button>
+  <!-- SECTION 8. Newsletter. Cream-deeper. -->
+  <section id="subscribe" class="book-subscribe">
+    <div class="book-subscribe-inner">
+      <span class="section-label" data-content="subscribe.section_label">Seasonal Letters</span>
+      <h2 data-content="subscribe.title" data-content-type="html">Stay close to the <em>work.</em></h2>
+      <p data-content="subscribe.body">Slow letters from the practice. Sent with the seasons. Free, no obligation.</p>
+      <form id="newsletter-form" class="book-subscribe-form" novalidate>
+        <input type="email" name="email" placeholder="Enter your email" required autocomplete="email" aria-label="Email address">
+        <button type="submit" class="btn-primary" data-content="subscribe.cta_text">Subscribe</button>
       </form>
-      <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite" style="margin-top: 1rem; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: var(--bark, #2D2A26);"></div>
+      <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></div>
     </div>
   </section>
 
@@ -218,10 +469,10 @@
         <div class="footer-col">
           <h4>Begin Here</h4>
           <ul>
-            <li><a href="book.html">Apply / Intake</a></li>
+            <li><a href="inquiry.html">Apply / Intake</a></li>
             <li><a href="writings.html">Writings &amp; Letters</a></li>
             <li><a href="divinations.html">Divinations</a></li>
-            <li><a href="https://new.theanimistapothecary.com/contact/inquiry">Send a Message</a></li>
+            <li><a href="inquiry.html">Send a Message</a></li>
           </ul>
         </div>
       </nav>

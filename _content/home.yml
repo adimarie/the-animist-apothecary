@@ -89,7 +89,7 @@ metamorphic_year:
     in their local regions — by generating the communities their lands have been waiting for.
   meta: Twelve-Month Cohort · Curated Counsel · By Application
   cta_text: Inquire for the Counsel
-  cta_url: intake.html
+  cta_url: book.html
   image: https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1600&h=900&fit=crop&q=80
   image_position: center
 seasons_of_change:
@@ -109,7 +109,7 @@ seasons_of_change:
       description: Direct revelation and integration.
   meta: Solo Acolyte Work · 3–24 Month Containers · By Application
   cta_text: Inquire for the Path
-  cta_url: intake.html
+  cta_url: book.html
   image: https://images.unsplash.com/photo-1762755126280-6d8a4f9d1115?w=1600&h=900&fit=crop&q=80
   image_position: center
 offerings:
@@ -270,7 +270,7 @@ process:
       link_text: "Begin the inquiry →"
       link_url: book.html
   cta_text: Schedule the Intake & Inquiry
-  cta_url: intake.html
+  cta_url: book.html
   cta_note: The required first conversation for ceremony or cohort enrollment.
 testimonial:
   text: >-
@@ -291,7 +291,7 @@ cta_section:
     hold a community in need, a ceremony to be led, or a gathering to be tended. Either way, the
     season begins at the threshold.
   cta_text: Apply to Begin
-  cta_url: intake.html
+  cta_url: book.html
   cta_primary_note: For yourself or the deeper path
   credentials: >-
     19 years devoted service · Initiated medicine woman · Lineage-trained · Southern
