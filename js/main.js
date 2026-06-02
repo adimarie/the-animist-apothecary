@@ -49,22 +49,11 @@ document.querySelectorAll('.accordion-header').forEach(header => {
 // the .fade-in class anywhere.
 document.documentElement.classList.add('js-ready');
 
-// ── Book form: client-side success state ─────────────
-const bookForm = document.getElementById('booking-form');
-if (bookForm) {
-  bookForm.addEventListener('submit', e => {
-    e.preventDefault();
-    const btn  = bookForm.querySelector('button[type="submit"]');
-    const note = bookForm.querySelector('.form-note');
-    btn.textContent  = 'Message Sent ✓';
-    btn.style.background = '#4A6344';
-    btn.disabled = true;
-    if (note) {
-      note.textContent = "Thank you — we'll be in touch within 48 hours.";
-      note.style.color = '#5B7553';
-    }
-  });
-}
+// ── Book form: handled by per-page inline script ─────────────
+// inquiry.html submits to the intranet Supabase via its own inline
+// handler (see end of inquiry.html). This fake-success handler used to
+// run for any page with id="booking-form" and was eaten by the real
+// handler now. Kept as a comment so future devs don't re-add it.
 
 // ── Calendar: cue status badge color by text ────────
 // Runs after content-loader has populated the events list.

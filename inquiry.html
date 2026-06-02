@@ -255,5 +255,86 @@
 
   <script src="js/main.js"></script>
   <script src="js/content-loader.js" defer></script>
+
+  <!-- ============================================================
+       INQUIRY FORM WIRING — submits to the intranet Supabase project
+       via submit_inquiry() SECURITY DEFINER RPC. Lands in
+       /intranet/participants/inquiries for Adi to read and respond to.
+       ============================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/intranet-client.js"></script>
+  <script>
+    (function () {
+      var form = document.getElementById('booking-form');
+      if (!form) return;
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var btn  = form.querySelector('button[type="submit"]');
+        var note = form.querySelector('.form-note');
+        var orig = btn ? btn.textContent : null;
+        if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+        if (note) { note.textContent = ''; note.style.color = ''; }
+
+        // Build payload from the form fields.
+        var fd = new FormData(form);
+        var firstName  = (fd.get('first_name') || '').toString().trim();
+        var lastName   = (fd.get('last_name')  || '').toString().trim();
+        var email      = (fd.get('email')      || '').toString().trim();
+        var phone      = (fd.get('phone')      || '').toString().trim();
+        var referral   = (fd.get('referral')   || '').toString().trim();
+        var carrying   = (fd.get('carrying')   || '').toString().trim();
+        var aligned    = (fd.get('aligned')    || '').toString().trim();
+        var format     = (fd.get('format')     || '').toString().trim();
+        var timing     = (fd.get('timing')     || '').toString().trim();
+        var care       = (fd.get('care')       || '').toString().trim();
+        var offerings  = fd.getAll('offerings').map(function (v) { return String(v); });
+
+        // Build a readable message that preserves every field for Adi.
+        var msgParts = [];
+        if (carrying) msgParts.push("What's bringing you here:\n" + carrying);
+        if (aligned)  msgParts.push("What feels aligned:\n" + aligned);
+        if (format)   msgParts.push("Format preference: " + format);
+        if (timing)   msgParts.push("Timing: " + timing);
+        if (care)     msgParts.push("Anything else:\n" + care);
+        var message = msgParts.join('\n\n');
+
+        var payload = {
+          name: (firstName + ' ' + lastName).trim(),
+          email: email,
+          phone: phone || null,
+          referred_by: referral || null,
+          message: message || null,
+          services: offerings.length ? offerings : null
+        };
+
+        try {
+          var result = await window.aapIntranet.submitIntranetInquiry(payload);
+          if (result && result.ok) {
+            if (btn) { btn.textContent = 'Message sent ✓'; btn.style.background = '#4A6344'; }
+            if (note) {
+              note.textContent = "Thank you. Your note has reached Adi. You'll hear back within 48 hours.";
+              note.style.color = '#5B7553';
+            }
+            // Disable all inputs after success
+            form.querySelectorAll('input, textarea, select, button').forEach(function (el) { el.disabled = true; });
+          } else {
+            if (btn) { btn.disabled = false; btn.textContent = orig || 'Send'; }
+            if (note) {
+              var err = (result && result.error) || 'Unknown error.';
+              note.textContent = "Sorry, something went wrong sending your note (" + err + "). Please try again or email adimarie@theanimistapothecary.com.";
+              note.style.color = '#A0533F';
+            }
+          }
+        } catch (err) {
+          if (btn) { btn.disabled = false; btn.textContent = orig || 'Send'; }
+          if (note) {
+            note.textContent = "Sorry, something went wrong sending your note. Please try again or email adimarie@theanimistapothecary.com.";
+            note.style.color = '#A0533F';
+          }
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
