@@ -1,12 +1,12 @@
 {
-  "version": "v260602.01 3:40a",
-  "release": 1,
-  "sha": "7e5157c",
-  "fullSha": "7e5157c9cbea15e017ae329fdf251360af801358",
+  "version": "v260602.02 4:25a",
+  "release": 2,
+  "sha": "4d7f0f0",
+  "fullSha": "4d7f0f0442f66d06a3a691e91b26f59b16a74101",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-01T20:40:40-07:00",
-  "commits": [{"sha":"7e5157c","message":"Inquiry form: wire to intranet Supabase via submit_inquiry RPC","author":"Adi Marie"}]
+  "pushedAt": "2026-06-01T21:24:57-07:00",
+  "commits": [{"sha":"4d7f0f0","message":"book.html: gateway polish + sitewide CTA routing fix to restore funnel","author":"Adi Marie"}]
 }
