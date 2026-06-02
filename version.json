@@ -1,12 +1,12 @@
 {
-  "version": "v260601.06 11:10p",
-  "release": 6,
-  "sha": "04e8a91",
-  "fullSha": "04e8a91868b7319e61eaa8ade0e82e0041678109",
+  "version": "v260602.01 3:40a",
+  "release": 1,
+  "sha": "7e5157c",
+  "fullSha": "7e5157c9cbea15e017ae329fdf251360af801358",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-01T16:10:31-07:00",
-  "commits": [{"sha":"04e8a91","message":"Resources nav: add Preparatory & Intake, Interdimensional Work, Aftercare & Integration","author":"Adi Marie"}]
+  "pushedAt": "2026-06-01T20:40:40-07:00",
+  "commits": [{"sha":"7e5157c","message":"Inquiry form: wire to intranet Supabase via submit_inquiry RPC","author":"Adi Marie"}]
 }
