@@ -1,12 +1,12 @@
 {
-  "version": "v260602.02 4:25a",
-  "release": 2,
-  "sha": "4d7f0f0",
-  "fullSha": "4d7f0f0442f66d06a3a691e91b26f59b16a74101",
+  "version": "v260602.03 5:45p",
+  "release": 3,
+  "sha": "1a9e998",
+  "fullSha": "1a9e998b2c62e512c472a6ea9fa3471c1398c2c1",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-01T21:24:57-07:00",
-  "commits": [{"sha":"4d7f0f0","message":"book.html: gateway polish + sitewide CTA routing fix to restore funnel","author":"Adi Marie"}]
+  "pushedAt": "2026-06-02T10:43:56-07:00",
+  "commits": [{"sha":"1a9e998","message":"Deploy 6 studio pilot pages — one per studio in The Training Grounds","author":"Adi Marie"}]
 }
