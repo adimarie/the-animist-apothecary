@@ -347,6 +347,73 @@
   margin-top: 0.7rem !important;
 }
 
+/* =============================================================
+   PAGE SUB-NAVIGATION — surfaces the old dropdown options as
+   in-page links right below the main nav. One strip per
+   landing page (about, solo-work, group-work, training-grounds,
+   writings). Replaces the hover-dropdown discovery path.
+   ============================================================= */
+.page-subnav {
+  background: rgba(247, 245, 240, 0.94);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.22);
+  padding: 0.95rem 2rem;
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+}
+.page-subnav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+}
+.page-subnav-label {
+  font-family: 'Cinzel', 'Cormorant SC', serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.page-subnav-links {
+  display: flex;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.page-subnav-links a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: #2D2A26;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+.page-subnav-links a:hover {
+  color: #c9a84c;
+  border-bottom-color: #c9a84c;
+}
+.page-subnav-links a.is-current {
+  color: #c9a84c;
+  border-bottom-color: rgba(201, 168, 76, 0.45);
+}
+.page-subnav-links a.featured {
+  color: #b8932a;
+  font-style: italic;
+  font-weight: 500;
+}
+@media (max-width: 720px) {
+  .page-subnav { padding: 0.75rem 1rem; }
+  .page-subnav-inner { gap: 0.6rem; flex-direction: column; }
+  .page-subnav-links { gap: 1rem; }
+  .page-subnav-links a { font-size: 0.94rem; }
+}
+
 /* ============================================================
    SITE-WIDE DESIGN RULE — TOP NAV BUFFER
    ============================================================
