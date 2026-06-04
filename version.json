@@ -1,12 +1,12 @@
 {
-  "version": "v260604.02 4:02a",
-  "release": 2,
-  "sha": "8f88532",
-  "fullSha": "8f88532119a86f11d100da79f90e59cb8494f2b8",
+  "version": "v260604.03 4:28a",
+  "release": 3,
+  "sha": "2081afe",
+  "fullSha": "2081afe86331c55745c3a7b6b1d6cc943631de3a",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-03T21:02:36-07:00",
-  "commits": [{"sha":"8f88532","message":"fix(admin): restore correct Supabase anon key in admin portal","author":"Adi Marie"}]
+  "pushedAt": "2026-06-03T21:27:43-07:00",
+  "commits": [{"sha":"2081afe","message":"Nav: flatten dropdowns — each top-level item is a direct link","author":"Adi Marie"}]
 }
