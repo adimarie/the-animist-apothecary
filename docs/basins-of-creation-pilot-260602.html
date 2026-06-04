@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basins of Creation &mdash; Inaugural Cohort &middot; Pilot Sample</title>
+  <meta name="description" content="A working sample of the inaugural cohort for The Animist Apothecary School &mdash; structure, syllabus, developmental arc, and calendar for the Basins of Creation studio.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #F7F5F0;
+      --parchment: #F4EAD3;
+      --sand: #EFEDE6;
+      --bark: #2D2A26;
+      --bark-mid: #3D3A36;
+      --bark-soft: #5A554C;
+      --bark-deep: #1F1A18;
+      --gold: #C9A84C;
+      --gold-pale: #DCC178;
+      --sage-pale: #C5D9C6;
+      --sage-deep: #5B7553;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: var(--paper);
+      color: var(--bark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ====== Typography tokens ====== */
+    .eyebrow {
+      display: inline-block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+    .rule {
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.8rem auto;
+      opacity: 0.6;
+    }
+    h2.section-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.15;
+      letter-spacing: -0.005em;
+      margin: 0 0 1.6rem;
+      color: var(--bark);
+    }
+    h2.section-h em,
+    h3.sub-h em,
+    .hero-h em,
+    .stage-name em,
+    .quarter-name em,
+    .spec-h em {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      font-size: 1.45em !important;
+      line-height: 0.9 !important;
+      color: var(--gold-pale) !important;
+      letter-spacing: 0 !important;
+    }
+    h3.sub-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(1.55rem, 2.4vw, 1.95rem);
+      line-height: 1.25;
+      color: var(--bark);
+      margin: 0 0 1.2rem;
+    }
+    .body-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.14rem;
+      line-height: 1.75;
+      color: var(--bark);
+      margin: 0 0 1.4rem;
+    }
+    .body-text:last-child { margin-bottom: 0; }
+    .body-text em { font-style: italic; }
+    .body-text strong { font-weight: 500; color: var(--bark-deep); }
+
+    /* ====== Section shells ====== */
+    .section {
+      padding: 7rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-paper { background: var(--paper); }
+    .section-sand { background: var(--sand); }
+    .section-dark {
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 28%, rgba(201,168,76,0.13), transparent 60%),
+        radial-gradient(ellipse 80% 65% at 50% 100%, rgba(91,117,83,0.06), transparent 75%),
+        var(--bark-deep);
+      color: var(--parchment);
+    }
+    .section-dark h2.section-h { color: var(--parchment); }
+    .section-dark .body-text { color: rgba(247,245,240,0.88); }
+    .section-dark .eyebrow { color: var(--gold-pale); }
+    .section > * { position: relative; z-index: 2; }
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 25%, rgba(201,168,76,0.07), transparent 68%);
+    }
+    .section-inner { max-width: 960px; margin: 0 auto; }
+    .section-wide { max-width: 1200px; margin: 0 auto; }
+    .section-narrow { max-width: 760px; margin: 0 auto; }
+    .section-head { text-align: center; margin-bottom: 4rem; }
+
+    /* ====== Hero ====== */
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 28%, rgba(201,168,76,0.15), transparent 60%),
+        radial-gradient(ellipse 80% 65% at 50% 100%, rgba(91,117,83,0.08), transparent 75%),
+        var(--bark-deep);
+      color: var(--parchment);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-inner { max-width: 880px; margin: 0 auto; position: relative; z-index: 2; }
+    .hero-mark {
+      font-family: 'Cinzel', serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 2rem;
+      display: block;
+    }
+    .hero-rule {
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--gold-pale);
+      opacity: 0.7;
+      margin: 0 auto 2rem;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 1.8rem;
+    }
+    .hero-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5.2vw, 4.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.005em;
+      color: var(--parchment);
+      margin: 0 0 1.8rem;
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.15rem, 1.6vw, 1.42rem);
+      line-height: 1.55;
+      color: rgba(244, 234, 211, 0.88);
+      margin: 0 auto;
+      max-width: 680px;
+    }
+    .hero-meta {
+      margin-top: 2.4rem;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(220, 193, 120, 0.65);
+    }
+
+    /* ====== Stage header (large) ====== */
+    .stage-marker {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+    .stage-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(2.4rem, 4.4vw, 3.6rem);
+      line-height: 1.1;
+      color: var(--bark);
+      margin: 0 0 1.4rem;
+    }
+    .section-dark .stage-name { color: var(--parchment); }
+
+    /* ====== Stage 1 — Why this Studio ====== */
+    .rationale-list {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+    }
+    .rationale-list li {
+      padding: 0.9rem 0 0.9rem 1.6rem;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+      position: relative;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.08rem;
+      line-height: 1.6;
+      color: var(--bark);
+    }
+    .rationale-list li:last-child { border-bottom: none; }
+    .rationale-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0.3rem;
+      top: 0.6rem;
+      color: var(--gold);
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .rationale-list strong { font-weight: 500; color: var(--bark-deep); }
+
+    /* ====== Stage 2 — Specs grid ====== */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    @media (max-width: 720px) { .specs-grid { grid-template-columns: 1fr; } }
+    .spec {
+      padding: 1.8rem 1.6rem;
+      border-top: 1px solid var(--gold);
+      background: var(--paper);
+    }
+    .spec-label {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+    .spec-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.4rem;
+      line-height: 1.2;
+      color: var(--bark);
+      margin: 0 0 0.8rem;
+    }
+    .spec-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--bark);
+      margin: 0;
+    }
+    .spec-body em { font-style: italic; }
+
+    /* ====== Tier table (Sacred Reciprocity) ====== */
+    .tiers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.4rem;
+      margin: 3rem 0 2rem;
+    }
+    @media (max-width: 880px) { .tiers { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .tiers { grid-template-columns: 1fr; } }
+    .tier {
+      padding: 2rem 1.2rem;
+      text-align: center;
+      background: var(--paper);
+      border-top: 3px solid var(--gold);
+    }
+    .tier-patron { border-top-color: #c9a84c; }
+    .tier-abundance { border-top-color: #6b8f5e; }
+    .tier-community { border-top-color: #5a7fa0; }
+    .tier-accessibility { border-top-color: #7b6b8a; }
+    .tier-name {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      margin: 0 0 0.8rem;
+    }
+    .tier-patron .tier-name { color: #c9a84c; }
+    .tier-abundance .tier-name { color: #6b8f5e; }
+    .tier-community .tier-name { color: #5a7fa0; }
+    .tier-accessibility .tier-name { color: #7b6b8a; }
+    .tier-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.7rem;
+      line-height: 1;
+      color: var(--bark);
+      margin: 0 0 0.4rem;
+    }
+    .tier-period {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--bark-mid);
+      margin: 0 0 1rem;
+    }
+    .tier-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--bark-mid);
+      margin: 0;
+    }
+
+    /* ====== Stage 3 — Quarter cards (the Syllabus) ====== */
+    .quarters {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      margin: 3rem 0;
+    }
+    .quarter {
+      padding: 3rem 2.4rem;
+      background: var(--paper);
+      border-left: 3px solid var(--gold);
+      border-radius: 2px;
+      box-shadow: 0 4px 25px rgba(45,42,38,0.04);
+    }
+    .quarter-marker {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+    .quarter-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      line-height: 1.1;
+      color: var(--bark);
+      margin: 0 0 1.2rem;
+    }
+    .quarter-theme {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.18rem;
+      line-height: 1.55;
+      color: var(--bark-mid);
+      margin: 0 0 2rem;
+      padding: 0 0 1.5rem 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+    }
+    .q-block {
+      margin: 0 0 1.6rem;
+    }
+    .q-block-label {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+    .q-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .q-list li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--bark);
+      padding: 0.4rem 0 0.4rem 1.2rem;
+      position: relative;
+    }
+    .q-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0.3rem;
+      top: 0.1rem;
+      color: var(--gold);
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+    .q-initiation {
+      margin-top: 1.8rem;
+      padding: 1.3rem 1.4rem;
+      background: var(--sand);
+      border-left: 2px solid var(--gold-pale);
+    }
+    .q-initiation-label {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .q-initiation-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: var(--bark);
+      margin: 0 0 0.4rem;
+    }
+    .q-initiation-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.96rem;
+      line-height: 1.55;
+      color: var(--bark);
+      margin: 0;
+    }
+
+    /* ====== Developmental Arc ====== */
+    .arc-flow {
+      max-width: 880px;
+      margin: 3rem auto;
+    }
+    .arc-stage {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2.5rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.22);
+    }
+    @media (max-width: 720px) {
+      .arc-stage { grid-template-columns: 1fr; gap: 1rem; }
+    }
+    .arc-stage:last-child { border-bottom: none; }
+    .arc-mark {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding-top: 0.3rem;
+    }
+    .arc-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.45rem;
+      line-height: 1.2;
+      color: var(--bark);
+      margin: 0 0 0.7rem;
+    }
+    .arc-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.04rem;
+      line-height: 1.65;
+      color: var(--bark);
+      margin: 0;
+    }
+    .arc-body em { font-style: italic; }
+    .arc-body strong { font-weight: 500; color: var(--bark-deep); }
+
+    /* ====== Structure / Team ====== */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    @media (max-width: 720px) { .team-grid { grid-template-columns: 1fr; } }
+    .team-card {
+      padding: 1.8rem 1.6rem;
+      border-left: 2px solid var(--gold);
+    }
+    .team-role {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .team-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.18rem;
+      color: var(--bark);
+      margin: 0 0 0.6rem;
+    }
+    .team-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.96rem;
+      line-height: 1.55;
+      color: var(--bark);
+      margin: 0;
+    }
+
+    /* ====== Calendar timeline ====== */
+    .calendar-year {
+      max-width: 900px;
+      margin: 3rem auto;
+      position: relative;
+    }
+    .calendar-year::before {
+      content: "";
+      position: absolute;
+      left: 30px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+    @media (max-width: 720px) {
+      .calendar-year::before { left: 20px; }
+    }
+    .cal-row {
+      position: relative;
+      padding: 1.3rem 0 1.3rem 75px;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.14);
+    }
+    @media (max-width: 720px) {
+      .cal-row { padding-left: 55px; }
+    }
+    .cal-row:last-child { border-bottom: none; }
+    .cal-dot {
+      position: absolute;
+      left: 22px;
+      top: 1.7rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 1px solid var(--gold);
+    }
+    @media (max-width: 720px) { .cal-dot { left: 12px; } }
+    .cal-row.cal-retreat .cal-dot {
+      background: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px var(--paper), 0 0 0 5px rgba(201,168,76,0.3);
+    }
+    .cal-month {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+    .cal-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-style: italic;
+      font-size: 1.18rem;
+      line-height: 1.2;
+      color: var(--bark);
+      margin: 0 0 0.3rem;
+    }
+    .cal-row.cal-retreat .cal-h { color: var(--bark-deep); }
+    .cal-dates {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.96rem;
+      line-height: 1.5;
+      color: var(--bark-mid);
+      margin: 0;
+    }
+    .cal-row.cal-retreat .cal-h::before {
+      content: "\2727  ";
+      color: var(--gold);
+      font-size: 0.95em;
+    }
+
+    .always-on {
+      margin-top: 3.5rem;
+      padding: 2.5rem 2rem;
+      background: var(--sand);
+      border-left: 3px solid var(--gold);
+      border-radius: 2px;
+    }
+    .always-on-label {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .always-on-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--bark);
+      margin: 0 0 1.4rem;
+    }
+    .always-on ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .always-on li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--bark);
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      position: relative;
+    }
+    .always-on li::before {
+      content: "·";
+      position: absolute;
+      left: 0.2rem;
+      top: 0.2rem;
+      color: var(--gold);
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    /* ====== Footer ====== */
+    .doc-footer {
+      padding: 4rem 2rem;
+      background: var(--bark-deep);
+      color: rgba(244, 234, 211, 0.7);
+      text-align: center;
+    }
+    .doc-footer .footer-mark {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .doc-footer .footer-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.96rem;
+      line-height: 1.55;
+      color: rgba(244, 234, 211, 0.6);
+      max-width: 660px;
+      margin: 0 auto;
+    }
+    .doc-footer .footer-date {
+      margin-top: 1.4rem;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(220, 193, 120, 0.55);
+    }
+
+    @media (max-width: 720px) {
+      .section { padding: 5rem 1.4rem; }
+      .quarter { padding: 2rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-mark">The Animist Apothecary School</span>
+      <span class="hero-rule"></span>
+      <span class="hero-eyebrow">Pilot Sample &middot; Stages 1, 2 &amp; 3</span>
+      <h1 class="hero-h">Basins of <em>Creation</em></h1>
+      <p class="hero-sub">A working sample of the inaugural cohort &mdash; the studio for makers, midwives, founders, and tenders of new emergence. Structure, syllabus, developmental arc, and twelve-month calendar.</p>
+      <div class="hero-meta">Working Document &middot; 2026.06.01</div>
+    </div>
+  </section>
+
+  <!-- ====== STAGE 1 — THE CORNERSTONE CHOICE ====== -->
+  <section class="section section-paper">
+    <div class="section-narrow">
+      <div class="section-head">
+        <span class="stage-marker">Stage One</span>
+        <h2 class="stage-name">The cornerstone <em>chosen</em></h2>
+        <span class="rule"></span>
+      </div>
+
+      <p class="body-text"><strong>Basins of Creation</strong> is the studio of containers, vessels, and the sacred work of bringing forth &mdash; for makers, midwives, founders, and tenders of new emergence.</p>
+
+      <p class="body-text" style="font-style: italic; color: var(--bark-mid);">Why this one, of the six.</p>
+
+      <ul class="rationale-list">
+        <li><strong>It serves the creators of the new.</strong> Founders, midwives, makers, organizers &mdash; those building organizations, art forms, communities, ventures, families. They need ceremonial practice that meets them in the work of bringing forth.</li>
+        <li><strong>It bridges business and ceremony.</strong> Most ceremonial training assumes the practitioner has time set apart from worldly making. This studio assumes the opposite &mdash; that the worldly making IS the medicine.</li>
+        <li><strong>It teaches container as sacred technology.</strong> The vessel, the basin, the form that holds emergent life &mdash; this is a teachable craft. It is what every founder is doing without language for it.</li>
+        <li><strong>It produces a different kind of leader.</strong> Graduates carry ceremonial practice into board rooms, studios, organizations, projects. They become the school&rsquo;s emissaries into structured worlds.</li>
+        <li><strong>It is the studio least named in spiritual education.</strong> Most schools don&rsquo;t teach this. Adi&rsquo;s manifesto explicitly names it. Filling this gap is part of the school&rsquo;s distinction.</li>
+      </ul>
+
+      <p class="body-text" style="margin-top: 2.5rem; font-style: italic; color: var(--bark-mid);">This sample stands as the shape. Refine in your voice.</p>
+    </div>
+  </section>
+
+  <!-- ====== STAGE 2 — THE CONTAINER ====== -->
+  <section class="section section-sand">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="stage-marker">Stage Two</span>
+        <h2 class="stage-name">The cohort <em>container</em></h2>
+        <span class="rule"></span>
+        <p class="body-text" style="font-style: italic; color: var(--bark-mid); max-width: 620px; margin: 0 auto;">The first cohort sets the shape of all the cohorts that come after. These are the load-bearing decisions.</p>
+      </div>
+
+      <div class="specs-grid">
+
+        <div class="spec">
+          <span class="spec-label">Name</span>
+          <h3 class="spec-h">Basins of Creation &mdash; <em>Inaugural Cohort</em></h3>
+          <p class="spec-body">The first cohort is named for what it is. Future cohorts may be named for the season or year they convene in.</p>
+        </div>
+
+        <div class="spec">
+          <span class="spec-label">Duration</span>
+          <h3 class="spec-h">One <em>Wheel</em></h3>
+          <p class="spec-body">Twelve months, equinox to equinox. Long enough for genuine transformation. Short enough to commit to fully.</p>
+        </div>
+
+        <div class="spec">
+          <span class="spec-label">Format</span>
+          <h3 class="spec-h">Hybrid</h3>
+          <p class="spec-body">Weekly online practice circles, monthly online intensives, four in-person retreats anchored to the equinoxes and solstices.</p>
+        </div>
+
+        <div class="spec">
+          <span class="spec-label">Size</span>
+          <h3 class="spec-h">Eight students</h3>
+          <p class="spec-body">Min six, max nine. The size of a held container &mdash; intimate enough to know each person deeply, large enough for the cohort field to teach.</p>
+        </div>
+
+        <div class="spec">
+          <span class="spec-label">Rhythm</span>
+          <h3 class="spec-h">Weekly &middot; Monthly &middot; Quarterly</h3>
+          <p class="spec-body">Weekly online practice circle (90 min). Monthly online intensive (full Saturday). Quarterly in-person retreat (3&ndash;4 nights). Integration calls every 3&ndash;4 weeks.</p>
+        </div>
+
+        <div class="spec">
+          <span class="spec-label">Application</span>
+          <h3 class="spec-h">Written + intake call</h3>
+          <p class="spec-body">Written application (essay questions). Required intake call with Adi Marie at the standard Sacred Reciprocity rate. Selection by composition, not first-come.</p>
+        </div>
+
+        <div class="spec">
+          <span class="spec-label">Cohort Dates</span>
+          <h3 class="spec-h">September <em>Equinox</em></h3>
+          <p class="spec-body">Cohort begins at the September equinox, closes at the September equinox one year later. Applications open in early summer, close in mid-August.</p>
+        </div>
+
+        <div class="spec">
+          <span class="spec-label">Contact Hours</span>
+          <h3 class="spec-h">~ 180 hours</h3>
+          <p class="spec-body">~52 weekly circles, 11 monthly intensives, 4 quarterly retreats, plus integration calls and assisting hours. A serious commitment.</p>
+        </div>
+
+      </div>
+
+      <p class="body-text" style="text-align: center; margin-top: 4rem; font-style: italic; color: var(--bark-mid);">The Sacred Reciprocity tiers.</p>
+
+      <div class="tiers">
+
+        <div class="tier tier-patron">
+          <p class="tier-name">Patron</p>
+          <p class="tier-amount">$24,000</p>
+          <p class="tier-period">per year &middot; $2,000/mo</p>
+          <p class="tier-desc">Full reciprocity. Supports the inaugural cohort and seeds the scholarship fund for those at the Accessibility tier.</p>
+        </div>
+
+        <div class="tier tier-abundance">
+          <p class="tier-name">Abundance</p>
+          <p class="tier-amount">$18,000</p>
+          <p class="tier-period">per year &middot; $1,500/mo</p>
+          <p class="tier-desc">For those in steady professional flow who can fully meet the cohort and are not stretched.</p>
+        </div>
+
+        <div class="tier tier-community">
+          <p class="tier-name">Community</p>
+          <p class="tier-amount">$12,000</p>
+          <p class="tier-period">per year &middot; $1,000/mo</p>
+          <p class="tier-desc">For those committed to the work whose current means require a gentler tier. Honored without need to explain.</p>
+        </div>
+
+        <div class="tier tier-accessibility">
+          <p class="tier-name">Accessibility</p>
+          <p class="tier-amount">By application</p>
+          <p class="tier-period">1&ndash;2 slots per cohort</p>
+          <p class="tier-desc">Need-based partial-to-full coverage, funded by the Patron tier. Reserved for those whose calling is clear and whose access depends on it.</p>
+        </div>
+
+      </div>
+
+      <p class="body-text" style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--bark-mid); font-size: 0.96rem;">All tiers include all retreats, all intensives, all circles, all integration calls, and all materials. Retreat travel and lodging not included.</p>
+    </div>
+  </section>
+
+  <!-- ====== STAGE 3 — DEVELOPMENTAL ARC ====== -->
+  <section class="section section-paper">
+    <div class="section-narrow">
+      <div class="section-head">
+        <span class="stage-marker">Stage Three &middot; Part One</span>
+        <h2 class="stage-name">The developmental <em>arc</em></h2>
+        <span class="rule"></span>
+        <p class="body-text" style="font-style: italic; color: var(--bark-mid); max-width: 620px; margin: 0 auto;">What transformation moves through a student in twelve months. The arc the curriculum is designed to hold.</p>
+      </div>
+
+      <div class="arc-flow">
+
+        <div class="arc-stage">
+          <div class="arc-mark">Entry &middot; Month 0</div>
+          <div>
+            <h4 class="arc-h">The Called One</h4>
+            <p class="arc-body">A person with a calling. Some practice already in motion &mdash; therapy, coaching, healing arts, ceremonial sitting. Senses they are meant to hold space for others but does not yet have the form. <em>Comes seeking the bones.</em></p>
+          </div>
+        </div>
+
+        <div class="arc-stage">
+          <div class="arc-mark">Q1 &middot; Months 1&ndash;3</div>
+          <div>
+            <h4 class="arc-h">The Initiated</h4>
+            <p class="arc-body">The sovereign self established. Daily practice grounded. Lineage attunement begun. The student now stands in the field of the cohort, the field of the lineage, and the field of their own awakening medicine. <strong>The Map is becoming theirs.</strong></p>
+          </div>
+        </div>
+
+        <div class="arc-stage">
+          <div class="arc-mark">Q2 &middot; Months 4&ndash;6</div>
+          <div>
+            <h4 class="arc-h">The Apprentice</h4>
+            <p class="arc-body">Technical skill emerging. They can read the field, recognize voltage and amplitude, support a held container without dropping the thread. They have assisted in ceremony. Their individual specialty begins to surface. <strong>They navigate.</strong></p>
+          </div>
+        </div>
+
+        <div class="arc-stage">
+          <div class="arc-mark">Q3 &middot; Months 7&ndash;9</div>
+          <div>
+            <h4 class="arc-h">The Walker</h4>
+            <p class="arc-body">The practitioner&rsquo;s stance integrating. Ethical foundation solid. They have run their first witnessed ritual outside the cohort. Their unique thread is articulating &mdash; the specific terrain they were born to walk. <strong>They walk the terrain.</strong></p>
+          </div>
+        </div>
+
+        <div class="arc-stage">
+          <div class="arc-mark">Q4 &middot; Months 10&ndash;12</div>
+          <div>
+            <h4 class="arc-h">The Steward</h4>
+            <p class="arc-body">A ceremonialist now emerging in their own context. Their own community knows them as the one who holds. Their sustainable rhythm is set. They have entered the <em>amakua</em> field of the school. <strong>They serve.</strong></p>
+          </div>
+        </div>
+
+        <div class="arc-stage">
+          <div class="arc-mark">Exit &middot; Beyond</div>
+          <div>
+            <h4 class="arc-h">The Lineage Carrier</h4>
+            <p class="arc-body">A practitioner who holds ceremonial work in their own life and community, in service to others, with ongoing relationship to the lineage and the school. They are now a node in the field. <em>What flows through them flows through the lineage now.</em></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== STAGE 3 — THE SYLLABUS (Quarters) ====== -->
+  <section class="section section-sand">
+    <div class="section-wide">
+      <div class="section-head">
+        <span class="stage-marker">Stage Three &middot; Part Two</span>
+        <h2 class="stage-name">The <em>syllabus</em></h2>
+        <span class="rule"></span>
+        <p class="body-text" style="font-style: italic; color: var(--bark-mid); max-width: 620px; margin: 0 auto;">Each quarter anchors one of the four movements. Theory and practice braided. Each closes with an initiation that marks the threshold crossed.</p>
+      </div>
+
+      <div class="quarters">
+
+                <div class="quarter">
+          <span class="quarter-marker">Quarter One &middot; The Map</span>
+          <h3 class="quarter-name">The science of <em>containers</em></h3>
+          <p class="quarter-theme">The student is introduced to the physics and metaphysics of containers. What holds. What releases. What shapes form.</p>
+
+          <div class="q-block">
+            <span class="q-block-label">Theory</span>
+            <ul class="q-list">
+              <li>The basin as primary structure of creation</li>
+              <li>Container as sacred technology</li>
+              <li>The vessel in lineage (cup, womb, hearth, room)</li>
+              <li>The midwife principle</li>
+              <li>Containment vs control</li>
+              <li>Pre-emergence as a phase of work</li>
+              <li>The dark phase</li>
+            </ul>
+          </div>
+
+          <div class="q-block">
+            <span class="q-block-label">Practice</span>
+            <ul class="q-list">
+              <li>Daily attunement to the container you are inside</li>
+              <li>Naming the basins in your life and work</li>
+              <li>Cohort circles of shared basin-tending</li>
+              <li>Beginning the Practitioner Journal</li>
+            </ul>
+          </div>
+
+          <div class="q-block">
+            <span class="q-block-label">Reading</span>
+            <ul class="q-list">
+              <li>Foundational texts on containers in mystical traditions, organizational theory, midwifery</li>
+              <li>Monthly written reflection</li>
+            </ul>
+          </div>
+
+          <div class="q-initiation">
+            <span class="q-initiation-label">Quarter One Initiation</span>
+            <p class="q-initiation-name">Naming Your Basin</p>
+            <p class="q-initiation-body">At the opening retreat, each student names the primary basin they are currently tending (a project, an organization, a relationship, a creative work) and offers it to the cohort field.</p>
+          </div>
+        </div>
+
+        <!-- QUARTER -->
+        <div class="quarter">
+          <span class="quarter-marker">Quarter Two &middot; Navigating the Map</span>
+          <h3 class="quarter-name">The vessel you are <em>tending</em></h3>
+          <p class="quarter-theme">The student moves into deeper attention to the specific container they are tending. The protocols of containment. The arc of pre-emergence.</p>
+
+          <div class="q-block">
+            <span class="q-block-label">Theory</span>
+            <ul class="q-list">
+              <li>The arc of containment (open, hold, shape, release)</li>
+              <li>Reading the basin you are inside</li>
+              <li>Knowing when the basin is incomplete</li>
+              <li>The role of the container-holder</li>
+              <li>Resistance within the vessel</li>
+              <li>Permeability and protection</li>
+            </ul>
+          </div>
+
+          <div class="q-block">
+            <span class="q-block-label">Practice</span>
+            <ul class="q-list">
+              <li>Weekly attention to the named basin</li>
+              <li>Cohort witnessing of each student&rsquo;s basin-work</li>
+              <li>Monthly integration call with Adi Marie</li>
+              <li>Articulating the basin&rsquo;s specific needs</li>
+            </ul>
+          </div>
+
+          <div class="q-block">
+            <span class="q-block-label">Reading</span>
+            <ul class="q-list">
+              <li>Texts on container theory, holding spaces, midwifery</li>
+              <li>Continued reflective writing</li>
+            </ul>
+          </div>
+
+          <div class="q-initiation">
+            <span class="q-initiation-label">Quarter Two Initiation</span>
+            <p class="q-initiation-name">First Shape</p>
+            <p class="q-initiation-body">At the winter retreat, each student articulates the shape their basin is currently asking for. The cohort witnesses. The shape is named.</p>
+          </div>
+        </div>
+
+        <!-- QUARTER -->
+        <div class="quarter">
+          <span class="quarter-marker">Quarter Three &middot; Walking the Terrain</span>
+          <h3 class="quarter-name">Holding through the <em>gestation</em></h3>
+          <p class="quarter-theme">The student practices the long-form holding work. Not creating, not releasing &mdash; sustaining the container as form gestates within it.</p>
+
+          <div class="q-block">
+            <span class="q-block-label">Theory</span>
+            <ul class="q-list">
+              <li>The art of patience</li>
+              <li>Holding without manipulating</li>
+              <li>Trusting pre-form intelligence</li>
+              <li>Discerning what is gestating from what is stuck</li>
+              <li>The container&rsquo;s role in shaping what emerges</li>
+              <li>Holding contradiction</li>
+            </ul>
+          </div>
+
+          <div class="q-block">
+            <span class="q-block-label">Practice</span>
+            <ul class="q-list">
+              <li>90-day gestation hold on the primary basin</li>
+              <li>Weekly cohort check-ins on the gestation</li>
+              <li>Beginning to facilitate basin-work for peers</li>
+              <li>Reflective writing on the patience of holding</li>
+            </ul>
+          </div>
+
+          <div class="q-block">
+            <span class="q-block-label">Reading</span>
+            <ul class="q-list">
+              <li>Texts on the patience of midwifery, slow leadership, holding emergent work</li>
+              <li>Continued reflective writing</li>
+            </ul>
+          </div>
+
+          <div class="q-initiation">
+            <span class="q-initiation-label">Quarter Three Initiation</span>
+            <p class="q-initiation-name">The Long Hold</p>
+            <p class="q-initiation-body">At the spring retreat, each student offers a 30-minute basin-holding session for one peer, witnessed and integrated with Adi Marie.</p>
+          </div>
+        </div>
+
+        <!-- QUARTER -->
+        <div class="quarter">
+          <span class="quarter-marker">Quarter Four &middot; Field Training</span>
+          <h3 class="quarter-name">Birthing into the <em>world</em></h3>
+          <p class="quarter-theme">The student midwives an emergence. The basin opens. Something is born. They also offer basin-work to others.</p>
+
+          <div class="q-block">
+            <span class="q-block-label">Theory</span>
+            <ul class="q-list">
+              <li>The release point</li>
+              <li>Receiving what emerges</li>
+              <li>The aftermath of birthing</li>
+              <li>The next basin</li>
+              <li>The practitioner as midwife</li>
+              <li>Building a basin-tending practice</li>
+            </ul>
+          </div>
+
+          <div class="q-block">
+            <span class="q-block-label">Practice</span>
+            <ul class="q-list">
+              <li>Midwifing one named emergence from your basin</li>
+              <li>Three peer basin-holding sessions</li>
+              <li>One outside client basin-holding</li>
+              <li>Final portfolio articulating methodology</li>
+            </ul>
+          </div>
+
+          <div class="q-block">
+            <span class="q-block-label">Reading</span>
+            <ul class="q-list">
+              <li>Texts on the aftermath of creation, sustained practice</li>
+              <li>Final reflective essay</li>
+            </ul>
+          </div>
+
+          <div class="q-initiation">
+            <span class="q-initiation-label">Quarter Four Initiation</span>
+            <p class="q-initiation-name">Graduation &mdash; Entry into the Amakua</p>
+            <p class="q-initiation-body">The closing retreat is the graduation ceremony. Formal recognition as a Basins of Creation practitioner of The Animist Apothecary. Entry into the lineage field.</p>
+          </div>
+        </div>
+
+      
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== STAGE 3 — THE STRUCTURE / TEAM ====== -->
+  <section class="section section-paper">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="stage-marker">Stage Three &middot; Part Three</span>
+        <h2 class="stage-name">Who holds it <em>with you</em></h2>
+        <span class="rule"></span>
+        <p class="body-text" style="font-style: italic; color: var(--bark-mid); max-width: 620px; margin: 0 auto;">For the inaugural cohort, the team is small and trusted. Faculty becomes real after the cohort proves the model.</p>
+      </div>
+
+      <div class="team-grid">
+
+        <div class="team-card">
+          <span class="team-role">Lead Faculty</span>
+          <p class="team-name">Adi Marie</p>
+          <p class="team-body">Holds the curriculum, teaches the intensives, leads the retreats, conducts the witness integrations. The lineage carrier.</p>
+        </div>
+
+        <div class="team-card">
+          <span class="team-role">Co-Facilitator (Ceremonial)</span>
+          <p class="team-name">To be named</p>
+          <p class="team-body">A trusted ceremonial colleague who has held space alongside Adi Marie before. Holds container during retreats. Available for student integration calls between intensives.</p>
+        </div>
+
+        <div class="team-card">
+          <span class="team-role">Co-Facilitator (Somatic)</span>
+          <p class="team-name">To be named</p>
+          <p class="team-body">A trusted body worker or somatic specialist. Holds the embodiment thread through the year. Supports the trauma-informed dimension of the work.</p>
+        </div>
+
+        <div class="team-card">
+          <span class="team-role">Guest Teachers</span>
+          <p class="team-name">2&ndash;3 across the year</p>
+          <p class="team-body">Brought in for specific transmissions &mdash; a lineage holder, a peer practitioner in a complementary tradition, a specialist on a particular dimension of the work.</p>
+        </div>
+
+        <div class="team-card">
+          <span class="team-role">Administrative Lead</span>
+          <p class="team-name">To be named</p>
+          <p class="team-body">Handles applications, payments, scheduling, communications, retreat logistics, materials distribution, and the student portal.</p>
+        </div>
+
+        <div class="team-card">
+          <span class="team-role">Student Liaison</span>
+          <p class="team-name">To be named</p>
+          <p class="team-body">First point of contact between sessions. Coordinates integration call scheduling. Holds the day-to-day relationship with the cohort so that Adi Marie can hold the depth.</p>
+        </div>
+
+      </div>
+
+      <p class="body-text" style="margin-top: 3rem; font-style: italic; color: var(--bark-mid); text-align: center;">For the inaugural cohort, several roles may be held by the same person or by Adi Marie herself. The structure expands as subsequent cohorts begin to overlap.</p>
+    </div>
+  </section>
+
+  <!-- ====== STAGE 3 — THE CALENDAR ====== -->
+  <section class="section section-sand">
+    <div class="section-narrow">
+      <div class="section-head">
+        <span class="stage-marker">Stage Three &middot; Part Four</span>
+        <h2 class="stage-name">The <em>calendar</em></h2>
+        <span class="rule"></span>
+        <p class="body-text" style="font-style: italic; color: var(--bark-mid); max-width: 620px; margin: 0 auto;">Twelve months, equinox to equinox, with four retreats anchored to the wheel. Sample dates for a September 2026 cohort &mdash; adjustable to whichever year the cohort lands.</p>
+      </div>
+
+      <div class="calendar-year">
+
+        <!-- PRE-COHORT -->
+        <div class="cal-row">
+          <span class="cal-dot"></span>
+          <span class="cal-month">June 2026</span>
+          <h4 class="cal-h">Applications open</h4>
+          <p class="cal-dates">Written application released. Intake calls scheduled rolling.</p>
+        </div>
+
+        <div class="cal-row">
+          <span class="cal-dot"></span>
+          <span class="cal-month">August 1, 2026</span>
+          <h4 class="cal-h">Applications close</h4>
+          <p class="cal-dates">Final intake calls held mid-August. Cohort selected by August 25.</p>
+        </div>
+
+        <div class="cal-row">
+          <span class="cal-dot"></span>
+          <span class="cal-month">September 2026</span>
+          <h4 class="cal-h">Pre-cohort materials sent</h4>
+          <p class="cal-dates">Welcome packet, reading list, retreat logistics, integration cadence set.</p>
+        </div>
+
+        <!-- QUARTER 1 -->
+        <div class="cal-row cal-retreat">
+          <span class="cal-dot"></span>
+          <span class="cal-month">September 2026 &middot; Q1 begins</span>
+          <h4 class="cal-h">Opening Retreat &middot; The Map</h4>
+          <p class="cal-dates">September 22&ndash;26, 2026 (4 nights, in person, equinox-anchored)</p>
+        </div>
+
+        <div class="cal-row">
+          <span class="cal-dot"></span>
+          <span class="cal-month">October 2026</span>
+          <h4 class="cal-h">Online Intensive 1</h4>
+          <p class="cal-dates">Saturday, October 17 (full day, 8 hours)</p>
+        </div>
+
+        <div class="cal-row">
+          <span class="cal-dot"></span>
+          <span class="cal-month">November 2026</span>
+          <h4 class="cal-h">Online Intensive 2</h4>
+          <p class="cal-dates">Saturday, November 14 (full day, 8 hours)</p>
+        </div>
+
+        <!-- QUARTER 2 -->
+        <div class="cal-row cal-retreat">
+          <span class="cal-dot"></span>
+          <span class="cal-month">December 2026 &middot; Q2 begins</span>
+          <h4 class="cal-h">Winter Retreat &middot; Navigating the Map</h4>
+          <p class="cal-dates">December 19&ndash;22, 2026 (3 nights, in person, solstice-anchored)</p>
+        </div>
+
+        <div class="cal-row">
+          <span class="cal-dot"></span>
+          <span class="cal-month">January 2027</span>
+          <h4 class="cal-h">Online Intensive 3</h4>
+          <p class="cal-dates">Saturday, January 16</p>
+        </div>
+
+        <div class="cal-row">
+          <span class="cal-dot"></span>
+          <span class="cal-month">February 2027</span>
+          <h4 class="cal-h">Online Intensive 4</h4>
+          <p class="cal-dates">Saturday, February 13</p>
+        </div>
+
+        <!-- QUARTER 3 -->
+        <div class="cal-row cal-retreat">
+          <span class="cal-dot"></span>
+          <span class="cal-month">March 2027 &middot; Q3 begins</span>
+          <h4 class="cal-h">Spring Retreat &middot; Walking the Terrain</h4>
+          <p class="cal-dates">March 20&ndash;24, 2027 (4 nights, in person, equinox-anchored)</p>
+        </div>
+
+        <div class="cal-row">
+          <span class="cal-dot"></span>
+          <span class="cal-month">April 2027</span>
+          <h4 class="cal-h">Online Intensive 5</h4>
+          <p class="cal-dates">Saturday, April 17</p>
+        </div>
+
+        <div class="cal-row">
+          <span class="cal-dot"></span>
+          <span class="cal-month">May 2027</span>
+          <h4 class="cal-h">Online Intensive 6</h4>
+          <p class="cal-dates">Saturday, May 15</p>
+        </div>
+
+        <!-- QUARTER 4 -->
+        <div class="cal-row cal-retreat">
+          <span class="cal-dot"></span>
+          <span class="cal-month">June 2027 &middot; Q4 begins</span>
+          <h4 class="cal-h">Summer Retreat &middot; Field Training</h4>
+          <p class="cal-dates">June 19&ndash;22, 2027 (3 nights, in person, solstice-anchored)</p>
+        </div>
+
+        <div class="cal-row">
+          <span class="cal-dot"></span>
+          <span class="cal-month">July 2027</span>
+          <h4 class="cal-h">Online Intensive 7</h4>
+          <p class="cal-dates">Saturday, July 17</p>
+        </div>
+
+        <div class="cal-row">
+          <span class="cal-dot"></span>
+          <span class="cal-month">August 2027</span>
+          <h4 class="cal-h">Online Intensive 8 &middot; Closing prep</h4>
+          <p class="cal-dates">Saturday, August 14. Final portfolio review begins.</p>
+        </div>
+
+        <!-- CLOSING -->
+        <div class="cal-row cal-retreat">
+          <span class="cal-dot"></span>
+          <span class="cal-month">September 2027 &middot; Cohort closes</span>
+          <h4 class="cal-h">Closing Retreat &amp; Graduation</h4>
+          <p class="cal-dates">September 22&ndash;26, 2027 (4 nights, in person, equinox-anchored)</p>
+        </div>
+
+      </div>
+
+      <div class="always-on">
+        <span class="always-on-label">Always-on Currents</span>
+        <h3 class="always-on-h">What runs <em>through</em> every month</h3>
+        <ul>
+          <li><strong>Weekly online practice circle</strong> &mdash; Sunday afternoon, 90 minutes, the cohort gathered around the daily-practice rhythm</li>
+          <li><strong>Integration call</strong> &mdash; every 3&ndash;4 weeks per student, with Adi Marie or a co-facilitator</li>
+          <li><strong>Daily morning attunement</strong> &mdash; the heart-belly practice, individual, unwitnessed but expected</li>
+          <li><strong>Practitioner Journal</strong> &mdash; ongoing, documenting what is emerging</li>
+          <li><strong>Reading and reflection</strong> &mdash; one short written piece per month, integrated in next intensive</li>
+          <li><strong>Reciprocity payment</strong> &mdash; monthly, on the first, the rhythm of the offering met by the rhythm of receiving</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CLOSING NOTES ====== -->
+  <section class="section section-dark">
+    <div class="section-narrow" style="max-width: 720px; text-align: center;">
+      <span class="eyebrow" style="color: var(--gold-pale);">Notes on the Sample</span>
+      <span class="rule" style="background: var(--gold-pale);"></span>
+      <h2 class="section-h" style="color: var(--parchment);">What this <em>is</em>, and what it isn&rsquo;t</h2>
+
+      <p class="body-text" style="font-style: italic;">This is a working sample. It is a real, concrete shape &mdash; not a placeholder &mdash; but every load-bearing decision in it is yours to confirm, adjust, or refuse.</p>
+
+      <p class="body-text">The Sacred Reciprocity tiers are drawn against the high tier of comparable year-long ceremonial trainings in the field; they can be raised, lowered, or restructured.</p>
+
+      <p class="body-text">The dates assume a September 2026 cohort opening. If that timeline is too compressed, the same architecture maps cleanly to September 2027 with another full year to build the curriculum in detail.</p>
+
+      <p class="body-text">The studio named here as Basins of Creation is one studio of six. Once the inaugural cohort runs and closes, its lessons inform the design of the next studios in the school.</p>
+
+      <p class="body-text" style="margin-top: 2.5rem; font-style: italic; color: var(--gold-pale);">The sample is a beginning, not a commitment. The commitment comes when a date is set.</p>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="doc-footer">
+    <span class="footer-mark">The Animist Apothecary School</span>
+    <p class="footer-note">A working sample of Stages 1, 2, and 3 of the Basins of Creation inaugural cohort &mdash; one of the six studios of The Animist Apothecary School.</p>
+    <div class="footer-date">Working Document &middot; 2026.06.01</div>
+  </footer>
+
+</body>
+</html>

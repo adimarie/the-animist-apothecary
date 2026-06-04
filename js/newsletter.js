@@ -12,6 +12,7 @@
 
   function detectSource() {
     const path = window.location.pathname.toLowerCase();
+    if (path.includes('wilds')) return 'wilds';
     if (path.includes('writings')) return 'writings';
     if (path.includes('book.html')) return 'begin-here';
     if (path === '/' || path.endsWith('index.html')) return 'homepage';

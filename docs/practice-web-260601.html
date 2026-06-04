@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Web of Practice &mdash; The Animist Apothecary School</title>
+  <meta name="description" content="The web of practice and offerings for The Animist Apothecary School &mdash; the six studios, the four movements, the three orders, the integration garden, the stances, and the lineages.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #F7F5F0;
+      --parchment: #F4EAD3;
+      --sand: #EFEDE6;
+      --bark: #2D2A26;
+      --bark-mid: #3D3A36;
+      --bark-soft: #5A554C;
+      --bark-deep: #1F1A18;
+      --gold: #C9A84C;
+      --gold-pale: #DCC178;
+      --sage-pale: #C5D9C6;
+      --sage-deep: #5B7553;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: var(--paper);
+      color: var(--bark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* =========================================
+       SHARED TYPOGRAPHY
+       ========================================= */
+    .eyebrow {
+      display: inline-block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+    .rule {
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.8rem auto;
+      opacity: 0.6;
+    }
+    h2.section-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.15;
+      letter-spacing: -0.005em;
+      margin: 0 0 1.6rem;
+      color: var(--bark);
+    }
+    h2.section-h em,
+    .hero-h em,
+    .center-name em,
+    .studio-name em {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      font-size: 1.45em !important;
+      line-height: 0.9 !important;
+      color: var(--gold-pale) !important;
+      letter-spacing: 0 !important;
+    }
+    .body-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.16rem;
+      line-height: 1.75;
+      color: var(--bark);
+      margin: 0 0 1.4rem;
+    }
+    .body-text:last-child { margin-bottom: 0; }
+    .body-text em { font-style: italic; }
+    .body-text strong { font-weight: 500; color: var(--bark-deep); }
+
+    .section {
+      padding: 7rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-paper { background: var(--paper); }
+    .section-sand { background: var(--sand); }
+    .section-dark {
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 28%, rgba(201,168,76,0.13), transparent 60%),
+        radial-gradient(ellipse 80% 65% at 50% 100%, rgba(91,117,83,0.06), transparent 75%),
+        var(--bark-deep);
+      color: var(--parchment);
+    }
+    .section-dark h2.section-h { color: var(--parchment); }
+    .section-dark .body-text { color: rgba(247,245,240,0.88); }
+    .section-dark .eyebrow { color: var(--gold-pale); }
+    .section > * { position: relative; z-index: 2; }
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 25%, rgba(201,168,76,0.07), transparent 68%);
+    }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-narrow { max-width: 760px; margin: 0 auto; }
+    .section-head { text-align: center; margin-bottom: 4rem; }
+
+    /* =========================================
+       HERO
+       ========================================= */
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 28%, rgba(201,168,76,0.15), transparent 60%),
+        radial-gradient(ellipse 80% 65% at 50% 100%, rgba(91,117,83,0.08), transparent 75%),
+        var(--bark-deep);
+      color: var(--parchment);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-inner { max-width: 880px; margin: 0 auto; position: relative; z-index: 2; }
+    .hero-mark {
+      font-family: 'Cinzel', serif;
+      font-size: 0.92rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 2rem;
+      display: block;
+    }
+    .hero-rule {
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--gold-pale);
+      opacity: 0.7;
+      margin: 0 auto 2rem;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 1.8rem;
+    }
+    .hero-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.005em;
+      color: var(--parchment);
+      margin: 0 0 1.8rem;
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.18rem, 1.6vw, 1.45rem);
+      line-height: 1.55;
+      color: rgba(244, 234, 211, 0.86);
+      margin: 0 auto;
+      max-width: 660px;
+    }
+
+    /* =========================================
+       THE CELESTIAL MAP — Center School + 6 Studios
+       ========================================= */
+    .web-map {
+      padding: 7rem 2rem 5rem;
+      background: var(--paper);
+      position: relative;
+      overflow: hidden;
+    }
+    .web-map::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(201,168,76,0.12), transparent 65%),
+        radial-gradient(ellipse 70% 55% at 50% 50%, rgba(201,168,76,0.05), transparent 75%);
+      z-index: 1;
+    }
+    .web-map > * { position: relative; z-index: 2; }
+    .web-head {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .web-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 2.5rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .web-center {
+      grid-column: 2;
+      grid-row: 2;
+      text-align: center;
+      padding: 2.4rem 1.8rem;
+      border: 1px solid var(--gold);
+      background: var(--sand);
+      box-shadow: 0 0 60px rgba(201,168,76,0.15);
+      position: relative;
+    }
+    .web-center::before,
+    .web-center::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border: 1px solid var(--gold);
+      background: var(--paper);
+      transform: rotate(45deg);
+    }
+    .web-center::before { top: -7px; left: 50%; margin-left: -6px; }
+    .web-center::after { bottom: -7px; left: 50%; margin-left: -6px; }
+    .center-eyebrow {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .center-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.45rem, 2.4vw, 1.95rem);
+      line-height: 1.15;
+      color: var(--bark);
+      margin: 0 0 0.6rem;
+    }
+    .center-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: var(--bark-mid);
+      margin: 0;
+    }
+
+    .web-node {
+      text-align: center;
+      padding: 1.8rem 1.4rem;
+      background: var(--paper);
+      border-top: 1px solid var(--gold);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .web-node:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(45,42,38,0.06);
+    }
+    .node-eyebrow {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .node-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 1.18rem;
+      line-height: 1.2;
+      color: var(--bark);
+      margin: 0 0 0.4rem;
+    }
+    .node-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: var(--bark-soft);
+      margin: 0;
+    }
+
+    /* Position the 6 studios around the center */
+    .node-1 { grid-column: 1; grid-row: 1; }
+    .node-2 { grid-column: 3; grid-row: 1; }
+    .node-3 { grid-column: 1; grid-row: 2; }
+    .node-4 { grid-column: 3; grid-row: 2; }
+    .node-5 { grid-column: 1; grid-row: 3; }
+    .node-6 { grid-column: 3; grid-row: 3; }
+
+    .web-legend {
+      max-width: 720px;
+      margin: 4rem auto 0;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--bark-mid);
+    }
+
+    @media (max-width: 880px) {
+      .web-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .web-center,
+      .node-1, .node-2, .node-3,
+      .node-4, .node-5, .node-6 {
+        grid-column: 1;
+        grid-row: auto;
+      }
+      .web-center {
+        order: -1;
+        margin-bottom: 1rem;
+      }
+    }
+
+    /* =========================================
+       STUDIO CARDS — Detailed
+       ========================================= */
+    .studios-section {
+      padding: 7rem 2rem;
+      background: var(--sand);
+    }
+    .studios-inner { max-width: 1200px; margin: 0 auto; }
+    .studios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.8rem;
+    }
+    @media (max-width: 880px) {
+      .studios-grid { grid-template-columns: 1fr; }
+    }
+    .studio-card {
+      padding: 2.6rem 2.2rem;
+      background: var(--paper);
+      border-radius: 2px;
+      border-top: 2px solid var(--gold);
+      box-shadow: 0 4px 25px rgba(45,42,38,0.04);
+      display: flex;
+      flex-direction: column;
+    }
+    .studio-eyebrow {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .studio-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(1.6rem, 2.4vw, 1.95rem);
+      line-height: 1.15;
+      color: var(--bark);
+      margin: 0 0 1.2rem;
+    }
+    .studio-essence {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.08rem;
+      line-height: 1.55;
+      color: var(--bark);
+      margin: 0 0 1.4rem;
+    }
+    .studio-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      color: var(--bark);
+      margin: 0 0 1.6rem;
+    }
+    .offerings-label {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--bark-soft);
+      margin: 0 0 0.8rem;
+      display: block;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.3);
+    }
+    .offerings-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .offerings-list li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--bark);
+      padding: 0.45rem 0 0.45rem 1.2rem;
+      position: relative;
+    }
+    .offerings-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0.2rem;
+      top: 0.2rem;
+      color: var(--gold);
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    /* =========================================
+       CROSS-CUTTING CURRENTS
+       ========================================= */
+    .currents-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 880px) {
+      .currents-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    .current-block {
+      padding: 2rem 1.6rem;
+      border-left: 1px solid var(--gold);
+    }
+    .current-eyebrow {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .current-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.2;
+      color: var(--bark);
+      margin: 0 0 1.2rem;
+    }
+    .current-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .current-list li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.02rem;
+      line-height: 1.55;
+      color: var(--bark);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+      counter-increment: step;
+    }
+    .current-list li:last-child { border-bottom: none; }
+    .current-list-numbered li::before {
+      content: counter(step) " · ";
+      color: var(--gold);
+      font-style: italic;
+    }
+    .current-list-numbered {
+      counter-reset: step;
+    }
+    .current-list strong { font-weight: 500; color: var(--bark-deep); }
+
+    /* =========================================
+       INTEGRATION PRACTICES
+       ========================================= */
+    .integration-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    @media (max-width: 980px) { .integration-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .integration-grid { grid-template-columns: 1fr; } }
+    .integration-card {
+      padding: 1.6rem 1.2rem;
+      text-align: center;
+      border-top: 1px solid var(--gold);
+    }
+    .integration-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-style: italic;
+      font-size: 1.2rem;
+      line-height: 1.2;
+      color: var(--bark);
+      margin: 0 0 0.6rem;
+    }
+    .integration-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.96rem;
+      line-height: 1.5;
+      color: var(--bark-mid);
+      margin: 0;
+    }
+
+    /* =========================================
+       STANCES
+       ========================================= */
+    .stances-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (max-width: 880px) { .stances-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .stance-card {
+      padding: 2.4rem 2rem;
+      background: var(--paper);
+      border-left: 2px solid var(--gold);
+    }
+    .stance-eyebrow {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .stance-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.6rem;
+      line-height: 1.2;
+      color: var(--bark);
+      margin: 0 0 1.2rem;
+    }
+    .stance-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.55;
+      color: var(--bark);
+      margin: 0 0 1rem;
+      padding-left: 1rem;
+      border-left: 1px solid var(--gold-pale);
+    }
+    .stance-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+    }
+    .stance-list li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--bark);
+      padding: 0.5rem 0 0.5rem 1.4rem;
+      position: relative;
+    }
+    .stance-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0.3rem;
+      top: 0.2rem;
+      color: var(--gold);
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    /* =========================================
+       LINEAGES — Roots
+       ========================================= */
+    .roots-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .roots-list {
+      list-style: none;
+      padding: 0;
+      margin: 3rem 0 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.8rem 3rem;
+    }
+    @media (max-width: 720px) { .roots-list { grid-template-columns: 1fr; } }
+    .roots-list li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.04rem;
+      line-height: 1.55;
+      color: rgba(247,245,240,0.88);
+      padding: 0.9rem 0 0.9rem 1.4rem;
+      position: relative;
+      text-align: left;
+      border-bottom: 1px solid rgba(220, 193, 120, 0.18);
+    }
+    .roots-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      color: var(--gold-pale);
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .roots-list strong { color: var(--gold-pale); font-weight: 500; }
+    .roots-list em { font-style: italic; }
+
+    /* =========================================
+       FOOTER
+       ========================================= */
+    .doc-footer {
+      padding: 4rem 2rem;
+      background: var(--bark-deep);
+      color: rgba(244, 234, 211, 0.7);
+      text-align: center;
+    }
+    .doc-footer .footer-mark {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .doc-footer .footer-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.96rem;
+      line-height: 1.55;
+      color: rgba(244, 234, 211, 0.6);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .doc-footer .footer-date {
+      margin-top: 1.4rem;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(220, 193, 120, 0.55);
+    }
+
+    @media (max-width: 720px) {
+      .section { padding: 5rem 1.4rem; }
+      .web-map { padding: 5rem 1.4rem 4rem; }
+      .studios-section { padding: 5rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================
+       HERO
+       ========================================= -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-mark">The Animist Apothecary</span>
+      <span class="hero-rule"></span>
+      <span class="hero-eyebrow">The Web of Practice &middot; The School</span>
+      <h1 class="hero-h">What is <em>emerging</em></h1>
+      <p class="hero-sub">A map of the practice and offerings of The Animist Apothecary School &mdash; the six studios, the currents that flow through all of them, the integration garden, the stances that hold them, and the lineages that feed them.</p>
+    </div>
+  </section>
+
+  <!-- =========================================
+       THE CELESTIAL MAP
+       ========================================= -->
+  <section class="web-map">
+    <div class="web-head">
+      <span class="eyebrow">The Map</span>
+      <span class="rule"></span>
+      <h2 class="section-h">The <em>cosmology</em> of the work</h2>
+      <p class="body-text" style="max-width: 660px; margin: 0 auto; font-style: italic; color: var(--bark-mid);">At the center, the school itself &mdash; the training ground. Around it, the six studios. Each studio is its own discipline avenue, with its own foundational ethos, body of knowledge, and skill set. Together they form the web.</p>
+    </div>
+
+    <div class="web-grid">
+
+      <div class="web-node node-1">
+        <span class="node-eyebrow">Studio One</span>
+        <h3 class="node-name">Mythopoetic Being</h3>
+        <p class="node-tag">Story medicine. The archetypal narrative framework of identity.</p>
+      </div>
+
+      <div class="web-node node-2">
+        <span class="node-eyebrow">Studio Two</span>
+        <h3 class="node-name">Spirit Mediation</h3>
+        <p class="node-tag">Interdimensional intermediation. The seen and unseen worlds.</p>
+      </div>
+
+      <div class="web-node node-3">
+        <span class="node-eyebrow">Studio Three</span>
+        <h3 class="node-name">Shamanic Bodywork</h3>
+        <p class="node-tag">Hands-on work on the blueprint of the energetic being.</p>
+      </div>
+
+      <div class="web-center">
+        <span class="center-eyebrow">The School</span>
+        <h2 class="center-name">The Animist <em>Apothecary</em></h2>
+        <p class="center-sub">A training ground cultivating interdimensional intermediaries &mdash; people who can shepherd in a new world.</p>
+      </div>
+
+      <div class="web-node node-4">
+        <span class="node-eyebrow">Studio Four</span>
+        <h3 class="node-name">Ceremonialist Training</h3>
+        <p class="node-tag">The third order. Becoming a practitioner in service to others.</p>
+      </div>
+
+      <div class="web-node node-5">
+        <span class="node-eyebrow">Studio Five</span>
+        <h3 class="node-name">Expressive Arts</h3>
+        <p class="node-tag">The symphony of the room. Voice, breath, movement, sound.</p>
+      </div>
+
+      <div class="web-node node-6">
+        <span class="node-eyebrow">Studio Six</span>
+        <h3 class="node-name">Basins of Creation</h3>
+        <p class="node-tag">The inner garden. Daily attunement. Sacred seeds tended.</p>
+      </div>
+
+    </div>
+
+    <p class="web-legend">Each studio teaches its own discipline &mdash; but the <em>currents</em> flow through all six. The four movements of the arc, the three orders of progression, the cycles of integration, the stances of the practitioner and the facilitator, and the lineages from which the work is fed.</p>
+  </section>
+
+  <!-- =========================================
+       THE STUDIOS — DETAILED
+       ========================================= -->
+  <section class="studios-section">
+    <div class="studios-inner">
+      <div class="section-head">
+        <span class="eyebrow">The Six Studios</span>
+        <span class="rule"></span>
+        <h2 class="section-h">What lives <em>inside</em> each one</h2>
+      </div>
+
+      <div class="studios-grid">
+
+        <div class="studio-card">
+          <span class="studio-eyebrow">Studio One</span>
+          <h3 class="studio-name">Mythopoetic <em>Being</em></h3>
+          <p class="studio-essence">The story medicine. The web of life that exists through the single note of you.</p>
+          <p class="studio-body">Working with the archetypal narrative framework of identity &mdash; who you are socially, interpersonally, ancestrally. The dark night of the soul and the luminous expanse of stars that rests on it. Story as medicine. Map as territory. Symbol as terrain.</p>
+          <span class="offerings-label">What is on offer</span>
+          <ul class="offerings-list">
+            <li>Story-medicine ceremonial work</li>
+            <li>Archetypal narrative exploration</li>
+            <li>Dream and vision tending</li>
+            <li>The map &mdash; ancestral, personal, mythic</li>
+            <li>Living lineage articulation</li>
+          </ul>
+        </div>
+
+        <div class="studio-card">
+          <span class="studio-eyebrow">Studio Two</span>
+          <h3 class="studio-name">Spirit <em>Mediation</em></h3>
+          <p class="studio-essence">Interdimensional intermediation &mdash; Adi Marie&rsquo;s named vocation.</p>
+          <p class="studio-body">Mediation on behalf of the seen and unseen worlds. The sovereign vessel, the conversation as participation, power and agency in the unseen. Working with ancestral, elemental, and otherworldly intelligences with discernment, reverence, and a clear-sided line of intention.</p>
+          <span class="offerings-label">What is on offer</span>
+          <ul class="offerings-list">
+            <li>Dagara divination &mdash; ancestral and elemental</li>
+            <li>Spirit work and intercession</li>
+            <li>Mediation with the unseen</li>
+            <li>Sovereign vessel training</li>
+            <li>Pl&aacute;ticas &mdash; guidance and counsel</li>
+          </ul>
+        </div>
+
+        <div class="studio-card">
+          <span class="studio-eyebrow">Studio Three</span>
+          <h3 class="studio-name">Shamanic <em>Bodywork</em></h3>
+          <p class="studio-essence">Hands-on work on the blueprint of the energetic being.</p>
+          <p class="studio-body">Adi Marie&rsquo;s primary craft &mdash; sixteen years in therapeutic and medical environments. Laying on of hands, energy clearing, deeper work on the blueprint of the system beyond the body. The body as the anchor for what comes through. The somatic technology of the work.</p>
+          <span class="offerings-label">What is on offer</span>
+          <ul class="offerings-list">
+            <li>Shamanic bodywork sessions</li>
+            <li>Energy blueprint work</li>
+            <li>Hands-on integration within ceremony</li>
+            <li>Trauma-informed somatic clearing</li>
+            <li>Bodywork training for practitioners</li>
+          </ul>
+        </div>
+
+        <div class="studio-card">
+          <span class="studio-eyebrow">Studio Four</span>
+          <h3 class="studio-name">Ceremonialist <em>Training</em></h3>
+          <p class="studio-essence">The third order of the work &mdash; learning to be in service to others.</p>
+          <p class="studio-body">For practitioners in careers and professions already in service to others, and for those who choose to become ceremonial ritual practitioners first and foremost. Container holding, field tending, procedural ritual technology, the choreography of the held space. The collaboration with co-facilitators who carry their own depths.</p>
+          <span class="offerings-label">What is on offer</span>
+          <ul class="offerings-list">
+            <li>Ceremonialist training cohorts</li>
+            <li>Apprenticeship in the held container</li>
+            <li>Generative trance hypnosis training</li>
+            <li>Mentorship for ceremonialists</li>
+            <li>The facilitator&rsquo;s stance &mdash; refined and embodied</li>
+          </ul>
+        </div>
+
+        <div class="studio-card">
+          <span class="studio-eyebrow">Studio Five</span>
+          <h3 class="studio-name">Expressive <em>Arts</em></h3>
+          <p class="studio-essence">The symphony of the room &mdash; the body as instrument for participation in the worlds.</p>
+          <p class="studio-body">Voice, breath, movement, sound. Toning as attunement. Vocal release as purging. The S-curve in the spine that matches the voltage of what comes through. Crying, laughing, screaming, breath as ceremony &mdash; the central nervous system recalibrating through expression.</p>
+          <span class="offerings-label">What is on offer</span>
+          <ul class="offerings-list">
+            <li>Voice and sound work</li>
+            <li>Somatic movement practice</li>
+            <li>Breath as ceremony</li>
+            <li>Toning and vocal release</li>
+            <li>Expressive ritual</li>
+          </ul>
+        </div>
+
+        <div class="studio-card">
+          <span class="studio-eyebrow">Studio Six</span>
+          <h3 class="studio-name">Basins of <em>Creation</em></h3>
+          <p class="studio-essence">The inner garden &mdash; the field one returns to.</p>
+          <p class="studio-body">The heart-belly center, the seat of creation. Daily attunement. Sacred seeds tended over years and decades. Whimsy as exercise of the will of creation. Totemic anchoring. The letter to the future self. The cycles of practice that keep the gateway open after a threshold has been crossed.</p>
+          <span class="offerings-label">What is on offer</span>
+          <ul class="offerings-list">
+            <li>Daily attunement practice</li>
+            <li>Sacred seed tending</li>
+            <li>Whimsy and will-of-creation exercises</li>
+            <li>Integration garden support</li>
+            <li>Letter to the future self practice</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       THE CURRENTS — THAT FLOW THROUGH ALL STUDIOS
+       ========================================= -->
+  <section class="section section-paper">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">The Currents</span>
+        <span class="rule"></span>
+        <h2 class="section-h">What flows <em>through</em> all six</h2>
+        <p class="body-text" style="max-width: 660px; margin: 0 auto; font-style: italic; color: var(--bark-mid);">Each studio teaches its own discipline. But the same currents run through every studio &mdash; the arc of learning, the orders of progression, the cycle of fluency.</p>
+      </div>
+
+      <div class="currents-grid">
+
+        <div class="current-block">
+          <span class="current-eyebrow">The Arc</span>
+          <h3 class="current-name">Four <em>Movements</em></h3>
+          <ul class="current-list current-list-numbered">
+            <li><strong>The Map</strong> &mdash; all the maps that came before, synthesized through your own lived experience</li>
+            <li><strong>Navigating the Map</strong> &mdash; symbols, terrains, applied principles</li>
+            <li><strong>Walking the Terrain</strong> &mdash; first-person experiential exploration</li>
+            <li><strong>Field Training</strong> &mdash; expressing the work in community, in service</li>
+          </ul>
+        </div>
+
+        <div class="current-block">
+          <span class="current-eyebrow">The Progression</span>
+          <h3 class="current-name">Three <em>Orders</em></h3>
+          <ul class="current-list current-list-numbered">
+            <li><strong>For yourself</strong> &mdash; clearing, attuning, becoming fluent, ceremony as a rhythm</li>
+            <li><strong>On behalf of intentions for the world</strong> &mdash; journeying with purpose, anchoring it back</li>
+            <li><strong>In service to others</strong> &mdash; ceremonialist training, the practitioner&rsquo;s vocation</li>
+          </ul>
+        </div>
+
+        <div class="current-block">
+          <span class="current-eyebrow">The Rhythm</span>
+          <h3 class="current-name">Fluency <em>Cycle</em></h3>
+          <ul class="current-list current-list-numbered">
+            <li><strong>Mundane self</strong> &mdash; hold your water, come back</li>
+            <li><strong>Communicate clearly</strong> &mdash; develop the skill, come back</li>
+            <li><strong>Bring the ego structure along</strong> &mdash; pendulum acclimating to higher oscillation</li>
+            <li><strong>Etiquette and reciprocity</strong> &mdash; conversation as a technician with the other worlds</li>
+            <li><strong>Care for the human self</strong> &mdash; tend the one navigating the changes</li>
+            <li><strong>Bring instruction back</strong> &mdash; receive from the other world, implement in this one</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div style="max-width: 760px; margin: 4rem auto 0; text-align: center;">
+        <p class="body-text" style="font-style: italic; color: var(--bark);">Three depths of engagement run through every entry point: the one who comes for <strong>theory,</strong> the one who comes to <strong>explore the concept for themselves,</strong> and the one who is <em>really</em> here &mdash; the one who comes to change their lives and change how they are able to affect the lives of others.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       THE INTEGRATION GARDEN
+       ========================================= -->
+  <section class="section section-sand">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">The Garden</span>
+        <span class="rule"></span>
+        <h2 class="section-h">Cycles of <em>integration</em></h2>
+        <p class="body-text" style="max-width: 660px; margin: 0 auto; font-style: italic; color: var(--bark-mid);">The work of a ceremony, an initiation, or any deep practice is not the event itself. It is the opening of a gateway one returns to. These are the practices that keep the gateway open.</p>
+      </div>
+
+      <div class="integration-grid">
+
+        <div class="integration-card">
+          <h4 class="integration-name">Daily morning <em>practice</em></h4>
+          <p class="integration-body">Heart-belly center. The seat of creation. Ask to be guided. Set the day&rsquo;s intentions.</p>
+        </div>
+
+        <div class="integration-card">
+          <h4 class="integration-name">Whimsy <em>exercise</em></h4>
+          <p class="integration-body">Practice the will of creation where the stakes are low. A rainbow. A butterfly. A flute.</p>
+        </div>
+
+        <div class="integration-card">
+          <h4 class="integration-name">Totemic <em>anchoring</em></h4>
+          <p class="integration-body">A piece &mdash; jewelry, an altar item &mdash; imbued with the energy of the threshold crossed.</p>
+        </div>
+
+        <div class="integration-card">
+          <h4 class="integration-name">Letter to <em>future self</em></h4>
+          <p class="integration-body">From the richness of the heart. Dreams, apologies, hopes. Read it back when you are in need.</p>
+        </div>
+
+        <div class="integration-card">
+          <h4 class="integration-name">Required <em>integration call</em></h4>
+          <p class="integration-body">Within one to four weeks of any deep ceremonial work. Part of the tending of the sanctity.</p>
+        </div>
+
+        <div class="integration-card">
+          <h4 class="integration-name">Depletion as <em>spaciousness</em></h4>
+          <p class="integration-body">The fatigue after deep work is the room made. The seeds of light have space now to bloom.</p>
+        </div>
+
+        <div class="integration-card">
+          <h4 class="integration-name">Sacred <em>seeds</em></h4>
+          <p class="integration-body">Some teachings take years or decades to bloom. The practitioner tends the garden.</p>
+        </div>
+
+        <div class="integration-card">
+          <h4 class="integration-name">Open the <em>container</em></h4>
+          <p class="integration-body">A ceremony does not end. It is released into the life of the practitioner.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       THE STANCES
+       ========================================= -->
+  <section class="section section-paper">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">The Stances</span>
+        <span class="rule"></span>
+        <h2 class="section-h">Two ways of <em>holding</em></h2>
+        <p class="body-text" style="max-width: 660px; margin: 0 auto; font-style: italic; color: var(--bark-mid);">The school teaches a stance for the one who carries the work into the world, and embodies a stance for the one who holds the field within which it is taught.</p>
+      </div>
+
+      <div class="stances-grid">
+
+        <div class="stance-card">
+          <span class="stance-eyebrow">For the One Carrying</span>
+          <h3 class="stance-name">The practitioner&rsquo;s <em>stance</em></h3>
+          <p class="stance-quote">People come when they are called. The work is propagated by holding fields, not by recruiting.</p>
+          <ul class="stance-list">
+            <li><strong>Anti-evangelism</strong> &mdash; let the medicine offer the invitation through you</li>
+            <li><strong>Protect the sanctity</strong> &mdash; speak where it will land, not where it will be flattened</li>
+            <li><strong>Compassionately fierce</strong> &mdash; archangels carry swords for a reason</li>
+            <li><strong>Spiritual ceremonial stewardship</strong> &mdash; not consumer, not tourist, steward</li>
+            <li><strong>Contribute to the amakua</strong> &mdash; the lineage field is alive and you are shaping it</li>
+            <li><strong>Speak from lived experience</strong> &mdash; initiation is by participation</li>
+          </ul>
+        </div>
+
+        <div class="stance-card">
+          <span class="stance-eyebrow">For the One Holding</span>
+          <h3 class="stance-name">The facilitator&rsquo;s <em>stance</em></h3>
+          <p class="stance-quote">I am the captain with my hands on the wheel of the ship. I am here at your behest, not your service.</p>
+          <ul class="stance-list">
+            <li><strong>The full spectrum</strong> &mdash; silly and life-is-fantastic alongside intense Priestess gravitas</li>
+            <li><strong>Generous, not proprietary</strong> &mdash; mine is not the only way</li>
+            <li><strong>Trauma-informed at the bone</strong> &mdash; not as credential but as foundation</li>
+            <li><strong>Embodied and skilled with the body</strong> &mdash; hands-on, blueprint work</li>
+            <li><strong>Collaborative container</strong> &mdash; co-facilitators with their own depths</li>
+            <li><strong>The joy is named</strong> &mdash; mother to the field, nourished by what nourishes the student</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       THE LINEAGES — ROOTS
+       ========================================= -->
+  <section class="section section-dark">
+    <div class="roots-inner">
+      <span class="eyebrow">The Roots</span>
+      <span class="rule" style="background: var(--gold-pale);"></span>
+      <h2 class="section-h">The lineages that <em>feed</em> the school</h2>
+      <p class="body-text" style="max-width: 620px; margin: 1rem auto 0; font-style: italic;">No practice arises alone. What is carried through this school comes through long lines of teachers, traditions, and bodies of knowledge &mdash; and at the same time, what is being cultivated is unprecedented in the form Adi Marie was taught, in deep integrity with what the spirit world has been showing.</p>
+
+      <ul class="roots-list">
+        <li><strong>Dagara divination</strong> &mdash; lineage-initiated medicine woman of the Dagara people of West Africa, a 40,000-year oral tradition</li>
+        <li><strong>Quechua mountain lineages</strong> &mdash; the Andes, where the pinnacle teachers are the mountain itself and the Mesa</li>
+        <li><strong>Hawaiian Kahuna lineages</strong> &mdash; the <em>amakua,</em> the collective field of wisdom that practitioners contribute to</li>
+        <li><strong>Iboga and ayahuasca</strong> &mdash; the medicines Adi Marie sits with in regular personal practice</li>
+        <li><strong>Trauma-informed somatic psychology</strong> &mdash; deep training and lived experience</li>
+        <li><strong>Shamanic bodywork</strong> &mdash; sixteen years in therapeutic and medical environments</li>
+        <li><strong>Generative trance hypnosis</strong> &mdash; carried by Adi Marie and the co-facilitators of the work</li>
+        <li><strong>Cannabis</strong> &mdash; first plant medicine teacher, the one that brought forward the body work gifts</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =========================================
+       FOOTER
+       ========================================= -->
+  <footer class="doc-footer">
+    <span class="footer-mark">The Animist Apothecary</span>
+    <p class="footer-note">A working map of the web of practice and offerings of the school &mdash; the six studios, the currents, the integration garden, the stances, and the roots &mdash; drawn from what is emerging through Adi Marie&rsquo;s voice.</p>
+    <div class="footer-date">Working Document &middot; 2026.06.01</div>
+  </footer>
+
+</body>
+</html>

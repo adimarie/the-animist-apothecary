@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Animist Apothecary &mdash; Manifesto, Ethos, and the Bones of the School</title>
+  <meta name="description" content="The manifesto, credo, and architectural bones of The Animist Apothecary &mdash; a school of somatic shamanic arts founded and held by Adi Marie.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #F7F5F0;
+      --parchment: #F4EAD3;
+      --sand: #EFEDE6;
+      --cream-dark: #EFEDE6;
+      --bark: #2D2A26;
+      --bark-mid: #3D3A36;
+      --bark-soft: #5A554C;
+      --bark-deep: #1F1A18;
+      --gold: #C9A84C;
+      --gold-pale: #DCC178;
+      --sage-pale: #C5D9C6;
+      --sage-deep: #5B7553;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: var(--paper);
+      color: var(--bark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ============================================
+       SHARED TYPOGRAPHY TOKENS
+       ============================================ */
+    .eyebrow {
+      display: inline-block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+    .rule {
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.8rem auto;
+      opacity: 0.6;
+    }
+    .rule-left {
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    h2.section-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 1.15;
+      letter-spacing: -0.005em;
+      margin: 0 0 2rem;
+      color: var(--bark);
+    }
+    h2.section-h em,
+    h3.sub-h em,
+    .hero-h em,
+    .lineage-name em,
+    .stanza-h em,
+    .pull em {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      font-size: 1.45em !important;
+      line-height: 0.9 !important;
+      color: var(--gold-pale) !important;
+      letter-spacing: 0 !important;
+    }
+    h3.sub-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(1.55rem, 2.4vw, 1.95rem);
+      line-height: 1.25;
+      color: var(--bark);
+      margin: 0 0 1.2rem;
+    }
+
+    .body-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.18rem;
+      line-height: 1.75;
+      color: var(--bark);
+      margin: 0 0 1.4rem;
+    }
+    .body-text:last-child { margin-bottom: 0; }
+    .body-text em { font-style: italic; }
+
+    .pull {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.35rem, 2vw, 1.7rem);
+      line-height: 1.45;
+      color: var(--bark);
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      position: relative;
+    }
+    .pull em { font-style: italic; }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      position: relative;
+      min-height: 95vh;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 28%, rgba(201,168,76,0.15), transparent 60%),
+        radial-gradient(ellipse 80% 65% at 50% 100%, rgba(91,117,83,0.08), transparent 75%),
+        var(--bark-deep);
+      color: var(--parchment);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-inner { max-width: 880px; margin: 0 auto; position: relative; z-index: 2; }
+    .hero-mark {
+      font-family: 'Cinzel', serif;
+      font-size: 0.92rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 2.4rem;
+      display: block;
+    }
+    .hero-rule {
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--gold-pale);
+      opacity: 0.7;
+      margin: 0 auto 2.4rem;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 2rem;
+    }
+    .hero-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.6rem, 6vw, 5.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.005em;
+      color: var(--parchment);
+      margin: 0 0 2rem;
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.2rem, 1.7vw, 1.55rem);
+      line-height: 1.55;
+      color: rgba(244, 234, 211, 0.86);
+      margin: 0 auto;
+      max-width: 660px;
+    }
+    .hero-meta {
+      margin-top: 3rem;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(220, 193, 120, 0.7);
+    }
+
+    /* ============================================
+       SECTION SHELL
+       ============================================ */
+    .section {
+      padding: 7rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-paper { background: var(--paper); }
+    .section-sand { background: var(--sand); }
+    .section-dark {
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 28%, rgba(201,168,76,0.13), transparent 60%),
+        radial-gradient(ellipse 80% 65% at 50% 100%, rgba(91,117,83,0.06), transparent 75%),
+        var(--bark-deep);
+      color: var(--parchment);
+    }
+    .section-dark .body-text { color: rgba(247,245,240,0.88); }
+    .section-dark h2.section-h { color: var(--parchment); }
+    .section-dark h3.sub-h { color: var(--parchment); }
+    .section-dark .pull { color: var(--parchment); }
+    .section-dark .eyebrow { color: var(--gold-pale); }
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 25%, rgba(201,168,76,0.07), transparent 68%);
+    }
+    .section > * { position: relative; z-index: 2; }
+
+    .section-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .section-inner-wide {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-head {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .section-head .rule { margin: 1.5rem auto 2rem; }
+
+    /* ============================================
+       MANIFESTO — flowing stanzas
+       ============================================ */
+    .manifesto-stanzas .stanza {
+      margin: 0 0 2.4rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 1.7vw, 1.42rem);
+      line-height: 1.65;
+      color: var(--bark);
+    }
+    .manifesto-stanzas .stanza.opening {
+      font-style: italic;
+      font-size: clamp(1.35rem, 1.9vw, 1.6rem);
+      color: var(--bark);
+    }
+    .manifesto-stanzas .stanza strong {
+      font-weight: 500;
+      color: var(--bark);
+    }
+    .manifesto-stanzas .stanza em {
+      font-style: italic;
+    }
+    .manifesto-stanzas .closing {
+      margin-top: 3rem;
+      font-style: italic;
+      font-size: clamp(1.35rem, 2vw, 1.7rem);
+      color: var(--bark-mid);
+      text-align: center;
+    }
+
+    /* ============================================
+       I BELIEVE — credo stanzas
+       ============================================ */
+    .credo {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .credo .belief {
+      padding: 1.6rem 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.16rem;
+      line-height: 1.7;
+      color: var(--bark);
+    }
+    .credo .belief:last-child { border-bottom: none; }
+    .credo .belief strong {
+      font-weight: 500;
+      color: var(--bark-deep);
+    }
+    .credo .belief em { font-style: italic; }
+    .credo .belief .lede {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .credo .belief .text {
+      display: block;
+    }
+    .credo-closing {
+      margin-top: 3.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+      line-height: 1.45;
+      color: var(--bark);
+      text-align: center;
+    }
+
+    /* ============================================
+       LINEAGE SECTION
+       ============================================ */
+    .lineage-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .lineage-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(2rem, 3.4vw, 2.7rem);
+      line-height: 1.1;
+      color: var(--bark);
+      margin: 0 0 1.6rem;
+      text-align: center;
+    }
+    .lineage-rivers {
+      list-style: none;
+      padding: 0;
+      margin: 2.4rem 0;
+    }
+    .lineage-rivers li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.08rem;
+      line-height: 1.55;
+      color: var(--bark);
+      padding: 0.7rem 0 0.7rem 1.6rem;
+      border-bottom: 1px solid rgba(45, 42, 38, 0.07);
+      position: relative;
+    }
+    .lineage-rivers li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      top: 0.55rem;
+      color: var(--gold);
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .lineage-rivers li:last-child { border-bottom: none; }
+    .lineage-rivers em { font-style: italic; }
+    .lineage-coda {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(201, 168, 76, 0.3);
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: var(--bark-mid);
+    }
+
+    /* ============================================
+       BONES — sub-block grid
+       ============================================ */
+    .bones-block {
+      margin: 0 0 4rem;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .bones-block:last-child { margin-bottom: 0; }
+    .bones-block .sub-eyebrow {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .arc-list, .cycle-list, .orders-list {
+      counter-reset: arc;
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+    }
+    .arc-list li, .cycle-list li, .orders-list li {
+      counter-increment: arc;
+      padding: 1.2rem 0 1.2rem 3.4rem;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.16);
+      position: relative;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.12rem;
+      line-height: 1.6;
+      color: var(--bark);
+    }
+    .arc-list li::before, .cycle-list li::before, .orders-list li::before {
+      content: counter(arc);
+      position: absolute;
+      left: 0;
+      top: 1.1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      color: var(--gold);
+      line-height: 1;
+      width: 2.4rem;
+      text-align: center;
+      border-right: 1px solid rgba(201, 168, 76, 0.35);
+      padding-right: 0.5rem;
+    }
+    .arc-list li:last-child, .cycle-list li:last-child, .orders-list li:last-child {
+      border-bottom: none;
+    }
+    .arc-list strong, .cycle-list strong, .orders-list strong {
+      font-weight: 500;
+      color: var(--bark-deep);
+    }
+
+    .depth-list {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+    }
+    .depth-list li {
+      padding: 1rem 0 1rem 2rem;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.16);
+      position: relative;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.08rem;
+      line-height: 1.55;
+      color: var(--bark);
+    }
+    .depth-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0.4rem;
+      top: 0.5rem;
+      color: var(--gold);
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .depth-list li:last-child { border-bottom: none; }
+    .depth-list strong { font-weight: 500; color: var(--bark-deep); }
+    .depth-list em { font-style: italic; }
+
+    /* ============================================
+       STUDIOS GRID
+       ============================================ */
+    .studios-note {
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--bark-mid);
+      margin: 1.5rem auto 3rem;
+      max-width: 620px;
+    }
+
+    /* ============================================
+       PRINCIPLE STACK (for Practitioner's Stance, Cycles)
+       ============================================ */
+    .principle {
+      margin: 0 0 3.5rem;
+      padding: 0 0 0 2rem;
+      border-left: 1px solid rgba(201, 168, 76, 0.4);
+    }
+    .principle:last-child { margin-bottom: 0; }
+    .principle h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-style: italic;
+      font-size: 1.45rem;
+      line-height: 1.2;
+      color: var(--bark);
+      margin: 0 0 1rem;
+    }
+    .principle p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--bark);
+      margin: 0 0 1rem;
+    }
+    .principle p em { font-style: italic; }
+    .principle p:last-child { margin-bottom: 0; }
+
+    /* ============================================
+       FACILITATOR STANCE — quote-led blocks
+       ============================================ */
+    .stance-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.35rem, 2vw, 1.65rem);
+      line-height: 1.5;
+      color: var(--bark);
+      margin: 0 0 1.4rem;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--gold);
+    }
+    .stance-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.12rem;
+      line-height: 1.7;
+      color: var(--bark);
+      margin: 0 0 2rem;
+    }
+    .stance-text em { font-style: italic; }
+    .stance-text strong { font-weight: 500; }
+
+    /* ============================================
+       WHY THIS EXISTS — closing
+       ============================================ */
+    .closing-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .closing-inner .body-text {
+      font-size: 1.22rem;
+      color: rgba(247,245,240,0.92);
+    }
+    .closing-grace {
+      margin: 3rem 0 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.45rem, 2.4vw, 1.95rem);
+      line-height: 1.4;
+      color: var(--gold-pale);
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .doc-footer {
+      padding: 4rem 2rem;
+      background: var(--bark-deep);
+      color: rgba(244, 234, 211, 0.75);
+      text-align: center;
+    }
+    .doc-footer .footer-mark {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .doc-footer .footer-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.98rem;
+      line-height: 1.55;
+      color: rgba(244, 234, 211, 0.65);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .doc-footer .footer-date {
+      margin-top: 1.4rem;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(220, 193, 120, 0.55);
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 720px) {
+      .section { padding: 5rem 1.5rem; }
+      .hero { padding: 5rem 1.5rem; }
+      .principle { padding-left: 1.2rem; }
+      .stance-quote { padding-left: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-mark">The Animist Apothecary</span>
+      <span class="hero-rule"></span>
+      <span class="hero-eyebrow">Manifesto &middot; Ethos &middot; The Bones of the School</span>
+      <h1 class="hero-h">A school of <em>somatic shamanic arts</em></h1>
+      <p class="hero-sub">A training ground and a specialized school, cultivating skilled interdimensional intermediaries &mdash; people who can mediate on behalf of the seen and unseen worlds, between the human and the other-than-human beings.</p>
+      <div class="hero-meta">Working Document &middot; 2026.06.01</div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       MANIFESTO
+       ============================================ -->
+  <section class="section section-paper">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">The Manifesto</span>
+        <span class="rule"></span>
+        <h2 class="section-h">A new path along <em>ancient ground</em></h2>
+      </div>
+
+      <div class="manifesto-stanzas">
+        <p class="stanza opening">Our times need people to restore the conversational, relational balance between the worlds.</p>
+
+        <p class="stanza">We are at an urgent time. The work is to resituate ourselves down from a position of supremacy, and to take our place as a guardian and stewardship species. We are here to be in service.</p>
+
+        <p class="stanza">The Animist Apothecary is an experiential apothecary for the restoration of an animist relational practice and world view. It is a training ground and a specialized school, cultivating skilled interdimensional intermediaries &mdash; people who can mediate on behalf of the seen and unseen worlds, between the human and the other-than-human beings.</p>
+
+        <p class="stanza">This is a restoration of a way of life. A way of being in right relationship. A participatory, relational conversation between the worlds.</p>
+
+        <p class="stanza">We are the living oracular membrane of our ancestral lineages and traditions. The inheritance of our living lineage &mdash; our ancestral heritage &mdash; is within our bones. It is within our bodies.</p>
+
+        <p class="stanza">We are here to continue. To give birth, to give way, to give life. To the continuation of lineages, of tradition, of innovation, of culture &mdash; in response to the gravity of our times.</p>
+
+        <p class="stanza">These are the grounds and opportunities within which to sit in tutelage of the other worlds &mdash; their teachings, their initiations, their attunements. A place to formalize and embody procedural ritual technology and ceremonial practice. To engage interdimensionally with skill, poise, rapport, and the artisan&rsquo;s touch of inspirationally skilled mastery.</p>
+
+        <p class="stanza"><strong>We are not only meant to open to those energies. We are meant to anchor them down.</strong> That is what this world needs at this time &mdash; an anchoring down of a new reality we are shaping and co-creating together.</p>
+
+        <p class="stanza">The desire of this path is not only to take people into an experience. It is to <strong>cultivate interdimensional intermediaries and guides who have the potential to shepherd in a new world</strong> &mdash; from the seeds of light they have learned to let in.</p>
+
+        <p class="stanza">This work is, in some way, unprecedented in the form Adi Marie was taught &mdash; and at the same time, deeply in integrity with what the spirit world has been showing. New paths can rest on ancient ground.</p>
+
+        <p class="closing">We are here to participate in the miracle.<br>This is for those who have a calling to participate in this way at this time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       I BELIEVE
+       ============================================ -->
+  <section class="section section-sand">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">The Credo</span>
+        <span class="rule"></span>
+        <h2 class="section-h">I <em>believe</em></h2>
+      </div>
+
+      <div class="credo">
+
+        <div class="belief">
+          <span class="lede">On Stewardship</span>
+          <span class="text">I believe humans were entrusted as a guardian and stewardship species.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On the Medicine People</span>
+          <span class="text">I believe that across the world, a percentage of the population has been particularly and uniquely skilled from birth &mdash; with an emergence of gifts that predispositions them to develop into the medicine people on behalf of the many scopes and valencies of reality and the relationships between them.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Diaspora</span>
+          <span class="text">I believe that in a post-imperial culture, many of us are born into diaspora communities where the roots of oral tradition and lineage have been intentionally severed, muted, and destroyed. We are born without the elders to help us cultivate and hone our innate gifts and skills.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On the Hour</span>
+          <span class="text">I believe this is a time for reclamation.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Your Medicine</span>
+          <span class="text">I believe you have the inherent wisdom and attunement of the medicine that is yours to walk with in this world.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Soul &amp; Star Families</span>
+          <span class="text">I believe there are families of ancient lineage and power that have been woven in flesh and bone to hold and to receive &mdash; lineages of soul and star families. The merging of earth and stars is how we bring in a new world through devotionally skilled discipline and practice.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On the Living Membrane</span>
+          <span class="text">I believe we are the living oracular membrane of our ancestral lineages, and that ancestral heritage lives in our bones and our bodies. We are here to give birth, to give way, to give life &mdash; to the continuation of lineages, of tradition, of innovation, of culture, in response to the gravity of our times.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Awakening</span>
+          <span class="text"><strong>I believe awakening, not healing, is the principal work.</strong> Healing happens as a byproduct of the soul further incarnating into the body. These are teachers &mdash; the plants, the practices, the unseen &mdash; who are here to facilitate awakening. By the nature of awakening, healing occurs. You do not have to hunt for it. You do not have to squeeze the juice out of it. It will happen if you let the blossom of your soul open just a little bit more.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On the Plants as Beings</span>
+          <span class="text">I believe the plants and medicines are beings &mdash; spirits, personified entities &mdash; not substances. They are deeply benevolent forces beyond humankind, attending to our evolution. They love us beyond our comprehension.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Our Long Practice</span>
+          <span class="text">I believe humans have been sitting with entheogens since the very beginning. Arguably this is part of why our species occupies the position it does on this planet.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Anchoring</span>
+          <span class="text">I believe the work is not only to open to other worlds, but to anchor what comes through down into this one &mdash; to hold the resonance, hold the field, and implement it here.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Ceremony</span>
+          <span class="text">I believe ceremony is a procedural ritual technology. It can be learned, practiced, refined, and embodied &mdash; with the discipline and the capacity to stay attuned to the essence and purity of the heart, so that what comes through is only goodness, healing, harmony, restoration, peace, balance, and deep cleansing of this world and all its inhabitants, seen and unseen.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Direct Experience</span>
+          <span class="text"><strong>I believe direct experience with the Divine is some of the most powerful work a human being can do.</strong></span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Stewardship of the Field</span>
+          <span class="text">I believe this work is a form of <strong>spiritual ceremonial stewardship</strong> &mdash; that we are not only practitioners receiving wisdom, but contributors to a collective field of wisdom that others draw upon when they enter similar space.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Unprecedented Ground</span>
+          <span class="text">I believe what I am cultivating is, in some way, <strong>unprecedented in the form I was taught</strong> &mdash; and at the same time, deeply in integrity with what the spirit world has been showing me. New paths can rest on ancient ground.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Capacity</span>
+          <span class="text"><strong>I believe anyone is capable of going into the beauty of their divine self if they are given enough love, compassion, safety, and space, and are nourished by sacred waters.</strong> I have come from a hard life, and that is precisely why I share what I share &mdash; to propagate more of that divine light into this world.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On the Sword of Mercy</span>
+          <span class="text">I believe we are meant to be <strong>compassionately fierce.</strong> There is a reason archangels carry swords. We are shepherds, and stewardship sometimes requires protection of the goodness.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Sacred Seeds</span>
+          <span class="text">I believe <strong>sacred seeds can take years or decades to bloom.</strong> The work of a ceremony, an initiation, or any deep practice is not the end &mdash; it is the opening of a gateway, the planting of a garden one returns to.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Fallen Sacraments</span>
+          <span class="text">I believe sacred plant medicines have been gifted to humankind across millennia, and that many of them &mdash; cannabis, the poppy, coca &mdash; have suffered when interfaced with outside the contexts that kept them sacred. <strong>The spirit of a plant can be shaken and shaped by how it is treated.</strong> Some have moved from medicine toward poison. Restoration of these relationships is part of the work.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On Discernment</span>
+          <span class="text"><strong>I believe medicine makes you pay the price up front and reap the benefits later. Intoxicants give the relief first and ask for the price later.</strong> This is one of the simplest discernments for whether a substance is in right relationship with you.</span>
+        </div>
+
+        <div class="belief">
+          <span class="lede">On the Call</span>
+          <span class="text">I believe we need more practitioners. More people out in the world holding these sacred spaces, holding these front lines, pollinating the garden of life, restoring the beauty, balance, harmony, and exquisite balance.</span>
+        </div>
+
+      </div>
+
+      <p class="credo-closing">We are here to participate in the miracle.</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       LINEAGE
+       ============================================ -->
+  <section class="section section-paper">
+    <div class="section-inner lineage-inner">
+      <div class="section-head">
+        <span class="eyebrow">Lineage &amp; Path</span>
+        <span class="rule"></span>
+        <h2 class="section-h">Where this <em>work</em> comes from</h2>
+      </div>
+
+      <p class="lineage-name">Adi <em>Marie</em></p>
+
+      <p class="body-text" style="text-align: center;">Sixteen years in deep and humble service to this work.</p>
+
+      <ul class="lineage-rivers">
+        <li>A <strong>lineage-initiated medicine woman</strong> of the Dagara people of West Africa &mdash; a 40,000-year oral tradition</li>
+        <li>Carrying training and attunement from the <strong>Quechua mountain lineages</strong> of the Andes, whose pinnacle teachers are the mountain itself and the Mesa</li>
+        <li>Connected to the <strong>Hawaiian Kahuna lineages</strong> and the teaching of the <em>amakua</em> &mdash; the collective field of wisdom that practitioners contribute to and that others draw upon when they enter similar space</li>
+        <li>A <strong>trauma-informed practitioner</strong> by deep training and lived experience</li>
+        <li>A <strong>shamanic body worker</strong> with sixteen years in therapeutic and medical environments, trained in <em>generative trance hypnosis</em></li>
+        <li>A practitioner of <strong>iboga and ayahuasca</strong> in regular personal practice</li>
+        <li>An <strong>interdimensional intermediary</strong> by named vocation</li>
+      </ul>
+
+      <p class="lineage-coda">The lineage statement of this school is twofold. The roots: ancestral, oral, initiated, multi-traditional. The forward edge: doing something unprecedented in the form she was taught, in deep integrity with what the spirit world has been showing.</p>
+
+      <p class="lineage-coda"><strong>Cannabis was Adi Marie&rsquo;s first plant medicine teacher</strong> &mdash; it brought forward her body work gifts and skills. She sat with it as a ceremonial sacrament, prayed before each engagement, and approached it with the reverence she brings to any sacred plant. Eventually the plant itself indicated that the time of that learning was complete and other plants would come. This is the model she teaches: any plant, treated with intention, reverence, prayer, and a clear-sided line of why you are sitting and what you are evoking, becomes a teacher.</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BONES OF THE SCHOOL
+       ============================================ -->
+  <section class="section section-sand">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">The Architecture</span>
+        <span class="rule"></span>
+        <h2 class="section-h">The bones of the <em>school</em></h2>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">What this is</span>
+        <p class="body-text">The Animist Apothecary is an esoteric occult school of somatic shamanic arts. A revitalist practice. A place going deep into the roots of ancestral remembering &mdash; and forward, into the next continuation.</p>
+        <p class="body-text">It is a training ground and a specialized school cultivating skilled interdimensional intermediaries and guides &mdash; people who have the potential to shepherd in a new world from the seeds of light they have learned to let in.</p>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">Who this is for</span>
+        <p class="body-text">For those born with the gifts and the calling, who came into diaspora without the elders to cultivate them.</p>
+        <p class="body-text">For people who feel the inherent wisdom and attunement of the medicine that is theirs to walk with, and want structured guidance in how to come into the mastery and discipline of their craft.</p>
+        <p class="body-text">For those who have a calling to participate in this way at this time &mdash; and who came on their own thread, not because someone evangelized to them.</p>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">The studios</span>
+        <p class="body-text">The school has many focuses, many specializations &mdash; studios, sectors of expression, discipline avenues. <strong>Six different formats are taught at a time, with more to come.</strong> Each carries its own foundational ethos, body of knowledge, and skill set within which to begin.</p>
+        <p class="studios-note">The six studios are to be named in this document. One studio that appears to emerge clearly from the source material is <em>Sacrament and Ceremony</em>. The remaining five are still to be defined.</p>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">The arc of the work</span>
+        <p class="body-text">We begin with the most important part of any practice: foundational skills and relationship. Each studio moves through four movements:</p>
+        <ol class="arc-list">
+          <li><strong>The Map</strong> &mdash; the known and unknown maps, all the maps that have existed before, as you synthesize and interpret your own embodied understanding by interacting with them, exploring with them, experimenting with them.</li>
+          <li><strong>Navigating the Map</strong> &mdash; what the symbols mean, the different terrains, the principles and applied equations of the work.</li>
+          <li><strong>Walking the Terrain</strong> &mdash; first-person experiential exploration for yourself.</li>
+          <li><strong>Field Training</strong> &mdash; expressing and exploring your work in community, in service to others.</li>
+        </ol>
+        <p class="body-text">Running alongside these movements: <strong>theory, practicum, tests, initiation, refinement, and continual mentorship.</strong></p>
+        <p class="pull">It&rsquo;s not that this work necessarily gets easier as you do it. If anything, your <em>capacity</em> to be with more grows. And your fluency to then traverse a new edge.</p>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">The depths of engagement</span>
+        <p class="body-text">Practitioners enter the work at different intimacies and depths.</p>
+        <ul class="depth-list">
+          <li>Some come for the <strong>theory</strong> &mdash; to learn the concepts.</li>
+          <li>Some come to <strong>explore the concept for themselves</strong> &mdash; to take it into their own life.</li>
+          <li>Some come because they are <em>really</em> here &mdash; to change their lives, and to change how they are able to affect the lives of others. They sit in ceremony. They have experiences. They do their own clearing work.</li>
+        </ul>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">The foundational skill &mdash; relaxation</span>
+        <p class="pull">If there&rsquo;s one skill that I can offer you to navigating this work, it&rsquo;s: how much can you relax into your chair right now? How much can you let yourself be with the sounds? How much can you be aware with your body? That&rsquo;ll get you through almost every threshold that might occur in the process of your work.</p>
+        <p class="body-text">This is the bedrock. Every more advanced skill rests on the capacity to relax into the moment.</p>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">The shoreline and the phases</span>
+        <p class="body-text">State change has phases. Going from daily consciousness to specialized states of consciousness is uncomfortable to an unacquainted system &mdash; but the discomfort of the state change is not the destination.</p>
+        <p class="pull">We&rsquo;re at the beach. We just got out of the car. We&rsquo;re going to walk our way into really deep water &mdash; but we have to move through all the phases there.</p>
+        <p class="body-text">Knowing the shoreline exists, and that one walks from it into deeper water, addresses much of the uncertainty practitioners face in early thresholds.</p>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">The fluency cycle</span>
+        <p class="body-text">Fluency has to occur. The student needs otherworldly experiences and must gain their footing at the altitude change. Like astronauts in training before going into space. Like scuba diving in a pool before going into the ocean &mdash; and learning in the ocean before going on missions.</p>
+        <p class="body-text">There is a baseline day-to-day self that needs maintenance, tending, and care, with a life lived around it. The work is learning to go so deeply into another state of being, another existential terrain, that you can enact effective change &mdash; with clarity and precision in listening, and the ability to communicate and be communicated with clearly.</p>
+        <p class="body-text">The practice is cyclical. The student moves through it again and again, going wider each cycle:</p>
+        <ol class="cycle-list">
+          <li><strong>The mundane self.</strong> Hold your water. Attune and acclimate. Come back.</li>
+          <li><strong>Communicate clearly. Be communicated with clearly.</strong> Develop the skill. Come back.</li>
+          <li><strong>Bring the identity and ego structure along</strong> &mdash; a ballast, a pendulum acclimating to a higher oscillation while maintaining stable ground. This becomes fluent.</li>
+          <li><strong>Etiquette and reciprocity in the other world.</strong> Ritual, ceremony, enacting change. Conversation as a technician &mdash; exploring what is a lever, what is a pipe, what is the scope and skill of practice.</li>
+          <li><strong>Care for the human identity person self</strong> navigating these huge changes. Come back.</li>
+          <li><strong>Bring instruction back.</strong> Go to the other world with an intention from this world, open ritual, open ceremony, receive communication and instruction about what you are going to do here.</li>
+        </ol>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">The anchoring</span>
+        <p class="body-text">This is the hardest part. It is the heart of the discipline.</p>
+        <p class="body-text">It is easy to go into the other world and live in that other world beyond the body, beyond the corporeal self, working energetically. But how do you implement that here?</p>
+        <p class="body-text">We are not only meant to open up to those energies. <strong>We are meant to anchor them down.</strong> That is what this world needs at this time &mdash; an anchoring down of a new reality that we are shaping and co-creating together.</p>
+        <p class="body-text"><strong>The technical articulation of the anchoring: voltage and amplitude.</strong> When the voltage of what is coming through exceeds the body&rsquo;s grounding capacity, the system overloads and purges to recalibrate. The proactive practice is <strong>matching the incoming energy with a body wave that lands and grounds it</strong> &mdash; undulating the spine in S-curves, finding the slower rhythm beneath the fast one, holding the energy like one is grounding it and landing it. This is the embodied technology of anchoring.</p>
+        <p class="body-text">Once that skill is held, the conversation begins. Going back and forth between worlds. Ceremony becomes a rhythmic part of life at whatever interval feels appropriate. You open up as a portal, a liminal membrane, an oracular vessel &mdash; an interdimensional gateway through which information moves in and out.</p>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">The sovereign vessel</span>
+        <p class="body-text">A core ethical principle: dignity with non-human intelligences. When something is too much, when the medicine or the encounter is communicating in ways that feel overwhelming, the practitioner communicates from an honest, earnest place.</p>
+        <p class="pull">You&rsquo;re sharing consciousness in my vessel. I want more dignity. I want more modesty. Can you be more gentle with me? I&rsquo;m feeling very vulnerable.</p>
+        <p class="body-text">The medicine &mdash; and other intelligences &mdash; are adaptive. If you communicate what you need with respect, they will meet you on that ground. It&rsquo;s like a tiger playing with a mouse. It&rsquo;s just trying to communicate in a tiger way while we as humans are doing our best to be with it.</p>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">Conversation as participation</span>
+        <p class="body-text">You can within yourself communicate clearly with the intelligence you are sitting with &mdash; linguistically, dialectically, internally. <em>Can you please show me this? I&rsquo;d really like to talk to you about this. I came here with this intention. Can you help me with that?</em></p>
+        <p class="body-text">A favorite working prayer: <strong>&ldquo;Speak to me in a language I already understand.&rdquo;</strong> The beings tending to us in this growth will adapt and learn how to be with us.</p>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">Power and agency in the unseen</span>
+        <p class="body-text">When meeting scary or unfamiliar presences, the practitioner does not give power away.</p>
+        <p class="pull">You are the one with the human body. You are the one incarnate on the material realm. You are the one with <em>power.</em> Sometimes beings want us to forget that &mdash; to give it away to them.</p>
+        <p class="body-text">This is sovereign ground. The practitioner remains the host of their own vessel.</p>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">Don&rsquo;t make meaning while it&rsquo;s happening</span>
+        <p class="pull">It&rsquo;s like starting the Lord of the Rings and going, &ldquo;Oh, I get it.&rdquo; You have no idea. Let it conclude. Let it land. Let it marinate in the weeks and months to come.</p>
+      </div>
+
+      <div class="bones-block">
+        <span class="sub-eyebrow">The three orders of the work</span>
+        <p class="body-text">The work progresses through three orders:</p>
+        <ol class="orders-list">
+          <li><strong>For yourself.</strong> Clearing, attuning, becoming fluent, holding ceremony as a rhythmic part of your own life.</li>
+          <li><strong>On behalf of intentions for the world.</strong> Journeying with intention, opening here, going into the other world, receiving information, bringing it back, implementing it.</li>
+          <li><strong>In service to others.</strong> The most advanced work. This is where ceremonialist training occurs.</li>
+        </ol>
+        <p class="body-text">For practitioners in careers and professions already in service to others, the school teaches how to implement this work into their field &mdash; first as a complementary layer, then, if so chosen, how to transition it from a stealth layer into a primary one.</p>
+        <p class="body-text">And then, first and foremost, for those who choose: <strong>how to be a ceremonial ritual practitioner, an interdimensional intermediary, a steward and a guide.</strong></p>
+        <p class="body-text">That is what this whole program is about. That is what this school is about. That is what these training grounds are about.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PRACTITIONER'S STANCE
+       ============================================ -->
+  <section class="section section-paper">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">For the One Carrying the Work</span>
+        <span class="rule"></span>
+        <h2 class="section-h">The practitioner&rsquo;s <em>stance</em></h2>
+        <p class="body-text" style="margin-top: 1rem; font-style: italic; color: var(--bark-mid);">The practitioner &mdash; the student who has come into the second and third orders of the work &mdash; moves through the world differently. The school teaches a stance.</p>
+      </div>
+
+      <div class="principle">
+        <h4>Anti-evangelism</h4>
+        <p><em>A person needs to choose to step into this. There&rsquo;s a time when a person is called in their life, and it&rsquo;s more of listening to that inner world. The medicine wants to speak through you to offer the invitation in, as opposed to the mind trying to schematize who this is good for.</em></p>
+        <p>People come when they are called. The work is not propagated by recruiting &mdash; it is propagated by holding fields, tending wells, and walking visibly enough that the called recognize their own calling.</p>
+      </div>
+
+      <div class="principle">
+        <h4>Protect the sanctity of what occurred</h4>
+        <p>There is a depth in you that, when shared with someone who has not yet approached that place within themselves, can be damaged by their inability to receive it. Their opinions, formed from a place they have not been, can confuse or convolute what occurred for you.</p>
+        <p>Sit in contemplation with what you have experienced. Ask it to continue clarifying itself to you. Speak about it where it will land, not where it will be flattened.</p>
+      </div>
+
+      <div class="principle">
+        <h4>Compassionately fierce</h4>
+        <p><em>There&rsquo;s a reason archangels carry swords. We&rsquo;re here as shepherds.</em></p>
+        <p>The stewardship species is not only soft and receiving. It is also protective of the goodness. Stewardship requires the capacity to hold ground for what is being tended.</p>
+      </div>
+
+      <div class="principle">
+        <h4>Spiritual ceremonial stewardship</h4>
+        <p>The vocation of the practitioner is <strong>spiritual ceremonial stewardship.</strong> Not consumer, not tourist, not collector of experiences. Steward &mdash; of the medicine, of the field, of the lineage, of the next generation of practitioners who will come behind.</p>
+      </div>
+
+      <div class="principle">
+        <h4>Contributing to the lineage field &mdash; the amakua principle</h4>
+        <p>From the Hawaiian Kahuna lineages comes a teaching: there is a collective field of wisdom &mdash; the <em>amakua</em> &mdash; that practitioners contribute to when they speak from their lived experience. Each practitioner&rsquo;s wisdom contributes to the spirit world that others draw upon when they enter similar space.</p>
+        <p>This means: <strong>the lineage is alive and being shaped.</strong> Practitioners are not only receivers but contributors. <em>You are, if you so choose, contributing to the creation of a culture that&rsquo;s emerging here in the world at this time.</em></p>
+      </div>
+
+      <div class="principle">
+        <h4>Speaking from authority of lived experience</h4>
+        <p>Initiation is by participation. There is wisdom hard-earned through walking the threshold. The practitioner speaks from that authority &mdash; not from theory, not from book learning, but from the ground of having gone in and come back.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CYCLES OF PRACTICE — INTEGRATION
+       ============================================ -->
+  <section class="section section-sand">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Integration</span>
+        <span class="rule"></span>
+        <h2 class="section-h">Cycles of <em>practice</em></h2>
+        <p class="body-text" style="margin-top: 1rem; font-style: italic; color: var(--bark-mid);">The work of a ceremony, an initiation, or any deep practice is not the event itself. It is the opening of a gateway that one returns to.</p>
+      </div>
+
+      <p class="pull">You have discovered a depth of inner space, and a relationship to levels of the unseen worlds, that is now yours to tend to and be in a relationship with and hold sacred. New ground has opened. I recommend that you visit that garden often.</p>
+
+      <div class="principle">
+        <h4>Sacred seeds &mdash; years to bloom</h4>
+        <p>Some teachings are downloads in a single moment. Some are soil seedings that take years or decades. <em>You&rsquo;ve received what I would like to consider sacred seeds. It will be years or decades before they fully bloom.</em></p>
+        <p>The practitioner does not chase the meaning. They tend the garden.</p>
+      </div>
+
+      <div class="principle">
+        <h4>Depletion as spaciousness</h4>
+        <p>The fatigue that follows deep work is itself a teaching. <em>The parts that you came in that were ready to be shed are no longer with thee, and this fatigue represents a spaciousness now &mdash; for these seeds of light that have made their way in and emerge to blossom and grow.</em></p>
+      </div>
+
+      <div class="principle">
+        <h4>The daily morning practice</h4>
+        <p>A simple grounding practice the school recommends:</p>
+        <p>Connect to the <strong>heart and lower belly center</strong> &mdash; the seat of creation. Connect to the field of creation, the place of connection and compassion. Ask to be guided. Set the intentions for the day.</p>
+        <p>This is a daily attunement to the same field one entered in deeper work.</p>
+      </div>
+
+      <div class="principle">
+        <h4>Whimsy as exercise</h4>
+        <p><em>When you begin to exercise your relationship of will of creation with the world, it&rsquo;s a lot easier when there are no stakes.</em></p>
+        <p>Start where the stakes are low. Ask the universe for a moment of whimsy. A rainbow. A butterfly. A flute. Let yourself be surprised. The relationship with creation deepens through play before it can hold the heavier ask.</p>
+      </div>
+
+      <div class="principle">
+        <h4>Totemic anchoring</h4>
+        <p>Find a piece &mdash; jewelry, a small altar item, something held &mdash; that represents the work you have done. Imbue it with the energy of the threshold you crossed. Hold it when you need to remember. The body knows what to do with a physical anchor.</p>
+      </div>
+
+      <div class="principle">
+        <h4>Letter to your future self</h4>
+        <p>From the richness of the heart, write a letter to your future self. The dreams, the apologies, the hopes you have been told were not allowed. Read it back when you are in need. The version of you who wrote it is also a teacher.</p>
+      </div>
+
+      <div class="principle">
+        <h4>Required integration</h4>
+        <p>Integration is not optional in this school. <em>It&rsquo;s really important for me to have peace within myself to know how this work is landing in your world. You&rsquo;ve had a tremendous ontological existential shift, and I want to make sure that you&rsquo;re able to proceed peacefully and in a coherent way.</em></p>
+        <p>Within one to four weeks of any deep ceremonial work, the practitioner schedules an integration call. <em>It&rsquo;s just a part of this experience. It&rsquo;s part of the tending of the sanctity of this work.</em></p>
+      </div>
+
+      <div class="principle">
+        <h4>The world will feel different &mdash; that is the point</h4>
+        <p>After deep work, the world can feel weird, isolating, out of resonance. <em>That is okay. That&rsquo;s the point. We&rsquo;re here to radically, if you so choose, to participate in this way. We&rsquo;re here to radically change a system that is &mdash; it&rsquo;s not even that it&rsquo;s broken. It&rsquo;s intentionally engineered this way. To separate us from this deep connection.</em></p>
+      </div>
+
+      <div class="principle">
+        <h4>Open the container, do not close it</h4>
+        <p><em>I don&rsquo;t like closing containers. We have created sacred space and have birthed something into the world through the vector of us. It&rsquo;s like a gathering of sacred water that now gets to spill out into the world. So I like opening the container to the rest of our lives.</em></p>
+        <p>A ceremony does not end. It is released into the life of the practitioner.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FACILITATOR'S STANCE
+       ============================================ -->
+  <section class="section section-paper">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">How She Holds Space</span>
+        <span class="rule"></span>
+        <h2 class="section-h">The facilitator&rsquo;s <em>stance</em></h2>
+      </div>
+
+      <p class="stance-quote">I am the captain with my hands on the wheel of the ship. I am deeply attending to and attuned to each and every single one of your needs, so please know I&rsquo;m here at your behest, not your service.</p>
+
+      <p class="stance-text">The Animist Apothecary is held with a <strong>full spectrum:</strong> silly and life-is-fantastic at one end, intense Priestess gravitas at the other. The fluctuation is not a flaw &mdash; it is the nature of holding fullness.</p>
+
+      <p class="stance-text">The stance is <strong>generous, not proprietary.</strong> <em>&ldquo;Mine is not the only way. I&rsquo;m just sharing from the depth of my heart and the way that I&rsquo;ve learned to understand this work &mdash; but it doesn&rsquo;t need to become your world view in any way.&rdquo;</em> Students can take what is offered however they like, or let it be water off their back.</p>
+
+      <p class="stance-text">The stance is <strong>trauma-informed at the bone</strong> &mdash; not as credential but as foundation for how every threshold is met.</p>
+
+      <p class="stance-text">The stance is <strong>embodied and skilled with the body</strong> &mdash; laying on of hands, deeper energy work, working on the blueprint of the energetic being. Bodywork is part of the held space, not an add-on.</p>
+
+      <p class="stance-text">The stance includes <strong>co-facilitators who carry their own depths.</strong> Specialists are brought in for specific tiers of practitioner work &mdash; deeper depth processing, shoreline navigation, generative trance hypnosis. The container is collaborative.</p>
+
+      <p class="stance-text">The joy of holding is named explicitly. <em>It just fills me with so much joy to set the conditions for the growth of the depths of your soul and heart to have space to emerge.</em> The facilitator is a mother to the field she tends, and the work nourishes her as it nourishes the student.</p>
+
+      <p class="stance-text">The practitioner-self is the same self that holds others. <em>What causes a phoenix to combust? And to choose to eviscerate and emit that much light? It&rsquo;s not a comfortable process. But when I&rsquo;m able to go through that and then cultivate and hold fields such as this, it helps me have more peace and surrender when times like that emerge.</em> Adi Marie tends two fields &mdash; her own and the students&rsquo; &mdash; and the fields are connected.</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       WHY THIS EXISTS — DARK CLOSING
+       ============================================ -->
+  <section class="section section-dark">
+    <div class="closing-inner">
+      <span class="eyebrow">Why this exists</span>
+      <span class="rule"></span>
+
+      <p class="body-text">While Adi Marie provides community work, services, and one-on-one work, we need more practitioners. We need more people out in the world holding these sacred spaces, holding these front lines, pollinating the flowers and the garden of life, and restoring the beauty, balance, harmony, and exquisite balance.</p>
+
+      <p class="body-text">The work is unprecedented in the form she was taught &mdash; and deeply in integrity with what the spirit world has been showing. The school is a new path along ancient ground.</p>
+
+      <p class="closing-grace">We are here to participate in the <em>miracle</em>.</p>
+      <p class="body-text" style="margin-top: 2rem; font-style: italic;">This is for those who have a calling to participate in this way at this time.</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="doc-footer">
+    <span class="footer-mark">The Animist Apothecary</span>
+    <p class="footer-note">A working document of the manifesto, ethos, and bones of the school &mdash; scribed collaboratively from spoken voice, ceremony recordings, and synthesized over multiple passes.</p>
+    <div class="footer-date">Working Document &middot; 2026.06.01</div>
+  </footer>
+
+</body>
+</html>

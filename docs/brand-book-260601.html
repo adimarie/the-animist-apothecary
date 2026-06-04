@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Animist Apothecary — Living Brand Book</title>
+  <meta name="description" content="The canonical brand book of The Animist Apothecary &mdash; identity, manifesto, credo, architecture, lineages, voice, and visual system. A living document.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #F7F5F0;
+      --parchment: #F4EAD3;
+      --sand: #EFEDE6;
+      --bark: #2D2A26;
+      --bark-mid: #3D3A36;
+      --bark-soft: #5A554C;
+      --bark-deep: #1F1A18;
+      --gold: #C9A84C;
+      --gold-pale: #DCC178;
+      --sage-pale: #C5D9C6;
+      --sage-deep: #5B7553;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Cormorant Garamond', serif;
+      background: var(--paper);
+      color: var(--bark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ============================================
+       SHARED TYPOGRAPHY
+       ============================================ */
+    .eyebrow {
+      display: inline-block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+    .rule {
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.8rem auto;
+      opacity: 0.6;
+    }
+    h2.section-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.15;
+      letter-spacing: -0.005em;
+      margin: 0 0 1.6rem;
+      color: var(--bark);
+    }
+    h2.section-h em,
+    h3.sub-h em,
+    .hero-h em,
+    .toc-h em,
+    .belief-lede em,
+    .swatch-name em {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      font-size: 1.45em !important;
+      line-height: 0.9 !important;
+      color: var(--gold-pale) !important;
+      letter-spacing: 0 !important;
+    }
+    h3.sub-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(1.55rem, 2.4vw, 1.95rem);
+      line-height: 1.25;
+      color: var(--bark);
+      margin: 2.5rem 0 1rem;
+    }
+    h4.sub-sub {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 2rem 0 1rem;
+    }
+
+    .body-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--bark);
+      margin: 0 0 1.4rem;
+    }
+    .body-text:last-child { margin-bottom: 0; }
+    .body-text em { font-style: italic; }
+    .body-text strong { font-weight: 500; color: var(--bark-deep); }
+
+    .pull-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 1.9vw, 1.55rem);
+      line-height: 1.5;
+      color: var(--bark);
+      margin: 2rem 0;
+      padding: 0 0 0 1.5rem;
+      border-left: 2px solid var(--gold);
+    }
+    .pull-quote em { font-style: italic; }
+
+    /* ============================================
+       SECTION SHELL
+       ============================================ */
+    .section {
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-paper { background: var(--paper); }
+    .section-sand { background: var(--sand); }
+    .section-dark {
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 28%, rgba(201,168,76,0.13), transparent 60%),
+        radial-gradient(ellipse 80% 65% at 50% 100%, rgba(91,117,83,0.06), transparent 75%),
+        var(--bark-deep);
+      color: var(--parchment);
+    }
+    .section-dark h2.section-h { color: var(--parchment); }
+    .section-dark .body-text { color: rgba(247,245,240,0.88); }
+    .section-dark .eyebrow { color: var(--gold-pale); }
+    .section > * { position: relative; z-index: 2; }
+    .section-inner { max-width: 880px; margin: 0 auto; }
+    .section-wide { max-width: 1200px; margin: 0 auto; }
+    .section-head { text-align: center; margin-bottom: 4rem; }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      min-height: 90vh;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 28%, rgba(201,168,76,0.15), transparent 60%),
+        radial-gradient(ellipse 80% 65% at 50% 100%, rgba(91,117,83,0.08), transparent 75%),
+        var(--bark-deep);
+      color: var(--parchment);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .hero-inner { max-width: 920px; margin: 0 auto; }
+    .hero-mark {
+      font-family: 'Cinzel', serif;
+      font-size: 0.92rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 2rem;
+      display: block;
+    }
+    .hero-rule {
+      display: block;
+      width: 70px;
+      height: 1px;
+      background: var(--gold-pale);
+      opacity: 0.7;
+      margin: 0 auto 2.4rem;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 2rem;
+    }
+    .hero-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.8rem, 6vw, 5.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.005em;
+      color: var(--parchment);
+      margin: 0 0 1.8rem;
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.18rem, 1.6vw, 1.5rem);
+      line-height: 1.55;
+      color: rgba(244, 234, 211, 0.88);
+      margin: 0 auto;
+      max-width: 700px;
+    }
+    .hero-meta {
+      margin-top: 3rem;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: rgba(220, 193, 120, 0.7);
+    }
+
+    /* ============================================
+       TABLE OF CONTENTS
+       ============================================ */
+    .toc {
+      background: var(--paper);
+      padding: 6rem 2rem;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.18);
+    }
+    .toc-inner { max-width: 880px; margin: 0 auto; }
+    .toc-head { text-align: center; margin-bottom: 3.5rem; }
+    .toc-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--bark);
+      margin: 1rem 0 0;
+    }
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: toc;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 3rem;
+    }
+    @media (max-width: 720px) { .toc-list { grid-template-columns: 1fr; } }
+    .toc-list li {
+      counter-increment: toc;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+    }
+    .toc-list a {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--bark);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.06rem;
+      transition: color 0.2s;
+    }
+    .toc-list a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      min-width: 36px;
+    }
+    .toc-list a:hover { color: var(--gold); }
+    .toc-list a:hover::before { color: var(--bark); }
+
+    /* ============================================
+       IDENTITY SECTION
+       ============================================ */
+    .ident-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin: 3rem 0;
+    }
+    @media (max-width: 720px) { .ident-grid { grid-template-columns: 1fr; } }
+    .ident-card {
+      padding: 2rem;
+      background: var(--sand);
+      border-top: 2px solid var(--gold);
+    }
+    .ident-card h4 {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 1rem;
+    }
+    .ident-card p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.04rem;
+      line-height: 1.65;
+      color: var(--bark);
+      margin: 0;
+    }
+    .ident-card em { font-style: italic; }
+    .ident-card strong { font-weight: 500; }
+
+    .cred-list {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+    }
+    .cred-list li {
+      padding: 0.8rem 0 0.8rem 1.6rem;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      position: relative;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--bark);
+    }
+    .cred-list li:last-child { border-bottom: none; }
+    .cred-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0.3rem;
+      top: 0.5rem;
+      color: var(--gold);
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .cred-list em { font-style: italic; }
+    .cred-list strong { font-weight: 500; color: var(--bark-deep); }
+
+    /* ============================================
+       MANIFESTO STANZAS
+       ============================================ */
+    .manifesto .stanza {
+      margin: 0 0 2.2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.15rem, 1.6vw, 1.38rem);
+      line-height: 1.65;
+      color: var(--bark);
+    }
+    .manifesto .stanza.opening {
+      font-style: italic;
+      font-size: clamp(1.3rem, 1.85vw, 1.58rem);
+    }
+    .manifesto .stanza strong { font-weight: 500; }
+    .manifesto .stanza em { font-style: italic; }
+    .manifesto .closing {
+      margin-top: 2.5rem;
+      font-style: italic;
+      font-size: clamp(1.3rem, 2vw, 1.65rem);
+      color: var(--bark-mid);
+      text-align: center;
+    }
+
+    /* ============================================
+       CREDO BELIEFS
+       ============================================ */
+    .credo .belief {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.16);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--bark);
+    }
+    .credo .belief:last-child { border-bottom: none; }
+    .credo .belief .belief-lede {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .credo .belief strong { font-weight: 500; color: var(--bark-deep); }
+    .credo .belief em { font-style: italic; }
+
+    /* ============================================
+       ARCHITECTURE BLOCKS
+       ============================================ */
+    .arch-block {
+      margin: 0 0 3.5rem;
+    }
+    .arch-list {
+      counter-reset: ar;
+      list-style: none;
+      padding: 0;
+      margin: 1.4rem 0;
+    }
+    .arch-list li {
+      counter-increment: ar;
+      padding: 1.1rem 0 1.1rem 3rem;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.14);
+      position: relative;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--bark);
+    }
+    .arch-list li:last-child { border-bottom: none; }
+    .arch-list li::before {
+      content: counter(ar);
+      position: absolute;
+      left: 0;
+      top: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--gold);
+      line-height: 1;
+      width: 2.2rem;
+      text-align: center;
+      border-right: 1px solid rgba(201, 168, 76, 0.3);
+      padding-right: 0.4rem;
+    }
+    .arch-list strong { font-weight: 500; color: var(--bark-deep); }
+    .arch-list em { font-style: italic; }
+
+    .studios-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      margin: 2rem 0;
+    }
+    @media (max-width: 720px) { .studios-list { grid-template-columns: 1fr; } }
+    .studio-mini {
+      padding: 1.4rem;
+      background: var(--paper);
+      border-left: 2px solid var(--gold);
+    }
+    .studio-mini h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-style: italic;
+      font-size: 1.18rem;
+      color: var(--bark);
+      margin: 0 0 0.4rem;
+    }
+    .studio-mini p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.96rem;
+      line-height: 1.5;
+      color: var(--bark-mid);
+      margin: 0;
+    }
+
+    /* ============================================
+       VISUAL SYSTEM — COLOR SWATCHES
+       ============================================ */
+    .palette {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+      margin: 2rem 0 3rem;
+    }
+    @media (max-width: 720px) { .palette { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .palette { grid-template-columns: 1fr; } }
+    .swatch {
+      border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(45, 42, 38, 0.06);
+    }
+    .swatch-color {
+      height: 110px;
+    }
+    .swatch-info {
+      padding: 1rem 1.2rem;
+      background: var(--paper);
+      border-top: 1px solid rgba(201, 168, 76, 0.18);
+    }
+    .swatch-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-style: italic;
+      font-size: 1.08rem;
+      color: var(--bark);
+      margin: 0 0 0.3rem;
+    }
+    .swatch-meta {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.22em;
+      color: var(--bark-soft);
+      margin: 0 0 0.4rem;
+    }
+    .swatch-use {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: var(--bark-mid);
+      margin: 0;
+      font-style: italic;
+    }
+    .sw-paper { background: #F7F5F0; border: 1px solid rgba(45,42,38,0.08); }
+    .sw-parchment { background: #F4EAD3; }
+    .sw-sand { background: #EFEDE6; }
+    .sw-bark { background: #2D2A26; }
+    .sw-bark-deep { background: #1F1A18; }
+    .sw-gold { background: #C9A84C; }
+    .sw-gold-pale { background: #DCC178; }
+    .sw-sage-pale { background: #C5D9C6; }
+    .sw-sage-deep { background: #5B7553; }
+
+    /* ============================================
+       TYPOGRAPHY SAMPLES
+       ============================================ */
+    .type-sample {
+      margin: 2.5rem 0;
+      padding: 2rem;
+      background: var(--paper);
+      border-top: 1px solid rgba(201, 168, 76, 0.3);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+    }
+    .type-meta {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .type-display {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.22em;
+      color: var(--bark);
+      text-transform: uppercase;
+      margin: 0 0 0.5rem;
+    }
+    .type-display-meta {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--bark-soft);
+      margin: 0;
+    }
+    .type-heading-italic {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 2.5rem;
+      color: var(--bark);
+      margin: 0 0 0.4rem;
+    }
+    .type-heading-italic em {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif;
+      font-style: normal;
+      font-size: 1.45em;
+      line-height: 0.9;
+      color: var(--gold-pale);
+    }
+    .type-body-sample {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--bark);
+      margin: 0 0 0.5rem;
+    }
+    .type-ui {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.74rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .type-tangerine {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      line-height: 1;
+      color: var(--gold-pale);
+      margin: 0;
+    }
+
+    /* ============================================
+       LEXICON GRID (Voice)
+       ============================================ */
+    .lex-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    @media (max-width: 720px) { .lex-grid { grid-template-columns: 1fr; } }
+    .lex-col h5 {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 0 0 0.8rem;
+    }
+    .lex-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.4rem;
+    }
+    .lex-col li {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--bark);
+      padding: 0.3rem 0;
+    }
+
+    .voice-examples {
+      margin: 2.5rem 0;
+    }
+    .voice-example {
+      padding: 1.6rem 1.8rem;
+      margin: 0 0 1.4rem;
+      background: var(--paper);
+      border-left: 2px solid var(--gold);
+    }
+    .voice-example-label {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+    .voice-example p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.08rem;
+      line-height: 1.6;
+      color: var(--bark);
+      margin: 0;
+    }
+
+    /* ============================================
+       USE / AVOID DUAL COLUMN
+       ============================================ */
+    .use-avoid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin: 2.5rem 0;
+    }
+    @media (max-width: 720px) { .use-avoid { grid-template-columns: 1fr; } }
+    .ua-card {
+      padding: 2rem 1.8rem;
+      background: var(--paper);
+      border-top: 2px solid var(--gold);
+    }
+    .ua-card.avoid {
+      border-top-color: var(--bark-soft);
+    }
+    .ua-label {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .ua-card.avoid .ua-label { color: var(--bark-soft); }
+    .ua-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .ua-list li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem;
+      line-height: 1.5;
+      color: var(--bark);
+      padding: 0.45rem 0 0.45rem 1.4rem;
+      position: relative;
+    }
+    .ua-list li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0.2rem;
+      top: 0.45rem;
+      color: var(--gold);
+      font-size: 0.95rem;
+    }
+    .ua-card.avoid .ua-list li::before {
+      content: "\2014";
+      color: var(--bark-soft);
+    }
+    .ua-list em { font-style: italic; }
+
+    /* ============================================
+       COMPONENTS PREVIEW (mini renderings)
+       ============================================ */
+    .comp-demo {
+      margin: 2rem 0 3rem;
+      padding: 2rem;
+      background: var(--paper);
+      border: 1px dashed rgba(201, 168, 76, 0.4);
+      border-radius: 2px;
+    }
+    .comp-demo-label {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.6rem;
+    }
+
+    /* sample CTA button */
+    .demo-btn-soft {
+      display: inline-block;
+      padding: 0.7rem 1.4rem;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      border-radius: 2px;
+      margin-right: 0.6rem;
+    }
+    .demo-btn-soft::after { content: " \2192"; margin-left: 0.2em; }
+
+    /* hairline divider demo */
+    .demo-hairline {
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem 0;
+    }
+
+    /* sample card demo */
+    .demo-card {
+      max-width: 320px;
+      padding: 1.6rem 1.4rem;
+      background: var(--sand);
+      border-top: 2px solid var(--gold);
+      margin: 1rem 0;
+    }
+    .demo-card-eyebrow {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .demo-card-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.25rem;
+      color: var(--bark);
+      margin: 0 0 0.5rem;
+    }
+    .demo-card-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.96rem;
+      line-height: 1.5;
+      color: var(--bark-mid);
+      margin: 0;
+    }
+
+    /* ============================================
+       OPEN ITEMS
+       ============================================ */
+    .open-list {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+    }
+    .open-list li {
+      padding: 1.1rem 0 1.1rem 1.6rem;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.16);
+      position: relative;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.04rem;
+      line-height: 1.6;
+      color: rgba(247,245,240,0.88);
+    }
+    .open-list li::before {
+      content: "?";
+      position: absolute;
+      left: 0;
+      top: 1.1rem;
+      color: var(--gold-pale);
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+    .open-list strong { color: var(--gold-pale); font-weight: 500; }
+
+    /* ============================================
+       CHANGELOG
+       ============================================ */
+    .changelog-entry {
+      padding: 1.6rem 0;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.16);
+    }
+    .changelog-entry:last-child { border-bottom: none; }
+    .changelog-date {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .changelog-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--bark);
+      margin: 0 0 0.6rem;
+    }
+    .changelog-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--bark-mid);
+      margin: 0;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .doc-footer {
+      padding: 4rem 2rem;
+      background: var(--bark-deep);
+      color: rgba(244, 234, 211, 0.7);
+      text-align: center;
+    }
+    .footer-mark {
+      font-family: 'Cinzel', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold-pale);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .footer-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.96rem;
+      line-height: 1.55;
+      color: rgba(244, 234, 211, 0.6);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .footer-date {
+      margin-top: 1.4rem;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(220, 193, 120, 0.55);
+    }
+
+    /* section anchor offset for fixed-header behavior */
+    .anchor {
+      display: block;
+      position: relative;
+      top: -40px;
+      visibility: hidden;
+    }
+
+    @media (max-width: 720px) {
+      .section { padding: 4.5rem 1.4rem; }
+      .toc { padding: 4rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-mark">The Animist Apothecary</span>
+      <span class="hero-rule"></span>
+      <span class="hero-eyebrow">Living Brand Book</span>
+      <h1 class="hero-h">The canonical <em>reference</em></h1>
+      <p class="hero-sub">Identity, manifesto, credo, architecture, lineages, voice, and visual system. A living document drawn from Adi Marie&rsquo;s voice. To be revisited, refined, and grown as the work grows.</p>
+      <div class="hero-meta">Working Version &middot; 2026.06.01</div>
+    </div>
+  </section>
+
+  <!-- ====== TABLE OF CONTENTS ====== -->
+  <section class="toc">
+    <div class="toc-inner">
+      <div class="toc-head">
+        <span class="eyebrow">Inside this book</span>
+        <h2 class="toc-h">The <em>chapters</em></h2>
+      </div>
+      <ul class="toc-list">
+        <li><a href="#identity">Identity</a></li>
+        <li><a href="#manifesto">The Manifesto</a></li>
+        <li><a href="#credo">I Believe</a></li>
+        <li><a href="#architecture">The Architecture</a></li>
+        <li><a href="#lineages">The Lineages</a></li>
+        <li><a href="#stances">The Two Stances</a></li>
+        <li><a href="#integration">Cycles of Integration</a></li>
+        <li><a href="#sacrament">Sacrament &amp; Ceremony</a></li>
+        <li><a href="#voice">The Voice</a></li>
+        <li><a href="#visual">The Visual System</a></li>
+        <li><a href="#components">Components &amp; Patterns</a></li>
+        <li><a href="#offerings">Practice &amp; Offerings</a></li>
+        <li><a href="#team">The Team</a></li>
+        <li><a href="#operations">Operational Anchors</a></li>
+        <li><a href="#open">Still Open</a></li>
+        <li><a href="#changelog">Version &amp; Changelog</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====== 01. IDENTITY ====== -->
+  <section class="section section-paper">
+    <span class="anchor" id="identity"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter One</span>
+        <h2 class="section-h"><em>Identity</em></h2>
+        <span class="rule"></span>
+      </div>
+
+      <div class="ident-grid">
+        <div class="ident-card">
+          <h4>Founder</h4>
+          <p><strong>Adi Marie</strong> &mdash; founder and practitioner. Lineage-initiated medicine woman of the Dagara people of West Africa. Sixteen years in deep service. Trauma-informed shamanic body worker. Interdimensional intermediary and guide.</p>
+        </div>
+        <div class="ident-card">
+          <h4>The Practice</h4>
+          <p><strong>The Animist Apothecary</strong> &mdash; an experiential apothecary for the restoration of an animist relational practice and world view. A training ground and a specialized school cultivating skilled interdimensional intermediaries.</p>
+        </div>
+      </div>
+
+      <h3 class="sub-h">The credentials carried</h3>
+      <ul class="cred-list">
+        <li>Sixteen years in deep and humble service to ceremonial and ritual work</li>
+        <li>Lineage-initiated medicine woman of the <strong>Dagara people of West Africa</strong> (a 40,000-year oral tradition)</li>
+        <li>Carrying training and attunement from the <strong>Quechua mountain lineages</strong> of the Andes</li>
+        <li>Connected to the <strong>Hawaiian Kahuna lineages</strong> and the teaching of the <em>amakua</em></li>
+        <li>Trauma-informed practitioner by deep training and lived experience</li>
+        <li>Shamanic body worker, sixteen years in therapeutic and medical environments</li>
+        <li>Trained in <strong>generative trance hypnosis</strong></li>
+        <li>Practitioner of <strong>bufo, iboga, ayahuasca, and huachuma</strong> in regular personal practice</li>
+        <li>Interdimensional intermediary by named vocation</li>
+        <li>Based in <strong>Topanga Canyon, Los Angeles.</strong> Available and serving worldwide.</li>
+      </ul>
+
+      <h3 class="sub-h">Naming convention</h3>
+      <p class="body-text">Refer to her as <strong>Adi Marie</strong> (two words, no surname) in any user-facing context. Never just &ldquo;Adi&rdquo; in public copy. The practice is <strong>The Animist Apothecary.</strong> The school within is <strong>The Training Grounds</strong> or <strong>The School</strong> (title still being chosen).</p>
+    </div>
+  </section>
+
+  <!-- ====== 02. MANIFESTO ====== -->
+  <section class="section section-sand">
+    <span class="anchor" id="manifesto"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Two</span>
+        <h2 class="section-h">The <em>manifesto</em></h2>
+        <span class="rule"></span>
+      </div>
+
+      <div class="manifesto">
+        <p class="stanza opening">Our times need people to restore the conversational, relational balance between the worlds.</p>
+        <p class="stanza">We are at an urgent time. The work is to resituate ourselves down from a position of supremacy, and to take our place as a guardian and stewardship species. We are here to be in service.</p>
+        <p class="stanza">The Animist Apothecary is an experiential apothecary for the restoration of an animist relational practice and world view. It is a training ground and a specialized school, cultivating skilled interdimensional intermediaries &mdash; people who can mediate on behalf of the seen and unseen worlds, between the human and the other-than-human beings.</p>
+        <p class="stanza">This is a restoration of a way of life. A way of being in right relationship. A participatory, relational conversation between the worlds.</p>
+        <p class="stanza">We are the living oracular membrane of our ancestral lineages and traditions. The inheritance of our living lineage &mdash; our ancestral heritage &mdash; is within our bones. It is within our bodies.</p>
+        <p class="stanza">We are here to continue. To give birth, to give way, to give life. To the continuation of lineages, of tradition, of innovation, of culture &mdash; in response to the gravity of our times.</p>
+        <p class="stanza">These are the grounds and opportunities within which to sit in tutelage of the other worlds &mdash; their teachings, their initiations, their attunements. A place to formalize and embody procedural ritual technology and ceremonial practice. To engage interdimensionally with skill, poise, rapport, and the artisan&rsquo;s touch of inspirationally skilled mastery.</p>
+        <p class="stanza"><strong>We are not only meant to open to those energies. We are meant to anchor them down.</strong> That is what this world needs at this time &mdash; an anchoring down of a new reality we are shaping and co-creating together.</p>
+        <p class="stanza">The desire of this path is not only to take people into an experience. It is to <strong>cultivate interdimensional intermediaries and guides who have the potential to shepherd in a new world</strong> &mdash; from the seeds of light they have learned to let in.</p>
+        <p class="stanza">This work is, in some way, unprecedented in the form Adi Marie was taught &mdash; and at the same time, deeply in integrity with what the spirit world has been showing. New paths can rest on ancient ground.</p>
+        <p class="closing">We are here to participate in the miracle.<br>This is for those who have a calling to participate in this way at this time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 03. CREDO ====== -->
+  <section class="section section-paper">
+    <span class="anchor" id="credo"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Three</span>
+        <h2 class="section-h">I <em>believe</em></h2>
+        <span class="rule"></span>
+      </div>
+
+      <div class="credo">
+        <div class="belief"><span class="belief-lede">On Stewardship</span>I believe humans were entrusted as a guardian and stewardship species.</div>
+        <div class="belief"><span class="belief-lede">On the Medicine People</span>I believe that across the world, a percentage of the population has been particularly and uniquely skilled from birth &mdash; with an emergence of gifts that predispositions them to develop into the medicine people on behalf of the many scopes and valencies of reality and the relationships between them.</div>
+        <div class="belief"><span class="belief-lede">On Diaspora</span>I believe that in a post-imperial culture, many of us are born into diaspora communities where the roots of oral tradition and lineage have been intentionally severed, muted, and destroyed. We are born without the elders to help us cultivate and hone our innate gifts and skills.</div>
+        <div class="belief"><span class="belief-lede">On the Hour</span>I believe this is a time for reclamation.</div>
+        <div class="belief"><span class="belief-lede">On Your Medicine</span>I believe you have the inherent wisdom and attunement of the medicine that is yours to walk with in this world.</div>
+        <div class="belief"><span class="belief-lede">On Soul &amp; Star Families</span>I believe there are families of ancient lineage and power that have been woven in flesh and bone to hold and to receive &mdash; lineages of soul and star families. The merging of earth and stars is how we bring in a new world through devotionally skilled discipline and practice.</div>
+        <div class="belief"><span class="belief-lede">On the Living Membrane</span>I believe we are the living oracular membrane of our ancestral lineages, and that ancestral heritage lives in our bones and our bodies. We are here to give birth, to give way, to give life &mdash; to the continuation of lineages, of tradition, of innovation, of culture, in response to the gravity of our times.</div>
+        <div class="belief"><span class="belief-lede">On Awakening</span><strong>I believe awakening, not healing, is the principal work.</strong> Healing happens as a byproduct of the soul further incarnating into the body. These are teachers &mdash; the plants, the practices, the unseen &mdash; who are here to facilitate awakening. By the nature of awakening, healing occurs. You do not have to hunt for it.</div>
+        <div class="belief"><span class="belief-lede">On the Plants as Beings</span>I believe the plants and medicines are beings &mdash; spirits, personified entities &mdash; not substances. They are deeply benevolent forces beyond humankind, attending to our evolution. They love us beyond our comprehension.</div>
+        <div class="belief"><span class="belief-lede">On Our Long Practice</span>I believe humans have been sitting with entheogens since the very beginning. Arguably this is part of why our species occupies the position it does on this planet.</div>
+        <div class="belief"><span class="belief-lede">On Anchoring</span>I believe the work is not only to open to other worlds, but to anchor what comes through down into this one &mdash; to hold the resonance, hold the field, and implement it here.</div>
+        <div class="belief"><span class="belief-lede">On Ceremony</span>I believe ceremony is a procedural ritual technology. It can be learned, practiced, refined, and embodied &mdash; with the discipline and the capacity to stay attuned to the essence and purity of the heart, so that what comes through is only goodness, healing, harmony, restoration, peace, balance, and deep cleansing of this world and all its inhabitants, seen and unseen.</div>
+        <div class="belief"><span class="belief-lede">On Direct Experience</span><strong>I believe direct experience with the Divine is some of the most powerful work a human being can do.</strong></div>
+        <div class="belief"><span class="belief-lede">On Stewardship of the Field</span>I believe this work is a form of <strong>spiritual ceremonial stewardship</strong> &mdash; that we are not only practitioners receiving wisdom, but contributors to a collective field of wisdom that others draw upon when they enter similar space.</div>
+        <div class="belief"><span class="belief-lede">On Unprecedented Ground</span>I believe what I am cultivating is, in some way, <strong>unprecedented in the form I was taught</strong> &mdash; and at the same time, deeply in integrity with what the spirit world has been showing me. New paths can rest on ancient ground.</div>
+        <div class="belief"><span class="belief-lede">On Capacity</span><strong>I believe anyone is capable of going into the beauty of their divine self if they are given enough love, compassion, safety, and space, and are nourished by sacred waters.</strong> I have come from a hard life, and that is precisely why I share what I share &mdash; to propagate more of that divine light into this world.</div>
+        <div class="belief"><span class="belief-lede">On the Sword of Mercy</span>I believe we are meant to be <strong>compassionately fierce.</strong> There is a reason archangels carry swords. We are shepherds, and stewardship sometimes requires protection of the goodness.</div>
+        <div class="belief"><span class="belief-lede">On Sacred Seeds</span>I believe <strong>sacred seeds can take years or decades to bloom.</strong> The work of a ceremony, an initiation, or any deep practice is not the end &mdash; it is the opening of a gateway, the planting of a garden one returns to.</div>
+        <div class="belief"><span class="belief-lede">On Fallen Sacraments</span>I believe sacred plant medicines have been gifted to humankind across millennia, and that many of them &mdash; cannabis, the poppy, coca &mdash; have suffered when interfaced with outside the contexts that kept them sacred. <strong>The spirit of a plant can be shaken and shaped by how it is treated.</strong></div>
+        <div class="belief"><span class="belief-lede">On Discernment</span><strong>I believe medicine makes you pay the price up front and reap the benefits later. Intoxicants give the relief first and ask for the price later.</strong></div>
+        <div class="belief"><span class="belief-lede">On the Call</span>I believe we need more practitioners. More people out in the world holding these sacred spaces, holding these front lines, pollinating the garden of life, restoring the beauty, balance, harmony, and exquisite balance.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 04. ARCHITECTURE ====== -->
+  <section class="section section-sand">
+    <span class="anchor" id="architecture"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Four</span>
+        <h2 class="section-h">The <em>architecture</em></h2>
+        <span class="rule"></span>
+        <p class="body-text" style="font-style: italic; color: var(--bark-mid); max-width: 620px; margin: 0 auto;">The bones of the school. The structures that hold everything else.</p>
+      </div>
+
+      <div class="arch-block">
+        <h4 class="sub-sub">The Six Studios</h4>
+        <p class="body-text">Six disciplines, each its own avenue. Each carries its own foundational ethos, body of knowledge, and skill set.</p>
+        <div class="studios-list">
+          <div class="studio-mini"><h4>Mythopoetic Being</h4><p>Story medicine. The archetypal narrative framework of identity. The maps of personal and ancestral inheritance.</p></div>
+          <div class="studio-mini"><h4>Spirit Mediation</h4><p>Interdimensional intermediation. Sovereign vessel. Working with the seen and unseen. Dagara divination.</p></div>
+          <div class="studio-mini"><h4>Shamanic Bodywork</h4><p>Hands-on work on the blueprint of the energetic being. The body as anchor. Trauma-informed somatic clearing.</p></div>
+          <div class="studio-mini"><h4>Ceremonialist Training</h4><p>The third order &mdash; becoming a practitioner in service to others. Container holding. Procedural ritual technology.</p></div>
+          <div class="studio-mini"><h4>Expressive Arts</h4><p>Voice, breath, movement, sound. The symphony of the room. Toning and vocal release.</p></div>
+          <div class="studio-mini"><h4>Basins of Creation</h4><p>The inner garden. Daily attunement at the heart-belly center. Sacred seeds tended over years and decades.</p></div>
+        </div>
+      </div>
+
+      <div class="arch-block">
+        <h4 class="sub-sub">The Four Movements</h4>
+        <p class="body-text">The arc of all learning, within every studio.</p>
+        <ol class="arch-list">
+          <li><strong>The Map</strong> &mdash; the known and unknown maps, all the maps that have existed before, synthesized through your own embodied lived experience</li>
+          <li><strong>Navigating the Map</strong> &mdash; symbols, terrains, principles, the applied equations of the work</li>
+          <li><strong>Walking the Terrain</strong> &mdash; first-person experiential exploration</li>
+          <li><strong>Field Training</strong> &mdash; expressing the work in community, in service to others</li>
+        </ol>
+        <p class="body-text" style="font-style: italic; color: var(--bark-mid);">Running alongside: theory, practicum, tests, initiation, refinement, and continual mentorship.</p>
+      </div>
+
+      <div class="arch-block">
+        <h4 class="sub-sub">The Three Orders</h4>
+        <p class="body-text">The trajectory of the practitioner.</p>
+        <ol class="arch-list">
+          <li><strong>For yourself</strong> &mdash; clearing, attuning, becoming fluent, ceremony as a rhythm of your own life</li>
+          <li><strong>On behalf of intentions between the worlds</strong> &mdash; journeying with purpose, opening here, going into the other world, receiving, bringing back, implementing</li>
+          <li><strong>In service to others</strong> &mdash; the most advanced work, where ceremonialist training occurs</li>
+        </ol>
+      </div>
+
+      <div class="arch-block">
+        <h4 class="sub-sub">The Three Depths</h4>
+        <p class="body-text">Entry points to the work.</p>
+        <ul class="cred-list">
+          <li><strong>Theory</strong> &mdash; to learn the concepts</li>
+          <li><strong>Embody</strong> &mdash; to take it into one&rsquo;s own life</li>
+          <li><strong>Service</strong> &mdash; to change one&rsquo;s life and how one affects others</li>
+        </ul>
+      </div>
+
+      <div class="arch-block">
+        <h4 class="sub-sub">The Fluency Cycle</h4>
+        <p class="body-text">The rhythm of the work &mdash; six steps, moving wider with each cycle.</p>
+        <ol class="arch-list">
+          <li><strong>The mundane self.</strong> Hold your water. Attune. Come back.</li>
+          <li><strong>Communicate clearly. Be communicated with clearly.</strong> Develop the skill. Come back.</li>
+          <li><strong>Bring the identity and ego structure along</strong> &mdash; ballast, pendulum acclimating to higher oscillation</li>
+          <li><strong>Etiquette and reciprocity in the other world.</strong> Conversation as a technician</li>
+          <li><strong>Care for the human self</strong> navigating these huge changes</li>
+          <li><strong>Bring instruction back.</strong> Receive from the other world. Implement here.</li>
+        </ol>
+      </div>
+
+      <div class="arch-block">
+        <h4 class="sub-sub">The Anchoring &mdash; the heart of the discipline</h4>
+        <p class="body-text">It is easy to go into the other world. The hard work is implementing what comes through into <em>this</em> world.</p>
+        <p class="pull-quote">We are not only meant to open up to those energies. We are meant to anchor them down. That is what this world needs at this time &mdash; an anchoring down of a new reality that we are shaping and co-creating together.</p>
+        <p class="body-text"><strong>The technical articulation: voltage and amplitude.</strong> When the voltage of what is coming through exceeds the body&rsquo;s grounding capacity, the system overloads and purges to recalibrate. The proactive practice is matching the incoming energy with a body wave that lands and grounds it &mdash; undulating the spine in S-curves, finding the slower rhythm beneath the fast one.</p>
+      </div>
+
+      <div class="arch-block">
+        <h4 class="sub-sub">The Sovereign Vessel</h4>
+        <p class="body-text">A core ethical principle: dignity with non-human intelligences.</p>
+        <p class="pull-quote">You&rsquo;re sharing consciousness in my vessel. I want more dignity. I want more modesty. Can you be more gentle with me?</p>
+        <p class="body-text">The medicine &mdash; and other intelligences &mdash; are adaptive. If you communicate what you need with respect, they will meet you on that ground.</p>
+      </div>
+
+      <div class="arch-block">
+        <h4 class="sub-sub">Conversation as Participation</h4>
+        <p class="body-text">You can within yourself communicate clearly with the intelligence you are sitting with &mdash; linguistically, internally.</p>
+        <p class="pull-quote">Speak to me in a language I already understand.</p>
+        <p class="body-text">The beings tending to us in this growth will adapt and learn how to be with us.</p>
+      </div>
+
+      <div class="arch-block">
+        <h4 class="sub-sub">Power and Agency in the Unseen</h4>
+        <p class="pull-quote">You are the one with the human body. You are the one incarnate on the material realm. You are the one with power. Sometimes beings want us to forget that &mdash; to give it away to them.</p>
+      </div>
+
+      <div class="arch-block">
+        <h4 class="sub-sub">Don&rsquo;t make meaning while it&rsquo;s happening</h4>
+        <p class="pull-quote">It&rsquo;s like starting the Lord of the Rings and going, &ldquo;Oh, I get it.&rdquo; You have no idea. Let it conclude. Let it land. Let it marinate in the weeks and months to come.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 05. LINEAGES ====== -->
+  <section class="section section-paper">
+    <span class="anchor" id="lineages"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Five</span>
+        <h2 class="section-h">The <em>lineages</em></h2>
+        <span class="rule"></span>
+        <p class="body-text" style="font-style: italic; color: var(--bark-mid); max-width: 620px; margin: 0 auto;">No practice arises alone. What is carried through this school comes through long lines of teachers, traditions, and bodies of knowledge.</p>
+      </div>
+
+      <ul class="cred-list">
+        <li><strong>Dagara divination</strong> &mdash; lineage-initiated medicine woman of the Dagara people of West Africa, a 40,000-year oral tradition</li>
+        <li><strong>Quechua mountain lineages</strong> &mdash; the Andes, where the pinnacle teachers are the mountain itself and the Mesa</li>
+        <li><strong>Hawaiian Kahuna lineages</strong> &mdash; the <em>amakua,</em> the collective field of wisdom that practitioners contribute to</li>
+        <li><strong>Iboga, ayahuasca, bufo, huachuma</strong> &mdash; the medicines Adi Marie sits with in regular personal practice</li>
+        <li><strong>Trauma-informed somatic psychology</strong> &mdash; deep training and lived experience</li>
+        <li><strong>Shamanic bodywork</strong> &mdash; sixteen years in therapeutic and medical environments</li>
+        <li><strong>Generative trance hypnosis</strong> &mdash; carried by Adi Marie and the co-facilitators</li>
+        <li><strong>Cannabis</strong> &mdash; first plant medicine teacher, the one that brought forward the body work gifts</li>
+      </ul>
+
+      <p class="pull-quote">The lineage statement of this school is twofold. The roots: ancestral, oral, initiated, multi-traditional. The forward edge: doing something unprecedented in the form she was taught, in deep integrity with what the spirit world has been showing.</p>
+    </div>
+  </section>
+
+  <!-- ====== 06. TWO STANCES ====== -->
+  <section class="section section-sand">
+    <span class="anchor" id="stances"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Six</span>
+        <h2 class="section-h">The two <em>stances</em></h2>
+        <span class="rule"></span>
+      </div>
+
+      <h3 class="sub-h">The Practitioner&rsquo;s Stance &mdash; for the one carrying the work</h3>
+      <ul class="cred-list">
+        <li><strong>Anti-evangelism</strong> &mdash; people come when they are called. The work is propagated by holding fields, not by recruiting.</li>
+        <li><strong>Protect the sanctity</strong> &mdash; speak about it where it will land, not where it will be flattened.</li>
+        <li><strong>Compassionately fierce</strong> &mdash; archangels carry swords for a reason.</li>
+        <li><strong>Spiritual ceremonial stewardship</strong> &mdash; not consumer, not tourist. Steward.</li>
+        <li><strong>Contribute to the amakua</strong> &mdash; the lineage field is alive and you are shaping it.</li>
+        <li><strong>Speak from lived experience</strong> &mdash; initiation is by participation.</li>
+      </ul>
+
+      <h3 class="sub-h">The Facilitator&rsquo;s Stance &mdash; how Adi Marie holds space</h3>
+      <p class="pull-quote">I am the captain with my hands on the wheel of the ship. I am here at your behest, not your service.</p>
+      <ul class="cred-list">
+        <li><strong>The full spectrum</strong> &mdash; silly and life-is-fantastic alongside intense Priestess gravitas</li>
+        <li><strong>Generous, not proprietary</strong> &mdash; <em>mine is not the only way</em></li>
+        <li><strong>Trauma-informed at the bone</strong> &mdash; not as credential but as foundation</li>
+        <li><strong>Embodied and skilled with the body</strong> &mdash; hands-on, blueprint work</li>
+        <li><strong>Collaborative container</strong> &mdash; co-facilitators with their own depths</li>
+        <li><strong>The joy is named</strong> &mdash; mother to the field, nourished by what nourishes the student</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====== 07. INTEGRATION ====== -->
+  <section class="section section-paper">
+    <span class="anchor" id="integration"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Seven</span>
+        <h2 class="section-h">Cycles of <em>integration</em></h2>
+        <span class="rule"></span>
+        <p class="body-text" style="font-style: italic; color: var(--bark-mid); max-width: 620px; margin: 0 auto;">The work of a ceremony is not the event. It is the opening of a gateway one returns to.</p>
+      </div>
+
+      <ul class="cred-list">
+        <li><strong>Sacred seeds &mdash; years to bloom.</strong> Some teachings take years or decades. The practitioner tends the garden.</li>
+        <li><strong>Depletion as spaciousness.</strong> Fatigue after deep work is the room made for what comes next.</li>
+        <li><strong>Daily morning practice.</strong> Heart-belly center. Ask to be guided. Set the day&rsquo;s intentions.</li>
+        <li><strong>Whimsy as exercise.</strong> Practice the will of creation where the stakes are low. A rainbow. A butterfly. A flute.</li>
+        <li><strong>Totemic anchoring.</strong> A piece &mdash; jewelry, an altar item &mdash; imbued with the energy of the threshold crossed.</li>
+        <li><strong>Letter to your future self.</strong> From the richness of the heart. Read it back when you are in need.</li>
+        <li><strong>Required integration call.</strong> Within one to four weeks of any deep ceremonial work.</li>
+        <li><strong>The world will feel different &mdash; that is the point.</strong></li>
+        <li><strong>Open the container, do not close it.</strong> A ceremony does not end. It is released into the life of the practitioner.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====== 08. SACRAMENT & CEREMONY ====== -->
+  <section class="section section-sand">
+    <span class="anchor" id="sacrament"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Eight</span>
+        <h2 class="section-h">Sacrament &amp; <em>ceremony</em></h2>
+        <span class="rule"></span>
+      </div>
+
+      <h3 class="sub-h">The plants as teachers</h3>
+      <ul class="cred-list">
+        <li><strong>Grandmother Ayahuasca</strong> &mdash; story medicine. The archetypal narrative framework of identity. The dark night of the soul.</li>
+        <li><strong>Grandfather Wachuma (Huachuma)</strong> &mdash; the untarnishable prism of the heart. The Best Day of Your Life medicine.</li>
+        <li><strong>Mapacho</strong> &mdash; the librarian to Ayahuasca&rsquo;s library. Grounding, drawn-in.</li>
+        <li><strong>Hap&eacute;</strong> &mdash; the singular non-dual breakthrough.</li>
+        <li><strong>Bufo and Iboga</strong> &mdash; in Adi Marie&rsquo;s personal practice.</li>
+      </ul>
+
+      <h3 class="sub-h">Principles</h3>
+      <ul class="cred-list">
+        <li><strong>The food of the realm</strong> &mdash; fasting during deep work; food is a tether to the realm you eat in</li>
+        <li><strong>The fallen-sacrament principle</strong> &mdash; cannabis, the poppy, coca were sacred and have suffered through misuse outside their contexts</li>
+        <li><strong>Medicine vs. intoxicant</strong> &mdash; medicine pays up front and reaps later; intoxicants give relief first and ask for the price later</li>
+        <li><strong>Cannabis as first plant teacher</strong> &mdash; Adi Marie&rsquo;s body work gifts emerged through it</li>
+      </ul>
+
+      <h3 class="sub-h">Container principles</h3>
+      <ul class="cred-list">
+        <li>No spoken language during deep work &mdash; the medicine works on the amygdala, language in the frontal cortex</li>
+        <li>The symphony of the room &mdash; crying, laughing, screaming, breath, movement, sound &mdash; all welcome</li>
+        <li>Specificity of asking for help &mdash; precise self-knowing is itself a discipline</li>
+        <li>Coded signals &mdash; snaps and raised hands</li>
+        <li>Purging as getting well &mdash; toxins drawn out by whatever route</li>
+        <li>Co-regulation in close proximity &mdash; the Paleolithic principle</li>
+        <li>Containers open, do not close &mdash; the field is released into the world</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====== 09. VOICE ====== -->
+  <section class="section section-paper">
+    <span class="anchor" id="voice"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Nine</span>
+        <h2 class="section-h">The <em>voice</em></h2>
+        <span class="rule"></span>
+        <p class="body-text" style="font-style: italic; color: var(--bark-mid); max-width: 620px; margin: 0 auto;">The operating system for everything written for or as The Animist Apothecary.</p>
+      </div>
+
+      <h3 class="sub-h">The tonal range &mdash; full spectrum</h3>
+      <p class="body-text">The voice holds two ends at once, and the fluctuation between them <em>is</em> the voice.</p>
+      <p class="body-text"><strong>At one end:</strong> silly, light, life-is-fantastic. Real laughter. Warmth. The body in joy.</p>
+      <p class="body-text"><strong>At the other end:</strong> intense Priestess gravitas. The weight of the lineage. The seriousness of the work.</p>
+      <p class="body-text" style="font-style: italic;">Calibrate by context. Lightness on quotidian copy. Gravitas on manifesto-grade work. Both intermixed on most longer-form content. Never artificially level the spectrum to a uniform middle register.</p>
+
+      <h3 class="sub-h">The lexical signatures &mdash; load-bearing phrases</h3>
+      <div class="lex-grid">
+        <div class="lex-col">
+          <h5>The school and the work</h5>
+          <ul>
+            <li>The Animist Apothecary</li>
+            <li>Interdimensional intermediaries and guides</li>
+            <li>The seen and unseen worlds</li>
+            <li>The other-than-human beings</li>
+            <li>Guardian and stewardship species</li>
+            <li>Right relationship</li>
+            <li>Ancestral lineages</li>
+            <li>The artisan&rsquo;s touch of inspirationally skilled mastery</li>
+            <li>The gravity of our times</li>
+            <li>Restoration of a way of life</li>
+          </ul>
+        </div>
+        <div class="lex-col">
+          <h5>The architecture (placeholders)</h5>
+          <ul>
+            <li>The work</li>
+            <li>The practice</li>
+            <li>The field</li>
+            <li>The holding</li>
+            <li>The container</li>
+            <li>The bones</li>
+            <li>The call</li>
+            <li>The threshold</li>
+            <li>The arc</li>
+          </ul>
+        </div>
+        <div class="lex-col">
+          <h5>Conceptual framework</h5>
+          <ul>
+            <li>Awakening, not healing</li>
+            <li>Anchoring / the anchoring down</li>
+            <li>Voltage and amplitude</li>
+            <li>The sovereign vessel</li>
+            <li>Conversation as participation</li>
+            <li>The amakua</li>
+            <li>Spiritual ceremonial stewardship</li>
+            <li>Sacred seeds</li>
+            <li>Sacred reciprocity</li>
+            <li>Depletion as spaciousness</li>
+            <li>Speak to me in a language I already understand</li>
+          </ul>
+        </div>
+        <div class="lex-col">
+          <h5>The practitioner stance</h5>
+          <ul>
+            <li>Compassionately fierce</li>
+            <li>Anti-evangelism</li>
+            <li>Stewardship</li>
+            <li>Tutelage of the other worlds</li>
+            <li>The one who carries the work</li>
+          </ul>
+        </div>
+        <div class="lex-col">
+          <h5>Religious / ceremonial register</h5>
+          <ul>
+            <li>Sacrament</li>
+            <li>Threshold</li>
+            <li>Initiation</li>
+            <li>Lineage</li>
+            <li>Witness</li>
+            <li>Held space</li>
+            <li>The held container</li>
+            <li>The miracle</li>
+          </ul>
+        </div>
+        <div class="lex-col">
+          <h5>Metaphors &mdash; body &amp; nature</h5>
+          <ul>
+            <li>Vessel / Instrument / Ballast / Pendulum</li>
+            <li>Wave / Breath / Root</li>
+            <li>Voltage / Amplitude</li>
+            <li>Garden / Soil / Sacred seed</li>
+            <li>Shoreline / Fire / Field</li>
+            <li>Root system / Bloom</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="sub-h">Language structure</h3>
+      <p class="body-text"><strong>Cadence:</strong> short declarative sentences for principle. Longer flowing sentences for description. Paragraph-as-sentence for emphasis. Triadic phrasings for ceremonial weight.</p>
+      <p class="body-text"><strong>Punctuation:</strong> em dashes are kept &mdash; they are the rhythm of Adi Marie&rsquo;s writing. Italic emphasis carries voice signature on words that matter, used sparingly. Periods are heavy &mdash; a sentence ends when the principle is complete.</p>
+      <p class="body-text"><strong>Paragraph structure:</strong> begin with the principle, then unfold. Use rhetorical pauses (single-sentence paragraphs). Close with a soft turn.</p>
+      <p class="body-text"><strong>Paradoxical pairs:</strong> the voice often holds two things at once &mdash; <em>compassionately fierce, unprecedented in ancient ground, benevolent and rigorous.</em></p>
+
+      <h3 class="sub-h">Use &amp; avoid</h3>
+      <div class="use-avoid">
+        <div class="ua-card">
+          <span class="ua-label">Use</span>
+          <ul class="ua-list">
+            <li><em>Read more &rarr;</em></li>
+            <li><em>Listen</em></li>
+            <li><em>Subscribe</em></li>
+            <li><em>Begin Here</em></li>
+            <li><em>Send the Note</em></li>
+            <li><em>Schedule the Conversation</em></li>
+            <li><em>Step Through</em></li>
+            <li>Em dashes generously</li>
+            <li>Triadic phrasings for weight</li>
+            <li>Concrete nature and body metaphors</li>
+            <li>Soft turns at paragraph close</li>
+          </ul>
+        </div>
+        <div class="ua-card avoid">
+          <span class="ua-label">Avoid</span>
+          <ul class="ua-list">
+            <li><em>Apply Now / Submit / Register</em></li>
+            <li><em>Transform your life</em></li>
+            <li><em>Unlock your potential</em></li>
+            <li><em>Limited spots</em></li>
+            <li><em>Game-changing / Next-level</em></li>
+            <li><em>Manifest your</em></li>
+            <li><em>High-vibe / Good vibes</em></li>
+            <li><em>Boss babe / Wellness warrior</em></li>
+            <li>Sacred space used loosely</li>
+            <li>Urgency or countdown constructions</li>
+            <li>Generic <em>For those who...</em> openers</li>
+            <li>Outcome-driven first paragraphs</li>
+            <li>Listicle structures (<em>5 reasons you need...</em>)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="sub-h">Voice in action &mdash; tunings, not templates</h3>
+      <div class="voice-examples">
+        <div class="voice-example">
+          <span class="voice-example-label">On the call</span>
+          <p>Our times need people to restore the conversational, relational balance between the worlds.</p>
+        </div>
+        <div class="voice-example">
+          <span class="voice-example-label">On the work</span>
+          <p>This is a restoration of a way of life. A way of being in right relationship. A participatory, relational conversation between the worlds.</p>
+        </div>
+        <div class="voice-example">
+          <span class="voice-example-label">On the practitioner</span>
+          <p>The desire of this path is not only to take people into an experience. It is to cultivate interdimensional intermediaries and guides who have the potential to shepherd in a new world &mdash; from the seeds of light they have learned to let in.</p>
+        </div>
+        <div class="voice-example">
+          <span class="voice-example-label">On the field</span>
+          <p>We are the living oracular membrane of our ancestral lineages, and that ancestral heritage lives in our bones and our bodies.</p>
+        </div>
+        <div class="voice-example">
+          <span class="voice-example-label">On the practice</span>
+          <p>If there&rsquo;s one skill I can offer you to navigating this work &mdash; how much can you relax into your chair right now? How much can you let yourself be with the sounds? That&rsquo;ll get you through almost every threshold.</p>
+        </div>
+        <div class="voice-example">
+          <span class="voice-example-label">On generosity</span>
+          <p>Mine is not the only way. I&rsquo;m just sharing from the depth of my heart and the way I&rsquo;ve learned to understand this work. It doesn&rsquo;t need to become your world view in any way.</p>
+        </div>
+        <div class="voice-example">
+          <span class="voice-example-label">On capacity</span>
+          <p>Anyone is capable of going into the beauty of their divine self if they are given enough love, compassion, safety, and space, and are nourished by sacred waters.</p>
+        </div>
+        <div class="voice-example">
+          <span class="voice-example-label">On the closing</span>
+          <p>We are here to participate in the miracle. This is for those who have a calling to participate in this way at this time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== 10. VISUAL SYSTEM ====== -->
+  <section class="section section-sand">
+    <span class="anchor" id="visual"></span>
+    <div class="section-wide">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Ten</span>
+        <h2 class="section-h">The visual <em>system</em></h2>
+        <span class="rule"></span>
+        <p class="body-text" style="font-style: italic; color: var(--bark-mid); max-width: 620px; margin: 0 auto;">Paper. Vellum. Cracked plaster. Oxidized brass. Lichen. Smoke. Candle. Oil lamp. Golden hour. Dusk light. Living wood. The page should feel hand-pressed, not screen-stamped.</p>
+      </div>
+
+      <h3 class="sub-h">Color palette</h3>
+      <div class="palette">
+        <div class="swatch"><div class="swatch-color sw-paper"></div><div class="swatch-info"><p class="swatch-name">Paper</p><p class="swatch-meta">#F7F5F0 &middot; --paper</p><p class="swatch-use">Default page background, story section bg</p></div></div>
+        <div class="swatch"><div class="swatch-color sw-parchment"></div><div class="swatch-info"><p class="swatch-name">Parchment</p><p class="swatch-meta">#F4EAD3 &middot; --parchment</p><p class="swatch-use">Header bg, lighter accents</p></div></div>
+        <div class="swatch"><div class="swatch-color sw-sand"></div><div class="swatch-info"><p class="swatch-name">Sand</p><p class="swatch-meta">#EFEDE6 &middot; --sand</p><p class="swatch-use">Secondary section bg, subtle alternation</p></div></div>
+        <div class="swatch"><div class="swatch-color sw-bark"></div><div class="swatch-info"><p class="swatch-name">Bark</p><p class="swatch-meta">#2D2A26 &middot; --bark</p><p class="swatch-use">Body text, primary type</p></div></div>
+        <div class="swatch"><div class="swatch-color sw-bark-deep"></div><div class="swatch-info"><p class="swatch-name">Bark Deep</p><p class="swatch-meta">#1F1A18 &middot; --bark-deep</p><p class="swatch-use">Dark editorial bands, footer</p></div></div>
+        <div class="swatch"><div class="swatch-color sw-gold"></div><div class="swatch-info"><p class="swatch-name">Gold</p><p class="swatch-meta">#C9A84C &middot; --gold</p><p class="swatch-use">Accents, hairlines, CTAs (sparingly)</p></div></div>
+        <div class="swatch"><div class="swatch-color sw-gold-pale"></div><div class="swatch-info"><p class="swatch-name">Gold Pale</p><p class="swatch-meta">#DCC178 &middot; --gold-pale</p><p class="swatch-use">Tangerine em italic, hover accents</p></div></div>
+        <div class="swatch"><div class="swatch-color sw-sage-pale"></div><div class="swatch-info"><p class="swatch-name">Sage Pale</p><p class="swatch-meta">#C5D9C6 &middot; --sage-pale</p><p class="swatch-use">Botanical moments, optional natural accent</p></div></div>
+        <div class="swatch"><div class="swatch-color sw-sage-deep"></div><div class="swatch-info"><p class="swatch-name">Sage Deep</p><p class="swatch-meta">#5B7553 &middot; --sage-deep</p><p class="swatch-use">Form focus rings, success states</p></div></div>
+      </div>
+      <p class="body-text" style="font-style: italic; color: var(--bark-mid);">No high-saturation primaries. Ever.</p>
+
+      <h3 class="sub-h">Typography</h3>
+
+      <div class="type-sample">
+        <div class="type-meta">Display &mdash; Cinzel</div>
+        <div class="type-display">THE ANIMIST APOTHECARY</div>
+        <p class="type-display-meta">Carved Roman caps. Wordmark, ALL CAPS section labels. 400&ndash;700 weight. Letter-spacing 0.22em+.</p>
+      </div>
+
+      <div class="type-sample">
+        <div class="type-meta">Heading &mdash; Cormorant Garamond Italic + Tangerine em accent</div>
+        <h3 class="type-heading-italic">The <em>practice</em></h3>
+        <p class="type-display-meta">Italic for poetic headlines. Em italic rendered in Tangerine cursive at 1.45em, color Gold Pale.</p>
+      </div>
+
+      <div class="type-sample">
+        <div class="type-meta">Body &mdash; Cormorant Garamond Regular</div>
+        <p class="type-body-sample">Every visitor should leave the home page feeling they have been honored, not pitched at &mdash; that the practitioner is the real thing, serious, restrained, with depth that needs no oversell.</p>
+        <p class="type-display-meta">1.05&ndash;1.18rem. Line-height 1.7. Maximum 720px line length.</p>
+      </div>
+
+      <div class="type-sample">
+        <div class="type-meta">UI / Nav &mdash; Cormorant SC / Cinzel uppercase</div>
+        <p class="type-ui">Begin Here &middot; Listen &middot; Subscribe</p>
+        <p class="type-display-meta" style="margin-top: 0.6rem;">0.64&ndash;0.78rem. Letter-spacing 0.22&ndash;0.32em. Reads as engraved.</p>
+      </div>
+
+      <div class="type-sample">
+        <div class="type-meta">Tangerine &mdash; Em italic accent</div>
+        <p class="type-tangerine">a calling of these times</p>
+        <p class="type-display-meta">Used only as the em italic accent within Cormorant headings. Never standalone. Always Gold Pale.</p>
+      </div>
+
+      <h3 class="sub-h">Spacing &amp; density</h3>
+      <p class="body-text">Generous breathing room. Every section has padding &ge; 5rem top/bottom. Body copy at maximum 720px line length. Cards at 2&ndash;4 column grids with 2&ndash;3rem gap. Density is earned through content depth, never inflated.</p>
+
+      <h3 class="sub-h">Decorative system</h3>
+      <p class="body-text">Hairline gold rules between eyebrow and headline. Short horizontal hairlines (40&ndash;60px) in <strong>Gold</strong>. Quote glyph: <code>&amp;ldquo;</code> left double quote, not em dash. Arrows: <code>&rarr;</code> (U+2192), never <code>&gt;</code> or <code>&amp;rarr;</code> raw.</p>
+      <span class="demo-hairline"></span>
+      <p class="body-text" style="font-style: italic; color: var(--bark-mid);">Pillar icons as ascending marks (&middot;, &middot;&middot;, &middot;&middot;&middot;). No illustrative icons.</p>
+
+      <h3 class="sub-h">Photography direction</h3>
+      <p class="body-text"><strong>Hero imagery:</strong> 16:9 cinematic. Golden-hour Topanga canyon, candle-lit interior with earthy wall, forest canopy with sunbeams, hand on knee in stillness. Moody low-key OR golden-hour high-key. Never fluorescent.</p>
+      <p class="body-text"><strong>Section imagery:</strong> ceremonial objects &mdash; smoke and moss, oil lamp, brass chalice, woven cloth, fern over labyrinth stone, oak branch with sunlight, lavender, white sage smoke.</p>
+      <p class="body-text"><strong>Practitioner photography:</strong> studio-quality portraits with single-light direction, soft falloff, ceremonial wardrobe.</p>
+      <p class="body-text" style="font-style: italic; color: var(--bark-mid);">No stock imagery. No clinic settings. No abstract gradients. Nothing SaaS or wellness-app coded.</p>
+    </div>
+  </section>
+
+  <!-- ====== 11. COMPONENTS ====== -->
+  <section class="section section-paper">
+    <span class="anchor" id="components"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Eleven</span>
+        <h2 class="section-h">Components &amp; <em>patterns</em></h2>
+        <span class="rule"></span>
+      </div>
+
+      <h3 class="sub-h">Soft CTAs</h3>
+      <div class="comp-demo">
+        <span class="comp-demo-label">CTA Button (soft, default)</span>
+        <a href="#" class="demo-btn-soft">Read more</a>
+        <a href="#" class="demo-btn-soft">Begin Here</a>
+        <a href="#" class="demo-btn-soft">Listen</a>
+      </div>
+
+      <h3 class="sub-h">Hairline divider</h3>
+      <div class="comp-demo">
+        <span class="comp-demo-label">Section divider &mdash; between eyebrow and headline</span>
+        <span class="demo-hairline"></span>
+      </div>
+
+      <h3 class="sub-h">Eyebrow + headline + body</h3>
+      <div class="comp-demo">
+        <span class="comp-demo-label">Standard section opening pattern</span>
+        <span class="eyebrow">A Calling of These Times</span>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-style: italic; font-size: 2rem; color: var(--bark); margin: 0.5rem 0 1rem;">Formidable gifts for an <em style="font-family: Tangerine, serif; font-style: normal; font-size: 1.45em; color: var(--gold-pale);">era of awakening</em></h3>
+        <p class="body-text">Three short paragraphs of body unfolding the principle. Maximum 720px line length. Generous space above and below.</p>
+      </div>
+
+      <h3 class="sub-h">Card pattern</h3>
+      <div class="comp-demo">
+        <span class="comp-demo-label">Studio / Offering card</span>
+        <div class="demo-card">
+          <span class="demo-card-eyebrow">Studio One</span>
+          <h4 class="demo-card-h">Mythopoetic <em style="font-family: Tangerine, serif; font-style: normal; font-size: 1.45em; color: var(--gold-pale);">Being</em></h4>
+          <p class="demo-card-body">Story medicine. The archetypal narrative framework of identity.</p>
+        </div>
+      </div>
+
+      <h3 class="sub-h">Section types</h3>
+      <ul class="cred-list">
+        <li><strong>Story section</strong> &mdash; paper bg, max-width 720px centered text</li>
+        <li><strong>Vision section</strong> &mdash; dark editorial band, gold accent type, used once per page max</li>
+        <li><strong>Practitioner section</strong> &mdash; split layout, portrait + bio with qual-tags</li>
+        <li><strong>Offerings section</strong> &mdash; featured card on top, grid below</li>
+        <li><strong>Process section</strong> &mdash; paper bg, 3 doors / 3 movements</li>
+        <li><strong>Testimonial section</strong> &mdash; single quote with <code>&amp;ldquo;</code>, author with comma</li>
+        <li><strong>CTA section</strong> &mdash; dark band, gold accent label, short headline + single button</li>
+        <li><strong>Newsletter section</strong> &mdash; sand-cream bg, italic body, email input + Subscribe</li>
+        <li><strong>Feature image</strong> &mdash; full-bleed photo with no text</li>
+      </ul>
+      <p class="body-text" style="font-style: italic; color: var(--bark-mid);">Section background rhythm: paper &rarr; sand &rarr; paper &rarr; DARK BAND &rarr; paper &rarr; sand. Never two of the same bg in a row.</p>
+    </div>
+  </section>
+
+  <!-- ====== 12. PRACTICE & OFFERINGS ====== -->
+  <section class="section section-sand">
+    <span class="anchor" id="offerings"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Twelve</span>
+        <h2 class="section-h">Practice &amp; <em>offerings</em></h2>
+        <span class="rule"></span>
+      </div>
+
+      <h3 class="sub-h">The web at a glance</h3>
+      <p class="body-text">The practice is organized as: the larger umbrella (The Animist Apothecary), the school (with its six studios), and individual offerings (solo work, group work, gatherings, resources).</p>
+
+      <h3 class="sub-h">Sacred Reciprocity tiers</h3>
+      <p class="body-text">All paid offerings flow through four tiers (sample, drawn against year-long ceremonial trainings):</p>
+      <ul class="cred-list">
+        <li><strong>Patron</strong> &mdash; full reciprocity, seeds the scholarship fund for Accessibility tier</li>
+        <li><strong>Abundance</strong> &mdash; for those in steady professional flow</li>
+        <li><strong>Community</strong> &mdash; for those committed whose current means require a gentler tier, honored without explanation</li>
+        <li><strong>Accessibility</strong> &mdash; by application, need-based, funded by Patron tier</li>
+      </ul>
+      <p class="body-text" style="font-style: italic; color: var(--bark-mid);">Tier amounts confirmed per offering. Reciprocity language never &ldquo;pricing.&rdquo;</p>
+
+      <h3 class="sub-h">The inaugural cohort &mdash; in motion</h3>
+      <p class="body-text"><strong>Cornerstone studio:</strong> Ceremonialist Training (proposed). <strong>Duration:</strong> 12 months, equinox to equinox. <strong>Format:</strong> hybrid (weekly online + monthly intensive + 4 quarterly retreats). <strong>Size:</strong> 8 students. <strong>Dates:</strong> Sept 2026 &rarr; Sept 2027 (subject to confirmation).</p>
+      <p class="body-text" style="font-style: italic; color: var(--bark-mid);">Full pilot detail in <code>docs/ceremonialist-training-pilot-260601.html</code>.</p>
+    </div>
+  </section>
+
+  <!-- ====== 13. TEAM ====== -->
+  <section class="section section-paper">
+    <span class="anchor" id="team"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Thirteen</span>
+        <h2 class="section-h">The <em>team</em></h2>
+        <span class="rule"></span>
+      </div>
+
+      <p class="body-text">Three team members named for the inaugural cohort. Roles to be mapped in offline conversation. Public naming pending each team member&rsquo;s explicit permission.</p>
+
+      <div class="studios-list">
+        <div class="studio-mini"><h4>Adi Marie</h4><p>Founder. Lead faculty. Lineage carrier. Holds the curriculum, teaches the intensives, leads the retreats.</p></div>
+        <div class="studio-mini"><h4>Ned</h4><p>Co-facilitator. Holds container alongside Adi Marie. Brings neurological/philosophical framings. Trained in generative trance hypnosis.</p></div>
+        <div class="studio-mini"><h4>Christina</h4><p><em>Role to be described.</em></p></div>
+        <div class="studio-mini"><h4>Eric</h4><p>Co-facilitator. Medical doctor doing kindred work with ketamine. Trained in generative trance hypnosis. Brings clinical care into the held space.</p></div>
+      </div>
+
+      <p class="body-text" style="margin-top: 2rem; font-style: italic; color: var(--bark-mid);">For the inaugural cohort, the team is small and trusted. Faculty grows after the model proves.</p>
+    </div>
+  </section>
+
+  <!-- ====== 14. OPERATIONAL ANCHORS ====== -->
+  <section class="section section-sand">
+    <span class="anchor" id="operations"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Fourteen</span>
+        <h2 class="section-h">Operational <em>anchors</em></h2>
+        <span class="rule"></span>
+      </div>
+
+      <ul class="cred-list">
+        <li><strong>Today&rsquo;s date</strong> (as of synthesis): 2026-06-01</li>
+        <li><strong>Location:</strong> Topanga Canyon, Los Angeles, California</li>
+        <li><strong>Service area:</strong> Worldwide</li>
+        <li><strong>Legal structure:</strong> Being filed as a church (in process). Affects contribution language.</li>
+        <li><strong>Website:</strong> theanimistapothecary.com</li>
+        <li><strong>Tech stack:</strong> Vanilla HTML + Tailwind v4 + Supabase + GitHub Pages + Cloudflare</li>
+        <li><strong>Per-page workflow:</strong> Audit &rarr; Mobile &rarr; Wiring &rarr; Quality (four phases, in order)</li>
+        <li><strong>Process discipline:</strong> item-by-item, no batching of decisions, no auto-confirms</li>
+        <li><strong>Privacy:</strong> no real participant, client, or attendee names anywhere in the repo</li>
+        <li><strong>Voice quirks:</strong> em dashes kept (a prior ban was reversed); italic for voice signature; <em>Adi Marie,</em> never <em>Adi</em></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====== 15. STILL OPEN ====== -->
+  <section class="section section-dark">
+    <span class="anchor" id="open"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Fifteen</span>
+        <h2 class="section-h">Still <em>open</em></h2>
+        <span class="rule" style="background: var(--gold-pale);"></span>
+        <p class="body-text" style="font-style: italic; max-width: 620px; margin: 0 auto;">The unresolved decisions. These are not gaps to invent against &mdash; they are the questions that wait for Adi Marie&rsquo;s answer.</p>
+      </div>
+
+      <ul class="open-list">
+        <li><strong>The title of the school</strong> within The Animist Apothecary &mdash; candidates: <em>The Animist Apothecary Training Grounds, Tutelage at The Animist Apothecary, The School</em></li>
+        <li><strong>Confirmation of the six studio names</strong> &mdash; currently drawn from the site nav, not yet confirmed in Adi Marie&rsquo;s explicit voice</li>
+        <li><strong>The tests and initiation structure</strong> &mdash; Adi Marie has said &ldquo;I&rsquo;m not sure how that part structures&rdquo;</li>
+        <li><strong>Lineage public/ceremonial split</strong> &mdash; which references live in public-facing copy vs. ceremonial space only</li>
+        <li><strong>Cornerstone studio confirmation</strong> &mdash; Ceremonialist Training proposed; not yet committed</li>
+        <li><strong>Cohort dates</strong> &mdash; Sept 2026 (ambitious) vs. Sept 2027 (spacious)</li>
+        <li><strong>Sacred Reciprocity tier amounts</strong> &mdash; sample drafted; not yet committed</li>
+        <li><strong>Team roles</strong> &mdash; Ned, Christina, Eric named; what each holds not yet mapped</li>
+        <li><strong>Team public naming</strong> &mdash; confirm before placing names in public copy</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ====== 16. VERSION & CHANGELOG ====== -->
+  <section class="section section-paper">
+    <span class="anchor" id="changelog"></span>
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Chapter Sixteen</span>
+        <h2 class="section-h">Version &amp; <em>changelog</em></h2>
+        <span class="rule"></span>
+        <p class="body-text" style="font-style: italic; color: var(--bark-mid); max-width: 620px; margin: 0 auto;">This is a living document. As new material emerges, refinements land, and decisions close, they are recorded here.</p>
+      </div>
+
+      <div class="changelog-entry">
+        <span class="changelog-date">2026.06.01 &middot; Working v1</span>
+        <h4 class="changelog-h">First synthesis &mdash; foundational brand book established</h4>
+        <p class="changelog-body">Manifesto, twenty-one-statement credo, the bones of the school (six studios, four movements, three orders, three depths, fluency cycle, two stances, anchoring, sovereign vessel, conversation as participation, power and agency, don&rsquo;t make meaning), lineages, integration practices, sacrament principles, voice infrastructure, visual system, components, the inaugural cohort sample, the team in formation, and the open items. Drawn from the manifesto work, the credo, the cohort recordings, and the synthesized documents. Voice prompt refinements landed: three depths renamed Theory / Embody / Service; three orders phrased as <em>intentions between the worlds</em>; medicines extended to bufo, iboga, ayahuasca, huachuma.</p>
+      </div>
+
+      <div class="changelog-entry" style="opacity: 0.55;">
+        <span class="changelog-date">Future entries</span>
+        <h4 class="changelog-h">As the work grows&hellip;</h4>
+        <p class="changelog-body">When the title of the school is chosen, the studios are confirmed, the cornerstone is committed, the team roles are mapped, or any of the still-open items closes, record the change here with date, what shifted, and why.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="doc-footer">
+    <span class="footer-mark">The Animist Apothecary</span>
+    <p class="footer-note">The living brand book. The canonical reference for the practice, the school, the voice, the visual system, and the open questions. To be revisited and grown.</p>
+    <div class="footer-date">Working Version &middot; 2026.06.01</div>
+  </footer>
+
+</body>
+</html>

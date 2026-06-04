@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="If we met in the wilds &mdash; a gathering, a workshop, a passing fire &mdash; this is where the thread continues. Stay close to the work of The Animist Apothecary.">
+  <title>If We Met in the Wilds &middot; The Animist Apothecary</title>
+  <link rel="canonical" href="https://theanimistapothecary.com/wilds.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="If We Met in the Wilds &middot; The Animist Apothecary">
+  <meta property="og:description" content="If we met in the wilds &mdash; a gathering, a workshop, a passing fire &mdash; this is where the thread continues.">
+  <meta property="og:image" content="https://theanimistapothecary.com/images/uploads/adi-hero-hillside-2026-05-22.jpg">
+  <meta property="og:url" content="https://theanimistapothecary.com/wilds.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="If We Met in the Wilds &middot; The Animist Apothecary">
+  <meta name="twitter:description" content="If we met in the wilds &mdash; a gathering, a workshop, a passing fire &mdash; this is where the thread continues.">
+  <meta name="twitter:image" content="https://theanimistapothecary.com/images/uploads/adi-hero-hillside-2026-05-22.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v09">
+
+  <!-- Preload hero LCP image -->
+  <link rel="preload" as="image" href="images/uploads/adi-hero-hillside-2026-05-22.jpg" fetchpriority="high">
+
+  <style>
+    /* wilds.html Phase 1 — page-scoped styles. Mirrors book.html rhythm but with its own opening voice. */
+
+    /* Hero LCP image */
+    .hero-fullbleed { isolation: isolate; }
+    .hero-fullbleed-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      z-index: 0;
+    }
+    .hero-fullbleed .hero-overlay { z-index: 1; }
+    .hero-fullbleed .hero-content { z-index: 2; position: relative; }
+
+    /* Newsletter — primary CTA. Sand background, sits at top to capture early. */
+    .wilds-subscribe {
+      background: #EFEDE6;
+      color: var(--bark, #2D2A26);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+    .wilds-subscribe-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .wilds-subscribe .section-label {
+      color: var(--gold-bronze, #C9A84C);
+    }
+    .wilds-subscribe h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      margin: 1rem 0 1.2rem;
+      color: var(--bark, #2D2A26);
+    }
+    .wilds-subscribe p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      opacity: 0.85;
+      margin-bottom: 2rem;
+      color: var(--bark, #2D2A26);
+    }
+    .wilds-subscribe-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .wilds-subscribe-form input {
+      padding: 0.95rem 1.2rem;
+      border: 1px solid rgba(45,42,38,0.25);
+      background: rgba(255,255,255,0.55);
+      color: var(--bark, #2D2A26);
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+    }
+    .wilds-subscribe-form button {
+      padding: 0.95rem 1.8rem;
+      white-space: nowrap;
+    }
+    .newsletter-status {
+      margin-top: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--bark, #2D2A26);
+    }
+
+    /* About snapshot — paper, rhythm anchor */
+    .wilds-about {
+      background: var(--paper, #F7F5F0);
+    }
+
+    /* Three Doors — dark band */
+    .wilds-doors {
+      background: var(--bark, #2D2A26);
+    }
+    .wilds-doors .vision-pillars {
+      grid-template-columns: 1fr 1fr 1fr;
+      max-width: 1080px;
+      gap: 2rem;
+    }
+
+    /* Gatherings — parchment shift */
+    .wilds-gatherings {
+      background: #F4EAD3;
+      padding: 6rem 2rem;
+    }
+    .wilds-gatherings-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .wilds-gatherings .section-label {
+      color: var(--gold-bronze, #C9A84C);
+    }
+    .wilds-gatherings h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      margin: 1rem 0 1.2rem;
+      color: var(--bark, #2D2A26);
+    }
+    .wilds-gatherings .gatherings-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      opacity: 0.85;
+      color: var(--bark, #2D2A26);
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+    }
+    .wilds-gatherings-cta {
+      margin-top: 1.5rem;
+      color: var(--bark, #2D2A26);
+      border-color: var(--bark, #2D2A26);
+    }
+
+    /* Writings — paper, return to anchor */
+    .wilds-writings {
+      background: var(--paper, #F7F5F0);
+      padding: 6rem 2rem;
+    }
+    .wilds-writings-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .wilds-writings .section-label {
+      color: var(--gold-bronze, #C9A84C);
+    }
+    .wilds-writings h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      margin: 1rem 0 1.2rem;
+      color: var(--bark, #2D2A26);
+    }
+    .wilds-writings .writings-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      opacity: 0.85;
+      color: var(--bark, #2D2A26);
+      max-width: 720px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* Closer — sand, sitewide CTA shape */
+    .wilds-closer {
+      background: #EFEDE6;
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+    .wilds-closer-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .wilds-closer .section-label {
+      color: var(--gold-bronze, #C9A84C);
+    }
+    .wilds-closer h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      margin: 1rem 0 1.2rem;
+      color: var(--bark, #2D2A26);
+    }
+    .wilds-closer p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.65;
+      opacity: 0.85;
+      color: var(--bark, #2D2A26);
+      margin: 0 auto 2rem;
+    }
+
+    @media (max-width: 820px) {
+      .wilds-doors .vision-pillars { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .wilds-subscribe,
+      .wilds-gatherings,
+      .wilds-writings,
+      .wilds-closer { padding: 4rem 1.5rem; }
+    }
+  </style>
+</head>
+<body data-content-page="wilds">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span>
+      </a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+                <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="solo-work.html">Solo Work</a></li>
+          <li><a href="group-work.html">Group Work</a></li>
+          <li><a href="training-grounds.html">The School</a></li>
+          <li><a href="writings.html">Resources</a></li>
+        </ul>
+      </nav>
+      <a href="book.html" class="nav-cta apply-btn">Begin Here</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION 1. Hero. Continuation of the conversation. -->
+  <section class="hero-fullbleed">
+    <img class="hero-fullbleed-img"
+         src="images/uploads/adi-hero-hillside-2026-05-22.jpg"
+         alt=""
+         fetchpriority="high"
+         decoding="async">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">If We Met in the Wilds</span>
+      <h1 class="hero-title">The thread <em>continues here.</em></h1>
+      <p class="hero-subtitle">A gathering, a workshop, a ceremony, a passing fire &mdash; whatever brought us into the same room, this is the place to stay close to the work.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2. Newsletter. Primary CTA. Sand. -->
+  <section id="subscribe" class="wilds-subscribe">
+    <div class="wilds-subscribe-inner">
+      <span class="section-label">Seasonal Letters</span>
+      <h2>Stay close to the <em>work.</em></h2>
+      <p>Slow letters from the practice. Sent with the seasons. Free, no obligation &mdash; the softest way to keep the thread.</p>
+      <form id="newsletter-form" class="wilds-subscribe-form" novalidate>
+        <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" aria-label="First name">
+        <input type="email" name="email" placeholder="Email address" required autocomplete="email" aria-label="Email address">
+        <button type="submit" class="btn-primary">Subscribe</button>
+      </form>
+      <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- SECTION 3. About snapshot. Paper. -->
+  <section class="section-practitioner wilds-about">
+    <div class="practitioner-container">
+      <div class="practitioner-image-home"
+           style="background-image:url('images/uploads/book-practitioner-260601.png'); background-position: center top;"></div>
+      <div class="practitioner-content-home">
+        <span class="section-label">In Case We Only Spoke Briefly</span>
+        <h2 class="section-title"><em>Adi Marie.</em></h2>
+        <div class="story-divider"></div>
+        <div class="practitioner-quals-home">
+          <span class="qual-tag">Interdimensional Intermediary &amp; Guide</span>
+          <span class="qual-tag">Somatic Medium &amp; Oracular Diviner</span>
+          <span class="qual-tag">Ceremonial &amp; Ritual Stewardship</span>
+        </div>
+        <p>Adi Marie carries a medicine basket woven from traditional herbalism, animist cosmology, somatic awareness, shamanic practice, and the sacred arts of ceremony. Sixteen years of devoted service, over a decade of initiation and study.</p>
+        <p>She works with doctors, medicine people, therapists, leaders, and those whose decisions shape the trajectory of this earth ship &mdash; solo and in community.</p>
+        <p class="practitioner-location">Based in Southern California. Available worldwide for virtual work, in person for those called to the land.</p>
+        <a href="about.html" class="btn-outline">Read the full story &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4. Three Doors to Begin. Dark band. -->
+  <section class="section-vision wilds-doors">
+    <span class="section-label">Three Doors to Begin</span>
+    <h2 class="vision-title">If something stirred, <em>here is the way in.</em></h2>
+    <div class="vision-divider"></div>
+    <p class="vision-body">Choose the door that matches where you stand right now.</p>
+    <div class="vision-pillars">
+      <a class="vision-pillar" href="inquiry.html">
+        <span class="pillar-icon">&middot; &middot; &middot;</span>
+        <h3>Intake &amp; Inquiry.</h3>
+        <p>For those exploring ongoing work. A substantive first conversation, held in sacred reciprocity. The deepest of the three doors.</p>
+        <span class="pillar-cta">Begin the conversation &rarr;</span>
+      </a>
+      <a class="vision-pillar" href="divinations.html">
+        <span class="pillar-icon">&middot; &middot;</span>
+        <h3>Ancestral &amp; Elemental Divination.</h3>
+        <p>A standalone session as a way to begin. If ongoing work follows, an Intake conversation comes next.</p>
+        <span class="pillar-cta">Read more &rarr;</span>
+      </a>
+      <a class="vision-pillar" href="solo-work.html">
+        <span class="pillar-icon">&middot;</span>
+        <h3>The Full Menu of Sessions.</h3>
+        <p>Pláticas, coaching, divination, ceremony, and more. Read the range of single-session work and see what calls.</p>
+        <span class="pillar-cta">See the offerings &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- SECTION 5. Upcoming Gatherings. Parchment. -->
+  <section class="wilds-gatherings">
+    <div class="wilds-gatherings-inner">
+      <span class="section-label">The Wheel Turns</span>
+      <h2>Where you might find me <em>next.</em></h2>
+      <p class="gatherings-body">Workshops, ceremonies, community gatherings, and the seasonal rhythm of the year ahead &mdash; the migratory route. If we met at one, the next is on the calendar.</p>
+      <a href="calendar.html" class="btn-outline wilds-gatherings-cta">See the calendar &rarr;</a>
+    </div>
+  </section>
+
+  <!-- SECTION 6. Writings. Paper. -->
+  <section class="wilds-writings">
+    <div class="wilds-writings-inner">
+      <span class="section-label">Water, Milk, and Honey</span>
+      <h2>Read something from <em>the practice.</em></h2>
+      <p class="writings-body">Seasonal letters, tender reflections, and sacred teachings. A way to sit with the work in your own time, between the gatherings.</p>
+      <a href="writings.html" class="btn-outline wilds-gatherings-cta">Open the writings &rarr;</a>
+    </div>
+  </section>
+
+  <!-- SECTION 7. Closer. Sand. Routes to the conversation. -->
+  <section class="wilds-closer">
+    <div class="wilds-closer-inner">
+      <span class="section-label">The Conversation</span>
+      <h2>When it is time, <em>begin here.</em></h2>
+      <p>Every ongoing thread of work begins with a single conversation. Held in sacred reciprocity. Yours when you are ready.</p>
+      <a href="book.html" class="btn-primary">Begin Here</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="inquiry.html">Apply / Intake</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="divinations.html">Divinations</a></li>
+            <li><a href="inquiry.html">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/content-loader.js" defer></script>
+  <script src="js/newsletter.js" defer></script>
+</body>
+</html>
