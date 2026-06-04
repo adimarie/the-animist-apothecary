@@ -1,12 +1,12 @@
 {
-  "version": "v260604.11 4:50p",
-  "release": 11,
-  "sha": "b1bdd53",
-  "fullSha": "b1bdd539b832fb820d83e20ea7fec58d26e80bd3",
+  "version": "v260604.12 6:09p",
+  "release": 12,
+  "sha": "59c6a64",
+  "fullSha": "59c6a64022b898a9c8a07a0287c8c3b31f62fc18",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-04T09:49:38-07:00",
-  "commits": [{"sha":"b1bdd53","message":"Sub-nav: align each landing page with the exact pre-flatten dropdown contents","author":"Adi Marie"}]
+  "pushedAt": "2026-06-04T11:09:19-07:00",
+  "commits": [{"sha":"59c6a64","message":"feat(entheo-ecology): new EntheoEcology series landing page","author":"Adi Marie"}]
 }
