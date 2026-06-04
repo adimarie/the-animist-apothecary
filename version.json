@@ -1,12 +1,12 @@
 {
-  "version": "v260604.03 4:28a",
-  "release": 3,
-  "sha": "2081afe",
-  "fullSha": "2081afe86331c55745c3a7b6b1d6cc943631de3a",
+  "version": "v260604.04 4:34a",
+  "release": 4,
+  "sha": "d48b606",
+  "fullSha": "d48b6067ea4ef9981334015275756b251c45735d",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-03T21:27:43-07:00",
-  "commits": [{"sha":"2081afe","message":"Nav: flatten dropdowns — each top-level item is a direct link","author":"Adi Marie"}]
+  "pushedAt": "2026-06-03T21:34:12-07:00",
+  "commits": [{"sha":"d48b606","message":"feat(newsletter): collect zip code + where signups are coming from","author":"Adi Marie"}]
 }
