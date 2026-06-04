@@ -1,12 +1,12 @@
 {
-  "version": "v260604.09 3:50p",
-  "release": 9,
-  "sha": "cc35b3c",
-  "fullSha": "cc35b3c8e07a62db99ab0fad091df054a99dea87",
+  "version": "v260604.10 4:47p",
+  "release": 10,
+  "sha": "022b444",
+  "fullSha": "022b4445650793fb795285eee277531f1d7a61f2",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-04T08:50:16-07:00",
-  "commits": [{"sha":"cc35b3c","message":"style(newsletter): remove \"(optional)\" from placeholder text","author":"Adi Marie"}]
+  "pushedAt": "2026-06-04T09:47:16-07:00",
+  "commits": [{"sha":"022b444","message":"Nav: surface old dropdown options as sub-nav on each landing page","author":"Adi Marie"}]
 }
