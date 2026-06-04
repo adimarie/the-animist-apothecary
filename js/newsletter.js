@@ -50,6 +50,9 @@
       last_name: (formData.get('last_name') || '').trim(),
       email: (formData.get('email') || '').trim().toLowerCase(),
       source: detectSource(),
+      zip_code: (formData.get('zip_code') || '').trim(),
+      referral_source: (formData.get('referral_source') || '').trim(),
+      referral_detail: (formData.get('referral_detail') || '').trim(),
     };
 
     if (!payload.email) {

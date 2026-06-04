@@ -676,13 +676,15 @@
               <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Source</th>
+                <th>Zip</th>
+                <th>Where From</th>
+                <th>Page</th>
                 <th>Status</th>
                 <th>Subscribed</th>
               </tr>
             </thead>
             <tbody id="newsletter-tbody">
-              <tr><td colspan="5" class="empty-state">Loading subscribers&hellip;</td></tr>
+              <tr><td colspan="7" class="empty-state">Loading subscribers&hellip;</td></tr>
             </tbody>
           </table>
         </div>
@@ -1002,17 +1004,17 @@
     async function loadNewsletterSubscribers() {
       const tbody = document.getElementById('newsletter-tbody');
       const countEl = document.getElementById('newsletter-count');
-      tbody.innerHTML = '<tr><td colspan="5" class="empty-state">Loading subscribers&hellip;</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="7" class="empty-state">Loading subscribers&hellip;</td></tr>';
 
       const { data, error } = await supabase
         .from('newsletter_subscribers')
-        .select('id, first_name, last_name, email, source, status, created_at')
+        .select('id, first_name, last_name, email, source, zip_code, referral_source, referral_detail, status, created_at')
         .order('created_at', { ascending: false })
         .limit(1000);
 
       if (error) {
         console.error('Failed to load newsletter subscribers:', error);
-        tbody.innerHTML = `<tr><td colspan="5" class="empty-state">Failed to load &mdash; ${escapeHtml(error.message || 'unknown error')}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="7" class="empty-state">Failed to load &mdash; ${escapeHtml(error.message || 'unknown error')}</td></tr>`;
         countEl.textContent = '';
         return;
       }
@@ -1026,7 +1028,7 @@
     function renderNewsletterRows(subscribers) {
       const tbody = document.getElementById('newsletter-tbody');
       if (!subscribers || subscribers.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No subscribers yet</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No subscribers yet</td></tr>';
         return;
       }
       tbody.innerHTML = subscribers.map(s => {
@@ -1034,10 +1036,17 @@
         const date = s.created_at
           ? new Date(s.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
           : '—';
+        const where = s.referral_source
+          ? (s.referral_detail
+              ? `${escapeHtml(s.referral_source)} <span style="color:var(--earth-faint);font-size:11px;">— ${escapeHtml(s.referral_detail)}</span>`
+              : escapeHtml(s.referral_source))
+          : '—';
         return `<tr>
           <td>${escapeHtml(name)}</td>
           <td><a href="mailto:${escapeHtml(s.email)}" style="color:var(--earth-mid);">${escapeHtml(s.email)}</a></td>
-          <td>${escapeHtml(s.source || '—')}</td>
+          <td>${escapeHtml(s.zip_code || '—')}</td>
+          <td>${where}</td>
+          <td style="font-size:11px;color:var(--earth-faint);">${escapeHtml(s.source || '—')}</td>
           <td>${tagHtml(s.status || 'active')}</td>
           <td>${date}</td>
         </tr>`;
@@ -1051,7 +1060,8 @@
       const filtered = all.filter(s => {
         if (statusFilter && s.status !== statusFilter) return false;
         if (term) {
-          const haystack = [s.first_name, s.last_name, s.email].filter(Boolean).join(' ').toLowerCase();
+          const haystack = [s.first_name, s.last_name, s.email, s.zip_code, s.referral_source, s.referral_detail]
+            .filter(Boolean).join(' ').toLowerCase();
           if (!haystack.includes(term)) return false;
         }
         return true;

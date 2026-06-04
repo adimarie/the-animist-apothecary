@@ -201,15 +201,20 @@
     }
     .book-subscribe-form {
       display: flex;
+      flex-direction: column;
       gap: 0.75rem;
       max-width: 480px;
       margin: 0 auto;
-      flex-wrap: wrap;
-      justify-content: center;
     }
-    .book-subscribe-form input[type="email"] {
-      flex: 1;
-      min-width: 240px;
+    .book-subscribe-names {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .book-subscribe-form input,
+    .book-subscribe-form select {
+      width: 100%;
+      box-sizing: border-box;
       padding: 0.95rem 1.2rem;
       border: 1px solid rgba(45,42,38,0.25);
       background: rgba(255,255,255,0.55);
@@ -218,9 +223,31 @@
       font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
     }
+    .book-subscribe-form input:focus,
+    .book-subscribe-form select:focus {
+      outline: none;
+      border-color: var(--gold, #c9a84c);
+      background: rgba(255,255,255,0.75);
+    }
+    .book-subscribe-form select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%232D2A26' d='M6 8L0 0h12z'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.4rem;
+      cursor: pointer;
+    }
+    .book-subscribe-form select:invalid {
+      color: rgba(45,42,38,0.5);
+    }
     .book-subscribe-form button {
       padding: 0.95rem 1.8rem;
       white-space: nowrap;
+      margin-top: 0.25rem;
+    }
+    @media (max-width: 480px) {
+      .book-subscribe-names { grid-template-columns: 1fr; }
     }
     .newsletter-status {
       margin-top: 1rem;
@@ -434,7 +461,23 @@
       <h2 data-content="subscribe.title" data-content-type="html">Stay close to the <em>work.</em></h2>
       <p data-content="subscribe.body">Slow letters from the practice. Sent with the seasons. Free, no obligation.</p>
       <form id="newsletter-form" class="book-subscribe-form" novalidate>
-        <input type="email" name="email" placeholder="Enter your email" required autocomplete="email" aria-label="Email address">
+        <div class="book-subscribe-names">
+          <input type="text" name="first_name" placeholder="First Name" required autocomplete="given-name" aria-label="First Name">
+          <input type="text" name="last_name" placeholder="Last Name" required autocomplete="family-name" aria-label="Last Name">
+        </div>
+        <input type="email" name="email" placeholder="Email Address" required autocomplete="email" aria-label="Email Address">
+        <input type="text" name="zip_code" placeholder="Zip Code (optional)" inputmode="numeric" autocomplete="postal-code" maxlength="10" aria-label="Zip code, optional">
+        <select name="referral_source" class="book-subscribe-select" required aria-label="Where are you coming from?">
+          <option value="" disabled selected>Where are you coming from?</option>
+          <option value="Gathering">A gathering</option>
+          <option value="Event or workshop">An event or workshop</option>
+          <option value="Class">A class</option>
+          <option value="Ceremony">A ceremony</option>
+          <option value="Referral">A referral from someone</option>
+          <option value="Online">Online (social, search)</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="text" name="referral_detail" placeholder="Tell us more (optional)" aria-label="Tell us more, optional" maxlength="200">
         <button type="submit" class="btn-primary" data-content="subscribe.cta_text">Subscribe</button>
       </form>
       <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></div>

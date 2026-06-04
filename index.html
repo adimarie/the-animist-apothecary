@@ -1841,7 +1841,8 @@
       grid-template-columns: 1fr 1fr !important;
       gap: 0.85rem !important;
     }
-    body[data-content-page="home"] .newsletter-form input {
+    body[data-content-page="home"] .newsletter-form input,
+    body[data-content-page="home"] .newsletter-form select {
       padding: 0.95rem 1.1rem !important;
       border: 1px solid rgba(45,42,38,0.22) !important;
       background: rgba(255,255,255,0.85) !important;
@@ -1853,10 +1854,23 @@
       box-sizing: border-box !important;
       transition: border-color 0.15s, background 0.15s !important;
     }
-    body[data-content-page="home"] .newsletter-form input:focus {
+    body[data-content-page="home"] .newsletter-form input:focus,
+    body[data-content-page="home"] .newsletter-form select:focus {
       outline: none !important;
       border-color: var(--gold, #c9a84c) !important;
       background: rgba(255,255,255,0.92) !important;
+    }
+    body[data-content-page="home"] .newsletter-form select {
+      appearance: none !important;
+      -webkit-appearance: none !important;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%232D2A26' d='M6 8L0 0h12z'/></svg>") !important;
+      background-repeat: no-repeat !important;
+      background-position: right 1rem center !important;
+      padding-right: 2.4rem !important;
+      cursor: pointer !important;
+    }
+    body[data-content-page="home"] .newsletter-form select:invalid {
+      color: rgba(45,42,38,0.5) !important;
     }
     body[data-content-page="home"] .newsletter-submit {
       padding: 0.95rem 1.8rem !important;
@@ -2418,6 +2432,18 @@
           <input type="text" name="last_name" placeholder="Last Name" required autocomplete="family-name" aria-label="Last Name">
         </div>
         <input type="email" name="email" placeholder="Email Address" required autocomplete="email" aria-label="Email Address">
+        <input type="text" name="zip_code" placeholder="Zip Code (optional)" inputmode="numeric" autocomplete="postal-code" maxlength="10" aria-label="Zip code, optional">
+        <select name="referral_source" class="newsletter-select" required aria-label="Where are you coming from?">
+          <option value="" disabled selected>Where are you coming from?</option>
+          <option value="Gathering">A gathering</option>
+          <option value="Event or workshop">An event or workshop</option>
+          <option value="Class">A class</option>
+          <option value="Ceremony">A ceremony</option>
+          <option value="Referral">A referral from someone</option>
+          <option value="Online">Online (social, search)</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="text" name="referral_detail" placeholder="Tell us more (optional)" aria-label="Tell us more, optional" maxlength="200">
         <button type="submit" class="btn-primary newsletter-submit" data-content="newsletter.cta_text">Subscribe</button>
       </form>
 
@@ -2482,68 +2508,7 @@
   <script src="js/content-loader.js" defer></script>
 
   <script>
-    // Newsletter signup — POSTs to Supabase edge function `subscribe-newsletter`
-    (function () {
-      const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
-      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
-
-      const form = document.getElementById('newsletter-form');
-      const status = document.getElementById('newsletter-status');
-      if (!form || !status) return;
-
-      function setStatus(msg, kind) {
-        status.textContent = msg;
-        status.className = 'newsletter-status' + (kind ? ' newsletter-status-' + kind : '');
-      }
-
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const button = form.querySelector('button[type="submit"]');
-        const originalLabel = button.textContent;
-
-        const data = new FormData(form);
-        const payload = {
-          first_name: (data.get('first_name') || '').toString().trim(),
-          last_name: (data.get('last_name') || '').toString().trim(),
-          email: (data.get('email') || '').toString().trim(),
-          source: 'homepage',
-        };
-
-        // Basic client-side guard
-        if (!payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
-          setStatus('Please enter a valid email address.', 'error');
-          return;
-        }
-
-        button.disabled = true;
-        button.textContent = 'Sending…';
-        setStatus('', '');
-
-        try {
-          const response = await fetch(SUPABASE_URL + '/functions/v1/subscribe-newsletter', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-            },
-            body: JSON.stringify(payload),
-          });
-          const result = await response.json().catch(function () { return {}; });
-
-          if (response.ok && result.success) {
-            form.style.display = 'none';
-            setStatus('Thank you. The first letter will arrive with the next harvest.', 'success');
-          } else {
-            throw new Error(result.error || ('Subscription failed (' + response.status + ')'));
-          }
-        } catch (err) {
-          console.error('Newsletter subscription error:', err);
-          button.disabled = false;
-          button.textContent = originalLabel;
-          setStatus('Something went wrong. Please try again, or write directly.', 'error');
-        }
-      });
-    })();
+    // Newsletter signup is handled by js/newsletter.js (loaded at end of file).
 
     // Sticky scroll CTA — fade in after hero is mostly scrolled past.
     (function () {
