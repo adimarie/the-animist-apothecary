@@ -1,12 +1,12 @@
 {
-  "version": "v260604.04 4:34a",
-  "release": 4,
-  "sha": "d48b606",
-  "fullSha": "d48b6067ea4ef9981334015275756b251c45735d",
+  "version": "v260604.05 5:21a",
+  "release": 5,
+  "sha": "8c5d118",
+  "fullSha": "8c5d1185d08893534aecf9e3c35009827c576010",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-03T21:34:12-07:00",
-  "commits": [{"sha":"d48b606","message":"feat(newsletter): collect zip code + where signups are coming from","author":"Adi Marie"}]
+  "pushedAt": "2026-06-03T22:20:56-07:00",
+  "commits": [{"sha":"8c5d118","message":"style(newsletter): soft sand color for placeholder prompts","author":"Adi Marie"}]
 }
