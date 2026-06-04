@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EntheoEcology &middot; The Animist Apothecary</title>
+  <meta name="description" content="EntheoEcology — sacred gatherings in nature with Grandfather Wachuma. Group and individual ritual woven within the temples of the living world.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500&family=Inter:wght@300;400;500&family=Tangerine&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v10">
+  <style>
+    body[data-content-page^="offering-"] { background: #FAF8F3; color: var(--ink-deep, #2D2A26); }
+
+    /* ====== Hero ====== */
+    .ee-hero { position: relative; min-height: 72vh; display: flex; align-items: center; justify-content: center; padding: 7rem 3rem; overflow: hidden; }
+    .ee-hero-image { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 1; }
+    .ee-hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(18,16,12,0.62), rgba(28,24,18,0.78)); z-index: 2; }
+    .ee-hero-inner { position: relative; z-index: 3; max-width: 880px; text-align: center; color: #F5F3ED; }
+    .ee-hero-eyebrow { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-pale, #DCC178); margin-bottom: 1rem; }
+    .ee-hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(3.2rem, 6.8vw, 6.2rem); line-height: 1.04; margin: 0.4rem 0 1rem; letter-spacing: -0.005em; text-shadow: 0 2px 16px rgba(0,0,0,0.3); }
+    .ee-hero-title em { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-weight: 400; font-size: 1.45em; line-height: 0.9; color: var(--gold-pale, #DCC178); letter-spacing: 0; }
+    .ee-hero-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.18rem, 1.8vw, 1.55rem); line-height: 1.55; color: var(--gold-pale, #DCC178); margin: 0 auto; max-width: 720px; }
+
+    /* ====== Section scaffolding ====== */
+    .ee-body { padding: 6rem 3rem; }
+    .ee-body-inner { max-width: 1080px; margin: 0 auto; }
+    .ee-section { margin-bottom: 6rem; }
+    .ee-section:last-child { margin-bottom: 0; }
+    .ee-eyebrow { display: block; font-family: 'Cormorant SC', serif; font-size: 0.76rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 1rem; }
+    .ee-h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.18; letter-spacing: -0.005em; color: var(--ink-deep, #2D2A26); margin: 0 0 1.6rem; }
+    .ee-h2 em { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-weight: 400; font-size: 1.5em; line-height: 0.9; color: var(--gold, #c9a84c); }
+    .ee-prose { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; line-height: 1.78; color: var(--ink-soft, #3D3A36); max-width: 680px; }
+    .ee-prose p { margin: 0 0 1.2rem; }
+    .ee-prose p:last-child { margin-bottom: 0; }
+    .ee-prose em { font-style: italic; }
+    .ee-rule { display: block; width: 60px; height: 1px; background: var(--gold, #c9a84c); margin: 1.6rem 0 2rem; opacity: 0.55; }
+
+    /* ====== Invocation ====== */
+    .ee-invocation { max-width: 740px; margin: 0 auto 6rem; text-align: center; }
+    .ee-invocation p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.45rem); line-height: 1.7; color: var(--ink-soft, #3D3A36); margin: 0; }
+
+    /* ====== Teacher panel (Wachuma) ====== */
+    .ee-teacher { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4rem; align-items: center; background: #F5F3ED; border: 1px solid rgba(201,168,76,0.18); border-radius: 4px; padding: 3.5rem; }
+    @media (max-width: 880px) { .ee-teacher { grid-template-columns: 1fr; gap: 2.4rem; padding: 2.4rem; } }
+    .ee-teacher-image { aspect-ratio: 4/5; background-size: cover; background-position: center; border-radius: 2px; box-shadow: 0 6px 30px -10px rgba(20,16,8,0.35); }
+    .ee-teacher-eyebrow { font-family: 'Cormorant SC', serif; font-size: 0.74rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 0.8rem; }
+    .ee-teacher-h { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.15; color: var(--ink-deep, #2D2A26); margin: 0 0 1.2rem; }
+    .ee-teacher-h em { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-weight: 400; font-size: 1.5em; line-height: 0.9; color: var(--gold, #c9a84c); }
+    .ee-teacher-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.18rem; line-height: 1.55; color: var(--ink-soft, #3D3A36); margin: 0 0 1.4rem; }
+    .ee-teacher-body { font-family: 'Cormorant Garamond', serif; font-size: 1.06rem; line-height: 1.72; color: var(--ink-soft, #3D3A36); }
+    .ee-teacher-body p { margin: 0 0 1rem; }
+    .ee-teacher-body p:last-child { margin-bottom: 0; }
+
+    /* ====== Temples — three-card weave ====== */
+    .ee-temples { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 2.4rem; }
+    @media (max-width: 880px) { .ee-temples { grid-template-columns: 1fr; gap: 1.8rem; } }
+    .ee-temple-card { background: #F5F3ED; border: 1px solid rgba(201,168,76,0.16); border-radius: 4px; padding: 2.4rem 2rem; text-align: center; }
+    .ee-temple-symbol { font-family: 'Tangerine', serif; font-size: 4rem; line-height: 1; color: var(--gold, #c9a84c); margin: 0 0 0.4rem; }
+    .ee-temple-eyebrow { font-family: 'Cormorant SC', serif; font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 0.6rem; }
+    .ee-temple-name { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.5rem; line-height: 1.2; color: var(--ink-deep, #2D2A26); margin: 0 0 1rem; }
+    .ee-temple-body { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.65; color: var(--ink-soft, #3D3A36); margin: 0; }
+
+    /* ====== Two-column weave (group + individual) ====== */
+    .ee-weave { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2.4rem; }
+    @media (max-width: 880px) { .ee-weave { grid-template-columns: 1fr; gap: 2.4rem; } }
+    .ee-weave-card { background: #F5F3ED; border: 1px solid rgba(201,168,76,0.16); border-radius: 4px; padding: 2.6rem 2.4rem; }
+    .ee-weave-eyebrow { font-family: 'Cormorant SC', serif; font-size: 0.74rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 0.8rem; }
+    .ee-weave-name { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.7rem; line-height: 1.2; color: var(--ink-deep, #2D2A26); margin: 0 0 1rem; }
+    .ee-weave-body { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.72; color: var(--ink-soft, #3D3A36); margin: 0; }
+
+    /* ====== Principles list ====== */
+    .ee-principles { list-style: none; padding: 0; margin: 1.6rem 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2.4rem; }
+    @media (max-width: 720px) { .ee-principles { grid-template-columns: 1fr; } }
+    .ee-principles li { font-family: 'Cormorant Garamond', serif; font-size: 1.04rem; line-height: 1.6; color: var(--ink-soft, #3D3A36); padding: 1rem 0; border-bottom: 1px solid rgba(201,168,76,0.18); }
+    .ee-principles li strong { color: var(--ink-deep, #2D2A26); font-weight: 500; }
+
+    /* ====== Calendar pointer ====== */
+    .ee-calendar { background: linear-gradient(135deg, #F4EAD3 0%, #EFEDE6 100%); border-radius: 4px; padding: 3.5rem; text-align: center; }
+    @media (max-width: 720px) { .ee-calendar { padding: 2.4rem; } }
+    .ee-calendar-eyebrow { font-family: 'Cormorant SC', serif; font-size: 0.76rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 1rem; }
+    .ee-calendar-h { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(1.8rem, 3.2vw, 2.6rem); line-height: 1.15; color: var(--ink-deep, #2D2A26); margin: 0 0 1rem; }
+    .ee-calendar-h em { font-family: 'Tangerine', serif; font-style: normal; font-weight: 400; font-size: 1.5em; line-height: 0.9; color: var(--gold, #c9a84c); }
+    .ee-calendar-body { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.12rem; line-height: 1.65; color: var(--ink-soft, #3D3A36); max-width: 580px; margin: 0 auto 1.8rem; }
+    .ee-calendar-cta { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.82rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-deep, #2D2A26); padding: 0.9rem 2rem; border: 1px solid var(--ink-deep, #2D2A26); text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .ee-calendar-cta:hover { background: var(--ink-deep, #2D2A26); color: #F5F3ED; }
+
+    /* ====== Final CTA ====== */
+    .ee-final-cta { padding: 6rem 3rem; background: #2D2A26; color: #F5F3ED; text-align: center; }
+    .ee-final-cta .ee-eyebrow { color: var(--gold-pale, #DCC178); }
+    .ee-final-cta h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2.2rem, 3.6vw, 3rem); line-height: 1.18; color: #F5F3ED; margin: 0.4rem 0 1.2rem; }
+    .ee-final-cta h2 em { font-family: 'Tangerine', serif; font-style: normal; font-weight: 400; font-size: 1.5em; line-height: 0.9; color: var(--gold-pale, #DCC178); }
+    .ee-final-cta p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.18rem; line-height: 1.6; color: rgba(245, 243, 237, 0.85); max-width: 620px; margin: 0 auto 2.2rem; }
+    .ee-final-cta-btn { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.84rem; letter-spacing: 0.26em; text-transform: uppercase; color: #2D2A26; background: var(--gold-pale, #DCC178); padding: 1rem 2.4rem; text-decoration: none; transition: background 0.2s; }
+    .ee-final-cta-btn:hover { background: #F5F3ED; }
+  </style>
+</head>
+<body data-content-page="offering-entheo-ecology">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span></a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="solo-work.html">Solo Work</a></li>
+          <li><a href="group-work.html">Group Work</a></li>
+          <li><a href="training-grounds.html">The School</a></li>
+          <li><a href="writings.html">Resources</a></li>
+        </ul>
+      </nav>
+      <a href="sessions.html" class="nav-cta apply-btn">Book</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="ee-hero">
+    <div class="ee-hero-image" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=2400&h=1400&fit=crop&q=85');"></div>
+    <div class="ee-hero-overlay"></div>
+    <div class="ee-hero-inner">
+      <span class="ee-hero-eyebrow">A Series in Communal Ceremony</span>
+      <h1 class="ee-hero-title">Entheo<em>Ecology</em></h1>
+      <p class="ee-hero-sub">Sacred gatherings in nature &mdash; held with Grandfather Wachuma, woven into the temples of the living world.</p>
+    </div>
+  </section>
+
+  <section class="ee-body">
+    <div class="ee-body-inner">
+
+      <!-- INVOCATION -->
+      <div class="ee-invocation">
+        <p>The cactus is older than the language we use to speak about it. It carries the prayer of the high deserts and the patience of stone &mdash; and it remembers us, when we come.</p>
+      </div>
+
+      <!-- 01 — What this is -->
+      <div class="ee-section">
+        <span class="ee-eyebrow">The Tradition</span>
+        <h2 class="ee-h2">A gathering in the <em>temples</em> of nature.</h2>
+        <span class="ee-rule"></span>
+        <div class="ee-prose">
+          <p>EntheoEcology is a series of sacred gatherings &mdash; ceremonies held on the land, with Grandfather Wachuma as the central plant teacher and the living world as the larger sanctuary. Each ceremony is a meeting place: between the human and the more-than-human, between the inner temple of the body and the outer temple of the land, between the practitioner and the long lineage that has tended this work for thousands of years.</p>
+          <p>These are not classes or workshops. They are ceremonies &mdash; tended carefully, prepared for in advance, and integrated afterward. Group ritual and individual ritual are both held within the same container, woven together by the rhythm of the day and the wisdom of the medicine.</p>
+        </div>
+      </div>
+
+      <!-- 02 — The Plant Teacher -->
+      <div class="ee-section">
+        <span class="ee-eyebrow">The Plant Teacher</span>
+        <div class="ee-teacher">
+          <div class="ee-teacher-image" style="background-image: url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=1200&h=1500&fit=crop&q=85');"></div>
+          <div>
+            <span class="ee-teacher-eyebrow">Grandfather Wachuma &middot; Huachuma</span>
+            <h3 class="ee-teacher-h">The untarnishable prism of the <em>heart</em>.</h3>
+            <p class="ee-teacher-tagline">The Grandfather Cactus &mdash; called Wachuma, Huachuma, San Pedro &mdash; has been tended in the high deserts and mountain ranges of the Americas for longer than most lineages remember.</p>
+            <div class="ee-teacher-body">
+              <p>He is a daylight teacher. Where some plant teachers move through the dark night of the soul, Wachuma moves through the open day &mdash; through wide vision, through the warmth of the sun on stone, through what the lineages have long called the best day of your life.</p>
+              <p>He teaches in the language of relation. Of the sky to the canyon. Of the canyon to the breath. Of the breath to the heart. Of the heart to every other heart in the gathering. In his presence, the boundary between self and world softens &mdash; not erased, but remembered as the kinship it always was.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 — The Temples (inner / outer / webs of light) -->
+      <div class="ee-section">
+        <span class="ee-eyebrow">What the Ceremony Holds</span>
+        <h2 class="ee-h2">Three temples, woven in <em>one</em> ceremony.</h2>
+        <span class="ee-rule"></span>
+        <div class="ee-prose">
+          <p>Each gathering opens three temples at once &mdash; the inner, the outer, and the weave of light that runs between them. The medicine moves freely through all three.</p>
+        </div>
+        <div class="ee-temples">
+          <div class="ee-temple-card">
+            <span class="ee-temple-symbol">&#x2731;</span>
+            <span class="ee-temple-eyebrow">The Inner</span>
+            <h3 class="ee-temple-name">The temple of the body</h3>
+            <p class="ee-temple-body">The heart, the breath, the cathedral of the chest &mdash; the first sanctuary, the one you carry with you. Wachuma tends this temple with extraordinary gentleness.</p>
+          </div>
+          <div class="ee-temple-card">
+            <span class="ee-temple-symbol">&#x2738;</span>
+            <span class="ee-temple-eyebrow">The Outer</span>
+            <h3 class="ee-temple-name">The temple of the land</h3>
+            <p class="ee-temple-body">The canyon, the river, the grove, the sky. The ceremony is held outdoors, on land that has been welcomed and welcomed in return &mdash; the land itself participates in the rite.</p>
+          </div>
+          <div class="ee-temple-card">
+            <span class="ee-temple-symbol">&#x273A;</span>
+            <span class="ee-temple-eyebrow">The Weave</span>
+            <h3 class="ee-temple-name">The webs of light between</h3>
+            <p class="ee-temple-body">The threads that run from heart to heart, from human to plant, from plant to land, from land to sky. The medicine illuminates the weave &mdash; what was always there comes into view.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 — Group + Individual Ritual -->
+      <div class="ee-section">
+        <span class="ee-eyebrow">How the Container is Held</span>
+        <h2 class="ee-h2">Group ritual and solitary ritual, in <em>one</em> weave.</h2>
+        <span class="ee-rule"></span>
+        <div class="ee-prose">
+          <p>The day moves between the communal and the solitary. Both are facilitated &mdash; held and witnessed by Adi Marie and the tending team. Neither is an afterthought to the other.</p>
+        </div>
+        <div class="ee-weave">
+          <div class="ee-weave-card">
+            <span class="ee-weave-eyebrow">Group Ritual</span>
+            <h3 class="ee-weave-name">The communal weave</h3>
+            <p class="ee-weave-body">Opening prayer, the welcoming of the directions, the offering to the land. Song and silence held in the circle. The medicine taken together. Witnessing one another in the deepening &mdash; the symphony of breath and movement and sound that the medicine makes possible.</p>
+          </div>
+          <div class="ee-weave-card">
+            <span class="ee-weave-eyebrow">Individual Ritual</span>
+            <h3 class="ee-weave-name">The solitary thread</h3>
+            <p class="ee-weave-body">Stretches of the day for private communion &mdash; with the medicine, with the land, with whatever rises in the inner temple. A piece of canyon to yourself. A tree to lean against. Time for the work that only happens alone &mdash; held within the larger field of the gathered circle.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 — Principles of the container -->
+      <div class="ee-section">
+        <span class="ee-eyebrow">What the Container Asks</span>
+        <h2 class="ee-h2">The shape of the <em>ceremony</em>.</h2>
+        <span class="ee-rule"></span>
+        <div class="ee-prose">
+          <p>Every EntheoEcology gathering is shaped by the same set of principles, drawn from the lineages and refined through Adi Marie&rsquo;s nineteen years of tending this work.</p>
+        </div>
+        <ul class="ee-principles">
+          <li><strong>Preparation precedes ceremony.</strong> Diet, intention, and an intake conversation in the weeks before. No one comes cold to Wachuma.</li>
+          <li><strong>The food of the realm.</strong> Fasting practices held in the days surrounding the ceremony &mdash; food is a tether to the realm you eat in.</li>
+          <li><strong>The land is welcomed first.</strong> Every gathering opens by offering to the land that holds us. The site is a participant, not a backdrop.</li>
+          <li><strong>The symphony is welcome.</strong> Crying, laughing, breathing, singing, silence, movement &mdash; the body&rsquo;s honest response to the medicine is part of the rite.</li>
+          <li><strong>No spoken language during deep work.</strong> The medicine moves on the amygdala; language sits in the frontal cortex. We work below speech.</li>
+          <li><strong>Integration is required.</strong> A follow-up call within one to four weeks. The ceremony does not end at sunset &mdash; it is released into the life of the practitioner.</li>
+        </ul>
+      </div>
+
+      <!-- 06 — Calendar pointer -->
+      <div class="ee-section">
+        <div class="ee-calendar">
+          <span class="ee-calendar-eyebrow">Upcoming Gatherings</span>
+          <h2 class="ee-calendar-h">The wheel of the year, <em>marked</em>.</h2>
+          <p class="ee-calendar-body">EntheoEcology gatherings are held on the wheel of the year &mdash; tied to seasons, moons, and the land&rsquo;s own rhythm. Dates, locations, formats, and reciprocity are listed on the Calendar. Register from the calendar event itself.</p>
+          <a href="calendar.html#entheo-ecology" class="ee-calendar-cta">See the Calendar &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="ee-final-cta">
+    <span class="ee-eyebrow">Begin Here</span>
+    <h2>Come to the <em>temples</em>.</h2>
+    <p>Every EntheoEcology gathering begins with the same first conversation &mdash; the Intake &amp; Inquiry. We meet, we listen, we determine together whether this is the right ceremony, the right season, the right teacher for the work you are bringing.</p>
+    <a href="book.html" class="ee-final-cta-btn">Schedule the Intake &amp; Inquiry</a>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="book.html">Book / Intake</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="divinations.html">Divinations</a></li>
+            <li><a href="inquiry.html">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/content-loader.js" defer></script>
+</body>
+</html>
