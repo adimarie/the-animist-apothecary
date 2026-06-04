@@ -1,12 +1,12 @@
 {
-  "version": "v260604.08 5:30a",
-  "release": 8,
-  "sha": "78ec786",
-  "fullSha": "78ec78650269ca55cd23d60b39b7c74572739801",
+  "version": "v260604.09 3:50p",
+  "release": 9,
+  "sha": "cc35b3c",
+  "fullSha": "cc35b3c8e07a62db99ab0fad091df054a99dea87",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-03T22:29:41-07:00",
-  "commits": [{"sha":"78ec786","message":"fix(newsletter): require first name + last name (correcting prior misread)","author":"Adi Marie"}]
+  "pushedAt": "2026-06-04T08:50:16-07:00",
+  "commits": [{"sha":"cc35b3c","message":"style(newsletter): remove \"(optional)\" from placeholder text","author":"Adi Marie"}]
 }
