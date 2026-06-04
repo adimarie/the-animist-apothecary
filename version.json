@@ -1,12 +1,12 @@
 {
-  "version": "v260602.03 5:45p",
-  "release": 3,
-  "sha": "1a9e998",
-  "fullSha": "1a9e998b2c62e512c472a6ea9fa3471c1398c2c1",
+  "version": "v260604.01 3:57a",
+  "release": 1,
+  "sha": "e57794a",
+  "fullSha": "e57794ac1bac296603eebb4ba10b4b8f6d66c619",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-02T10:43:56-07:00",
-  "commits": [{"sha":"1a9e998","message":"Deploy 6 studio pilot pages — one per studio in The Training Grounds","author":"Adi Marie"}]
+  "pushedAt": "2026-06-03T20:57:01-07:00",
+  "commits": [{"sha":"e57794a","message":"chore: gitignore docs/meetings/ to keep meeting notes private","author":"Adi Marie"}]
 }
