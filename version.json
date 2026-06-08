@@ -1,12 +1,12 @@
 {
-  "version": "v260608.01 11:33p",
-  "release": 1,
-  "sha": "8fb4e46",
-  "fullSha": "8fb4e46139f16cad44fae469904bd89ea5eeb8e8",
+  "version": "v260608.02 11:37p",
+  "release": 2,
+  "sha": "973faa8",
+  "fullSha": "973faa87ecfb99fdf2ad81461da932f91586c7af",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-08T16:33:03-07:00",
-  "commits": [{"sha":"8fb4e46","message":"feat(page-subnav): sticky under main nav + drop ★ from featured","author":"Adi Marie"}]
+  "pushedAt": "2026-06-08T16:37:30-07:00",
+  "commits": [{"sha":"973faa8","message":"chore(cache): bump site-header.css?v=v10 → v11 to invalidate browser cache","author":"Adi Marie"}]
 }
