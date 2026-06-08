@@ -1,12 +1,12 @@
 {
-  "version": "v260608.04 11:50p",
-  "release": 4,
-  "sha": "f39d513",
-  "fullSha": "f39d51311999427f4552ed391ad3010a17d133b3",
+  "version": "v260608.05 11:57p",
+  "release": 5,
+  "sha": "f6372eb",
+  "fullSha": "f6372ebdd7c90e71ba461834ece529d268350ad8",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-08T16:50:03-07:00",
-  "commits": [{"sha":"f39d513","message":"style(page-subnav): butt against main nav at page-load + 100% opacity","author":"Adi Marie"}]
+  "pushedAt": "2026-06-08T16:56:44-07:00",
+  "commits": [{"sha":"f6372eb","message":"style(page-subnav): correct optical lift — drop text to true visual center","author":"Adi Marie"}]
 }
