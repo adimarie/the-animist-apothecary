@@ -359,7 +359,16 @@
   padding: 0.95rem 2rem;
   backdrop-filter: saturate(140%) blur(10px);
   -webkit-backdrop-filter: saturate(140%) blur(10px);
+  /* Pin below the fixed main nav as the page scrolls.
+     `top` values match the nav-height table in the SOT
+     comment further down this file. z-index sits just
+     below .site-header (1000) so it never covers the nav. */
+  position: sticky;
+  top: 87px;
+  z-index: 999;
 }
+@media (max-width: 1200px) { .page-subnav { top: 80px; } }
+@media (max-width: 960px)  { .page-subnav { top: 75px; } }
 .page-subnav-inner {
   max-width: 1280px;
   margin: 0 auto;
@@ -408,7 +417,10 @@
   font-weight: 500;
 }
 @media (max-width: 720px) {
-  .page-subnav { padding: 0.75rem 1rem; }
+  /* Mobile: opt out of sticky. Column-stacked sub-nav is too tall
+     to pin without eating most of the viewport. Let it scroll
+     away with the page like the rest of the body content. */
+  .page-subnav { padding: 0.75rem 1rem; position: static; top: auto; }
   .page-subnav-inner { gap: 0.6rem; flex-direction: column; }
   .page-subnav-links { gap: 1rem; }
   .page-subnav-links a { font-size: 0.94rem; }
