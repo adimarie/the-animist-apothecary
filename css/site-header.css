@@ -356,7 +356,7 @@
 .page-subnav {
   background: rgba(247, 245, 240, 0.94);
   border-bottom: 1px solid rgba(201, 168, 76, 0.22);
-  padding: 0.95rem 2rem;
+  padding: 0.5rem 2rem;  /* slim band; flex centering in -inner handles vertical alignment */
   backdrop-filter: saturate(140%) blur(10px);
   -webkit-backdrop-filter: saturate(140%) blur(10px);
   /* Pin below the fixed main nav as the page scrolls.
