@@ -1,12 +1,12 @@
 {
-  "version": "v260608.03 11:42p",
-  "release": 3,
-  "sha": "32953ef",
-  "fullSha": "32953ef1aee8914c2f19422949a2a617acd23c9d",
+  "version": "v260608.04 11:50p",
+  "release": 4,
+  "sha": "f39d513",
+  "fullSha": "f39d51311999427f4552ed391ad3010a17d133b3",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-08T16:42:26-07:00",
-  "commits": [{"sha":"32953ef","message":"style(page-subnav): slim band padding + cache bump v11→v12","author":"Adi Marie"}]
+  "pushedAt": "2026-06-08T16:50:03-07:00",
+  "commits": [{"sha":"f39d513","message":"style(page-subnav): butt against main nav at page-load + 100% opacity","author":"Adi Marie"}]
 }
