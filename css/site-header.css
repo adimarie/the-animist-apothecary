@@ -354,11 +354,9 @@
    writings). Replaces the hover-dropdown discovery path.
    ============================================================= */
 .page-subnav {
-  background: rgba(247, 245, 240, 0.94);
+  background: #F7F5F0;  /* fully opaque — no see-through to scrolling content beneath */
   border-bottom: 1px solid rgba(201, 168, 76, 0.22);
   padding: 0.5rem 2rem;  /* slim band; flex centering in -inner handles vertical alignment */
-  backdrop-filter: saturate(140%) blur(10px);
-  -webkit-backdrop-filter: saturate(140%) blur(10px);
   /* Pin below the fixed main nav as the page scrolls.
      `top` values match the nav-height table in the SOT
      comment further down this file. z-index sits just
@@ -366,9 +364,15 @@
   position: sticky;
   top: 87px;
   z-index: 999;
+  /* Negative margin eats the cream SOT buffer above us so the
+     sub-nav butts directly against the main nav at page-load.
+     Value = body.padding-top − nav-height at each breakpoint
+     (130−87=43 / 120−80=40 / 110−75=35). Non-subnav pages keep
+     their buffer because they don't have .page-subnav at all. */
+  margin-top: -43px;
 }
-@media (max-width: 1200px) { .page-subnav { top: 80px; } }
-@media (max-width: 960px)  { .page-subnav { top: 75px; } }
+@media (max-width: 1200px) { .page-subnav { top: 80px; margin-top: -40px; } }
+@media (max-width: 960px)  { .page-subnav { top: 75px; margin-top: -35px; } }
 .page-subnav-inner {
   max-width: 1280px;
   margin: 0 auto;
