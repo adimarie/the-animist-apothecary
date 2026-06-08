@@ -1,12 +1,12 @@
 {
-  "version": "v260606.01 10:30p",
+  "version": "v260608.01 11:33p",
   "release": 1,
-  "sha": "71d4ec9",
-  "fullSha": "71d4ec9f60fb23478f1d02b3cdf3ba40b10f6ef2",
+  "sha": "8fb4e46",
+  "fullSha": "8fb4e46139f16cad44fae469904bd89ea5eeb8e8",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-06T15:30:11-07:00",
-  "commits": [{"sha":"71d4ec9","message":"feat(group-work): promote EntheoEcology to a third card + fix wiring","author":"Adi Marie"}]
+  "pushedAt": "2026-06-08T16:33:03-07:00",
+  "commits": [{"sha":"8fb4e46","message":"feat(page-subnav): sticky under main nav + drop ★ from featured","author":"Adi Marie"}]
 }
