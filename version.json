@@ -1,12 +1,12 @@
 {
-  "version": "v260609.01 12:01a",
-  "release": 1,
-  "sha": "0e06a77",
-  "fullSha": "0e06a772cfaf7afa2604f60e9b867b38df1e6a97",
+  "version": "v260609.02 12:07a",
+  "release": 2,
+  "sha": "82e3b81",
+  "fullSha": "82e3b8132f3c8803b4b5fae886b539262d213613",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-08T17:00:45-07:00",
-  "commits": [{"sha":"0e06a77","message":"chore(page-subnav): lock dimensions — add LOCKED comment block, rem→px","author":"Adi Marie"}]
+  "pushedAt": "2026-06-08T17:06:44-07:00",
+  "commits": [{"sha":"82e3b81","message":"style(nav): lock main nav padding in px + add buffer below sub-nav","author":"Adi Marie"}]
 }
