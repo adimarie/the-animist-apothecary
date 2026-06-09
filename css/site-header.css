@@ -352,30 +352,25 @@
    in-page links right below the main nav. One strip per
    landing page (about, solo-work, group-work, training-grounds,
    writings). Replaces the hover-dropdown discovery path.
+
+   ===== LOCKED VALUES — 2026-06-08 =====
+   Adi iterated through padding / sticky / opacity / optical
+   alignment / breakpoint offsets and approved these exact
+   dimensions on 2026-06-08. Do NOT retune any of the values
+   below without explicit instruction. See also:
+     memory/decisions_sub_nav_260608.md
    ============================================================= */
 .page-subnav {
-  background: #F7F5F0;  /* fully opaque — no see-through to scrolling content beneath */
-  border-bottom: 1px solid rgba(201, 168, 76, 0.22);
-  /* Slight top bias (0.65 vs 0.5) corrects the optical lift —
-     serif x-height + border-bottom weight makes a mathematically
-     symmetric padding feel raised. Net: text drops ~2.5px. */
-  padding: 0.65rem 2rem 0.5rem;
-  /* Pin below the fixed main nav as the page scrolls.
-     `top` values match the nav-height table in the SOT
-     comment further down this file. z-index sits just
-     below .site-header (1000) so it never covers the nav. */
+  background: #F7F5F0;                                   /* 100% opaque cream — no see-through */
+  border-bottom: 1px solid rgba(201, 168, 76, 0.22);     /* faint gold hairline at base */
+  padding: 10px 32px 8px;                                /* 10 top / 32 sides / 8 bottom — top bias corrects optical lift */
   position: sticky;
-  top: 87px;
-  z-index: 999;
-  /* Negative margin eats the cream SOT buffer above us so the
-     sub-nav butts directly against the main nav at page-load.
-     Value = body.padding-top − nav-height at each breakpoint
-     (130−87=43 / 120−80=40 / 110−75=35). Non-subnav pages keep
-     their buffer because they don't have .page-subnav at all. */
-  margin-top: -43px;
+  top: 87px;                                             /* matches main-nav height @ >1200px */
+  z-index: 999;                                          /* below .site-header (1000), above body */
+  margin-top: -43px;                                     /* eats SOT cream buffer (body.padTop 130 − nav 87) */
 }
-@media (max-width: 1200px) { .page-subnav { top: 80px; margin-top: -40px; } }
-@media (max-width: 960px)  { .page-subnav { top: 75px; margin-top: -35px; } }
+@media (max-width: 1200px) { .page-subnav { top: 80px; margin-top: -40px; } }  /* nav 80 / buffer 40 */
+@media (max-width: 960px)  { .page-subnav { top: 75px; margin-top: -35px; } }  /* nav 75 / buffer 35 */
 .page-subnav-inner {
   max-width: 1280px;
   margin: 0 auto;
