@@ -1,12 +1,12 @@
 {
-  "version": "v260609.02 12:07a",
-  "release": 2,
-  "sha": "82e3b81",
-  "fullSha": "82e3b8132f3c8803b4b5fae886b539262d213613",
+  "version": "v260609.03 12:16a",
+  "release": 3,
+  "sha": "3a9f105",
+  "fullSha": "3a9f1050fdcc16b69bad3276c5664d888bed24df",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-08T17:06:44-07:00",
-  "commits": [{"sha":"82e3b81","message":"style(nav): lock main nav padding in px + add buffer below sub-nav","author":"Adi Marie"}]
+  "pushedAt": "2026-06-08T17:16:31-07:00",
+  "commits": [{"sha":"3a9f105","message":"fix(page-subnav): make cream buffer static during scroll (stop the shift)","author":"Adi Marie"}]
 }
