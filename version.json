@@ -1,12 +1,12 @@
 {
-  "version": "v260608.05 11:57p",
-  "release": 5,
-  "sha": "f6372eb",
-  "fullSha": "f6372ebdd7c90e71ba461834ece529d268350ad8",
+  "version": "v260609.01 12:01a",
+  "release": 1,
+  "sha": "0e06a77",
+  "fullSha": "0e06a772cfaf7afa2604f60e9b867b38df1e6a97",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-08T16:56:44-07:00",
-  "commits": [{"sha":"f6372eb","message":"style(page-subnav): correct optical lift — drop text to true visual center","author":"Adi Marie"}]
+  "pushedAt": "2026-06-08T17:00:45-07:00",
+  "commits": [{"sha":"0e06a77","message":"chore(page-subnav): lock dimensions — add LOCKED comment block, rem→px","author":"Adi Marie"}]
 }
