@@ -1,12 +1,12 @@
 {
-  "version": "v260609.03 12:16a",
-  "release": 3,
-  "sha": "3a9f105",
-  "fullSha": "3a9f1050fdcc16b69bad3276c5664d888bed24df",
+  "version": "v260609.04 12:33a",
+  "release": 4,
+  "sha": "e04e640",
+  "fullSha": "e04e640534c40fbf5cbce631584f9826fe2dac1d",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-08T17:16:31-07:00",
-  "commits": [{"sha":"3a9f105","message":"fix(page-subnav): make cream buffer static during scroll (stop the shift)","author":"Adi Marie"}]
+  "pushedAt": "2026-06-08T17:32:53-07:00",
+  "commits": [{"sha":"e04e640","message":"style(page-subnav): 60px cream zone with text dead-center (20/20)","author":"Adi Marie"}]
 }
