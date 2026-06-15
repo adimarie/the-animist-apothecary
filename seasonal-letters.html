@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seasonal Letters &middot; The Animist Apothecary</title>
+  <meta name="description" content="A few times a year, when the season turns — field notes from the practice, sent by hand. Reflections, a practice to carry, and the first word on new gatherings.">
+  <meta property="og:title" content="Seasonal Letters — The Animist Apothecary">
+  <meta property="og:description" content="A letter a few times a year, when the season turns. Not a feed — a quiet word from the practice.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500&family=Inter:wght@300;400;500&family=Tangerine&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v17">
+  <style>
+    body { background: #FAF8F3; color: var(--ink-deep, #2D2A26); margin: 0; }
+    .pg-emph { color: var(--gold, #c9a84c); font-style: italic; }
+
+    .pg-hero { position: relative; background: var(--ink-deep, #2D2A26); color: #F5F3ED; padding: 8rem 1.5rem 5.5rem; text-align: center; overflow: hidden; }
+    .pg-hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 14%, rgba(201,168,76,0.18), transparent 62%); pointer-events: none; }
+    .pg-hero-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
+    .pg-eyebrow { display: inline-block; font-family: 'Cormorant SC', serif; font-size: 0.8rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--gold-pale, #DCC178); margin: 0 0 1.4rem; }
+    .pg-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(3rem, 6.5vw, 5.4rem); line-height: 1.02; margin: 0 0 1.4rem; color: #F7F1DF; }
+    .pg-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.25rem, 2vw, 1.7rem); line-height: 1.55; color: var(--gold-pale, #DCC178); max-width: 600px; margin: 0 auto; }
+
+    .pg-section { padding: 5.5rem 1.5rem; }
+    .pg-section.alt { background: #F1EEE6; }
+    .pg-inner { max-width: 660px; margin: 0 auto; }
+    .pg-label { font-family: 'Cormorant SC', serif; font-size: 0.74rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold, #c9a84c); text-align: center; margin: 0 0 1rem; }
+    .pg-rule { width: 42px; height: 1px; background: var(--gold, #c9a84c); opacity: 0.65; margin: 0 auto 1.8rem; }
+    .pg-h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2rem, 3.4vw, 2.7rem); line-height: 1.15; color: var(--ink-deep, #2D2A26); margin: 0 0 1.8rem; text-align: center; }
+    .pg-prose p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; line-height: 1.85; color: var(--ink-soft, #3D3A36); margin: 0 0 1.4rem; text-align: center; }
+    .pg-prose p:last-child { margin-bottom: 0; }
+
+    .pg-arrives { list-style: none; padding: 0; margin: 2.4rem auto 0; max-width: 520px; }
+    .pg-arrives li { font-family: 'Cormorant Garamond', serif; font-size: 1.14rem; line-height: 1.6; color: var(--ink-soft, #3D3A36); padding: 0.9rem 0 0.9rem 2rem; border-bottom: 1px solid rgba(201,168,76,0.18); position: relative; }
+    .pg-arrives li:last-child { border-bottom: none; }
+    .pg-arrives li::before { content: "\2726"; position: absolute; left: 0.3rem; top: 1rem; color: var(--gold, #c9a84c); font-size: 0.8rem; }
+
+    /* Signup */
+    .pg-signup { max-width: 540px; margin: 0 auto; background: #FBFAF6; border: 1px solid rgba(201,168,76,0.28); border-radius: 8px; box-shadow: 0 2px 22px rgba(45,42,38,0.05); padding: 2.8rem 2.6rem; }
+    .newsletter-form { display: flex; flex-direction: column; gap: 1rem; }
+    .newsletter-form input { width: 100%; box-sizing: border-box; font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; color: var(--ink-deep, #2D2A26); background: #fff; border: 1px solid rgba(45,42,38,0.18); border-radius: 7px; padding: 0.85rem 1rem; transition: border-color 0.2s, box-shadow 0.2s; }
+    .newsletter-form input:focus { outline: none; border-color: var(--sage-deep, #5B7553); box-shadow: 0 0 0 3px rgba(91,117,83,0.14); }
+    .newsletter-form button { font-family: 'Cormorant SC', serif; font-size: 0.9rem; letter-spacing: 0.22em; text-transform: uppercase; color: #F5F3ED; background: var(--ink-deep, #2D2A26); border: none; border-radius: 7px; padding: 1.05rem; cursor: pointer; margin-top: 0.4rem; transition: background 0.25s; }
+    .newsletter-form button:hover { background: #1F1A18; }
+    .newsletter-form button:disabled { opacity: 0.6; cursor: default; }
+    .pg-helper { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.98rem; color: rgba(61,58,54,0.65); text-align: center; margin: 1.2rem 0 0; }
+    .newsletter-status { font-family: 'Cormorant Garamond', serif; font-size: 1rem; text-align: center; margin: 1rem 0 0; min-height: 1.2em; }
+    .newsletter-status-pending { color: var(--gold, #c9a84c); }
+    .newsletter-status-success { color: var(--sage-deep, #5B7553); font-style: italic; }
+    .newsletter-status-error { color: #9a4a3a; }
+
+    @media (max-width: 600px) {
+      .pg-hero { padding: 6rem 1.2rem 4rem; }
+      .pg-section { padding: 3.6rem 1.2rem; }
+      .pg-signup { padding: 2rem 1.4rem; }
+    }
+  </style>
+</head>
+<body data-content-page="seasonal-letters">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span></a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="solo-work.html">Solo Work</a></li>
+          <li><a href="group-work.html">Group Work</a></li>
+          <li><a href="training-grounds.html">The School</a></li>
+          <li><a href="writings.html">Resources</a></li>
+        </ul>
+      </nav>
+      <a href="sessions.html" class="nav-cta apply-btn">Book</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="pg-hero">
+    <div class="pg-hero-inner">
+      <span class="pg-eyebrow">Seasonal Letters</span>
+      <h1 class="pg-title">Letters with the <em>season</em></h1>
+      <p class="pg-sub">A few times a year, when the season turns — field notes from the practice, sent by hand.</p>
+    </div>
+  </section>
+
+  <section class="pg-section">
+    <div class="pg-inner pg-prose">
+      <p>Not a feed to keep up with. Not a funnel. Just a letter — when something is worth saying, when the wheel turns, when a new gathering opens its doors.</p>
+      <p>Reflections from the work, a simple practice to carry, and the first word on what's coming.</p>
+    </div>
+  </section>
+
+  <section class="pg-section alt">
+    <div class="pg-inner">
+      <p class="pg-label">Receive the Letters</p>
+      <div class="pg-rule"></div>
+      <h2 class="pg-h2">Stay close to the <em class="pg-emph">work</em></h2>
+
+      <div class="pg-signup">
+        <form id="newsletter-form" class="newsletter-form" novalidate>
+          <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" aria-label="First name">
+          <input type="email" name="email" placeholder="Email" autocomplete="email" required aria-label="Email">
+          <button type="submit">Receive the Letters</button>
+        </form>
+        <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+        <p class="pg-helper">A few times a year. Your address is held with care; leave anytime.</p>
+      </div>
+
+      <ul class="pg-arrives">
+        <li>Seasonal reflections from the practice</li>
+        <li>A simple ritual or practice to carry</li>
+        <li>The first word when a new gathering opens</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="virtual-gatherings.html">Virtual Gatherings</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="book.html">Apply / Intake</a></li>
+            <li><a href="seasonal-letters.html">Seasonal Letters</a></li>
+            <li><a href="divinations.html">Divinations</a></li>
+            <li><a href="inquiry.html">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/newsletter.js"></script>
+</body>
+</html>
