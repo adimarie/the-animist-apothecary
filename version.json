@@ -1,12 +1,12 @@
 {
-  "version": "v260615.03 5:02p",
-  "release": 3,
-  "sha": "641df33",
-  "fullSha": "641df33ead5541ae94ca792094586fbffc275230",
+  "version": "v260615.04 5:46p",
+  "release": 4,
+  "sha": "7fb00d7",
+  "fullSha": "7fb00d7aa0cdb2d07c9e2fe1f512875fdb22618c",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T10:02:00-07:00",
-  "commits": [{"sha":"641df33","message":"Add imagery + visual flow to How to Journey and Seasonal Letters (hero images + full-bleed banners)","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T10:45:44-07:00",
+  "commits": [{"sha":"7fb00d7","message":"Add connected Enrollments & Activity admin dashboard (admin/events.html)","author":"Adi Marie"}]
 }
