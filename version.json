@@ -1,12 +1,12 @@
 {
-  "version": "v260615.05 6:00p",
-  "release": 5,
-  "sha": "2971a23",
-  "fullSha": "2971a23d4b5a565436cc834fed244d6fe71b49af",
+  "version": "v260615.06 7:59p",
+  "release": 6,
+  "sha": "4a5c1090",
+  "fullSha": "4a5c10904e9ad825f4976c7dfd6f874e12227de0",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T10:59:17-07:00",
-  "commits": [{"sha":"2971a23","message":"fix(admin/events): email-only login — remove Google OAuth that bounced to the old /intranet app","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T12:58:35-07:00",
+  "commits": [{"sha":"4a5c1090","message":"About: remove the \"Explore About\" sub-nav at the top for now","author":"Adi Marie"}]
 }
