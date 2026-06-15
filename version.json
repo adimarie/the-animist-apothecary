@@ -1,12 +1,12 @@
 {
-  "version": "v260615.07 8:02p",
-  "release": 7,
-  "sha": "afc5906b",
-  "fullSha": "afc5906bb6866fcfc3487d8cd4e67dfc3e784e8a",
+  "version": "v260615.08 8:19p",
+  "release": 8,
+  "sha": "a28e1e97",
+  "fullSha": "a28e1e97774a75d8391c3f83bf4a7ad28fb429b0",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T13:02:12-07:00",
-  "commits": [{"sha":"afc5906b","message":"feat(newsletter): route signups to intranet Supabase via contact_upsert_public","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T13:19:05-07:00",
+  "commits": [{"sha":"a28e1e97","message":"feat(sub-nav): remove .page-subnav from site per menu redesign","author":"Adi Marie"}]
 }
