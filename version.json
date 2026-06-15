@@ -1,12 +1,12 @@
 {
-  "version": "v260609.04 12:33a",
-  "release": 4,
-  "sha": "e04e640",
-  "fullSha": "e04e640534c40fbf5cbce631584f9826fe2dac1d",
+  "version": "v260615.01 4:24p",
+  "release": 1,
+  "sha": "e8c4cd3",
+  "fullSha": "e8c4cd311cec595ed8444e0a90857994de2edc25",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm3jyl0",
-  "pushedAt": "2026-06-08T17:32:53-07:00",
-  "commits": [{"sha":"e04e640","message":"style(page-subnav): 60px cream zone with text dead-center (20/20)","author":"Adi Marie"}]
+  "machine": "runnervm1li68",
+  "pushedAt": "2026-06-15T09:23:28-07:00",
+  "commits": [{"sha":"e8c4cd3","message":"Add Seasonal Letters newsletter page and Virtual Gatherings events page","author":"Adi Marie"}]
 }
