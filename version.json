@@ -1,12 +1,12 @@
 {
-  "version": "v260615.08 8:19p",
-  "release": 8,
-  "sha": "a28e1e97",
-  "fullSha": "a28e1e97774a75d8391c3f83bf4a7ad28fb429b0",
+  "version": "v260615.09 8:40p",
+  "release": 9,
+  "sha": "8aa6467d",
+  "fullSha": "8aa6467db719be78ee594a62e7d9d64f1223d398",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T13:19:05-07:00",
-  "commits": [{"sha":"a28e1e97","message":"feat(sub-nav): remove .page-subnav from site per menu redesign","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T13:40:35-07:00",
+  "commits": [{"sha":"8aa6467d","message":"feat(nav): 7-item menu — Community Offerings / Ceremonial Coaching / Private Engagements","author":"Adi Marie"}]
 }
