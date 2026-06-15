@@ -1,12 +1,12 @@
 {
-  "version": "v260615.06 7:59p",
-  "release": 6,
-  "sha": "4a5c1090",
-  "fullSha": "4a5c10904e9ad825f4976c7dfd6f874e12227de0",
+  "version": "v260615.07 8:02p",
+  "release": 7,
+  "sha": "afc5906b",
+  "fullSha": "afc5906bb6866fcfc3487d8cd4e67dfc3e784e8a",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T12:58:35-07:00",
-  "commits": [{"sha":"4a5c1090","message":"About: remove the \"Explore About\" sub-nav at the top for now","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T13:02:12-07:00",
+  "commits": [{"sha":"afc5906b","message":"feat(newsletter): route signups to intranet Supabase via contact_upsert_public","author":"Adi Marie"}]
 }
