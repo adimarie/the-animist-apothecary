@@ -1,12 +1,12 @@
 {
-  "version": "v260615.10 8:46p",
-  "release": 10,
-  "sha": "336050b7",
-  "fullSha": "336050b79b58043cd19fecbc1ae4f7ad92a88fd0",
+  "version": "v260615.11 8:51p",
+  "release": 11,
+  "sha": "8c961eec",
+  "fullSha": "8c961eece95380a0130644583d58e33bbf487003",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T13:46:18-07:00",
-  "commits": [{"sha":"336050b7","message":"Revert \"feat(nav): 7-item menu — Community Offerings / Ceremonial Coaching / Private Engagements\"","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T13:51:04-07:00",
+  "commits": [{"sha":"8c961eec","message":"Add reachable events dashboard at root path","author":"Adi Marie"}]
 }
