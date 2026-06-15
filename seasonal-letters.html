@@ -23,8 +23,10 @@
     body { background: #FAF8F3; color: var(--ink-deep, #2D2A26); margin: 0; }
     .pg-emph { color: var(--gold, #c9a84c); font-style: italic; }
 
-    .pg-hero { position: relative; background: var(--ink-deep, #2D2A26); color: #F5F3ED; padding: 8rem 1.5rem 5.5rem; text-align: center; overflow: hidden; }
-    .pg-hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 14%, rgba(201,168,76,0.18), transparent 62%); pointer-events: none; }
+    .pg-hero { position: relative; background: linear-gradient(rgba(20,17,13,0.66), rgba(20,17,13,0.82)), url('images/uploads/newsletter-river-aerial.jpg') center/cover no-repeat; color: #F5F3ED; padding: 9rem 1.5rem 6rem; text-align: center; overflow: hidden; }
+    .pg-hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 14%, rgba(201,168,76,0.14), transparent 62%); pointer-events: none; }
+    .pg-banner { display: block; width: 100%; line-height: 0; }
+    .pg-banner img { display: block; width: 100%; height: clamp(220px, 40vh, 420px); object-fit: cover; }
     .pg-hero-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
     .pg-eyebrow { display: inline-block; font-family: 'Cormorant SC', serif; font-size: 0.8rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--gold-pale, #DCC178); margin: 0 0 1.4rem; }
     .pg-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(3rem, 6.5vw, 5.4rem); line-height: 1.02; margin: 0 0 1.4rem; color: #F7F1DF; }
@@ -102,6 +104,8 @@
       <p>Reflections from the work, a simple practice to carry, and the first word on what's coming.</p>
     </div>
   </section>
+
+  <div class="pg-banner"><img src="images/uploads/newsletter-stone-water.jpg" alt="A turquoise river winding through deep green forest, seen from above" loading="lazy" decoding="async"></div>
 
   <section class="pg-section alt">
     <div class="pg-inner">

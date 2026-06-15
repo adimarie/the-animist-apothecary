@@ -24,8 +24,10 @@
     .htj-emph { color: var(--gold, #c9a84c); font-style: italic; }
 
     /* ---- Hero (dark editorial band) ---- */
-    .htj-hero { position: relative; background: var(--ink-deep, #2D2A26); color: #F5F3ED; padding: 8rem 1.5rem 5.5rem; text-align: center; overflow: hidden; }
-    .htj-hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 14%, rgba(201,168,76,0.18), transparent 62%); pointer-events: none; }
+    .htj-hero { position: relative; background: linear-gradient(rgba(16,13,20,0.58), rgba(16,13,20,0.78)), url('images/uploads/divider-milkyway-nuut-arch.jpg') center/cover no-repeat; color: #F5F3ED; padding: 9rem 1.5rem 6rem; text-align: center; overflow: hidden; }
+    .htj-hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 14%, rgba(201,168,76,0.14), transparent 62%); pointer-events: none; }
+    .htj-banner { display: block; width: 100%; line-height: 0; }
+    .htj-banner img { display: block; width: 100%; height: clamp(220px, 40vh, 440px); object-fit: cover; }
     .htj-hero-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
     .htj-portal { margin: 0 auto 2rem; display: block; }
     .htj-eyebrow { display: inline-block; font-family: 'Cormorant SC', serif; font-size: 0.8rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--gold-pale, #DCC178); margin: 0 0 1.4rem; }
@@ -195,6 +197,8 @@
     </div>
   </section>
 
+  <div class="htj-banner"><img src="images/uploads/four-paths-labyrinth-fern.jpg" alt="A fern draped over a stone carved with an ancient labyrinth" loading="lazy" decoding="async"></div>
+
   <!-- WHY THE FIRST DOORWAY -->
   <section class="htj-section alt">
     <div class="htj-inner-wide">
@@ -242,6 +246,8 @@
       </div>
     </div>
   </section>
+
+  <div class="htj-banner"><img src="images/uploads/the-work-ceremony.jpg" alt="Hands crossed gently over the heart in a white robe" loading="lazy" decoding="async" style="object-position: center 38%;"></div>
 
   <!-- THE SHAPE -->
   <section class="htj-section">
