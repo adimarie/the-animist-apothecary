@@ -1,12 +1,12 @@
 {
-  "version": "v260615.11 8:51p",
-  "release": 11,
-  "sha": "8c961eec",
-  "fullSha": "8c961eece95380a0130644583d58e33bbf487003",
+  "version": "v260615.12 8:54p",
+  "release": 12,
+  "sha": "6ed7202b",
+  "fullSha": "6ed7202b7522f42a74942e0218ff2021fec16bb0",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T13:51:04-07:00",
-  "commits": [{"sha":"8c961eec","message":"Add reachable events dashboard at root path","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T13:54:02-07:00",
+  "commits": [{"sha":"6ed7202b","message":"chore: remove BETA-COMING-SOON-BANNER from all pages","author":"Adi Marie"}]
 }
