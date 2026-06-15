@@ -333,6 +333,82 @@
       .current-card { padding: 1.75rem 1.5rem; }
       .current-card-title { font-size: 1.4rem; }
     }
+
+    /* ================================================================
+       NEW SECTION: Origin / The Calling (added 2026-06-15).
+       Asymmetric split — image LEFT, text RIGHT. First test of the
+       magazine pattern; if this lands well, similar treatment can roll
+       out to Bio and Lineage in a later pass.
+       ================================================================ */
+    .about-origin {
+      background: #F7F5F0;
+    }
+    .about-origin-split {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 7rem 3rem;
+    }
+    .about-origin-image {
+      width: 100%;
+    }
+    .about-origin-image figure {
+      margin: 0;
+      box-shadow: 0 18px 48px rgba(31, 26, 24, .14);
+    }
+    .about-origin-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .about-origin-text {
+      max-width: 540px;
+    }
+    .about-origin-text .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: .68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .26em;
+      color: #C9A84C;
+      display: inline-block;
+      margin-bottom: .85rem;
+    }
+    .about-origin-text .section-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 3.6vw, 2.9rem);
+      font-weight: 400;
+      color: #2D2A26;
+      margin: 0 0 1.5rem 0;
+      line-height: 1.2;
+    }
+    .about-origin-text .section-title em { font-style: italic; }
+    .about-origin-text .story-divider {
+      width: 60px;
+      height: 1px;
+      background: #C9A84C;
+      opacity: .7;
+      margin: 0 0 1.75rem 0;
+    }
+    .about-origin-text .narrative-paragraph {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.12rem;
+      line-height: 1.8;
+      color: #2D2A26;
+      margin: 0 0 1.4rem 0;
+    }
+    @media (max-width: 880px) {
+      .about-origin-split {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 4.5rem 1.5rem;
+      }
+      .about-origin-image { order: -1; }
+      .about-origin-text { max-width: none; }
+    }
   </style>
 </head>
 <body data-content-page="about">
@@ -373,6 +449,30 @@
       <span class="hero-eyebrow" data-content="hero.eyebrow">The Hand Behind the Work</span>
       <h1 class="page-hero-title" data-content="hero.title" data-content-type="html">Adi <em>Marie</em></h1>
       <p class="page-hero-subtitle" data-content="hero.subtitle">Medicine woman, ceremonialist, somatic medium &mdash; serving worldwide.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 1.5. Origin / The Calling. Asymmetric split — image LEFT, text RIGHT. -->
+  <section class="about-origin" id="origin">
+    <div class="about-origin-split">
+      <div class="about-origin-image">
+        <figure>
+          <img src="images/uploads/tg-letter-portrait-outside.jpg"
+               alt="Adi Marie in an outdoor portrait — soft light, candid posture"
+               loading="lazy"
+               decoding="async"
+               data-content="origin.image" data-content-type="image"
+               data-content-alt="origin.image_alt">
+        </figure>
+      </div>
+      <div class="about-origin-text">
+        <span class="section-label" data-content="origin.section_label">The Calling</span>
+        <h2 class="section-title" data-content="origin.title" data-content-type="html">How I came to <em>this work</em></h2>
+        <div class="story-divider"></div>
+        <p class="narrative-paragraph" data-content="origin.paragraph_1">The calling arrived before the language for it. Long before training, before lineage, before the medicine basket &mdash; there was a felt sense of the world being more porous than the world insists. The dead were not gone. The land was not silent. The body knew things the mind had not been taught to translate.</p>
+        <p class="narrative-paragraph" data-content="origin.paragraph_2">The first formal door was the hands. Licensed bodywork in 2010, the somatic foundation under everything that followed. To work with the body honestly is to apprentice to a way of knowing that does not lie. From there the path opened &mdash; initiations into traditions that had been waiting, study with elders who recognized what I had been carrying since childhood, ceremony as the structure beneath the work.</p>
+        <p class="narrative-paragraph" data-content="origin.paragraph_3">Sixteen years on, the work has gathered itself into a practice. Solo sessions. Community ceremonies. Long arcs of accompaniment. The same intention threads through all of it: to meet what is real, to hold what others cannot hold, and to walk alongside those whose own calling is asking something of them they cannot yet name.</p>
+      </div>
     </div>
   </section>
 

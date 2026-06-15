@@ -2,8 +2,9 @@
 # Saves commit to GitHub and deploy automatically.
 # js/content-loader.js reads this and patches about.html.
 #
-# Phase 1 rework 2026-06-01 — see memory/decisions_about_260601.md for the
-# locked structural and voice decisions behind this layout.
+# Phase 1 rework 2026-06-01: see memory/decisions_about_260601.md.
+# Phase 2 magazine restructure 2026-06-15: 11 sections, 3 new (Origin,
+# The Why, Credentials), asymmetric split layouts, staggered visuals.
 
 hero:
   image: "images/uploads/adi-hero-hillside-2026-05-22.jpg"
@@ -11,6 +12,16 @@ hero:
   eyebrow: "The Hand Behind the Work"
   title: "Adi <em>Marie</em>"
   subtitle: "Medicine woman, ceremonialist, somatic medium — serving worldwide."
+
+# NEW: Origin / The Calling — scaffolded story, edit via /studio/.
+origin:
+  section_label: "The Calling"
+  title: "How I came to <em>this work</em>"
+  paragraph_1: "The calling arrived before the language for it. Long before training, before lineage, before the medicine basket — there was a felt sense of the world being more porous than the world insists. The dead were not gone. The land was not silent. The body knew things the mind had not been taught to translate."
+  paragraph_2: "The first formal door was the hands. Licensed bodywork in 2010, the somatic foundation under everything that followed. To work with the body honestly is to apprentice to a way of knowing that does not lie. From there the path opened — initiations into traditions that had been waiting, study with elders who recognized what I had been carrying since childhood, ceremony as the structure beneath the work."
+  paragraph_3: "Sixteen years on, the work has gathered itself into a practice. Solo sessions. Community ceremonies. Long arcs of accompaniment. The same intention threads through all of it: to meet what is real, to hold what others cannot hold, and to walk alongside those whose own calling is asking something of them they cannot yet name."
+  image: "images/uploads/tg-letter-portrait-outside.jpg"
+  image_alt: "Adi Marie in an outdoor portrait — soft light, candid posture."
 
 bio:
   section_label: "Sixteen Years in the Work"
@@ -21,10 +32,17 @@ bio:
   paragraph_4: "Adi Marie works with doctors, medicine people, therapists, artists, leaders of industry, and those whose decisions shape the trajectory of this earth ship. Her clients come from all walks of life and all spiritual backgrounds. What unites them is a shared commitment to going deeper — to the kind of healing that changes the shape of a life, not just the surface of it."
   quote: "'The earth is asking for healers. The times are asking for those willing to go into the underworld and come back with something real. This work is my answer to that call — and it is an honor to walk that path alongside those who are ready.' <strong>— Adi Marie</strong>"
   paragraph_5: "Based in the canyon lands of Southern California, Adi offers private sessions and intensives in person, and is available worldwide for virtual sessions, private travel engagements, and select community events."
-  image_1: "images/uploads/practitioner-portrait-2026-05-23.jpg"
-  image_1_alt: "Adi Marie in candid portrait"
-  image_2: "images/uploads/the-work-ceremony.jpg"
-  image_2_alt: "Ceremonial setting — candles, smoke, sacred objects gathered for the work"
+  image: "images/uploads/practitioner-portrait-2026-05-23.jpg"
+  image_alt: "Adi Marie in a candid portrait — full-length composition for the split column."
+
+# NEW: The Why — full-bleed atmospheric band with overlay text. Scaffolded mission.
+why:
+  section_label: "Why I Do This"
+  title: "Because the earth is <em>asking</em>"
+  body_1: "The times are asking for those willing to go into the underworld and come back with something real. The earth grid is calling out to the ones who can hold it. The personal is planetary — and the work of healing is the work of restoring relationship between a person and the living world they belong to."
+  body_2: "This practice is my answer to that call. Each person who heals becomes medicine for the world. Each container we hold is a small repair in the larger weave. The work matters because the world needs it to matter."
+  image: "images/uploads/divider-milkyway-nuut-arch.jpg"
+  image_alt: "Milky Way arch over a desert horizon — the atmospheric backdrop for the mission statement."
 
 practice:
   section_label: "The Practice"
@@ -39,7 +57,6 @@ conversation:
   intro: "A recent conversation with Iván Chocrón — on the work, on lineage, and on what these times are asking of those who can hold them."
   video_id: "Q5TN8UxmjZI"
   video_title: "Adi Marie in conversation with Iván Chocrón — An Unbelievable Comeback"
-  # Intentionally no off-page CTA below the video — visitors stay on the page.
 
 lineage:
   section_label: "Lineage & Training"
@@ -51,7 +68,33 @@ lineage:
   paragraph_1: "Adi Marie's practice has been tended without interruption since 2010 — sixteen years of devoted service, more than a decade of formal initiation and study, and an ongoing apprenticeship to the wild lands of Southern California. The foundation was laid as a licensed massage therapist and somatic bodyworker, and every layer since has been added one initiation at a time."
   paragraph_2: "She is an initiated diviner in the Dagara tradition of West Africa, a lineage that carries ancient technologies of ancestral connection, elemental medicine, and communal healing. Her relationship with the lineage and its elders is ongoing — divinations are read, ceremonies are kept, and the medicine is returned to the living web that gave it."
   paragraph_3: "Her formation continues across multiple disciplines — entheogenic medicine facilitation, generative hypnosis, expressive arts as ceremonial tool, ritual architecture, and the botanical healing arts. She trains with elders and lineage holders, and apprentices to the medicines themselves."
-  paragraph_4: "She trains and is trained by the practitioners who walk this terrain — doctors, medicine people, therapists, artists, and the leaders whose decisions shape the trajectory of this earth ship. The medicine basket is vast and carefully tended."
+  image: "images/uploads/the-work-ceremony.jpg"
+  image_alt: "A ceremonial setting — candles, smoke, sacred objects gathered for the work."
+
+# NEW: Credentials / What I Carry — 6-card credential block. Scaffold dates can be refined.
+credentials:
+  section_label: "What I Carry"
+  title: "Years of training, lineage, <em>and study</em>"
+  intro: "The medicine basket has been gathered slowly. Each credential below names a tradition, a lineage, or a discipline that lives in the practice — and an ongoing commitment, not a finished certificate."
+  cards:
+    - icon: "✦"
+      name: "Dagara Lineage Diviner"
+      context: "Initiated in the West African Dagara tradition. Ongoing apprenticeship with lineage elders. The oracular core of the practice."
+    - icon: "✦"
+      name: "Licensed Massage Therapist"
+      context: "California, since 2010. The somatic foundation under every other layer of the work."
+    - icon: "✦"
+      name: "Shamanic Bodyworker"
+      context: "Therapeutic touch, somatic medium work, and ceremonial bodywork — across sixteen years of practice."
+    - icon: "✦"
+      name: "Entheogenic Medicine Facilitator"
+      context: "Multi-year training in preparation, facilitation, and integration. Held with the reverence the medicines themselves ask for."
+    - icon: "✦"
+      name: "Ceremonial & Ritual Architect"
+      context: "Years of study in ritual design across traditions. Bespoke ceremonies for individuals, families, and communities."
+    - icon: "✦"
+      name: "Generative Hypnosis, Expressive Arts, Botanical Healing"
+      context: "Ongoing formation across disciplines that braid into the larger practice — and into the longer arc of becoming."
 
 other_currents:
   section_label: "Writing, Teaching, Other Currents"
@@ -83,7 +126,7 @@ testimonial:
   # Scaffold state — a publishable "note from the practice" stands in for a real
   # testimonial until one is offered with consent. When a real testimony arrives:
   #   1. Replace testimonial.text with the quote (using curly quotes).
-  #   2. Replace testimonial.author with initials + role + region (e.g. "M.K., Physician & Medicine Woman, New Mexico").
+  #   2. Replace testimonial.author with initials + role + region.
   #   3. In about.html, remove the "about-testimonial--scaffold" modifier class from the section.
   text: "Voices from this work live with the people who carry them. When a testimony is offered, and consent given, it appears here."
   author: "A note from the practice"
