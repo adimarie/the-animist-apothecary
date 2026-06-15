@@ -458,7 +458,6 @@
 
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        if (form.querySelector('[name="company"]').value) return; // honeypot
 
         const fd = new FormData(form);
         const first = (fd.get('first_name') || '').trim();
