@@ -1,12 +1,12 @@
 {
-  "version": "v260615.01 4:24p",
-  "release": 1,
-  "sha": "e8c4cd3",
-  "fullSha": "e8c4cd311cec595ed8444e0a90857994de2edc25",
+  "version": "v260615.02 4:45p",
+  "release": 2,
+  "sha": "df9bbed",
+  "fullSha": "df9bbedeef3bed24cba29dc34a0e2cf64c267870",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T09:23:28-07:00",
-  "commits": [{"sha":"e8c4cd3","message":"Add Seasonal Letters newsletter page and Virtual Gatherings events page","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T09:45:09-07:00",
+  "commits": [{"sha":"df9bbed","message":"fix: remove honeypot silently blocking How to Journey reservations (browser autofill tripped it)","author":"Adi Marie"}]
 }
