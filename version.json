@@ -1,12 +1,12 @@
 {
-  "version": "v260615.02 4:45p",
-  "release": 2,
-  "sha": "df9bbed",
-  "fullSha": "df9bbedeef3bed24cba29dc34a0e2cf64c267870",
+  "version": "v260615.03 5:02p",
+  "release": 3,
+  "sha": "641df33",
+  "fullSha": "641df33ead5541ae94ca792094586fbffc275230",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T09:45:09-07:00",
-  "commits": [{"sha":"df9bbed","message":"fix: remove honeypot silently blocking How to Journey reservations (browser autofill tripped it)","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T10:02:00-07:00",
+  "commits": [{"sha":"641df33","message":"Add imagery + visual flow to How to Journey and Seasonal Letters (hero images + full-bleed banners)","author":"Adi Marie"}]
 }
