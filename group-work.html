@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500&family=Inter:wght@300;400;500&family=Tangerine&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=v32">
-  <link rel="stylesheet" href="css/site-header.css?v=v17">
+  <link rel="stylesheet" href="css/site-header.css?v=v18">
   <style>
     body[data-content-page^="offering-"] { background: #FAF8F3; color: var(--ink-deep, #2D2A26); }
     .offering-hero { position: relative; min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 6rem 3rem; overflow: hidden; }
@@ -50,6 +50,13 @@
   </style>
 </head>
 <body data-content-page="offering-group-work">
+<!-- BETA-COMING-SOON-BANNER (added 2026-06-15) — remove this whole block to restore the page to full live status -->
+<div data-beta-banner style="background:#2b2620;color:#F7F5F0;font-family:'Inter',system-ui,sans-serif;text-align:center;padding:15px 20px;font-size:15px;line-height:1.55;border-bottom:2px solid #E8843C;position:relative;z-index:9999;">
+  <span style="font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:11.5px;color:#E8843C;">&#10022;&nbsp;Coming Soon</span>
+  <span style="display:block;max-width:660px;margin:7px auto 0;opacity:.92;font-weight:300;">This page is still being woven. The full offering arrives soon &mdash; meanwhile, you are warmly invited to <a href="index.html" style="color:#F7F5F0;text-decoration:underline;text-underline-offset:2px;">return to the home page</a> or <a href="book.html" style="color:#F7F5F0;text-decoration:underline;text-underline-offset:2px;">begin an Intake &amp; Inquiry</a>.</span>
+</div>
+<!-- /BETA-COMING-SOON-BANNER -->
+
 
     <header class="site-header">
     <div class="header-inner">
@@ -67,25 +74,10 @@
           <li><a href="writings.html">Resources</a></li>
         </ul>
       </nav>
-      <a href="sessions.html" class="nav-cta apply-btn">Book</a>
+      <a href="book.html" class="nav-cta apply-btn">Book</a>
       </div>
     </div>
   </header>
-
-  <!-- Sub-navigation: mirrors the items that used to live in the Group Work dropdown -->
-  <nav class="page-subnav" aria-label="Group Work sections">
-    <div class="page-subnav-inner">
-      <span class="page-subnav-label">Explore Group Work</span>
-      <div class="page-subnav-links">
-        <a href="metamorphic-year.html" class="featured">The Metamorphic Year</a>
-        <a href="conscious-leadership.html" class="featured">Leadership from the Soul</a>
-        <a href="group-work.html" class="is-current">Overview</a>
-        <a href="ceremony-and-ritual.html#community">Community Ceremonies</a>
-        <a href="entheo-ecology.html">EntheoEcology</a>
-        <a href="calendar.html">Calendar of Gatherings</a>
-      </div>
-    </div>
-  </nav>
 
   <section class="offering-hero">
     <div class="offering-hero-image" style="background-image: url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=2400&h=1300&fit=crop&q=80');"></div>

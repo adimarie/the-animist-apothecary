@@ -354,91 +354,10 @@
   margin-top: 0.7rem !important;
 }
 
-/* =============================================================
-   PAGE SUB-NAVIGATION — surfaces the old dropdown options as
-   in-page links right below the main nav. One strip per
-   landing page (about, solo-work, group-work, training-grounds,
-   writings). Replaces the hover-dropdown discovery path.
-
-   ===== LOCKED VALUES — 2026-06-08 =====
-   Adi iterated through padding / sticky / opacity / optical
-   alignment / breakpoint offsets and approved these exact
-   dimensions on 2026-06-08. Do NOT retune any of the values
-   below without explicit instruction. See also:
-     memory/decisions_sub_nav_260608.md
-   ============================================================= */
-.page-subnav {
-  background: #F7F5F0;                                   /* 100% opaque cream — no see-through */
-  border-bottom: 1px solid rgba(201, 168, 76, 0.22);     /* faint gold hairline at base of zone */
-  /* 60px total cream zone, text dead-center: 18 top + 24 link box (text 20 + 2/0 link padding) + 17 bottom + 1 border = 60 */
-  padding: 18px 32px 17px;
-  position: sticky;
-  top: 87px;                                             /* matches main-nav height @ >1200px */
-  z-index: 999;                                          /* below .site-header (1000), above body */
-  margin-top: -43px;                                     /* eats SOT cream buffer above (body.padTop 130 − nav 87) */
-}
-@media (max-width: 1200px) { .page-subnav { top: 80px; margin-top: -40px; } }
-@media (max-width: 960px)  { .page-subnav { top: 75px; margin-top: -35px; } }
-.page-subnav-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.75rem;
-  flex-wrap: wrap;
-}
-.page-subnav-label {
-  font-family: 'Cinzel', 'Cormorant SC', serif;
-  font-size: 0.66rem;
-  letter-spacing: 0.30em;
-  text-transform: uppercase;
-  color: #c9a84c;
-  font-weight: 500;
-  white-space: nowrap;
-}
-.page-subnav-links {
-  display: flex;
-  gap: 1.6rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.page-subnav-links a {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  line-height: 1.25;                                     /* locks text box to 20px — pinned for 60px-zone math */
-  color: #2D2A26;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  /* Symmetric vertical padding so the link box's center matches the
-     text's vertical center — keeps the row truly centered when flex
-     align-items: center stacks them inside the band. */
-  padding: 2px 0;
-  transition: color 0.2s ease, border-color 0.2s ease;
-  white-space: nowrap;
-}
-.page-subnav-links a:hover {
-  color: #c9a84c;
-  border-bottom-color: #c9a84c;
-}
-.page-subnav-links a.is-current {
-  color: #c9a84c;
-  border-bottom-color: rgba(201, 168, 76, 0.45);
-}
-.page-subnav-links a.featured {
-  color: #b8932a;
-  font-style: italic;
-  font-weight: 500;
-}
-@media (max-width: 720px) {
-  /* Mobile: opt out of sticky. Column-stacked sub-nav is too tall
-     to pin without eating most of the viewport. Let it scroll
-     away with the page like the rest of the body content. */
-  .page-subnav { padding: 0.75rem 1rem; position: static; top: auto; }
-  .page-subnav-inner { gap: 0.6rem; flex-direction: column; }
-  .page-subnav-links { gap: 1rem; }
-  .page-subnav-links a { font-size: 0.94rem; }
-}
+/* PAGE SUB-NAVIGATION removed 2026-06-08 evening per Adi's
+   menu redesign. Full locked spec retained at:
+     ~/.claude/.../memory/decisions_sub_nav_260608.md
+   Restore from git commits between 8fb4e46 and e04e640 if needed. */
 
 /* ============================================================
    SITE-WIDE DESIGN RULE — TOP NAV BUFFER
