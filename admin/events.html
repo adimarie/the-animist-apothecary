@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrollments &amp; Activity &mdash; The Animist Apothecary</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --cream:#FAF8F5; --cream-dark:#F0EDE8; --earth:#3D2E1F; --earth-mid:#6B5744; --earth-faint:#9A8C7A;
+      --sage:#7A8B6F; --sage-light:#E8EDE5; --sage-dark:#5C6B52; --gold:#C4A35A; --gold-light:#F5EDD6;
+      --rose:#C4836F; --rose-light:#F5E0D9; --white:#fff; --line:#EAE5DD;
+      --shadow-sm:0 1px 3px rgba(61,46,31,0.06); --shadow-md:0 4px 12px rgba(61,46,31,0.08); --radius:10px; --radius-sm:6px;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--earth);font-size:14px;line-height:1.5}
+    h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500}
+    a{color:var(--gold);text-decoration:none}
+
+    /* Login */
+    #login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;text-align:center;padding:24px}
+    #login-screen h1{font-size:30px}
+    #login-screen p{color:var(--earth-faint);font-size:13px}
+    .login-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 28px;background:var(--earth);color:var(--cream);border:none;border-radius:var(--radius);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;cursor:pointer}
+    .login-btn:hover{background:var(--earth-mid)}
+    .email-toggle{padding:10px 28px;background:#fff;color:var(--earth-mid);border:1px solid var(--cream-dark);border-radius:var(--radius-sm);font-family:Inter,sans-serif;font-size:13px;cursor:pointer}
+    #email-form{display:none;margin-top:8px;padding:20px;background:#fff;border:1px solid var(--cream-dark);border-radius:8px;width:300px}
+    #email-form input{display:block;width:100%;padding:10px 12px;margin-bottom:12px;border:1px solid var(--cream-dark);border-radius:4px;font-family:Inter;font-size:13px;background:var(--cream)}
+    #email-form button{padding:11px 24px;background:var(--gold);color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:500;cursor:pointer;width:100%}
+    .login-error{color:var(--rose);font-size:13px;display:none}
+
+    /* Dashboard */
+    #dashboard{display:none;max-width:1080px;margin:0 auto;padding:32px 24px 80px}
+    .dash-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:28px}
+    .dash-head .eyebrow{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+    .dash-head h1{font-size:30px}
+    .dash-head .sub{color:var(--earth-faint);font-size:13px;margin-top:2px}
+    .dash-head .right{text-align:right;font-size:12px;color:var(--earth-faint)}
+    .dash-head .right a{display:inline-block;margin-top:6px;font-size:12px}
+    .signout{background:none;border:1px solid var(--cream-dark);color:var(--earth-mid);padding:6px 14px;border-radius:var(--radius-sm);font-family:Inter;font-size:12px;cursor:pointer;margin-left:8px}
+
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:32px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow-sm)}
+    .card .label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--earth-faint);margin-bottom:6px}
+    .card .num{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--earth);line-height:1}
+
+    .section{margin-bottom:36px}
+    .section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+    .section-head h2{font-size:22px}
+    .section-head .live{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--sage-dark);display:inline-flex;align-items:center;gap:6px}
+    .live .dot{width:7px;height:7px;border-radius:50%;background:var(--sage);animation:pulse 1.8s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
+    .btn-export{background:#fff;border:1px solid var(--cream-dark);color:var(--earth-mid);padding:7px 14px;border-radius:var(--radius-sm);font-family:Inter;font-size:12px;cursor:pointer}
+    .btn-export:hover{border-color:var(--gold);color:var(--gold)}
+
+    /* Activity feed */
+    .feed{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+    .feed-item{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line)}
+    .feed-item:last-child{border-bottom:none}
+    .feed-item.fresh{background:var(--gold-light);animation:fade 2.5s ease}
+    @keyframes fade{from{background:var(--sage-light)}to{background:var(--gold-light)}}
+    .feed-badge{flex-shrink:0;font-size:10px;letter-spacing:0.6px;text-transform:uppercase;padding:4px 10px;border-radius:30px;font-weight:600}
+    .badge-enroll{background:var(--sage-light);color:var(--sage-dark)}
+    .badge-sub{background:var(--gold-light);color:#8b7340}
+    .feed-main{flex:1;min-width:0}
+    .feed-main .who{font-weight:500;color:var(--earth)}
+    .feed-main .what{font-size:12px;color:var(--earth-faint)}
+    .feed-when{font-size:12px;color:var(--earth-faint);white-space:nowrap}
+
+    /* Tables */
+    .table-wrap{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-size:13px}
+    th{text-align:left;font-size:10px;letter-spacing:0.8px;text-transform:uppercase;color:var(--earth-faint);font-weight:600;padding:12px 16px;border-bottom:1px solid var(--line);white-space:nowrap}
+    td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+    tr:last-child td{border-bottom:none}
+    .muted{color:var(--earth-faint)}
+    .pill{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;background:var(--cream-dark);color:var(--earth-mid);margin:1px 2px}
+    .yes{color:var(--sage-dark);font-weight:600}
+    .empty{padding:40px;text-align:center;color:var(--earth-faint);font-style:italic}
+    .paid-toggle{cursor:pointer}
+    @media(max-width:600px){.dash-head h1{font-size:24px}}
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div id="login-screen">
+    <h1>The Hearth</h1>
+    <p>Enrollments &amp; Activity — please sign in.</p>
+    <button class="login-btn" onclick="signInGoogle()">Sign in with Google</button>
+    <button class="email-toggle" onclick="toggleEmailLogin()">Sign in with email</button>
+    <form id="email-form" onsubmit="event.preventDefault(); signInEmail();">
+      <input id="email-input" type="email" placeholder="Email" autocomplete="email">
+      <input id="password-input" type="password" placeholder="Password" autocomplete="current-password">
+      <button type="submit">Sign in</button>
+    </form>
+    <p class="login-error" id="login-error"></p>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard">
+    <div class="dash-head">
+      <div>
+        <div class="eyebrow">The Hearth</div>
+        <h1 id="greeting">Welcome back</h1>
+        <div class="sub" id="today"></div>
+      </div>
+      <div class="right">
+        <div id="user-email"></div>
+        <a href="index.html">← Full admin</a>
+        <button class="signout" id="signout">Sign out</button>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card"><div class="label">Enrollments</div><div class="num" id="c-enroll">—</div></div>
+      <div class="card"><div class="label">Subscribers</div><div class="num" id="c-sub">—</div></div>
+      <div class="card"><div class="label">First-timers</div><div class="num" id="c-first">—</div></div>
+      <div class="card"><div class="label">This week</div><div class="num" id="c-week">—</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <h2>Recent activity</h2>
+        <span class="live"><span class="dot"></span> Live</span>
+      </div>
+      <div class="feed" id="feed"><div class="empty">Loading…</div></div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <h2>Enrollments</h2>
+        <button class="btn-export" onclick="exportCsv('enroll')">Export CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Email</th><th>First-time</th><th>Found via</th><th>Drawn to</th><th>Paid</th><th>Enrolled</th></tr></thead>
+          <tbody id="enroll-rows"><tr><td colspan="7" class="empty">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <h2>Newsletter subscribers</h2>
+        <button class="btn-export" onclick="exportCsv('sub')">Export CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Email</th><th>Source</th><th>Subscribed</th></tr></thead>
+          <tbody id="sub-rows"><tr><td colspan="4" class="empty">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+    const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
+    const ADMIN_EMAILS = ['adimarie@bodyworkandbotanicals.com', 'its.adimarie@gmail.com'];
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    let enrollments = [];
+    let subscribers = [];
+
+    const $ = id => document.getElementById(id);
+    const esc = s => { const d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML; };
+    const subDate = r => r.created_at || r.subscribed_at || r.inserted_at || r.submitted_at || null;
+    function timeAgo(iso){
+      if(!iso) return '—';
+      const s = Math.floor((Date.now() - new Date(iso).getTime())/1000);
+      if(s<60) return 'just now';
+      if(s<3600) return Math.floor(s/60)+'m ago';
+      if(s<86400) return Math.floor(s/3600)+'h ago';
+      if(s<604800) return Math.floor(s/86400)+'d ago';
+      return new Date(iso).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    }
+
+    // ── Auth ──
+    window.signInGoogle = async () => {
+      const { error } = await supabase.auth.signInWithOAuth({ provider:'google', options:{ redirectTo: window.location.origin + window.location.pathname } });
+      if(error){ $('login-error').textContent = error.message; $('login-error').style.display='block'; }
+    };
+    window.toggleEmailLogin = () => { const f=$('email-form'); f.style.display = f.style.display==='block'?'none':'block'; if(f.style.display==='block') $('email-input').focus(); };
+    window.signInEmail = async () => {
+      const email=$('email-input').value.trim(), password=$('password-input').value;
+      if(!email||!password){ $('login-error').textContent='Enter email and password'; $('login-error').style.display='block'; return; }
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if(error){ $('login-error').textContent=error.message; $('login-error').style.display='block'; }
+    };
+    $('signout').addEventListener('click', async () => { await supabase.auth.signOut(); location.reload(); });
+
+    async function initAuth(){
+      const { data:{ session } } = await supabase.auth.getSession();
+      if(!session){ $('login-screen').style.display='flex'; return; }
+      if(!ADMIN_EMAILS.includes(session.user.email)){
+        $('login-error').textContent='Access denied — not an authorized admin.';
+        $('login-error').style.display='block'; $('login-screen').style.display='flex';
+        await supabase.auth.signOut(); return;
+      }
+      $('login-screen').style.display='none';
+      $('dashboard').style.display='block';
+      const first = (session.user.user_metadata?.full_name || session.user.email).split(' ')[0];
+      $('greeting').textContent = 'Welcome back, ' + first;
+      $('today').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+      $('user-email').textContent = session.user.email;
+      await loadData();
+      setupRealtime();
+      setInterval(loadData, 30000); // polling backstop
+    }
+    supabase.auth.onAuthStateChange((_e, s) => { if(s) initAuth(); });
+
+    // ── Data ──
+    async function loadData(){
+      const [e, s] = await Promise.all([
+        supabase.from('event_rsvps').select('*').order('submitted_at',{ascending:false}),
+        supabase.from('newsletter_subscribers').select('*')
+      ]);
+      if(!e.error) enrollments = e.data || [];
+      if(!s.error){ subscribers = (s.data||[]).slice().sort((a,b)=> new Date(subDate(b)||0) - new Date(subDate(a)||0)); }
+      render();
+    }
+
+    function render(){
+      const weekAgo = Date.now() - 7*86400000;
+      $('c-enroll').textContent = enrollments.length;
+      $('c-sub').textContent = subscribers.length;
+      $('c-first').textContent = enrollments.filter(r=>r.first_time_attendee).length;
+      $('c-week').textContent = enrollments.filter(r=> new Date(r.submitted_at).getTime()>weekAgo).length
+                              + subscribers.filter(r=> new Date(subDate(r)||0).getTime()>weekAgo).length;
+
+      // Activity feed (merged, newest first)
+      const acts = [
+        ...enrollments.map(r=>({ t:'enroll', when:r.submitted_at, name:(r.name||((r.first_name||'')+' '+(r.last_name||''))).trim()||r.email, email:r.email })),
+        ...subscribers.map(r=>({ t:'sub', when:subDate(r), name:((r.first_name||'')+' '+(r.last_name||'')).trim()||r.email, email:r.email }))
+      ].filter(a=>a.when).sort((a,b)=> new Date(b.when)-new Date(a.when)).slice(0,18);
+      $('feed').innerHTML = acts.length ? acts.map(a=>`
+        <div class="feed-item">
+          <span class="feed-badge ${a.t==='enroll'?'badge-enroll':'badge-sub'}">${a.t==='enroll'?'Enrolled':'Subscribed'}</span>
+          <div class="feed-main"><div class="who">${esc(a.name)}</div><div class="what">${esc(a.email)} ${a.t==='enroll'?'· reserved a place':'· joined the Letters'}</div></div>
+          <div class="feed-when">${timeAgo(a.when)}</div>
+        </div>`).join('') : '<div class="empty">No activity yet — it will appear here the moment someone enrolls or subscribes.</div>';
+
+      // Enrollments table
+      $('enroll-rows').innerHTML = enrollments.length ? enrollments.map(r=>{
+        const name = (r.name||((r.first_name||'')+' '+(r.last_name||''))).trim()||'—';
+        const interests = Array.isArray(r.interests) ? r.interests.map(i=>`<span class="pill">${esc(i)}</span>`).join('') : '';
+        return `<tr>
+          <td>${esc(name)}</td><td>${esc(r.email)}</td>
+          <td>${r.first_time_attendee?'<span class="yes">Yes</span>':'<span class="muted">—</span>'}</td>
+          <td>${esc(r.referral_source)||'<span class="muted">—</span>'}</td>
+          <td>${interests||'<span class="muted">—</span>'}</td>
+          <td><input type="checkbox" class="paid-toggle" data-id="${r.id}" ${r.paid?'checked':''}></td>
+          <td class="muted">${timeAgo(r.submitted_at)}</td>
+        </tr>`;
+      }).join('') : '<tr><td colspan="7" class="empty">No enrollments yet.</td></tr>';
+
+      document.querySelectorAll('.paid-toggle').forEach(cb=> cb.addEventListener('change', async ()=>{
+        await supabase.from('event_rsvps').update({ paid: cb.checked }).eq('id', cb.dataset.id);
+      }));
+
+      // Subscribers table
+      $('sub-rows').innerHTML = subscribers.length ? subscribers.map(r=>{
+        const name = ((r.first_name||'')+' '+(r.last_name||'')).trim()||'—';
+        return `<tr><td>${esc(name)}</td><td>${esc(r.email)}</td><td>${esc(r.source)||'<span class="muted">—</span>'}</td><td class="muted">${timeAgo(subDate(r))}</td></tr>`;
+      }).join('') : '<tr><td colspan="4" class="empty">No subscribers yet.</td></tr>';
+    }
+
+    // ── Realtime ──
+    function setupRealtime(){
+      supabase.channel('hearth-activity')
+        .on('postgres_changes', { event:'INSERT', schema:'public', table:'event_rsvps' }, () => loadData())
+        .on('postgres_changes', { event:'INSERT', schema:'public', table:'newsletter_subscribers' }, () => loadData())
+        .subscribe();
+    }
+
+    // ── CSV export ──
+    window.exportCsv = (which) => {
+      const rows = which==='enroll'
+        ? [['Name','Email','Phone','First-timer','Found via','Interested in','Experience','Questions','Paid','Enrolled'],
+           ...enrollments.map(r=>[ (r.name||((r.first_name||'')+' '+(r.last_name||''))).trim(), r.email, r.phone||'', r.first_time_attendee?'yes':'', r.referral_source||'', Array.isArray(r.interests)?r.interests.join('; '):'', r.experience||'', r.questions||'', r.paid?'yes':'', r.submitted_at||'' ])]
+        : [['Name','Email','Source','Subscribed'],
+           ...subscribers.map(r=>[ ((r.first_name||'')+' '+(r.last_name||'')).trim(), r.email, r.source||'', subDate(r)||'' ])];
+      const csv = rows.map(row=> row.map(c=> '"'+String(c==null?'':c).replace(/"/g,'""')+'"').join(',')).join('\n');
+      const blob = new Blob([csv], { type:'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = (which==='enroll'?'enrollments':'subscribers') + '-' + new Date().toISOString().slice(0,10) + '.csv';
+      a.click();
+    };
+
+    initAuth();
+  </script>
+</body>
+</html>
