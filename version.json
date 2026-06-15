@@ -1,12 +1,12 @@
 {
-  "version": "v260615.12 8:54p",
-  "release": 12,
-  "sha": "6ed7202b",
-  "fullSha": "6ed7202b7522f42a74942e0218ff2021fec16bb0",
+  "version": "v260615.13 8:55p",
+  "release": 13,
+  "sha": "192c4ee9",
+  "fullSha": "192c4ee9bd46b5fcb04aa0bb86f3b589fcad047c",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T13:54:02-07:00",
-  "commits": [{"sha":"6ed7202b","message":"chore: remove BETA-COMING-SOON-BANNER from all pages","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T13:55:11-07:00",
+  "commits": [{"sha":"192c4ee9","message":"About: add Origin section (asymmetric split, first magazine pattern)","author":"Adi Marie"}]
 }
