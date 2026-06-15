@@ -1,14 +1,14 @@
 /* ===========================================================
    Newsletter signup handler
-   Wires #newsletter-form to the Supabase subscribe-newsletter
-   edge function. Passes source so admin can distinguish where
-   signups came from (homepage vs writings vs other pages added later).
-   Shows real success/error state in #newsletter-status.
+   Wires #newsletter-form to the intranet Supabase via the
+   contact_upsert_public RPC. Signups land in the contacts
+   table at new.theanimistapothecary.com/intranet with a
+   "Newsletter" tag — visible under Contacts > Newsletter.
    =========================================================== */
 
 (function () {
-  const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
+  const INTRANET_URL      = 'https://twmwqfmmfuwxvzkrwnui.supabase.co';
+  const INTRANET_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3bXdxZm1tZnV3eHZ6a3J3bnVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNjQ5ODEsImV4cCI6MjA5NDc0MDk4MX0.sXjGyRuKg8yCNq_hlrhJU-UAV0XT5mBICtdlFNLEcRM';
 
   function detectSource() {
     const path = window.location.pathname.toLowerCase();
@@ -16,7 +16,10 @@
     if (path.includes('writings')) return 'writings';
     if (path.includes('book.html')) return 'begin-here';
     if (path === '/' || path.endsWith('index.html')) return 'homepage';
-    // Default — page name without extension
+    if (path.includes('/letters/')) {
+      const lm = path.match(/\/letters\/([^\/]+)\.html$/);
+      return lm ? 'letters-' + lm[1] : 'letters';
+    }
     const m = path.match(/\/([^\/]+)\.html$/);
     return m ? m[1] : 'unknown';
   }
@@ -44,15 +47,21 @@
       submitBtn.textContent = 'Sending …';
     }
 
-    const formData = new FormData(form);
+    const formData     = new FormData(form);
+    const refSource    = (formData.get('referral_source') || '').trim();
+    const refDetail    = (formData.get('referral_detail') || '').trim();
+    const notesParts   = [refSource, refDetail].filter(Boolean);
+
     const payload = {
-      first_name: (formData.get('first_name') || '').trim(),
-      last_name: (formData.get('last_name') || '').trim(),
-      email: (formData.get('email') || '').trim().toLowerCase(),
-      source: detectSource(),
-      zip_code: (formData.get('zip_code') || '').trim(),
-      referral_source: (formData.get('referral_source') || '').trim(),
-      referral_detail: (formData.get('referral_detail') || '').trim(),
+      email:         (formData.get('email') || '').trim().toLowerCase(),
+      first_name:    (formData.get('first_name') || '').trim(),
+      last_name:     (formData.get('last_name') || '').trim(),
+      zip:           (formData.get('zip_code') || '').trim(),
+      referred_by:   refSource,
+      notes:         notesParts.join(' — '),
+      source_list:   detectSource(),
+      tags:          ['Newsletter'],
+      is_subscribed: true,
     };
 
     if (!payload.email) {
@@ -62,18 +71,18 @@
     }
 
     try {
-      const response = await fetch(SUPABASE_URL + '/functions/v1/subscribe-newsletter', {
+      const response = await fetch(INTRANET_URL + '/rest/v1/rpc/contact_upsert_public', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + INTRANET_ANON_KEY,
+          'apikey':        INTRANET_ANON_KEY,
+          'Prefer':        'return=representation',
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ p_payload: payload }),
       });
 
       if (response.ok) {
-        // Success — replace form with held-with-care message
         setStatus(statusEl, 'success', 'Held with care. The next letter will arrive with the season.');
         disableForm(form);
         if (submitBtn) submitBtn.textContent = '✓ Subscribed';
@@ -82,7 +91,8 @@
         let errMsg = 'Something went wrong. Please try again, or write to its.adimarie@gmail.com.';
         try {
           const parsed = JSON.parse(text);
-          if (parsed && parsed.error) errMsg = parsed.error;
+          if (parsed && parsed.message) errMsg = parsed.message;
+          else if (parsed && parsed.error) errMsg = parsed.error;
         } catch (_) {}
         setStatus(statusEl, 'error', errMsg);
         if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
