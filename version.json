@@ -1,12 +1,12 @@
 {
-  "version": "v260615.09 8:40p",
-  "release": 9,
-  "sha": "8aa6467d",
-  "fullSha": "8aa6467db719be78ee594a62e7d9d64f1223d398",
+  "version": "v260615.10 8:46p",
+  "release": 10,
+  "sha": "336050b7",
+  "fullSha": "336050b79b58043cd19fecbc1ae4f7ad92a88fd0",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T13:40:35-07:00",
-  "commits": [{"sha":"8aa6467d","message":"feat(nav): 7-item menu — Community Offerings / Ceremonial Coaching / Private Engagements","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T13:46:18-07:00",
+  "commits": [{"sha":"336050b7","message":"Revert \"feat(nav): 7-item menu — Community Offerings / Ceremonial Coaching / Private Engagements\"","author":"Adi Marie"}]
 }
