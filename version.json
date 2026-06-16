@@ -1,12 +1,12 @@
 {
-  "version": "v260616.03 12:13a",
-  "release": 3,
-  "sha": "5bd0c4b1",
-  "fullSha": "5bd0c4b1dda937b7e7ecefde3e6777b9da70a349",
+  "version": "v260616.04 12:18a",
+  "release": 4,
+  "sha": "9ca172d7",
+  "fullSha": "9ca172d778b20f05b1ccf25038c5ffa220d86af4",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T17:13:09-07:00",
-  "commits": [{"sha":"5bd0c4b1","message":"feat(nav): add Ceremonial Coaching item, slotted after About","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T17:18:37-07:00",
+  "commits": [{"sha":"9ca172d7","message":"feat(nav): drop Home item, rename CTA to \"Apply\"","author":"Adi Marie"}]
 }
