@@ -1,12 +1,12 @@
 {
-  "version": "v260616.02 12:11a",
-  "release": 2,
-  "sha": "4a619213",
-  "fullSha": "4a619213095cf2df8003f73f0dde639989b74812",
+  "version": "v260616.03 12:13a",
+  "release": 3,
+  "sha": "5bd0c4b1",
+  "fullSha": "5bd0c4b1dda937b7e7ecefde3e6777b9da70a349",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T17:11:12-07:00",
-  "commits": [{"sha":"4a619213","message":"Unify dashboards: one login, both databases","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T17:13:09-07:00",
+  "commits": [{"sha":"5bd0c4b1","message":"feat(nav): add Ceremonial Coaching item, slotted after About","author":"Adi Marie"}]
 }
