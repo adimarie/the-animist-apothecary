@@ -1,12 +1,12 @@
 {
-  "version": "v260616.05 12:46a",
-  "release": 5,
-  "sha": "e8e47a4b",
-  "fullSha": "e8e47a4b4e87dec749682c1f5292723a941ff0c0",
+  "version": "v260616.06 1:18a",
+  "release": 6,
+  "sha": "50ff31d0",
+  "fullSha": "50ff31d0b284118c0e04a34a146136975c6e36bf",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T17:46:20-07:00",
-  "commits": [{"sha":"e8e47a4b","message":"People view: tabbed categories woven from both databases","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T18:18:25-07:00",
+  "commits": [{"sha":"50ff31d0","message":"feat(group-work): rebuild as 5-section page with Fireside virtual classroom","author":"Adi Marie"}]
 }
