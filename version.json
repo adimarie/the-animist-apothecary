@@ -1,12 +1,12 @@
 {
-  "version": "v260615.13 8:55p",
-  "release": 13,
-  "sha": "192c4ee9",
-  "fullSha": "192c4ee9bd46b5fcb04aa0bb86f3b589fcad047c",
+  "version": "v260616.01 12:10a",
+  "release": 1,
+  "sha": "ddc4cdb0",
+  "fullSha": "ddc4cdb0c9c3fd89be8d64ca4a83bcb24d44a8cb",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T13:55:11-07:00",
-  "commits": [{"sha":"192c4ee9","message":"About: add Origin section (asymmetric split, first magazine pattern)","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T17:10:31-07:00",
+  "commits": [{"sha":"ddc4cdb0","message":"style(nav): rename \"Solo Work\" → \"Private Work\" in main + footer nav","author":"Adi Marie"}]
 }
