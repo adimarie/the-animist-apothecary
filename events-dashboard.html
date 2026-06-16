@@ -47,7 +47,7 @@
     .card .num{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--earth);line-height:1}
 
     .section{margin-bottom:36px}
-    .section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+    .section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px}
     .section-head h2{font-size:22px}
     .section-head .live{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--sage-dark);display:inline-flex;align-items:center;gap:6px}
     .live .dot{width:7px;height:7px;border-radius:50%;background:var(--sage);animation:pulse 1.8s infinite}
@@ -55,11 +55,19 @@
     .btn-export{background:#fff;border:1px solid var(--cream-dark);color:var(--earth-mid);padding:7px 14px;border-radius:var(--radius-sm);font-family:Inter;font-size:12px;cursor:pointer}
     .btn-export:hover{border-color:var(--gold);color:var(--gold)}
 
-    /* Group divider (separates the two data sources) */
+    /* Group divider */
     .group-divider{display:flex;align-items:center;gap:16px;margin:14px 0 24px}
     .group-divider::before,.group-divider::after{content:"";flex:1;height:1px;background:var(--line)}
-    .group-divider span{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--earth-mid);white-space:nowrap}
-    .group-divider small{display:block;font-family:Inter;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--earth-faint);text-align:center;margin-top:2px}
+    .group-divider span{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--earth-mid);white-space:nowrap;text-align:center}
+    .group-divider small{display:block;font-family:Inter;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--earth-faint);margin-top:2px}
+
+    /* People tabs */
+    .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+    .tab{padding:8px 16px;border:1px solid var(--line);background:#fff;border-radius:30px;font-family:Inter;font-size:13px;cursor:pointer;color:var(--earth-mid)}
+    .tab:hover{border-color:var(--gold)}
+    .tab .n{color:var(--earth-faint);margin-left:6px;font-size:12px}
+    .tab.active{background:var(--earth);color:var(--cream);border-color:transparent}
+    .tab.active .n{color:var(--gold-light)}
 
     /* Activity feed */
     .feed{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
@@ -81,6 +89,8 @@
     tr:last-child td{border-bottom:none}
     .muted{color:var(--earth-faint)}
     .pill{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;background:var(--cream-dark);color:var(--earth-mid);margin:1px 2px}
+    .pill.cer{background:var(--sage-light);color:var(--sage-dark)}
+    .pill.src{background:var(--gold-light);color:#8b7340}
     .yes{color:var(--sage-dark);font-weight:600}
     .amt{font-variant-numeric:tabular-nums;white-space:nowrap}
     .badge-in{color:var(--sage-dark);font-weight:600}
@@ -89,7 +99,7 @@
     .paid-toggle{cursor:pointer}
 
     /* Hearth connect fallback */
-    #hearth-connect{background:#fff;border:1px solid var(--cream-dark);border-radius:var(--radius);padding:24px;text-align:center;max-width:360px;margin:0 auto 24px}
+    #hearth-connect{background:#fff;border:1px solid var(--cream-dark);border-radius:var(--radius);padding:24px;text-align:center;max-width:380px;margin:0 auto 24px}
     #hearth-connect p{font-size:13px;color:var(--earth-mid);margin-bottom:14px}
     #hearth-connect input{width:100%;padding:10px 12px;margin-bottom:10px;border:1px solid var(--cream-dark);border-radius:4px;font-family:Inter;font-size:13px;background:var(--cream)}
     #hearth-connect button{padding:10px 22px;background:var(--earth);color:var(--cream);border:none;border-radius:var(--radius-sm);font-size:13px;cursor:pointer}
@@ -103,7 +113,7 @@
   <!-- LOGIN -->
   <div id="login-screen">
     <h1>The Hearth</h1>
-    <p>One sign-in shows everything — your website enrollments &amp; subscribers, and your Hearth contacts &amp; ledger, together.</p>
+    <p>One sign-in shows everything — your website enrollments &amp; subscribers, and your Hearth people &amp; ledger, together.</p>
     <form id="email-form" onsubmit="event.preventDefault(); signInEmail();">
       <input id="email-input" type="email" placeholder="Email" autocomplete="email" value="adimarie@bodyworkandbotanicals.com">
       <input id="password-input" type="password" placeholder="Password" autocomplete="current-password">
@@ -131,15 +141,49 @@
       </div>
     </div>
 
-    <!-- ───────── WEBSITE (project wdec…) ───────── -->
-    <div class="group-divider"><span>Your Website<small>theanimistapothecary.com</small></span></div>
-
+    <!-- KPIs across both worlds -->
     <div class="cards">
-      <div class="card"><div class="label">Enrollments</div><div class="num" id="c-enroll">—</div></div>
-      <div class="card"><div class="label">Subscribers</div><div class="num" id="c-sub">—</div></div>
-      <div class="card"><div class="label">First-timers</div><div class="num" id="c-first">—</div></div>
-      <div class="card"><div class="label">This week</div><div class="num" id="c-week">—</div></div>
+      <div class="card"><div class="label">Newsletter</div><div class="num" id="c-news">—</div></div>
+      <div class="card"><div class="label">Ceremony-approved</div><div class="num" id="c-ceremony">—</div></div>
+      <div class="card"><div class="label">Event enrollments</div><div class="num" id="c-enroll">—</div></div>
+      <div class="card"><div class="label">Money in</div><div class="num" id="c-money">—</div></div>
     </div>
+
+    <!-- ───────── PEOPLE (both databases, by category) ───────── -->
+    <div class="group-divider"><span>People<small>your contacts, by category</small></span></div>
+
+    <div id="hearth-connect" style="display:none">
+      <p>Your Hearth uses a separate password. Enter it once to pull in your contacts, leads, clients &amp; ceremony folk. (Your newsletter list shows either way.)</p>
+      <form onsubmit="event.preventDefault(); connectHearthManual();">
+        <input id="hearth-pw" type="password" placeholder="Hearth password" autocomplete="off">
+        <div class="hearth-err" id="hearth-err"></div>
+        <button type="submit">Connect Hearth</button>
+      </form>
+    </div>
+
+    <div class="tabs" id="people-tabs">
+      <button class="tab active" data-seg="newsletter" onclick="setSegment('newsletter')">Newsletter <span class="n" id="t-newsletter"></span></button>
+      <button class="tab" data-seg="ceremony" onclick="setSegment('ceremony')">Approved for ceremony <span class="n" id="t-ceremony"></span></button>
+      <button class="tab" data-seg="leads" onclick="setSegment('leads')">Leads <span class="n" id="t-leads"></span></button>
+      <button class="tab" data-seg="clients" onclick="setSegment('clients')">Clients <span class="n" id="t-clients"></span></button>
+      <button class="tab" data-seg="all" onclick="setSegment('all')">All contacts <span class="n" id="t-all"></span></button>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <h2 id="people-title">Newsletter subscribers</h2>
+        <button class="btn-export" onclick="exportPeople()">Export CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Email</th><th>Location</th><th id="people-col4">Source</th><th>Added</th></tr></thead>
+          <tbody id="people-rows"><tr><td colspan="5" class="empty">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ───────── WEBSITE EVENTS ───────── -->
+    <div class="group-divider"><span>Events<small>live reservations from your website</small></span></div>
 
     <div class="section">
       <div class="section-head">
@@ -162,63 +206,18 @@
       </div>
     </div>
 
-    <div class="section">
+    <!-- ───────── HEARTH LEDGER ───────── -->
+    <div class="group-divider" id="ledger-divider" style="display:none"><span>Ledger<small>recent money movement</small></span></div>
+    <div class="section" id="ledger-section" style="display:none">
       <div class="section-head">
-        <h2>Newsletter subscribers</h2>
-        <button class="btn-export" onclick="exportCsv('sub')">Export CSV</button>
+        <h2>Ledger</h2>
+        <button class="btn-export" onclick="exportHearth('tx')">Export CSV</button>
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Name</th><th>Email</th><th>Source</th><th>Subscribed</th></tr></thead>
-          <tbody id="sub-rows"><tr><td colspan="4" class="empty">Loading…</td></tr></tbody>
+          <thead><tr><th>Date</th><th>Flow</th><th>Amount</th><th>Who</th><th>Category</th><th>Via</th></tr></thead>
+          <tbody id="htx-rows"><tr><td colspan="6" class="empty">Loading…</td></tr></tbody>
         </table>
-      </div>
-    </div>
-
-    <!-- ───────── HEARTH (project twmw…) ───────── -->
-    <div class="group-divider"><span>Your Hearth<small>back-office CRM &amp; ledger</small></span></div>
-
-    <div id="hearth-connect" style="display:none">
-      <p>Your Hearth uses a separate password. Enter it once to pull your contacts, clients, participants &amp; ledger in here too.</p>
-      <form onsubmit="event.preventDefault(); connectHearthManual();">
-        <input id="hearth-pw" type="password" placeholder="Hearth password" autocomplete="off">
-        <div class="hearth-err" id="hearth-err"></div>
-        <button type="submit">Connect Hearth</button>
-      </form>
-    </div>
-
-    <div id="hearth-body" style="display:none">
-      <div class="cards">
-        <div class="card"><div class="label">Contacts</div><div class="num" id="h-contacts">—</div></div>
-        <div class="card"><div class="label">Clients</div><div class="num" id="h-clients">—</div></div>
-        <div class="card"><div class="label">Participants</div><div class="num" id="h-parts">—</div></div>
-        <div class="card"><div class="label">Money in</div><div class="num" id="h-money">—</div></div>
-      </div>
-
-      <div class="section">
-        <div class="section-head">
-          <h2>Contacts</h2>
-          <button class="btn-export" onclick="exportHearth('contacts')">Export CSV</button>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Name</th><th>Email</th><th>Location</th><th>List</th><th>Subscribed</th><th>Added</th></tr></thead>
-            <tbody id="hcontact-rows"><tr><td colspan="6" class="empty">Loading…</td></tr></tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-head">
-          <h2>Ledger <span class="muted" style="font-size:13px;font-family:Inter">· recent money movement</span></h2>
-          <button class="btn-export" onclick="exportHearth('tx')">Export CSV</button>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Date</th><th>Flow</th><th>Amount</th><th>Who</th><th>Category</th><th>Via</th></tr></thead>
-            <tbody id="htx-rows"><tr><td colspan="6" class="empty">Loading…</td></tr></tbody>
-          </table>
-        </div>
       </div>
     </div>
   </div>
@@ -227,29 +226,36 @@
     import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
     // ── Two data sources ──────────────────────────────────────────────
-    // 1) Website / public-site database
     const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
-    // 2) Hearth / back-office database
     const HEARTH_URL = 'https://twmwqfmmfuwxvzkrwnui.supabase.co';
     const HEARTH_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3bXdxZm1tZnV3eHZ6a3J3bnVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNjQ5ODEsImV4cCI6MjA5NDc0MDk4MX0.sXjGyRuKg8yCNq_hlrhJU-UAV0XT5mBICtdlFNLEcRM';
 
     const ADMIN_EMAILS = ['adimarie@bodyworkandbotanicals.com', 'its.adimarie@gmail.com'];
+    // "Approved for ceremony work" = contacts carrying any of these tags (Adi's choice, 2026-06-15).
+    // Add more tags here anytime to widen the cohort.
+    const CEREMONY_TAGS = ['Ceremonial Immersion','Ceremonial Therapeutics','active container'];
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, { auth:{ storageKey:'sb-site-auth' } });
     const hearth   = createClient(HEARTH_URL, HEARTH_ANON_KEY,   { auth:{ storageKey:'sb-hearth-auth' } });
 
     let enrollments = [], subscribers = [];
-    let hearthData = { contacts:[], clients:[], participants:[], tx:[] };
+    let hearthData = { contacts:[], tx:[] };
     let hearthConnected = false;
-    let pendingPassword = null;   // captured at login to also unlock Hearth
+    let pendingPassword = null;
     let currentEmail = null;
+    let activeSegment = 'newsletter';
 
     const $ = id => document.getElementById(id);
     const esc = s => { const d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML; };
     const subDate = r => r.created_at || r.subscribed_at || r.inserted_at || r.submitted_at || null;
     const isIncoming = d => /^(in|credit|incoming|deposit)/i.test(d || '');
     const money = cents => '$' + Math.round((cents||0)/100).toLocaleString('en-US');
+    const fullName = r => (((r.first_name||'')+' '+(r.last_name||'')).trim()) || r.full_name || '—';
+    const locOf = r => [r.city, r.state].filter(Boolean).join(', ');
+    const hasTag = (r, tag) => Array.isArray(r.tags) && r.tags.includes(tag);
+    const isCeremony = r => Array.isArray(r.tags) && r.tags.some(t => CEREMONY_TAGS.includes(t));
+    const isNewsletterContact = r => hasTag(r,'Newsletter') || /newsletter/i.test(r.source_list||'');
     function timeAgo(iso){
       if(!iso) return '—';
       const s = Math.floor((Date.now() - new Date(iso).getTime())/1000);
@@ -265,7 +271,7 @@
     window.signInEmail = async () => {
       const email=$('email-input').value.trim(), password=$('password-input').value;
       if(!email||!password){ $('login-error').textContent='Enter email and password'; $('login-error').style.display='block'; return; }
-      pendingPassword = password;          // stash to also unlock Hearth (same password in most cases)
+      pendingPassword = password;
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if(error){ pendingPassword=null; $('login-error').textContent=error.message; $('login-error').style.display='block'; }
     };
@@ -290,8 +296,8 @@
       $('today').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
       $('user-email').textContent = session.user.email;
 
-      await connectHearth();      // unlock the second database (silent if same password)
-      await loadData();           // website data
+      await connectHearth();
+      await loadData();
       if(hearthConnected) await loadHearth();
       render();
       setupRealtime();
@@ -299,7 +305,6 @@
     }
     supabase.auth.onAuthStateChange((_e, s) => { if(s) initAuth(); });
 
-    // Try to unlock Hearth: reuse an existing Hearth session, else the password just entered.
     async function connectHearth(){
       try{
         const { data:{ session } } = await hearth.auth.getSession();
@@ -313,7 +318,6 @@
       updateHearthUI();
     }
 
-    // Fallback when Hearth uses a different password.
     window.connectHearthManual = async () => {
       const pw = $('hearth-pw').value;
       if(!pw){ return; }
@@ -321,17 +325,20 @@
       if(error){ $('hearth-err').textContent = error.message; return; }
       hearthConnected = true; $('hearth-err').textContent='';
       updateHearthUI();
-      await loadHearth(); renderHearth();
+      await loadHearth(); render();
     };
 
     function updateHearthUI(){
       $('src-hearth').className = 'src-pill' + (hearthConnected ? ' on' : '');
       $('src-hearth').textContent = (hearthConnected ? '● ' : '○ ') + 'Hearth';
-      $('hearth-connect').style.display = hearthConnected ? 'none' : 'block';
-      $('hearth-body').style.display    = hearthConnected ? 'block' : 'none';
+      // Connect prompt shows only when a Hearth-only tab is active and we're not connected.
+      const needsHearth = activeSegment !== 'newsletter';
+      $('hearth-connect').style.display = (!hearthConnected && needsHearth) ? 'block' : 'none';
+      $('ledger-divider').style.display = hearthConnected ? 'flex' : 'none';
+      $('ledger-section').style.display = hearthConnected ? 'block' : 'none';
     }
 
-    // ── Website data ──────────────────────────────────────────────────
+    // ── Data ──────────────────────────────────────────────────────────
     async function loadData(){
       const [e, s] = await Promise.all([
         supabase.from('event_rsvps').select('*').order('submitted_at',{ascending:false}),
@@ -341,50 +348,123 @@
       if(!s.error){ subscribers = (s.data||[]).slice().sort((a,b)=> new Date(subDate(b)||0) - new Date(subDate(a)||0)); }
     }
 
-    // ── Hearth data ───────────────────────────────────────────────────
     async function loadHearth(){
       if(!hearthConnected) return;
-      const [c, cl, p, t] = await Promise.all([
-        hearth.from('contacts').select('first_name,last_name,email,phone,city,state,source_list,is_subscribed,created_at').order('created_at',{ascending:false}),
-        hearth.from('clients').select('first_name,last_name,full_name,email,status,pipeline_stage,is_archived,created_at').order('created_at',{ascending:false}),
-        hearth.from('participants').select('first_name,last_name,email,home_city,is_archived,created_at').order('created_at',{ascending:false}),
+      const [c, t] = await Promise.all([
+        hearth.from('contacts').select('id,first_name,last_name,email,phone,city,state,source_list,is_subscribed,tags,created_at').order('created_at',{ascending:false}),
         hearth.from('external_transactions').select('occurred_at,amount_cents,direction,counterparty_name,category,payment_type,source,is_archived').order('occurred_at',{ascending:false}).limit(250)
       ]);
-      hearthData.contacts     = c.error  ? [] : (c.data||[]);
-      hearthData.clients      = cl.error ? [] : (cl.data||[]).filter(x=>!x.is_archived);
-      hearthData.participants = p.error  ? [] : (p.data||[]).filter(x=>!x.is_archived);
-      hearthData.tx           = t.error  ? [] : (t.data||[]).filter(x=>!x.is_archived);
+      hearthData.contacts = c.error ? [] : (c.data||[]);
+      hearthData.tx       = t.error ? [] : (t.data||[]).filter(x=>!x.is_archived);
     }
 
-    // ── Combined periodic refresh ─────────────────────────────────────
     async function refresh(){
       await loadData();
       if(hearthConnected) await loadHearth();
       render();
     }
 
+    // ── Newsletter: unified across both databases, de-duped by email ──
+    function newsletterUnified(){
+      const out = new Map();
+      const norm = e => (e||'').trim().toLowerCase();
+      // Hearth newsletter contacts
+      hearthData.contacts.filter(isNewsletterContact).forEach(c=>{
+        const k = norm(c.email) || ('h:'+c.id);
+        out.set(k, { name:fullName(c), email:c.email||'', loc:locOf(c), src:'Hearth', when:c.created_at });
+      });
+      // Website signups
+      subscribers.forEach((s,i)=>{
+        const k = norm(s.email) || ('w:'+i);
+        if(out.has(k)){ const e=out.get(k); e.src='Website + Hearth'; if(!e.when) e.when=subDate(s); }
+        else out.set(k, { name:fullName(s), email:s.email||'', loc:'', src:'Website', when:subDate(s) });
+      });
+      return [...out.values()].sort((a,b)=> new Date(b.when||0) - new Date(a.when||0));
+    }
+
+    function newsletterCount(){
+      // unified count works even before Hearth connects (website-only)
+      return hearthConnected ? newsletterUnified().length : subscribers.length;
+    }
+
     // ── Render ────────────────────────────────────────────────────────
-    function render(){ renderSite(); if(hearthConnected) renderHearth(); }
+    function render(){ renderKpis(); renderPeople(); renderEvents(); renderLedger(); }
 
-    function renderSite(){
-      const weekAgo = Date.now() - 7*86400000;
+    function renderKpis(){
+      $('c-news').textContent = newsletterCount();
+      $('c-ceremony').textContent = hearthConnected ? hearthData.contacts.filter(isCeremony).length : '—';
       $('c-enroll').textContent = enrollments.length;
-      $('c-sub').textContent = subscribers.length;
-      $('c-first').textContent = enrollments.filter(r=>r.first_time_attendee).length;
-      $('c-week').textContent = enrollments.filter(r=> new Date(r.submitted_at).getTime()>weekAgo).length
-                              + subscribers.filter(r=> new Date(subDate(r)||0).getTime()>weekAgo).length;
+      const moneyIn = hearthData.tx.filter(t=>isIncoming(t.direction)).reduce((s,t)=> s + (t.amount_cents||0), 0);
+      $('c-money').textContent = hearthConnected ? money(moneyIn) : '—';
+    }
 
-      const acts = [
-        ...enrollments.map(r=>({ t:'enroll', when:r.submitted_at, name:(r.name||((r.first_name||'')+' '+(r.last_name||''))).trim()||r.email, email:r.email })),
-        ...subscribers.map(r=>({ t:'sub', when:subDate(r), name:((r.first_name||'')+' '+(r.last_name||'')).trim()||r.email, email:r.email }))
-      ].filter(a=>a.when).sort((a,b)=> new Date(b.when)-new Date(a.when)).slice(0,18);
-      $('feed').innerHTML = acts.length ? acts.map(a=>`
-        <div class="feed-item">
-          <span class="feed-badge ${a.t==='enroll'?'badge-enroll':'badge-sub'}">${a.t==='enroll'?'Enrolled':'Subscribed'}</span>
-          <div class="feed-main"><div class="who">${esc(a.name)}</div><div class="what">${esc(a.email)} ${a.t==='enroll'?'· reserved a place':'· joined the Letters'}</div></div>
-          <div class="feed-when">${timeAgo(a.when)}</div>
-        </div>`).join('') : '<div class="empty">No activity yet — it will appear here the moment someone enrolls or subscribes.</div>';
+    window.setSegment = (seg) => {
+      activeSegment = seg;
+      document.querySelectorAll('#people-tabs .tab').forEach(b=> b.classList.toggle('active', b.dataset.seg===seg));
+      updateHearthUI();
+      renderPeople();
+    };
 
+    function tagPills(tags, highlight){
+      if(!Array.isArray(tags) || !tags.length) return '<span class="muted">—</span>';
+      return tags.slice(0,6).map(t=>`<span class="pill ${highlight&&CEREMONY_TAGS.includes(t)?'cer':''}">${esc(t)}</span>`).join('');
+    }
+
+    function renderPeople(){
+      // tab counts
+      const C = hearthData.contacts;
+      $('t-newsletter').textContent = newsletterCount();
+      $('t-ceremony').textContent = hearthConnected ? C.filter(isCeremony).length : '·';
+      $('t-leads').textContent    = hearthConnected ? C.filter(c=>hasTag(c,'Lead')).length : '·';
+      $('t-clients').textContent  = hearthConnected ? C.filter(c=>hasTag(c,'Client')).length : '·';
+      $('t-all').textContent      = hearthConnected ? C.length : '·';
+
+      const seg = activeSegment;
+      const tbody = $('people-rows');
+      const titles = { newsletter:'Newsletter subscribers', ceremony:'Approved for ceremony work', leads:'Leads', clients:'Clients', all:'All contacts' };
+      const col4 = { newsletter:'Source', ceremony:'Ceremonial tags', leads:'Tags', clients:'Tags', all:'Tags' };
+      $('people-title').textContent = titles[seg];
+      $('people-col4').textContent = col4[seg];
+
+      // Newsletter renders from either source; the rest need Hearth.
+      if(seg !== 'newsletter' && !hearthConnected){
+        tbody.innerHTML = '<tr><td colspan="5" class="empty">Connect your Hearth above to see this list.</td></tr>';
+        return;
+      }
+
+      let rows;
+      if(seg === 'newsletter'){
+        rows = newsletterUnified().map(p=>({
+          name:p.name, email:p.email, loc:p.loc,
+          col4:`<span class="pill src">${esc(p.src)}</span>`, when:p.when
+        }));
+      } else {
+        let list;
+        if(seg === 'ceremony') list = C.filter(isCeremony);
+        else if(seg === 'leads') list = C.filter(c=>hasTag(c,'Lead'));
+        else if(seg === 'clients') list = C.filter(c=>hasTag(c,'Client'));
+        else list = C;
+        rows = list.map(c=>({
+          name:fullName(c), email:c.email||'', loc:locOf(c),
+          col4: seg==='ceremony'
+            ? tagPills((c.tags||[]).filter(t=>CEREMONY_TAGS.includes(t)), true)
+            : tagPills(c.tags, false),
+          when:c.created_at
+        }));
+      }
+
+      tbody.innerHTML = rows.length ? rows.map(r=>`
+        <tr>
+          <td>${esc(r.name)}</td>
+          <td>${esc(r.email)||'<span class="muted">—</span>'}</td>
+          <td>${esc(r.loc)||'<span class="muted">—</span>'}</td>
+          <td>${r.col4}</td>
+          <td class="muted">${shortDate(r.when)}</td>
+        </tr>`).join('') : '<tr><td colspan="5" class="empty">No one in this category yet.</td></tr>';
+    }
+
+    function renderEvents(){
+      $('feed') && renderActivity();
       $('enroll-rows').innerHTML = enrollments.length ? enrollments.map(r=>{
         const name = (r.name||((r.first_name||'')+' '+(r.last_name||''))).trim()||'—';
         const interests = Array.isArray(r.interests) ? r.interests.map(i=>`<span class="pill">${esc(i)}</span>`).join('') : '';
@@ -397,38 +477,28 @@
           <td class="muted">${timeAgo(r.submitted_at)}</td>
         </tr>`;
       }).join('') : '<tr><td colspan="7" class="empty">No enrollments yet.</td></tr>';
-
       document.querySelectorAll('.paid-toggle').forEach(cb=> cb.addEventListener('change', async ()=>{
         await supabase.from('event_rsvps').update({ paid: cb.checked }).eq('id', cb.dataset.id);
       }));
-
-      $('sub-rows').innerHTML = subscribers.length ? subscribers.map(r=>{
-        const name = ((r.first_name||'')+' '+(r.last_name||'')).trim()||'—';
-        return `<tr><td>${esc(name)}</td><td>${esc(r.email)}</td><td>${esc(r.source)||'<span class="muted">—</span>'}</td><td class="muted">${timeAgo(subDate(r))}</td></tr>`;
-      }).join('') : '<tr><td colspan="4" class="empty">No subscribers yet.</td></tr>';
     }
 
-    function renderHearth(){
-      const C = hearthData;
-      $('h-contacts').textContent = C.contacts.length;
-      $('h-clients').textContent  = C.clients.length;
-      $('h-parts').textContent    = C.participants.length;
-      const moneyIn = C.tx.filter(t=>isIncoming(t.direction)).reduce((s,t)=> s + (t.amount_cents||0), 0);
-      $('h-money').textContent = money(moneyIn);
+    function renderActivity(){
+      const acts = [
+        ...enrollments.map(r=>({ t:'enroll', when:r.submitted_at, name:(r.name||((r.first_name||'')+' '+(r.last_name||''))).trim()||r.email, email:r.email })),
+        ...subscribers.map(r=>({ t:'sub', when:subDate(r), name:((r.first_name||'')+' '+(r.last_name||'')).trim()||r.email, email:r.email }))
+      ].filter(a=>a.when).sort((a,b)=> new Date(b.when)-new Date(a.when)).slice(0,15);
+      $('feed').innerHTML = acts.length ? acts.map(a=>`
+        <div class="feed-item">
+          <span class="feed-badge ${a.t==='enroll'?'badge-enroll':'badge-sub'}">${a.t==='enroll'?'Enrolled':'Subscribed'}</span>
+          <div class="feed-main"><div class="who">${esc(a.name)}</div><div class="what">${esc(a.email)} ${a.t==='enroll'?'· reserved a place':'· joined the Letters'}</div></div>
+          <div class="feed-when">${timeAgo(a.when)}</div>
+        </div>`).join('') : '<div class="empty">No activity yet — it will appear here the moment someone enrolls or subscribes.</div>';
+    }
 
-      $('hcontact-rows').innerHTML = C.contacts.length ? C.contacts.slice(0,150).map(r=>{
-        const name = ((r.first_name||'')+' '+(r.last_name||'')).trim()||'—';
-        const loc = [r.city, r.state].filter(Boolean).join(', ');
-        return `<tr>
-          <td>${esc(name)}</td><td>${esc(r.email)||'<span class="muted">—</span>'}</td>
-          <td>${esc(loc)||'<span class="muted">—</span>'}</td>
-          <td>${esc(r.source_list)||'<span class="muted">—</span>'}</td>
-          <td>${r.is_subscribed?'<span class="yes">Yes</span>':'<span class="muted">—</span>'}</td>
-          <td class="muted">${shortDate(r.created_at)}</td>
-        </tr>`;
-      }).join('') : '<tr><td colspan="6" class="empty">No contacts found.</td></tr>';
-
-      $('htx-rows').innerHTML = C.tx.length ? C.tx.slice(0,120).map(r=>{
+    function renderLedger(){
+      if(!hearthConnected) return;
+      const T = hearthData.tx;
+      $('htx-rows').innerHTML = T.length ? T.slice(0,120).map(r=>{
         const inc = isIncoming(r.direction);
         return `<tr>
           <td class="muted">${shortDate(r.occurred_at)}</td>
@@ -457,6 +527,22 @@
       a.download = name + '-' + new Date().toISOString().slice(0,10) + '.csv';
       a.click();
     }
+    window.exportPeople = () => {
+      const seg = activeSegment;
+      let rows;
+      if(seg === 'newsletter'){
+        rows = [['Name','Email','Location','Source','Added'],
+          ...newsletterUnified().map(p=>[ p.name, p.email, p.loc, p.src, p.when||'' ])];
+      } else {
+        const C = hearthData.contacts;
+        let list = seg==='ceremony' ? C.filter(isCeremony)
+                 : seg==='leads' ? C.filter(c=>hasTag(c,'Lead'))
+                 : seg==='clients' ? C.filter(c=>hasTag(c,'Client')) : C;
+        rows = [['Name','Email','Phone','City','State','Tags','Added'],
+          ...list.map(c=>[ fullName(c), c.email||'', c.phone||'', c.city||'', c.state||'', (c.tags||[]).join('; '), c.created_at||'' ])];
+      }
+      downloadCsv(rows, 'people-'+seg);
+    };
     window.exportCsv = (which) => {
       const rows = which==='enroll'
         ? [['Name','Email','Phone','First-timer','Found via','Interested in','Experience','Questions','Paid','Enrolled'],
@@ -466,12 +552,9 @@
       downloadCsv(rows, which==='enroll'?'enrollments':'subscribers');
     };
     window.exportHearth = (which) => {
-      const rows = which==='contacts'
-        ? [['Name','Email','Phone','City','State','List','Subscribed','Added'],
-           ...hearthData.contacts.map(r=>[ ((r.first_name||'')+' '+(r.last_name||'')).trim(), r.email||'', r.phone||'', r.city||'', r.state||'', r.source_list||'', r.is_subscribed?'yes':'', r.created_at||'' ])]
-        : [['Date','Flow','Amount','Currency','Who','Category','Via','Source'],
+      const rows = [['Date','Flow','Amount','Currency','Who','Category','Via','Source'],
            ...hearthData.tx.map(r=>[ r.occurred_at||'', isIncoming(r.direction)?'in':'out', ((r.amount_cents||0)/100).toFixed(2), 'USD', r.counterparty_name||'', r.category||'', r.payment_type||'', r.source||'' ])];
-      downloadCsv(rows, which==='contacts'?'hearth-contacts':'hearth-ledger');
+      downloadCsv(rows, 'hearth-ledger');
     };
 
     initAuth();
