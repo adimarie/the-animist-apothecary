@@ -1,12 +1,12 @@
 {
-  "version": "v260616.04 12:18a",
-  "release": 4,
-  "sha": "9ca172d7",
-  "fullSha": "9ca172d778b20f05b1ccf25038c5ffa220d86af4",
+  "version": "v260616.05 12:46a",
+  "release": 5,
+  "sha": "e8e47a4b",
+  "fullSha": "e8e47a4b4e87dec749682c1f5292723a941ff0c0",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T17:18:37-07:00",
-  "commits": [{"sha":"9ca172d7","message":"feat(nav): drop Home item, rename CTA to \"Apply\"","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T17:46:20-07:00",
+  "commits": [{"sha":"e8e47a4b","message":"People view: tabbed categories woven from both databases","author":"Adi Marie"}]
 }
