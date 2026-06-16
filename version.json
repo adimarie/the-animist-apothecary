@@ -1,12 +1,12 @@
 {
-  "version": "v260616.01 12:10a",
-  "release": 1,
-  "sha": "ddc4cdb0",
-  "fullSha": "ddc4cdb0c9c3fd89be8d64ca4a83bcb24d44a8cb",
+  "version": "v260616.02 12:11a",
+  "release": 2,
+  "sha": "4a619213",
+  "fullSha": "4a619213095cf2df8003f73f0dde639989b74812",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T17:10:31-07:00",
-  "commits": [{"sha":"ddc4cdb0","message":"style(nav): rename \"Solo Work\" → \"Private Work\" in main + footer nav","author":"Adi Marie"}]
+  "pushedAt": "2026-06-15T17:11:12-07:00",
+  "commits": [{"sha":"4a619213","message":"Unify dashboards: one login, both databases","author":"Adi Marie"}]
 }
