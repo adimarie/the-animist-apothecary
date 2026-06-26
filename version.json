@@ -1,12 +1,12 @@
 {
-  "version": "v260616.06 1:18a",
-  "release": 6,
-  "sha": "50ff31d0",
-  "fullSha": "50ff31d0b284118c0e04a34a146136975c6e36bf",
+  "version": "v260626.01 9:45p",
+  "release": 1,
+  "sha": "299ebc76",
+  "fullSha": "299ebc7603eb13494cc2902032495793f01f0d8f",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm1li68",
-  "pushedAt": "2026-06-15T18:18:25-07:00",
-  "commits": [{"sha":"50ff31d0","message":"feat(group-work): rebuild as 5-section page with Fireside virtual classroom","author":"Adi Marie"}]
+  "machine": "runnervmmklqx",
+  "pushedAt": "2026-06-26T14:44:51-07:00",
+  "commits": [{"sha":"299ebc76","message":"Add custom Virtual Services booking flow (schedule + intake + Venmo)","author":"Adi Marie"}]
 }
