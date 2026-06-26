@@ -1,12 +1,12 @@
 {
-  "version": "v260626.02 10:38p",
-  "release": 2,
-  "sha": "829832af",
-  "fullSha": "829832af037636ecdb8914f2a81209edd7f065f9",
+  "version": "v260626.03 10:43p",
+  "release": 3,
+  "sha": "0030417c",
+  "fullSha": "0030417cbcc506fccc17ac34b011a37c17aa4b44",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-26T15:38:01-07:00",
-  "commits": [{"sha":"829832af","message":"Booking widget: render one-on-one offerings as 3 polished equal columns","author":"Adi Marie"}]
+  "pushedAt": "2026-06-26T15:43:38-07:00",
+  "commits": [{"sha":"0030417c","message":"Virtual Services: add Virtual Group Sessions + In-Person Gatherings sections","author":"Adi Marie"}]
 }
