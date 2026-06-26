@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Your Booking &middot; The Animist Apothecary</title>
+  <meta name="description" content="View, reschedule, or cancel your session with Adi Marie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v18">
+  <style>
+    body[data-content-page="manage"] .mb-wrap { background: var(--paper,#F7F5F0); min-height: 70vh; padding: 56px 20px 88px; }
+    .mb-card { max-width: 600px; margin: 0 auto; background:#fff; border:1px solid rgba(45,42,38,0.10); border-radius:14px; box-shadow:0 14px 36px rgba(45,42,38,0.10); overflow:hidden; }
+    .mb-head { padding: 28px 30px 8px; text-align:center; }
+    .mb-eyebrow { font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold,#C9A84C); font-weight:600; }
+    .mb-title { font-family:'Cormorant Garamond',Georgia,serif; font-size:30px; font-weight:500; margin:8px 0 0; color:var(--bark,#2D2A26); }
+    .mb-title em { font-style:italic; color:var(--gold,#C9A84C); }
+    .mb-body { padding: 18px 30px 30px; font-family:'Inter',sans-serif; color:var(--bark,#2D2A26); }
+    .mb-summary { background:var(--parchment-warm,#F4EAD3); border-radius:11px; padding:18px 20px; margin:6px 0 18px; }
+    .mb-row { display:flex; justify-content:space-between; gap:14px; padding:5px 0; font-size:14.5px; }
+    .mb-row span { color:var(--ink-quiet,#5A554C); text-transform:uppercase; font-size:11px; letter-spacing:.07em; font-weight:600; align-self:center; }
+    .mb-row strong { font-weight:600; text-align:right; }
+    .mb-status { display:inline-block; font-size:11px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; padding:3px 10px; border-radius:20px; }
+    .mb-status.scheduled { background:#e7efe1; color:#4A6344; }
+    .mb-status.cancelled { background:#f6ece6; color:#9a4a2f; }
+    .mb-status.completed { background:#ece6f0; color:#5a4a6a; }
+    .mb-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:8px; }
+    .mb-btn { flex:1 1 auto; min-width:160px; text-align:center; border:none; border-radius:10px; padding:14px; font-family:'Inter',sans-serif; font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:600; cursor:pointer; transition:all .18s; }
+    .mb-btn--primary { background:#1F1A18; color:var(--parchment-warm,#F4EAD3); }
+    .mb-btn--primary:hover { background:#000; }
+    .mb-btn--ghost { background:transparent; color:var(--ink-quiet,#5A554C); border:1px solid rgba(45,42,38,0.18); }
+    .mb-btn--ghost:hover { border-color:#9a4a2f; color:#9a4a2f; }
+    .mb-btn:disabled { opacity:.5; cursor:default; }
+    .mb-note { font-size:13.5px; line-height:1.6; color:var(--ink-quiet,#5A554C); margin:16px 0 0; }
+    .mb-note a { color:var(--copper,#886039); }
+    .mb-err { background:#f6ece6; color:#9a4a2f; border:1px solid #e6cdbf; border-radius:9px; padding:11px 14px; font-size:14px; margin:14px 0 0; }
+    .mb-ok { background:#e7efe1; color:#4A6344; border:1px solid #cfe0c5; border-radius:9px; padding:12px 16px; font-size:14.5px; margin:14px 0 0; text-align:center; }
+    .mb-loadrow { display:flex; align-items:center; gap:10px; justify-content:center; color:var(--ink-quiet,#5A554C); font-size:14px; padding:40px; }
+    .mb-spin { width:15px; height:15px; border:2px solid rgba(201,168,76,.3); border-top-color:var(--gold,#C9A84C); border-radius:50%; animation:mbspin .7s linear infinite; }
+    @keyframes mbspin { to { transform:rotate(360deg); } }
+    /* reschedule picker */
+    .mb-resched { margin-top:18px; border-top:1px solid rgba(45,42,38,0.1); padding-top:18px; }
+    .mb-resched h3 { font-family:'Cormorant Garamond',serif; font-size:20px; margin:0 0 12px; }
+    .mb-days { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+    .mb-day { border:1px solid rgba(45,42,38,0.15); background:var(--paper,#F7F5F0); border-radius:8px; padding:8px 12px; font-size:13px; cursor:pointer; font-family:'Inter',sans-serif; }
+    .mb-day:hover { border-color:var(--gold,#C9A84C); }
+    .mb-day.is-on { background:var(--gold,#C9A84C); color:#fff; border-color:var(--gold,#C9A84C); }
+    .mb-slots { display:flex; flex-wrap:wrap; gap:8px; }
+    .mb-slot { border:1px solid rgba(45,42,38,0.15); background:#fff; border-radius:8px; padding:9px 14px; font-size:14px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; }
+    .mb-slot:hover { border-color:var(--gold,#C9A84C); }
+  </style>
+</head>
+<body data-content-page="manage">
+
+      <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span>
+      </a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="ceremonial-coaching.html">Ceremonial Coaching</a></li>
+          <li><a href="solo-work.html">Virtual Sessions</a></li>
+          <li><a href="group-work.html">Gatherings</a></li>
+          <li><a href="training-grounds.html">The School</a></li>
+          <li><a href="writings.html">Resources</a></li>
+        </ul>
+      </nav>
+      <a href="book.html" class="nav-cta apply-btn">Apply</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="mb-wrap">
+    <div class="mb-card">
+      <div class="mb-head">
+        <span class="mb-eyebrow">Your Booking</span>
+        <h1 class="mb-title">Manage your <em>session</em></h1>
+      </div>
+      <div class="mb-body" id="mb-body">
+        <div class="mb-loadrow"><span class="mb-spin"></span> Finding your booking…</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 The Animist Apothecary. All rites reserved.</p></div>
+  </footer>
+
+  <script>
+  (function () {
+    var SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
+    var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
+    var H = { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY };
+    var FN = SUPABASE_URL + '/functions/v1/manage-booking';
+    var AVAIL = SUPABASE_URL + '/functions/v1/get-availability';
+    var clientTz = (function(){ try { return Intl.DateTimeFormat().resolvedOptions().timeZone; } catch(e){ return 'America/Los_Angeles'; } })();
+
+    var token = new URLSearchParams(location.search).get('token');
+    var body = document.getElementById('mb-body');
+    var state = { booking: null, can_cancel: false, can_reschedule: false, policy: {}, reschedSel: { day: null, slot: null }, monthSlots: null };
+
+    if (!token) { body.innerHTML = '<div class="mb-err">This link is missing its booking token. Please use the link from your confirmation email.</div>'; return; }
+
+    function esc(s){ return (''+s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+    function money(c){ var n=c/100; return '$'+(n%1===0?n.toFixed(0):n.toFixed(2)); }
+    function fmtDateTime(iso){ return new Date(iso).toLocaleString('en-US',{ timeZone:clientTz, weekday:'long', month:'long', day:'numeric', hour:'numeric', minute:'2-digit', hour12:true }); }
+    function fmtTime(iso){ return new Date(iso).toLocaleTimeString('en-US',{ timeZone:clientTz, hour:'numeric', minute:'2-digit', hour12:true }); }
+    function dayLabel(iso){ return new Date(iso).toLocaleDateString('en-US',{ timeZone:clientTz, weekday:'short', month:'short', day:'numeric' }); }
+    function dayKey(iso){ var p=new Intl.DateTimeFormat('en-CA',{timeZone:clientTz,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date(iso)); var o={}; p.forEach(function(x){o[x.type]=x.value;}); return o.year+'-'+o.month+'-'+o.day; }
+
+    function load() {
+      fetch(FN + '?token=' + encodeURIComponent(token), { headers: H })
+        .then(function(r){ return r.json().then(function(d){ return { ok:r.ok, d:d }; }); })
+        .then(function(res){
+          if (!res.ok) { body.innerHTML = '<div class="mb-err">'+esc(res.d.error||'Booking not found.')+'</div>'; return; }
+          state.booking = res.d.booking; state.can_cancel = res.d.can_cancel; state.can_reschedule = res.d.can_reschedule;
+          state.policy = res.d.policy; state.is_cancelled = res.d.is_cancelled; state.is_past = res.d.is_past;
+          render();
+        })
+        .catch(function(){ body.innerHTML = '<div class="mb-err">Something went wrong loading your booking. Please try again, or email hello@theanimistapothecary.com.</div>'; });
+    }
+
+    function render() {
+      var b = state.booking;
+      var statusClass = state.is_cancelled ? 'cancelled' : (b.status === 'completed' ? 'completed' : 'scheduled');
+      var statusLabel = state.is_cancelled ? 'Cancelled' : (b.status === 'completed' ? 'Completed' : (state.is_past ? 'Past' : 'Confirmed'));
+      var html = '';
+      html += '<div class="mb-summary">';
+      html += row('Offering', esc(b.service_name));
+      html += row('When', esc(fmtDateTime(b.scheduled_start)));
+      if (b.tier_name) html += row('Reciprocity', esc(b.tier_name) + ' · ' + money(b.contribution_cents));
+      html += row('Status', '<span class="mb-status '+statusClass+'">'+statusLabel+'</span>');
+      if (b.payment_status) html += row('Payment', b.payment_status === 'received' ? 'Received' : 'Pending');
+      html += '</div>';
+
+      if (b.zoom_link && !state.is_cancelled && !state.is_past) {
+        html += '<p class="mb-note">Where we meet: <a href="'+esc(b.zoom_link)+'" target="_blank" rel="noopener">'+esc(b.zoom_link)+'</a>'+(b.zoom_meeting_id?(' · Meeting ID '+esc(b.zoom_meeting_id)):'')+'</p>';
+      }
+
+      if (state.is_cancelled) {
+        html += '<div class="mb-ok">This booking has been cancelled. To find a new time, <a href="virtual-services.html">schedule a session</a>.</div>';
+      } else if (state.is_past) {
+        html += '<p class="mb-note">This session has passed. To book again, <a href="virtual-services.html">schedule a session</a>.</p>';
+      } else {
+        html += '<div class="mb-actions">';
+        if (state.can_reschedule) html += '<button class="mb-btn mb-btn--primary" id="mb-resched-btn">Reschedule</button>';
+        if (state.can_cancel) html += '<button class="mb-btn mb-btn--ghost" id="mb-cancel-btn">Cancel this session</button>';
+        html += '</div>';
+        if (!state.can_cancel && !state.can_reschedule) {
+          html += '<p class="mb-note">It&rsquo;s close to your session time, so changes can&rsquo;t be made here. Please reply to your confirmation email and Adi will help directly.</p>';
+        } else if (!state.can_cancel) {
+          html += '<p class="mb-note">The cancellation window for this offering has passed, but you can still reschedule above, or reply to your confirmation email.</p>';
+        }
+        html += '<div id="mb-resched-area"></div>';
+        html += '<div id="mb-action-msg"></div>';
+      }
+      body.innerHTML = html;
+
+      var rb = document.getElementById('mb-resched-btn'); if (rb) rb.addEventListener('click', openReschedule);
+      var cb = document.getElementById('mb-cancel-btn'); if (cb) cb.addEventListener('click', doCancel);
+    }
+
+    function row(label, val) { return '<div class="mb-row"><span>'+label+'</span><strong>'+val+'</strong></div>'; }
+
+    function doCancel() {
+      if (!confirm('Release this hour? This cannot be undone — you would need to book again.')) return;
+      var msg = document.getElementById('mb-action-msg');
+      var btn = document.getElementById('mb-cancel-btn'); if (btn) { btn.disabled = true; btn.textContent = 'Cancelling…'; }
+      fetch(FN, { method:'POST', headers: Object.assign({'Content-Type':'application/json'}, H), body: JSON.stringify({ action:'cancel', token: token }) })
+        .then(function(r){ return r.json().then(function(d){ return { ok:r.ok, d:d }; }); })
+        .then(function(res){
+          if (!res.ok) { msg.innerHTML = '<div class="mb-err">'+esc(res.d.error||'Could not cancel.')+'</div>'; if(btn){btn.disabled=false;btn.textContent='Cancel this session';} return; }
+          load();
+        })
+        .catch(function(){ msg.innerHTML = '<div class="mb-err">Something went wrong. Please try again.</div>'; if(btn){btn.disabled=false;btn.textContent='Cancel this session';} });
+    }
+
+    function openReschedule() {
+      var area = document.getElementById('mb-resched-area');
+      area.innerHTML = '<div class="mb-resched"><h3>Pick a new time</h3><div class="mb-loadrow"><span class="mb-spin"></span> Reading Adi’s calendar…</div></div>';
+      var today = new Date(); var start = today.toISOString().slice(0,10);
+      var end = new Date(today.getTime() + 60*86400000).toISOString().slice(0,10);
+      fetch(AVAIL + '?service=' + encodeURIComponent(state.booking.service_slug) + '&start_date=' + start + '&end_date=' + end + '&timezone=' + encodeURIComponent(clientTz), { headers: H })
+        .then(function(r){ return r.json(); })
+        .then(function(data){
+          var byDay = {};
+          (data.slots||[]).forEach(function(s){ var k=dayKey(s.start); (byDay[k]=byDay[k]||[]).push(s); });
+          state.monthSlots = byDay;
+          var keys = Object.keys(byDay).sort();
+          if (!keys.length) { area.innerHTML = '<div class="mb-resched"><h3>Pick a new time</h3><p class="mb-note">No open times in the next 60 days. Please reply to your confirmation email and Adi will help find a time.</p></div>'; return; }
+          var h = '<div class="mb-resched"><h3>Pick a new time</h3><div class="mb-days">';
+          keys.forEach(function(k){ h += '<button class="mb-day" data-day="'+k+'">'+esc(dayLabel(byDay[k][0].start))+'</button>'; });
+          h += '</div><div class="mb-slots" id="mb-slots"></div><div id="mb-resched-msg"></div></div>';
+          area.innerHTML = h;
+          area.querySelectorAll('.mb-day').forEach(function(d){ d.addEventListener('click', function(){
+            area.querySelectorAll('.mb-day').forEach(function(x){ x.classList.remove('is-on'); });
+            d.classList.add('is-on'); showSlots(d.getAttribute('data-day'));
+          }); });
+        })
+        .catch(function(){ area.innerHTML = '<div class="mb-resched"><p class="mb-err">Could not load times. Please try again.</p></div>'; });
+    }
+
+    function showSlots(k) {
+      var wrap = document.getElementById('mb-slots');
+      var slots = state.monthSlots[k] || [];
+      wrap.innerHTML = slots.map(function(s){ return '<button class="mb-slot" data-start="'+esc(s.start)+'">'+esc(fmtTime(s.start))+'</button>'; }).join('');
+      wrap.querySelectorAll('.mb-slot').forEach(function(b){ b.addEventListener('click', function(){ confirmReschedule(b.getAttribute('data-start')); }); });
+    }
+
+    function confirmReschedule(startIso) {
+      if (!confirm('Move your session to ' + fmtDateTime(startIso) + '?')) return;
+      var msg = document.getElementById('mb-resched-msg');
+      msg.innerHTML = '<div class="mb-loadrow"><span class="mb-spin"></span> Moving your session…</div>';
+      fetch(FN, { method:'POST', headers: Object.assign({'Content-Type':'application/json'}, H), body: JSON.stringify({ action:'reschedule', token: token, new_scheduled_start: startIso }) })
+        .then(function(r){ return r.json().then(function(d){ return { ok:r.ok, d:d }; }); })
+        .then(function(res){
+          if (!res.ok) { msg.innerHTML = '<div class="mb-err">'+esc(res.d.error||'Could not reschedule.')+'</div>'; return; }
+          load();
+        })
+        .catch(function(){ msg.innerHTML = '<div class="mb-err">Something went wrong. Please try again.</div>'; });
+    }
+
+    load();
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookings · Admin · The Animist Apothecary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{ --gold:#C9A84C; --bark:#2D2A26; --paper:#F7F5F0; --parch:#F4EAD3; --quiet:#5A554C; --line:rgba(45,42,38,0.12); --dark:#1F1A18; }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family:'Inter',system-ui,sans-serif; background:var(--paper); color:var(--bark); }
+    .topbar{ background:var(--dark); color:var(--parch); padding:16px 26px; display:flex; align-items:center; justify-content:space-between; }
+    .topbar h1{ font-family:'Cormorant Garamond',serif; font-weight:500; font-size:22px; margin:0; }
+    .topbar a{ color:var(--gold); text-decoration:none; font-size:13px; }
+    .topbar .who{ font-size:12px; color:rgba(244,234,211,.7); }
+    .wrap{ max-width:1100px; margin:26px auto; padding:0 20px; }
+    .login{ max-width:380px; margin:80px auto; background:#fff; border:1px solid var(--line); border-radius:14px; padding:32px; text-align:center; }
+    .login h2{ font-family:'Cormorant Garamond',serif; font-weight:500; }
+    .login input{ width:100%; padding:11px 13px; border:1px solid var(--line); border-radius:9px; margin:6px 0; font-size:15px; font-family:inherit; }
+    .btn{ border:none; border-radius:9px; padding:11px 18px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; letter-spacing:.02em; }
+    .btn--dark{ background:var(--dark); color:var(--parch); }
+    .btn--gold{ background:var(--gold); color:var(--dark); }
+    .btn--ghost{ background:transparent; border:1px solid var(--line); color:var(--quiet); }
+    .btn:disabled{ opacity:.5; cursor:default; }
+    .err{ color:#9a4a2f; font-size:13px; margin-top:8px; }
+    .filters{ display:flex; gap:10px; align-items:center; margin-bottom:16px; flex-wrap:wrap; }
+    .filters input, .filters select{ padding:9px 12px; border:1px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px; }
+    .count{ color:var(--quiet); font-size:13px; margin-left:auto; }
+    .card{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin-bottom:12px; display:grid; grid-template-columns:1.4fr 1fr 0.9fr auto; gap:14px; align-items:center; }
+    .card .who{ font-weight:600; font-size:15px; }
+    .card .meta{ font-size:13px; color:var(--quiet); margin-top:3px; }
+    .card .when{ font-size:14px; }
+    .card .amt{ font-size:15px; font-weight:600; }
+    .pill{ display:inline-block; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; padding:3px 9px; border-radius:20px; }
+    .pill.scheduled{ background:#e7efe1; color:#4A6344; } .pill.cancelled{ background:#f6ece6; color:#9a4a2f; } .pill.completed{ background:#ece6f0; color:#5a4a6a; } .pill.no_show{ background:#efe6df; color:#7a5a40; }
+    .pay.received{ color:#4A6344; font-weight:600; } .pay.pending{ color:#b07a2f; font-weight:600; }
+    .rowacts{ display:flex; flex-direction:column; gap:6px; }
+    .rowacts .btn{ padding:8px 12px; font-size:12px; white-space:nowrap; }
+    .loadrow{ text-align:center; color:var(--quiet); padding:40px; }
+    .empty{ text-align:center; color:var(--quiet); padding:40px; }
+    @media(max-width:720px){ .card{ grid-template-columns:1fr; } .rowacts{ flex-direction:row; flex-wrap:wrap; } }
+  </style>
+</head>
+<body>
+  <div id="login" class="login" style="display:none;">
+    <h2>Bookings</h2>
+    <p style="color:var(--quiet);font-size:14px;">Admin sign-in</p>
+    <button class="btn btn--dark" style="width:100%;margin-bottom:14px;" onclick="signInGoogle()">Sign in with Google</button>
+    <input id="li-email" type="email" placeholder="Email">
+    <input id="li-pass" type="password" placeholder="Password">
+    <button class="btn btn--gold" style="width:100%;margin-top:6px;" onclick="signInEmail()">Sign In</button>
+    <div id="li-err" class="err"></div>
+  </div>
+
+  <div id="app" style="display:none;">
+    <div class="topbar">
+      <h1>Bookings</h1>
+      <div><span class="who" id="who"></span> &nbsp; <a href="index.html">Dashboard</a> &nbsp; <a href="#" onclick="signOut();return false;">Sign out</a></div>
+    </div>
+    <div class="wrap">
+      <div class="filters">
+        <input id="f-search" placeholder="Search name or email…">
+        <select id="f-status">
+          <option value="upcoming">Upcoming</option>
+          <option value="all">All</option>
+          <option value="pending_pay">Awaiting payment</option>
+          <option value="scheduled">Scheduled</option>
+          <option value="completed">Completed</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+        <span class="count" id="count"></span>
+      </div>
+      <div id="list"><div class="loadrow">Loading bookings…</div></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+    const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
+    const ADMIN_EMAILS = ['adimarie@bodyworkandbotanicals.com', 'its.adimarie@gmail.com'];
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const $ = (id) => document.getElementById(id);
+    let all = [];
+
+    window.signInGoogle = async () => {
+      const { error } = await supabase.auth.signInWithOAuth({ provider:'google', options:{ redirectTo: location.href } });
+      if (error) $('li-err').textContent = error.message;
+    };
+    window.signInEmail = async () => {
+      const email = $('li-email').value.trim(), password = $('li-pass').value;
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) $('li-err').textContent = error.message; else init();
+    };
+    window.signOut = async () => { await supabase.auth.signOut(); location.reload(); };
+
+    function money(c){ if(c==null) return '—'; const n=c/100; return '$'+(n%1===0?n.toFixed(0):n.toFixed(2)); }
+    function fmtPT(iso){ return new Date(iso).toLocaleString('en-US',{ timeZone:'America/Los_Angeles', weekday:'short', month:'short', day:'numeric', hour:'numeric', minute:'2-digit', hour12:true }); }
+    function esc(s){ return (''+(s??'')).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+    async function init() {
+      const { data:{ session } } = await supabase.auth.getSession();
+      if (!session) { $('login').style.display='block'; $('app').style.display='none'; return; }
+      if (!ADMIN_EMAILS.includes(session.user.email)) {
+        $('li-err').textContent = 'This account is not authorized as an admin.';
+        $('login').style.display='block'; await supabase.auth.signOut(); return;
+      }
+      $('login').style.display='none'; $('app').style.display='block';
+      $('who').textContent = session.user.email;
+      await loadBookings();
+    }
+
+    async function loadBookings() {
+      const { data, error } = await supabase
+        .from('appointments')
+        .select('id, scheduled_at, duration_minutes, status, payment_status, payment_received_at, contribution_cents, client_name_at_booking, client_email_at_booking, client_phone_at_booking, pre_session_note, public_token, services:service_id(name), service_tiers:service_tier_id(tier_name)')
+        .not('public_token','is', null)
+        .eq('is_archived', false)
+        .order('scheduled_at', { ascending: false });
+      if (error) { $('list').innerHTML = '<div class="empty">Could not load bookings: '+esc(error.message)+'</div>'; return; }
+      all = data || [];
+      render();
+    }
+
+    $('f-search').addEventListener('input', render);
+    $('f-status').addEventListener('change', render);
+
+    function render() {
+      const q = $('f-search').value.toLowerCase().trim();
+      const f = $('f-status').value;
+      const now = Date.now();
+      let rows = all.filter(b => {
+        const cancelled = ['cancelled','canceled','no_show'].includes(b.status);
+        if (f==='upcoming') { if (cancelled || new Date(b.scheduled_at).getTime() < now) return false; }
+        else if (f==='pending_pay') { if (cancelled || b.payment_status==='received') return false; }
+        else if (f==='scheduled') { if (b.status!=='scheduled') return false; }
+        else if (f==='completed') { if (b.status!=='completed') return false; }
+        else if (f==='cancelled') { if (!cancelled) return false; }
+        if (q) { const hay=((b.client_name_at_booking||'')+' '+(b.client_email_at_booking||'')).toLowerCase(); if(!hay.includes(q)) return false; }
+        return true;
+      });
+      $('count').textContent = rows.length + ' booking' + (rows.length===1?'':'s');
+      if (!rows.length) { $('list').innerHTML = '<div class="empty">No bookings match.</div>'; return; }
+      $('list').innerHTML = rows.map(cardHtml).join('');
+      rows.forEach(b => {
+        const mp = $('mp-'+b.id); if (mp) mp.addEventListener('click', () => markPaid(b.id));
+        const mc = $('mc-'+b.id); if (mc) mc.addEventListener('click', () => setStatus(b.id,'completed'));
+        const cx = $('cx-'+b.id); if (cx) cx.addEventListener('click', () => setStatus(b.id,'cancelled'));
+      });
+    }
+
+    function cardHtml(b) {
+      const cancelled = ['cancelled','canceled','no_show'].includes(b.status);
+      const svc = b.services?.name || '—';
+      const tier = b.service_tiers?.tier_name ? (b.service_tiers.tier_name+' · ') : '';
+      const paid = b.payment_status==='received';
+      const acts = [];
+      if (!cancelled) {
+        if (!paid) acts.push(`<button class="btn btn--gold" id="mp-${b.id}">Mark paid</button>`);
+        if (b.status!=='completed') acts.push(`<button class="btn btn--ghost" id="mc-${b.id}">Mark complete</button>`);
+        acts.push(`<button class="btn btn--ghost" id="cx-${b.id}">Cancel</button>`);
+      }
+      return `<div class="card">
+        <div>
+          <div class="who">${esc(b.client_name_at_booking)}</div>
+          <div class="meta">${esc(b.client_email_at_booking)}${b.client_phone_at_booking?(' · '+esc(b.client_phone_at_booking)):''}</div>
+          <div class="meta">${esc(svc)}</div>
+        </div>
+        <div class="when">${esc(fmtPT(b.scheduled_at))} <span class="meta">PT</span></div>
+        <div>
+          <div class="amt">${esc(tier)}${money(b.contribution_cents)}</div>
+          <div class="meta">Payment: <span class="pay ${paid?'received':'pending'}">${paid?'Received':'Pending'}</span></div>
+          <div style="margin-top:4px;"><span class="pill ${b.status}">${esc(b.status)}</span></div>
+        </div>
+        <div class="rowacts">${acts.join('')}</div>
+      </div>`;
+    }
+
+    async function markPaid(id) {
+      const { error } = await supabase.from('appointments').update({ payment_status:'received', payment_method:'venmo', payment_received_at: new Date().toISOString() }).eq('id', id);
+      if (error) { alert('Could not update: '+error.message); return; }
+      await loadBookings();
+    }
+    async function setStatus(id, status) {
+      const verb = status==='cancelled' ? 'cancel' : 'mark complete';
+      if (status==='cancelled' && !confirm('Cancel this booking? (This does not auto-remove the Google Calendar event — do that separately if needed.)')) return;
+      const patch = { status };
+      if (status==='cancelled') patch.cancelled_at = new Date().toISOString();
+      const { error } = await supabase.from('appointments').update(patch).eq('id', id);
+      if (error) { alert('Could not '+verb+': '+error.message); return; }
+      await loadBookings();
+    }
+
+    supabase.auth.onAuthStateChange(() => init());
+    init();
+  </script>
+</body>
+</html>
