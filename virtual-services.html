@@ -96,6 +96,42 @@
       body[data-content-page="virtual-services"] .vs-context { grid-template-columns: 1fr; }
       body[data-content-page="virtual-services"] .vs-section { padding: 44px 16px 64px; }
     }
+
+    /* Future offerings — Virtual Group Sessions + In-Person Gatherings */
+    body[data-content-page="virtual-services"] .vs-future { margin-top: 60px; }
+    body[data-content-page="virtual-services"] .vs-future-head { text-align: center; max-width: 620px; margin: 0 auto 26px; }
+    body[data-content-page="virtual-services"] .vs-future-head .section-label {
+      display: block; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold, #C9A84C); font-weight: 600; margin-bottom: 12px;
+    }
+    body[data-content-page="virtual-services"] .vs-future-head h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(24px, 4vw, 32px);
+      font-weight: 500; line-height: 1.15; color: var(--bark, #2D2A26); margin: 0 0 12px;
+    }
+    body[data-content-page="virtual-services"] .vs-future-head h2 em { font-style: italic; color: var(--gold, #C9A84C); }
+    body[data-content-page="virtual-services"] .vs-future-head p { font-size: 15.5px; line-height: 1.65; color: var(--ink-quiet, #5A554C); margin: 0; }
+    body[data-content-page="virtual-services"] .vs-future-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+    body[data-content-page="virtual-services"] .vs-future-card {
+      position: relative; display: flex; flex-direction: column; gap: 8px; padding: 26px 24px;
+      border: 1px solid rgba(45,42,38,0.12); border-radius: 13px; background: #fff; overflow: hidden;
+    }
+    body[data-content-page="virtual-services"] .vs-future-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold, #C9A84C), var(--gold-pale, #DCC178)); opacity: 0.5;
+    }
+    body[data-content-page="virtual-services"] .vs-future-eyebrow { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold, #C9A84C); font-weight: 600; }
+    body[data-content-page="virtual-services"] .vs-future-card h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 23px; font-weight: 600; line-height: 1.12; color: var(--bark, #2D2A26); margin: 0; }
+    body[data-content-page="virtual-services"] .vs-future-card p { font-size: 14px; line-height: 1.6; color: var(--ink-quiet, #5A554C); margin: 0; flex: 1 1 auto; }
+    body[data-content-page="virtual-services"] .vs-future-soon {
+      display: inline-block; align-self: flex-start; margin-top: 10px; font-size: 10.5px;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold, #C9A84C); font-weight: 700;
+      background: var(--parchment-warm, #F4EAD3); padding: 4px 11px; border-radius: 20px;
+    }
+    body[data-content-page="virtual-services"] .vs-future-cta { text-align: center; margin: 22px 0 0; font-size: 14.5px; color: var(--ink-quiet, #5A554C); }
+    body[data-content-page="virtual-services"] .vs-future-cta a { color: var(--copper, #886039); }
+    @media (max-width: 640px) {
+      body[data-content-page="virtual-services"] .vs-future-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body data-content-page="virtual-services">
@@ -110,7 +146,7 @@
       <nav class="main-nav">
                                                 <ul>
           <li><a href="about.html">About</a></li>
-          <li><a href="ceremonial-coaching.html">Ceremonial Coaching</a></li>
+          <li><a href="ceremonial-coaching.html">A Seasonal Arc</a></li>
           <li><a href="solo-work.html">Virtual Sessions</a></li>
           <li><a href="group-work.html">Gatherings</a></li>
           <li><a href="training-grounds.html">The School</a></li>
@@ -145,7 +181,7 @@
       <div id="booking-calendar"
            data-services="intake-inquiry,guidance-counsel,divination"
            data-category-label="One-on-One Virtual Sessions"
-           data-coming-soon="Virtual Group Sessions|In-Person Gatherings"
+           data-coming-soon=""
            data-venmo="TheAnimistApothecary"></div>
 
       <!-- Reciprocity + policy context -->
@@ -161,6 +197,54 @@
           <p><strong>Oracular &amp; Elemental Divination</strong> &mdash; reschedule up to 7 days before; cancel with 14 days&rsquo; notice.</p>
           <p>You&rsquo;ll receive a link to manage your booking in your confirmation email.</p>
         </div>
+      </div>
+
+      <!-- VIRTUAL GROUP SESSIONS -->
+      <div class="vs-future">
+        <div class="vs-future-head">
+          <span class="section-label">Virtual Group Sessions</span>
+          <h2>Gather <em>together</em>, online</h2>
+          <p>Held over Zoom, in good company. Two ways to join the circle.</p>
+        </div>
+        <div class="vs-future-grid">
+          <article class="vs-future-card">
+            <span class="vs-future-eyebrow">Ongoing</span>
+            <h3>Ongoing Circles</h3>
+            <p>Recurring gatherings that meet through the seasons &mdash; a steady hearth to return to, again and again.</p>
+            <span class="vs-future-soon">Coming soon</span>
+          </article>
+          <article class="vs-future-card">
+            <span class="vs-future-eyebrow">Special</span>
+            <h3>Special Offerings</h3>
+            <p>Seasonal ceremonies, workshops, and one-time gatherings as they arrive on the wheel of the year.</p>
+            <span class="vs-future-soon">Coming soon</span>
+          </article>
+        </div>
+        <p class="vs-future-cta">Want first word when a circle opens? <a href="inquiry.html">Tell Adi you&rsquo;re interested &rarr;</a></p>
+      </div>
+
+      <!-- IN-PERSON GATHERINGS -->
+      <div class="vs-future">
+        <div class="vs-future-head">
+          <span class="section-label">In-Person Gatherings</span>
+          <h2>Meet on the <em>land</em></h2>
+          <p>Held in Southern California and along the migratory route. Two ways to gather in body.</p>
+        </div>
+        <div class="vs-future-grid">
+          <article class="vs-future-card">
+            <span class="vs-future-eyebrow">Ongoing</span>
+            <h3>Gatherings &amp; Circles</h3>
+            <p>Day gatherings, fire circles, and seasonal rites &mdash; in Southern California and wherever the route leads.</p>
+            <span class="vs-future-soon">Coming soon</span>
+          </article>
+          <article class="vs-future-card">
+            <span class="vs-future-eyebrow">Special</span>
+            <h3>Retreats &amp; Immersions</h3>
+            <p>Multi-day retreats and immersions in chosen wild places, held a few times through the year.</p>
+            <span class="vs-future-soon">Coming soon</span>
+          </article>
+        </div>
+        <p class="vs-future-cta">Curious about an upcoming gathering or retreat? <a href="inquiry.html">Write to Adi &rarr;</a></p>
       </div>
 
       <p class="vs-deeper">
