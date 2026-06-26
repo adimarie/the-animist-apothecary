@@ -1,12 +1,12 @@
 {
-  "version": "v260626.01 9:45p",
-  "release": 1,
-  "sha": "299ebc76",
-  "fullSha": "299ebc7603eb13494cc2902032495793f01f0d8f",
+  "version": "v260626.02 10:38p",
+  "release": 2,
+  "sha": "829832af",
+  "fullSha": "829832af037636ecdb8914f2a81209edd7f065f9",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-26T14:44:51-07:00",
-  "commits": [{"sha":"299ebc76","message":"Add custom Virtual Services booking flow (schedule + intake + Venmo)","author":"Adi Marie"}]
+  "pushedAt": "2026-06-26T15:38:01-07:00",
+  "commits": [{"sha":"829832af","message":"Booking widget: render one-on-one offerings as 3 polished equal columns","author":"Adi Marie"}]
 }
