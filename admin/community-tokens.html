@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community Keys · Admin · The Animist Apothecary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{ --gold:#C9A84C; --bark:#2D2A26; --paper:#F7F5F0; --parch:#F4EAD3; --quiet:#5A554C; --line:rgba(45,42,38,0.12); --dark:#1F1A18; --green:#4A6344; --rust:#9a4a2f; }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family:'Inter',system-ui,sans-serif; background:var(--paper); color:var(--bark); }
+    .topbar{ background:var(--dark); color:var(--parch); padding:16px 26px; display:flex; align-items:center; justify-content:space-between; }
+    .topbar h1{ font-family:'Cormorant Garamond',serif; font-weight:500; font-size:22px; margin:0; }
+    .topbar a{ color:var(--gold); text-decoration:none; font-size:13px; }
+    .topbar .who{ font-size:12px; color:rgba(244,234,211,.7); }
+    .wrap{ max-width:1000px; margin:26px auto; padding:0 20px; }
+    .login{ max-width:380px; margin:80px auto; background:#fff; border:1px solid var(--line); border-radius:14px; padding:32px; text-align:center; }
+    .login h2{ font-family:'Cormorant Garamond',serif; font-weight:500; }
+    .login input{ width:100%; padding:11px 13px; border:1px solid var(--line); border-radius:9px; margin:6px 0; font-size:15px; font-family:inherit; }
+    .btn{ border:none; border-radius:9px; padding:11px 18px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; letter-spacing:.02em; }
+    .btn--dark{ background:var(--dark); color:var(--parch); } .btn--gold{ background:var(--gold); color:var(--dark); }
+    .btn--ghost{ background:transparent; border:1px solid var(--line); color:var(--quiet); } .btn:disabled{ opacity:.5; cursor:default; }
+    .btn--sm{ padding:7px 12px; font-size:12px; }
+    .err{ color:var(--rust); font-size:13px; margin-top:8px; }
+    h2.sec{ font-family:'Cormorant Garamond',serif; font-weight:500; font-size:24px; margin:34px 0 14px; }
+    .card{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin-bottom:12px; }
+    .muted{ color:var(--quiet); font-size:13px; }
+    .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    label.fl{ display:block; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--quiet); font-weight:600; margin:0 0 5px; }
+    input.f, textarea.f{ width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px; background:var(--paper); }
+    textarea.f{ min-height:64px; resize:vertical; }
+    .pill{ display:inline-block; font-size:10.5px; letter-spacing:.07em; text-transform:uppercase; font-weight:700; padding:3px 9px; border-radius:20px; }
+    .pill.active{ background:#e7efe1; color:var(--green); } .pill.revoked{ background:#f6ece6; color:var(--rust); }
+    .tokrow{ display:grid; grid-template-columns:1.3fr 1fr 0.8fr auto; gap:12px; align-items:center; }
+    .keycode{ font-family:ui-monospace,Menlo,monospace; font-size:15px; font-weight:600; letter-spacing:.06em; color:var(--bark); }
+    .copylink{ background:var(--parch); border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:12px; color:var(--bark); word-break:break-all; margin-top:8px; }
+    details.intk summary{ cursor:pointer; font-weight:600; }
+    details.intk .ans{ margin-top:8px; font-size:13.5px; line-height:1.55; color:#3a3530; }
+    details.intk .ans b{ color:var(--bark); }
+    @media(max-width:720px){ .grid2{ grid-template-columns:1fr; } .tokrow{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div id="login" class="login" style="display:none;">
+    <h2>Community Keys</h2>
+    <p style="color:var(--quiet);font-size:14px;">Admin sign-in</p>
+    <button class="btn btn--dark" style="width:100%;margin-bottom:14px;" onclick="signInGoogle()">Sign in with Google</button>
+    <input id="li-email" type="email" placeholder="Email">
+    <input id="li-pass" type="password" placeholder="Password">
+    <button class="btn btn--gold" style="width:100%;margin-top:6px;" onclick="signInEmail()">Sign In</button>
+    <div id="li-err" class="err"></div>
+  </div>
+
+  <div id="app" style="display:none;">
+    <div class="topbar">
+      <h1>Community Keys</h1>
+      <div><span class="who" id="who"></span> &nbsp; <a href="index.html">Dashboard</a> &nbsp; <a href="gatherings.html">Gatherings</a> &nbsp; <a href="#" onclick="signOut();return false;">Sign out</a></div>
+    </div>
+    <div class="wrap">
+
+      <h2 class="sec">Issue a key</h2>
+      <div class="card">
+        <p class="muted" style="margin-top:0;">Issue a personal key to someone you&rsquo;ve welcomed in. Send them the link &mdash; it unlocks the gatherings for them alone, and you can revoke it any time.</p>
+        <div class="grid2">
+          <div><label class="fl">Member name / label</label><input id="t-label" class="f" placeholder="e.g. Jordan R."></div>
+          <div><label class="fl">Email (optional)</label><input id="t-email" class="f" type="email" placeholder="for your reference"></div>
+        </div>
+        <div style="margin-top:10px;"><label class="fl">Private note (optional)</label><input id="t-notes" class="f" placeholder="e.g. met at the Winter Hearth intake"></div>
+        <button class="btn btn--gold" style="margin-top:14px;" id="t-issue">Generate key</button>
+        <div id="t-issued"></div>
+      </div>
+
+      <h2 class="sec">Active keys</h2>
+      <div id="tokens"><div class="muted">Loading…</div></div>
+
+      <h2 class="sec">Community reflections <span class="muted" id="intk-count"></span></h2>
+      <p class="muted" style="margin-top:-6px;">People who&rsquo;ve sent reflections from the gatherings gate, awaiting an Intake &amp; Inquiry. Review, then issue a key above.</p>
+      <div id="intakes"><div class="muted">Loading…</div></div>
+
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+    const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
+    const ADMIN_EMAILS = ['adimarie@bodyworkandbotanicals.com', 'its.adimarie@gmail.com'];
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => (''+(s??'')).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const fmt = (iso) => iso ? new Date(iso).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '—';
+
+    window.signInGoogle = async () => { const { error } = await supabase.auth.signInWithOAuth({ provider:'google', options:{ redirectTo: location.href } }); if (error) $('li-err').textContent = error.message; };
+    window.signInEmail = async () => { const { error } = await supabase.auth.signInWithPassword({ email:$('li-email').value.trim(), password:$('li-pass').value }); if (error) $('li-err').textContent = error.message; else init(); };
+    window.signOut = async () => { await supabase.auth.signOut(); location.reload(); };
+
+    function genToken(){
+      const chars='ABCDEFGHJKMNPQRSTUVWXYZ23456789', arr=new Uint8Array(8); crypto.getRandomValues(arr);
+      let s=''; for(let i=0;i<8;i++){ s+=chars[arr[i]%chars.length]; if(i===3) s+='-'; } return s;
+    }
+    function linkFor(tok){ return location.origin + '/gatherings/?token=' + encodeURIComponent(tok); }
+
+    let me_email = '';
+
+    async function init() {
+      const { data:{ session } } = await supabase.auth.getSession();
+      if (!session) { $('login').style.display='block'; $('app').style.display='none'; return; }
+      if (!ADMIN_EMAILS.includes(session.user.email)) { $('li-err').textContent='This account is not authorized.'; $('login').style.display='block'; await supabase.auth.signOut(); return; }
+      me_email = session.user.email;
+      $('login').style.display='none'; $('app').style.display='block'; $('who').textContent = session.user.email;
+      await Promise.all([loadTokens(), loadIntakes()]);
+    }
+
+    $('t-issue').addEventListener('click', async () => {
+      const label = $('t-label').value.trim();
+      if (!label) { alert('Add a name or label so you remember who this key is for.'); return; }
+      const token = genToken();
+      $('t-issue').disabled = true;
+      const { error } = await supabase.from('community_access_tokens').insert({
+        token, label, member_email: $('t-email').value.trim() || null, notes: $('t-notes').value.trim() || null, issued_by: me_email
+      });
+      $('t-issue').disabled = false;
+      if (error) { $('t-issued').innerHTML = '<div class="err">'+esc(error.message)+'</div>'; return; }
+      $('t-issued').innerHTML = '<div class="card" style="margin-top:14px;background:var(--parch);"><div class="keycode">'+esc(token)+'</div>'
+        + '<div class="copylink" id="t-link">'+esc(linkFor(token))+'</div>'
+        + '<button class="btn btn--ghost btn--sm" style="margin-top:8px;" onclick="navigator.clipboard.writeText(document.getElementById(\'t-link\').textContent)">Copy link</button>'
+        + ' <span class="muted">Send this link to '+esc(label)+'.</span></div>';
+      $('t-label').value=''; $('t-email').value=''; $('t-notes').value='';
+      loadTokens();
+    });
+
+    async function loadTokens() {
+      const { data, error } = await supabase.from('community_access_tokens').select('*').order('issued_at',{ascending:false});
+      if (error) { $('tokens').innerHTML = '<div class="err">'+esc(error.message)+'</div>'; return; }
+      if (!data.length) { $('tokens').innerHTML = '<div class="muted">No keys issued yet.</div>'; return; }
+      $('tokens').innerHTML = data.map(t => {
+        const active = !t.revoked_at;
+        return '<div class="card"><div class="tokrow">'
+          + '<div><div class="keycode">'+esc(t.token)+'</div><div class="muted">'+esc(t.label||'—')+(t.member_email?' · '+esc(t.member_email):'')+'</div></div>'
+          + '<div class="muted">Issued '+fmt(t.issued_at)+'<br>'+(t.last_used_at?'Last used '+fmt(t.last_used_at):'Not used yet')+'</div>'
+          + '<div><span class="pill '+(active?'active':'revoked')+'">'+(active?'Active':'Revoked')+'</span></div>'
+          + '<div>'+(active
+              ? '<button class="btn btn--ghost btn--sm" data-copy="'+esc(linkFor(t.token))+'">Copy link</button> <button class="btn btn--ghost btn--sm" data-revoke="'+esc(t.id)+'">Revoke</button>'
+              : '<button class="btn btn--ghost btn--sm" data-restore="'+esc(t.id)+'">Restore</button>')+'</div>'
+          + '</div>'+(t.notes?'<div class="muted" style="margin-top:8px;">'+esc(t.notes)+'</div>':'')+'</div>';
+      }).join('');
+      $('tokens').querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>navigator.clipboard.writeText(b.dataset.copy)));
+      $('tokens').querySelectorAll('[data-revoke]').forEach(b=>b.addEventListener('click',async()=>{ if(!confirm('Revoke this key? They will lose access immediately.'))return; await supabase.from('community_access_tokens').update({revoked_at:new Date().toISOString()}).eq('id',b.dataset.revoke); loadTokens(); }));
+      $('tokens').querySelectorAll('[data-restore]').forEach(b=>b.addEventListener('click',async()=>{ await supabase.from('community_access_tokens').update({revoked_at:null}).eq('id',b.dataset.restore); loadTokens(); }));
+    }
+
+    async function loadIntakes() {
+      const { data, error } = await supabase.from('community_member_intakes').select('*').order('submitted_at',{ascending:false});
+      if (error) { $('intakes').innerHTML = '<div class="err">'+esc(error.message)+'</div>'; return; }
+      $('intk-count').textContent = data.length ? '· '+data.length : '';
+      if (!data.length) { $('intakes').innerHTML = '<div class="muted">No reflections yet.</div>'; return; }
+      $('intakes').innerHTML = data.map(r => {
+        const a = r.answers || {};
+        const rows = [['What draws them',a.draw],['Their path',a.path],['How they found us',a.found],['Care notes',a.care]]
+          .filter(x=>x[1]).map(x=>'<div class="ans"><b>'+x[0]+':</b> '+esc(x[1])+'</div>').join('');
+        return '<div class="card"><details class="intk"><summary>'+esc((r.first_name||'')+' '+(r.last_name||''))+' <span class="muted">· '+esc(r.email||'')+(r.phone?' · '+esc(r.phone):'')+' · '+fmt(r.submitted_at)+'</span></summary>'+(rows||'<div class="ans muted">No written reflections.</div>')+'</details></div>';
+      }).join('');
+    }
+
+    init();
+  </script>
+</body>
+</html>

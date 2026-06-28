@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gatherings · Admin · The Animist Apothecary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{ --gold:#C9A84C; --bark:#2D2A26; --paper:#F7F5F0; --parch:#F4EAD3; --quiet:#5A554C; --line:rgba(45,42,38,0.12); --dark:#1F1A18; --green:#4A6344; --rust:#9a4a2f; }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family:'Inter',system-ui,sans-serif; background:var(--paper); color:var(--bark); }
+    .topbar{ background:var(--dark); color:var(--parch); padding:16px 26px; display:flex; align-items:center; justify-content:space-between; }
+    .topbar h1{ font-family:'Cormorant Garamond',serif; font-weight:500; font-size:22px; margin:0; }
+    .topbar a{ color:var(--gold); text-decoration:none; font-size:13px; }
+    .topbar .who{ font-size:12px; color:rgba(244,234,211,.7); }
+    .wrap{ max-width:1000px; margin:26px auto; padding:0 20px; }
+    .login{ max-width:380px; margin:80px auto; background:#fff; border:1px solid var(--line); border-radius:14px; padding:32px; text-align:center; }
+    .login h2{ font-family:'Cormorant Garamond',serif; font-weight:500; }
+    .login input{ width:100%; padding:11px 13px; border:1px solid var(--line); border-radius:9px; margin:6px 0; font-size:15px; font-family:inherit; }
+    .btn{ border:none; border-radius:9px; padding:11px 18px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; letter-spacing:.02em; }
+    .btn--dark{ background:var(--dark); color:var(--parch); } .btn--gold{ background:var(--gold); color:var(--dark); }
+    .btn--ghost{ background:transparent; border:1px solid var(--line); color:var(--quiet); } .btn:disabled{ opacity:.5; cursor:default; }
+    .btn--sm{ padding:7px 12px; font-size:12px; }
+    .err{ color:var(--rust); font-size:13px; margin-top:8px; }
+    h2.sec{ font-family:'Cormorant Garamond',serif; font-weight:500; font-size:24px; margin:34px 0 14px; }
+    .card{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin-bottom:12px; }
+    .muted{ color:var(--quiet); font-size:13px; }
+    .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:12px; } .grid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+    label.fl{ display:block; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--quiet); font-weight:600; margin:0 0 5px; }
+    input.f, textarea.f, select.f{ width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:8px; font-family:inherit; font-size:14px; background:var(--paper); }
+    textarea.f{ min-height:64px; resize:vertical; }
+    .field{ margin-bottom:10px; }
+    .pill{ display:inline-block; font-size:10.5px; letter-spacing:.07em; text-transform:uppercase; font-weight:700; padding:3px 9px; border-radius:20px; }
+    .pill.pub{ background:#e7efe1; color:var(--green); } .pill.draft{ background:#efe6df; color:#7a5a40; }
+    .pay.confirmed{ color:var(--green); font-weight:600; } .pay.pending{ color:#b07a2f; font-weight:600; }
+    .ghead{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .gtitle{ font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:600; }
+    .reg{ display:grid; grid-template-columns:1.3fr 1fr 0.8fr auto; gap:10px; align-items:center; padding:10px 0; border-top:1px solid var(--line); }
+    details.ans summary{ cursor:pointer; font-size:12.5px; color:var(--quiet); }
+    details.ans .a{ font-size:13px; line-height:1.5; margin-top:6px; color:#3a3530; }
+    @media(max-width:720px){ .grid2,.grid3{ grid-template-columns:1fr; } .reg{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div id="login" class="login" style="display:none;">
+    <h2>Gatherings</h2>
+    <p style="color:var(--quiet);font-size:14px;">Admin sign-in</p>
+    <button class="btn btn--dark" style="width:100%;margin-bottom:14px;" onclick="signInGoogle()">Sign in with Google</button>
+    <input id="li-email" type="email" placeholder="Email">
+    <input id="li-pass" type="password" placeholder="Password">
+    <button class="btn btn--gold" style="width:100%;margin-top:6px;" onclick="signInEmail()">Sign In</button>
+    <div id="li-err" class="err"></div>
+  </div>
+
+  <div id="app" style="display:none;">
+    <div class="topbar">
+      <h1>Gatherings</h1>
+      <div><span class="who" id="who"></span> &nbsp; <a href="index.html">Dashboard</a> &nbsp; <a href="community-tokens.html">Keys</a> &nbsp; <a href="#" onclick="signOut();return false;">Sign out</a></div>
+    </div>
+    <div class="wrap">
+
+      <h2 class="sec">Add a gathering</h2>
+      <div class="card">
+        <div class="grid2">
+          <div class="field"><label class="fl">Title</label><input id="g-title" class="f" placeholder="Winter Hearth"></div>
+          <div class="field"><label class="fl">Slug (url id, lowercase-dashes)</label><input id="g-slug" class="f" placeholder="winter-hearth-2026"></div>
+        </div>
+        <div class="grid3">
+          <div class="field"><label class="fl">Kind</label>
+            <select id="g-kind" class="f"><option value="sit">Sit</option><option value="gathering">Gathering</option><option value="ceremony">Ceremony</option><option value="ritual">Ritual</option><option value="retreat">Retreat</option></select></div>
+          <div class="field"><label class="fl">Season</label><input id="g-season" class="f" placeholder="Winter 2026"></div>
+          <div class="field"><label class="fl">Capacity</label><input id="g-capacity" class="f" type="number" min="1" placeholder="12"></div>
+        </div>
+        <div class="grid3">
+          <div class="field"><label class="fl">Start date</label><input id="g-start" class="f" type="date"></div>
+          <div class="field"><label class="fl">End date</label><input id="g-end" class="f" type="date"></div>
+          <div class="field"><label class="fl">Deposit ($)</label><input id="g-deposit" class="f" type="number" min="0" placeholder="150"></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label class="fl">Date label (shown to members)</label><input id="g-datelabel" class="f" placeholder="A weekend by the fire · New Moon"></div>
+          <div class="field"><label class="fl">Location</label><input id="g-location" class="f" placeholder="Southern California"></div>
+        </div>
+        <div class="field"><label class="fl">Description</label><textarea id="g-desc" class="f" placeholder="A small circle gathered close…"></textarea></div>
+        <div class="field"><label class="fl">Reflection questions (one per line)</label><textarea id="g-questions" class="f" placeholder="What calls you to this gathering at this time?&#10;Share something of your experience with ceremonial work.&#10;Is there anything you are carrying that we should hold with care?"></textarea></div>
+        <label style="font-size:13px;"><input type="checkbox" id="g-pub"> Publish immediately (visible to members)</label>
+        <div style="margin-top:12px;"><button class="btn btn--gold" id="g-save">Save gathering</button> <span id="g-msg" class="muted"></span></div>
+      </div>
+
+      <h2 class="sec">The season <span class="muted" id="g-count"></span></h2>
+      <div id="gatherings"><div class="muted">Loading…</div></div>
+
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+    const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
+    const ADMIN_EMAILS = ['adimarie@bodyworkandbotanicals.com', 'its.adimarie@gmail.com'];
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => (''+(s??'')).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const fmt = (iso) => iso ? new Date(iso).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '—';
+    const money = (c) => c==null?'—':'$'+(c/100%1===0?(c/100).toFixed(0):(c/100).toFixed(2));
+    const slugify = (s) => s.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+
+    window.signInGoogle = async () => { const { error } = await supabase.auth.signInWithOAuth({ provider:'google', options:{ redirectTo: location.href } }); if (error) $('li-err').textContent = error.message; };
+    window.signInEmail = async () => { const { error } = await supabase.auth.signInWithPassword({ email:$('li-email').value.trim(), password:$('li-pass').value }); if (error) $('li-err').textContent = error.message; else init(); };
+    window.signOut = async () => { await supabase.auth.signOut(); location.reload(); };
+
+    async function init() {
+      const { data:{ session } } = await supabase.auth.getSession();
+      if (!session) { $('login').style.display='block'; $('app').style.display='none'; return; }
+      if (!ADMIN_EMAILS.includes(session.user.email)) { $('li-err').textContent='This account is not authorized.'; $('login').style.display='block'; await supabase.auth.signOut(); return; }
+      $('login').style.display='none'; $('app').style.display='block'; $('who').textContent = session.user.email;
+      loadGatherings();
+    }
+
+    // auto-slug from title
+    $('g-title').addEventListener('blur', () => { if(!$('g-slug').value.trim() && $('g-title').value.trim()) $('g-slug').value = slugify($('g-title').value); });
+
+    $('g-save').addEventListener('click', async () => {
+      const title = $('g-title').value.trim();
+      let slug = $('g-slug').value.trim() || slugify(title);
+      if (!title || !slug) { $('g-msg').textContent='Title and slug are required.'; return; }
+      const questions = $('g-questions').value.split('\n').map(l=>l.trim()).filter(Boolean)
+        .map((label,i)=>({ key:'q'+(i+1), label, type:'textarea' }));
+      const deposit = $('g-deposit').value ? Math.round(parseFloat($('g-deposit').value)*100) : null;
+      const row = {
+        slug, title, kind:$('g-kind').value, season:$('g-season').value.trim()||null,
+        date_start:$('g-start').value||null, date_end:$('g-end').value||null,
+        date_label:$('g-datelabel').value.trim()||null, location:$('g-location').value.trim()||null,
+        capacity:$('g-capacity').value?parseInt($('g-capacity').value):null,
+        deposit_amount_cents:deposit, description:$('g-desc').value.trim()||null,
+        intake_schema:questions, is_published:$('g-pub').checked
+      };
+      $('g-save').disabled = true; $('g-msg').textContent='Saving…';
+      const { error } = await supabase.from('gatherings').upsert(row, { onConflict:'slug' });
+      $('g-save').disabled = false;
+      if (error) { $('g-msg').innerHTML='<span class="err">'+esc(error.message)+'</span>'; return; }
+      $('g-msg').textContent='Saved.';
+      ['g-title','g-slug','g-season','g-capacity','g-start','g-end','g-deposit','g-datelabel','g-location','g-desc','g-questions'].forEach(id=>$(id).value=''); $('g-pub').checked=false;
+      loadGatherings();
+    });
+
+    async function loadGatherings() {
+      const { data, error } = await supabase.from('gatherings').select('*').order('sort_order',{ascending:true}).order('date_start',{ascending:true});
+      if (error) { $('gatherings').innerHTML='<div class="err">'+esc(error.message)+'</div>'; return; }
+      $('g-count').textContent = data.length ? '· '+data.length : '';
+      if (!data.length) { $('gatherings').innerHTML='<div class="muted">No gatherings yet.</div>'; return; }
+      // registrations per slug
+      const slugs = data.map(g=>g.slug);
+      const { data:regs } = await supabase.from('event_rsvps').select('*').in('event', slugs).order('submitted_at',{ascending:true});
+      const bySlug = {}; (regs||[]).forEach(r=>{ (bySlug[r.event]=bySlug[r.event]||[]).push(r); });
+
+      $('gatherings').innerHTML = data.map(g => {
+        const rs = bySlug[g.slug] || [];
+        const regHtml = rs.length ? rs.map(r => {
+          const conf = r.deposit_status==='confirmed' || r.paid;
+          const ans = r.answers ? Object.keys(r.answers).map(k=>'<div class="a"><b>'+esc((g.intake_schema||[]).find(q=>q.key===k)?.label||k)+':</b> '+esc(r.answers[k])+'</div>').join('') : '';
+          return '<div class="reg"><div><b>'+esc(r.name||((r.first_name||'')+' '+(r.last_name||'')))+'</b><br><span class="muted">'+esc(r.email||'')+(r.phone?' · '+esc(r.phone):'')+'</span>'
+            + (ans?'<details class="ans"><summary>reflections</summary>'+ans+'</details>':'')+'</div>'
+            + '<div class="muted">'+fmt(r.submitted_at)+'</div>'
+            + '<div class="pay '+(conf?'confirmed':'pending')+'">'+(conf?'Deposit in':'Pending')+'</div>'
+            + '<div>'+(conf?'<button class="btn btn--ghost btn--sm" data-unpay="'+esc(r.id)+'">Undo</button>':'<button class="btn btn--gold btn--sm" data-pay="'+esc(r.id)+'">Mark deposit in</button>')+'</div></div>';
+        }).join('') : '<div class="muted" style="padding-top:8px;">No reservations yet.</div>';
+        return '<div class="card"><div class="ghead">'
+          + '<div><span class="muted">'+esc(g.kind||'')+(g.season?' · '+esc(g.season):'')+'</span><div class="gtitle">'+esc(g.title)+'</div>'
+          + '<span class="muted">'+esc(g.date_label||'')+(g.location?' · '+esc(g.location):'')+' · '+money(g.deposit_amount_cents)+' deposit · '+rs.length+(g.capacity?'/'+g.capacity:'')+' held</span></div>'
+          + '<div><span class="pill '+(g.is_published?'pub':'draft')+'">'+(g.is_published?'Published':'Draft')+'</span> '
+          + '<button class="btn btn--ghost btn--sm" data-toggle="'+esc(g.id)+'" data-pub="'+(g.is_published?'1':'0')+'">'+(g.is_published?'Unpublish':'Publish')+'</button> '
+          + '<button class="btn btn--ghost btn--sm" data-del="'+esc(g.id)+'">Delete</button></div>'
+          + '</div><div style="margin-top:10px;">'+regHtml+'</div></div>';
+      }).join('');
+
+      $('gatherings').querySelectorAll('[data-pay]').forEach(b=>b.addEventListener('click',async()=>{ await supabase.from('event_rsvps').update({deposit_status:'confirmed',paid:true}).eq('id',b.dataset.pay); loadGatherings(); }));
+      $('gatherings').querySelectorAll('[data-unpay]').forEach(b=>b.addEventListener('click',async()=>{ await supabase.from('event_rsvps').update({deposit_status:'pending',paid:false}).eq('id',b.dataset.unpay); loadGatherings(); }));
+      $('gatherings').querySelectorAll('[data-toggle]').forEach(b=>b.addEventListener('click',async()=>{ await supabase.from('gatherings').update({is_published: b.dataset.pub!=='1'}).eq('id',b.dataset.toggle); loadGatherings(); }));
+      $('gatherings').querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',async()=>{ if(!confirm('Delete this gathering? Reservations are kept.'))return; await supabase.from('gatherings').delete().eq('id',b.dataset.del); loadGatherings(); }));
+    }
+
+    init();
+  </script>
+</body>
+</html>

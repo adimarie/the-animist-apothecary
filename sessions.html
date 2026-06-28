@@ -603,8 +603,8 @@
       max-width: 1280px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2.25rem;
     }
     body[data-content-page="sessions"] .pathway-window {
       background: #fff;
@@ -1784,6 +1784,10 @@
         margin: 0 auto;
       }
     }
+    /* Three offerings: 3-up on wide, stacked below ~1140px */
+    @media (max-width: 1140px) {
+      body[data-content-page="sessions"] .pathway-windows-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
     /* Pathway windows stack at narrower viewports */
     @media (max-width: 880px) {
       body[data-content-page="sessions"] .pathway-windows {
@@ -1838,7 +1842,7 @@
           <li><a href="writings.html">Resources</a></li>
         </ul>
       </nav>
-      <a href="book.html" class="nav-cta apply-btn">Apply</a>
+      <a href="sessions.html" class="nav-cta apply-btn">Apply</a>
       </div>
     </div>
   </header>
@@ -1850,8 +1854,8 @@
     <div class="hero-inner sessions-portrait-inner" style="text-align: left; max-width: 1280px; width: 100%; margin: 0 auto; padding: 0 4rem;">
       <div style="max-width: 520px;">
         <p class="hero-eyebrow" style="color: var(--gold-pale, #DBC079);">The Sessions</p>
-        <h1 class="page-hero-title">Two doors open <em>directly</em>.</h1>
-        <p class="page-hero-subtitle">Both begin with sitting together.</p>
+        <h1 class="page-hero-title">Three doors open <em>directly</em>.</h1>
+        <p class="page-hero-subtitle">Each begins with sitting together.</p>
       </div>
     </div>
   </section>
@@ -1861,7 +1865,7 @@
        ============================================================= -->
   <section class="sessions-intro">
     <h2>A place where anyone can <em>begin</em>.</h2>
-    <p>Two of the offerings open here directly. Choose your hour, send your reciprocity, and we meet.</p>
+    <p>Three of the offerings open here directly. Choose your hour, send your reciprocity, and we meet.</p>
     <p>The deeper paths ask differently. Seasons of Change, the Metamorphic Year, ceremony commissions, community engagements. These are carefully curated and intentionally tended fields, entered through acquaintance. <a href="intake.html">Begin one here &rarr;</a></p>
   </section>
 
@@ -1927,7 +1931,64 @@
         </div>
       </article>
 
-      <!-- ===== PATHWAY 2: ANCESTRAL DIVINATION ===== -->
+      <!-- ===== PATHWAY 2: GUIDANCE & COUNSEL ===== -->
+      <article class="pathway-window" id="guidance-and-counsel">
+        <a href="#schedule" data-tab-target="guidance" class="pathway-image-link" aria-label="Jump to Guidance &amp; Counsel scheduler">
+          <img src="images/uploads/cta-moss-smoke.jpg"
+               alt="A coal of incense smoking on a stone dish, nestled in mossy forest floor"
+               class="pathway-image"
+               style="object-position: center 58%;"
+               loading="lazy">
+          <div class="pathway-image-overlay">
+            <span class="overlay-glyph" aria-hidden="true">&#9737;</span>
+            <span class="overlay-label">Enter the Scheduler</span>
+          </div>
+        </a>
+        <div class="pathway-content">
+          <p class="pathway-eyebrow">Open Door &middot; Counsel</p>
+          <h2 class="pathway-title">Guidance &amp; <em>Counsel</em></h2>
+          <p class="pathway-meta">90 minutes &middot; Virtual worldwide &middot; In person by arrangement</p>
+          <p class="pathway-description">A focused hour for those already walking the path &mdash; a steady, seasoned presence to think alongside. We meet a living question, a crossroads, or a season of tending, and find the next true step together.</p>
+
+          <div class="pathway-bring">
+            <h4>What these calls support</h4>
+            <ul class="what-to-bring">
+              <li>Discernment at a crossroads</li>
+              <li>Ongoing ceremonial &amp; life guidance</li>
+              <li>Integration and tending between deeper work</li>
+              <li>Mentorship for practitioners and tenders</li>
+            </ul>
+            <p class="pathway-bring-note">Offered to those already in relationship with the work &mdash; for the questions that ask for a seasoned companion.</p>
+          </div>
+
+          <div class="pathway-scale">
+            <h4>Sliding Scale</h4>
+            <div class="scale-tiles">
+              <article class="scale-tile tier-gold">
+                <span class="tile-eyebrow">Patron</span>
+                <span class="tile-amt">&ge;&nbsp;$700</span>
+              </article>
+              <article class="scale-tile tier-green">
+                <span class="tile-eyebrow">Abundance</span>
+                <span class="tile-amt">&ge;&nbsp;$550</span>
+              </article>
+              <article class="scale-tile tier-blue">
+                <span class="tile-eyebrow">Community</span>
+                <span class="tile-amt">&ge;&nbsp;$450</span>
+              </article>
+              <article class="scale-tile tier-purple">
+                <span class="tile-eyebrow">Accessibility</span>
+                <span class="tile-amt">&ge;&nbsp;$350</span>
+              </article>
+            </div>
+            <p class="scale-note">Choose the tier that&rsquo;s true for you. <a href="sacred-reciprocity.html">Read about Sacred Reciprocity &rarr;</a></p>
+          </div>
+
+          <a href="inquiry.html" class="pathway-deeper-link">Have questions first? Begin a conversation &rarr;</a>
+        </div>
+      </article>
+
+      <!-- ===== PATHWAY 3: ORACULAR & ELEMENTAL DIVINATION ===== -->
       <article class="pathway-window" id="divination">
         <a href="#schedule" data-tab-target="divination" class="pathway-image-link" aria-label="Jump to Oracular &amp; Elemental Divination scheduler">
           <img src="images/uploads/divination-hands-medicine-bundle.jpg"
@@ -2074,6 +2135,91 @@
   </section>
 
   <!-- =============================================================
+       SOFT ENHANCEMENTS + IN-PERSON GATHERINGS BRIDGE (2026-06-27)
+       ============================================================= -->
+  <style>
+    /* Hero — a soft radial gold glow for depth, layered over the existing gradient */
+    body[data-content-page="sessions"] .sessions-portrait-hero { position: relative; }
+    body[data-content-page="sessions"] .sessions-portrait-hero::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 18% 32%, rgba(201,168,76,0.12), transparent 58%);
+    }
+    body[data-content-page="sessions"] .sessions-portrait-inner { position: relative; z-index: 1; }
+
+    /* Softer, slower easing on the page's lift-on-hover cards */
+    body[data-content-page="sessions"] .pathway-window,
+    body[data-content-page="sessions"] .recip-tier,
+    body[data-content-page="sessions"] .practical-card {
+      transition: transform 0.35s cubic-bezier(.2,.7,.2,1), box-shadow 0.35s ease;
+    }
+
+    /* In-person gatherings — the bridge into the vetted community */
+    body[data-content-page="sessions"] .sessions-gatherings {
+      background: linear-gradient(180deg, var(--paper, #F7F5F0) 0%, #ffffff 100%);
+      padding: 5.5rem 2rem;
+      border-top: 1px solid rgba(201,168,76,0.18);
+    }
+    body[data-content-page="sessions"] .sessions-gatherings-inner {
+      max-width: 720px; margin: 0 auto; text-align: center; position: relative;
+    }
+    body[data-content-page="sessions"] .sessions-gatherings-inner::before {
+      content: ""; display: block; width: 50px; height: 1px;
+      background: var(--gold, #c9a84c); opacity: 0.55; margin: 0 auto 2rem;
+    }
+    body[data-content-page="sessions"] .sessions-gatherings .section-label {
+      font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.28em;
+      text-transform: uppercase; color: var(--gold, #c9a84c); display: block; margin: 0 0 1rem;
+    }
+    body[data-content-page="sessions"] .sessions-gatherings h2 {
+      font-family: 'Cormorant Garamond', serif; font-weight: 400;
+      font-size: clamp(1.95rem, 3vw, 2.55rem); line-height: 1.18;
+      color: var(--bark, #2D2A26); margin: 0 0 1.25rem;
+    }
+    body[data-content-page="sessions"] .sessions-gatherings h2 em { font-style: italic; color: var(--gold, #c9a84c); }
+    body[data-content-page="sessions"] .sg-lead {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; line-height: 1.75;
+      color: var(--bark, #2D2A26); margin: 0 auto 1rem; max-width: 620px;
+    }
+    body[data-content-page="sessions"] .sg-body {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.8;
+      color: #3a3530; margin: 0 auto 2.25rem; max-width: 620px;
+    }
+    body[data-content-page="sessions"] .sg-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    body[data-content-page="sessions"] .sg-btn {
+      font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.18em;
+      text-transform: uppercase; text-decoration: none; padding: 0.95rem 1.8rem;
+      border-radius: 2px; transition: all 0.3s ease;
+    }
+    body[data-content-page="sessions"] .sg-btn-primary {
+      background: var(--bark, #2D2A26); color: var(--paper, #F7F5F0); border: 1px solid var(--bark, #2D2A26);
+    }
+    body[data-content-page="sessions"] .sg-btn-primary:hover {
+      background: var(--gold, #c9a84c); border-color: var(--gold, #c9a84c); color: var(--bark, #2D2A26); transform: translateY(-1px);
+    }
+    body[data-content-page="sessions"] .sg-btn-ghost {
+      background: transparent; color: var(--copper, #886039); border: 1px solid rgba(201,168,76,0.45);
+    }
+    body[data-content-page="sessions"] .sg-btn-ghost:hover { background: rgba(201,168,76,0.08); transform: translateY(-1px); }
+    @media (max-width: 560px) {
+      body[data-content-page="sessions"] .sessions-gatherings { padding: 4rem 1.25rem; }
+      body[data-content-page="sessions"] .sg-actions { flex-direction: column; }
+    }
+  </style>
+
+  <section class="sessions-gatherings" id="gatherings">
+    <div class="sessions-gatherings-inner">
+      <span class="section-label">Beyond the Virtual Threshold</span>
+      <h2>In-person <em>gatherings</em></h2>
+      <p class="sg-lead">The sessions above open directly. The in-person work &mdash; seasonal sits, ceremonies, rituals, and retreats &mdash; is held more closely, for the wellbeing of everyone in the circle.</p>
+      <p class="sg-body">These gatherings are entered through acquaintance. We begin with an Intake &amp; Inquiry and a few reflections, so the field can be tended with care. Once we&rsquo;ve met, you&rsquo;re welcomed into the community with your own private key to the season&rsquo;s calendar.</p>
+      <div class="sg-actions">
+        <a class="sg-btn sg-btn-primary" href="#schedule">Begin with an Intake &amp; Inquiry</a>
+        <a class="sg-btn sg-btn-ghost" href="gatherings/">Already a member? Enter the gatherings &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
        PRACTICAL NOTES — payment, where we meet, contact + reply time
        Lives between the calendar and the deeper reciprocity context.
        ============================================================= -->
@@ -2181,7 +2327,7 @@
       <p class="newsletter-trust">
         <span>Held with care, never shared.</span>
         <span aria-hidden="true"> &middot; </span>
-        <a href="book.html">For ceremony or private work, begin with an Intake &amp; Inquiry Call</a> &rarr;
+        <a href="sessions.html">For ceremony or private work, begin with an Intake &amp; Inquiry Call</a> &rarr;
       </p>
 
       <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></div>
@@ -2197,7 +2343,7 @@
       <h2>Some work requires <em>more context</em>.</h2>
       <p>Please fill in a deeper inquiry and self-reflection to indicate your safety, health screening, and readiness for this work.</p>
       <p class="intake-once-note">This intake form needs only to be completed once.</p>
-      <a href="book.html" class="intake-cta-btn" target="_blank" rel="noopener">
+      <a href="sessions.html" class="intake-cta-btn" target="_blank" rel="noopener">
         <span class="intake-cta-label">Complete the Immersion Intake</span>
         <span class="intake-cta-arrow">&nearr;</span>
       </a>
@@ -2237,7 +2383,7 @@
             <li><a href="sessions.html">Book a Session</a></li>
             <li><a href="inquiry.html">Begin a Conversation</a></li>
             <li><a href="writings.html">Writings &amp; Letters</a></li>
-            <li><a href="book.html">Send a Message</a></li>
+            <li><a href="inquiry.html">Send a Message</a></li>
           </ul>
         </div>
       </nav>
@@ -2250,101 +2396,6 @@
   <script src="js/main.js"></script>
   <script src="js/newsletter.js" defer></script>
   <script src="js/calendar-booking.js" defer></script>
-  <script>
-    // ============================================================
-    //  Tabbed scheduler — one Google Calendar embed at a time.
-    //  Iframe is only created when a tab is clicked, preventing
-    //  the multi-embed crash and keeping initial page load light.
-    // ============================================================
-    (function () {
-      var EMBED_URLS = {
-        'intake': 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3dyFbMlqfjfF4pWZK_2y_ofqVJe5gbom-16JgdkZsRBDdn4o0_swhsNgDDemWzSlZ68mTzsEym?gv=true',
-        'divination': 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0b2zdByYbBmsK3Vk9w4cGkfUNENaWDFAKzPleOY_8rHX5SN0bZvNB1WeFBftJBwjyknT1dLkk4?gv=true'
-      };
-      var TITLES = {
-        'intake': 'Schedule an Intake & Inquiry session',
-        'divination': 'Schedule an Oracular & Elemental Divination'
-      };
-      // Per-offering sliding-scale rates. Keep in sync with pathway-window rates above.
-      var RATES = {
-        'intake': {
-          label: 'Intake & Inquiry · 90 min',
-          patron: 400, abundance: 300, community: 250, accessibility: 200
-        },
-        'divination': {
-          label: 'Oracular & Elemental Divination · 2 hr',
-          patron: 500, abundance: 400, community: 350, accessibility: 300
-        }
-      };
-
-      var tabs = document.querySelectorAll('.schedule-tab');
-      var frame = document.getElementById('scheduleFrame');
-      if (!tabs.length || !frame) return;
-
-      function updateDynamicRates(target) {
-        var rates = RATES[target];
-        var block = document.getElementById('dynamicRateBlock');
-        var prompt = document.getElementById('dynamicRatePrompt');
-        var list = document.getElementById('dynamicRateList');
-        var labelEl = document.getElementById('dynamicRateLabel');
-        if (!rates || !block || !list) return;
-        // Update each amount
-        list.querySelectorAll('.rate-amt').forEach(function (el) {
-          var tier = el.dataset.tier;
-          if (tier && rates[tier]) el.innerHTML = '&ge; $' + rates[tier];
-        });
-        // Show list, hide prompt, set offering label
-        if (labelEl) labelEl.textContent = rates.label;
-        if (prompt) prompt.hidden = true;
-        list.hidden = false;
-        block.dataset.state = 'filled';
-      }
-
-      function activateTab(target) {
-        var url = EMBED_URLS[target];
-        if (!url) return;
-        // Update aria-selected on every tab
-        tabs.forEach(function (t) {
-          t.setAttribute('aria-selected', t.dataset.tab === target ? 'true' : 'false');
-        });
-        // Replace frame contents with a single iframe
-        frame.innerHTML = '';
-        var iframe = document.createElement('iframe');
-        iframe.src = url;
-        iframe.title = TITLES[target] || 'Schedule';
-        iframe.loading = 'lazy';
-        iframe.referrerPolicy = 'no-referrer-when-downgrade';
-        frame.appendChild(iframe);
-        // Also update the dynamic Practical Notes rate block
-        updateDynamicRates(target);
-      }
-
-      tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-          activateTab(tab.dataset.tab);
-        });
-      });
-
-      // Card jump-links auto-activate the matching tab on click
-      document.querySelectorAll('.card-schedule-jump').forEach(function (link) {
-        link.addEventListener('click', function () {
-          var target = link.dataset.tabTarget;
-          if (target) {
-            setTimeout(function () { activateTab(target); }, 250);
-          }
-        });
-      });
-
-      // Pathway image-links (top of page) also auto-activate the matching tab
-      document.querySelectorAll('.pathway-image-link').forEach(function (link) {
-        link.addEventListener('click', function () {
-          var target = link.dataset.tabTarget;
-          if (target) {
-            setTimeout(function () { activateTab(target); }, 250);
-          }
-        });
-      });
-    })();
-  </script>
+  <!-- Scheduling is handled by the in-house booking widget (js/calendar-booking.js) mounted in #booking-calendar above. The former Google Calendar appointment embeds were retired when the in-house flow launched. -->
 </body>
 </html>
