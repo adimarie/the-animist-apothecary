@@ -1,12 +1,12 @@
 {
-  "version": "v260628.01 1:42a",
-  "release": 1,
-  "sha": "94ceabd7",
-  "fullSha": "94ceabd797cbfe3c0faf7d4ce1fd254463d541fe",
+  "version": "v260628.02 3:37a",
+  "release": 2,
+  "sha": "517c9d06",
+  "fullSha": "517c9d0673bd6c8199a5c0524187e5f9479566ab",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-27T18:42:25-07:00",
-  "commits": [{"sha":"94ceabd7","message":"Add Guidance & Counsel offering card + token-gated Gatherings system","author":"Adi Marie"}]
+  "pushedAt": "2026-06-27T20:36:47-07:00",
+  "commits": [{"sha":"517c9d06","message":"sessions.html: one 1:1 scheduling widget across all 5 session types","author":"Adi Marie"}]
 }
