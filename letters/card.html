@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An Invitation &mdash; The Animist Apothecary</title>
+  <meta name="description" content="An invitation to stay close to the work &mdash; the seasonal letters of The Animist Apothecary.">
+  <link rel="canonical" href="https://theanimistapothecary.com/letters/card.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="An Invitation &mdash; The Animist Apothecary">
+  <meta property="og:description" content="Firesides, ceremonies, learning labs, the travel ahead &mdash; the seasonal letter is how we stay close.">
+  <meta property="og:url" content="https://theanimistapothecary.com/letters/card.html">
+  <meta property="og:site_name" content="The Animist Apothecary">
+  <meta property="og:image" content="https://theanimistapothecary.com/shared/og-image.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="An Invitation &mdash; The Animist Apothecary">
+  <meta name="twitter:description" content="Stay close to the work.">
+  <meta name="twitter:image" content="https://theanimistapothecary.com/shared/og-image.jpg">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #F7F5F0;
+      --parchment: #F4EAD3;
+      --sand: #EFEDE6;
+      --bark: #2D2A26;
+      --bark-soft: rgba(45, 42, 38, 0.78);
+      --bark-deep: #1F1A18;
+      --gold: #C9A84C;
+      --gold-pale: #D9BB6F;
+      --hairline: rgba(45, 42, 38, 0.18);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      background: var(--parchment);
+      background-image:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 168, 76, 0.06), transparent 60%),
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(91, 117, 83, 0.05), transparent 60%);
+      color: var(--bark);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1.5rem;
+    }
+
+    em { font-style: italic; }
+
+    /* &mdash;&mdash;&mdash; Card &mdash;&mdash;&mdash; */
+    .card {
+      max-width: 540px;
+      width: 100%;
+      background: var(--paper);
+      padding: 3.5rem 2.5rem 3rem;
+      border: 1px solid var(--hairline);
+      box-shadow:
+        0 1px 0 rgba(45, 42, 38, 0.04),
+        0 12px 40px rgba(45, 42, 38, 0.08);
+      text-align: center;
+      position: relative;
+    }
+
+    /* Gold corner flourish */
+    .card::before,
+    .card::after {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border: 1px solid var(--gold);
+    }
+    .card::before {
+      top: 14px;
+      left: 14px;
+      border-right: none;
+      border-bottom: none;
+    }
+    .card::after {
+      bottom: 14px;
+      right: 14px;
+      border-left: none;
+      border-top: none;
+    }
+
+    /* &mdash;&mdash;&mdash; Wordmark &mdash;&mdash;&mdash; */
+    .card-wordmark {
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      font-size: 0.7rem;
+      letter-spacing: 0.34em;
+      color: var(--bark);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .card-wordmark-line {
+      display: block;
+    }
+
+    .hairline {
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem auto;
+    }
+
+    /* &mdash;&mdash;&mdash; Eyebrow + title &mdash;&mdash;&mdash; */
+    .eyebrow {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(2.2rem, 6vw, 3rem);
+      line-height: 1.1;
+      color: var(--bark);
+      margin-bottom: 1rem;
+    }
+    .card-title em { font-style: italic; }
+
+    /* &mdash;&mdash;&mdash; Body &mdash;&mdash;&mdash; */
+    .card-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--bark);
+      max-width: 380px;
+      margin: 0 auto;
+    }
+    .card-body p { margin-bottom: 0.85rem; }
+    .card-body p:last-child { margin-bottom: 0; }
+
+    .card-currents {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.02rem;
+      color: var(--bark-soft);
+      margin-top: 1rem;
+      padding: 0 0.5rem;
+    }
+
+    /* &mdash;&mdash;&mdash; CTA &mdash;&mdash;&mdash; */
+    .cta-block {
+      margin-top: 2.25rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--hairline);
+    }
+    .cta-btn {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      background: var(--bark-deep);
+      color: var(--parchment);
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.2s ease;
+    }
+    .cta-btn:hover { background: var(--bark); }
+
+    .cta-or {
+      margin-top: 1.25rem;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--bark-soft);
+    }
+    .cta-or a {
+      color: var(--bark);
+      text-decoration: underline;
+      text-decoration-color: var(--gold-pale);
+      text-underline-offset: 4px;
+    }
+
+    /* &mdash;&mdash;&mdash; Signature &mdash;&mdash;&mdash; */
+    .signoff {
+      margin-top: 2rem;
+    }
+    .signature {
+      font-family: 'Tangerine', cursive;
+      font-weight: 700;
+      font-size: 2.4rem;
+      line-height: 1;
+      color: var(--bark);
+      margin: 0;
+    }
+    .signoff-meta {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 0.75rem;
+    }
+
+    @media (max-height: 720px) {
+      .card { padding: 2.5rem 2rem 2rem; }
+      .card-title { font-size: clamp(1.9rem, 5.5vw, 2.5rem); }
+      .card-body { font-size: 1.05rem; }
+      .signature { font-size: 2rem; }
+      .hairline { margin: 1rem auto; }
+      .cta-block { margin-top: 1.75rem; padding-top: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <article class="card">
+
+    <div class="card-wordmark">
+      <span class="card-wordmark-line">The Animist</span>
+      <span class="card-wordmark-line">Apothecary</span>
+    </div>
+
+    <span class="hairline" aria-hidden="true"></span>
+
+    <span class="eyebrow">An Invitation</span>
+
+    <h1 class="card-title">Stay close<br>to the <em>work</em>.</h1>
+
+    <div class="card-body">
+      <p>Opening the <em>seasonal letters</em> to the people I have shared this work with.</p>
+      <p class="card-currents">Firesides &middot; Ceremonies &middot; Learning Labs &middot; The Travel Ahead</p>
+    </div>
+
+    <div class="cta-block">
+      <a href="welcome.html" class="cta-btn">Read the Invitation &rarr;</a>
+      <p class="cta-or">or <a href="mailto:its.adimarie@gmail.com?subject=Add%20me%20to%20the%20Seasonal%20Letters">reply to me directly</a></p>
+    </div>
+
+    <div class="signoff">
+      <p class="signature">Adi Marie</p>
+      <p class="signoff-meta">Worldwide &middot; By the Season</p>
+    </div>
+
+  </article>
+
+</body>
+</html>

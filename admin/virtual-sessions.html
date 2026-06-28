@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Sessions &mdash; Admin &mdash; The Animist Apothecary</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin-hub.css">
+</head>
+<body>
+  <div id="hub-app" class="admin-layout" style="display:none;">
+    <aside class="admin-sidebar" id="hub-sidebar"></aside>
+    <main class="admin-main">
+      <div class="admin-header">
+        <h1>Virtual Sessions</h1>
+        <p>Your one-to-one virtual work &mdash; scheduled hours and the people in them</p>
+      </div>
+      <div class="ph-card">
+        <div class="ph-mark"><span class="ti-svg" data-ic="device-laptop" aria-hidden="true"></span></div>
+        <h2>Coming together</h2>
+        <p>This is where you'll see your virtual one-to-one sessions at a glance &mdash; who's booked, what they came for, and what's next.</p>
+        <p>For now, scheduled hours flow through Bookings.</p>
+        <span class="ph-soon">In progress</span>
+      </div>
+    </main>
+  </div>
+  <script type="module">
+    import { initHub } from './admin-hub.js';
+    initHub('Virtual Sessions');
+  </script>
+</body>
+</html>

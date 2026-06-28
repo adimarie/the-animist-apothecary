@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Note from Adi Marie &mdash; The Animist Apothecary</title>
+  <meta name="description" content="A personal note &mdash; opening the seasonal letter to the people who have walked alongside this work.">
+  <link rel="canonical" href="https://theanimistapothecary.com/letters/note.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="A Note from Adi Marie">
+  <meta property="og:description" content="Opening the seasonal letter of The Animist Apothecary to the people I have shared this work with.">
+  <meta property="og:url" content="https://theanimistapothecary.com/letters/note.html">
+  <meta property="og:site_name" content="The Animist Apothecary">
+  <meta property="og:image" content="https://theanimistapothecary.com/shared/og-image.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A Note from Adi Marie">
+  <meta name="twitter:description" content="Opening the seasonal letter to the people I have shared this work with.">
+  <meta name="twitter:image" content="https://theanimistapothecary.com/shared/og-image.jpg">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon-180.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #F7F5F0;
+      --parchment: #F4EAD3;
+      --sand: #EFEDE6;
+      --bark: #2D2A26;
+      --bark-soft: rgba(45, 42, 38, 0.78);
+      --bark-deep: #1F1A18;
+      --gold: #C9A84C;
+      --gold-pale: #D9BB6F;
+      --sage-deep: #5B7553;
+      --hairline: rgba(45, 42, 38, 0.14);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--paper);
+      color: var(--bark);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.2rem;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    em { font-style: italic; }
+
+    /* &mdash;&mdash;&mdash; Page chrome &mdash;&mdash;&mdash; */
+    .slim-header {
+      padding: 1.5rem 1.5rem 0;
+      text-align: center;
+    }
+    .wordmark {
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.24em;
+      color: var(--bark);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    /* &mdash;&mdash;&mdash; Letter body &mdash;&mdash;&mdash; */
+    main { flex: 1; }
+    .letter {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 4rem 1.75rem 2rem;
+    }
+
+    .letter-top {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+    .letter-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+      line-height: 1.15;
+      color: var(--bark);
+      margin-bottom: 1rem;
+    }
+    .hairline {
+      display: block;
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem auto;
+    }
+
+    .salutation {
+      font-style: italic;
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: var(--bark);
+    }
+
+    .letter p {
+      color: var(--bark);
+      margin-bottom: 1.4rem;
+    }
+    .letter p:last-of-type { margin-bottom: 2rem; }
+
+    .letter em.glow {
+      font-style: italic;
+      color: var(--bark);
+    }
+
+    .currents-inline {
+      font-style: italic;
+      color: var(--bark);
+    }
+
+    /* &mdash;&mdash;&mdash; Subscribe block &mdash;&mdash;&mdash; */
+    .subscribe-block {
+      margin-top: 2.5rem;
+      padding: 2.5rem 2rem;
+      background: var(--parchment);
+      border: 1px solid var(--hairline);
+      border-radius: 4px;
+      text-align: center;
+    }
+    .subscribe-eyebrow {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--bark);
+      opacity: 0.7;
+      margin-bottom: 0.75rem;
+    }
+    .subscribe-prompt {
+      font-style: italic;
+      font-size: 1.12rem;
+      color: var(--bark);
+      margin-bottom: 1.5rem;
+    }
+    .join-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .join-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+    }
+    @media (max-width: 480px) {
+      .join-form-row { grid-template-columns: 1fr; }
+    }
+    .join-form input {
+      width: 100%;
+      padding: 0.85rem 0.95rem;
+      background: var(--paper);
+      border: 1px solid var(--hairline);
+      border-radius: 4px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.02rem;
+      color: var(--bark);
+      transition: border-color 0.2s ease;
+    }
+    .join-form input:focus {
+      outline: none;
+      border-color: var(--sage-deep);
+      box-shadow: 0 0 0 3px rgba(91, 117, 83, 0.12);
+    }
+    .join-form button {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      padding: 1rem 1.5rem;
+      background: var(--bark-deep);
+      color: var(--parchment);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      margin-top: 0.3rem;
+    }
+    .join-form button:hover { background: var(--bark); }
+
+    .or-reply {
+      margin-top: 1.25rem;
+      font-style: italic;
+      font-size: 0.96rem;
+      color: var(--bark-soft);
+    }
+    .or-reply a {
+      color: var(--bark);
+      text-decoration: underline;
+      text-decoration-color: var(--gold-pale);
+      text-underline-offset: 4px;
+    }
+
+    .newsletter-status {
+      margin-top: 0.75rem;
+      font-style: italic;
+      font-size: 0.95rem;
+      min-height: 1.3em;
+      color: var(--bark-soft);
+    }
+    .newsletter-status-pending { color: var(--bark-soft); }
+    .newsletter-status-success { color: var(--sage-deep); }
+    .newsletter-status-error { color: #a14a3a; }
+
+    /* &mdash;&mdash;&mdash; Sign-off &mdash;&mdash;&mdash; */
+    .signoff {
+      margin-top: 3rem;
+      padding-bottom: 2rem;
+    }
+    .signoff-closing {
+      font-style: italic;
+      margin-bottom: 0.25rem;
+      color: var(--bark);
+    }
+    .signature {
+      font-family: 'Tangerine', cursive;
+      font-weight: 700;
+      font-size: 2.8rem;
+      line-height: 1;
+      color: var(--bark);
+      margin: 0.25rem 0 1rem;
+    }
+    .signoff-meta {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* &mdash;&mdash;&mdash; Footer &mdash;&mdash;&mdash; */
+    .quiet-footer {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--bark-soft);
+      border-top: 1px solid var(--hairline);
+      margin-top: 2rem;
+    }
+    .quiet-footer a {
+      color: var(--bark);
+      text-decoration: none;
+      border-bottom: 1px solid var(--hairline);
+      padding-bottom: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="slim-header">
+    <a href="../index.html" class="wordmark">The Animist Apothecary</a>
+  </header>
+
+  <main>
+    <article class="letter">
+
+      <div class="letter-top">
+        <span class="eyebrow">A Note</span>
+        <h1 class="letter-title">An open <em>letter</em></h1>
+        <span class="hairline"></span>
+      </div>
+
+      <p class="salutation">Hello, friend &mdash;</p>
+
+      <p>I am opening up the seasonal letter of <em>The Animist Apothecary</em> to the people I have shared this work with. It is the formal home, now, of what has long been forming &mdash; a named threshold for a practice that has been held in close circles for many years.</p>
+
+      <p>The letter is where all of it lives: <span class="currents-inline">community gatherings and firesides, virtual and in person; the rituals and ceremonies we hold together; learning labs and workshops; and the travel ahead.</span> Less an events calendar than a way to keep this work <em class="glow">thrumming and alive</em> in your own life &mdash; in your own home, in your own community, woven into the foundational framework of how you live.</p>
+
+      <p>It is also an invitation into a community committed to personal and collective spiritual development &mdash; to sitting with the Great Teachers, and to implementing what we receive and learn out into the world.</p>
+
+      <p>If that is a current you would like to stay close to, you can join below, or simply reply.</p>
+
+      <!-- Subscribe block -->
+      <div class="subscribe-block">
+        <span class="subscribe-eyebrow">Join the Seasonal Letters</span>
+        <p class="subscribe-prompt">Leave your name and I'll add you in.</p>
+
+        <form id="newsletter-form" class="join-form newsletter-form" novalidate>
+          <div class="join-form-row">
+            <input type="text" name="first_name" placeholder="First name" required autocomplete="given-name" aria-label="First name">
+            <input type="text" name="last_name" placeholder="Last name" required autocomplete="family-name" aria-label="Last name">
+          </div>
+          <input type="email" name="email" placeholder="Email address" required autocomplete="email" aria-label="Email address">
+          <button type="submit">Join the Letter</button>
+        </form>
+
+        <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></div>
+
+        <p class="or-reply">Or <a href="mailto:its.adimarie@gmail.com?subject=Add%20me%20to%20the%20Seasonal%20Letters">reply to me directly</a> and I'll add you by hand.</p>
+      </div>
+
+      <!-- Sign-off -->
+      <div class="signoff">
+        <p class="signoff-closing">With love,</p>
+        <p class="signature">Adi Marie</p>
+        <p class="signoff-meta">The Animist Apothecary &middot; Worldwide</p>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="quiet-footer">
+    <p>&copy; 2026 The Animist Apothecary &middot; <a href="../index.html">Return to the practice</a></p>
+  </footer>
+
+  <script src="../js/newsletter.js" defer></script>
+</body>
+</html>

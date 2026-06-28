@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emails &mdash; Admin &mdash; The Animist Apothecary</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin-hub.css">
+</head>
+<body>
+  <div id="hub-app" class="admin-layout" style="display:none;">
+    <aside class="admin-sidebar" id="hub-sidebar"></aside>
+    <main class="admin-main">
+      <div class="admin-header">
+        <h1>Emails</h1>
+        <p>Approvals and confirmations for what goes out under your name</p>
+      </div>
+      <div class="ph-card">
+        <div class="ph-mark"><span class="ti-svg" data-ic="mail" aria-hidden="true"></span></div>
+        <h2>Coming together</h2>
+        <p>Outgoing emails wait for your approval. Today that happens through the confirmation link in your inbox; this page will gather them in one place so you can see and approve them here.</p>
+        <span class="ph-soon">In progress</span>
+      </div>
+    </main>
+  </div>
+  <script type="module">
+    import { initHub } from './admin-hub.js';
+    initHub('Emails');
+  </script>
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Met in the Wilds &mdash; Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF8F5;
+      --cream-dark: #F0EDE8;
+      --earth: #3D2E1F;
+      --earth-mid: #6B5744;
+      --earth-faint: #9A8C7A;
+      --sage: #7A8B6F;
+      --sage-light: #E8EDE5;
+      --sage-dark: #5C6B52;
+      --gold: #C4A35A;
+      --gold-light: #F5EDD6;
+      --rose: #C4836F;
+      --rose-light: #F5E0D9;
+      --white: #FFFFFF;
+      --shadow-sm: 0 1px 3px rgba(61,46,31,0.06);
+      --shadow-md: 0 4px 12px rgba(61,46,31,0.08);
+      --radius: 10px;
+      --radius-sm: 6px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--earth);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+    }
+
+    /* LOGIN */
+    #login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 24px; background: var(--cream); }
+    #login-screen h1 { font-size: 32px; }
+    #login-screen p { color: var(--earth-faint); font-size: 13px; margin-bottom: 8px; }
+    .login-btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px; background: var(--earth); color: var(--cream); border: none; border-radius: var(--radius); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+    .login-btn:hover { background: var(--earth-mid); }
+    .login-error { color: var(--rose); font-size: 13px; margin-top: 8px; display: none; }
+    .email-login-toggle { padding: 12px 36px; background: white; color: var(--earth-mid); border: 1px solid var(--cream-dark); border-radius: 4px; font-family: Inter, sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; cursor: pointer; margin-top: 12px; }
+    .email-login-toggle:hover { border-color: var(--gold); color: var(--gold); }
+    #email-login-form { display: none; margin-top: 20px; padding: 20px; background: white; border: 1px solid var(--cream-dark); border-radius: 8px; }
+    #email-login-form input { display: block; width: 100%; padding: 10px 12px; margin-bottom: 12px; border: 1px solid var(--cream-dark); border-radius: 4px; font-family: Inter, sans-serif; font-size: 13px; background: var(--cream); }
+    #email-login-form input:focus { outline: none; border-color: var(--sage); background: white; }
+    #email-login-form .email-login-btn { padding: 12px 24px; background: var(--gold); color: white; border: none; border-radius: 4px; font-family: Inter, sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; width: 100%; }
+
+    /* MAIN LAYOUT */
+    .page { max-width: 1280px; margin: 0 auto; padding: 32px 36px; }
+    .page-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--cream-dark); }
+    .page-header h1 { font-size: 32px; color: var(--earth); margin-bottom: 4px; }
+    .page-header .eyebrow { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .page-header .subtitle { color: var(--earth-mid); font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 16px; }
+    .header-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .header-right .user-info { font-size: 12px; color: var(--earth-faint); }
+    .header-right a { color: var(--earth-mid); font-size: 12px; text-decoration: none; }
+    .header-right a:hover { color: var(--gold); }
+    .sign-out-btn { background: none; border: 1px solid var(--cream-dark); padding: 6px 14px; border-radius: 4px; color: var(--earth-mid); font-family: Inter, sans-serif; font-size: 12px; cursor: pointer; }
+    .sign-out-btn:hover { border-color: var(--rose); color: var(--rose); }
+
+    /* METRICS */
+    .metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+    .metric-card { background: white; padding: 20px; border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+    .metric-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--earth-faint); margin-bottom: 8px; }
+    .metric-value { font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--earth); }
+
+    /* FILTERS */
+    .filters { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+    .filters input, .filters select { padding: 10px 14px; border: 1px solid var(--cream-dark); border-radius: 6px; background: white; font-family: Inter, sans-serif; font-size: 13px; color: var(--earth); }
+    .filters input { flex: 1; min-width: 240px; }
+    .filters input:focus, .filters select:focus { outline: none; border-color: var(--sage); }
+
+    /* TABLE */
+    .table-card { background: white; border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; }
+    .table-card-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; border-bottom: 1px solid var(--cream-dark); }
+    .table-card-header h3 { font-size: 18px; }
+    .table-card-header .count { font-size: 12px; color: var(--earth-faint); }
+    table.data-table { width: 100%; border-collapse: collapse; }
+    table.data-table th { text-align: left; padding: 12px 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--earth-faint); background: var(--cream); border-bottom: 1px solid var(--cream-dark); }
+    table.data-table td { padding: 14px 16px; border-bottom: 1px solid var(--cream-dark); vertical-align: top; }
+    table.data-table tr:last-child td { border-bottom: none; }
+    table.data-table tr:hover { background: var(--cream); }
+    .cell-name { font-weight: 500; color: var(--earth); }
+    .cell-name .cell-sub { font-weight: 400; font-size: 11px; color: var(--earth-faint); margin-top: 2px; letter-spacing: 0.04em; }
+    .cell-email a { color: var(--earth-mid); text-decoration: none; font-size: 13px; }
+    .cell-email a:hover { color: var(--gold); }
+    .cell-date { font-size: 12px; color: var(--earth-faint); white-space: nowrap; }
+    .cell-context { font-size: 12px; color: var(--earth-mid); line-height: 1.45; }
+    .cell-context .ctx-line { margin-bottom: 4px; }
+    .cell-context .ctx-line:last-child { margin-bottom: 0; }
+    .cell-context .ctx-label { display: inline-block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-right: 4px; }
+    .cell-context .ctx-detail { font-style: italic; color: var(--earth-mid); }
+    .cell-context .ctx-empty { color: var(--earth-faint); }
+    .empty-state { padding: 36px 18px; text-align: center; color: var(--earth-faint); font-style: italic; }
+
+    /* STATUS DROPDOWN */
+    .status-select { padding: 6px 10px; border-radius: 4px; border: 1px solid var(--cream-dark); background: white; font-family: Inter, sans-serif; font-size: 12px; color: var(--earth); cursor: pointer; }
+    .status-select:focus { outline: none; border-color: var(--sage); }
+    .status-select[data-status="new"] { background: var(--gold-light); color: var(--earth); border-color: var(--gold); }
+    .status-select[data-status="acknowledged"] { background: var(--sage-light); color: var(--sage-dark); border-color: var(--sage); }
+    .status-select[data-status="invited"] { background: var(--rose-light); color: var(--rose); border-color: var(--rose); }
+    .status-select[data-status="closed"] { background: var(--cream-dark); color: var(--earth-faint); }
+
+    /* NOTES */
+    .notes-textarea { width: 100%; min-width: 220px; padding: 8px 10px; border: 1px solid transparent; border-radius: 4px; background: var(--cream); font-family: Inter, sans-serif; font-size: 12px; color: var(--earth); resize: vertical; min-height: 48px; line-height: 1.4; }
+    .notes-textarea:focus { outline: none; border-color: var(--sage); background: white; }
+    .notes-textarea[data-dirty="true"] { border-color: var(--gold); background: white; }
+    .saving-indicator { font-size: 10px; color: var(--sage-dark); margin-top: 2px; height: 12px; font-style: italic; }
+    .saving-indicator[data-state="saved"] { color: var(--sage-dark); }
+    .saving-indicator[data-state="error"] { color: var(--rose); }
+
+    /* BACK LINK */
+    .back-link { display: inline-block; font-size: 12px; color: var(--earth-mid); text-decoration: none; margin-bottom: 8px; }
+    .back-link:hover { color: var(--gold); }
+    .back-link::before { content: "← "; }
+
+    @media (max-width: 900px) {
+      .page { padding: 20px; }
+      .metrics-row { grid-template-columns: repeat(2, 1fr); }
+      .page-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div id="login-screen">
+    <div style="text-align:center;max-width:420px;padding:20px;">
+      <h1>Met in the Wilds</h1>
+      <p>Admin Triage &mdash; Practitioner Access Only</p>
+      <button class="login-btn" onclick="signInGoogle()">Sign in with Google</button>
+      <button class="email-login-toggle" onclick="toggleEmailLogin()">Sign in with Email</button>
+      <div id="email-login-form">
+        <input type="email" id="email-input" placeholder="Email">
+        <input type="password" id="password-input" placeholder="Password">
+        <button class="email-login-btn" onclick="signInEmail()">Sign In</button>
+      </div>
+      <div id="login-error" class="login-error"></div>
+    </div>
+  </div>
+
+  <!-- APP -->
+  <div id="app" style="display:none;">
+    <div class="page">
+      <a href="index.html" class="back-link">Back to Admin Dashboard</a>
+      <div class="page-header">
+        <div>
+          <div class="eyebrow">Lead Triage</div>
+          <h1>Met in the Wilds</h1>
+          <p class="subtitle">Newsletter signups from the business card. Pre-intake leads. Not clients.</p>
+        </div>
+        <div class="header-right">
+          <div class="user-info" id="user-info"></div>
+          <button class="sign-out-btn" onclick="signOut()">Sign Out</button>
+        </div>
+      </div>
+
+      <div class="metrics-row" id="metrics-row"></div>
+
+      <div class="filters">
+        <input type="text" id="search-input" placeholder="Search name or email...">
+        <select id="status-filter">
+          <option value="">All statuses</option>
+          <option value="new">New</option>
+          <option value="acknowledged">Acknowledged</option>
+          <option value="invited">Invited</option>
+          <option value="closed">Closed</option>
+        </select>
+      </div>
+
+      <div class="table-card">
+        <div class="table-card-header">
+          <h3>Leads</h3>
+          <span class="count" id="lead-count"></span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width:140px;">Name</th>
+              <th style="width:200px;">Email</th>
+              <th style="width:100px;">Signed Up</th>
+              <th style="width:240px;">Context</th>
+              <th style="width:140px;">Status</th>
+              <th>Your Notes</th>
+            </tr>
+          </thead>
+          <tbody id="leads-tbody">
+            <tr><td colspan="5" class="empty-state">Loading&hellip;</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+    const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
+    const ADMIN_EMAILS = ['adimarie@bodyworkandbotanicals.com', 'its.adimarie@gmail.com'];
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const loginScreen = document.getElementById('login-screen');
+    const app = document.getElementById('app');
+    const loginError = document.getElementById('login-error');
+
+    let allLeads = [];
+
+    // ── Auth ──
+    window.signInGoogle = async () => {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: { redirectTo: window.location.href }
+      });
+      if (error) showLoginError(error.message);
+    };
+
+    window.toggleEmailLogin = () => {
+      const f = document.getElementById('email-login-form');
+      f.style.display = f.style.display === 'block' ? 'none' : 'block';
+    };
+
+    window.signInEmail = async () => {
+      const email = document.getElementById('email-input').value.trim();
+      const password = document.getElementById('password-input').value;
+      if (!email || !password) { showLoginError('Email and password required.'); return; }
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) showLoginError(error.message);
+    };
+
+    window.signOut = async () => {
+      await supabase.auth.signOut();
+      window.location.reload();
+    };
+
+    function showLoginError(msg) {
+      loginError.textContent = msg;
+      loginError.style.display = 'block';
+    }
+
+    async function initAuth() {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) { loginScreen.style.display = 'flex'; return; }
+      const email = session.user.email;
+      if (!ADMIN_EMAILS.includes(email)) {
+        showLoginError('Access denied. This account is not authorized as an admin.');
+        loginScreen.style.display = 'flex';
+        await supabase.auth.signOut();
+        return;
+      }
+      loginScreen.style.display = 'none';
+      app.style.display = 'block';
+      document.getElementById('user-info').textContent = email;
+      await loadLeads();
+    }
+
+    // ── Data ──
+    async function loadLeads() {
+      const { data, error } = await supabase
+        .from('newsletter_subscribers')
+        .select('id, first_name, last_name, email, source, status, lead_status, admin_notes, zip_code, referral_source, referral_detail, created_at')
+        .eq('source', 'wilds')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        document.getElementById('leads-tbody').innerHTML =
+          `<tr><td colspan="5" class="empty-state">Failed to load &mdash; ${escapeHtml(error.message)}</td></tr>`;
+        return;
+      }
+
+      allLeads = data || [];
+      renderMetrics();
+      applyFilters();
+    }
+
+    function renderMetrics() {
+      const total = allLeads.length;
+      const fresh = allLeads.filter(l => l.lead_status === 'new').length;
+      const acknowledged = allLeads.filter(l => l.lead_status === 'acknowledged').length;
+      const invited = allLeads.filter(l => l.lead_status === 'invited').length;
+      document.getElementById('metrics-row').innerHTML = [
+        { label: 'Total Wilds Leads', value: total },
+        { label: 'New', value: fresh },
+        { label: 'Acknowledged', value: acknowledged },
+        { label: 'Invited to Intake', value: invited },
+      ].map(m => `
+        <div class="metric-card">
+          <div class="metric-label">${m.label}</div>
+          <div class="metric-value">${m.value}</div>
+        </div>
+      `).join('');
+    }
+
+    function applyFilters() {
+      const term = (document.getElementById('search-input').value || '').trim().toLowerCase();
+      const status = document.getElementById('status-filter').value;
+      const filtered = allLeads.filter(l => {
+        if (status && l.lead_status !== status) return false;
+        if (term) {
+          const hay = [l.first_name, l.last_name, l.email].filter(Boolean).join(' ').toLowerCase();
+          if (!hay.includes(term)) return false;
+        }
+        return true;
+      });
+      renderRows(filtered);
+    }
+
+    function renderRows(rows) {
+      const tbody = document.getElementById('leads-tbody');
+      document.getElementById('lead-count').textContent =
+        rows.length === 1 ? '1 lead' : rows.length + ' leads';
+      if (rows.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No leads yet</td></tr>';
+        return;
+      }
+      tbody.innerHTML = rows.map(r => {
+        const name = [r.first_name, r.last_name].filter(Boolean).join(' ') || '—';
+        const date = r.created_at
+          ? new Date(r.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+          : '—';
+        const status = r.lead_status || 'new';
+        const contextParts = [];
+        if (r.referral_source) {
+          contextParts.push(`<div class="ctx-line"><span class="ctx-label">Met:</span> ${escapeHtml(r.referral_source)}</div>`);
+        }
+        if (r.referral_detail) {
+          contextParts.push(`<div class="ctx-line ctx-detail"><span class="ctx-label">They wrote:</span> ${escapeHtml(r.referral_detail)}</div>`);
+        }
+        const contextHtml = contextParts.length
+          ? contextParts.join('')
+          : '<div class="ctx-empty">—</div>';
+        const nameCell = r.zip_code
+          ? `${escapeHtml(name)}<div class="cell-sub">${escapeHtml(r.zip_code)}</div>`
+          : escapeHtml(name);
+        return `<tr data-id="${r.id}">
+          <td class="cell-name">${nameCell}</td>
+          <td class="cell-email"><a href="mailto:${escapeHtml(r.email)}">${escapeHtml(r.email)}</a></td>
+          <td class="cell-date">${date}</td>
+          <td class="cell-context">${contextHtml}</td>
+          <td>
+            <select class="status-select" data-status="${status}" data-id="${r.id}">
+              <option value="new"${status==='new'?' selected':''}>New</option>
+              <option value="acknowledged"${status==='acknowledged'?' selected':''}>Acknowledged</option>
+              <option value="invited"${status==='invited'?' selected':''}>Invited</option>
+              <option value="closed"${status==='closed'?' selected':''}>Closed</option>
+            </select>
+          </td>
+          <td>
+            <textarea class="notes-textarea" data-id="${r.id}" placeholder="Your notes (private)&hellip;">${escapeHtml(r.admin_notes || '')}</textarea>
+            <div class="saving-indicator" data-id="${r.id}"></div>
+          </td>
+        </tr>`;
+      }).join('');
+
+      // Wire status dropdowns
+      tbody.querySelectorAll('.status-select').forEach(sel => {
+        sel.addEventListener('change', async e => {
+          const id = e.target.dataset.id;
+          const newStatus = e.target.value;
+          e.target.dataset.status = newStatus;
+          await saveField(id, 'lead_status', newStatus);
+        });
+      });
+
+      // Wire notes textareas — auto-save on blur, mark dirty on input
+      tbody.querySelectorAll('.notes-textarea').forEach(ta => {
+        const id = ta.dataset.id;
+        const initial = ta.value;
+        ta.addEventListener('input', () => {
+          ta.dataset.dirty = ta.value !== initial ? 'true' : 'false';
+        });
+        ta.addEventListener('blur', async () => {
+          if (ta.dataset.dirty !== 'true') return;
+          await saveField(id, 'admin_notes', ta.value || null);
+          ta.dataset.dirty = 'false';
+        });
+      });
+    }
+
+    async function saveField(id, field, value) {
+      const indicator = document.querySelector(`.saving-indicator[data-id="${id}"]`);
+      if (indicator) { indicator.textContent = 'Saving…'; indicator.dataset.state = 'pending'; }
+      const { error } = await supabase
+        .from('newsletter_subscribers')
+        .update({ [field]: value, updated_at: new Date().toISOString() })
+        .eq('id', id);
+      if (error) {
+        if (indicator) { indicator.textContent = 'Save failed: ' + error.message; indicator.dataset.state = 'error'; }
+        return;
+      }
+      // Update local copy
+      const lead = allLeads.find(l => l.id === id);
+      if (lead) lead[field] = value;
+      if (indicator) {
+        indicator.textContent = 'Saved';
+        indicator.dataset.state = 'saved';
+        setTimeout(() => { if (indicator.dataset.state === 'saved') indicator.textContent = ''; }, 2000);
+      }
+      if (field === 'lead_status') renderMetrics();
+    }
+
+    function escapeHtml(s) {
+      if (s == null) return '';
+      return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    }
+
+    // Wire filters
+    document.getElementById('search-input').addEventListener('input', applyFilters);
+    document.getElementById('status-filter').addEventListener('change', applyFilters);
+
+    // Watch auth state
+    supabase.auth.onAuthStateChange(() => initAuth());
+    initAuth();
+  </script>
+</body>
+</html>

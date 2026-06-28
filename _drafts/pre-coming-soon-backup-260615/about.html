@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Adi Marie &middot; The Animist Apothecary</title>
+  <meta name="description" content="Adi Marie &mdash; Medicine Woman, Ceremonialist, and Somatic Medium. Sixteen years of devoted practice rooted in Southern California. Available and serving worldwide.">
+  <link rel="canonical" href="https://theanimistapothecary.com/about.html">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="About Adi Marie &middot; The Animist Apothecary">
+  <meta property="og:description" content="Medicine Woman, Ceremonialist, and Somatic Medium. Sixteen years of devoted practice rooted in Southern California.">
+  <meta property="og:image" content="https://theanimistapothecary.com/images/uploads/adi-hero-hillside-2026-05-22.jpg">
+  <meta property="og:url" content="https://theanimistapothecary.com/about.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Adi Marie &middot; The Animist Apothecary">
+  <meta name="twitter:description" content="Medicine Woman, Ceremonialist, and Somatic Medium. Sixteen years of devoted practice rooted in Southern California.">
+  <meta name="twitter:image" content="https://theanimistapothecary.com/images/uploads/adi-hero-hillside-2026-05-22.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v17">
+
+  <!-- Preload hero LCP image for fastest paint -->
+  <link rel="preload" as="image" href="images/uploads/adi-hero-hillside-2026-05-22.jpg" fetchpriority="high">
+
+  <!-- JSON-LD Person schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adi Marie",
+    "url": "https://theanimistapothecary.com/about.html",
+    "image": "https://theanimistapothecary.com/images/uploads/adi-hero-hillside-2026-05-22.jpg",
+    "jobTitle": "Medicine Woman, Ceremonialist, and Somatic Medium",
+    "description": "Shamanic healer, ceremonialist, and somatic medium with sixteen years of practice rooted in Southern California. Initiated diviner in the Dagara tradition of West Africa.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Southern California",
+      "addressCountry": "US"
+    },
+    "knowsAbout": [
+      "Shamanic Bodywork",
+      "Ceremonial & Ritual Stewardship",
+      "Somatic Medium & Oracular Divination",
+      "Dagara Tradition Divination",
+      "Entheogenic Medicine Facilitation",
+      "Generative Hypnosis",
+      "Expressive Arts as Ceremonial Tool",
+      "Botanical Healing Arts"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "The Animist Apothecary",
+      "url": "https://theanimistapothecary.com/"
+    },
+    "subjectOf": {
+      "@type": "VideoObject",
+      "name": "Adi Marie in conversation with Iván Chocrón — An Unbelievable Comeback",
+      "description": "A recent conversation with Iván Chocrón — on the work, on lineage, and on what these times are asking of those who can hold them.",
+      "embedUrl": "https://www.youtube.com/embed/Q5TN8UxmjZI",
+      "url": "https://www.youtube.com/watch?v=Q5TN8UxmjZI&list=PLLQ21laGR76fbMZxfi_iNw9g3te3CR9Jh",
+      "thumbnailUrl": "https://i.ytimg.com/vi/Q5TN8UxmjZI/maxresdefault.jpg"
+    }
+  }
+  </script>
+
+  <style>
+    /* About page Phase 1 rework — page-scoped styles */
+
+    /* Hero LCP image (Phase 2). Replaces background-image for proper fetchpriority. */
+    .page-hero { isolation: isolate; }
+    .page-hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      z-index: 0;
+    }
+    .page-hero .hero-overlay { z-index: 1; }
+    .page-hero-content { z-index: 2; position: relative; }
+
+    .about-narrative,
+    .about-practice,
+    .about-lineage,
+    .about-currents {
+      padding: 6rem 3rem;
+    }
+    .about-narrative,
+    .about-lineage { background: var(--paper, #F7F5F0); }
+    .about-practice,
+    .about-currents { background: var(--sand, #EFEDE6); }
+
+    .about-narrative-inner,
+    .about-practice-inner,
+    .about-lineage-inner {
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    .about-currents-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-narrative .narrative-paragraph,
+    .about-practice .narrative-paragraph,
+    .about-lineage .narrative-paragraph,
+    .about-currents .narrative-paragraph {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: var(--bark, #2D2A26);
+      margin: 0 0 1.5rem 0;
+    }
+
+    .about-narrative-image {
+      display: block;
+      width: 100%;
+      margin: 3.5rem 0;
+      box-shadow: 0 8px 32px rgba(31, 26, 24, .12);
+      background: var(--bark-deep, #1F1A18);
+    }
+    .about-narrative-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .about-narrative .story-quote,
+    .about-practice .story-quote {
+      margin: 3rem 0;
+    }
+
+    .lineage-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin: 1.75rem 0 2.5rem 0;
+    }
+    .lineage-tag {
+      font-family: 'Cinzel', serif;
+      font-size: .66rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      color: var(--gold-bronze, #C9A84C);
+      padding: .55rem 1rem;
+      border: 1px solid rgba(201, 168, 76, .35);
+      background: transparent;
+      white-space: nowrap;
+    }
+
+    .about-currents-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+      margin-top: 3rem;
+    }
+    .current-card {
+      background: var(--paper, #F7F5F0);
+      padding: 2.25rem 2rem;
+      box-shadow: 0 4px 24px rgba(31, 26, 24, .07);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow .25s ease, transform .25s ease;
+      border-top: 2px solid rgba(201, 168, 76, .55);
+    }
+    .current-card:hover {
+      box-shadow: 0 10px 36px rgba(31, 26, 24, .12);
+      transform: translateY(-2px);
+    }
+    .current-card-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: .62rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .26em;
+      color: var(--gold-bronze, #C9A84C);
+    }
+    .current-card-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--bark, #2D2A26);
+      margin: 0;
+      line-height: 1.2;
+    }
+    .current-card-desc {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--bark, #2D2A26);
+      margin: 0;
+      flex: 1;
+    }
+    .current-card-cta {
+      font-family: 'Cinzel', serif;
+      font-size: .66rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      color: var(--bark-deep, #1F1A18);
+      margin-top: auto;
+      padding-top: .9rem;
+      border-top: 1px solid rgba(201, 168, 76, .3);
+    }
+    .current-card:hover .current-card-cta {
+      color: var(--gold-bronze, #C9A84C);
+    }
+
+    /* In Conversation — dark editorial band wrapping a YouTube embed */
+    .about-conversation {
+      padding: 7rem 3rem;
+      background: var(--bark-deep, #1F1A18);
+      color: var(--parchment, #F4EAD3);
+      text-align: center;
+    }
+    .about-conversation-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .about-conversation .section-label {
+      color: var(--gold-bronze, #C9A84C);
+    }
+    .about-conversation .section-title {
+      color: var(--parchment, #F4EAD3);
+    }
+    .about-conversation .section-title em {
+      color: var(--gold-bronze, #C9A84C);
+      font-style: italic;
+    }
+    .about-conversation .story-divider {
+      background: var(--gold-bronze, #C9A84C);
+      opacity: .65;
+      margin: 1rem auto 1.5rem;
+    }
+    .about-conversation .narrative-paragraph {
+      color: rgba(244, 234, 211, .85);
+      margin: 0 auto 1rem auto;
+      max-width: 620px;
+    }
+    .conversation-embed-wrap {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      max-width: 960px;
+      margin: 3rem auto 1.5rem;
+      background: #000;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+      overflow: hidden;
+    }
+    .conversation-embed {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    /* Testimonial section styling — single-quote variant (carousel JS not loaded) */
+    .about-testimonial { background: var(--parchment, #F4EAD3); }
+    .about-testimonial .testimonial-author {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--bark, #2D2A26);
+      margin-top: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .about-testimonial .testimonial-line {
+      flex: 0 0 40px;
+      height: 1px;
+      background: var(--gold-bronze, #C9A84C);
+      opacity: .65;
+    }
+
+    /* Scaffold modifier — used while waiting for a real testimonial.
+       Visually presents the section as a small "note from the practice" rather
+       than a styled quote. Remove "about-testimonial--scaffold" from the
+       section element (and update YAML) when a real quote is available. */
+    .about-testimonial--scaffold .testimonial-container::before { display: none; }
+    .about-testimonial--scaffold .testimonial-text {
+      font-style: italic;
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem) !important;
+      opacity: .82;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .about-testimonial--scaffold .testimonial-author {
+      font-size: .62rem;
+      letter-spacing: .26em;
+      opacity: .75;
+    }
+
+    @media (max-width: 820px) {
+      .about-currents-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    }
+    @media (max-width: 720px) {
+      .about-narrative,
+      .about-practice,
+      .about-lineage,
+      .about-currents {
+        padding: 4rem 1.5rem;
+      }
+      .about-narrative-image { margin: 2rem 0; }
+      .about-narrative .narrative-paragraph,
+      .about-practice .narrative-paragraph,
+      .about-lineage .narrative-paragraph,
+      .about-currents .narrative-paragraph {
+        font-size: 1.05rem;
+        line-height: 1.75;
+      }
+      .lineage-tag {
+        font-size: .58rem;
+        padding: .45rem .8rem;
+        white-space: normal;
+      }
+      .current-card { padding: 1.75rem 1.5rem; }
+      .current-card-title { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body data-content-page="about">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span>
+      </a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+                <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="solo-work.html">Solo Work</a></li>
+          <li><a href="group-work.html">Group Work</a></li>
+          <li><a href="training-grounds.html">The School</a></li>
+          <li><a href="writings.html">Resources</a></li>
+        </ul>
+      </nav>
+      <a href="sessions.html" class="nav-cta apply-btn">Book</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sub-navigation: surfaces the items that used to live in the About dropdown -->
+  <nav class="page-subnav" aria-label="About sections">
+    <div class="page-subnav-inner">
+      <span class="page-subnav-label">Explore About</span>
+      <div class="page-subnav-links">
+        <a href="about.html" class="is-current">Adi Marie</a>
+        <a href="about.html#practice">The Practice</a>
+        <a href="faq.html">Common Questions</a>
+        <a href="voices.html">Voices from the Work</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SECTION 1. Hero. LCP image migrated to <img fetchpriority="high"> for proper paint priority. -->
+  <section class="page-hero" style="padding-top: 80px;">
+    <img class="page-hero-img"
+         src="images/uploads/adi-hero-hillside-2026-05-22.jpg"
+         alt=""
+         fetchpriority="high"
+         decoding="async"
+         data-content="hero.image" data-content-type="image">
+    <div class="hero-overlay"></div>
+    <div class="page-hero-content">
+      <span class="hero-eyebrow" data-content="hero.eyebrow">The Hand Behind the Work</span>
+      <h1 class="page-hero-title" data-content="hero.title" data-content-type="html">Adi <em>Marie</em></h1>
+      <p class="page-hero-subtitle" data-content="hero.subtitle">Medicine woman, ceremonialist, somatic medium &mdash; serving worldwide.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2. Bio. Single-column Pema-style with two interspersed images. -->
+  <section class="about-narrative">
+    <div class="about-narrative-inner">
+      <span class="section-label" data-content="bio.section_label">Sixteen Years in the Work</span>
+      <h2 class="section-title" data-content="bio.title" data-content-type="html">A medicine basket, <em>carefully tended</em></h2>
+      <div class="story-divider"></div>
+
+      <p class="narrative-paragraph" data-content="bio.paragraph_1">Adi Marie is a shamanic healer, ceremonialist, and somatic medium with sixteen years of practice rooted in Southern California. What began as deep hands-on bodywork and therapeutic touch evolved &mdash; through initiation, study, and the relentless demands of a genuine calling &mdash; into something far more encompassing.</p>
+
+      <p class="narrative-paragraph" data-content="bio.paragraph_2">Her training spans multiple lineages and traditions. She is an initiated diviner in the Dagara tradition of West Africa, a lineage that carries ancient technologies of ancestral connection, elemental medicine, and communal healing. She is also trained in somatic therapeutic arts, entheogenic medicine facilitation, expressive arts, generative hypnosis, ceremonial design, and the botanical healing arts.</p>
+
+      <figure class="about-narrative-image">
+        <img src="images/uploads/practitioner-portrait-2026-05-23.jpg"
+             alt="Adi Marie in candid portrait"
+             loading="lazy"
+             decoding="async"
+             data-content="bio.image_1" data-content-type="image"
+             data-content-alt="bio.image_1_alt">
+      </figure>
+
+      <p class="narrative-paragraph" data-content="bio.paragraph_3">Her medicine basket is vast and carefully tended. But what defines her practice is not the accumulation of techniques &mdash; it is the quality of presence she brings to every session, every ceremony, every threshold crossing. She has the rare ability to hold space at the edge of the known world, where the personal becomes mythic and the mythic becomes liveable.</p>
+
+      <p class="narrative-paragraph" data-content="bio.paragraph_4">Adi Marie works with doctors, medicine people, therapists, artists, leaders of industry, and those whose decisions shape the trajectory of this earth ship. Her clients come from all walks of life and all spiritual backgrounds. What unites them is a shared commitment to going deeper &mdash; to the kind of healing that changes the shape of a life, not just the surface of it.</p>
+
+      <blockquote class="story-quote" data-content="bio.quote" data-content-type="html">&lsquo;The earth is asking for healers. The times are asking for those willing to go into the underworld and come back with something real. This work is my answer to that call &mdash; and it is an honor to walk that path alongside those who are ready.&rsquo; <strong>&mdash; Adi Marie</strong></blockquote>
+
+      <figure class="about-narrative-image">
+        <img src="images/uploads/the-work-ceremony.jpg"
+             alt="Ceremonial setting &mdash; candles, smoke, sacred objects gathered for the work"
+             loading="lazy"
+             decoding="async"
+             data-content="bio.image_2" data-content-type="image"
+             data-content-alt="bio.image_2_alt">
+      </figure>
+
+      <p class="narrative-paragraph" data-content="bio.paragraph_5">Based in the canyon lands of Southern California, Adi offers private sessions and intensives in person, and is available worldwide for virtual sessions, private travel engagements, and select community events.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3. The Practice. Philosophy, anchor=#practice (resolves header dropdown link). -->
+  <section class="about-practice" id="practice">
+    <div class="about-practice-inner">
+      <span class="section-label" data-content="practice.section_label">The Practice</span>
+      <h2 class="section-title" data-content="practice.title" data-content-type="html">Where the personal becomes <em>mythic</em></h2>
+      <div class="story-divider"></div>
+
+      <p class="narrative-paragraph" data-content="practice.paragraph_1">The Animist Apothecary is rooted in a single conviction &mdash; that all beings carry spirit, and that the work of healing is the work of restoring relationship between a person and the living world they belong to. The personal is planetary. Each person who heals becomes medicine for the world.</p>
+
+      <p class="narrative-paragraph" data-content="practice.paragraph_2">Adi Marie is known for her ferocious love, her uncommon insight, and her capacity to hold the full spectrum of the human experience without flinching. She works at the edges where bodywork meets ceremony, where therapeutic skill meets the unseen, and where the ones who carry weight find a place to set it down.</p>
+
+      <p class="narrative-paragraph" data-content="practice.paragraph_3">What unites every container &mdash; solo session, group ceremony, year-long arc &mdash; is the same intention. Slow, careful work. Sovereign decisions. Sacred reciprocity. No performance, no spiritual bypass. Only the kind of presence that lets a real thing happen.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4. In Conversation. Dark editorial band framing a YouTube interview embed. -->
+  <section class="about-conversation" id="conversation">
+    <div class="about-conversation-inner">
+      <span class="section-label" data-content="conversation.section_label">In Conversation</span>
+      <h2 class="section-title" data-content="conversation.title" data-content-type="html">Recent <em>conversations</em></h2>
+      <div class="story-divider"></div>
+      <p class="narrative-paragraph" data-content="conversation.intro">An interview from the practice &mdash; on the work, on lineage, and on what these times are asking of us.</p>
+
+      <div class="conversation-embed-wrap">
+        <iframe class="conversation-embed"
+                src="https://www.youtube.com/embed/Q5TN8UxmjZI?si=trsM7ucRRtY2BAtn"
+                title="Adi Marie in conversation with Iván Chocrón &mdash; An Unbelievable Comeback"
+                loading="lazy"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5. Lineage & Training. Three marquee tags + narrative with dates/lineage holders. -->
+  <section class="about-lineage" id="lineage">
+    <div class="about-lineage-inner">
+      <span class="section-label" data-content="lineage.section_label">Lineage &amp; Training</span>
+      <h2 class="section-title" data-content="lineage.title" data-content-type="html">A path tended across <em>multiple traditions</em></h2>
+      <div class="story-divider"></div>
+
+      <div class="lineage-tags" data-content-list="lineage.tags">
+        <span class="lineage-tag" data-content-list-template data-content=".">Interdimensional Intermediary &amp; Guide</span>
+        <span class="lineage-tag">Somatic Medium &amp; Oracular Diviner</span>
+        <span class="lineage-tag">Ceremonial &amp; Ritual Stewardship</span>
+      </div>
+
+      <p class="narrative-paragraph" data-content="lineage.paragraph_1">Adi Marie's practice has been tended without interruption since 2010 &mdash; sixteen years of devoted service, more than a decade of formal initiation and study, and an ongoing apprenticeship to the wild lands of Southern California. The foundation was laid as a licensed massage therapist and somatic bodyworker, and every layer since has been added one initiation at a time.</p>
+
+      <p class="narrative-paragraph" data-content="lineage.paragraph_2">She is an initiated diviner in the Dagara tradition of West Africa, a lineage that carries ancient technologies of ancestral connection, elemental medicine, and communal healing. Her relationship with the lineage and its elders is ongoing &mdash; divinations are read, ceremonies are kept, and the medicine is returned to the living web that gave it.</p>
+
+      <p class="narrative-paragraph" data-content="lineage.paragraph_3">Her formation continues across multiple disciplines &mdash; entheogenic medicine facilitation, generative hypnosis, expressive arts as ceremonial tool, ritual architecture, and the botanical healing arts. She trains with elders and lineage holders, and apprentices to the medicines themselves.</p>
+
+      <p class="narrative-paragraph" data-content="lineage.paragraph_4">She trains and is trained by the practitioners who walk this terrain &mdash; doctors, medicine people, therapists, artists, and the leaders whose decisions shape the trajectory of this earth ship. The medicine basket is vast and carefully tended.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6. Other Currents. 2x2 card grid (Writing / Workshops / Speaking / Journal). -->
+  <section class="about-currents">
+    <div class="about-currents-inner">
+      <span class="section-label" data-content="other_currents.section_label">Writing, Teaching, Other Currents</span>
+      <h2 class="section-title" data-content="other_currents.title" data-content-type="html">Currents that run <em>alongside the practice</em></h2>
+      <div class="story-divider"></div>
+      <p class="narrative-paragraph" data-content="other_currents.intro">Beyond the one-to-one work, four currents run alongside &mdash; places where the practice meets writing, teaching, public speaking, and the slow gathering of a journal.</p>
+
+      <div class="about-currents-grid" data-content-list="other_currents.cards">
+
+        <a class="current-card" data-content-list-template data-content-href=".cta_url" href="community.html#newsletter">
+          <span class="current-card-eyebrow" data-content=".eyebrow">From the Interworlds</span>
+          <h3 class="current-card-title" data-content=".title">Writing &amp; Poetics</h3>
+          <p class="current-card-desc" data-content=".desc">Reflective essays, poetic transmissions, and candid meditations on the nature of healing, initiation, and the living world. Gathered now &mdash; published in installments to come.</p>
+          <span class="current-card-cta" data-content=".cta_text">Receive the Dispatches &rarr;</span>
+        </a>
+
+        <a class="current-card" href="book.html">
+          <span class="current-card-eyebrow">For Practitioners</span>
+          <h3 class="current-card-title">Workshops &amp; Teaching</h3>
+          <p class="current-card-desc">Workshops and intensive teaching programs for those developing their own ceremonial and healing practice. Animist cosmology, sacred breath facilitation, ceremonial design, ancestral healing, somatic awareness, expressive arts as ritual. Private engagements available for groups of six or more.</p>
+          <span class="current-card-cta">Inquire About Teaching &rarr;</span>
+        </a>
+
+        <a class="current-card" href="mailto:adimarie@bodyworkandbotanicals.com?subject=Speaking%20Inquiry">
+          <span class="current-card-eyebrow">For Event Organizers</span>
+          <h3 class="current-card-title">Appearances &amp; Speaking</h3>
+          <p class="current-card-desc">Speaking engagements, panel participation, podcast appearances, and ceremonial leadership at events. Animist worldviews, indigenous wisdom in contemporary healing, somatic intelligence, ecological grief, ceremonial culture as collective medicine.</p>
+          <span class="current-card-cta">Inquire by Email &rarr;</span>
+        </a>
+
+        <a class="current-card" href="community.html#newsletter">
+          <span class="current-card-eyebrow">A Living Document</span>
+          <h3 class="current-card-title">The Journal</h3>
+          <p class="current-card-desc">Recurring threads &mdash; the grief of the living world and why we must feel it; what the body knows that the mind hasn&rsquo;t caught up to yet; the difference between spirituality and spiritual bypassing; canyon medicine, and what the wild lands teach those who listen.</p>
+          <span class="current-card-cta">Read on &rarr;</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7. Testimonial. Currently in scaffold state (publishable "note from the practice").
+       When a real testimony is offered with consent: replace YAML keys (testimonial.text,
+       testimonial.author) and remove the "about-testimonial--scaffold" modifier class below. -->
+  <section class="section-testimonial about-testimonial about-testimonial--scaffold">
+    <div class="testimonial-carousel">
+      <div class="testimonial-slides">
+        <div class="testimonial-slide is-active">
+          <div class="testimonial-container">
+            <div class="testimonial-quote-mark">&mdash;</div>
+            <blockquote class="testimonial-text" data-content="testimonial.text">
+              Voices from this work live with the people who carry them. When a testimony is offered, and consent given, it appears here.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-line"></div>
+              <span data-content="testimonial.author">A note from the practice</span>
+              <div class="testimonial-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8. CTA. -->
+  <section class="section-cta">
+    <div class="cta-container">
+      <span class="section-label" data-content="cta_section.eyebrow">When You&rsquo;re Ready</span>
+      <h2 class="section-title" data-content="cta_section.title" data-content-type="html">Cross the <em>threshold</em></h2>
+      <p class="section-body" data-content="cta_section.body">Send a note. We&rsquo;ll find an hour, hear what you&rsquo;re carrying, and see whether the work is the right shape for where you are.</p>
+      <a href="book.html" class="btn-primary" data-content="cta_section.cta_text" data-content-href="cta_section.cta_url">Apply to Begin</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="inquiry.html">Apply / Intake</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="divinations.html">Divinations</a></li>
+            <li><a href="inquiry.html">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

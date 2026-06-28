@@ -67,14 +67,14 @@
       <nav class="main-nav">
         <ul>
           <li><a href="about.html">About</a></li>
-          <li><a href="ceremonial-coaching.html">Ceremonial Coaching</a></li>
+          <li><a href="ceremonial-coaching.html">A Seasonal Arc</a></li>
           <li><a href="solo-work.html">Virtual Sessions</a></li>
           <li><a href="group-work.html">Gatherings</a></li>
           <li><a href="training-grounds.html">The School</a></li>
           <li><a href="writings.html">Resources</a></li>
         </ul>
       </nav>
-      <a href="book.html" class="nav-cta apply-btn">Apply</a>
+      <a href="sessions.html" class="nav-cta apply-btn">Apply</a>
       </div>
     </div>
   </header>
@@ -153,9 +153,9 @@
       }
 
       if (state.is_cancelled) {
-        html += '<div class="mb-ok">This booking has been cancelled. To find a new time, <a href="virtual-services.html">schedule a session</a>.</div>';
+        html += '<div class="mb-ok">This booking has been cancelled. To find a new time, <a href="sessions.html">schedule a session</a>.</div>';
       } else if (state.is_past) {
-        html += '<p class="mb-note">This session has passed. To book again, <a href="virtual-services.html">schedule a session</a>.</p>';
+        html += '<p class="mb-note">This session has passed. To book again, <a href="sessions.html">schedule a session</a>.</p>';
       } else {
         html += '<div class="mb-actions">';
         if (state.can_reschedule) html += '<button class="mb-btn mb-btn--primary" id="mb-resched-btn">Reschedule</button>';

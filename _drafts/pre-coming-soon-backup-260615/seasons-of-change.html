@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seasons of Change &middot; The Animist Apothecary</title>
+  <meta name="description" content="Ceremonially-assisted coaching containers for deep personal transformation, across the seasons of your becoming.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500&family=Inter:wght@300;400;500&family=Tangerine&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v17">
+  <style>
+    body[data-content-page^="offering-"] { background: #FAF8F3; color: var(--ink-deep, #2D2A26); }
+    .offering-hero { position: relative; min-height: 65vh; display: flex; align-items: center; justify-content: center; padding: 6rem 3rem; overflow: hidden; }
+    .offering-hero-image { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 1; }
+    .offering-hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(20,18,14,0.6), rgba(28,24,18,0.72)); z-index: 2; }
+    .offering-hero-inner { position: relative; z-index: 3; max-width: 880px; text-align: center; color: #F5F3ED; }
+    .offering-hero-eyebrow { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-pale, #DCC178); margin-bottom: 1rem; }
+    .offering-hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(3.2rem, 6.5vw, 5.8rem); line-height: 1.05; margin: 0.4rem 0 0.8rem; letter-spacing: -0.005em; text-shadow: 0 2px 16px rgba(0,0,0,0.3); }
+    .offering-hero-subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.6rem); line-height: 1.55; color: var(--gold-pale, #DCC178); margin: 0 auto; max-width: 720px; }
+    .offering-body { padding: 6rem 3rem; }
+    .offering-body-inner { max-width: 900px; margin: 0 auto; }
+    .offering-section { margin-bottom: 5rem; }
+    .offering-section:last-child { margin-bottom: 0; }
+    .offering-section-label { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.74rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 0.8rem; }
+    .offering-section-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.15; color: var(--ink-deep, #2D2A26); margin: 0.4rem 0 1.4rem; }
+    .offering-body p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; line-height: 1.75; color: var(--ink-soft, #3D3A36); margin: 0 0 1.4rem; }
+    .three-paths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; }
+    @media (max-width: 740px) { .three-paths-grid { grid-template-columns: 1fr; } }
+    .three-path-card { padding: 1.8rem 1.4rem; background: #F5F3ED; border: 1px solid rgba(201, 168, 76, 0.3); border-radius: 4px; text-align: center; }
+    .three-path-title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.25rem; color: var(--ink-deep, #2D2A26); margin: 0 0 0.5rem; }
+    .three-path-desc { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--ink-soft, #3D3A36); margin: 0; }
+    /* Sub-offering card grid — clickable cards that open the booking modal. */
+    .sub-offering-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+    .sub-offering-card { display: flex; flex-direction: column; padding: 1.6rem 1.4rem 1.2rem; background: #FAF8F3; border: 1px solid rgba(201, 168, 76, 0.28); border-radius: 3px; text-decoration: none; color: inherit; cursor: pointer; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; }
+    .sub-offering-card:hover { border-color: var(--gold, #c9a84c); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(45,42,38,0.08); }
+    .sub-offering-eyebrow { font-family: 'Cormorant SC', serif; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 0.4rem; }
+    .sub-offering-title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.2rem; line-height: 1.2; color: var(--ink-deep, #2D2A26); margin: 0 0 0.5rem; }
+    .sub-offering-desc { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; line-height: 1.55; color: var(--ink-soft, #3D3A36); margin: 0 0 1rem; flex-grow: 1; }
+    .sub-offering-cta { font-family: 'Cormorant SC', serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-top: auto; }
+    .offering-meta { font-family: 'Cormorant SC', serif; font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold, #c9a84c); margin: 1.5rem 0 0; }
+    .offering-cta-row { display: flex; flex-wrap: wrap; gap: 1.2rem; margin: 2rem 0 0; }
+    .offering-final-cta { padding: 5rem 3rem; background: #2D2A26; color: #F5F3ED; text-align: center; }
+    .offering-final-cta h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.2; color: #F5F3ED; margin: 0.4rem 0 1.2rem; }
+    .offering-final-cta p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: rgba(245, 243, 237, 0.85); max-width: 600px; margin: 0 auto 2rem; }
+  </style>
+</head>
+<body data-content-page="offering-seasons-of-change">
+
+    <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span></a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+                                                <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="solo-work.html">Solo Work</a></li>
+          <li><a href="group-work.html">Group Work</a></li>
+          <li><a href="training-grounds.html">The School</a></li>
+          <li><a href="writings.html">Resources</a></li>
+        </ul>
+      </nav>
+      <a href="sessions.html" class="nav-cta apply-btn">Book</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="offering-hero">
+    <div class="offering-hero-image" style="background-image: url('https://images.unsplash.com/photo-1762755126280-6d8a4f9d1115?w=2400&h=1300&fit=crop&q=80');"></div>
+    <div class="offering-hero-overlay"></div>
+    <div class="offering-hero-inner">
+      <span class="offering-hero-eyebrow">Personal Container</span>
+      <h1 class="offering-hero-title">Seasons of Change</h1>
+      <p class="offering-hero-subtitle">Ceremonially-Assisted Coaching Containers.</p>
+    </div>
+  </section>
+
+  <section class="offering-body">
+    <div class="offering-body-inner">
+
+      <div class="offering-section">
+        <p>Private one-on-one containers for deep personal transformation &mdash; therapeutic coaching woven with ceremonial assistance, held across the seasons of your becoming.</p>
+        <p>This is the work of long-arc tending. Not a single session, not a quick fix &mdash; but a sustained ceremonial relationship between you and the one walking the path with you. The container is held by Adi Marie, witnessed by the Spirit Worlds, and shaped to the specific terrain of your becoming.</p>
+      </div>
+
+      <div class="offering-section" id="three-paths">
+        <span class="offering-section-label">Three Paths In</span>
+        <h2 class="offering-section-title">Why people come.</h2>
+        <div class="three-paths-grid">
+          <div class="three-path-card">
+            <h3 class="three-path-title">Therapeutic Processes</h3>
+            <p class="three-path-desc">Trauma-informed healing.</p>
+          </div>
+          <div class="three-path-card">
+            <h3 class="three-path-title">Personal Development</h3>
+            <p class="three-path-desc">Skill-building of self or spiritual gifts.</p>
+          </div>
+          <div class="three-path-card">
+            <h3 class="three-path-title">Spiritual Awakenings</h3>
+            <p class="three-path-desc">Direct revelation and integration.</p>
+          </div>
+        </div>
+        <p class="offering-meta">Solo Acolyte Work &middot; By Application</p>
+      </div>
+
+      <div class="offering-section" id="containers">
+        <span class="offering-section-label">Choose Your Container</span>
+        <h2 class="offering-section-title">Four arcs of tending.</h2>
+        <p>Each container begins with an Intake &amp; Inquiry &mdash; a conversation to confirm fit, attune to the work, and assess the terrain. Reciprocity scales with depth and is discussed in that first conversation.</p>
+
+        <div class="sub-offering-grid">
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Entry"
+             data-title="3-Month Container"
+             data-desc="A focused short arc. Bi-weekly sessions, ceremonial check-ins, and integration support. For those moving through a defined passage or seeking initial alignment before a longer commitment."
+             data-reciprocity="Reciprocity discussed at Intake & Inquiry"
+             data-inquire-email-subject="3-Month Container — Inquiry">
+            <span class="sub-offering-eyebrow">Entry &middot; Short Arc</span>
+            <h3 class="sub-offering-title">3-Month Container</h3>
+            <p class="sub-offering-desc">A focused short arc &mdash; bi-weekly sessions, ceremonial check-ins, integration support.</p>
+            <span class="sub-offering-cta">Schedule the Intake &rarr;</span>
+          </a>
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Immersive"
+             data-title="6-Month Container"
+             data-desc="Half a year of tending. Weekly or bi-weekly sessions, seasonal ceremony, and deepening into the somatic and ceremonial work. Most acolytes begin here."
+             data-reciprocity="Reciprocity discussed at Intake & Inquiry"
+             data-inquire-email-subject="6-Month Container — Inquiry">
+            <span class="sub-offering-eyebrow">Immersive</span>
+            <h3 class="sub-offering-title">6-Month Container</h3>
+            <p class="sub-offering-desc">Half a year of tending &mdash; weekly sessions, seasonal ceremony, somatic deepening.</p>
+            <span class="sub-offering-cta">Schedule the Intake &rarr;</span>
+          </a>
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Deep Arc"
+             data-title="12-Month Container"
+             data-desc="A full wheel of the year walked together. Weekly sessions, eight seasonal ceremonies, integrated bodywork, and the long arc of becoming met one season at a time. The classical container."
+             data-reciprocity="Reciprocity discussed at Intake & Inquiry"
+             data-inquire-email-subject="12-Month Container — Inquiry">
+            <span class="sub-offering-eyebrow">Deep Arc &middot; Full Wheel</span>
+            <h3 class="sub-offering-title">12-Month Container</h3>
+            <p class="sub-offering-desc">A full wheel of the year walked together &mdash; weekly sessions, eight seasonal ceremonies.</p>
+            <span class="sub-offering-cta">Schedule the Intake &rarr;</span>
+          </a>
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Premium &middot; By Application"
+             data-title="24-Month Container"
+             data-desc="Two full wheels of the year. Limited to a small number of acolytes annually. For those whose work asks for a sustained ceremonial relationship of the deepest kind. By application only."
+             data-reciprocity="Reciprocity discussed in application conversation · Limited slots"
+             data-inquire-email-subject="24-Month Container — Application Inquiry">
+            <span class="sub-offering-eyebrow">Premium &middot; By Application</span>
+            <h3 class="sub-offering-title">24-Month Container</h3>
+            <p class="sub-offering-desc">Two full wheels of the year. By application only. Limited slots.</p>
+            <span class="sub-offering-cta">Apply for a Container &rarr;</span>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="offering-final-cta">
+    <h2>Begin with the <em>Intake &amp; Inquiry</em>.</h2>
+    <p>The required first conversation for attunement, alignment, and safety assessment &mdash; before the work begins.</p>
+    <a href="https://new.theanimistapothecary.com/apply" class="btn-primary">Schedule the Intake</a>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="https://new.theanimistapothecary.com/apply">Apply / Intake</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="divinations.html">Divinations</a></li>
+            <li><a href="https://new.theanimistapothecary.com/contact/inquiry">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/content-loader.js" defer></script>
+  <script src="js/booking-modal.js" defer></script>
+</body>
+</html>

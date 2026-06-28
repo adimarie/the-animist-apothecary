@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  THE ANIMIST APOTHECARY  ·  Email newsletter template
+  "Water, Milk, and Honey"  ·  built on the canonical brand tokens
+  ============================================================================
+
+  HOW TO USE
+  ----------
+  • Email-safe HTML: table layout, inline styles, web-safe font fallbacks.
+    Renders in Gmail, Apple Mail, Outlook, and most ESPs (Mailchimp, ConvertKit,
+    Klaviyo, Substack-import, etc.).
+  • Each section is a BLOCK marked with a comment banner. Duplicate, reorder,
+    or delete blocks to compose any issue. A weekly pulls a few blocks; the
+    monthly runs the spread; the seasonal goes long.
+  • Replace the {{merge_fields}} with your ESP's equivalents:
+        {{first_name}}  {{preview_text}}  {{unsubscribe_url}}  {{mailing_address}}
+
+  PHOTOS  (important)
+  -------
+  • Email images must be HOSTED at an absolute URL (https://...), not local paths.
+    Drop your photos into images/uploads/ on the site, then use the full URL.
+  • Supply images at ~2× the display size for crisp retina (e.g. a 1200px-wide
+    file shown in the 600px hero). Recommended sizes are noted on each block.
+  • Always keep the alt text. In the preview, photo slots show as tinted frames
+    until you point each src at a real hosted image.
+
+  BLOCKS INCLUDED
+  ---------------
+    brand bar · masthead · HERO PHOTO · the letter · FEATURED ARTICLE (lead photo)
+    · blessing · IMAGE + TEXT · aside card · TWO-UP GALLERY · notes from the field
+    · FROM THE ARCHIVE (article list w/ thumbs) · feature CTA → writings ·
+    what's open · sign-off · footer
+
+  • To run the spicier identity, swap the masthead name "Water, Milk, and Honey"
+    for "Poison & Honey". Everything else stays.
+
+  BRAND TOKENS
+  ------------
+    paper #F7F5F0 · container #FAF8F3 · frame #EDE6D7 · moss-deep #1A2218
+    ink-deep #2D2A26 · ink-soft #3D3A36 · ink-quiet #5A554C · parchment #F4EAD3
+    gold #C9A84C · gold-pale #DCC178 · copper #886039 · cream-text #F5F3ED
+    Fonts: Cormorant Garamond · Cormorant SC · Tangerine · Inter (Georgia/Arial fallbacks)
+  ============================================================================
+-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>Water, Milk, and Honey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@400;500&family=Tangerine:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; padding: 0; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; background-color: #EDE6D7; }
+    table { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { border: 0; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; }
+    a { text-decoration: none; }
+    a.brand-link { color: #886039; }
+    a.read-more { color: #886039; }
+    a.btn-dark:hover { background-color: #C9A84C !important; }
+    a.btn-gold:hover { background-color: #DCC178 !important; }
+    @media only screen and (max-width: 620px) {
+      .container { width: 100% !important; }
+      .px { padding-left: 26px !important; padding-right: 26px !important; }
+      .py-lg { padding-top: 36px !important; padding-bottom: 36px !important; }
+      .masthead-script { font-size: 46px !important; }
+      .title-lg { font-size: 30px !important; }
+      .stack { display: block !important; width: 100% !important; }
+      .stack-gap { padding-top: 18px !important; padding-left: 0 !important; }
+      .img-full { width: 100% !important; height: auto !important; }
+    }
+  </style>
+</head>
+
+<body style="margin:0; padding:0; background-color:#EDE6D7;">
+
+  <!-- Preview text (hidden inbox snippet) -->
+  <div style="display:none; font-size:1px; color:#EDE6D7; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+    {{preview_text}}
+    &#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;
+  </div>
+
+  <!-- ===== OUTER WRAPPER ===== -->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#EDE6D7" style="background-color:#EDE6D7;">
+    <tr>
+      <td align="center" style="padding:28px 12px;">
+
+        <!-- ===== CONTAINER ===== -->
+        <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#FAF8F3" style="width:600px; max-width:600px; background-color:#FAF8F3;">
+
+          <!-- ===== BLOCK: BRAND BAR ===== -->
+          <tr>
+            <td align="center" class="px" style="padding:30px 48px 14px 48px;">
+              <a href="https://theanimistapothecary.com/" style="text-decoration:none; color:#2D2A26;">
+                <span style="font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size:23px; font-weight:500; letter-spacing:0.02em; color:#2D2A26;">The Animist </span><span style="font-family:'Cormorant Garamond', Georgia, serif; font-style:italic; font-size:23px; font-weight:500; color:#C9A84C;">Apothecary</span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:0 48px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+                <td style="border-top:1px solid #E3DCCB; font-size:0; line-height:0;">&nbsp;</td>
+              </tr></table>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: MASTHEAD (issue header) ===== -->
+          <!-- Swap the script name to "Poison & Honey" for the spicier identity. -->
+          <tr>
+            <td align="center" class="px" style="padding:36px 48px 26px 48px;">
+              <p style="margin:0 0 12px 0; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:12px; font-weight:500; letter-spacing:0.30em; text-transform:uppercase; color:#C9A84C;">Seasonal Letter &middot; No. I</p>
+              <p class="masthead-script" style="margin:0 0 8px 0; font-family:'Tangerine', 'Snell Roundhand', 'Cormorant Garamond', cursive, serif; font-size:58px; font-weight:700; line-height:1; color:#C9A84C;">Water, Milk, and Honey</p>
+              <p style="margin:0; font-family:'Cormorant Garamond', Georgia, serif; font-style:italic; font-size:18px; line-height:1.5; color:#5A554C;">the longest day &middot; a letter from the practice</p>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: HERO PHOTO (full-bleed) ===== -->
+          <!-- Replace src. Recommended 1200×720 hosted file, shown at 600×360. -->
+          <tr>
+            <td bgcolor="#EDE6D7" style="background-color:#EDE6D7; font-size:0; line-height:0;">
+              <img class="img-full" src="https://theanimistapothecary.com/images/uploads/REPLACE-hero.jpg" width="600" height="360" alt="A smudge of smoke rising over a mossy forest floor." style="width:100%; max-width:600px; height:auto; display:block;">
+            </td>
+          </tr>
+          <tr>
+            <td align="center" class="px" style="padding:10px 56px 0 56px;">
+              <p style="margin:0; font-family:'Cormorant Garamond', Georgia, serif; font-style:italic; font-size:13px; line-height:1.5; color:#6E7866;">A line of caption, if the image wants one.</p>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: THE LETTER (main prose) ===== -->
+          <tr>
+            <td class="px" style="padding:28px 56px 30px 56px;">
+              <p style="margin:0 0 18px 0; font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-size:19px; line-height:1.78; color:#3D3A36;">Dear {{first_name}},</p>
+              <p style="margin:0 0 18px 0; font-family:'Cormorant Garamond', Georgia, serif; font-size:19px; line-height:1.78; color:#3D3A36;">This is the part of the work that won&rsquo;t fit inside a ceremony &mdash; the reflections from the land, the warnings worth saying plainly, the blessings, and the occasional bit of trouble. Read it with your whole animal.</p>
+              <p style="margin:0 0 18px 0; font-family:'Cormorant Garamond', Georgia, serif; font-size:19px; line-height:1.78; color:#3D3A36;"><em>Write the letter here.</em> One or two paragraphs is plenty &mdash; something inspiring, something useful, sometimes simply what is most on your heart.</p>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: FEATURED ARTICLE / BLOG POST (lead photo + excerpt) ===== -->
+          <tr>
+            <td style="padding:0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF" style="background-color:#FFFFFF; border-top:1px solid #E3DCCB; border-bottom:1px solid #E3DCCB;">
+                <!-- Lead image — replace src. Recommended 1200×640, shown at 600×320. -->
+                <tr>
+                  <td bgcolor="#EDE6D7" style="background-color:#EDE6D7; font-size:0; line-height:0;">
+                    <img class="img-full" src="https://theanimistapothecary.com/images/uploads/REPLACE-article-lead.jpg" width="600" height="320" alt="Describe the featured letter's image." style="width:100%; max-width:600px; height:auto; display:block;">
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px" style="padding:30px 56px 34px 56px;">
+                    <p style="margin:0 0 10px 0; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:12px; font-weight:500; letter-spacing:0.26em; text-transform:uppercase; color:#C9A84C;">Featured Letter</p>
+                    <p class="title-lg" style="margin:0 0 8px 0; font-family:'Cormorant Garamond', Georgia, serif; font-weight:500; font-size:32px; line-height:1.15; color:#2D2A26;">The title of the essay goes here</p>
+                    <p style="margin:0 0 18px 0; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:#6E7866;">Adi Marie &middot; Summer Solstice 2026 &middot; 6 min</p>
+                    <p style="margin:0 0 16px 0; font-family:'Cormorant Garamond', Georgia, serif; font-size:18px; line-height:1.78; color:#3D3A36;">The opening of the long-form piece &mdash; two or three paragraphs that carry the reader into the heart of it, then hand them off to the website to finish.</p>
+                    <p style="margin:0 0 22px 0; font-family:'Cormorant Garamond', Georgia, serif; font-size:18px; line-height:1.78; color:#3D3A36;">Room here for the full breath of an article: a teaching, a field account, a seasonal meditation. Let it run as long as it wants on the page; here, give just enough to pull them through.</p>
+                    <a class="read-more" href="https://theanimistapothecary.com/writings.html" style="font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:13px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:#886039;">Read the full letter &rarr;</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: BLESSING / PULL-QUOTE  (honey & salve) ===== -->
+          <tr>
+            <td class="px" style="padding:34px 56px 34px 56px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr><td align="center" style="border-top:1px solid #E3DCCB; padding-top:30px;">
+                  <p style="margin:0; font-family:'Cormorant Garamond', Georgia, serif; font-style:italic; font-size:24px; line-height:1.5; color:#3C2A1A;">&ldquo;You were never too much. You were looking for rooms built small, and calling the low ceiling your fault.&rdquo;</p>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: IMAGE + TEXT (photo beside a note; stacks on mobile) ===== -->
+          <tr>
+            <td class="px" style="padding:0 48px 34px 48px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <!-- Photo — replace src. Recommended 600×450, shown ~240 wide. -->
+                  <td class="stack" width="240" valign="top" style="width:240px;">
+                    <img class="img-full" src="https://theanimistapothecary.com/images/uploads/REPLACE-side.jpg" width="240" height="180" alt="Describe this photo." style="width:100%; max-width:240px; height:auto; display:block; border-radius:2px;">
+                  </td>
+                  <td class="stack stack-gap" valign="top" style="padding-left:24px;">
+                    <p style="margin:0 0 6px 0; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:12px; font-weight:500; letter-spacing:0.24em; text-transform:uppercase; color:#C9A84C;">From the land</p>
+                    <p style="margin:0; font-family:'Cormorant Garamond', Georgia, serif; font-size:17px; line-height:1.72; color:#3D3A36;">A short note paired with an image &mdash; an offering, a place, a moment from the season. Two or three sentences sit comfortably beside the photo.</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: ASIDE CARD (reusable: posit · dart · the bit · ask) ===== -->
+          <tr>
+            <td class="px" style="padding:0 48px 34px 48px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F4EAD3" style="background-color:#F4EAD3; border:1px solid #E1D2A8; border-radius:3px;">
+                <tr><td style="padding:24px 28px;">
+                  <p style="margin:0 0 8px 0; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:12px; font-weight:500; letter-spacing:0.26em; text-transform:uppercase; color:#886039;">A contemplative posit</p>
+                  <p style="margin:0; font-family:'Cormorant Garamond', Georgia, serif; font-size:19px; line-height:1.7; color:#2D2A26;">What are you petitioning &mdash; and does it know your name yet? What would change if you finally introduced yourself?</p>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: TWO-UP GALLERY (two photos + captions; stacks on mobile) ===== -->
+          <tr>
+            <td class="px" style="padding:0 48px 30px 48px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <!-- Each photo: replace src. Recommended 560×420, shown ~244 wide. -->
+                  <td class="stack" width="244" valign="top" style="width:244px;">
+                    <img class="img-full" src="https://theanimistapothecary.com/images/uploads/REPLACE-gallery-1.jpg" width="244" height="180" alt="Describe photo one." style="width:100%; max-width:244px; height:auto; display:block; border-radius:2px;">
+                    <p style="margin:8px 0 0 0; font-family:'Cormorant Garamond', Georgia, serif; font-style:italic; font-size:13px; line-height:1.5; color:#6E7866;">Caption one.</p>
+                  </td>
+                  <td width="24" class="stack" style="width:24px; font-size:0; line-height:0;">&nbsp;</td>
+                  <td class="stack stack-gap" width="244" valign="top" style="width:244px;">
+                    <img class="img-full" src="https://theanimistapothecary.com/images/uploads/REPLACE-gallery-2.jpg" width="244" height="180" alt="Describe photo two." style="width:100%; max-width:244px; height:auto; display:block; border-radius:2px;">
+                    <p style="margin:8px 0 0 0; font-family:'Cormorant Garamond', Georgia, serif; font-style:italic; font-size:13px; line-height:1.5; color:#6E7866;">Caption two.</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: NOTES FROM THE FIELD (list: chisme · what's stirring) ===== -->
+          <tr>
+            <td class="px" style="padding:14px 56px 30px 56px;">
+              <p style="margin:0 0 14px 0; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:12px; font-weight:500; letter-spacing:0.26em; text-transform:uppercase; color:#C9A84C;">Notes from the field</p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td valign="top" width="20" style="font-family:Georgia,serif; font-size:19px; line-height:1.7; color:#C9A84C;">&middot;</td>
+                  <td style="font-family:'Cormorant Garamond', Georgia, serif; font-size:18px; line-height:1.7; color:#3D3A36; padding-bottom:8px;">A note, a warning, or a small piece of news from the work.</td>
+                </tr>
+                <tr>
+                  <td valign="top" width="20" style="font-family:Georgia,serif; font-size:19px; line-height:1.7; color:#C9A84C;">&middot;</td>
+                  <td style="font-family:'Cormorant Garamond', Georgia, serif; font-size:18px; line-height:1.7; color:#3D3A36; padding-bottom:8px;">Another item &mdash; keep them short and plainspoken.</td>
+                </tr>
+                <tr>
+                  <td valign="top" width="20" style="font-family:Georgia,serif; font-size:19px; line-height:1.7; color:#C9A84C;">&middot;</td>
+                  <td style="font-family:'Cormorant Garamond', Georgia, serif; font-size:18px; line-height:1.7; color:#3D3A36;">A third, with a little teeth if the week calls for it.</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: FROM THE ARCHIVE (article list with thumbnails) ===== -->
+          <tr>
+            <td class="px" style="padding:6px 56px 8px 56px;">
+              <p style="margin:0 0 4px 0; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:12px; font-weight:500; letter-spacing:0.26em; text-transform:uppercase; color:#C9A84C;">More from the archive</p>
+            </td>
+          </tr>
+          <!-- Repeat this row per past article. Thumb: replace src, recommended 240×180, shown 110 wide. -->
+          <tr>
+            <td class="px" style="padding:14px 56px 0 56px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #E3DCCB;">
+                <tr>
+                  <td width="110" valign="top" style="width:110px; padding-top:16px;">
+                    <a href="https://theanimistapothecary.com/writings.html"><img src="https://theanimistapothecary.com/images/uploads/REPLACE-archive-1.jpg" width="110" height="82" alt="Thumbnail for this letter." style="width:110px; height:82px; display:block; border-radius:2px;"></a>
+                  </td>
+                  <td valign="top" style="padding:16px 0 0 18px;">
+                    <a href="https://theanimistapothecary.com/writings.html" style="font-family:'Cormorant Garamond', Georgia, serif; font-weight:500; font-size:19px; line-height:1.25; color:#2D2A26;">Title of an earlier letter</a>
+                    <p style="margin:5px 0 6px 0; font-family:'Cormorant Garamond', Georgia, serif; font-size:15px; line-height:1.5; color:#5A554C;">A one-line dek that says what this one holds.</p>
+                    <a class="read-more" href="https://theanimistapothecary.com/writings.html" style="font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#886039;">Read &rarr;</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:0 56px 0 56px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid #E3DCCB;">
+                <tr>
+                  <td width="110" valign="top" style="width:110px; padding-top:16px;">
+                    <a href="https://theanimistapothecary.com/writings.html"><img src="https://theanimistapothecary.com/images/uploads/REPLACE-archive-2.jpg" width="110" height="82" alt="Thumbnail for this letter." style="width:110px; height:82px; display:block; border-radius:2px;"></a>
+                  </td>
+                  <td valign="top" style="padding:16px 0 16px 18px;">
+                    <a href="https://theanimistapothecary.com/writings.html" style="font-family:'Cormorant Garamond', Georgia, serif; font-weight:500; font-size:19px; line-height:1.25; color:#2D2A26;">Title of another earlier letter</a>
+                    <p style="margin:5px 0 6px 0; font-family:'Cormorant Garamond', Georgia, serif; font-size:15px; line-height:1.5; color:#5A554C;">A one-line dek that says what this one holds.</p>
+                    <a class="read-more" href="https://theanimistapothecary.com/writings.html" style="font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#886039;">Read &rarr;</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: FEATURE CTA → WRITINGS (link back to the website) ===== -->
+          <tr>
+            <td style="padding:30px 0 0 0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#1A2218" style="background-color:#1A2218;">
+                <tr><td align="center" class="px py-lg" style="padding:44px 48px;">
+                  <p style="margin:0 0 6px 0; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:12px; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:#DCC178;">On the website</p>
+                  <p style="margin:0 0 18px 0; font-family:'Cormorant Garamond', Georgia, serif; font-weight:500; font-size:28px; line-height:1.25; color:#F5F3ED;">Read every letter, in full.</p>
+                  <p style="margin:0 0 26px 0; font-family:'Cormorant Garamond', Georgia, serif; font-style:italic; font-size:17px; line-height:1.6; color:#C8C9C5;">The full archive of Water, Milk, and Honey lives in the Writings &amp; Letters room of the practice.</p>
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr>
+                    <td bgcolor="#C9A84C" style="border-radius:2px;">
+                      <a class="btn-gold" href="https://theanimistapothecary.com/writings.html" style="display:inline-block; padding:15px 36px; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:14px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:#1A2218; background-color:#C9A84C; border-radius:2px;">Visit Writings &amp; Letters</a>
+                    </td>
+                  </tr></table>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: THE SEASON AHEAD (calendar) ===== -->
+          <tr>
+            <td align="center" class="px" style="padding:40px 48px 4px 48px;">
+              <p style="margin:0; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:12px; font-weight:500; letter-spacing:0.26em; text-transform:uppercase; color:#C9A84C;">The season ahead</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="px" style="padding:8px 56px 6px 56px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+
+                <!-- EVENT ROW — duplicate this <tr> for each gathering -->
+                <tr>
+                  <td valign="top" width="76" style="width:76px; border-top:1px solid #E3DCCB; padding:16px 0;">
+                    <p style="margin:0; font-family:'Cormorant SC','Cormorant Garamond',Georgia,serif; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#C9A84C;">Jun</p>
+                    <p style="margin:2px 0 0 0; font-family:'Cormorant Garamond',Georgia,serif; font-size:28px; line-height:1; color:#2D2A26;">20</p>
+                  </td>
+                  <td valign="top" style="border-top:1px solid #E3DCCB; padding:16px 0 16px 14px;">
+                    <a href="https://theanimistapothecary.com/calendar.html" style="font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; font-size:20px; line-height:1.2; color:#2D2A26;">Solstice Fire Gathering</a>
+                    <p style="margin:4px 0 6px 0; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:15px; line-height:1.4; color:#5A554C;">Topanga, California &middot; evening circle</p>
+                    <a class="read-more" href="https://theanimistapothecary.com/calendar.html" style="font-family:'Cormorant SC','Cormorant Garamond',Georgia,serif; font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#886039;">Details &rarr;</a>
+                  </td>
+                </tr>
+                <!-- /EVENT ROW -->
+
+                <tr>
+                  <td valign="top" width="76" style="width:76px; border-top:1px solid #E3DCCB; padding:16px 0;">
+                    <p style="margin:0; font-family:'Cormorant SC','Cormorant Garamond',Georgia,serif; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#C9A84C;">Jul</p>
+                    <p style="margin:2px 0 0 0; font-family:'Cormorant Garamond',Georgia,serif; font-size:28px; line-height:1; color:#2D2A26;">12</p>
+                  </td>
+                  <td valign="top" style="border-top:1px solid #E3DCCB; padding:16px 0 16px 14px;">
+                    <a href="https://theanimistapothecary.com/calendar.html" style="font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; font-size:20px; line-height:1.2; color:#2D2A26;">New Moon Ceremony</a>
+                    <p style="margin:4px 0 6px 0; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:15px; line-height:1.4; color:#5A554C;">By the river &middot; day-long</p>
+                    <a class="read-more" href="https://theanimistapothecary.com/calendar.html" style="font-family:'Cormorant SC','Cormorant Garamond',Georgia,serif; font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#886039;">Details &rarr;</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td valign="top" width="76" style="width:76px; border-top:1px solid #E3DCCB; padding:16px 0;">
+                    <p style="margin:0; font-family:'Cormorant SC','Cormorant Garamond',Georgia,serif; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#C9A84C;">Aug</p>
+                    <p style="margin:2px 0 0 0; font-family:'Cormorant Garamond',Georgia,serif; font-size:28px; line-height:1; color:#2D2A26;">09</p>
+                  </td>
+                  <td valign="top" style="border-top:1px solid #E3DCCB; padding:16px 0 16px 14px;">
+                    <a href="https://theanimistapothecary.com/training-grounds.html" style="font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; font-size:20px; line-height:1.2; color:#2D2A26;">The Apprenticeship opens</a>
+                    <p style="margin:4px 0 6px 0; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:15px; line-height:1.4; color:#5A554C;">Online &amp; in person &middot; a long arc</p>
+                    <a class="read-more" href="https://theanimistapothecary.com/training-grounds.html" style="font-family:'Cormorant SC','Cormorant Garamond',Georgia,serif; font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#886039;">Details &rarr;</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td valign="top" width="76" style="width:76px; border-top:1px solid #E3DCCB; padding:16px 0;">
+                    <p style="margin:0; font-family:'Cormorant SC','Cormorant Garamond',Georgia,serif; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#C9A84C;">Sep</p>
+                    <p style="margin:2px 0 0 0; font-family:'Cormorant Garamond',Georgia,serif; font-size:28px; line-height:1; color:#2D2A26;">22</p>
+                  </td>
+                  <td valign="top" style="border-top:1px solid #E3DCCB; padding:16px 0 16px 14px;">
+                    <a href="https://theanimistapothecary.com/calendar.html" style="font-family:'Cormorant Garamond',Georgia,serif; font-weight:500; font-size:20px; line-height:1.2; color:#2D2A26;">Autumn Equinox Retreat</a>
+                    <p style="margin:4px 0 6px 0; font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; font-size:15px; line-height:1.4; color:#5A554C;">Venue to be revealed &middot; weekend</p>
+                    <a class="read-more" href="https://theanimistapothecary.com/calendar.html" style="font-family:'Cormorant SC','Cormorant Garamond',Georgia,serif; font-size:11px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#886039;">Details &rarr;</a>
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" class="px" style="padding:16px 48px 4px 48px;">
+              <a class="read-more" href="https://theanimistapothecary.com/calendar.html" style="font-family:'Cormorant SC','Cormorant Garamond',Georgia,serif; font-size:12px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:#886039;">See the full calendar &rarr;</a>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" class="px" style="padding:22px 48px 6px 48px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr>
+                <td bgcolor="#2D2A26" style="border-radius:2px;">
+                  <a class="btn-dark" href="https://theanimistapothecary.com/sessions.html" style="display:inline-block; padding:14px 32px; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:13px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:#F5F3ED; background-color:#2D2A26; border-radius:2px;">Begin the Intake</a>
+                </td>
+              </tr></table>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: AN INVITATION (connections · venues · needs) ===== -->
+          <tr>
+            <td style="padding:36px 0 0 0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#F4EAD3" style="background-color:#F4EAD3; border-top:1px solid #E1D2A8; border-bottom:1px solid #E1D2A8;">
+                <tr><td align="center" class="px py-lg" style="padding:42px 56px;">
+                  <p style="margin:0 0 12px 0; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:12px; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:#886039;">An invitation</p>
+                  <p style="margin:0 0 18px 0; font-family:'Cormorant Garamond', Georgia, serif; font-weight:500; font-size:28px; line-height:1.2; color:#2D2A26;">Where might this work be needed?</p>
+                  <p style="margin:0 0 16px 0; font-family:'Cormorant Garamond', Georgia, serif; font-size:18px; line-height:1.7; color:#3D3A36;">This work travels by word of mouth, and by the right rooms finding it. So I am asking you, plainly &mdash;</p>
+                  <p style="margin:0 0 6px 0; font-family:'Cormorant Garamond', Georgia, serif; font-style:italic; font-size:18px; line-height:1.6; color:#3C2A1A;">If you know of a place where this work would be of benefit,</p>
+                  <p style="margin:0 0 6px 0; font-family:'Cormorant Garamond', Georgia, serif; font-style:italic; font-size:18px; line-height:1.6; color:#3C2A1A;">a place in your community to host a gathering,</p>
+                  <p style="margin:0 0 18px 0; font-family:'Cormorant Garamond', Georgia, serif; font-style:italic; font-size:18px; line-height:1.6; color:#3C2A1A;">or a need within your field that calls for it &mdash;</p>
+                  <p style="margin:0 0 22px 0; font-family:'Cormorant Garamond', Georgia, serif; font-size:18px; line-height:1.7; color:#3D3A36;">please reach out and let me know. The field is woven by hands like yours.</p>
+                  <p style="margin:0; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:13px; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:#2D2A26;">Simply reply to this letter &nbsp;&middot;&nbsp; <a href="https://theanimistapothecary.com/inquiry.html" style="color:#886039;">or send a message &rarr;</a></p>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: SIGN-OFF ===== -->
+          <tr>
+            <td align="center" class="px" style="padding:34px 56px 36px 56px;">
+              <p style="margin:0; font-family:'Cormorant Garamond', Georgia, serif; font-style:italic; font-size:20px; line-height:1.5; color:#3C2A1A;">With water, milk, and honey,</p>
+              <p style="margin:6px 0 0 0; font-family:'Tangerine', 'Snell Roundhand', cursive, serif; font-size:42px; font-weight:700; line-height:1; color:#C9A84C;">Adi Marie</p>
+            </td>
+          </tr>
+
+          <!-- ===== BLOCK: FOOTER ===== -->
+          <tr>
+            <td style="padding:0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#3C2A1A" style="background-color:#3C2A1A;">
+                <tr><td align="center" class="px" style="padding:34px 48px 30px 48px;">
+                  <p style="margin:0 0 14px 0; font-family:'Cormorant Garamond', Georgia, serif; font-size:18px; font-weight:500; color:#F5F3ED;">The Animist <span style="font-style:italic; color:#DCC178;">Apothecary</span></p>
+                  <p style="margin:0 0 20px 0; font-family:'Cormorant Garamond', Georgia, serif; font-style:italic; font-size:14px; line-height:1.6; color:#C8C9C5;">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+                  <p style="margin:0 0 18px 0; font-family:'Cormorant SC', 'Cormorant Garamond', Georgia, serif; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;">
+                    <a href="https://theanimistapothecary.com/" style="color:#DCC178; text-decoration:none;">Home</a>
+                    <span style="color:#7A5A40;">&nbsp;&middot;&nbsp;</span>
+                    <a href="https://theanimistapothecary.com/about.html" style="color:#DCC178; text-decoration:none;">About</a>
+                    <span style="color:#7A5A40;">&nbsp;&middot;&nbsp;</span>
+                    <a href="https://theanimistapothecary.com/writings.html" style="color:#DCC178; text-decoration:none;">Writings</a>
+                    <span style="color:#7A5A40;">&nbsp;&middot;&nbsp;</span>
+                    <a href="https://theanimistapothecary.com/sacred-reciprocity.html" style="color:#DCC178; text-decoration:none;">Sacred Reciprocity</a>
+                  </p>
+                  <p style="margin:0 0 6px 0; font-family:'Inter', Arial, Helvetica, sans-serif; font-size:11px; line-height:1.6; color:#B6A788;">You are receiving this because you keep a quiet ear close to the practice.</p>
+                  <p style="margin:0; font-family:'Inter', Arial, Helvetica, sans-serif; font-size:11px; line-height:1.6; color:#B6A788;">
+                    {{mailing_address}}<br>
+                    <a href="{{unsubscribe_url}}" style="color:#B6A788; text-decoration:underline;">Unsubscribe</a> &middot; tend your preferences anytime.
+                  </p>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+        <!-- /container -->
+
+      </td>
+    </tr>
+  </table>
+  <!-- /outer wrapper -->
+
+</body>
+</html>

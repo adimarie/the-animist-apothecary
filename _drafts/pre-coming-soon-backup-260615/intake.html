@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <title>Immersion Intake &middot; Adi Marie</title>
+  <link rel="stylesheet" href="css/styles.css?v=v32" />
+  <link rel="stylesheet" href="css/site-header.css?v=v17" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: #F7F5F0; color: #2D2A26; }
+
+    /* ============================================================
+       INTAKE FORM — editorial redesign
+       Matches the external new.theanimistapothecary.com/intake:
+       light paper bg, flowing sections, large Cormorant titles,
+       generous whitespace, gold accents, image-slot opportunities.
+       ============================================================ */
+    body { background: #F7F5F0 !important; }
+
+    /* ============================================================
+       INTAKE HERO — OVERLAY PATTERN (matches index.html canonical)
+       ============================================================
+       Image fills the section. Text overlays on the LEFT half with
+       a left-side dark scrim for legibility. Image background
+       shifts further right at narrow viewports so the text always
+       has its own visual space. Same proportional title rule.
+       ============================================================ */
+    .intake-hero {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      min-height: 520px;
+      background: #2D2A26;
+      overflow: hidden;
+    }
+    .intake-hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: 70% center;
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+    /* Placeholder pattern shows only when no photo is set */
+    .intake-hero-image:not(.has-photo) {
+      background:
+        repeating-linear-gradient(45deg, rgba(201,168,76,0.04) 0 12px, transparent 12px 24px),
+        linear-gradient(180deg, rgba(255,255,255,0.5), rgba(201,168,76,0.06));
+    }
+    .intake-hero-image.has-photo {
+      background: var(--hero-bg);
+      background-size: cover;
+      background-position: 70% center;
+    }
+    /* Left-side dark scrim so the cream text is legible over the photo */
+    .intake-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(90deg,
+        rgba(28,22,16,0.78) 0%,
+        rgba(28,22,16,0.55) 38%,
+        rgba(28,22,16,0.15) 60%,
+        rgba(28,22,16,0) 80%);
+      pointer-events: none;
+    }
+    .intake-hero-copy {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      max-width: 720px;
+      padding: 0 4rem 0 6rem;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+    .intake-hero-copy::before {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: #c9a84c;
+      margin: 0 0 1.75rem;
+      opacity: 0.75;
+    }
+    .intake-hero .hero-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #DCC178;
+      margin: 0 0 1rem;
+      display: block;
+    }
+    .intake-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      color: #F7F5F0;
+      font-size: clamp(2.6rem, 5.6vw, 5rem);
+      font-weight: 400;
+      margin: 0 0 0.6rem;
+      line-height: 1.05;
+      letter-spacing: -0.005em;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.4);
+    }
+    .intake-hero h1 em {
+      font-style: italic;
+      color: #DCC178;
+    }
+    .intake-hero .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      color: rgba(244,234,211,0.92);
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.55;
+      margin: 0;
+      max-width: 540px;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.35);
+    }
+    /* Narrow-viewport: shift photo further right + tighter padding + stronger scrim */
+    @media (max-width: 900px) {
+      .intake-hero {
+        aspect-ratio: 4 / 3;
+        min-height: 440px;
+      }
+      .intake-hero-copy {
+        padding: 0 2rem 0 3rem;
+        max-width: 65%;
+      }
+      .intake-hero-image,
+      .intake-hero-image.has-photo {
+        background-position: 88% center !important;
+      }
+      .intake-hero::before {
+        background: linear-gradient(90deg,
+          rgba(28,22,16,0.85) 0%,
+          rgba(28,22,16,0.6) 50%,
+          rgba(28,22,16,0.2) 80%);
+      }
+    }
+    @media (max-width: 600px) {
+      .intake-hero {
+        aspect-ratio: 5 / 6;
+        min-height: 460px;
+      }
+      .intake-hero-copy {
+        padding: 0 1.5rem;
+        max-width: 90%;
+      }
+      .intake-hero-image,
+      .intake-hero-image.has-photo {
+        background-position: 95% center !important;
+      }
+      .intake-hero::before {
+        background: linear-gradient(90deg,
+          rgba(28,22,16,0.88) 0%,
+          rgba(28,22,16,0.72) 60%,
+          rgba(28,22,16,0.45) 100%);
+      }
+      .intake-hero .hero-sub {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Container */
+    .intake-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* Progress indicator — refined */
+    .progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+    .progress-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #c9a84c;
+    }
+    .progress-track {
+      height: 2px;
+      background: rgba(45,42,38,0.08);
+      border-radius: 0;
+      margin-bottom: 3.5rem;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #c9a84c;
+      border-radius: 0;
+      transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Section — single-page flow: every section visible at once */
+    .form-section { display: block !important; }
+    .form-section.active { display: block; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+
+    /* Hide per-section Continue/Back nav (single-page mode) */
+    .section-nav { display: none !important; }
+    /* Hide multi-step progress bar — visitor sees the whole form */
+    .progress-header, .progress-track { display: none !important; }
+    /* Final submit lives in its own dedicated section at the bottom */
+    .final-submit-section { padding: 4rem 0 0; text-align: center; border-top: 1px solid rgba(201,168,76,0.3); margin-top: 3rem; }
+    .final-submit-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 2.6vw, 2.2rem); font-weight: 300; color: #2D2A26; margin: 0 0 0.8rem; line-height: 1.2; }
+    .final-submit-section h2 em { font-style: italic; color: #c9a84c; }
+    .final-submit-section p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: #3a3530; opacity: 0.78; margin: 0 0 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    .section-card {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0 0 2rem;
+      margin-bottom: 0;
+    }
+    /* Frame Section 1's welcome content as a luxury card */
+    .form-section[data-section="1"] .section-card {
+      background: #fff;
+      border: 1px solid rgba(201,168,76,0.28);
+      border-top: 3px solid #c9a84c;
+      border-radius: 2px;
+      padding: 3rem 3rem 2.5rem;
+      box-shadow: 0 6px 32px rgba(45,42,38,0.07), 0 1px 3px rgba(45,42,38,0.04);
+      margin-bottom: 3rem;
+    }
+    @media (max-width: 600px) {
+      .form-section[data-section="1"] .section-card {
+        padding: 2rem 1.5rem 1.5rem;
+      }
+    }
+    .section-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      margin: 0 0 1rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      color: #2D2A26;
+      margin: 0 0 1.8rem;
+      line-height: 1.1;
+      letter-spacing: -0.005em;
+    }
+    .section-title em {
+      font-style: italic;
+      color: #c9a84c;
+    }
+    .section-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.12rem;
+      color: #3a3530;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+    .section-intro p { margin: 0 0 1rem; }
+    .section-intro p:last-child { margin: 0; }
+
+    /* Image opportunity slot — drop into any section between intro and fields */
+    .section-image {
+      margin: 0 -1rem 2.5rem;
+      aspect-ratio: 16 / 9;
+      background:
+        repeating-linear-gradient(45deg, rgba(201,168,76,0.04) 0 12px, transparent 12px 24px),
+        linear-gradient(180deg, rgba(255,255,255,0.5), rgba(201,168,76,0.06));
+      border: 1px solid rgba(201,168,76,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #c9a84c;
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+    .section-image.has-photo {
+      background-size: cover;
+      background-position: center;
+      opacity: 1;
+    }
+
+    /* Divider between sections (rendered when multiple sections visible) */
+    .form-section + .form-section .section-card {
+      border-top: 1px solid rgba(201,168,76,0.2);
+      padding-top: 4rem;
+      margin-top: 1rem;
+    }
+
+    /* Form fields */
+    /* ===== Sub-group sections within Practicals — framed luxury cards ===== */
+    .sub-group {
+      margin: 0 0 2rem;
+      padding: 2.5rem 2.5rem 1.25rem;
+      background: #fff;
+      border: 1px solid rgba(201,168,76,0.28);
+      border-top: 3px solid #c9a84c;
+      border-radius: 2px;
+      box-shadow: 0 4px 24px rgba(45,42,38,0.06), 0 1px 3px rgba(45,42,38,0.04);
+      position: relative;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .sub-group:hover {
+      box-shadow: 0 8px 32px rgba(45,42,38,0.10), 0 1px 3px rgba(45,42,38,0.06);
+    }
+    .sub-group:first-of-type {
+      margin-top: 1rem;
+    }
+    .sub-group-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      margin: 0 0 0.5rem;
+      display: block;
+      text-align: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .sub-group-eyebrow::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 1px;
+      background: #c9a84c;
+      opacity: 0.7;
+    }
+    @media (max-width: 600px) {
+      .sub-group {
+        padding: 1.75rem 1.5rem 0.75rem;
+      }
+    }
+
+    /* Gold-tinted required asterisk */
+    .req {
+      color: #c9a84c;
+      font-weight: 500;
+      margin-left: 0.15em;
+      font-size: 0.95em;
+    }
+
+    .fg { margin-bottom: 1.75rem; }
+    .fg > label { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; text-transform: none; letter-spacing: -0.005em; color: #1F1612; margin-bottom: 0.35rem; line-height: 1.35; }
+    .fg .helper { font-family: 'Cormorant Garamond', serif; font-size: 0.92rem; color: #6b5e4a; font-style: italic; margin: 0 0 0.75rem; line-height: 1.5; }
+    .fg input[type="text"], .fg input[type="email"], .fg input[type="date"], .fg input[type="tel"], .fg textarea, .fg select {
+      width: 100%; padding: 0.95rem 1.15rem; border: 1px solid rgba(45,42,38,0.25); border-radius: 2px;
+      font-family: 'Inter', sans-serif; font-size: 0.98rem; color: #1F1612; background: #FBFAF6; transition: border-color 0.2s, box-shadow 0.2s, background 0.2s; box-sizing: border-box;
+    }
+    .fg input:focus, .fg textarea:focus, .fg select:focus { outline: none; border-color: #c9a84c; box-shadow: 0 0 0 3px rgba(201,168,76,0.18); background: #fff; }
+    .fg input::placeholder, .fg textarea::placeholder { color: rgba(45,42,38,0.4); font-style: italic; }
+    .fg textarea { min-height: 140px; resize: vertical; line-height: 1.7; padding: 1rem 1.1rem; font-size: 0.98rem; }
+    .fg.error input, .fg.error textarea, .fg.error select { border-color: #c0392b; }
+    .field-error-msg { color: #c0392b; font-size: 0.76rem; margin-top: 4px; display: none; }
+    .fg.error .field-error-msg { display: block; }
+
+    /* Two-col row */
+    .fg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media (max-width: 580px) { .fg-row { grid-template-columns: 1fr; } .section-card { padding: 24px 20px; } }
+
+    /* Custom radio — refined pill-style */
+    .radio-group { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .radio-option {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.85rem 1.4rem;
+      border: 1px solid rgba(45,42,38,0.18);
+      border-radius: 2px;
+      background: #fff;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+      flex: 1 1 auto;
+      min-width: 140px;
+      justify-content: center;
+    }
+    .radio-option:hover { border-color: #c9a84c; background: rgba(201,168,76,0.04); }
+    .radio-option input[type="radio"] {
+      appearance: none; -webkit-appearance: none;
+      width: 18px; height: 18px;
+      border: 2px solid #c9a84c; border-radius: 50%;
+      flex-shrink: 0; position: relative; cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .radio-option input[type="radio"]::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 8px; height: 8px;
+      background: #c9a84c; border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.2s ease;
+    }
+    .radio-option input[type="radio"]:checked::after { transform: translate(-50%, -50%) scale(1); }
+    .radio-option:has(input:checked) {
+      border-color: #c9a84c;
+      background: rgba(201,168,76,0.08);
+    }
+    .radio-option span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      color: #2D2A26;
+    }
+    .radio-option.selected { border-color: #5B7553; background: rgba(91,117,83,0.04); }
+
+    /* Custom checkboxes */
+    .checkbox-list { display: flex; flex-direction: column; gap: 8px; }
+
+    /* Deeper-work intent checkboxes (Section 1) */
+    .deeper-work-label { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 500; color: #2D2A26; display: block; margin-bottom: 0.85rem; }
+    .deeper-work-label .label-hint { font-style: italic; font-weight: 400; opacity: 0.65; font-size: 0.9rem; margin-left: 0.4rem; }
+    .deeper-work-list { gap: 0.5rem; margin-bottom: 1.5rem; }
+    .deeper-work-option { display: flex; align-items: flex-start; gap: 0.7rem; padding: 0.7rem 0.85rem; background: rgba(201,168,76,0.04); border-left: 2px solid rgba(201,168,76,0.25); border-radius: 2px; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease; }
+    .deeper-work-option:hover { background: rgba(201,168,76,0.1); border-left-color: #c9a84c; }
+    .deeper-work-option input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; min-width: 18px; border: 2px solid #5B7553; border-radius: 3px; cursor: pointer; position: relative; transition: background 0.15s; flex-shrink: 0; margin-top: 0.15rem; }
+    .deeper-work-option input[type="checkbox"]:checked { background: #5B7553; }
+    .deeper-work-option input[type="checkbox"]:checked::after { content: ''; position: absolute; top: 1px; left: 5px; width: 4px; height: 8px; border: 2px solid #fff; border-top: none; border-left: none; transform: rotate(45deg); }
+    .deeper-work-option .opt-text { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.55; color: #2D2A26; }
+    .deeper-work-option .opt-text strong { font-weight: 500; }
+    .deeper-work-option .opt-text em { font-style: italic; color: #c9a84c; }
+    .deeper-work-option:has(input:checked) { background: rgba(91,117,83,0.08); border-left-color: #5B7553; }
+    .cb-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 14px; border: 1px solid #e8e5df; border-radius: 5px; cursor: pointer; transition: border-color 0.2s; }
+    .cb-item:hover { border-color: #b8c9b4; }
+    .cb-item input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: 20px; height: 20px; min-width: 20px; border: 2px solid #5B7553; border-radius: 3px; cursor: pointer; position: relative; transition: background 0.15s, border-color 0.15s; margin-top: 1px; }
+    .cb-item input[type="checkbox"]:checked { background: #5B7553; }
+    .cb-item input[type="checkbox"]:checked::after { content: ''; position: absolute; top: 2px; left: 6px; width: 5px; height: 9px; border: 2px solid #fff; border-top: none; border-left: none; transform: rotate(45deg); }
+    .cb-item span { font-size: 0.9375rem; font-weight: 400; letter-spacing: normal; color: #444; line-height: 1.5; }
+    .cb-other-input { margin-top: 8px; display: none; }
+    .cb-other-input.visible { display: block; }
+
+    /* Consent items */
+    .consent-item { border: 1px solid #e8e5df; border-radius: 8px; padding: 22px 24px; margin-bottom: 16px; }
+    .consent-item:last-of-type { margin-bottom: 0; }
+    .consent-item h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 500; color: #2D2A26; margin: 0 0 10px; }
+    .consent-item p { font-size: 0.88rem; color: #666; line-height: 1.7; margin: 0 0 10px; }
+    .consent-item p:last-of-type { margin-bottom: 14px; }
+    .consent-check-row { display: flex; align-items: center; gap: 10px; }
+    .consent-check-row input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: 20px; height: 20px; min-width: 20px; border: 2px solid #5B7553; border-radius: 3px; cursor: pointer; position: relative; transition: background 0.15s; flex-shrink: 0; }
+    .consent-check-row input[type="checkbox"]:checked { background: #5B7553; }
+    .consent-check-row input[type="checkbox"]:checked::after { content: ''; position: absolute; top: 2px; left: 6px; width: 5px; height: 9px; border: 2px solid #fff; border-top: none; border-left: none; transform: rotate(45deg); }
+    .consent-check-row label { font-size: 0.85rem; font-weight: 500; color: #2D2A26; cursor: pointer; }
+    .consent-item.error { border-color: #c0392b; background: #fdf8f8; }
+    .consent-error-msg { color: #c0392b; font-size: 0.74rem; margin-top: 6px; display: none; }
+    .consent-item.error .consent-error-msg { display: block; }
+
+    /* Nav buttons — Cinzel uppercase, brand-aligned */
+    .section-nav { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; margin-top: 1.5rem; border-top: 1px solid rgba(201,168,76,0.18); }
+    .btn-back { background: transparent; border: 1px solid rgba(45,42,38,0.3); color: #5c5450; font-family: 'Cinzel', serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; padding: 0.85rem 1.6rem; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
+    .btn-back:hover { border-color: #2D2A26; color: #2D2A26; background: rgba(45,42,38,0.04); }
+    .btn-continue { background: #2D2A26; color: #F7F5F0; border: 1px solid #2D2A26; font-family: 'Cinzel', serif; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; padding: 0.95rem 2.2rem; border-radius: 2px; cursor: pointer; transition: all 0.25s ease; margin-left: auto; }
+    .btn-continue:hover { background: #c9a84c; border-color: #c9a84c; color: #2D2A26; transform: translateY(-1px); }
+    .btn-continue:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .btn-submit { background: #c9a84c; color: #2D2A26; border: 1px solid #c9a84c; font-family: 'Cinzel', serif; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; padding: 1.1rem 2.6rem; border-radius: 2px; cursor: pointer; transition: all 0.25s ease; }
+    .btn-submit:hover { background: #DBC079; border-color: #DBC079; transform: translateY(-1px); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    /* Welcome section special */
+    .welcome-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: #c9a84c; margin: 0 0 20px; font-style: italic; text-align: center; }
+    .welcome-divider { width: 48px; height: 1px; background: linear-gradient(90deg, transparent, #c9a84c, transparent); margin: 20px auto; }
+
+    /* Closing section */
+    .closing-text { font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; color: #5c5450; line-height: 1.8; text-align: center; }
+    .closing-text p { margin: 0 0 18px; }
+    .closing-text p:last-child { margin: 0; color: #5B7553; font-weight: 500; }
+
+    /* Success */
+    .intake-success { display: none; text-align: center; padding: 64px 24px; }
+    .intake-success.visible { display: block; }
+    .intake-success h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: #2D2A26; margin: 0 0 16px; }
+    .intake-success p { font-size: 0.92rem; color: #666; line-height: 1.7; max-width: 500px; margin: 0 auto 14px; }
+    .intake-success .cta-link { display: inline-block; margin-top: 24px; padding: 13px 36px; background: #5B7553; color: #fff; text-decoration: none; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.03em; text-transform: none; }
+
+    /* Privacy note */
+    .privacy-note { background: rgba(91,117,83,0.06); border-left: 3px solid #5B7553; border-radius: 0 6px 6px 0; padding: 16px 20px; margin-top: 16px; }
+    .privacy-note p { font-size: 0.8rem; color: #888; line-height: 1.6; margin: 0; }
+
+    /* Checkbox group error */
+    .checkbox-group-error { color: #c0392b; font-size: 0.76rem; margin-top: 6px; display: none; }
+    .checkbox-group-error.visible { display: block; }
+
+    /* Radio group error */
+    .radio-group-error { color: #c0392b; font-size: 0.76rem; margin-top: 6px; display: none; }
+    .radio-group-error.visible { display: block; }
+    .fg.error .radio-group-error { display: block; }
+
+    /* Footer */
+    .site-footer { background: #2D2A26; color: rgba(255,255,255,0.6); padding: 60px 24px 40px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: #fff; margin-bottom: 32px; display: block; text-decoration: none; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 12px 32px; margin-bottom: 40px; }
+    .footer-nav a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.05em; transition: color 0.2s; }
+    .footer-nav a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+    <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span>
+      </a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+                                                <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="solo-work.html">Solo Work</a></li>
+          <li><a href="group-work.html">Group Work</a></li>
+          <li><a href="training-grounds.html">The School</a></li>
+          <li><a href="writings.html">Resources</a></li>
+        </ul>
+      </nav>
+      <a href="sessions.html" class="nav-cta apply-btn">Book</a>
+      </div>
+    </div>
+  </header>
+
+<!-- HERO — image at top, copy below -->
+<section class="intake-hero">
+  <!-- Hero photo: Adi at her apothecary table, writing in journal -->
+  <div class="intake-hero-image has-photo" role="img"
+       aria-label="Adi Marie at her apothecary table, writing reflectively in a journal — warm candlelit room with herbs, jars, and plants"
+       style="background-image: url('images/uploads/intake-hero.png');">
+  </div>
+
+  <div class="intake-hero-copy">
+    <span class="hero-eyebrow">Before We Begin</span>
+    <h1>Immersion <em>Intake</em></h1>
+    <p class="hero-sub">A touchpoint required before joining in ritual, ceremony, or an immersion. This is the threshold that brings you onto these grounds. The intake is completed only once, and maintains the curation, safety, and attunement of the community fields.</p>
+  </div>
+</section>
+
+<!-- MAIN FORM AREA -->
+<div class="intake-wrap">
+
+  <!-- Progress bar -->
+  <div class="progress-header" id="progressHeader">
+    <span class="progress-label" id="progressLabel">Section 1 of 2</span>
+  </div>
+  <div class="progress-track" id="progressTrack">
+    <div class="progress-fill" id="progressFill" style="width: 6.25%;"></div>
+  </div>
+
+  <!-- Success state -->
+  <div class="intake-success" id="intakeSuccess">
+    <h2>Thank you for sharing yourself so fully.</h2>
+    <p>Your intake has been received and will be reviewed with care. You will hear from me soon.</p>
+    <p>In the meantime, take a breath. The hardest part &mdash; the stepping forward &mdash; is already done.</p>
+    <a href="https://new.theanimistapothecary.com/apply" class="cta-link">Book an Introductory Call</a>
+  </div>
+
+  <!-- FORM -->
+  <form id="intakeForm" novalidate>
+
+    <!-- ============================================================
+         SECTION 1 &mdash; Welcome
+    ============================================================ -->
+    <div class="form-section active" data-section="1">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 1 of 2</p>
+        <p class="welcome-title">The Immersion Intake &mdash; A required reflection before ritual, ceremony, or immersion</p>
+        <div class="welcome-divider"></div>
+        <div class="section-intro">
+          <p>Welcome. This intake form is an invitation to pause, to reflect, and to offer the information that allows us to work together with care, intention, and appropriate safety. It covers a wide range of territory &mdash; physical, emotional, psychological, spiritual, and practical &mdash; because the work we may do together touches all of these dimensions.</p>
+          <p>Take your time with each section. There are no correct answers. Your honest, unhurried responses are what matter most.</p>
+          <p>Begin by naming your path here, then what draws you to this work, then your email.</p>
+        </div>
+
+        <!-- ─── SUB-GROUP · Your Path Here (moved from end of Section 2; now the first reflection block) ─── -->
+        <div class="sub-group">
+          <p class="sub-group-eyebrow">Your Path Here</p>
+
+          <div class="fg" id="fg_how_found">
+            <label for="how_found">How did you come to find my work, or to this offering? <span class="req">*</span></label>
+            <p class="helper">Please be specific. A person, a platform, a moment, a dream.</p>
+            <textarea id="how_found" name="how_found" placeholder="A friend, a podcast, a search, a synchronicity…"></textarea>
+            <div class="field-error-msg" id="err_how_found">Please share how you found this work.</div>
+          </div>
+
+          <div class="fg">
+            <label for="referred_by">Who referred you to this work?</label>
+            <p class="helper">If a person, practitioner, or community sent you here.</p>
+            <input type="text" id="referred_by" name="referred_by" placeholder="Name and how you know them" />
+          </div>
+
+          <div class="fg" id="fg_why_fit_now">
+            <label for="why_fit_now">Why is this work a fit for you right now? <span class="req">*</span></label>
+            <p class="helper">What tells you you&rsquo;re ready. What&rsquo;s calling you. What kind of experience, work, or threshold you&rsquo;re seeking.</p>
+            <textarea id="why_fit_now" name="why_fit_now" placeholder="What&rsquo;s awake in you, what&rsquo;s asking to be met…" style="min-height: 140px;"></textarea>
+            <div class="field-error-msg" id="err_why_fit_now">Please share what brings you to this work now.</div>
+          </div>
+
+          <div class="fg" id="fg_why_aligned">
+            <label for="why_aligned">Why does my work specifically feel aligned for you? <span class="req">*</span></label>
+            <p class="helper">What about my approach, pacing, style of care, or the ceremonial nature of this work feels like a match.</p>
+            <textarea id="why_aligned" name="why_aligned" placeholder="What you&rsquo;ve noticed in my work that resonates…" style="min-height: 140px;"></textarea>
+            <div class="field-error-msg" id="err_why_aligned">Please share what resonates.</div>
+          </div>
+
+          <div class="fg" id="fg_what_looking_for">
+            <label for="what_looking_for">What are you looking for? <span class="req">*</span></label>
+            <p class="helper">Support, counsel, bodywork, ceremonial work, integration, or something else.</p>
+            <textarea id="what_looking_for" name="what_looking_for" placeholder="The shape of what would meet you well…" style="min-height: 120px;"></textarea>
+            <div class="field-error-msg" id="err_what_looking_for">Please share what you&rsquo;re looking for.</div>
+          </div>
+
+          <div class="fg">
+            <label for="time_sensitivity">Any sense of timing. When would you like to schedule or begin?</label>
+            <p class="helper">Steady and exploring, or actively needing support soon. Whatever&rsquo;s true.</p>
+            <textarea id="time_sensitivity" name="time_sensitivity" placeholder="Soon, this season, when the right alignment arrives…" style="min-height: 100px;"></textarea>
+          </div>
+
+          <div class="fg">
+            <label for="meet_with_care">Anything important to know to meet you with care?</label>
+            <p class="helper">Sensitivities, awarenesses, attunements. What would help me hold you well.</p>
+            <textarea id="meet_with_care" name="meet_with_care" placeholder="What you&rsquo;d want me to know as we begin…" style="min-height: 120px;"></textarea>
+          </div>
+
+          <div class="fg">
+            <label for="additional_info">Anything else you wish to share at this time?</label>
+            <p class="helper">Optional. Anything that feels important to name as we begin.</p>
+            <textarea id="additional_info" name="additional_info" placeholder="Take as much space as you need." style="min-height: 140px;"></textarea>
+          </div>
+        </div>
+
+        <div class="fg" id="fg_deeper_work">
+          <label class="deeper-work-label">What deeper work draws you here? <span class="label-hint">(Check all that apply)</span></label>
+          <div class="checkbox-list deeper-work-list">
+            <label class="deeper-work-option">
+              <input type="checkbox" name="deeper_work[]" value="Seasons of Change">
+              <span class="opt-text"><strong>Seasons of Change</strong> &mdash; a deep solo container of transformation</span>
+            </label>
+            <label class="deeper-work-option">
+              <input type="checkbox" name="deeper_work[]" value="The Metamorphic Year">
+              <span class="opt-text"><strong>The Metamorphic Year</strong> &mdash; year-long initiation</span>
+            </label>
+            <label class="deeper-work-option">
+              <input type="checkbox" name="deeper_work[]" value="Private Ceremony or Ritual">
+              <span class="opt-text"><strong>Private Ceremony or Ritual</strong> &mdash; commissioned for me, my family, or my path</span>
+            </label>
+            <label class="deeper-work-option">
+              <input type="checkbox" name="deeper_work[]" value="Community Ceremony or Gathering">
+              <span class="opt-text"><strong>Community Ceremony or Gathering</strong> &mdash; commissioned for my group or organization</span>
+            </label>
+            <label class="deeper-work-option">
+              <input type="checkbox" name="deeper_work[]" value="The School">
+              <span class="opt-text"><strong>The School</strong> &mdash; training cohorts and the longer arc of learning</span>
+            </label>
+            <label class="deeper-work-option">
+              <input type="checkbox" name="deeper_work[]" value="Ancestral or Elemental Divination">
+              <span class="opt-text"><strong>Ancestral or Elemental Divination</strong> &mdash; ongoing oracular work</span>
+            </label>
+            <label class="deeper-work-option">
+              <input type="checkbox" name="deeper_work[]" value="Bespoke Commission">
+              <span class="opt-text"><strong>Bespoke Commission</strong> &mdash; something not listed; let&rsquo;s design together</span>
+            </label>
+            <label class="deeper-work-option">
+              <input type="checkbox" name="deeper_work[]" value="Speaking, Teaching, or Panel">
+              <span class="opt-text"><strong>Speaking, Teaching, or Panel</strong> &mdash; for an event or platform I steward</span>
+            </label>
+            <label class="deeper-work-option">
+              <input type="checkbox" name="deeper_work[]" value="Plant Medicine Work">
+              <span class="opt-text"><strong>Plant Medicine Work</strong> &mdash; preparation, ceremony, integration</span>
+            </label>
+            <label class="deeper-work-option">
+              <input type="checkbox" name="deeper_work[]" value="Not sure yet">
+              <span class="opt-text"><em>Not sure yet</em> &mdash; I&rsquo;m listening for what wants to emerge</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="fg" id="fg_welcome_email">
+          <label for="welcome_email">Email *</label>
+          <input type="email" id="welcome_email" name="welcome_email" autocomplete="email" placeholder="your@email.com" />
+          <div class="field-error-msg" id="err_welcome_email">Please enter a valid email address.</div>
+        </div>
+
+        <div class="privacy-note">
+          <p>Your information is held with care and confidentiality. This form is encrypted and your responses are stored securely.</p>
+        </div>
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         SECTION 2 &mdash; Agreements, Safety & Consent
+    ============================================================ -->
+    <div class="form-section" data-section="2">
+      <div class="section-card">
+        <p class="section-eyebrow">Section 2 of 2</p>
+        <h2 class="section-title">The Practicals &mdash; How we Stay in Touch</h2>
+        <div class="section-intro">
+          <p>Here we gather the simple, essential details: how to contact you, where you are in the world, and how you prefer to communicate. These basics allow me to send confirmations, preparation materials, reminders, and follow-up support, and to reach you in a timely way if anything in our planning needs attention. It also begins to locate you in place &mdash; geographically and logistically &mdash; so the work can be anchored in your real life.</p>
+        </div>
+
+        <!-- ─── SUB-GROUP 1 · About You ─── -->
+        <div class="sub-group">
+          <p class="sub-group-eyebrow">About You</p>
+
+          <div class="fg-row">
+            <div class="fg" id="fg_first_name">
+              <label for="first_name">First name <span class="req">*</span></label>
+              <input type="text" id="first_name" name="first_name" autocomplete="given-name" placeholder="Your given name" />
+              <div class="field-error-msg" id="err_first_name">Please enter your first name.</div>
+            </div>
+            <div class="fg" id="fg_last_name">
+              <label for="last_name">Last name <span class="req">*</span></label>
+              <input type="text" id="last_name" name="last_name" autocomplete="family-name" placeholder="Your family name" />
+              <div class="field-error-msg" id="err_last_name">Please enter your last name.</div>
+            </div>
+          </div>
+
+          <div class="fg" id="fg_birth_date">
+            <label for="birth_date">Date of birth <span class="req">*</span></label>
+            <p class="helper">For astrological context and lifecycle awareness.</p>
+            <input type="date" id="birth_date" name="birth_date" />
+            <div class="field-error-msg" id="err_birth_date">Please enter your date of birth.</div>
+          </div>
+
+          <div class="fg">
+            <label for="pronouns">How would you like to describe your gender and/or pronouns?</label>
+            <p class="helper">Optional &mdash; share what feels true.</p>
+            <textarea id="pronouns" name="pronouns" style="min-height:80px;" placeholder="she / they / he / other, and anything else you'd like me to know"></textarea>
+          </div>
+        </div>
+
+        <!-- ─── SUB-GROUP 2 · Where You Are ─── -->
+        <div class="sub-group">
+          <p class="sub-group-eyebrow">Where You Are</p>
+
+          <div class="fg-row">
+            <div class="fg" id="fg_country">
+              <label for="country">Country <span class="req">*</span></label>
+              <input type="text" id="country" name="country" autocomplete="country-name" placeholder="Where you currently live" />
+              <div class="field-error-msg" id="err_country">Please enter your country.</div>
+            </div>
+            <div class="fg" id="fg_state_region">
+              <label for="state_region">State, province, or region <span class="req">*</span></label>
+              <input type="text" id="state_region" name="state_region" placeholder="If applicable" />
+              <div class="field-error-msg" id="err_state_region">Please enter your state or region.</div>
+            </div>
+          </div>
+
+          <div class="fg">
+            <label for="languages">What languages do you speak, prefer, or understand?</label>
+            <input type="text" id="languages" name="languages" placeholder="English, Spanish, Diné Bizaad, etc." />
+          </div>
+        </div>
+
+        <!-- ─── SUB-GROUP 3 · How We Stay In Touch ─── -->
+        <div class="sub-group">
+          <p class="sub-group-eyebrow">How We Stay In Touch</p>
+
+          <div class="fg" id="fg_email_confirm">
+            <label for="email_confirm">The email you actually check <span class="req">*</span></label>
+            <p class="helper">For confirmations, preparation, and reminders.</p>
+            <input type="text" id="email_confirm" name="email_confirm" autocomplete="email" placeholder="your@email.com" />
+            <div class="field-error-msg" id="err_email_confirm">Please enter your email address.</div>
+          </div>
+
+          <div class="fg" id="fg_phone">
+            <label for="phone">Phone number <span class="req">*</span></label>
+            <p class="helper">With country code, please.</p>
+            <input type="text" id="phone" name="phone" autocomplete="tel" placeholder="+1 555 000 0000" />
+            <div class="field-error-msg" id="err_phone">Please enter your phone number.</div>
+          </div>
+
+          <div class="fg" id="fg_messaging_app">
+            <label>Secure or encrypted messaging app <span class="req">*</span></label>
+            <p class="helper">For sensitive matters &mdash; preparation, integration, ceremony details.</p>
+            <div class="radio-group" id="messaging_app_group">
+              <label class="radio-option">
+                <input type="radio" name="messaging_app" value="Signal" />
+                <span>Signal</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="messaging_app" value="Wire" />
+                <span>Wire</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="messaging_app" value="Whatsapp" />
+                <span>WhatsApp</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="messaging_app" value="Other" />
+                <span>Other</span>
+              </label>
+            </div>
+            <div class="radio-group-error" id="err_messaging_app">Please select a messaging app.</div>
+          </div>
+
+          <div class="fg" id="fg_app_username">
+            <label for="app_username">App username <span class="req">*</span></label>
+            <p class="helper">@handle or phone number associated with the app above.</p>
+            <input type="text" id="app_username" name="app_username" placeholder="@yourname or +1 555 000 0000" />
+            <div class="field-error-msg" id="err_app_username">Please enter your app username.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="section-nav">
+        <button type="button" class="btn-back" onclick="goBack()">Back</button>
+        <button type="button" class="btn-continue" onclick="goNext()">Continue</button>
+      </div>
+    </div>
+    <!-- ============================================================
+         FINAL SUBMIT — single-page mode lives here at the bottom
+    ============================================================ -->
+    <div class="final-submit-section">
+      <h2>Ready to <em>step forward</em>?</h2>
+      <p>Take a breath. When the form feels true, submit your intake and we will continue from there.</p>
+      <button type="button" class="btn-submit" id="submitBtn" onclick="handleSubmit()">Submit Immersion Intake</button>
+    </div>
+
+  </form><!-- end #intakeForm -->
+
+</div><!-- end .intake-wrap -->
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="https://new.theanimistapothecary.com/apply">Apply / Intake</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="divinations.html">Divinations</a></li>
+            <li><a href="https://new.theanimistapothecary.com/contact/inquiry">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+<script>
+  // &mdash;&mdash;&mdash; Supabase init &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+  const sb = window.supabase.createClient(
+    'https://wdecjlrfulsdklqeetqb.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs'
+  );
+
+  // &mdash;&mdash;&mdash; State &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+  let currentSection = 1;
+  const totalSections = 16;
+
+  // &mdash;&mdash;&mdash; Helpers &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+  function val(id) {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+
+  function getChecked(name) {
+    return Array.from(document.querySelectorAll('input[name="' + name + '"]:checked')).map(function(cb) { return cb.value; });
+  }
+
+  function getRadio(name) {
+    const el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+
+  // &mdash;&mdash;&mdash; Navigation &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+  function goTo(n) {
+    document.querySelectorAll('.form-section').forEach(function(s) { s.classList.remove('active'); });
+    const target = document.querySelector('.form-section[data-section="' + n + '"]');
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    currentSection = n;
+    updateProgress();
+  }
+
+  // ============================================================
+  //  EDIT MODE — set to true to bypass ALL validation so you can
+  //  freely move between sections while editing copy/fields.
+  //  Set back to false (or delete this block) to re-enable
+  //  required-field checks before launch.
+  // ============================================================
+  const EDIT_MODE = false;
+
+  function goNext() {
+    if (EDIT_MODE || validateSection(currentSection)) {
+      goTo(currentSection + 1);
+    }
+  }
+
+  function goBack() {
+    if (currentSection > 1) {
+      goTo(currentSection - 1);
+    }
+  }
+
+  function updateProgress() {
+    const fill = document.getElementById('progressFill');
+    const label = document.getElementById('progressLabel');
+    if (fill) fill.style.width = (currentSection / totalSections * 100) + '%';
+    if (label) label.textContent = 'Section ' + currentSection + ' of ' + totalSections;
+  }
+
+  // &mdash;&mdash;&mdash; Validation helpers &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+  function setError(fgId, errId, show) {
+    const fg = document.getElementById(fgId);
+    const err = document.getElementById(errId);
+    if (fg) fg.classList.toggle('error', show);
+    if (err) err.style.display = show ? 'block' : 'none';
+  }
+
+  function setConsentError(itemId, errId, show) {
+    const item = document.getElementById(itemId);
+    const err = document.getElementById(errId);
+    if (item) item.classList.toggle('error', show);
+    if (err) err.style.display = show ? 'block' : 'none';
+  }
+
+  function setCheckboxGroupError(fgId, errId, show) {
+    const fg = document.getElementById(fgId);
+    const err = document.getElementById(errId);
+    if (fg) fg.classList.toggle('error', show);
+    if (err) err.classList.toggle('visible', show);
+  }
+
+  function setRadioGroupError(fgId, errId, show) {
+    const fg = document.getElementById(fgId);
+    const err = document.getElementById(errId);
+    if (fg) fg.classList.toggle('error', show);
+    if (err) err.classList.toggle('visible', show);
+  }
+
+  // &mdash;&mdash;&mdash; Validation &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+  function validateSection(n) {
+    // When EDIT_MODE is true, always pass — lets you preview every section
+    // without filling in required fields. Turn EDIT_MODE off (top of script)
+    // before launch to restore validation.
+    if (EDIT_MODE) return true;
+
+    var valid = true;
+
+    if (n === 1) {
+      var email = val('welcome_email');
+      var emailOk = email.length > 0 && email.indexOf('@') !== -1;
+      setError('fg_welcome_email', 'err_welcome_email', !emailOk);
+      if (!emailOk) valid = false;
+    }
+
+    else if (n === 2) {
+      for (var i = 1; i <= 7; i++) {
+        var cb = document.getElementById('consent_' + i);
+        var checked = cb && cb.checked;
+        setConsentError('consent_item_' + i, 'err_consent_' + i, !checked);
+        if (!checked) valid = false;
+      }
+    }
+
+    else if (n === 3) {
+      var fields3 = [
+        ['fg_first_name', 'err_first_name', 'first_name'],
+        ['fg_last_name', 'err_last_name', 'last_name'],
+        ['fg_birth_date', 'err_birth_date', 'birth_date'],
+        ['fg_email_confirm', 'err_email_confirm', 'email_confirm'],
+        ['fg_phone', 'err_phone', 'phone'],
+        ['fg_how_found', 'err_how_found', 'how_found'],
+        ['fg_app_username', 'err_app_username', 'app_username'],
+        ['fg_country', 'err_country', 'country'],
+        ['fg_state_region', 'err_state_region', 'state_region']
+      ];
+      fields3.forEach(function(f) {
+        var empty = val(f[2]).length === 0;
+        setError(f[0], f[1], empty);
+        if (empty) valid = false;
+      });
+      var appRadio = getRadio('messaging_app');
+      var radioOk = appRadio.length > 0;
+      setRadioGroupError('fg_messaging_app', 'err_messaging_app', !radioOk);
+      if (!radioOk) valid = false;
+    }
+
+    else if (n === 4) {
+      var fields4 = [
+        ['fg_ec1_name', 'err_ec1_name', 'ec1_name'],
+        ['fg_ec1_relationship', 'err_ec1_relationship', 'ec1_relationship'],
+        ['fg_ec1_phone', 'err_ec1_phone', 'ec1_phone'],
+        ['fg_ec1_email', 'err_ec1_email', 'ec1_email']
+      ];
+      fields4.forEach(function(f) {
+        var empty = val(f[2]).length === 0;
+        setError(f[0], f[1], empty);
+        if (empty) valid = false;
+      });
+    }
+
+    else if (n === 5) {
+      var medChecked = getChecked('medical_conditions');
+      var medOk = medChecked.length > 0;
+      setCheckboxGroupError('fg_medical_conditions', 'err_medical_conditions', !medOk);
+      if (!medOk) valid = false;
+    }
+
+    else if (n === 6) {
+      var mhChecked = getChecked('mental_health_conditions');
+      var mhOk = mhChecked.length > 0;
+      setCheckboxGroupError('fg_mental_health_conditions', 'err_mental_health_conditions', !mhOk);
+      if (!mhOk) valid = false;
+    }
+
+    else if (n === 7) {
+      var fields7 = [
+        ['fg_prescription_meds', 'err_prescription_meds', 'prescription_meds'],
+        ['fg_otc_supplements', 'err_otc_supplements', 'otc_supplements']
+      ];
+      fields7.forEach(function(f) {
+        var empty = val(f[2]).length === 0;
+        setError(f[0], f[1], empty);
+        if (empty) valid = false;
+      });
+    }
+
+    else if (n === 15) {
+      var riskCb = document.getElementById('final_consent_risk');
+      var riskChecked = riskCb && riskCb.checked;
+      setConsentError('consent_item_final_risk', 'err_final_consent_risk', !riskChecked);
+      if (!riskChecked) valid = false;
+
+      var accCb = document.getElementById('final_consent_accuracy');
+      var accChecked = accCb && accCb.checked;
+      setConsentError('consent_item_final_accuracy', 'err_final_consent_accuracy', !accChecked);
+      if (!accChecked) valid = false;
+
+      var sigEmpty = val('signature').length === 0;
+      setError('fg_signature', 'err_signature', sigEmpty);
+      if (sigEmpty) valid = false;
+    }
+
+    return valid;
+  }
+
+  // &mdash;&mdash;&mdash; Form data collection &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+  function collectFormData() {
+    return {
+      section_1: {
+        welcome_email: val('welcome_email')
+      },
+      section_2: {
+        consent_1: document.getElementById('consent_1') ? document.getElementById('consent_1').checked : false,
+        consent_2: document.getElementById('consent_2') ? document.getElementById('consent_2').checked : false,
+        consent_3: document.getElementById('consent_3') ? document.getElementById('consent_3').checked : false,
+        consent_4: document.getElementById('consent_4') ? document.getElementById('consent_4').checked : false,
+        consent_5: document.getElementById('consent_5') ? document.getElementById('consent_5').checked : false,
+        consent_6: document.getElementById('consent_6') ? document.getElementById('consent_6').checked : false,
+        consent_7: document.getElementById('consent_7') ? document.getElementById('consent_7').checked : false
+      },
+      section_3: {
+        first_name: val('first_name'),
+        last_name: val('last_name'),
+        birth_date: val('birth_date'),
+        email_confirm: val('email_confirm'),
+        phone: val('phone'),
+        how_found: val('how_found'),
+        messaging_app: getRadio('messaging_app'),
+        app_username: val('app_username'),
+        country: val('country'),
+        state_region: val('state_region'),
+        pronouns: val('pronouns'),
+        languages: val('languages'),
+        referred_by: val('referred_by'),
+        additional_info: val('additional_info'),
+        // New discernment fields from the moved "Your Path Here" sub-group
+        why_fit_now: val('why_fit_now'),
+        why_aligned: val('why_aligned'),
+        what_looking_for: val('what_looking_for'),
+        time_sensitivity: val('time_sensitivity'),
+        meet_with_care: val('meet_with_care'),
+        deeper_work: Array.from(document.querySelectorAll('input[name="deeper_work[]"]:checked')).map(function(el){ return el.value; })
+      },
+      section_4: {
+        ec1_name: val('ec1_name'),
+        ec1_relationship: val('ec1_relationship'),
+        ec1_phone: val('ec1_phone'),
+        ec1_email: val('ec1_email'),
+        ec2_info: val('ec2_info'),
+        med_allergies: val('med_allergies'),
+        env_allergies: val('env_allergies'),
+        allergy_other: val('allergy_other')
+      },
+      section_5: {
+        physical_health_desc: val('physical_health_desc'),
+        medical_conditions: getChecked('medical_conditions'),
+        medical_conditions_other: val('medical_conditions_other'),
+        medical_conditions_desc: val('medical_conditions_desc'),
+        injuries: val('injuries'),
+        hospitalizations: val('hospitalizations'),
+        head_injuries: val('head_injuries'),
+        aneurysm_history: val('aneurysm_history')
+      },
+      section_6: {
+        mental_health_desc: val('mental_health_desc'),
+        mental_health_conditions: getChecked('mental_health_conditions'),
+        mental_health_conditions_other: val('mental_health_conditions_other'),
+        mental_health_history: val('mental_health_history'),
+        harm_history: val('harm_history'),
+        self_harm_history: val('self_harm_history')
+      },
+      section_7: {
+        prescription_meds: val('prescription_meds'),
+        otc_supplements: val('otc_supplements'),
+        tobacco_rel: val('tobacco_rel'),
+        alcohol_rel: val('alcohol_rel'),
+        caffeine_rel: val('caffeine_rel'),
+        cannabis_rel: val('cannabis_rel')
+      },
+      section_8: {
+        catalyst_history: val('catalyst_history'),
+        difficult_experiences: val('difficult_experiences'),
+        overall_influence: val('overall_influence'),
+        approaching_concerns: val('approaching_concerns')
+      },
+      section_9: {
+        spiritual_orientation: val('spiritual_orientation'),
+        earth_relationship: val('earth_relationship'),
+        lineages: val('lineages'),
+        expanded_state_practices: val('expanded_state_practices'),
+        ritual_relationship: val('ritual_relationship'),
+        life_death_view: val('life_death_view'),
+        ceremonial_safety: val('ceremonial_safety')
+      },
+      section_10: {
+        trust_relationship: val('trust_relationship'),
+        living_situation: val('living_situation'),
+        inhabiting_spaces: val('inhabiting_spaces'),
+        relationships_community: val('relationships_community'),
+        free_time: val('free_time')
+      },
+      section_11: {
+        anxiety_relationship: val('anxiety_relationship'),
+        helplessness: val('helplessness'),
+        stress_response: val('stress_response'),
+        memory_clarity: val('memory_clarity'),
+        low_mood: val('low_mood'),
+        loneliness: val('loneliness'),
+        criticism_response: val('criticism_response'),
+        traumatic_events: val('traumatic_events')
+      },
+      section_12: {
+        current_work: val('current_work'),
+        calling: val('calling'),
+        wider_participation: val('wider_participation'),
+        growth_communities: val('growth_communities')
+      },
+      section_13: {
+        self_care: val('self_care'),
+        adversity_response: val('adversity_response'),
+        body_relationship: val('body_relationship'),
+        body_signals: val('body_signals'),
+        movement: val('movement'),
+        nourishment: val('nourishment'),
+        support_network: val('support_network'),
+        support_frequency: val('support_frequency'),
+        post_work_support: val('post_work_support'),
+        integration_history: val('integration_history')
+      },
+      section_14: {
+        archetypes: val('archetypes'),
+        life_chapter: val('life_chapter'),
+        life_shifts: val('life_shifts'),
+        intention: val('intention'),
+        hoped_growth: val('hoped_growth'),
+        hoped_release: val('hoped_release')
+      },
+      section_15: {
+        closing_thoughts: val('closing_thoughts'),
+        final_consent_risk: document.getElementById('final_consent_risk') ? document.getElementById('final_consent_risk').checked : false,
+        final_consent_accuracy: document.getElementById('final_consent_accuracy') ? document.getElementById('final_consent_accuracy').checked : false,
+        signature: val('signature')
+      }
+    };
+  }
+
+  // &mdash;&mdash;&mdash; Submit &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+  async function handleSubmit() {
+    if (EDIT_MODE) {
+      alert('Edit mode is on \u2014 submission is disabled.\n\nTurn off EDIT_MODE at the top of the <script> block to enable real submissions before launch.');
+      return;
+    }
+
+    var data = collectFormData();
+    var firstName    = (data.section_3.first_name    || '').trim();
+    var lastName     = (data.section_3.last_name     || '').trim();
+    var email        = (data.section_3.email_confirm || '').trim();
+    var phone        = (data.section_3.phone         || '').trim();
+    var country      = (data.section_3.country       || '').trim();
+    var stateRegion  = (data.section_3.state_region  || '').trim();
+
+    // Lightweight client-side validation (single-page Immersion Intake)
+    var missing = [];
+    if (!firstName)                              missing.push('First name');
+    if (!lastName)                               missing.push('Last name');
+    if (!email || email.indexOf('@') === -1)     missing.push('Email');
+    if (!phone)                                  missing.push('Phone');
+    if (!country)                                missing.push('Country');
+    if (missing.length) {
+      alert('A few details are missing or incomplete:\n\n\u2022 ' + missing.join('\n\u2022 ') +
+            '\n\nPlease fill these in and try again.');
+      return;
+    }
+
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting\u2026';
+
+    try {
+      // 1. Insert into clients
+      const clientId = crypto.randomUUID();
+      var clientResult = await sb
+        .from('clients')
+        .insert({
+          id: clientId,
+          full_name: (firstName + ' ' + lastName).trim(),
+          email: email,
+          phone: phone,
+          pronouns: data.section_3.pronouns || null,
+          birth_date: data.section_3.birth_date || null,
+          location: country + (stateRegion ? ', ' + stateRegion : ''),
+          source: 'intake_form',
+          referral_source: (data.section_3.referred_by || data.section_3.how_found || null),
+          emergency_contact: null,
+          pipeline_stage: 'inquiry'
+        });
+
+      if (clientResult.error) throw clientResult.error;
+
+      // 2. Insert into intake_forms
+      var intakeResult = await sb
+        .from('intake_forms')
+        .insert({
+          client_id: clientId,
+          form_type: 'immersion_intake',
+          responses: data,
+          submitted_at: new Date().toISOString()
+        });
+
+      if (intakeResult.error) throw intakeResult.error;
+
+      // Success &mdash; show success state
+      document.getElementById('intakeForm').style.display = 'none';
+      document.getElementById('progressHeader').style.display = 'none';
+      document.getElementById('progressTrack').style.display = 'none';
+      var successEl = document.getElementById('intakeSuccess');
+      successEl.classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (err) {
+      console.error('Submission error:', err);
+      var message = (err && err.message) ? err.message : 'An unexpected error occurred. Please try again.';
+      alert('There was an issue submitting your intake: ' + message);
+      btn.disabled = false;
+      btn.textContent = 'Submit Immersion Intake';
+    }
+  }
+
+  // &mdash;&mdash;&mdash; Radio option highlight &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+  document.addEventListener('change', function(e) {
+    if (e.target.type === 'radio') {
+      var groupName = e.target.name;
+      document.querySelectorAll('input[name="' + groupName + '"]').forEach(function(radio) {
+        var option = radio.closest('.radio-option');
+        if (option) option.classList.toggle('selected', radio.checked);
+      });
+    }
+  });
+
+  // &mdash;&mdash;&mdash; "Other" checkbox toggles &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+  document.addEventListener('change', function(e) {
+    if (e.target.id === 'medical_conditions_other_cb') {
+      var wrap = document.getElementById('medical_conditions_other_wrap');
+      if (wrap) wrap.classList.toggle('visible', e.target.checked);
+    }
+    if (e.target.id === 'mental_health_conditions_other_cb') {
+      var wrap2 = document.getElementById('mental_health_conditions_other_wrap');
+      if (wrap2) wrap2.classList.toggle('visible', e.target.checked);
+    }
+  });
+
+  // &mdash;&mdash;&mdash; Init &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+  updateProgress();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+/* Shared admin hub styling — sidebar, layout, placeholder cards.
+   Mirrors the palette in admin/index.html so every admin page feels like one hub. */
+:root {
+  --cream:#FAF8F5; --cream-dark:#F0EDE8; --earth:#3D2E1F; --earth-mid:#6B5744;
+  --earth-faint:#9A8C7A; --sage:#7A8B6F; --sage-light:#E8EDE5; --sage-dark:#5C6B52;
+  --gold:#C4A35A; --gold-light:#F5EDD6; --rose:#C4836F; --white:#FFFFFF;
+  --shadow-sm:0 1px 3px rgba(61,46,31,0.06); --radius:10px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:var(--cream); color:var(--earth); font-size:14px; line-height:1.5; }
+h1,h2,h3,h4 { font-family:'Cormorant Garamond',serif; font-weight:500; }
+
+.admin-layout { display:flex; min-height:100vh; }
+.admin-sidebar { width:240px; background:var(--earth); color:var(--cream); padding:32px 0; flex-shrink:0; display:flex; flex-direction:column; }
+.admin-sidebar .brand { padding:0 24px 28px; border-bottom:1px solid rgba(250,248,245,0.1); margin-bottom:16px; }
+.admin-sidebar .brand h3 { font-size:18px; color:var(--cream); margin-bottom:2px; }
+.admin-sidebar .brand span { font-size:11px; color:var(--earth-faint); text-transform:uppercase; letter-spacing:1.5px; }
+.sidebar-item { display:flex; align-items:center; gap:12px; padding:10px 24px; color:rgba(250,248,245,0.6); text-decoration:none; font-size:13px; font-weight:400; transition:all .15s; cursor:pointer; border:none; background:none; width:100%; text-align:left; font-family:'Inter',sans-serif; }
+.sidebar-item:hover { color:var(--cream); background:rgba(250,248,245,0.06); }
+.sidebar-item.active { color:var(--cream); background:rgba(250,248,245,0.1); font-weight:500; }
+.sidebar-icon { font-size:16px; width:18px; text-align:center; display:inline-flex; justify-content:center; align-items:center; }
+.ti-svg { display:inline-flex; align-items:center; justify-content:center; }
+.ti-svg svg { width:18px; height:18px; display:block; }
+.ph-mark .ti-svg svg { width:26px; height:26px; }
+.sidebar-spacer { flex:1; }
+
+.admin-main { flex:1; padding:32px 40px; overflow-y:auto; max-height:100vh; display:flex; flex-direction:column; }
+.admin-header { margin-bottom:28px; }
+.admin-header h1 { font-size:28px; margin-bottom:4px; }
+.admin-header p { font-size:13px; color:var(--earth-faint); }
+
+.ph-card { background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow-sm); padding:48px 40px; text-align:center; max-width:560px; }
+.ph-mark { width:54px; height:54px; border-radius:50%; background:var(--gold-light); color:var(--gold); display:flex; align-items:center; justify-content:center; font-size:24px; margin:0 auto 18px; }
+.ph-card h2 { font-size:24px; color:var(--earth); margin-bottom:10px; }
+.ph-card p { font-size:14px; color:var(--earth-mid); line-height:1.7; margin-bottom:8px; }
+.ph-soon { display:inline-block; margin-top:14px; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--sage-dark); background:var(--sage-light); padding:6px 14px; border-radius:20px; }
+
+@media (max-width:768px) {
+  .admin-sidebar { width:200px; }
+  .admin-main { padding:24px 20px; }
+}

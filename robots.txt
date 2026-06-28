@@ -3,14 +3,11 @@ Allow: /
 
 # Internal tooling — keep out of search results
 Disallow: /admin/
-Disallow: /associates/
 Disallow: /clauded/
 Disallow: /crm/
-Disallow: /directory/
 Disallow: /login/
 Disallow: /pay/
 Disallow: /portal/
-Disallow: /residents/
 Disallow: /infra/
 Disallow: /studio/
 

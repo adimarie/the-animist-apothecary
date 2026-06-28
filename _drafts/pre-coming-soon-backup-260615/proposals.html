@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="robots" content="noindex,follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposals — Adi Marie Lopez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF6EE;
+    --cream-warm: #F4ECDA;
+    --ink: #2A1F1A;
+    --ink-soft: #5C4A3E;
+    --accent: #8B5A2B;
+    --accent-soft: #C9A678;
+    --divider: #D9C9AE;
+    --shadow: rgba(60, 40, 20, 0.08);
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'EB Garamond', Garamond, 'Times New Roman', serif;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink);
+    background: var(--cream);
+    margin: 0;
+    padding: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Cover */
+  .cover {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 32px;
+    background: linear-gradient(180deg, var(--cream-warm) 0%, var(--cream) 100%);
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .cover-ornament {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--accent);
+    font-size: 24px;
+    letter-spacing: 0.5em;
+    margin-bottom: 48px;
+    opacity: 0.7;
+  }
+
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px 0;
+    color: var(--ink);
+  }
+
+  .cover-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--ink-soft);
+    margin-bottom: 56px;
+    max-width: 560px;
+  }
+
+  .cover-meta {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 32px;
+  }
+
+  .cover-author {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    margin-top: 16px;
+    color: var(--ink);
+  }
+
+  .cover-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 8px;
+  }
+
+  /* Table of contents */
+  .toc {
+    background: var(--cream-warm);
+    padding: 64px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .toc h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 32px;
+    text-align: center;
+    color: var(--accent);
+    margin: 0 0 32px 0;
+    letter-spacing: 0.02em;
+  }
+
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    counter-reset: toc;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .toc li {
+    counter-increment: toc;
+    padding: 14px 0;
+    border-bottom: 1px dotted var(--divider);
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .toc li::before {
+    content: counter(toc, upper-roman) ".";
+    color: var(--accent);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    margin-right: 16px;
+    min-width: 40px;
+  }
+
+  .toc a {
+    color: var(--ink);
+    text-decoration: none;
+    flex: 1;
+    transition: color 0.2s;
+  }
+
+  .toc a:hover {
+    color: var(--accent);
+  }
+
+  /* Document sections */
+  .doc {
+    padding: 96px 0 64px 0;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .doc-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .doc h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    text-align: center;
+    margin: 0 0 16px 0;
+    color: var(--ink);
+  }
+
+  .doc-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    text-align: center;
+    color: var(--ink-soft);
+    margin-bottom: 48px;
+  }
+
+  .meta-block {
+    background: var(--cream-warm);
+    border-left: 3px solid var(--accent-soft);
+    padding: 24px 28px;
+    margin: 32px 0 48px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  .meta-block strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.25;
+    margin: 64px 0 24px 0;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.3;
+    margin: 48px 0 16px 0;
+    color: var(--ink);
+  }
+
+  h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1.35;
+    margin: 32px 0 12px 0;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+  }
+
+  p {
+    margin: 0 0 20px 0;
+  }
+
+  p.lead {
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--ink);
+    font-style: italic;
+    margin-bottom: 32px;
+  }
+
+  blockquote {
+    font-family: 'EB Garamond', serif;
+    background: var(--cream-warm);
+    border-left: 3px solid var(--accent);
+    padding: 28px 32px;
+    margin: 32px 0;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink);
+    border-radius: 2px;
+  }
+
+  blockquote h3 {
+    margin-top: 0;
+    color: var(--accent);
+  }
+
+  blockquote h4 {
+    margin-top: 24px;
+  }
+
+  ul, ol {
+    margin: 0 0 20px 0;
+    padding-left: 28px;
+  }
+
+  ul li, ol li {
+    margin-bottom: 8px;
+  }
+
+  ul li::marker {
+    color: var(--accent);
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-soft);
+    transition: border-color 0.2s;
+  }
+
+  a:hover {
+    border-bottom-color: var(--accent);
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    background: var(--cream);
+    border: 1px solid var(--divider);
+  }
+
+  th {
+    background: var(--cream-warm);
+    color: var(--ink);
+    font-weight: 600;
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--divider);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--divider);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background: var(--cream-warm);
+  }
+
+  /* Ornament divider */
+  .ornament {
+    text-align: center;
+    margin: 64px 0;
+    color: var(--accent-soft);
+    font-size: 20px;
+    letter-spacing: 1.5em;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* Sample chapter styling */
+  .sample-chapter {
+    background: var(--cream);
+    padding: 56px 48px;
+    margin: 48px 0;
+    border: 1px solid var(--divider);
+    border-radius: 4px;
+    box-shadow: 0 1px 3px var(--shadow);
+  }
+
+  .sample-chapter-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .sample-chapter h1.chapter-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 36px;
+    text-align: center;
+    margin: 0 0 48px 0;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .sample-chapter > p:first-of-type::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    line-height: 0.9;
+    float: left;
+    padding: 6px 12px 0 0;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* Back to top */
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: var(--accent);
+    color: var(--cream);
+    padding: 12px 16px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    box-shadow: 0 4px 12px var(--shadow);
+    border: none;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.2s;
+    pointer-events: none;
+  }
+
+  .back-to-top.visible {
+    opacity: 0.85;
+    pointer-events: auto;
+  }
+
+  .back-to-top:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  /* Footer */
+  footer {
+    padding: 80px 32px;
+    text-align: center;
+    background: var(--cream-warm);
+    color: var(--ink-soft);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+
+  footer .ornament {
+    margin: 0 0 24px 0;
+  }
+
+  /* Hidden/visible */
+  .section-anchor {
+    display: block;
+    height: 1px;
+    margin-top: -64px;
+    visibility: hidden;
+  }
+
+  /* Print styles */
+  @media print {
+    body {
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #000;
+      background: #fff;
+    }
+
+    .container { max-width: 100%; padding: 0; }
+
+    .cover {
+      min-height: auto;
+      page-break-after: always;
+      padding: 60pt 40pt;
+      background: #fff;
+      border: none;
+    }
+
+    .cover h1 { font-size: 32pt; }
+    .cover-subtitle { font-size: 16pt; }
+
+    .toc { page-break-after: always; padding: 40pt 0; background: #fff; }
+    .doc { padding: 30pt 0; }
+
+    h1 { font-size: 24pt; }
+    h2 { font-size: 18pt; page-break-after: avoid; }
+    h3 { font-size: 14pt; page-break-after: avoid; }
+    h4 { font-size: 12pt; page-break-after: avoid; }
+
+    table, blockquote, .sample-chapter {
+      page-break-inside: avoid;
+    }
+
+    .back-to-top { display: none; }
+
+    a { color: #000; border-bottom: none; }
+    a::after { content: ""; }
+
+    .sample-chapter { box-shadow: none; }
+  }
+
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .container { padding: 0 20px; }
+    .cover h1 { font-size: 36px; }
+    .doc h1 { font-size: 32px; }
+    h2 { font-size: 26px; }
+    h3 { font-size: 20px; }
+    table { font-size: 12px; }
+    th, td { padding: 10px; }
+    .sample-chapter { padding: 32px 24px; }
+    .back-to-top { bottom: 16px; right: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-ornament">· · ·</div>
+  <h1>Proposals</h1>
+  <div class="cover-subtitle">A book and a sampler in the elemental, interdimensional, animist-ceremonial lane</div>
+  <div class="cover-meta">For Adi Marie Lopez</div>
+  <div class="cover-author">Los Angeles · 2026</div>
+  <div class="cover-date">Working draft</div>
+</section>
+
+<!-- TABLE OF CONTENTS -->
+<section class="toc">
+  <div class="container">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#book-proposal">The Living Elements — Book Proposal Package</a></li>
+      <li><a href="#sampler">The Elements as Living Beings — Sampler Lesson Plans</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- BOOK PROPOSAL PACKAGE -->
+<!-- ============================================== -->
+<span id="book-proposal" class="section-anchor"></span>
+<section class="doc">
+  <div class="container">
+
+    <div class="doc-label">Part One</div>
+    <h1>The Living Elements</h1>
+    <div class="doc-tagline">A Practitioner's Path Through Fire, Water, Earth, and Air</div>
+
+    <div class="meta-block">
+      <strong>Author:</strong> Adi Marie Lopez<br>
+      <strong>Word count target:</strong> 75,000 to 85,000 words<br>
+      <strong>Estimated manuscript delivery:</strong> 12 to 14 months after contract<br><br>
+      <strong>Working title alternatives</strong> (to test against title-team reactions):<br>
+      &nbsp;&nbsp;· <em>The Living Elements: An Animist Practitioner's Guide</em><br>
+      &nbsp;&nbsp;· <em>When the Elements Speak: Ceremony, Relationship, and Daily Practice</em><br>
+      &nbsp;&nbsp;· <em>Returning to the Elements: A Practical Animist Path</em><br>
+      &nbsp;&nbsp;· <em>Beyond Correspondence: The Elements as Living Beings</em>
+    </div>
+
+    <div class="ornament">· · ·</div>
+
+    <h2>Cover letter</h2>
+
+    <p>[Editor Name]<br>[Press]<br>[Address]</p>
+
+    <p>Dear [Editor],</p>
+
+    <p>I am writing to introduce <em>The Living Elements</em>, a practical guide to ceremonial relationship with fire, water, earth, and air, written from inside the animist tradition. The book is structured as a year of practice. It teaches the elements as ensouled beings with whom a practitioner enters relationship, not as symbolic correspondences on a Tree of Life or as four corners of a magic circle.</p>
+
+    <p>I am a solo practitioner based in Los Angeles, where I have been teaching elemental ceremony privately for [N] years. I am launching an online occult school in this lane in April 2027. <em>The Living Elements</em> is the foundational text for that school and a stand-alone book for the wider audience of readers who are looking for a practical entry into animist practice that does not require a guru lineage or psychedelic plants.</p>
+
+    <p>I believe this book belongs at [Press] because of your strong list in this lane: [name 2 to 3 specific titles, e.g., <em>Plant Spirit Medicine</em>, <em>Plant Intelligence and the Imaginal Realm</em>, <em>The Flowering Wand</em>]. The field has a generation of practitioners (under-40 women, in particular) who have read Foor's <em>Ancestral Medicine</em>, Buhner's <em>Plant Intelligence</em>, and Strand's <em>Flowering Wand</em>, and who are now ready for a sustained, structured ceremonial practice with the elements specifically. No book currently fills that gap.</p>
+
+    <p>A complete proposal package follows. I would welcome the chance to discuss this project with you.</p>
+
+    <p>With care,<br>Adi Marie Lopez</p>
+
+    <div class="ornament">· · ·</div>
+
+    <h2>Overview</h2>
+
+    <h3>The book in one sentence</h3>
+    <p class="lead"><em>The Living Elements</em> is a 12-chapter practical guide that teaches the elements (fire, water, earth, air, and the fifth and beyond) as living beings, not as symbols, and walks the reader through a year of ceremonial practice that builds genuine relationship with each.</p>
+
+    <h3>The book in one paragraph</h3>
+    <p>Most Western readers have been taught to think of fire, water, earth, and air as either chemistry or as symbolic correspondences in a magical system. <em>The Living Elements</em> makes a different claim. The elements are beings: ensouled, named, in possession of intelligence and agency, and capable of relationship with a human who approaches with the right protocols. The book teaches those protocols. Drawing on California and Mexican animist traditions, on the author's own ceremonial practice, and on the broader genealogy of animist thought from David Abram and Stephen Harrod Buhner to Robin Wall Kimmerer, <em>The Living Elements</em> offers a chapter-per-element deep practice. By the end of the book, the reader has built a home altar, has made a first offering at each element, has tended a relationship with a plant ally chosen for each element, and has performed at least one solo seasonal ceremony.</p>
+
+    <h3>What makes this book different</h3>
+    <p>Four distinctions separate this book from existing work in the genre.</p>
+
+    <p><strong>First, the elements are treated as beings, not symbols.</strong> Most existing books in modern witchcraft, ceremonial magic, and even much of the animist literature treat the elements as categories of correspondence (fire = passion, water = emotion, earth = grounding, air = thought). This book refuses that frame. The elements have names. They have temperaments. They prefer certain offerings and not others. They communicate. The book teaches the reader to listen.</p>
+
+    <p><strong>Second, plants are integrated as ceremonial allies throughout.</strong> Each chapter introduces a plant ally local to California, the Southwest, and Mexico, with botanical identification, ceremonial use, and sourcing ethics. Readers who finish the book have met thirteen plant allies, not as remedies but as bridges between the human and elemental worlds.</p>
+
+    <p><strong>Third, the book takes an animist position on Western practice that is principled, not nostalgic.</strong> The author is a non-Indigenous practitioner who has trained in Mexican curandera and California native traditions. The book is honest about lineage, attribution, and the difference between transmission and appropriation. It is not a "shamanism for white people" book. It is a book about how Western-rooted practitioners can build their own animist practice with integrity.</p>
+
+    <p><strong>Fourth, the structure is a year of practice, not a survey of ideas.</strong> Each chapter ends with daily, weekly, and lunation-cycle practices. The book is meant to be read with a candle lit, water near, soil on the desk. It assumes the reader will follow the practices. By chapter twelve, the reader has built a working ceremonial life.</p>
+
+    <h3>Why this book now</h3>
+    <p>Three forces have prepared the audience. The animist worldview has moved from academic philosophy (David Abram's <em>The Spell of the Sensuous</em>, 1996) into mass-market memoir (Robin Wall Kimmerer's <em>Braiding Sweetgrass</em>, 2013, three-million-plus copies sold) and now into popular ceremonial practice (Sophie Strand's <em>The Flowering Wand</em>, 2022, Inner Traditions, top-50 esoteric category for 18 months). The reader who finished Kimmerer and Strand and Foor's <em>Ancestral Medicine</em> is asking: how do I actually do this? The genre has been long on worldview and short on practice. <em>The Living Elements</em> answers the practice question directly.</p>
+
+    <p>The climate and ecological emergency has also accelerated the search. Readers who used to find spiritual practice in yoga or in mindfulness are increasingly looking for traditions that put them in relationship with the more-than-human world. The animist frame is the natural home for that search.</p>
+
+    <p>And the post-pandemic ceremonial revival is now five years deep, with online cohort schools (Temple of Witchcraft, Ancestral Medicine, Modern Witch University, Irish Pagan School) demonstrating an audience that is willing to pay for sustained practice instruction. <em>The Living Elements</em> is the trade book that this audience reads before it enrolls in a school.</p>
+
+    <div class="ornament">· · ·</div>
+
+    <h2>About the author</h2>
+
+    <p>Adi Marie Lopez is a ceremonial practitioner based in Los Angeles. [Detail her training, lineage holders studied with, geographic ceremonial fieldwork, years of private teaching, any prior media (podcast, newsletter, public talks, retreat teaching), and the formal credentials worth mentioning.]</p>
+
+    <p>She is launching an online occult school in elemental, interdimensional, and ceremonial craft in April 2027, with Foundation Cohort 1 capped at 60 students. The school is positioned in the animist, plant-based, ceremonial lane and is structured as a three-year practitioner ladder culminating in certification.</p>
+
+    <p>She lives in Los Angeles. <em>The Living Elements</em> is her first book.</p>
+
+    <h3>Platform (current and projected at publication)</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Asset</th>
+          <th>Current</th>
+          <th>Manuscript delivery (Q3 2027)</th>
+          <th>At publication (Q1 2028)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Newsletter subscribers</td><td>[N]</td><td>4,000</td><td>8,000</td></tr>
+        <tr><td>Podcast monthly listeners</td><td>0</td><td>6,000</td><td>12,000</td></tr>
+        <tr><td>Instagram followers</td><td>[N]</td><td>8,000</td><td>15,000</td></tr>
+        <tr><td>School enrollment</td><td>0</td><td>200+ (Sampler cumulative)</td><td>60 Foundation + 400 Sampler</td></tr>
+        <tr><td>Speaking engagements / year</td><td>[N]</td><td>6</td><td>12</td></tr>
+      </tbody>
+    </table>
+
+    <p>The author's online school provides a direct, captive audience for the book at publication. Foundation Cohort 1 students (60) and Sampler graduates (cumulative 400+) will all purchase the book at release. The author also commits to a publication-month launch promotion that includes a free online ritual event open to the full newsletter list, a podcast-tour push (a 12-show booking calendar already drafted), and a series of free webinars.</p>
+
+    <div class="ornament">· · ·</div>
+
+    <h2>The market</h2>
+
+    <h3>Who reads this book</h3>
+    <p>The primary audience is women aged 28 to 55 who already identify with some form of earth-based spirituality, who have read at least two of the comp titles below, and who are looking for a structured year-long practice they can do at home. This demographic is the documented core of the trade-esoteric market (Llewellyn's 2024 Field Report, Hay House author surveys, Inner Traditions catalog category data).</p>
+
+    <p>A meaningful secondary audience is herbalists, climate-adjacent practitioners (rewilders, deep-ecologists, Joanna Macy lineage), and yoga and meditation teachers who are expanding their practice toward animist and ceremonial work.</p>
+
+    <p>A tertiary audience is the academic and adjacent professional market: religious studies students, eco-therapy practitioners, climate-grief workers, and somatic therapists who want a primary-source text on practical animism for assigned reading.</p>
+
+    <h3>Market size</h3>
+    <p>The "earth-based spirituality" book category sold approximately 3.2 million units in trade in 2024 (NPD BookScan, top 1,000 titles in BISAC category OCC026000 and adjacent). Top-selling individual titles in the lane move 20,000 to 100,000 copies in their first 18 months (e.g., <em>Psychic Witch</em> by Mat Auryn, Llewellyn, 250,000+ copies cumulative since 2020; <em>The Flowering Wand</em>, Inner Traditions, 60,000+ copies estimated since 2022).</p>
+
+    <p>Conservative first-18-month sales estimate for <em>The Living Elements</em>: 8,000 to 15,000 units, driven by the author's direct platform plus the standard trade channels. Optimistic estimate (with strong reviews and an Amazon category bestseller): 25,000 to 40,000 units.</p>
+
+    <div class="ornament">· · ·</div>
+
+    <h2>Comparable titles</h2>
+
+    <h3>1. Daniel Foor, <em>Ancestral Medicine</em> (North Atlantic Books, 2017)</h3>
+    <p><strong>Sales:</strong> 50,000+ copies, eight years in print. Foor's book launched a practitioner movement and seeded the certification-school model that <em>Ancestral Medicine</em> (the organization) now runs.</p>
+    <p><strong>Similar:</strong> Same animist frame, same practitioner-track structure, same author-school model behind the book.<br><strong>Different:</strong> The elements, not ancestors. Foor's book is the entry text for ancestral healing. <em>The Living Elements</em> is the entry text for elemental relationship. They are complementary, not competing.</p>
+
+    <h3>2. Stephen Harrod Buhner, <em>Plant Intelligence and the Imaginal Realm</em> (Bear & Company / Inner Traditions, 2014)</h3>
+    <p><strong>Sales:</strong> 30,000+ copies. Buhner is the foundational thinker on non-human intelligence in the contemporary plant-medicine lane.</p>
+    <p><strong>Similar:</strong> The claim that non-human entities possess intelligence and can be known directly.<br><strong>Different:</strong> Practice over philosophy. Buhner's book is 600 pages of argument. <em>The Living Elements</em> is 250 to 300 pages of practice. The two books make the same claim; one persuades, the other instructs.</p>
+
+    <h3>3. Sophie Strand, <em>The Flowering Wand</em> (Inner Traditions, 2022)</h3>
+    <p><strong>Sales:</strong> 60,000+ copies estimated. Strand is the contemporary voice of mythopoetic animism with the largest crossover audience in the lane.</p>
+    <p><strong>Similar:</strong> Rooted in mythopoetic and ecological framing, written for the reader who is already past beginner.<br><strong>Different:</strong> Explicitly practical. Strand offers vision; <em>The Living Elements</em> offers ceremony.</p>
+
+    <h3>4. Robin Wall Kimmerer, <em>Braiding Sweetgrass</em> (Milkweed Editions, 2013)</h3>
+    <p><strong>Sales:</strong> 3,000,000+ copies cumulative. The single most influential animist book of the 21st century.</p>
+    <p><strong>Similar:</strong> Takes the animist worldview seriously and translates it into practical terms.<br><strong>Different:</strong> Written from inside Western ceremonial practice. Kimmerer is Potawatomi and writes from Indigenous lineage; <em>The Living Elements</em> is written by a non-Indigenous practitioner and is honest about that location. The book directly addresses the question "what does it mean to practice animism if I am not Indigenous?"</p>
+
+    <h3>5. Mat Auryn, <em>Psychic Witch</em> (Llewellyn, 2020)</h3>
+    <p><strong>Sales:</strong> 250,000+ copies, the bestselling new witchcraft title of the 2020s.</p>
+    <p><strong>Similar:</strong> Practical-practice book by a working practitioner, structured for daily use.<br><strong>Different:</strong> Animist and elemental in focus, plant-integrated throughout, deeper at the practitioner end.</p>
+
+    <h4>Additional comps</h4>
+    <ul>
+      <li>Eliot Cowan, <em>Plant Spirit Medicine</em> (Sounds True, 1995/2014)</li>
+      <li>Aidan Wachter, <em>Six Ways</em> (self-published, 2018)</li>
+      <li>Sharon Blackie, <em>If Women Rose Rooted</em> (September Publishing, 2016)</li>
+      <li>David Abram, <em>Becoming Animal</em> (Vintage, 2010)</li>
+      <li>Bayo Akomolafe, <em>These Wilds Beyond Our Fences</em> (North Atlantic Books, 2017)</li>
+    </ul>
+
+    <div class="ornament">· · ·</div>
+
+    <h2>Marketing and promotion plan</h2>
+
+    <p>The author commits to the following for the publication year and the two years following.</p>
+
+    <h3>Owned channels</h3>
+    <ul>
+      <li><strong>Newsletter</strong> at minimum weekly cadence, with a publication-month series of 6 essays adapted from the book.</li>
+      <li><strong>Podcast</strong> with a publication-month special: 4 interview episodes with comp authors discussing animist practice.</li>
+      <li><strong>Instagram and Threads</strong> with 5 posts per week, including a 13-image series of "the elements as living beings" reels timed to publication month.</li>
+      <li><strong>The online school</strong> (Foundation Cohort 1 and Sampler) integrates the book as required reading. Sampler purchase will include a discount code for the book; Foundation Cohort 1 students receive a signed copy as a welcome gift.</li>
+    </ul>
+
+    <h3>Earned channels</h3>
+    <ul>
+      <li><strong>Podcast tour:</strong> 12-show tour confirmed at draft stage. Targets: The Astrology Podcast, On the Soul, Emerald Podcast, Rune Soup, Esoterica, plus others.</li>
+      <li><strong>Conferences and festivals:</strong> minimum 4 conferences in the publication year (Hierophant Healing Arts, Plant Spirit Medicine annual gathering, Sounds True Wisdom Festival, Esalen).</li>
+      <li><strong>Bookstore tour:</strong> 8 to 12 in-person events across LA, SF, Portland, Seattle, Denver, Asheville, NYC, Boston, plus UK dates.</li>
+      <li><strong>Reviews:</strong> existing relationships with reviewers at Spirituality + Health, Yoga Journal, Sacred Earth Journal.</li>
+    </ul>
+
+    <h3>Paid promotion</h3>
+    <p>The author commits to a $10,000 to $15,000 promotional budget in the publication year, allocated across Meta ads, BookBub features, and Goodreads giveaways. The publisher's own marketing investment is additional.</p>
+
+    <h3>Long-tail</h3>
+    <p>The book is the foundational text of an online school that will be running for the next decade. Every Foundation Year cohort (60 students in 2027, scaling to 120 per year by 2029) is a perpetual purchase channel. Cumulative school enrollment over the first five years should add 4,000 to 8,000 incremental book sales to whatever the trade market produces.</p>
+
+    <div class="ornament">· · ·</div>
+
+    <h2>Chapter outline</h2>
+
+    <p>Twelve chapters, each opening with a brief narrative passage and closing with a structured practice section.</p>
+
+    <h3>Part One: The frame (chapters 1 to 3)</h3>
+
+    <h4>Chapter 1: The Elements Are Beings, Not Symbols</h4>
+    <p>The opening claim of the book. Why most Western readers have been taught wrong, what changed when the author met fire for the first time, and what the reader is being asked to consider for the next twelve chapters. <em>Practice: a four-day candle vigil.</em> <strong>Sample chapter included below.</strong></p>
+
+    <h4>Chapter 2: How We Forgot</h4>
+    <p>A brief history of Western disenchantment. The early modern shift from animate to mechanical cosmology. The cost of that shift. Why the elements stopped being beings in Western thought, and what kinds of practice survived in folk traditions, in the Hermetic ceremonial lineage, and in colonized animist cultures. <em>Practice: a written history of the reader's own family relationship with fire and water across generations.</em></p>
+
+    <h4>Chapter 3: Approach: Protocol, Offering, Listening</h4>
+    <p>How an animist actually approaches a non-human being. The three discipline foundations: protocol (the rules of approach), offering (what we give), and listening (the receptive skill, harder than it sounds). <em>Practice: a structured listening exercise at a body of water.</em></p>
+
+    <h3>Part Two: The four elements (chapters 4 to 7)</h3>
+
+    <h4>Chapter 4: Fire — The First Conversation</h4>
+    <p>Fire as the most accessible element for a Western practitioner. The history of fire-keeping across animist traditions (Hestia, Brigid, Mexican curandera fire ceremonies). What fire prefers as an offering. How fire communicates. Plant ally: yerba santa. <em>Practice: a 28-day morning and evening candle vigil with daily journaling.</em> <strong>Sample chapter included below.</strong></p>
+
+    <h4>Chapter 5: Water — The Listening Element</h4>
+    <p>Water as the element that teaches receptivity. Sources of water-relationship across traditions (Mami Wata, the Celtic goddesses of wells, the Mexican water curandera tradition). Why most practitioners approach water with the wrong question. What water asks of us in the age of drought. Plant ally: rose. <em>Practice: weekly visit to a body of moving water.</em></p>
+
+    <h4>Chapter 6: Earth — The Patient Teacher</h4>
+    <p>Earth as the element that teaches reciprocity and time. The mistake of "grounding" as Western shorthand for any earth contact. Earth-listening, earth-offering, the practice of bare-skin contact with soil. The relationship between earth practice and ancestor practice. Plant ally: mugwort (root). <em>Practice: a sustained relationship with one specific tree across the chapter.</em></p>
+
+    <h4>Chapter 7: Air — Voice and Breath</h4>
+    <p>Air as the element of communication, transmission, and breath. Air-listening (the most under-developed elemental skill in modern practice). The traditions of voice as offering. Air-ethics in an age of polluted skies. Plant ally: yerba buena. <em>Practice: daily breath ceremony at dawn.</em></p>
+
+    <h3>Part Three: Beyond the four, toward a life (chapters 8 to 12)</h3>
+
+    <h4>Chapter 8: The Fifth and Beyond — Spirit, Star, Dark</h4>
+    <p>The element that holds the other four (named variously: spirit, ether, akasha, the void). The elements beyond four in specific traditions. How a Western practitioner can engage these without claiming what is not theirs. Plant ally: tobacco. <em>Practice: a night ceremony.</em></p>
+
+    <h4>Chapter 9: Reciprocity — What the Elements Ask of Us</h4>
+    <p>The ethical chapter. What we owe in return for relationship. The danger of the "transactional" frame and what genuine reciprocity looks like instead. Specific contemporary obligations: water protection, land stewardship, fire respect, air clarity. <em>Practice: a written reciprocity inventory.</em></p>
+
+    <h4>Chapter 10: The Home Altar</h4>
+    <p>The practical chapter on physical infrastructure. How to build and maintain an elemental altar at home. Materials, placement, cleaning, what does and does not belong. The relationship between altar and offering. <em>Practice: build your altar in the week of reading this chapter.</em></p>
+
+    <h4>Chapter 11: Designing a Ceremony</h4>
+    <p>The anatomy of effective ritual: opening, work, closing, integration. Why most rituals fail. The difference between ceremony for one, for a small group, and for a public. Plant ally: cacao (devotional). <em>Practice: design and perform your own seasonal ceremony aligned with the next solstice or equinox.</em></p>
+
+    <h4>Chapter 12: A Life with the Elements</h4>
+    <p>Closing chapter. What it looks like to live with elemental relationship at the center of an ordinary modern life. How the practice changes over years. The invitation to continue beyond the book. <em>Practice: a yearlong practice audit and a written letter to your future self.</em></p>
+
+    <div class="ornament">· · ·</div>
+
+    <!-- SAMPLE CHAPTER 1 -->
+    <div class="sample-chapter">
+      <div class="sample-chapter-label">Sample Chapter One</div>
+      <h1 class="chapter-title">The Elements Are Beings, Not Symbols</h1>
+
+      <p>The first time fire spoke to me, I did not know that it was speaking. I had lit a candle on the morning of the spring equinox in my grandmother's kitchen in Boyle Heights, and I had said the words I had been taught to say. I knew that the words mattered. I did not know that the candle did.</p>
+
+      <p>I sat with the candle for forty minutes, and then I blew it out, and then I went on with my day. Three days later I went back to the candle to relight it, and I noticed that the wick had moved. The wax had melted unevenly on one side. The candle was leaning. It had been straight when I lit it. It had been straight when I blew it out. Now it was leaning toward the east, toward the window, where I had spent the forty minutes sitting.</p>
+
+      <p>I told my grandmother. She did not look up from the bowl she was cleaning. <em>Mija,</em> she said, <em>ya sabe que estás aquí.</em> It knows you are here.</p>
+
+      <p>I was nineteen. It took me almost a decade to understand what she had said.</p>
+
+      <h3>What this book asks of you</h3>
+
+      <p>You are about to spend a year with the four elements. By the time you finish this book, if you do the practices, you will know fire the way you know an old friend whose moods you can read across a room. You will know water the way you know the voice of someone you love on the phone, even when you cannot hear the words. You will know earth the way you know the weight of your own body when you wake up. You will know air the way you know the difference between a kind silence and a hostile one in a room of people.</p>
+
+      <p>Before that can happen, I have to ask you something hard. I have to ask you to consider that the elements are not symbols.</p>
+
+      <p>For most of the readers of this book, this will be the strangest sentence so far. Most of us in the modern West have been taught that fire stands for passion, that water stands for emotion, that earth stands for grounding, and that air stands for thought. We have been taught this in our witchcraft books and in our astrology classes and in our magical-correspondence tables. We have been taught that the elements are categories. We have been taught that they are useful labels for psychological or symbolic content.</p>
+
+      <p>I am asking you to set that down.</p>
+
+      <p>I am not asking you to forget it. The correspondence tradition is genuine, and it is useful, and you can return to it. I am asking you to set it down for the next year so that you can meet the elements as they actually are. Which is to say: as beings. As ensouled, named, intelligent, willing, and present beings, with whom a human can enter relationship, and from whom a human can learn, and to whom a human owes something in return.</p>
+
+      <p>This claim will sound, to some of you, religious. It is. The animist tradition is a religious tradition. It is older than any of the religions that came after it. It survived in the corners of European folk practice and in unbroken form across most of the rest of the world, and it is the tradition that I write from. If you are reading this book, some part of you already suspects what I am about to spend twelve chapters arguing. That is why you bought the book.</p>
+
+      <h3>What it cost me to learn this</h3>
+
+      <p>I want to be honest about something at the start. I did not come to this practice cleanly. I did not have an unbroken lineage handed to me. My grandmother knew what she knew, and she did not teach me directly. She did not believe in teaching directly. She believed in showing up to feed me and to tell me a story when I needed one, and the practices were inside the stories, but only if I went back to them years later and found them.</p>
+
+      <p>So I came to the elements through a long crooked path. I learned candle work from a Mexican curandera in East LA when I was twenty-three, and I learned water ceremony from a Yaqui-trained practitioner I will not name, and I learned the four-direction altar from a Lakota relative of a friend who taught me very carefully and very slowly because she was teaching me at the edge of what could be taught to a non-Indigenous person. I learned the rest from my own practice, from showing up to the candle every morning and to the river every Sunday, and from the elements themselves, who taught me when I was patient enough to listen.</p>
+
+      <p>Some of what I will write in this book is mine. Some of it is borrowed, and I will name where I borrowed it. Some of it is in the air now, in the way that practices move from teacher to teacher and from culture to culture, and I will try to be honest about that too.</p>
+
+      <p>The elements do not belong to any tradition. The elements belong to themselves. But the ceremonies belong to the people who keep them, and I will hold that distinction throughout the book.</p>
+
+      <h3>What "the elements are beings" actually means</h3>
+
+      <p>When I say the elements are beings, I mean four things specifically.</p>
+
+      <p><strong>First, they are named.</strong> Fire has names in every animist tradition that has met it. The name matters because the name is the beginning of the address. You do not call a stranger "human." You call them by their name, or you ask. In the early chapters of this book I will not give you names for the elements, because the names that work for me may not be the names that work for you. By the end of the book, you will have your own.</p>
+
+      <p><strong>Second, they have temperament.</strong> Fire is not a category. Fire has moods. There is a fire that is patient and there is a fire that is impatient. There is a fire that is teaching and there is a fire that is angry. Most modern practitioners do not develop the perception to tell these apart, and so they treat all fires the same, and so they get the same generic response back, which is no response. Temperament is the second thing to learn, after presence.</p>
+
+      <p><strong>Third, they communicate.</strong> Communication is not always linguistic. The candle on my grandmother's kitchen table leaned to the east because I had been sitting to its east for forty minutes. The next time I sat with that candle, I sat to the west. The candle leaned to the west. Communication is what I am describing. You can call it physics if you want. The physics is also true. The physics does not exhaust the relationship.</p>
+
+      <p><strong>Fourth, they consent.</strong> This is the hardest one for Western readers. The elements decide who they will speak with. You can light a thousand candles and never hear from fire if fire does not want to speak with you. Practice does not entitle you to relationship. Practice makes you available for relationship. Whether the elements show up is up to the elements.</p>
+
+      <p>I have students who have done daily candle vigils for two years and report no contact. I have students who lit a candle for the first time three months ago and now describe fire as their primary teacher. I cannot explain the difference. I do not think the difference is about merit. I think it is about something the elements know that I do not, and so the practice I will teach you in this book is the practice of becoming available, not the practice of guaranteeing contact.</p>
+
+      <p>If contact does not come, the practice is still good. The practice will change you, and what it changes you toward is the kind of person to whom contact, when it comes, will not break you. I have seen what happens to practitioners for whom contact comes too soon. I do not want that for you.</p>
+
+      <h3>What you will do in the next twelve chapters</h3>
+
+      <p>The book is structured as a year of practice. Each chapter is meant to be read in the first week of a lunation, and then practiced for the rest of the lunation, before moving on. If you read the book straight through in three days, you will have absorbed some of the worldview, but you will not have done the work. Please do the work.</p>
+
+      <p>The first three chapters set the frame. Chapter Two is a brief history of how the Western tradition forgot that the elements were beings, and what it cost. Chapter Three is the practical chapter on protocol, offering, and listening, the three disciplines that govern every animist relationship. Read these slowly. They are the foundation.</p>
+
+      <p>Chapters Four through Seven are the four elemental chapters: fire, water, earth, air. Each one has its own structure, its own plant ally, its own daily practice, and its own ceremony at the end. Do not skip any of them. If you only care about fire, read about water anyway. The elements know each other. They will know if you have only studied one of them.</p>
+
+      <p>Chapter Eight steps beyond the four, into the fifth element and the elements beyond it. Chapter Nine returns to ethics. Chapters Ten and Eleven are the most practical chapters in the book: how to build a home altar that will hold up across years, and how to design and lead a ceremony of your own.</p>
+
+      <p>Chapter Twelve is about what comes after. What it looks like to live with the elements as relationships rather than as topics. This is the chapter I have most needed to write and the chapter I am least sure I have gotten right. I will keep writing it for the rest of my life.</p>
+
+      <h3>What I am not going to do in this book</h3>
+
+      <p>I am not going to teach you to call on the elements for personal power. The elements are not a battery. They are not a tool. They will not, in my experience, make you wealthy or beautiful or successful, and if you go to them asking for these things, you will mostly get silence, and the silence is informative.</p>
+
+      <p>I am not going to teach you ceremony with psychoactive plants. This is not a book about ayahuasca, peyote, mushrooms, or any of the other sacraments that have proper teachers in their proper lineages. I have my own relationships with some of these plants, and I will mention them in the appropriate plant-ally sections, but I will not give you protocols for working with them. That work requires a teacher in the room. A book cannot do it.</p>
+
+      <p>I am not going to teach you to channel beings whose lineage I do not know. I am not going to teach you forms of practice that I have not done myself for at least seven years. I am not going to teach you anything I learned from a teacher who has not been dead at least one full year, because the dead can correct what I get wrong and the living deserve to be paid for their teachings directly. This is my own protocol. You may develop a different one.</p>
+
+      <h3>What I am asking of you, in the next twenty-four hours</h3>
+
+      <p>Find a candle. White or beeswax if possible. Not a scented candle.</p>
+      <p>Find a small saucer or plate that you can dedicate to this candle for the next four days.</p>
+      <p>Find a window that faces east, if your home has one. If not, any window will do.</p>
+      <p>Tomorrow morning, when you wake up, before you reach for your phone, place the candle on the saucer, place the saucer near the window, and light the candle. Sit with it. Do not pray. Do not meditate in any technique you have been taught. Just sit. Watch.</p>
+      <p>After ten minutes, blow the candle out. Get up. Continue your day.</p>
+      <p>Do this for four mornings.</p>
+      <p>On the fifth morning, before you light the candle, ask it, silently or aloud, whether it is willing to keep meeting you.</p>
+      <p>Listen for the answer.</p>
+      <p>Then come back to Chapter Two.</p>
+    </div>
+
+    <div class="ornament">· · ·</div>
+
+    <!-- SAMPLE CHAPTER 4 -->
+    <div class="sample-chapter">
+      <div class="sample-chapter-label">Sample Chapter Four</div>
+      <h1 class="chapter-title">Fire: The First Conversation</h1>
+
+      <p>The Mexican curanderas I learned from in East LA do not begin with fire. They begin with water, with the <em>limpia</em>, the cleansing. They wash before they speak. This is good and proper protocol, and if you are working with a curandera, you will follow her order, not mine.</p>
+
+      <p>In this book I begin with fire. I begin with fire for two reasons. The first is that fire is the most accessible element for the modern Western practitioner. A candle is the most domestic of magical objects. We have grown up with fire on birthday cakes and on dinner tables and at the ends of incense sticks. We have a relationship with fire already, even if we have not noticed it.</p>
+
+      <p>The second reason is that fire is the most willing of the four. In my experience, fire is the element that most reliably responds when a serious practitioner first calls. I have seen this with my students again and again. The candle leans, the flame draws toward the practitioner, the wax behaves in ways that no draft can account for. Fire shows up.</p>
+
+      <p>I do not know why. I have asked. The answer I most often get, when I sit at the candle and ask fire why fire is so willing to teach, is something like: <em>because the others are harder.</em> Which I take to mean: fire is the door, and the door has been opened to the modern practitioner because the modern practitioner is, frankly, in trouble, and the elements have decided to make themselves available.</p>
+
+      <h3>Who fire has been</h3>
+
+      <p>Before we begin practice with fire, you should know who you are meeting. Fire is older than human language and older than any tradition that names it. But within every animist tradition there are specific named keepers of fire-relationship, and you should know a few of them by name as a courtesy.</p>
+
+      <p>In the Mediterranean and European traditions, Hestia is the Greek keeper of the hearth fire and the eldest of the Olympians, and her presence inside a home is the difference between a house and a home. Brigid is her Celtic cousin, the threefold keeper of the forge, the hearth, and the inspiration, and the Catholic figure of Saint Brigid of Kildare is the surviving form of the older Brigid, with her perpetual flame at Kildare. The Vesta cult of Rome maintained an undying flame at the center of the city, tended by women who were both honored and constrained.</p>
+
+      <p>In the Mexican tradition I trained in, fire is <em>Abuelo Fuego,</em> grandfather fire, and fire ceremonies are held in the <em>temazcal</em> (sweat lodge) and at the center of the <em>danza</em> circle. The Mexican curandera tradition treats fire as both purifier and witness: fire sees what the human does and remembers it. The fire ceremonies of the Nahuatl, Mexica, and Huichol traditions are alive today, and they are not mine to teach. I name them so that you know they exist and so that you do not think that what I am about to teach you is the totality of fire-practice.</p>
+
+      <p>In the African diaspora, the Orisha tradition holds fire in the figure of Shango, the warrior of justice, with his thunderaxe and his drums. Shango is also not mine to teach. If you are drawn to the Orisha tradition, you should find an initiated practitioner. I name Shango here because fire-as-being is recognized across these traditions, and the recognition is the point.</p>
+
+      <p>There are others. I will not list all of them. The point is: fire has been known by many people, by many names, for a very long time. When you sit at the candle, you are not the first.</p>
+
+      <h3>What fire prefers</h3>
+
+      <p>Fire prefers honesty. This is the first thing I learned that I think is broadly true across traditions. Fire dislikes performance and dislikes flattery. If you sit at the candle and recite words that do not mean anything to you, fire will not respond. Fire will simply burn, which is what it does anyway.</p>
+
+      <p>Fire prefers to be alone with you. Lighting a candle in the middle of a crowded room while music plays is not, in my experience, the way to begin a relationship with fire. Fire is patient with social fires (the dinner candle, the birthday candle) and treats them as background, the way a person at a party treats the background music. The relationship that fire offers you is not in those candles. It is in the candle you light when you are alone, in a quiet room, in a deliberate way.</p>
+
+      <p>Fire prefers offerings that are real. The simplest offerings, in the Mexican tradition I learned, are tobacco (real loose-leaf tobacco, not cigarette tobacco) and copal (the resin, not the synthetic incense). A small pinch of either, placed in a fire-safe container near the candle, is an honorable beginning. Other traditions offer different substances. In Brigid's tradition, you might offer milk and butter and the first beer of a brewing. In the Vesta tradition, you might offer salted barley. Choose what fits your lineage, and if you have no lineage, choose what fits where you live.</p>
+
+      <p>Fire prefers a candle you have prepared. The candles I use for serious fire-work are not pulled out of a drawer. They are dressed (the wax is anointed with a small amount of olive oil or a personally significant oil), they are dedicated (named, silently or aloud, for the work they will do), and they are kept on a fire-safe dish that is used only for this practice. The candle that you use for chapter four should not be the candle you use for dinner. The discipline of separation is part of the protocol.</p>
+
+      <h3>How fire communicates</h3>
+
+      <p>There are at least four ways I know that fire communicates with a sitting practitioner.</p>
+
+      <p><strong>Through the behavior of the flame.</strong> Fire moves. It leans. It elongates, it sputters, it grows, it flickers in patterns that, with time, you can learn to read. I keep a fire journal. Across years, the journal has shown me that a particular kind of upward-stretching flame appears when I have asked a question fire is willing to answer at length, and a particular kind of horizontal flame appears when fire is impatient. I do not assume that everyone's journal will say the same thing. I assume that everyone's flame says something to them, and the practice is to begin paying attention.</p>
+
+      <p><strong>Through the behavior of the wax.</strong> Wax pools. It runs. It crystallizes in ridges. After a sustained sitting, the wax often forms shapes. I do not interpret these the way I have seen some divination traditions interpret them. I treat them as signature. Fire was here. The wax remembers.</p>
+
+      <p><strong>Through smoke and scent.</strong> Even a beeswax candle, which has very little smoke, will at certain moments release a stronger scent. The scent is information. I cannot tell you what the information means in advance. You will learn what the information means by sitting with it for months.</p>
+
+      <p><strong>Through your own body.</strong> This is the channel most modern practitioners trust least, and it is the channel that is the most reliable in the long run. While you sit at the candle, your body will respond. Your heart rate will change. Your breath will deepen or quicken. You will notice an impulse to stand up, or an impulse to weep, or an impulse to laugh, or an impulse to sit in absolute stillness. These are not, in my view, your reactions to fire. They are fire's communication routed through the most available instrument it has, which is your nervous system. Trust the body.</p>
+
+      <h3>The plant ally for fire: yerba santa</h3>
+
+      <p>In the bioregion this book is written from (Southern California and the Southwest), the plant most often paired with fire ceremony is yerba santa, <em>Eriodictyon californicum.</em> Yerba santa is a chaparral shrub, with sticky leaves that smell like resin and old smoke when crushed. It is sacred to the Chumash and the Tongva, on whose land Los Angeles sits, and it has been used in fire and breath ceremonies in this region for thousands of years.</p>
+
+      <p>If you wildcraft yerba santa, do so on land where the plant grows freely, take no more than 10% of any individual plant, leave an offering, and do not strip a young plant of its first-year leaves. Better, in my view, is to buy from a respectful grower. A small amount goes a long way. I burn three to five leaves over the candle once a week and no more.</p>
+
+      <p>If you live outside the bioregion, choose a fire-corresponding plant native to where you live, with the same care. In the Mediterranean, rosemary is honorable. In the British Isles, gorse. In the Eastern US, cedar (with the same sourcing care as yerba santa). The element is fire; the plant is the local relative.</p>
+
+      <h3>The 28-day practice</h3>
+
+      <p>Here is the practice for this lunation.</p>
+
+      <p><strong>Days 1 through 7: Sit.</strong> Every morning, before your phone, light the candle on the dedicated dish, place a small offering (tobacco, copal, or your tradition's equivalent) in the offering container, and sit with the candle for 15 to 20 minutes. Do not pray. Do not ask for anything. Do not interpret what you see. Just sit. After the sitting, blow out the candle and continue your day. In the evening, before you sleep, write three sentences in your fire journal: what the flame did, what the wax did, what your body did.</p>
+
+      <p><strong>Days 8 through 14: Ask.</strong> Every morning, same practice, but in the seventh minute of the sitting, ask fire one question. Silently or aloud. Keep the question simple: <em>What do you want me to know?</em> or <em>Will you teach me?</em> or <em>What am I missing?</em> Do not expect an answer. Continue the journal.</p>
+
+      <p><strong>Days 15 through 21: Offer.</strong> Every morning, same practice. In the third minute of the sitting, place the offering deliberately, name what you are offering and why. <em>I offer this tobacco in gratitude for the warmth this house has held this winter.</em> Or whatever is true. Do not flatter. Do not perform.</p>
+
+      <p><strong>Days 22 through 28: Sustained sitting.</strong> Extend the morning sitting to 40 minutes, no longer. In one of these seven mornings, you may notice a shift in the quality of attention. You may not. Both are acceptable. On day 28, after the morning sitting, write a longer entry in your fire journal: what you have learned, what you suspect you still do not know, what you want to ask in the next lunation.</p>
+
+      <h3>What to do if you feel nothing in 28 days</h3>
+
+      <p>Some readers will sit for 28 mornings and feel nothing remarkable. They will not see flame behavior they cannot explain. They will not feel shifts in the body. They will write twenty-eight unremarkable journal entries. They will be tempted to conclude that they are not suited for this work, or that I am making it up, or that the elements have rejected them.</p>
+
+      <p>None of these conclusions is, in my experience, correct.</p>
+
+      <p>The most common cause of "nothing happening" in the first month is that the practitioner is performing the practice rather than entering it. The body knows the difference between a discipline you are doing because a book told you to and a relationship you are entering because you mean it. Fire knows the difference too. The remedy, if you have done 28 unremarkable mornings, is not to try harder. It is to ask yourself, honestly, why you came to this candle in the first place.</p>
+
+      <p>If the answer is <em>because I wanted to be a special kind of practitioner</em>, fire will be silent. Fire is not impressed.</p>
+
+      <p>If the answer is <em>because I am lonely for something my culture has stopped offering me</em>, fire will, eventually, answer.</p>
+
+      <p>The honest answer earns the answer back. The performed answer earns the silence back. Both are forms of teaching.</p>
+
+      <h3>Moving to the next chapter</h3>
+
+      <p>When you are ready to move to chapter five, leave the fire candle lit one morning of your choosing, sit a full 40 minutes, and at the end of the sitting, place your hand briefly above the flame (not in it). Thank fire. Blow the candle out. Take the candle off the dedicated dish and put it somewhere private. You will return to it.</p>
+
+      <p>Then go to water.</p>
+    </div>
+
+    <div class="ornament">· · ·</div>
+
+    <h2>Submission strategy</h2>
+
+    <p>Recommended order of submission:</p>
+
+    <table>
+      <thead>
+        <tr><th>Order</th><th>Press</th><th>Why</th><th>Submit by</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Inner Traditions / Bear &amp; Company</td><td>Best fit for the lane (Buhner, Strand)</td><td>January 2027</td></tr>
+        <tr><td>2</td><td>North Atlantic Books</td><td>Foor's home; strong reputation in animist-practice</td><td>January 2027</td></tr>
+        <tr><td>3</td><td>Sounds True</td><td>Strong audio platform; book-plus-course deal possible</td><td>February 2027</td></tr>
+        <tr><td>4</td><td>Llewellyn</td><td>Largest distribution; lower author share but volume</td><td>March 2027</td></tr>
+        <tr><td>5</td><td>Hay House</td><td>Largest reach into general spiritual audience</td><td>April 2027</td></tr>
+      </tbody>
+    </table>
+
+    <p>Self-publishing is the fallback, not the goal. The trade press distribution and the editorial pass-through is worth a year of waiting on the publication date.</p>
+
+    <h3>Open questions to lock by submission</h3>
+    <ul>
+      <li>Final title (test 3 to 5 with the newsletter audience by November 2026)</li>
+      <li>Exact word count target (75K vs. 85K affects pricing and timeline)</li>
+      <li>Whether to include photos (raises print cost; better book)</li>
+      <li>Whether to seek an agent first or submit direct to acquiring editors</li>
+      <li>Foreword: yes or no, and if yes, by whom (candidates: Daniel Foor, Sophie Strand, Sajah Popham, Sharon Blackie)</li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- SAMPLER LESSON PLANS -->
+<!-- ============================================== -->
+<span id="sampler" class="section-anchor"></span>
+<section class="doc">
+  <div class="container">
+
+    <div class="doc-label">Part Two</div>
+    <h1>The Elements as Living Beings</h1>
+    <div class="doc-tagline">Sampler Curriculum · Lesson Plans</div>
+
+    <div class="meta-block">
+      <strong>Format:</strong> Self-paced, 4 lessons<br>
+      <strong>Total student time:</strong> 6 to 8 hours including practices<br>
+      <strong>Price:</strong> $45<br>
+      <strong>Production target:</strong> Recordings finished by August 31, 2026<br>
+      <strong>Public launch:</strong> September 11, 2026 (Virgo new moon)
+    </div>
+
+    <p>These lesson plans are the working scripts and student-facing materials for the four sampler lessons. Each lesson includes a video outline with timestamps, the verbatim text for the student handout, daily-practice prompts for the week between lessons, and recommended further reading. Personal anecdotes shown in italics are placeholders; replace with your own ceremonial fieldwork.</p>
+
+    <p>Production note: each video should be one continuous take in a single setting, no cuts to b-roll, no music. The video aesthetic mirrors the position: this is not a marketed product. This is one practitioner speaking to one student.</p>
+
+    <div class="ornament">· · ·</div>
+
+    <h2>Lesson 1 · Why elemental practice is not what you have been taught</h2>
+
+    <h3>Learning objectives</h3>
+    <p>By the end of this lesson, the student will:</p>
+    <ol>
+      <li>Be able to explain the difference between the symbolic-correspondence frame and the animist frame for elemental practice</li>
+      <li>Understand why the symbolic frame, while useful, will limit certain kinds of practice</li>
+      <li>Have a working personal definition of what "the elements are beings" means to them</li>
+      <li>Have completed a four-day candle vigil and begun a fire journal</li>
+    </ol>
+
+    <h3>Video outline (50 minutes)</h3>
+
+    <table>
+      <thead>
+        <tr><th>Time</th><th>Section</th><th>Content</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0:00–2:00</td><td>Welcome + frame</td><td>Welcome. Name what this sampler is and is not. Tell the truth about why you made it.</td></tr>
+        <tr><td>2:00–7:00</td><td>The opening claim</td><td>The elements are beings, not symbols. Lay out the claim cleanly. Refuse to soften it.</td></tr>
+        <tr><td>7:00–14:00</td><td>What you have been taught</td><td>The symbolic-correspondence tradition. Where it comes from. Why it is useful. Why it is limiting.</td></tr>
+        <tr><td>14:00–23:00</td><td>What changed for you</td><td>Personal narrative. The moment the frame broke. Keep it concrete, sensory, brief.</td></tr>
+        <tr><td>23:00–32:00</td><td>What "beings" means</td><td>The four properties: named, temperamental, communicative, consenting.</td></tr>
+        <tr><td>32:00–40:00</td><td>Why this matters now</td><td>Climate, disenchantment, the loss of practical animist traditions in the modern West.</td></tr>
+        <tr><td>40:00–47:00</td><td>What you will do this week</td><td>Walk through the four-day candle vigil. Be specific. Show the candle, the saucer, the offering.</td></tr>
+        <tr><td>47:00–50:00</td><td>Close</td><td>Name what comes in Lesson 2. Encourage the practice. End.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Key teaching points</h3>
+    <ol>
+      <li><strong>The elements are beings, not symbols.</strong> Land this in the first 10 minutes. Repeat at least three times in different contexts so the student leaves with it in their body.</li>
+      <li><strong>The symbolic tradition is genuine and useful.</strong> Do not condemn it. Many students will arrive having loved it. Respect it. Then say what it cannot do.</li>
+      <li><strong>This is religious work.</strong> Name it. Saying so up front gives the student permission to engage with the depth this requires. It also filters out the student who wanted a quick magical-correspondence reference. The filtering is correct.</li>
+      <li><strong>Practice does not entitle the student to relationship.</strong> The elements decide. The practice is the discipline of becoming available.</li>
+    </ol>
+
+    <h3>Student handout</h3>
+
+    <blockquote>
+      <h3>The Living Elements · Lesson 1</h3>
+
+      <h4>The opening claim</h4>
+      <p>The elements (fire, water, earth, air, and the elements beyond four) are beings. They have names. They have temperament. They communicate. They consent. Practice does not entitle a human to relationship with them. Practice makes a human available for relationship.</p>
+
+      <h4>What you will do this week</h4>
+      <p><strong>Materials:</strong> One white or beeswax candle (not scented). One small saucer used only for this candle. A notebook used only for the fire journal. A pen. A window, east-facing if possible.</p>
+
+      <h4>The four-day vigil</h4>
+      <p>Tomorrow morning, before you reach for your phone:</p>
+      <ol>
+        <li>Place the candle on the saucer near the window.</li>
+        <li>Light the candle.</li>
+        <li>Sit. Watch the flame. Do not pray. Do not meditate. Just watch.</li>
+        <li>After 10 minutes, blow the candle out.</li>
+        <li>In your fire journal, write three sentences: what the flame did, what the wax did, what your body did.</li>
+        <li>Continue your day.</li>
+      </ol>
+      <p>Do this for four mornings. On the fifth morning, before lighting the candle, ask it silently or aloud whether it is willing to keep meeting you. Listen. Then begin Lesson 2.</p>
+
+      <h4>Closing question</h4>
+      <p><em>Why did I open this sampler? What am I hoping to find? What am I afraid to find?</em> 100 to 300 words in your fire journal before Lesson 2.</p>
+    </blockquote>
+
+    <h3>Reading recommendations (optional)</h3>
+    <ul>
+      <li>David Abram, <em>The Spell of the Sensuous</em>, chapter 1</li>
+      <li>Robin Wall Kimmerer, <em>Braiding Sweetgrass</em>, opening essay</li>
+      <li>Stephen Harrod Buhner, <em>Plant Intelligence and the Imaginal Realm</em>, introduction</li>
+    </ul>
+
+    <div class="ornament">· · ·</div>
+
+    <h2>Lesson 2 · A first meeting with fire</h2>
+
+    <h3>Learning objectives</h3>
+    <p>By the end of this lesson, the student will:</p>
+    <ol>
+      <li>Have completed at least 4 days of candle vigil with a beginning fire journal</li>
+      <li>Recognize the four ways fire communicates: flame, wax, smoke and scent, body</li>
+      <li>Have made a first deliberate offering at the candle</li>
+      <li>Know which fire-corresponding plant ally is local to where they live</li>
+      <li>Have a 14-day extension of the candle vigil planned with a deliberate question</li>
+    </ol>
+
+    <h3>Video outline (50 minutes)</h3>
+
+    <table>
+      <thead>
+        <tr><th>Time</th><th>Section</th><th>Content</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0:00–3:00</td><td>Welcome back</td><td>Acknowledge the practice. Validate both: the student who saw nothing and the student who saw something.</td></tr>
+        <tr><td>3:00–10:00</td><td>Who fire has been</td><td>Brief lineage tour: Hestia, Brigid, Vesta, Abuelo Fuego, Shango. Name with care. Acknowledge what is not yours to teach.</td></tr>
+        <tr><td>10:00–18:00</td><td>What fire prefers</td><td>Honesty over performance. Quiet over noise. Real offerings. Prepared candles.</td></tr>
+        <tr><td>18:00–28:00</td><td>How fire communicates</td><td>The four channels: flame, wax, smoke and scent, body. Specific examples from your own journal.</td></tr>
+        <tr><td>28:00–35:00</td><td>The plant ally</td><td>Yerba santa for the LA/Southwest student. Sourcing ethics. First offering.</td></tr>
+        <tr><td>35:00–45:00</td><td>The 14-day extension</td><td>Sit, ask, offer, sustained. Walk through weeks one and two.</td></tr>
+        <tr><td>45:00–50:00</td><td>Close</td><td>Name what comes in Lesson 3. Acknowledge the practice is now serious.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Key teaching points</h3>
+    <ol>
+      <li><strong>Both responses to the four-day vigil are correct.</strong> Validate both before anything else. This protects the student from believing the practice "didn't work."</li>
+      <li><strong>Fire has lineage and the lineage matters.</strong> Name specific traditions. Honor what is not yours to teach.</li>
+      <li><strong>Offering is real.</strong> A symbolic offering is not enough. Real tobacco. Real copal. The discipline of the real material is part of the practice.</li>
+      <li><strong>The body is the most reliable channel.</strong> Of the four, the one most modern practitioners distrust and the one most often correct.</li>
+    </ol>
+
+    <h3>Student handout</h3>
+
+    <blockquote>
+      <h3>The Living Elements · Lesson 2</h3>
+
+      <h4>What fire prefers</h4>
+      <ul>
+        <li><strong>Honesty.</strong> Do not flatter. Do not perform. Say true things or be quiet.</li>
+        <li><strong>Quiet.</strong> No music. No phone. Ideally no one else in the room.</li>
+        <li><strong>Real offerings.</strong> Tobacco (loose-leaf). Copal (resin). Small amounts. Honorable sourcing.</li>
+        <li><strong>A dedicated candle.</strong> Not the candle you light at dinner. Separation is part of the discipline.</li>
+      </ul>
+
+      <h4>How fire communicates</h4>
+      <ol>
+        <li><strong>Flame.</strong> Moves, leans, elongates, sputters, grows, flickers. Patterns emerge.</li>
+        <li><strong>Wax.</strong> Pools, runs, crystallizes. Treat shapes as signature, not oracle.</li>
+        <li><strong>Smoke and scent.</strong> The scent is information.</li>
+        <li><strong>Your body.</strong> Heart rate, breath, impulses. The most reliable channel.</li>
+      </ol>
+
+      <h4>Your fire plant ally</h4>
+      <p>California, Southwest, Mexico: <strong>yerba santa</strong> (<em>Eriodictyon californicum</em>). Buy from a respectful grower.</p>
+      <p>Elsewhere: Mediterranean (rosemary), British Isles (gorse), Eastern US (cedar), Northern Europe (juniper), Pacific Northwest (Douglas fir).</p>
+      <p>Three to five leaves burned over the candle once a week. Not daily.</p>
+
+      <h4>The 14-day extension</h4>
+      <p><strong>Days 1–7:</strong> 15-minute morning sitting with offering. Three-sentence journal entry.</p>
+      <p><strong>Days 8–14:</strong> Same practice. In the seventh minute, ask fire one question. Continue the journal.</p>
+    </blockquote>
+
+    <div class="ornament">· · ·</div>
+
+    <h2>Lesson 3 · Protocol, offering, and consent</h2>
+
+    <h3>Learning objectives</h3>
+    <ol>
+      <li>Understand the three foundational disciplines of animist relationship</li>
+      <li>Name what consent means in relationship with a non-human being</li>
+      <li>Begin extending practice from fire to water</li>
+      <li>Understand the difference between transactional and reciprocal frames</li>
+    </ol>
+
+    <h3>Video outline (50 minutes)</h3>
+
+    <table>
+      <thead>
+        <tr><th>Time</th><th>Section</th><th>Content</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0:00–3:00</td><td>Welcome back</td><td>Acknowledge the 14 days. Name the milestones.</td></tr>
+        <tr><td>3:00–10:00</td><td>Protocol</td><td>The first discipline. The honorable default when you do not know one: ask, listen, wait.</td></tr>
+        <tr><td>10:00–20:00</td><td>Offering</td><td>The difference between offering and bribe. Ethics of sourcing. The body's offering.</td></tr>
+        <tr><td>20:00–32:00</td><td>Listening</td><td>The hardest of the three. Distinction between projection and reception.</td></tr>
+        <tr><td>32:00–40:00</td><td>Consent</td><td>What it means that a non-human being can decline. Recognizing "no."</td></tr>
+        <tr><td>40:00–47:00</td><td>Bridging to water</td><td>The next 14 days. Weekly visit to moving water. Plant ally: rose.</td></tr>
+        <tr><td>47:00–50:00</td><td>Close</td><td>Name what comes in Lesson 4. End.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Key teaching points</h3>
+    <ol>
+      <li><strong>The three disciplines order matters.</strong> Protocol, offering, listening. Skipping any step produces the wrong relationship.</li>
+      <li><strong>Consent is mutual.</strong> Either party can decline. The honorable practitioner accepts a "no."</li>
+      <li><strong>Transactional and reciprocal are different.</strong> Transactional is shopping. Reciprocal is family. The school operates on the second frame only.</li>
+      <li><strong>Water teaches differently than fire.</strong> Fire is willing. Water is patient. Different vocabulary entirely.</li>
+    </ol>
+
+    <h3>Student handout</h3>
+
+    <blockquote>
+      <h3>The Living Elements · Lesson 3</h3>
+
+      <h4>The three disciplines</h4>
+      <ol>
+        <li><strong>Protocol.</strong> The rules of approach. The honorable default: ask permission, listen for response, wait, do not proceed without permission.</li>
+        <li><strong>Offering.</strong> Always real. Honorably sourced. Small is honorable; large is suspicious. Your breath, voice, and time are the most fundamental offerings.</li>
+        <li><strong>Listening.</strong> The receptive discipline. The hardest. The body is the primary instrument.</li>
+      </ol>
+
+      <h4>What consent looks like</h4>
+      <p>A "yes" feels like opening. A relaxation in the body. The flame steadies, the water clarifies, the wind softens, the earth supports.</p>
+      <p>A "no" feels like closing. A tightening. The flame guts out, the water muddies. Or simply: nothing. A flat absence.</p>
+      <p>When you receive a "no," accept it. Try again another day, with a different protocol or offering. Do not push.</p>
+
+      <h4>The water practice for the next 14 days</h4>
+      <p><strong>Days 1–7:</strong> Visit a body of moving water once. Spend 30 minutes. Listen. Daily: 10 minutes of water-listening at home with a glass of water.</p>
+      <p><strong>Days 8–14:</strong> Visit the same water. Bring a small offering: rose petals, clean honey, or your breath sung into the water.</p>
+
+      <h4>Plant ally for water: rose</h4>
+      <p>Wild rose if you can find it. Damask rose petals from a culinary source if not. Avoid commercial florist roses.</p>
+    </blockquote>
+
+    <div class="ornament">· · ·</div>
+
+    <h2>Lesson 4 · The shape of a year ahead</h2>
+
+    <h3>Learning objectives</h3>
+    <ol>
+      <li>Understand the structure of the Foundation Year</li>
+      <li>Know what serious practice asks of an adult life</li>
+      <li>Complete the sampler with a sense of whether to continue</li>
+      <li>Decide consciously whether to enroll</li>
+    </ol>
+
+    <h3>Video outline (50 minutes)</h3>
+
+    <table>
+      <thead>
+        <tr><th>Time</th><th>Section</th><th>Content</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0:00–3:00</td><td>Welcome back</td><td>Honor the four weeks. Name what they have done.</td></tr>
+        <tr><td>3:00–12:00</td><td>What the sampler has been</td><td>Reveal the design. It has been a filter, an invitation, a small ceremony.</td></tr>
+        <tr><td>12:00–22:00</td><td>The shape of a year ahead</td><td>Walk through Foundation Year: 13 lunations, elements, plant allies, gates.</td></tr>
+        <tr><td>22:00–32:00</td><td>What serious practice requires</td><td>Time. Money. Family. Attention. Honest about each.</td></tr>
+        <tr><td>32:00–40:00</td><td>When NOT to enroll</td><td>The recently bereaved. The student in active addiction. The student looking for spectacle. Refuse gently.</td></tr>
+        <tr><td>40:00–47:00</td><td>When to enroll</td><td>How to enroll. Cost. Sliding scale. Application.</td></tr>
+        <tr><td>47:00–50:00</td><td>Close</td><td>A blessing for both paths. Continued contact regardless of choice.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Key teaching points</h3>
+    <ol>
+      <li><strong>The sampler has been a ceremony.</strong> Acknowledge this directly.</li>
+      <li><strong>Serious practice is a real ask.</strong> Do not soft-pedal time, money, life commitment.</li>
+      <li><strong>Some students should not enroll.</strong> Refuse them gently. Honest gatekeeping protects the cohort.</li>
+      <li><strong>The next step is real regardless of choice.</strong> A student who chooses not to enroll has still done meaningful work.</li>
+    </ol>
+
+    <h3>Student handout</h3>
+
+    <blockquote>
+      <h3>The Living Elements · Lesson 4</h3>
+
+      <h4>What you have done</h4>
+      <p>You have sat with fire for at least 7 days. You have listened at water for at least 14 days. You have written 28 or more journal entries. You have made at least two real offerings. Whatever you do next, this has been real practice.</p>
+
+      <h4>What comes next</h4>
+      <p>If you are called to continue, the Foundation Year begins April 6, 2027 on the Aries new moon. 13 lunations, 60 students, $450 tuition. Sliding scale available.</p>
+      <p>If you are not called, that is also a real answer. The newsletter and podcast continue. The school is here when you are ready.</p>
+
+      <h4>What serious practice asks</h4>
+      <ul>
+        <li><strong>Time.</strong> 60 to 90 minutes per day for 13 lunations. Total: 8 to 10 hours per week.</li>
+        <li><strong>Money.</strong> $450 plus $100 to $200 in ceremonial materials. Sliding scale for 15% of seats.</li>
+        <li><strong>Family.</strong> Your people will notice. Some will support. Some will resist.</li>
+        <li><strong>Attention.</strong> You will see fire in the streetlamp. This is disorienting at first. Plan for it.</li>
+      </ul>
+
+      <h4>When NOT to enroll</h4>
+      <ul>
+        <li>You are in active acute grief (less than 6 months from a major loss)</li>
+        <li>You are in active addiction</li>
+        <li>You are looking for dramatic spiritual experiences</li>
+        <li>You are looking for a teacher to take responsibility for your life</li>
+        <li>You are still uncertain whether the animist frame is for you</li>
+      </ul>
+
+      <h4>How to decide</h4>
+      <p>Take 14 days. Do not enroll while in the rush of finishing the sampler. Sit with the candle one more morning. Visit one more body of water. Ask, honestly, whether this is your work for the next year.</p>
+    </blockquote>
+
+    <div class="ornament">· · ·</div>
+
+    <h2>Production timeline</h2>
+
+    <table>
+      <thead>
+        <tr><th>Week of</th><th>Milestone</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>May 25</td><td>Lesson plans finalized; outlines locked</td></tr>
+        <tr><td>Jun 1 – Jun 15</td><td>Lesson 1 scripted, recorded, edited</td></tr>
+        <tr><td>Jun 22 – Jul 6</td><td>Lesson 2 scripted, recorded, edited</td></tr>
+        <tr><td>Jul 13 – Jul 27</td><td>Lesson 3 scripted, recorded, edited</td></tr>
+        <tr><td>Aug 3 – Aug 17</td><td>Lesson 4 scripted, recorded, edited</td></tr>
+        <tr><td>Aug 24</td><td>Sampler hosted; landing page built; checkout tested</td></tr>
+        <tr><td>Aug 31</td><td>Internal soft launch (10 friends complete it; feedback collected)</td></tr>
+        <tr><td>Sep 11</td><td><strong>Public launch (Virgo new moon)</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Soft-launch test (August 31 to September 10)</h3>
+    <p>Send the sampler to 10 trusted friends. Ask three questions of each:</p>
+    <ol>
+      <li>Did you complete all four lessons? If not, where did you stop?</li>
+      <li>Did you do the practices? Which ones did you skip?</li>
+      <li>After Lesson 4, did you want to enroll? Why or why not?</li>
+    </ol>
+    <p>If 7 of 10 finish, the design is sound. If fewer than 5 finish, redesign before public launch.</p>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ornament">· · ·</div>
+  <p>Working drafts · Los Angeles · 2026</p>
+  <p style="margin-top: 8px; opacity: 0.7;">Adi Marie Lopez</p>
+</footer>
+
+<a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
+
+<script>
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 600) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  });
+  backToTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>

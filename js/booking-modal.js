@@ -10,9 +10,8 @@
         data-eyebrow="Multi-Day Private"
         data-desc="2–7 day private ceremonial retreats..."
         data-reciprocity="By inquiry · Reciprocity discussed at Intake"
-        data-schedule-url="https://calendar.app.google/YOUR_LINK"
-        data-venmo-url="https://venmo.com/u/adimarie"
-        data-paypal-url="https://paypal.me/ahtheemaree"
+        data-schedule-url="sessions.html#schedule"
+        data-venmo-url="https://venmo.com/u/TheAnimistApothecary"
         data-inquire-email-subject="Multi-Day Intensive Inquiry">
        Schedule & Inquire →
      </a>
@@ -180,6 +179,12 @@
       background: #c9a84c;
       color: #FAF8F3;
     }
+    .booking-modal-payment-btn--full {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0.4rem 0 1rem;
+    }
     .booking-modal-inquire-link {
       display: inline-block;
       font-family: 'Cormorant Garamond', serif;
@@ -215,14 +220,11 @@
         <div class="booking-modal-reciprocity" id="bm-reciprocity"></div>
 
         <h3 class="booking-modal-section-title">Schedule</h3>
-        <a class="booking-modal-schedule-btn" id="bm-schedule" href="#" target="_blank" rel="noopener">Schedule via Calendar →</a>
+        <a class="booking-modal-schedule-btn" id="bm-schedule" href="#" target="_blank" rel="noopener">Schedule a session →</a>
         <p class="booking-modal-schedule-note">Choose a time that opens on the wheel.</p>
 
         <h3 class="booking-modal-section-title">Reciprocity</h3>
-        <div class="booking-modal-payment-row">
-          <a class="booking-modal-payment-btn" id="bm-venmo" href="#" target="_blank" rel="noopener">Venmo</a>
-          <a class="booking-modal-payment-btn" id="bm-paypal" href="#" target="_blank" rel="noopener">PayPal</a>
-        </div>
+        <a class="booking-modal-payment-btn booking-modal-payment-btn--full" id="bm-venmo" href="#" target="_blank" rel="noopener">Pay with Venmo</a>
 
         <a class="booking-modal-inquire-link" id="bm-inquire" href="mailto:its.adimarie@gmail.com">Prefer to write first? Send a note →</a>
       </div>
@@ -238,7 +240,6 @@
     reciprocity: document.getElementById('bm-reciprocity'),
     schedule: document.getElementById('bm-schedule'),
     venmo: document.getElementById('bm-venmo'),
-    paypal: document.getElementById('bm-paypal'),
     inquire: document.getElementById('bm-inquire'),
   };
 
@@ -249,9 +250,8 @@
     els.title.textContent = d.title || '';
     els.desc.textContent = d.desc || '';
     els.reciprocity.textContent = d.reciprocity || 'Reciprocity discussed at Intake & Inquiry.';
-    els.schedule.href = d.scheduleUrl || '#';
-    els.venmo.href = d.venmoUrl || 'https://venmo.com/u/adimarie';
-    els.paypal.href = d.paypalUrl || 'https://paypal.me/ahtheemaree';
+    els.schedule.href = d.scheduleUrl || 'sessions.html#schedule';
+    els.venmo.href = d.venmoUrl || 'https://venmo.com/u/TheAnimistApothecary';
     const subject = encodeURIComponent(d.inquireEmailSubject || (d.title + ' — Inquiry'));
     els.inquire.href = 'mailto:its.adimarie@gmail.com?subject=' + subject;
     modal.setAttribute('aria-hidden', 'false');

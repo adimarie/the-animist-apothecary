@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What the Container Requires &middot; The Economics of the Work &middot; Adi Marie</title>
+  <meta name="description" content="An honest accounting of what it takes to bring you a held ceremonial container — the labor, the lineage, the medicine, the risk. The foundation underneath the Sacred Reciprocity tiers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v17">
+  <style>
+    /* =============================================================
+       WHAT THE CONTAINER REQUIRES — page-scoped styles
+       Mirrors sacred-reciprocity.html visual language as a sibling page.
+       ============================================================= */
+    body[data-content-page="container_requires"] {
+      background: #FAF7F1;
+    }
+
+    /* -- HERO -- */
+    body[data-content-page="container_requires"] .container-hero {
+      padding: 8rem 3rem 5rem;
+      background:
+        linear-gradient(rgba(18,24,14,0.55), rgba(18,24,14,0.82)),
+        url('https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;
+      text-align: center;
+    }
+    body[data-content-page="container_requires"] .container-hero .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1.25rem;
+    }
+    body[data-content-page="container_requires"] .container-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      color: #fff;
+      margin: 0 0 0.6rem;
+      line-height: 1.1;
+      font-weight: 300;
+    }
+    body[data-content-page="container_requires"] .container-hero h1 em {
+      font-style: italic;
+      color: #d9c089;
+    }
+    body[data-content-page="container_requires"] .container-hero .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.78);
+      font-style: italic;
+      margin: 0.8rem auto 0;
+      max-width: 640px;
+      line-height: 1.5;
+    }
+
+    /* -- OPENING NOTE -- */
+    body[data-content-page="container_requires"] .opening-note {
+      padding: 6rem 2rem;
+      background: #FAF7F1;
+      text-align: center;
+    }
+    body[data-content-page="container_requires"] .opening-note .note-inner {
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    body[data-content-page="container_requires"] .opening-note blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+      line-height: 1.75;
+      color: #3a3530;
+      font-style: italic;
+      margin: 0;
+      padding: 0 1rem;
+    }
+    body[data-content-page="container_requires"] .opening-note blockquote::before,
+    body[data-content-page="container_requires"] .opening-note blockquote::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: #c9a84c;
+      margin: 0 auto 2.5rem;
+      opacity: 0.6;
+    }
+    body[data-content-page="container_requires"] .opening-note blockquote::after {
+      margin: 2.5rem auto 0;
+    }
+
+    /* -- PROSE BLOCKS -- */
+    body[data-content-page="container_requires"] .prose-block {
+      padding: 4rem 2rem;
+      background: #fff;
+    }
+    body[data-content-page="container_requires"] .prose-block.tinted {
+      background: #F4EFE5;
+    }
+    body[data-content-page="container_requires"] .prose-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    body[data-content-page="container_requires"] .prose-inner .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      margin: 0 0 1.25rem;
+      display: block;
+    }
+    body[data-content-page="container_requires"] .prose-inner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3vw, 2.4rem);
+      font-weight: 300;
+      color: #2D2A26;
+      margin: 0 0 1.5rem;
+      line-height: 1.2;
+    }
+    body[data-content-page="container_requires"] .prose-inner h2 em {
+      font-style: italic;
+      color: #c9a84c;
+    }
+    body[data-content-page="container_requires"] .prose-inner p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: #3a3530;
+      margin: 0 0 1.6rem;
+    }
+    body[data-content-page="container_requires"] .prose-inner p:last-child {
+      margin-bottom: 0;
+    }
+    body[data-content-page="container_requires"] .prose-inner p strong {
+      color: #2D2A26;
+      font-weight: 500;
+    }
+    body[data-content-page="container_requires"] .prose-inner p em {
+      font-style: italic;
+    }
+    body[data-content-page="container_requires"] .prose-inner a {
+      color: #c9a84c;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,168,76,0.4);
+      transition: border-color 0.2s ease;
+    }
+    body[data-content-page="container_requires"] .prose-inner a:hover {
+      border-bottom-color: rgba(201,168,76,0.9);
+    }
+
+    /* -- THE LIST OF WHAT YOU DO NOT SEE -- */
+    body[data-content-page="container_requires"] .hidden-list {
+      list-style: none;
+      padding: 1rem 0 0;
+      margin: 1.5rem 0 0;
+      border-top: 1px solid rgba(201,168,76,0.25);
+    }
+    body[data-content-page="container_requires"] .hidden-list li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.08rem;
+      line-height: 1.75;
+      color: #3a3530;
+      padding: 1.1rem 0 1.1rem 2.2rem;
+      position: relative;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    body[data-content-page="container_requires"] .hidden-list li:last-child {
+      border-bottom: none;
+    }
+    body[data-content-page="container_requires"] .hidden-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      top: 1.15rem;
+      color: #c9a84c;
+      font-size: 0.85rem;
+    }
+
+    /* -- LARGE PULL QUOTE -- */
+    body[data-content-page="container_requires"] .pull-quote {
+      padding: 6rem 2rem;
+      background: #2D2A26;
+      color: #F5F1E8;
+      text-align: center;
+    }
+    body[data-content-page="container_requires"] .pull-quote .pq-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    body[data-content-page="container_requires"] .pull-quote .pq-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      color: #c9a84c;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    body[data-content-page="container_requires"] .pull-quote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.35rem, 2vw, 1.7rem);
+      line-height: 1.55;
+      color: #F5F1E8;
+      font-style: italic;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    /* -- COMPARABLES BLOCK -- */
+    body[data-content-page="container_requires"] .comparables {
+      padding: 4rem 2rem;
+      background: #fff;
+    }
+    body[data-content-page="container_requires"] .comparables-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    body[data-content-page="container_requires"] .comparable {
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(201,168,76,0.18);
+    }
+    body[data-content-page="container_requires"] .comparable:last-child {
+      border-bottom: none;
+    }
+    body[data-content-page="container_requires"] .comparable h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #2D2A26;
+      margin: 0 0 0.8rem;
+    }
+    body[data-content-page="container_requires"] .comparable h3 em {
+      font-style: italic;
+      color: #c9a84c;
+    }
+    body[data-content-page="container_requires"] .comparable p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: #3a3530;
+      margin: 0;
+    }
+    body[data-content-page="container_requires"] .comparable p strong {
+      color: #2D2A26;
+      font-weight: 500;
+    }
+
+    /* -- LABOR TABLE -- */
+    body[data-content-page="container_requires"] .labor-table {
+      padding: 4rem 2rem;
+      background: #F4EFE5;
+    }
+    body[data-content-page="container_requires"] .labor-table-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    body[data-content-page="container_requires"] .labor-table table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0 0;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    body[data-content-page="container_requires"] .labor-table th {
+      text-align: left;
+      padding: 1rem 0.8rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: #c9a84c;
+      border-bottom: 2px solid rgba(201,168,76,0.3);
+    }
+    body[data-content-page="container_requires"] .labor-table td {
+      padding: 1rem 0.8rem;
+      font-size: 1.08rem;
+      line-height: 1.5;
+      color: #3a3530;
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+    }
+    body[data-content-page="container_requires"] .labor-table td.hours {
+      text-align: right;
+      white-space: nowrap;
+      color: #2D2A26;
+    }
+    body[data-content-page="container_requires"] .labor-table tr.total td {
+      border-top: 2px solid rgba(201,168,76,0.4);
+      border-bottom: none;
+      font-weight: 500;
+      color: #2D2A26;
+      padding-top: 1.4rem;
+      font-size: 1.18rem;
+    }
+    body[data-content-page="container_requires"] .labor-table tr.total td em {
+      font-style: italic;
+      color: #c9a84c;
+      font-weight: 400;
+    }
+
+    /* -- TIE-BACK -- */
+    body[data-content-page="container_requires"] .tie-back {
+      padding: 5rem 2rem;
+      background: #FAF7F1;
+      text-align: center;
+    }
+    body[data-content-page="container_requires"] .tie-back-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    body[data-content-page="container_requires"] .tie-back .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      margin: 0 0 1rem;
+      display: block;
+    }
+    body[data-content-page="container_requires"] .tie-back h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 3vw, 2.5rem);
+      font-weight: 300;
+      color: #2D2A26;
+      margin: 0 0 1.5rem;
+      line-height: 1.2;
+    }
+    body[data-content-page="container_requires"] .tie-back h2 em {
+      font-style: italic;
+      color: #c9a84c;
+    }
+    body[data-content-page="container_requires"] .tie-back p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.18rem;
+      line-height: 1.85;
+      color: #3a3530;
+      margin: 0 0 1.4rem;
+    }
+    body[data-content-page="container_requires"] .tie-back .tie-back-cta {
+      margin-top: 2.5rem;
+      display: inline-flex;
+      gap: 1.2rem;
+    }
+    body[data-content-page="container_requires"] .tie-back .tie-back-cta a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #c9a84c;
+      text-decoration: none;
+      padding: 0.9rem 1.6rem;
+      border: 1px solid rgba(201,168,76,0.4);
+      transition: all 0.2s ease;
+    }
+    body[data-content-page="container_requires"] .tie-back .tie-back-cta a:hover {
+      background: #c9a84c;
+      color: #fff;
+    }
+
+    /* -- CLOSING -- */
+    body[data-content-page="container_requires"] .closing-block {
+      padding: 6rem 2rem 5rem;
+      background: #fff;
+      text-align: center;
+    }
+    body[data-content-page="container_requires"] .closing-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    body[data-content-page="container_requires"] .closing-inner p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.18rem;
+      line-height: 1.85;
+      color: #3a3530;
+      margin: 0 0 1.4rem;
+    }
+    body[data-content-page="container_requires"] .closing-inner p em {
+      font-style: italic;
+      color: #c9a84c;
+    }
+    body[data-content-page="container_requires"] .closing-inner .sig-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: #2D2A26;
+      margin-top: 2.5rem;
+    }
+
+    @media (max-width: 720px) {
+      body[data-content-page="container_requires"] .container-hero {
+        padding: 6rem 1.5rem 4rem;
+      }
+      body[data-content-page="container_requires"] .opening-note,
+      body[data-content-page="container_requires"] .prose-block,
+      body[data-content-page="container_requires"] .comparables,
+      body[data-content-page="container_requires"] .labor-table,
+      body[data-content-page="container_requires"] .tie-back,
+      body[data-content-page="container_requires"] .closing-block,
+      body[data-content-page="container_requires"] .pull-quote {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      body[data-content-page="container_requires"] .tie-back .tie-back-cta {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body data-content-page="container_requires">
+
+  <!-- =============================================================
+       HEADER
+       ============================================================= -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span>
+      </a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+                <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="solo-work.html">Solo Work</a></li>
+          <li><a href="group-work.html">Group Work</a></li>
+          <li><a href="training-grounds.html">The School</a></li>
+          <li><a href="writings.html">Resources</a></li>
+        </ul>
+      </nav>
+      <a href="sessions.html" class="nav-cta apply-btn">Book</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============================================================
+       HERO
+       ============================================================= -->
+  <section class="container-hero">
+    <p class="hero-eyebrow">On the Economics of the Work</p>
+    <h1>What the container <em>requires.</em></h1>
+    <p class="hero-sub">An honest accounting &mdash; because the cost surprises people, and the surprise sometimes becomes the barrier between them and the work.</p>
+  </section>
+
+  <!-- =============================================================
+       OPENING NOTE
+       ============================================================= -->
+  <section class="opening-note">
+    <div class="note-inner">
+      <blockquote>
+        When someone asks me why this costs what it does, I used to try to explain in the moment. It rarely landed well. So I am writing it down here, once, with care.
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       SECTION — WHY I'M WRITING THIS DOWN
+       ============================================================= -->
+  <section class="prose-block">
+    <div class="prose-inner">
+      <span class="section-label">A Note Before We Begin</span>
+      <h2>This is not the <em>Sacred Reciprocity</em> page.</h2>
+      <p>That one is about ecology, access, and the tiers I hold. <a href="sacred-reciprocity.html">Read it here</a> if you have not already.</p>
+      <p>This page is about the foundation underneath the Abundance rate &mdash; the labor, the lineage, the medicine, the risk. What it actually takes to bring you a held container.</p>
+      <p>I am not writing this to convince. I am writing it to make the choice clear. If this is the work for you, you will feel it. If it is not, that is its own clarity.</p>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       SECTION — VISIBLE VS HIDDEN
+       ============================================================= -->
+  <section class="prose-block tinted">
+    <div class="prose-inner">
+      <span class="section-label">The Visible and the Hidden</span>
+      <h2>What you see, and what you <em>do not.</em></h2>
+
+      <p><strong>What you see</strong> is the ceremony. The two or three days I sit with you. The medicine in the cup. The candles. The held field.</p>
+
+      <p><strong>What you do not see</strong> is everything underneath that makes the held field possible.</p>
+
+      <p>A single ceremony, honestly accounted, is roughly three weeks of work. Not in the room with you &mdash; but in the room before and after the room.</p>
+
+      <ul class="hidden-list">
+        <li>The medicine itself &mdash; sourced with care, cooked over three days, prepared in ceremony.</li>
+        <li>The container-keeping &mdash; the personal discipline I hold for the weeks leading up, so the field we share is clear.</li>
+        <li>The intake &mdash; reading every form by hand, holding individual conversations where needed, making the choices about who belongs in the same room.</li>
+        <li>The choreography &mdash; the meals, the music, the rhythm of dosing, the rest windows, the integration moments.</li>
+        <li>The being-on-call &mdash; for the seventy-two hours we are together, sleep is something I do in fragments. I am awake and available to whoever needs me at three in the morning.</li>
+        <li>The aftercare &mdash; the integration messages, the body check-ins, the divinations on offer for those who need a follow-up read, the months-long arc afterward.</li>
+        <li>The risk &mdash; many of the medicines I work with are federal-crime-tier to import. There is no insurance available for what I do.</li>
+      </ul>
+
+      <p style="margin-top: 2rem;">The ceremony is the visible part. The container is the work.</p>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       SECTION — THE 16-YEAR ARC
+       ============================================================= -->
+  <section class="prose-block">
+    <div class="prose-inner">
+      <span class="section-label">The Long Becoming</span>
+      <h2>The labor of becoming <em>this.</em></h2>
+
+      <p>I have not been training for two years. I have been training for sixteen.</p>
+
+      <p>The Dagara lineage. The Quechua mountains. The Kahuna teaching. Generative trance hypnosis. Shamanic bodywork in clinical and therapeutic settings. Trauma-informed practice by deep training and by lived experience. Botanical and ritual ethnopharmacology. The slow accumulation of what it takes to safely hold a roomful of people across the threshold and back.</p>
+
+      <p>The closest legible comparison in the dominant world is a medical residency &mdash; the years of intensive, low-paid, full-immersion preparation that precedes the years of practice. Most of those years are not compensated. They are the entry fee for the work itself.</p>
+
+      <p>What you are paying for, in part, is sixteen years of becoming the kind of practitioner who can hold what we hold together.</p>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       PULL QUOTE
+       ============================================================= -->
+  <section class="pull-quote">
+    <div class="pq-inner">
+      <div class="pq-mark">&ldquo;</div>
+      <blockquote>The ceremony is the visible part. The container is the work.</blockquote>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       COMPARABLES — WHAT IT COSTS IN THE WIDER WORLD
+       ============================================================= -->
+  <section class="comparables">
+    <div class="comparables-inner">
+      <span class="section-label" style="font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: #c9a84c; margin: 0 0 1rem; display: block; text-align: center;">The Honest Comparables</span>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 3vw, 2.4rem); font-weight: 300; color: #2D2A26; margin: 0 0 2rem; text-align: center; line-height: 1.2;">What this costs in the <em style="font-style: italic; color: #c9a84c;">wider world.</em></h2>
+
+      <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; line-height: 1.85; color: #3a3530; margin: 0 0 2rem; max-width: 720px; margin-left: auto; margin-right: auto;">I want to place this in context, so you can see what it lives alongside.</p>
+
+      <article class="comparable">
+        <h3>Wedding planning and event <em>production.</em></h3>
+        <p>The closest legible analogue in the dominant economy is the high-end wedding planner. They, too, do weeks of preparation for one day of presence. They, too, are on-call across long arcs. The industry standard for full-service planning in Los Angeles is <strong>fifteen to twenty percent</strong> of the total event budget, with luxury full-service starting at <strong>forty thousand dollars</strong> before food, venue, or materials. The industry's own copy describes a single wedding as <strong>one hundred fifty to three hundred hours of work.</strong> Senior planners charge <strong>one hundred fifty to two hundred seventy-five dollars an hour.</strong></p>
+      </article>
+
+      <article class="comparable">
+        <h3>Plant medicine retreats in <em>legal jurisdictions.</em></h3>
+        <p>A premium retreat in Jamaica, the Netherlands, Peru, or Costa Rica runs <strong>five thousand to eight thousand five hundred dollars per person</strong> for a single substance &mdash; typically psilocybin or ayahuasca, rarely both. Beckley Retreats Jamaica, one of the most credentialed legal operators, opens at <strong>five thousand five hundred dollars per person</strong> for a six-day program. These retreats are often run by facilitators with less individualized attention than what I hold, with a single medicine, in container settings less choreographed than mine. I am not naming this to argue down on them. I am naming it because this is what the market currently bears for less.</p>
+      </article>
+
+      <article class="comparable">
+        <h3>Therapy intensives and <em>integration coaching.</em></h3>
+        <p>A Somatic Experiencing retreat runs <strong>three hundred to seven hundred dollars per day.</strong> A full ketamine-assisted psychotherapy protocol runs <strong>three thousand to seven thousand dollars</strong> for a small number of sessions in a clinical setting. Experienced plant-medicine integration coaches charge <strong>two hundred dollars or more per hour</strong> for the conversation <em>after</em> the medicine &mdash; not the medicine itself, not the container.</p>
+      </article>
+
+      <article class="comparable">
+        <h3>Concierge medicine and <em>curated wellness.</em></h3>
+        <p>The model where one practitioner holds a small panel of patients with intensive personal attention runs <strong>eighteen hundred to forty-eight hundred dollars annually</strong> at the standard tier, <strong>up to fifty thousand dollars</strong> at the high tier, and <strong>one hundred thousand dollars or more</strong> at the ultra-premium tier. Canyon Ranch's curated longevity retreats &mdash; bundled specialist teams in a single setting &mdash; run <strong>twenty thousand dollars per person</strong> for a single program.</p>
+      </article>
+
+      <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; line-height: 1.85; color: #3a3530; margin: 2rem 0 0; font-style: italic; text-align: center; max-width: 720px; margin-left: auto; margin-right: auto;">I am not in any of these worlds. But this is what the dominant world pays when it asks for what we offer here &mdash; one well-trained specialist, holding a small number of people, with deep care, in a rare medicine stack, with the safety and integration arc included.</p>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       LABOR TABLE
+       ============================================================= -->
+  <section class="labor-table">
+    <div class="labor-table-inner">
+      <span class="section-label" style="font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: #c9a84c; margin: 0 0 1rem; display: block;">The Math, Laid Plainly</span>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 3vw, 2.4rem); font-weight: 300; color: #2D2A26; margin: 0 0 1.5rem; line-height: 1.2;">One ceremony, in <em style="font-style: italic; color: #c9a84c;">hours.</em></h2>
+
+      <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; line-height: 1.85; color: #3a3530; margin: 0;">For the people who want to see it.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>The work</th>
+            <th class="hours">Hours, approximate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Medicine preparation &mdash; sourcing, cooking, bottling</td>
+            <td class="hours">24&ndash;30</td>
+          </tr>
+          <tr>
+            <td>Intake, prep calls, video course delivery, expectation-setting</td>
+            <td class="hours">15&ndash;20</td>
+          </tr>
+          <tr>
+            <td>Container-keeping practice in the weeks before</td>
+            <td class="hours">20&ndash;30</td>
+          </tr>
+          <tr>
+            <td>On-site arrival prep, altar, food, space-setting</td>
+            <td class="hours">12&ndash;16</td>
+          </tr>
+          <tr>
+            <td>Ceremony itself &mdash; on-call across three days</td>
+            <td class="hours">72</td>
+          </tr>
+          <tr>
+            <td>Aftercare across the three-month integration arc</td>
+            <td class="hours">15&ndash;25</td>
+          </tr>
+          <tr class="total">
+            <td>Per-ceremony total <em>&mdash; about three weeks of full-time work.</em></td>
+            <td class="hours">~160&ndash;190</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.85; color: #3a3530; margin: 2rem 0 0; font-style: italic;">It is, not incidentally, the same order of magnitude that the wedding industry openly describes for a single event &mdash; one hundred fifty to three hundred hours behind one day of presence. The hidden labor is not a quirk of my practice. It is the shape of any work that holds a small number of people across a major threshold with care.</p>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       WHAT THIS IS NOT
+       ============================================================= -->
+  <section class="prose-block">
+    <div class="prose-inner">
+      <span class="section-label">For the Sake of Clarity</span>
+      <h2>What this <em>is not.</em></h2>
+
+      <p>It will help you understand what you are paying for if you understand what you are <em>not</em> paying for.</p>
+
+      <p><strong>This is not a wellness retreat.</strong> There is no spa. There is no Instagrammable lighting. The food is good, but the meal is not the point.</p>
+
+      <p><strong>This is not a tourist experience of someone else's lineage.</strong> The lineages I carry, I have been initiated into. I have spent years in their soil. I name them with care.</p>
+
+      <p><strong>This is not a substance you take with a guide present.</strong> The medicines I work with are beings I am in long relationship with. They are not transactions. They are guests we are receiving together.</p>
+
+      <p><strong>This is not therapy, and it does not replace therapy.</strong> It does work that therapy can take years to do &mdash; and it works better in concert with therapy than in isolation.</p>
+
+      <p><strong>This is not a guarantee.</strong> The work moves through people in ways neither of us can fully predict. What I can guarantee is the container &mdash; that you will be held with care, that the field will be clean, that you will be met where you are.</p>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       SECTION — A WORD ON WHAT IS HIDDEN
+       ============================================================= -->
+  <section class="prose-block tinted">
+    <div class="prose-inner">
+      <span class="section-label">The Last Frame</span>
+      <h2>A word on what is <em>hidden.</em></h2>
+
+      <p>In the dominant economy, you pay what something costs because the cost is visible. The price tag includes the labor.</p>
+
+      <p>In the ceremonial economy, much of the labor is hidden &mdash; because most of it is the practitioner's own embodied becoming. You are not paying for a service rendered in a moment. You are paying for the sixteen-year arc that made the moment possible, and the three-week arc that makes it possible <em>this time.</em></p>
+
+      <p>This is hard to price because it is hard to see.</p>
+
+      <p>I am asking you to trust that what you cannot see is real &mdash; and that what you can see is one-tenth of what you are receiving.</p>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       TIE-BACK TO SACRED RECIPROCITY
+       ============================================================= -->
+  <section class="tie-back">
+    <div class="tie-back-inner">
+      <span class="section-label">When You Are Ready</span>
+      <h2>The tiers, with this in <em>mind.</em></h2>
+      <p>This page exists so the tiers make sense.</p>
+      <p>The Abundance rate is the work at its true value. The Patron rate is for those who can give beyond their own use, so the Community and Accessibility tiers can exist at all. The Community rate is at-cost. The Accessibility rate is below cost &mdash; a scholarship I hold for those who are called and who cannot meet the full exchange in money.</p>
+      <p>The tiers are a living practice. I do not require income verification. I trust you to choose honestly.</p>
+      <div class="tie-back-cta">
+        <a href="sacred-reciprocity.html">Read the tiers &rarr;</a>
+        <a href="mailto:adimarie@bodyworkandbotanicals.com?subject=A%20Note%20to%20Adi%20Marie">Send a note</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       CLOSING
+       ============================================================= -->
+  <section class="closing-block">
+    <div class="closing-inner">
+      <p>I share this not to argue for the cost, but to make it <em>legible.</em></p>
+      <p>If you are reading this and the work feels called to you despite the cost &mdash; that is its own kind of yes. We will find the path.</p>
+      <p>If you are reading this and the cost moves you away &mdash; that is also its own kind of yes. There are many paths. This one may not be yours, at least not now.</p>
+      <p>Either way, you are met with care.</p>
+      <p class="sig-name">Adi Marie</p>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       FOOTER
+       ============================================================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="https://new.theanimistapothecary.com/apply">Apply / Intake</a></li>
+            <li><a href="sessions.html">Book a Session</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="mailto:adimarie@bodyworkandbotanicals.com?subject=A%20Note%20to%20Adi%20Marie">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

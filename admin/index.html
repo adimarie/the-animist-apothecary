@@ -200,6 +200,18 @@
       margin-top: 2px;
     }
 
+    /* QUICK-LAUNCH TOOL GRID */
+    .hub-tools-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--earth-faint); margin-bottom: 12px; }
+    .hub-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(168px, 1fr)); gap: 14px; margin-bottom: 30px; }
+    .hub-card { background: var(--white); border: 1px solid var(--cream-dark); border-radius: var(--radius); padding: 16px; text-decoration: none; color: var(--earth); text-align: left; cursor: pointer; font-family: 'Inter', sans-serif; transition: box-shadow .15s, transform .15s, border-color .15s; display: block; }
+    .hub-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--gold); }
+    .ti-svg { display: inline-flex; align-items: center; justify-content: center; }
+    .ti-svg svg { width: 18px; height: 18px; display: block; }
+    .hub-card .ti-svg { color: var(--gold); }
+    .hub-card .ti-svg svg { width: 22px; height: 22px; }
+    .hub-card .hub-card-title { font-size: 14px; font-weight: 500; margin-top: 8px; }
+    .hub-card .hub-card-desc { font-size: 11px; color: var(--earth-faint); line-height: 1.4; margin-top: 2px; }
+
     /* TABLE CARDS */
     .table-card {
       background: var(--white);
@@ -565,17 +577,35 @@
         <span>Admin Portal</span>
       </div>
       <button class="sidebar-item active" data-view="dashboard">
-        <span class="sidebar-icon">&#9673;</span> Dashboard
+        <span class="sidebar-icon ti-svg" data-ic="layout-grid"></span> Dashboard
       </button>
+      <a href="bookings.html" class="sidebar-item" style="text-decoration:none;">
+        <span class="sidebar-icon ti-svg" data-ic="calendar"></span> Bookings
+      </a>
       <button class="sidebar-item" data-view="ceremony-admin">
-        <span class="sidebar-icon">&#9830;</span> Ceremonies
+        <span class="sidebar-icon ti-svg" data-ic="flame"></span> Ceremonies
       </button>
+      <a href="seasonal-arcs.html" class="sidebar-item" style="text-decoration:none;">
+        <span class="sidebar-icon ti-svg" data-ic="sun"></span> Seasonal Arcs
+      </a>
+      <a href="virtual-sessions.html" class="sidebar-item" style="text-decoration:none;">
+        <span class="sidebar-icon ti-svg" data-ic="device-laptop"></span> Virtual Sessions
+      </a>
+      <a href="events.html" class="sidebar-item" style="text-decoration:none;">
+        <span class="sidebar-icon ti-svg" data-ic="users"></span> In-Person Gatherings
+      </a>
       <button class="sidebar-item" data-view="contacts">
-        <span class="sidebar-icon">&#9993;</span> Contacts
+        <span class="sidebar-icon ti-svg" data-ic="address-book"></span> Contacts
       </button>
+      <a href="emails.html" class="sidebar-item" style="text-decoration:none;">
+        <span class="sidebar-icon ti-svg" data-ic="mail"></span> Emails
+      </a>
+      <a href="/studio/" class="sidebar-item" style="text-decoration:none;">
+        <span class="sidebar-icon ti-svg" data-ic="file-text"></span> Site content
+      </a>
       <div class="sidebar-spacer"></div>
       <button class="sidebar-item" id="sign-out-btn">
-        <span class="sidebar-icon">&#8617;</span> Sign Out
+        <span class="sidebar-icon ti-svg" data-ic="logout"></span> Sign Out
       </button>
     </div>
 
@@ -593,6 +623,19 @@
         </div>
 
         <div class="metrics-row" id="metrics-row"></div>
+
+        <!-- QUICK LAUNCH -->
+        <div class="hub-tools-label">Your tools</div>
+        <div class="hub-tools">
+          <a href="bookings.html" class="hub-card"><span class="ti-svg" data-ic="calendar" aria-hidden="true"></span><div class="hub-card-title">Bookings</div><div class="hub-card-desc">Appointments and the calendar</div></a>
+          <button type="button" class="hub-card" data-view="ceremony-admin"><span class="ti-svg" data-ic="flame" aria-hidden="true"></span><div class="hub-card-title">Ceremonies</div><div class="hub-card-desc">Groups and progression</div></button>
+          <a href="seasonal-arcs.html" class="hub-card"><span class="ti-svg" data-ic="sun" aria-hidden="true"></span><div class="hub-card-title">Seasonal Arcs</div><div class="hub-card-desc">Your 1:1 arc clients</div></a>
+          <a href="virtual-sessions.html" class="hub-card"><span class="ti-svg" data-ic="device-laptop" aria-hidden="true"></span><div class="hub-card-title">Virtual Sessions</div><div class="hub-card-desc">One-to-one virtual work</div></a>
+          <a href="events.html" class="hub-card"><span class="ti-svg" data-ic="users" aria-hidden="true"></span><div class="hub-card-title">In-Person Gatherings</div><div class="hub-card-desc">Enrollments and activity</div></a>
+          <button type="button" class="hub-card" data-view="contacts"><span class="ti-svg" data-ic="address-book" aria-hidden="true"></span><div class="hub-card-title">Contacts</div><div class="hub-card-desc">Your people and subscribers</div></button>
+          <a href="emails.html" class="hub-card"><span class="ti-svg" data-ic="mail" aria-hidden="true"></span><div class="hub-card-title">Emails</div><div class="hub-card-desc">Approvals and confirmations</div></a>
+          <a href="/studio/" class="hub-card"><span class="ti-svg" data-ic="file-text" aria-hidden="true"></span><div class="hub-card-title">Site content</div><div class="hub-card-desc">Edit pages and writings</div></a>
+        </div>
 
         <!-- CLIENT TABLE -->
         <div class="table-card" id="clients-card">
@@ -704,6 +747,8 @@
 
   <script type="module">
     import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+    import { paintIcons } from './hub-icons.js';
+    paintIcons();
 
     const SUPABASE_URL = 'https://wdecjlrfulsdklqeetqb.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs';
@@ -780,6 +825,15 @@
       });
     });
 
+    // Open a view directly when linked from another admin page (e.g. /admin/#contacts)
+    function openHashView() {
+      const v = (location.hash || '').replace('#', '');
+      if (!v) return;
+      const target = document.querySelector(`.sidebar-item[data-view="${v}"]`);
+      if (target) target.click();
+    }
+    window.addEventListener('hashchange', openHashView);
+
     // ── Auth ──
     async function signInGoogle() {
       const { error } = await supabase.auth.signInWithOAuth({
@@ -850,6 +904,7 @@
       await loadDashboard();
       await loadCeremonyAdmin();
       setupRealtimeSubscriptions();
+      openHashView();
     }
 
     // ── Dashboard ──

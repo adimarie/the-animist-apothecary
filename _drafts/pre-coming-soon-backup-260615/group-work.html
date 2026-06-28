@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Work &middot; The Animist Apothecary</title>
+  <meta name="description" content="Two paths into the communal work — Community Ceremonies woven for the lands she tends, and The Metamorphic Year for the leaders gathering their own.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500&family=Inter:wght@300;400;500&family=Tangerine&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v17">
+  <style>
+    body[data-content-page^="offering-"] { background: #FAF8F3; color: var(--ink-deep, #2D2A26); }
+    .offering-hero { position: relative; min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 6rem 3rem; overflow: hidden; }
+    .offering-hero-image { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 1; }
+    .offering-hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(20,18,14,0.6), rgba(28,24,18,0.72)); z-index: 2; }
+    .offering-hero-inner { position: relative; z-index: 3; max-width: 880px; text-align: center; color: #F5F3ED; }
+    .offering-hero-eyebrow { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-pale, #DCC178); margin-bottom: 1rem; }
+    .offering-hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(3.2rem, 6.5vw, 5.8rem); line-height: 1.05; margin: 0.4rem 0 0.8rem; letter-spacing: -0.005em; text-shadow: 0 2px 16px rgba(0,0,0,0.3); }
+    .offering-hero-subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.6rem); line-height: 1.55; color: var(--gold-pale, #DCC178); margin: 0 auto; max-width: 720px; }
+
+    .offering-body { padding: 6rem 3rem; }
+    .offering-body-inner { max-width: 1100px; margin: 0 auto; }
+    .offering-intro { max-width: 760px; margin: 0 auto 5rem; text-align: center; }
+    .offering-intro p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; line-height: 1.7; color: var(--ink-soft, #3D3A36); margin: 0; }
+
+    /* Three-path layout — Community + EntheoEcology + Metamorphic, stacks to one column on mobile. */
+    .two-paths { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.4rem; align-items: stretch; }
+    @media (max-width: 1080px) { .two-paths { grid-template-columns: 1fr; gap: 2.5rem; max-width: 560px; margin: 0 auto; } }
+    .two-path-card { display: flex; flex-direction: column; background: #F5F3ED; padding: 3rem 2.4rem; border: 1px solid rgba(201,168,76,0.18); border-radius: 4px; }
+    .two-path-image { aspect-ratio: 16/10; background-size: cover; background-position: center; border-radius: 2px; margin: -3rem -2.4rem 2rem; box-shadow: inset 0 -40px 60px -30px rgba(0,0,0,0.25); }
+    .two-path-eyebrow { font-family: 'Cormorant SC', serif; font-size: 0.74rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 0.8rem; }
+    .two-path-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(1.8rem, 3vw, 2.4rem); line-height: 1.15; color: var(--ink-deep, #2D2A26); margin: 0.3rem 0 1.2rem; }
+    .two-path-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.18rem; line-height: 1.55; color: var(--ink-soft, #3D3A36); margin: 0 0 1.4rem; }
+    .two-path-desc { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.65; color: var(--ink-soft, #3D3A36); margin: 0 0 1.8rem; opacity: 0.92; flex-grow: 1; }
+    .two-path-meta { font-family: 'Cormorant SC', serif; font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold, #c9a84c); margin: 0 0 1.6rem; }
+    .two-path-cta { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.82rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold, #c9a84c); padding-bottom: 0.4rem; border-bottom: 1px solid var(--gold, #c9a84c); text-decoration: none; align-self: flex-start; transition: color 0.2s, border-color 0.2s; }
+    .two-path-cta:hover { color: var(--ink-deep, #2D2A26); border-color: var(--ink-deep, #2D2A26); }
+
+    .offering-final-cta { padding: 5rem 3rem; background: #2D2A26; color: #F5F3ED; text-align: center; }
+    .offering-final-cta h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.2; color: #F5F3ED; margin: 0.4rem 0 1.2rem; }
+    .offering-final-cta p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: rgba(245, 243, 237, 0.85); max-width: 600px; margin: 0 auto 2rem; }
+  </style>
+</head>
+<body data-content-page="offering-group-work">
+
+    <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span></a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+                                                <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="solo-work.html">Solo Work</a></li>
+          <li><a href="group-work.html">Group Work</a></li>
+          <li><a href="training-grounds.html">The School</a></li>
+          <li><a href="writings.html">Resources</a></li>
+        </ul>
+      </nav>
+      <a href="sessions.html" class="nav-cta apply-btn">Book</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sub-navigation: mirrors the items that used to live in the Group Work dropdown -->
+  <nav class="page-subnav" aria-label="Group Work sections">
+    <div class="page-subnav-inner">
+      <span class="page-subnav-label">Explore Group Work</span>
+      <div class="page-subnav-links">
+        <a href="metamorphic-year.html" class="featured">The Metamorphic Year</a>
+        <a href="conscious-leadership.html" class="featured">Leadership from the Soul</a>
+        <a href="group-work.html" class="is-current">Overview</a>
+        <a href="ceremony-and-ritual.html#community">Community Ceremonies</a>
+        <a href="entheo-ecology.html">EntheoEcology</a>
+        <a href="calendar.html">Calendar of Gatherings</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="offering-hero">
+    <div class="offering-hero-image" style="background-image: url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=2400&h=1300&fit=crop&q=80');"></div>
+    <div class="offering-hero-overlay"></div>
+    <div class="offering-hero-inner">
+      <span class="offering-hero-eyebrow">Communal Containers</span>
+      <h1 class="offering-hero-title">Group Work</h1>
+      <p class="offering-hero-subtitle">Where the village remembers itself &mdash; through ceremony, through counsel, through the long arc of gathered tending.</p>
+    </div>
+  </section>
+
+  <section class="offering-body">
+    <div class="offering-body-inner">
+
+      <div class="offering-intro">
+        <p>Three paths into the communal work. The standing ceremonies tended on the wheel of the year, the seasonal series held with grandfather Wachuma in the temples of nature, and the year-long counsel for those called to lead the gathering of their own.</p>
+      </div>
+
+      <div class="two-paths">
+
+        <div class="two-path-card" id="community">
+          <div class="two-path-image" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1400&h=900&fit=crop&q=80');"></div>
+          <span class="two-path-eyebrow">Open to the Community</span>
+          <h2 class="two-path-title">Community Ceremonies</h2>
+          <p class="two-path-tagline">Healing circles, moon rites, rites of passage &mdash; the standing weave of the practice.</p>
+          <p class="two-path-desc">Sacred space tended on the wheel of the year, opened to those drawn into the work. Healing Circles, Moon Rites, Prayers for Peace, Rites of Passage, Women&apos;s &amp; Men&apos;s Work, and Mesoamerica Diaspora circles &mdash; ceremonies woven for the lands she tends.</p>
+          <p class="two-path-meta">Public &middot; Held on the Wheel of the Year</p>
+          <a href="ceremony-and-ritual.html#community" class="two-path-cta">Enter the Ceremony &rarr;</a>
+        </div>
+
+        <div class="two-path-card" id="entheo-ecology">
+          <div class="two-path-image" style="background-image: url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=1400&h=900&fit=crop&q=80');"></div>
+          <span class="two-path-eyebrow">A Seasonal Series</span>
+          <h2 class="two-path-title">EntheoEcology</h2>
+          <p class="two-path-tagline">Sacred gatherings in nature, held with grandfather Wachuma in the temples of the living world.</p>
+          <p class="two-path-desc">A series of ceremonies on the land, woven with the cactus that has tended the high deserts of the Americas longer than memory. Group and solitary ritual held in one container &mdash; the inner temple of the body, the outer temple of the land, and the webs of light that run between.</p>
+          <p class="two-path-meta">Seasonal Series &middot; By Application</p>
+          <a href="entheo-ecology.html" class="two-path-cta">Enter the Temples &rarr;</a>
+        </div>
+
+        <div class="two-path-card" id="metamorphic">
+          <div class="two-path-image" style="background-image: url('https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?w=1400&h=900&fit=crop&q=80');"></div>
+          <span class="two-path-eyebrow">For Those Called to Lead</span>
+          <h2 class="two-path-title">The Metamorphic Year</h2>
+          <p class="two-path-tagline">A gathered counsel of leaders &mdash; one year of intentional cultivation in their own regions.</p>
+          <p class="two-path-desc">For founders, organizers, faith leaders, healers, and visionaries called to seed and lead communities in their own regions. A curated counsel of twelve who come together for one year &mdash; tending their own lands while tending the counsel itself.</p>
+          <p class="two-path-meta">Twelve-Month Counsel &middot; By Application</p>
+          <a href="metamorphic-year.html" class="two-path-cta">Inquire for the Counsel &rarr;</a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="offering-final-cta">
+    <h2>Step into the <em>communal weave</em>.</h2>
+    <p>Whether you are coming to gather or being called to lead the gathering &mdash; the first conversation, always, is the Intake &amp; Inquiry.</p>
+    <a href="book.html" class="btn-primary">Schedule the Intake</a>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="book.html">Apply / Intake</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="divinations.html">Divinations</a></li>
+            <li><a href="inquiry.html">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/content-loader.js" defer></script>
+</body>
+</html>

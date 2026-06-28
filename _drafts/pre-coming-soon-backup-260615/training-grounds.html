@@ -1,0 +1,2125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Training Grounds &middot; The Animist Apothecary</title>
+  <meta name="description" content="The Training Grounds is the school of The Animist Apothecary. Six studios, the Five Movements, the artisan's touch of inspirationally skilled mastery. A formation ground for interdimensional intermediaries.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500&family=Inter:wght@300;400;500&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v17">
+  <style>
+    /* ===========================================
+       TRAINING GROUNDS PAGE
+       Structural template: Foor + Sacred Sons + Hoffman synthesis
+       Cinematic register, Tangerine cursive flourishes,
+       layered gold candlelight, named pathway methodology.
+       =========================================== */
+
+    body[data-content-page^="offering-"] { background: var(--cream); color: var(--earth); }
+
+    /* ---------- shared typography tokens ---------- */
+    .tg-eyebrow {
+      display: inline-block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+    .tg-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 1.15;
+      letter-spacing: -0.005em;
+      margin: 0 0 2rem;
+      color: var(--earth);
+    }
+    .tg-h2 em,
+    .tg-hero-title em,
+    .tg-founder-name em,
+    .tg-faculty-name em,
+    .tg-depth-title em,
+    .tg-benefit-title em,
+    .tg-include-title em,
+    .tg-phase-title em,
+    .tg-movement-title em,
+    .tg-letter-h em,
+    .tg-call-italic em {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      font-size: 1.45em !important;
+      line-height: 0.9 !important;
+      color: #DCC178 !important;
+      letter-spacing: 0 !important;
+    }
+    .tg-hero-title em {
+      font-size: 1.5em !important;
+      text-shadow: 0 0 60px rgba(201,168,76,0.3), 0 2px 22px rgba(0,0,0,0.5) !important;
+    }
+    .tg-studios .tg-h2 em,
+    .tg-studios .cohort-title em { color: #DCC178 !important; }
+
+    .tg-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.18rem;
+      line-height: 1.7;
+      color: var(--earth);
+      margin: 0 0 1.4rem;
+    }
+    .tg-body:last-child { margin-bottom: 0; }
+    .tg-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.55;
+      color: var(--earth-mid);
+      margin: 0 auto 3.5rem;
+      max-width: 720px;
+    }
+    .tg-bridge-rule {
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: var(--gold);
+      margin: 2.5rem auto;
+    }
+    .tg-bridge {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.25rem, 1.85vw, 1.6rem);
+      line-height: 1.5;
+      color: var(--earth);
+      max-width: 620px;
+      margin: 0 auto 2rem;
+    }
+    .tg-cta-soft {
+      display: inline-block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--gold);
+      transition: color 0.25s, border-color 0.25s;
+    }
+    .tg-cta-soft:hover { color: var(--sage); border-color: var(--sage); }
+    .tg-placeholder {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      background: rgba(201,168,76,0.12);
+      border: 1px dashed rgba(201,168,76,0.5);
+      border-radius: 2px;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.66rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ============================================
+       SECTION 1: HERO — 21:9 cinematic, text overlaid in the archway
+       ============================================ */
+    .tg-hero-image {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 21/9;
+      background-image: url('images/uploads/tg-hero-4k.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: #1F1A18;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 15% 0 0;
+      overflow: hidden;
+    }
+    /* subtle scrim — radial fade darkening only the archway area where text sits */
+    .tg-hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 32% 60% at 66% 50%, rgba(31,26,24,0.55), transparent 75%);
+      z-index: 1;
+    }
+    .tg-hero-text {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 480px;
+      color: #F4EAD3;
+      padding: 0 1rem;
+    }
+    .tg-hero-text::before {
+      content: "\2727";
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: #DCC178;
+      opacity: 0.85;
+      margin: 0 auto 1.2rem;
+      letter-spacing: 0.3em;
+    }
+    .tg-hero-eyebrow {
+      display: inline-block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.44em;
+      text-transform: uppercase;
+      color: #DCC178;
+      margin-bottom: 1.6rem;
+    }
+    .tg-hero-rule { display: block; width: 50px; height: 1px; background: rgba(220,193,120,0.6); margin: 0 auto 1.8rem; }
+    .tg-hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.2rem, 4.4vw, 4.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.005em;
+      margin: 0 0 1.2rem;
+      color: #F4EAD3;
+      text-shadow: 0 2px 22px rgba(0,0,0,0.6);
+    }
+    .tg-hero-title em { font-style: italic; color: #F4EAD3; }
+    .tg-hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 1.4vw, 1.3rem);
+      line-height: 1.45;
+      color: rgba(244,234,211,0.94);
+      margin: 0 auto 1.8rem;
+      max-width: 380px;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.5);
+    }
+    .tg-hero-cohort {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(220,193,120,0.88);
+      margin-bottom: 1.6rem;
+    }
+    .tg-hero-cta-row {
+      display: flex;
+      gap: 0.7rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .tg-hero-btn {
+      padding: 0.75rem 1.3rem;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      display: inline-block;
+      transition: all 0.25s ease;
+    }
+    .tg-hero-btn-primary {
+      background: transparent;
+      color: #DCC178;
+      border: 1px solid #DCC178;
+    }
+    .tg-hero-btn-primary:hover {
+      background: rgba(220,193,120,0.16);
+      color: #F4EAD3;
+      border-color: #F4EAD3;
+    }
+    .tg-hero-btn-secondary {
+      background: transparent;
+      color: #F4EAD3;
+      border: 1px solid rgba(244,234,211,0.45);
+    }
+    .tg-hero-btn-secondary:hover {
+      border-color: #DCC178;
+      color: #DCC178;
+    }
+    /* mobile: image becomes taller, text centers with full scrim */
+    @media (max-width: 880px) {
+      .tg-hero-image {
+        aspect-ratio: 4/5;
+        padding: 0 1.5rem;
+        justify-content: center;
+      }
+      .tg-hero-image::after {
+        background: linear-gradient(180deg, rgba(31,26,24,0.25) 0%, rgba(31,26,24,0.5) 50%, rgba(31,26,24,0.7) 100%);
+      }
+      .tg-hero-text { max-width: 100%; }
+      .tg-hero-cta-row { flex-direction: column; gap: 0.6rem; align-items: center; }
+      .tg-hero-btn { width: 100%; max-width: 280px; text-align: center; }
+    }
+
+    /* ============================================
+       SECTION 2: THE SIX STUDIOS (DARK BAND — moved to top)
+       ============================================ */
+    .tg-studios {
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 28%, rgba(201,168,76,0.13), transparent 60%),
+        radial-gradient(ellipse 80% 65% at 50% 100%, rgba(91,117,83,0.06), transparent 75%),
+        #1F1A18;
+      padding: 8rem 3rem;
+      position: relative;
+    }
+    .tg-studios-inner { max-width: 1320px; margin: 0 auto; }
+    .tg-studios-head { text-align: center; max-width: 780px; margin: 0 auto 4.5rem; }
+    .tg-studios .tg-eyebrow { color: #DCC178; }
+    .tg-studios .tg-h2 { color: var(--cream); }
+    .tg-studios .tg-h2 em { color: var(--cream); }
+    .tg-studios .tg-body { color: rgba(247,245,240,0.85); }
+    .tg-studios .tg-bridge-rule { background: rgba(220,193,120,0.6); margin: 2rem auto; }
+    .tg-studios .tg-bridge { color: rgba(244,234,211,0.95); }
+
+    .tg-reciprocity-note {
+      margin-top: 4.5rem;
+      padding-top: 2.2rem;
+      border-top: 1px solid rgba(201,168,76,0.3);
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .tg-reciprocity-note p {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(247,245,240,0.78);
+      margin: 0;
+    }
+    .tg-reciprocity-note a { color: var(--gold); text-decoration: none; }
+    .tg-reciprocity-note a:hover { color: #DCC178; }
+
+    /* cohort grid */
+    .cohorts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.8rem; }
+    @media (max-width: 980px) { .cohorts-grid { grid-template-columns: repeat(2, 1fr); gap: 2.2rem; } }
+    @media (max-width: 640px) { .cohorts-grid { grid-template-columns: 1fr; } }
+    .cohort-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; cursor: pointer; transition: transform 0.25s; }
+    .cohort-card:hover { transform: translateY(-3px); }
+    .cohort-card:hover .cohort-image { box-shadow: 0 30px 70px rgba(0,0,0,0.55), 0 0 80px rgba(201,168,76,0.2); }
+    .cohort-image { aspect-ratio: 4/5; background-size: cover; background-position: center; border-radius: 2px; margin-bottom: 1.4rem; box-shadow: 0 18px 40px rgba(0,0,0,0.35); transition: box-shadow 0.25s; }
+    .cohort-tag { font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+    .cohort-title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.7rem; line-height: 1.15; color: var(--cream); margin: 0 0 0.6rem; }
+    .cohort-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; line-height: 1.5; color: rgba(247,245,240,0.88); margin: 0 0 0.8rem; }
+    .cohort-desc { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.6; color: rgba(247,245,240,0.72); margin: 0 0 1.2rem; flex-grow: 1; }
+    .cohort-apply { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); padding-bottom: 0.3rem; border-bottom: 1px solid var(--gold); align-self: flex-start; transition: color 0.25s, border-color 0.25s; }
+    .cohort-card:hover .cohort-apply { color: #DCC178; border-color: #DCC178; }
+
+    /* ============================================
+       SECTION 3: FOUNDER & LINEAGE (NEW)
+       ============================================ */
+    .tg-lineage {
+      background: var(--cream);
+      padding: 7rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .tg-lineage > * { position: relative; z-index: 2; }
+    .tg-lineage::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 80% 60% at 50% 5%, rgba(201,168,76,0.08), transparent 65%);
+    }
+    .tg-lineage-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media (max-width: 880px) {
+      .tg-lineage-inner { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
+    }
+    .tg-lineage-portrait {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background-size: cover;
+      background-position: center top;
+      background-color: #E8E5DC;
+      border-radius: 2px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.14);
+    }
+    .tg-lineage-content { }
+    .tg-lineage-content .tg-eyebrow { margin-bottom: 1rem; }
+    .tg-lineage-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      line-height: 1.1;
+      color: var(--earth);
+      margin: 0 0 1.4rem;
+    }
+    .tg-lineage-name em {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      font-size: 1.5em !important;
+      color: #DCC178 !important;
+      line-height: 0.9;
+    }
+    .tg-lineage-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--earth);
+      margin: 0 0 1.4rem;
+    }
+    .tg-lineage-rivers {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--earth-mid);
+      padding-left: 1.2rem;
+      border-left: 1px solid rgba(201,168,76,0.4);
+      margin: 1.8rem 0;
+    }
+
+    /* ============================================
+       SECTION 4: THE PRACTICE
+       ============================================ */
+    .tg-practice { background: var(--cream-dark); padding: 7rem 3rem; position: relative; overflow: hidden; }
+    .tg-practice > * { position: relative; z-index: 2; }
+    .tg-practice::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 25%, rgba(201,168,76,0.09), transparent 68%);
+    }
+    .tg-practice-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .tg-pull-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.55rem, 2.5vw, 2.05rem);
+      line-height: 1.4;
+      color: var(--earth);
+      margin: 4.5rem auto 1.2rem;
+      max-width: 640px;
+      padding: 1rem 2rem;
+      position: relative;
+    }
+    .tg-pull-quote::before {
+      content: "\201C";
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: 0.75;
+      position: absolute;
+      top: -2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      line-height: 1;
+    }
+    .tg-pull-attr {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--earth-mid);
+      margin-top: 1.4rem;
+    }
+
+    /* ============================================
+       SECTION 5: A CALLING OF THESE TIMES
+       ============================================ */
+    .tg-calling { background: var(--cream); padding: 7rem 3rem; position: relative; overflow: hidden; }
+    .tg-calling > * { position: relative; z-index: 2; }
+    .tg-calling::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background:
+        radial-gradient(ellipse 75% 55% at 50% 5%, rgba(201,168,76,0.075), transparent 65%),
+        radial-gradient(ellipse 65% 45% at 50% 100%, rgba(91,117,83,0.035), transparent 65%);
+    }
+    .tg-calling-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .tg-beat {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.75rem, 3vw, 2.4rem);
+      line-height: 1.35;
+      color: var(--earth);
+      margin: 0 0 2.4rem;
+    }
+    .tg-turn {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.55rem, 2.4vw, 2rem);
+      line-height: 1.4;
+      color: var(--gold);
+      margin: 2.5rem 0;
+      padding: 1rem 0;
+    }
+
+    /* ============================================
+       ATMOSPHERIC FULL-BLEED DIVIDER
+       ============================================ */
+    .tg-divider {
+      position: relative;
+      height: 65vh;        /* was 50vh — +30% taller */
+      min-height: 470px;   /* was 360px — +30% taller */
+      background-size: cover;
+      background-position: center;
+      background-color: #1F1A18;
+      filter: brightness(1.12) contrast(1.05) saturate(1.08);
+    }
+    /* dark overlay scrim removed — images render at full luminosity */
+    .tg-divider-tree { background-image: url('images/uploads/tg-divider-tree.jpg'); }
+    .tg-divider-smudge { background-image: url('images/uploads/tg-divider-smudge.png'); }
+    .tg-divider-hands { background-image: url('images/uploads/tg-phase-2-hands.png'); }
+    .tg-divider-milkyway { background-image: url('images/uploads/tg-divider-milkyway.jpeg'); }
+    .tg-divider-heart { background-image: url('images/uploads/tg-divider-heart.png'); }
+    .tg-divider-altar {
+      background-image: url('images/uploads/tg-divider-mandala-glen.jpg');
+      background-position: center 50%;
+    }
+    .tg-divider-smoke { background-image: url('images/uploads/tg-divider-smoke.jpg'); }
+    /* tall modifier — double the standard divider height */
+    .tg-divider-tall { height: 100vh; min-height: 720px; }
+
+    /* embedded portrait inside the founder letter */
+    .tg-letter-portrait {
+      width: 100%;
+      max-width: 460px;
+      aspect-ratio: 4/5;
+      background-size: cover;
+      background-position: center top;
+      background-color: #E8E5DC;
+      border-radius: 2px;
+      margin: 0 auto 3.5rem;
+      box-shadow: 0 22px 50px rgba(0,0,0,0.14);
+    }
+
+    /* ============================================
+       SECTION 6: THE FIVE MOVEMENTS (named pathway)
+       ============================================ */
+    .tg-pathway { background: var(--cream); padding: 8rem 3rem 7rem; position: relative; overflow: hidden; }
+    .tg-pathway > * { position: relative; z-index: 2; }
+    .tg-pathway::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 25%, rgba(201,168,76,0.08), transparent 70%);
+    }
+    .tg-pathway-inner { max-width: 1200px; margin: 0 auto; }
+    .tg-pathway-head { text-align: center; max-width: 760px; margin: 0 auto 4.5rem; }
+
+    /* the pathway flow diagram */
+    .tg-pathway-flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      max-width: 1100px;
+      margin: 0 auto 5rem;
+      position: relative;
+    }
+    @media (max-width: 880px) {
+      .tg-pathway-flow { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+    .tg-pathway-node {
+      text-align: center;
+      padding: 0 0.8rem;
+      position: relative;
+    }
+    .tg-pathway-num {
+      display: inline-block;
+      font-family: 'Tangerine', 'Cormorant Garamond', serif;
+      font-size: 3.6rem;
+      line-height: 1;
+      color: #DCC178;
+      padding: 1rem 1.4rem;
+      border: 1px solid rgba(201,168,76,0.5);
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      background: var(--cream);
+      position: relative;
+      z-index: 2;
+      transition: box-shadow 0.3s, border-color 0.3s;
+    }
+    .tg-pathway-node:hover .tg-pathway-num {
+      box-shadow: 0 0 30px rgba(201,168,76,0.25);
+      border-color: var(--gold);
+    }
+    .tg-pathway-label {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--earth);
+      margin-bottom: 0.4rem;
+    }
+    .tg-pathway-name {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.3;
+      color: var(--earth-mid);
+    }
+    /* connecting line between nodes */
+    @media (min-width: 881px) {
+      .tg-pathway-node:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 40px;
+        right: -50%;
+        left: 50%;
+        height: 1px;
+        background: rgba(201,168,76,0.4);
+        z-index: 1;
+      }
+    }
+
+    /* the 5 phase cards (detailed) */
+    .tg-phases { display: flex; flex-direction: column; gap: 2.5rem; max-width: 1100px; margin: 0 auto; }
+    .tg-phase {
+      background: var(--cream-dark);
+      border-radius: 2px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.04);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 0;
+    }
+    @media (max-width: 760px) {
+      .tg-phase { grid-template-columns: 1fr; }
+    }
+    .tg-phase-image {
+      background-size: cover;
+      background-position: center;
+      background-color: #E8E5DC;
+      min-height: 280px;
+    }
+    @media (max-width: 760px) {
+      .tg-phase-image { aspect-ratio: 16/9; min-height: 0; }
+    }
+    .tg-phase-content {
+      padding: 2.8rem 3rem;
+    }
+    @media (max-width: 760px) {
+      .tg-phase-content { padding: 2rem 1.5rem; }
+    }
+    .tg-phase-num {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif;
+      font-style: normal;
+      font-size: 2.6rem;
+      letter-spacing: 0.04em;
+      color: #DCC178;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+    .tg-phase-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 2rem; line-height: 1.2; color: var(--earth); margin: 0 0 1.3rem; }
+    .tg-phase-lead { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.18rem; line-height: 1.55; color: var(--earth-mid); margin: 0 0 1rem; }
+    .tg-phase-body { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.7; color: var(--earth); margin: 0; }
+
+    /* ============================================
+       SECTION 7: THE COURSE OF STUDY (4 layers)
+       ============================================ */
+    .tg-course { background: var(--cream-dark); padding: 7rem 3rem; position: relative; overflow: hidden; }
+    .tg-course > * { position: relative; z-index: 2; }
+    .tg-course::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 25%, rgba(201,168,76,0.07), transparent 68%);
+    }
+    .tg-course-inner { max-width: 1100px; margin: 0 auto; }
+    .tg-course-head { text-align: center; max-width: 760px; margin: 0 auto 4rem; }
+    .tg-course-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem 5rem; }
+    @media (max-width: 880px) { .tg-course-grid { grid-template-columns: 1fr; gap: 3rem; } }
+    .tg-course-block { text-align: left; }
+    .tg-numeral {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.1rem;
+      border-bottom: 1px solid rgba(201,168,76,0.4);
+      min-width: 3rem;
+    }
+    .tg-step-eyebrow { display: block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.85rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--earth-mid); margin-bottom: 1rem; }
+    .tg-step-body { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; line-height: 1.65; color: var(--earth); margin: 0; }
+
+    /* ============================================
+       SECTION 8: FOUR CAPACITIES
+       ============================================ */
+    .tg-benefits { background: var(--cream); padding: 7rem 3rem; position: relative; overflow: hidden; }
+    .tg-benefits > * { position: relative; z-index: 2; }
+    .tg-benefits::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 5%, rgba(201,168,76,0.075), transparent 65%);
+    }
+    .tg-benefits-inner { max-width: 1100px; margin: 0 auto; }
+    .tg-benefits-head { text-align: center; max-width: 720px; margin: 0 auto 4rem; }
+    .tg-benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem 2.5rem; }
+    @media (max-width: 980px) { .tg-benefits-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .tg-benefits-grid { grid-template-columns: 1fr; } }
+    .tg-benefit { text-align: center; transition: transform 0.3s; }
+    .tg-benefit:hover { transform: translateY(-2px); }
+    .tg-benefit-glyph {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 2.6rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      margin-bottom: 1.3rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(201,168,76,0.4);
+      min-width: 2.5rem;
+      text-align: center;
+    }
+    .tg-benefit:hover .tg-benefit-glyph { color: #DCC178; border-bottom-color: rgba(201,168,76,0.7); }
+    .tg-benefit-title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-style: italic; font-size: 1.35rem; line-height: 1.25; color: var(--earth); margin: 0 0 0.8rem; }
+    .tg-benefit-body { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.6; color: var(--earth-mid); margin: 0; }
+    /* small circular thumbnail above each pillar */
+    .tg-benefit-image {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      transition: box-shadow 0.3s;
+    }
+    .tg-benefit:hover .tg-benefit-image {
+      box-shadow: 0 12px 35px rgba(0,0,0,0.18), 0 0 30px rgba(201,168,76,0.15);
+    }
+    /* small thumbnail above each include item */
+    .tg-include-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      margin: 0 0 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+
+    /* ============================================
+       SECTION 9: WHAT THIS SCHOOL INCLUDES
+       ============================================ */
+    .tg-includes { background: var(--cream-dark); padding: 7rem 3rem; position: relative; overflow: hidden; }
+    .tg-includes > * { position: relative; z-index: 2; }
+    .tg-includes::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 25%, rgba(201,168,76,0.08), transparent 68%);
+    }
+    .tg-includes-inner { max-width: 1100px; margin: 0 auto; }
+    .tg-includes-head { text-align: center; max-width: 720px; margin: 0 auto 4rem; }
+    .tg-includes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem 3.5rem; }
+    @media (max-width: 880px) { .tg-includes-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; } }
+    @media (max-width: 560px) { .tg-includes-grid { grid-template-columns: 1fr; } }
+    .tg-include { text-align: left; padding: 0 0 0 1.5rem; border-left: 1px solid rgba(201,168,76,0.35); }
+    .tg-include-title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-style: italic; font-size: 1.25rem; line-height: 1.25; color: var(--earth); margin: 0 0 0.6rem; }
+    .tg-include-body { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.55; color: var(--earth-mid); margin: 0; }
+
+    /* ============================================
+       SECTION 10: IS THIS FOR YOU / NOT FOR YOU (two-column)
+       ============================================ */
+    .tg-fit { background: var(--cream); padding: 7rem 3rem; position: relative; overflow: hidden; }
+    .tg-fit > * { position: relative; z-index: 2; }
+    .tg-fit::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 5%, rgba(201,168,76,0.075), transparent 65%);
+    }
+    .tg-fit-inner { max-width: 1100px; margin: 0 auto; }
+    .tg-fit-head { text-align: center; max-width: 720px; margin: 0 auto 4rem; }
+    .tg-fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    @media (max-width: 760px) { .tg-fit-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .tg-fit-col {
+      padding: 2.5rem;
+      background: #FAF8F3;
+      border-radius: 2px;
+      border-top: 2px solid var(--gold);
+    }
+    .tg-fit-col-no { border-top-color: var(--earth-light); }
+    .tg-fit-col-label {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .tg-fit-col-no .tg-fit-col-label { color: var(--earth-light); }
+    .tg-fit-col h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.7rem;
+      line-height: 1.25;
+      color: var(--earth);
+      margin: 0 0 1.6rem;
+    }
+    .tg-fit-list { list-style: none; padding: 0; margin: 0; }
+    .tg-fit-list li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      line-height: 1.55;
+      color: var(--earth);
+      padding: 0.6rem 0 0.6rem 1.6rem;
+      position: relative;
+      border-bottom: 1px solid rgba(45,42,38,0.06);
+    }
+    .tg-fit-list li:last-child { border-bottom: none; }
+    .tg-fit-list li::before {
+      content: "\2713";  /* ✓ */
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+    .tg-fit-col-no .tg-fit-list li::before {
+      content: "\2014";  /* — */
+      color: var(--earth-light);
+      top: 0.5rem;
+    }
+
+    /* ============================================
+       SECTION 11: PRICING & RECIPROCITY (tiered)
+       ============================================ */
+    .tg-pricing { background: var(--cream-dark); padding: 7rem 3rem; position: relative; overflow: hidden; }
+    .tg-pricing > * { position: relative; z-index: 2; }
+    .tg-pricing::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 25%, rgba(201,168,76,0.09), transparent 68%);
+    }
+    .tg-pricing-inner { max-width: 1200px; margin: 0 auto; }
+    .tg-pricing-head { text-align: center; max-width: 760px; margin: 0 auto 4rem; }
+    .tg-tier-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; }
+    @media (max-width: 980px) { .tg-tier-grid { grid-template-columns: repeat(2, 1fr); gap: 1.4rem; } }
+    @media (max-width: 600px) { .tg-tier-grid { grid-template-columns: 1fr; } }
+    .tg-tier {
+      background: var(--cream);
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 2.4rem 1.6rem;
+      text-align: center;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .tg-tier:hover {
+      border-color: rgba(201,168,76,0.6);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.06), 0 0 40px rgba(201,168,76,0.06);
+    }
+    .tg-tier-tier { font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.62rem; letter-spacing: 0.34em; text-transform: uppercase; color: var(--earth-light); margin: 0 0 0.6rem; display: block; }
+    .tg-tier-name { font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.85rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin: 0 0 1rem; }
+    /* Sacred Reciprocity tier accents — gold/green/blue/purple per sacred-reciprocity.html */
+    .tg-tier-patron        { border-top: 3px solid #c9a84c; }
+    .tg-tier-patron        .tg-tier-name { color: #c9a84c; }
+    .tg-tier-abundance     { border-top: 3px solid #6b8f5e; }
+    .tg-tier-abundance     .tg-tier-name { color: #6b8f5e; }
+    .tg-tier-community     { border-top: 3px solid #5a7fa0; }
+    .tg-tier-community     .tg-tier-name { color: #5a7fa0; }
+    .tg-tier-accessibility { border-top: 3px solid #7b6b8a; }
+    .tg-tier-accessibility .tg-tier-name { color: #7b6b8a; }
+    .tg-tier-amount { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-style: italic; font-size: 2.2rem; line-height: 1; color: var(--earth); margin: 0 0 0.4rem; }
+    .tg-tier-period { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: var(--earth-mid); margin: 0 0 1.6rem; }
+    .tg-tier-desc { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; line-height: 1.55; color: var(--earth-mid); margin: 0 0 2rem; flex-grow: 1; }
+    .tg-tier-cta { display: block; padding: 0.7rem 1rem; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); background: var(--earth); border-radius: 2px; text-decoration: none; transition: background 0.2s; }
+    .tg-tier-cta:hover { background: var(--earth-mid); }
+    .tg-tier-note { margin-top: 3rem; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.6; color: var(--earth-mid); max-width: 720px; margin-left: auto; margin-right: auto; }
+
+    /* ============================================
+       SECTION 12: VOICES FROM THE WORK
+       ============================================ */
+    .tg-voices { background: var(--cream); padding: 7rem 3rem; position: relative; overflow: hidden; }
+    .tg-voices > * { position: relative; z-index: 2; }
+    .tg-voices::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 5%, rgba(201,168,76,0.075), transparent 65%);
+    }
+    .tg-voices-inner { max-width: 1100px; margin: 0 auto; }
+    .tg-voices-head { text-align: center; max-width: 720px; margin: 0 auto 4rem; }
+    .tg-voices-list { display: flex; flex-direction: column; gap: 3rem; }
+    @media (min-width: 880px) { .tg-voices-list { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 4rem; } }
+    .tg-voice {
+      position: relative;
+      padding-left: 2.6rem;
+      border-left: 1px solid rgba(201,168,76,0.4);
+    }
+    .tg-voice::before {
+      content: "\201C";
+      position: absolute;
+      top: -0.4rem;
+      left: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      color: var(--gold);
+      opacity: 0.55;
+      line-height: 1;
+    }
+    .tg-voice-body { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; line-height: 1.65; color: var(--earth); margin: 0 0 1rem; }
+    .tg-voice-attr { font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--earth-mid); }
+    .tg-voices-cta { text-align: center; margin-top: 4rem; }
+
+    /* ============================================
+       SECTION 13: SCHEDULE & LOGISTICS
+       ============================================ */
+    .tg-schedule { background: var(--cream-dark); padding: 7rem 3rem; position: relative; overflow: hidden; }
+    .tg-schedule > * { position: relative; z-index: 2; }
+    .tg-schedule::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 25%, rgba(201,168,76,0.075), transparent 68%);
+    }
+    .tg-schedule-inner { max-width: 900px; margin: 0 auto; }
+    .tg-schedule-head { text-align: center; max-width: 720px; margin: 0 auto 3.5rem; }
+    .tg-schedule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    @media (max-width: 760px) { .tg-schedule-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .tg-schedule-block { padding: 2rem 0 0; border-top: 1px solid rgba(201,168,76,0.4); }
+    .tg-schedule-label { display: block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.78rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .tg-schedule-value { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.35rem; line-height: 1.4; color: var(--earth); margin: 0 0 0.5rem; }
+    .tg-schedule-detail { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.6; color: var(--earth-mid); margin: 0; }
+
+    /* ============================================
+       SECTION 14: FACULTY
+       ============================================ */
+    .tg-faculty { background: var(--cream); padding: 7rem 3rem; position: relative; overflow: hidden; }
+    .tg-faculty > * { position: relative; z-index: 2; }
+    .tg-faculty::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 5%, rgba(201,168,76,0.075), transparent 65%);
+    }
+    .tg-faculty-inner { max-width: 1100px; margin: 0 auto; }
+    .tg-faculty-head { text-align: center; max-width: 720px; margin: 0 auto 4rem; }
+    .tg-faculty-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    @media (max-width: 880px) { .tg-faculty-grid { grid-template-columns: 1fr; } }
+    .tg-faculty-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--cream-dark);
+      padding: 2.5rem;
+      border-radius: 2px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.04);
+    }
+    .tg-faculty-portrait { width: 140px; height: 140px; border-radius: 50%; background-size: cover; background-position: center; background-color: #E8E5DC; margin: 0 0 1.4rem; transition: box-shadow 0.4s; }
+    .tg-faculty-card:hover .tg-faculty-portrait { box-shadow: 0 0 0 2px rgba(201,168,76,0.4), 0 6px 30px rgba(0,0,0,0.1); }
+    .tg-faculty-name { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-style: italic; font-size: 1.8rem; color: var(--earth); margin: 0 0 0.4rem; }
+    .tg-faculty-role { font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin: 0 0 1.2rem; }
+    .tg-faculty-body { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.65; color: var(--earth); margin: 0 0 1.4rem; }
+    .tg-faculty-link { align-self: flex-start; }
+
+    /* ============================================
+       SECTION 15: FOUNDER LETTER (signed, NEW)
+       ============================================ */
+    .tg-letter { background: var(--cream-dark); padding: 8rem 3rem; position: relative; overflow: hidden; }
+    .tg-letter > * { position: relative; z-index: 2; }
+    .tg-letter::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 60% at 50% 30%, rgba(201,168,76,0.1), transparent 70%);
+    }
+    .tg-letter-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .tg-letter-head { text-align: center; margin: 0 0 3rem; }
+    .tg-letter-h {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(2rem, 3.2vw, 2.7rem);
+      line-height: 1.2;
+      color: var(--earth);
+      margin: 0 0 1.4rem;
+    }
+    .tg-letter-greet {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--earth-mid);
+      margin: 0 0 2rem;
+    }
+    .tg-letter-body p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.18rem;
+      line-height: 1.75;
+      color: var(--earth);
+      margin: 0 0 1.4rem;
+    }
+    .tg-letter-sign {
+      margin-top: 3rem;
+      text-align: left;
+    }
+    .tg-letter-sign-name {
+      display: block;
+      font-family: 'Tangerine', 'Cormorant Garamond', serif;
+      font-size: 3.2rem;
+      line-height: 1;
+      color: #DCC178;
+      margin: 0 0 0.4rem;
+    }
+    .tg-letter-sign-role {
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--earth-mid);
+    }
+
+    /* ============================================
+       SECTION 16: ETHICS & CONTAINER (NEW, small)
+       ============================================ */
+    .tg-ethics { background: var(--cream); padding: 6rem 3rem; position: relative; overflow: hidden; }
+    .tg-ethics > * { position: relative; z-index: 2; }
+    .tg-ethics::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 5%, rgba(201,168,76,0.06), transparent 70%);
+    }
+    .tg-ethics-inner { max-width: 880px; margin: 0 auto; }
+    .tg-ethics-head { text-align: center; max-width: 720px; margin: 0 auto 3rem; }
+    .tg-ethics-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; }
+    @media (max-width: 760px) { .tg-ethics-grid { grid-template-columns: 1fr; gap: 1.6rem; } }
+    .tg-ethics-block { text-align: left; }
+    .tg-ethics-label {
+      display: block;
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.74rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .tg-ethics-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--earth-mid);
+      margin: 0;
+    }
+
+    /* ============================================
+       SECTION 17: FAQ (accordion)
+       ============================================ */
+    .tg-faq { background: var(--cream-dark); padding: 7rem 3rem; position: relative; overflow: hidden; }
+    .tg-faq > * { position: relative; z-index: 2; }
+    .tg-faq::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 25%, rgba(201,168,76,0.075), transparent 68%);
+    }
+    .tg-faq-inner { max-width: 820px; margin: 0 auto; }
+    .tg-faq-head { text-align: center; max-width: 720px; margin: 0 auto 3.5rem; }
+    .tg-faq details { border-bottom: 1px solid var(--border); padding: 1.4rem 0; }
+    .tg-faq details[open] { padding-bottom: 1.8rem; }
+    .tg-faq summary {
+      cursor: pointer;
+      list-style: none;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-style: italic;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      color: var(--earth);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      padding-right: 1rem;
+      transition: color 0.2s;
+    }
+    .tg-faq summary:hover { color: var(--sage); }
+    .tg-faq summary::-webkit-details-marker { display: none; }
+    .tg-faq summary::after {
+      content: "+";
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.6rem;
+      color: var(--gold);
+      line-height: 1;
+      transition: transform 0.25s;
+      flex-shrink: 0;
+    }
+    .tg-faq details[open] summary::after { content: "\2013"; color: var(--sage); }
+    .tg-faq details[open] summary { color: var(--earth); }
+    .tg-faq-body { padding-top: 1.2rem; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.7; color: var(--earth); }
+    .tg-faq-body p { margin: 0 0 0.8rem; }
+    .tg-faq-body p:last-child { margin-bottom: 0; }
+
+    /* ============================================
+       SECTION 18: THE CALL (final CTA)
+       ============================================ */
+    .tg-call { background: var(--cream); padding: 8rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .tg-call > * { position: relative; z-index: 2; }
+    .tg-call::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 25%, rgba(201,168,76,0.09), transparent 68%);
+    }
+    .tg-call-inner { max-width: 700px; margin: 0 auto; }
+    .tg-rule-gold { display: block; width: 60px; height: 1px; background: var(--gold); margin: 0 auto 2.2rem; }
+    .tg-call-beat { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.35; color: var(--earth); margin: 0 0 2rem; }
+    .tg-call-body { font-family: 'Cormorant Garamond', serif; font-size: 1.28rem; line-height: 1.65; color: var(--earth); margin: 0 0 2rem; }
+    .tg-call-italic { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.32rem; line-height: 1.5; color: var(--gold); margin: 2.5rem 0; }
+    .tg-call-practical { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.65; color: var(--earth-mid); max-width: 580px; margin: 2.5rem auto; }
+    .tg-call-cta-row { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+    .tg-call-btn-primary {
+      padding: 1rem 1.9rem;
+      background: var(--earth);
+      color: var(--cream);
+      border: 1px solid var(--earth);
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .tg-call-btn-primary:hover { background: var(--earth-mid); }
+    .tg-call-btn-secondary {
+      padding: 1rem 1.9rem;
+      background: transparent;
+      color: var(--earth);
+      border: 1px solid var(--gold);
+      font-family: 'Cormorant SC', 'Cormorant Garamond', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .tg-call-btn-secondary:hover { background: rgba(201,168,76,0.1); color: var(--gold); }
+
+    /* ============================================
+       SECTION 19: SEASONAL LETTERS
+       ============================================ */
+    .tg-newsletter { background: var(--cream-dark); padding: 6rem 3rem; text-align: center; position: relative; overflow: hidden; }
+    .tg-newsletter > * { position: relative; z-index: 2; }
+    .tg-newsletter::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(ellipse 75% 55% at 50% 25%, rgba(201,168,76,0.07), transparent 68%);
+    }
+    .tg-newsletter-inner { max-width: 600px; margin: 0 auto; }
+    .tg-newsletter-form { display: flex; gap: 0.8rem; margin-top: 2rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+    .tg-newsletter-form input { flex: 1; padding: 0.9rem 1.2rem; border: 1px solid rgba(45,42,38,0.18); border-radius: 2px; background: var(--cream); font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--earth); }
+    .tg-newsletter-form input:focus { outline: none; border-color: var(--sage); box-shadow: 0 0 0 3px rgba(91,117,83,0.15); }
+    .tg-newsletter-form button { padding: 0.9rem 1.6rem; background: var(--earth); color: var(--cream); border: none; border-radius: 2px; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+    .tg-newsletter-form button:hover { background: var(--earth-mid); }
+    .tg-newsletter-banner {
+      width: 100%;
+      max-width: 1100px;
+      aspect-ratio: 21/9;
+      background-image: url('images/uploads/tg-newsletter-banner.jpg');
+      background-size: cover;
+      background-position: center;
+      background-color: #E8E5DC;
+      border-radius: 2px;
+      margin: 0 auto 3.5rem;
+      box-shadow: 0 22px 50px rgba(0,0,0,0.14);
+    }
+    @media (max-width: 720px) {
+      .tg-newsletter-banner { aspect-ratio: 16/9; margin-bottom: 2.5rem; }
+    }
+
+    /* ---------- H2 ornament: ✧ centered below each section H2 ---------- */
+    .tg-practice-inner > .tg-h2::after,
+    .tg-calling-inner > .tg-h2::after,
+    .tg-benefits-head > .tg-h2::after,
+    .tg-course-head > .tg-h2::after,
+    .tg-pathway-head > .tg-h2::after,
+    .tg-includes-head > .tg-h2::after,
+    .tg-fit-head > .tg-h2::after,
+    .tg-pricing-head > .tg-h2::after,
+    .tg-voices-head > .tg-h2::after,
+    .tg-schedule-head > .tg-h2::after,
+    .tg-faculty-head > .tg-h2::after,
+    .tg-faq-head > .tg-h2::after,
+    .tg-call-inner > .tg-h2::after,
+    .tg-newsletter-inner > .tg-h2::after,
+    .tg-ethics-head > .tg-h2::after {
+      content: "\2727";
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: var(--gold);
+      opacity: 0.62;
+      margin-top: 1.6rem;
+      letter-spacing: 0.4em;
+    }
+    .tg-studios-head > .tg-h2::after {
+      content: "\2727";
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      color: #DCC178;
+      opacity: 0.88;
+      margin-top: 1.6rem;
+      letter-spacing: 0.4em;
+    }
+
+    /* ============================================
+       MOBILE
+       ============================================ */
+    @media (max-width: 720px) {
+      .tg-hero { padding: 7rem 1.5rem 5rem; min-height: 88vh; }
+      .tg-hero-title { font-size: clamp(2.8rem, 9vw, 4.2rem); }
+      .tg-hero-subtitle { font-size: clamp(1.2rem, 4.5vw, 1.55rem); }
+      .tg-hero-cta-row { flex-direction: column; gap: 0.8rem; }
+      .tg-hero-btn { width: 100%; }
+      .tg-practice, .tg-calling, .tg-benefits, .tg-course, .tg-includes, .tg-depths, .tg-interior, .tg-pricing, .tg-voices, .tg-schedule, .tg-faculty, .tg-faq, .tg-call, .tg-newsletter, .tg-lineage, .tg-pathway, .tg-fit, .tg-letter, .tg-ethics { padding: 5rem 1.5rem; }
+      .tg-studios { padding: 6rem 1.5rem; }
+      .tg-newsletter-form { flex-direction: column; gap: 0.8rem; }
+      .tg-phase { padding: 2rem 1.5rem; }
+      .tg-phases { gap: 1.5rem; }
+      .tg-h2 { font-size: clamp(1.9rem, 6vw, 2.6rem); }
+      .tg-include { padding-left: 1rem; }
+      .tg-faculty-card { padding: 2rem 1.5rem; }
+      .tg-pull-quote { font-size: clamp(1.3rem, 5vw, 1.7rem); padding: 0.5rem 1rem; }
+      .tg-beat { font-size: clamp(1.4rem, 5.5vw, 1.85rem); }
+      .tg-voice { padding-left: 2rem; }
+      .tg-h2 em, .tg-hero-title em { font-size: 1.35em !important; }
+      .tg-fit-col { padding: 1.8rem 1.4rem; }
+      .tg-call-cta-row { flex-direction: column; gap: 0.8rem; }
+      .tg-call-btn-primary, .tg-call-btn-secondary { width: 100%; }
+      .tg-divider { height: 45vh; min-height: 365px; }
+      .tg-pathway-num { width: 70px; height: 70px; font-size: 2.8rem; }
+    }
+  </style>
+</head>
+<body data-content-page="offering-training-grounds">
+
+    <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span></a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+                                                <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="solo-work.html">Solo Work</a></li>
+          <li><a href="group-work.html">Group Work</a></li>
+          <li><a href="training-grounds.html">The School</a></li>
+          <li><a href="writings.html">Resources</a></li>
+        </ul>
+      </nav>
+      <a href="sessions.html" class="nav-cta apply-btn">Book</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sub-navigation: mirrors the items that used to live in the School dropdown -->
+  <nav class="page-subnav" aria-label="The School sections">
+    <div class="page-subnav-inner">
+      <span class="page-subnav-label">Explore The School</span>
+      <div class="page-subnav-links">
+        <a href="training-grounds.html" class="is-current">Overview</a>
+        <a href="training-grounds.html#mythopoetic-being">Mythopoetic Being</a>
+        <a href="training-grounds.html#shamanic-bodywork">Shamanic Bodywork</a>
+        <a href="training-grounds.html#ceremonialist-training">Ceremonialist Training</a>
+        <a href="training-grounds.html#expressive-arts">Expressive Arts</a>
+        <a href="training-grounds.html#spirit-mediation">Spirit Mediation</a>
+        <a href="training-grounds.html#basins-of-creation">Basins of Creation</a>
+      </div>
+    </div>
+  </nav>
+
+<!-- ============================================
+       SECTION 1 — HERO (21:9 cinematic, text in the archway)
+       ============================================ -->
+  <div class="tg-hero-image" role="img" aria-label="Adi Marie in ceremonial robes, in a temple-grounds setting">
+    <div class="tg-hero-text">
+      <span class="tg-hero-eyebrow">The School</span>
+      <span class="tg-hero-rule"></span>
+      <h1 class="tg-hero-title">The Training <em>Grounds</em></h1>
+      <p class="tg-hero-subtitle">Mediating on behalf of the seen and unseen worlds.</p>
+      <p class="tg-hero-cohort">Next cohort opens with the autumn equinox &middot; Pacific time</p>
+      <div class="tg-hero-cta-row">
+        <a href="#studios" class="tg-hero-btn tg-hero-btn-primary">Apply to the Next Cohort</a>
+        <a href="inquiry.html" class="tg-hero-btn tg-hero-btn-secondary">Book a Discovery Call</a>
+      </div>
+    </div>
+  </div>
+
+<!-- ============================================
+       SECTION 4 — THE PRACTICE (with pull-quote)
+       ============================================ -->
+  <section class="tg-practice">
+    <div class="tg-practice-inner">
+      <span class="tg-eyebrow">The Practice</span>
+      <h2 class="tg-h2">An apothecary of <em>restoration.</em></h2>
+      <p class="tg-body">The Animist Apothecary is an experiential apothecary for the restoration of an animist relational practice and worldview.</p>
+      <p class="tg-body">The Training Grounds is its school &mdash; where procedural ritual technology and ceremonial practice are formalized and embodied. Where one is trained to engage interdimensionally with skill, poise, rapport, and the artisan's touch of inspirationally skilled mastery.</p>
+      <blockquote class="tg-pull-quote">
+        We are here to participate in the miracle.
+        <span class="tg-pull-attr">Adi Marie &middot; Founder</span>
+      </blockquote>
+    </div>
+  </section>
+
+<!-- ============================================
+       SECTION 5 — A CALLING OF THESE TIMES
+       ============================================ -->
+  <section class="tg-calling">
+    <div class="tg-calling-inner">
+      <span class="tg-eyebrow">A Calling of These Times</span>
+      <h2 class="tg-h2">What was severed asks to be <em>re-woven.</em></h2>
+      <p class="tg-beat">These are urgent times.</p>
+      <p class="tg-body">The world asks for the restoration of relational balance between the seen and unseen worlds. For humans to step down from the throne of supremacy and return to the place we were entrusted to hold &mdash; stewards. Guardians. Kin in service.</p>
+      <p class="tg-body">In every age, in every people, some have been born with the emergence of gifts. Medicines to be carried on behalf of the land, the community, the many-valenced worlds. And many were born into diaspora, where the lineages were cut. The elders who would have taught what is innately ours could not be found.</p>
+      <p class="tg-turn">You are not too late. The medicine that is yours is still yours.</p>
+      <p class="tg-body">The Training Grounds is the place to come into it &mdash; fully, with structured guidance, in the mastery and discipline of your craft.</p>
+    </div>
+  </section>
+
+<!-- ============================================
+       THE FRAME — closing movement (absorbed from former Section 18 / The Call)
+       ============================================ -->
+  <section class="tg-call tg-call-frame">
+    <div class="tg-call-inner">
+      <span class="tg-rule-gold"></span>
+      <span class="tg-eyebrow">A Calling to Participate</span>
+      <h2 class="tg-h2">We are here to participate in the <em>miracle.</em></h2>
+      <p class="tg-call-beat">The world needs more practitioners.</p>
+      <p class="tg-call-body">More people in the field. Holding sacred spaces. Holding front lines. Pollinating the flowers in the garden of life. Restoring beauty. Balance. Harmony.</p>
+      <p class="tg-call-italic">For those with a calling to participate in this way at this time.</p>
+    </div>
+  </section>
+
+<!-- ============================================
+       ATMOSPHERIC DIVIDER — milkyway through the canyon
+       ============================================ -->
+  <div class="tg-divider tg-divider-tree tg-divider-tall" aria-hidden="true"></div>
+
+<!-- ============================================
+       SECTION 3 — FOUNDER & LINEAGE (NEW)
+       ============================================ -->
+  <section class="tg-lineage">
+    <div class="tg-lineage-inner">
+      <div class="tg-lineage-portrait" style="background-image: url('images/uploads/practitioner-portrait-emerald-2026-05-24.jpg');"></div>
+      <div class="tg-lineage-content">
+        <span class="tg-eyebrow">Founded &amp; Guided By</span>
+        <h2 class="tg-lineage-name">Adi <em>Marie</em></h2>
+        <p class="tg-lineage-body">Interdimensional intermediary, somatic medium and oracular diviner, ceremonial and ritual steward. Sixteen years of devoted practice. Over a decade of initiation and study. The Training Grounds is the school she founded to teach the work she was given to carry.</p>
+        <blockquote class="tg-lineage-rivers">
+          Trained in <span class="tg-placeholder">the Dagara lineage</span>, in <span class="tg-placeholder">the somatic and ceremonial arts</span>, in <span class="tg-placeholder">the medicine ways of [tradition]</span>. The full lineage list, the teachers, and the trainings live on the About page.
+        </blockquote>
+        <p class="tg-lineage-body">Based in Topanga Canyon, Los Angeles. Available worldwide for virtual work, in person for those called to the land.</p>
+        <a href="about.html" class="tg-cta-soft">Read the full lineage &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+<!-- ============================================
+       SECTION 2 — THE SIX STUDIOS (DARK BAND — moved to top)
+       ============================================ -->
+  <section class="tg-studios" id="studios">
+    <div class="tg-studios-inner">
+
+      <div class="tg-studios-head">
+        <span class="tg-eyebrow">Six Studios</span>
+        <h2 class="tg-h2">Six paths of <em>devoted practice.</em></h2>
+        <p class="tg-body">Each studio is its own living breath of the school &mdash; its own ethos, body of knowledge, and skill set. Choose the path that calls. Cohorts open with the wheel of the year.</p>
+        <p class="tg-body" style="font-style: italic; opacity: 0.92;">Each studio is held by Adi Marie, with supporting practitioners and guest teachers guiding and leading in their areas of expertise &mdash; named within each studio.</p>
+      </div>
+
+      <div class="cohorts-grid">
+
+        <a href="#" class="cohort-card" data-modal-open
+           data-eyebrow="Narrative &middot; Storywork"
+           data-title="Mythopoetic Being"
+           data-desc="Attending and rewriting the myths and narratives that shape and define who we are becoming. Choose a magical story &mdash; live like your life depends on it."
+           data-reciprocity="Cohort enrollment by application &middot; Reciprocity disclosed in application call"
+           data-inquire-email-subject="Mythopoetic Being Cohort &mdash; Application" id="mythopoetic-being">
+          <div class="cohort-image" style="background-image: url('https://images.unsplash.com/photo-1519074069444-1ba4fff66d16?w=900&h=900&fit=crop&q=80');"></div>
+          <span class="cohort-tag">Narrative &middot; Storywork</span>
+          <h3 class="cohort-title">Mythopoetic Being</h3>
+          <p class="cohort-tagline">Choose a magical story. Live like your life depends on it.</p>
+          <p class="cohort-desc">Attending and rewriting the myths and narratives that shape and define who we are becoming.</p>
+          <span class="cohort-apply">Apply to the Cohort &rarr;</span>
+        </a>
+
+        <a href="#" class="cohort-card" data-modal-open
+           data-eyebrow="Bodywork &middot; Spirit Touch"
+           data-title="Shamanic Bodywork"
+           data-desc="For bodyworkers and massage therapists deepening their gifts and cultivating their offerings with spirit work. Hands-on healing brought into medicine work."
+           data-reciprocity="Cohort enrollment by application &middot; Reciprocity disclosed in application call"
+           data-inquire-email-subject="Shamanic Bodywork Cohort &mdash; Application" id="shamanic-bodywork">
+          <div class="cohort-image" style="background-image: url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=900&h=900&fit=crop&q=80');"></div>
+          <span class="cohort-tag">Bodywork &middot; Spirit Touch</span>
+          <h3 class="cohort-title">Shamanic Bodywork</h3>
+          <p class="cohort-tagline">Bring hands-on healing into medicine work.</p>
+          <p class="cohort-desc">For bodyworkers and massage therapists deepening their gifts and cultivating their offerings with spirit work.</p>
+          <span class="cohort-apply">Apply to the Cohort &rarr;</span>
+        </a>
+
+        <a href="#" class="cohort-card" data-modal-open
+           data-eyebrow="Guardian &middot; Stewardship"
+           data-title="Ceremonialist Training"
+           data-desc="How to be a guardian and supportive guide &mdash; for those who want to help hold the work. The container, the protocol, the witness."
+           data-reciprocity="Cohort enrollment by application &middot; Reciprocity disclosed in application call"
+           data-inquire-email-subject="Ceremonialist Training Cohort &mdash; Application" id="ceremonialist-training">
+          <div class="cohort-image" style="background-image: url('https://images.unsplash.com/photo-1551244072-5d12893278ab?w=900&h=900&fit=crop&q=80');"></div>
+          <span class="cohort-tag">Guardian &middot; Stewardship</span>
+          <h3 class="cohort-title">Ceremonialist Training</h3>
+          <p class="cohort-tagline">How to hold the sacred container.</p>
+          <p class="cohort-desc">How to be a guardian and supportive guide &mdash; for those who want to help hold the work.</p>
+          <span class="cohort-apply">Apply to the Cohort &rarr;</span>
+        </a>
+
+        <a href="#" class="cohort-card" data-modal-open
+           data-eyebrow="Creative &middot; Expression"
+           data-title="Expressive Arts"
+           data-desc="Voice, movement, color, and song &mdash; for those reclaiming the creative life-force as a medicine path."
+           data-reciprocity="Cohort enrollment by application &middot; Reciprocity disclosed in application call"
+           data-inquire-email-subject="Expressive Arts Cohort &mdash; Application" id="expressive-arts">
+          <div class="cohort-image" style="background-image: url('https://images.unsplash.com/photo-1466354424719-343280fe118b?w=900&h=900&fit=crop&q=80');"></div>
+          <span class="cohort-tag">Creative &middot; Expression</span>
+          <h3 class="cohort-title">Expressive Arts</h3>
+          <p class="cohort-tagline">Let the wild thing speak through you.</p>
+          <p class="cohort-desc">Voice, movement, color, and song &mdash; for those reclaiming the creative life-force as a medicine path.</p>
+          <span class="cohort-apply">Apply to the Cohort &rarr;</span>
+        </a>
+
+        <a href="#" class="cohort-card" data-modal-open
+           data-eyebrow="Mediumship &middot; Intercession"
+           data-title="Spirit Mediation"
+           data-desc="Working as an intermediary between the human world and the Spirit Worlds &mdash; for those called to translate, mediate, and serve as channel."
+           data-reciprocity="Cohort enrollment by application &middot; Reciprocity disclosed in application call"
+           data-inquire-email-subject="Spirit Mediation Cohort &mdash; Application" id="spirit-mediation">
+          <div class="cohort-image" style="background-image: url('https://images.unsplash.com/photo-1505765050516-f72dcac9c60a?w=900&h=900&fit=crop&q=80');"></div>
+          <span class="cohort-tag">Mediumship &middot; Intercession</span>
+          <h3 class="cohort-title">Spirit Mediation</h3>
+          <p class="cohort-tagline">Bridge the worlds. Carry the messages.</p>
+          <p class="cohort-desc">Working as an intermediary between the human world and the Spirit Worlds &mdash; for those called to translate, mediate, and serve as channel.</p>
+          <span class="cohort-apply">Apply to the Cohort &rarr;</span>
+        </a>
+
+        <a href="#" class="cohort-card" data-modal-open
+           data-eyebrow="Creation &middot; Vessel"
+           data-title="Basins of Creation"
+           data-desc="Working with the basins, vessels, and containers that hold creation &mdash; for those who steward the work of bringing forth."
+           data-reciprocity="Cohort enrollment by application &middot; Reciprocity disclosed in application call"
+           data-inquire-email-subject="Basins of Creation Cohort &mdash; Application" id="basins-of-creation">
+          <div class="cohort-image" style="background-image: url('https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=900&h=900&fit=crop&q=80');"></div>
+          <span class="cohort-tag">Creation &middot; Vessel</span>
+          <h3 class="cohort-title">Basins of Creation</h3>
+          <p class="cohort-tagline">The sacred containers we make and tend.</p>
+          <p class="cohort-desc">Working with the basins, vessels, and containers that hold creation &mdash; for those who steward the work of bringing forth.</p>
+          <span class="cohort-apply">Apply to the Cohort &rarr;</span>
+        </a>
+
+      </div>
+
+      <div class="tg-reciprocity-note">
+        <p>Cohort enrollment by application. Reciprocity is shaped in the Intake &amp; Inquiry conversation. <a href="sacred-reciprocity.html">Read about Sacred Reciprocity &rarr;</a></p>
+      </div>
+
+    </div>
+  </section>
+
+<!-- ============================================
+       ATMOSPHERIC DIVIDER — tree of light and life
+       ============================================ -->
+  <div class="tg-divider tg-divider-milkyway" aria-hidden="true"></div>
+
+<!-- ============================================
+       THE COURSE OF STUDY — four-layer course (moved up to lead the curriculum spine)
+       ============================================ -->
+  <section class="tg-course" id="course-of-study">
+    <div class="tg-course-inner">
+
+      <div class="tg-course-head">
+        <span class="tg-eyebrow">The Course of Study</span>
+        <h2 class="tg-h2">The map. The terrain. The <em>walking.</em> The offering.</h2>
+        <p class="tg-intro">Each of the Five Movements is taught through the same four-layer course. The map, the navigating, the walking, the offering.</p>
+      </div>
+
+      <div class="tg-course-grid">
+        <div class="tg-course-block">
+          <span class="tg-numeral">I</span>
+          <span class="tg-step-eyebrow">The Map</span>
+          <p class="tg-step-body">The bodies of knowledge. The cosmologies. The lineages. Every map that has come before &mdash; and the one you will draw by walking.</p>
+        </div>
+        <div class="tg-course-block">
+          <span class="tg-numeral">II</span>
+          <span class="tg-step-eyebrow">Navigating the Map</span>
+          <p class="tg-step-body">The symbols. The principles. The applied equations. How the map is read. What each marking means. How to orient when the land is new.</p>
+        </div>
+        <div class="tg-course-block">
+          <span class="tg-numeral">III</span>
+          <span class="tg-step-eyebrow">Walking the Terrain</span>
+          <p class="tg-step-body">The map becomes earth beneath your feet. You walk. You fall. You find your gait. The classroom becomes practice. The practice becomes lived.</p>
+        </div>
+        <div class="tg-course-block">
+          <span class="tg-numeral">IV</span>
+          <span class="tg-step-eyebrow">Field Training</span>
+          <p class="tg-step-body">Carrying the work outward. An intermediary in community, in ceremony, in the long quiet labor of relational mediation. The walk becomes the offering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ============================================
+       SECTION 6 — THE FIVE MOVEMENTS (named pathway with diagram)
+       ============================================ -->
+  <section class="tg-pathway" id="five-movements">
+    <div class="tg-pathway-inner">
+
+      <div class="tg-pathway-head">
+        <span class="tg-eyebrow">The Path</span>
+        <h2 class="tg-h2">The Five <em>Movements.</em></h2>
+        <p class="tg-intro">The named methodology of The Training Grounds. Five movements, walked in sequence and returned to across years. Every studio unfolds within this pathway.</p>
+      </div>
+
+      <!-- visual pathway flow -->
+      <div class="tg-pathway-flow">
+        <div class="tg-pathway-node">
+          <span class="tg-pathway-num">I</span>
+          <span class="tg-pathway-label">One</span>
+          <span class="tg-pathway-name">Foundations &amp; Acclimation</span>
+        </div>
+        <div class="tg-pathway-node">
+          <span class="tg-pathway-num">II</span>
+          <span class="tg-pathway-label">Two</span>
+          <span class="tg-pathway-name">Communication &amp; Etiquette</span>
+        </div>
+        <div class="tg-pathway-node">
+          <span class="tg-pathway-num">III</span>
+          <span class="tg-pathway-label">Three</span>
+          <span class="tg-pathway-name">Ritual as Technician</span>
+        </div>
+        <div class="tg-pathway-node">
+          <span class="tg-pathway-num">IV</span>
+          <span class="tg-pathway-label">Four</span>
+          <span class="tg-pathway-name">Anchoring the Frequency</span>
+        </div>
+        <div class="tg-pathway-node">
+          <span class="tg-pathway-num">V</span>
+          <span class="tg-pathway-label">Five</span>
+          <span class="tg-pathway-name">In Service to Others</span>
+        </div>
+      </div>
+
+      <!-- detail cards -->
+      <div class="tg-phases">
+
+        <div class="tg-phase">
+          <div class="tg-phase-image" style="background-image: url('images/uploads/tg-phase-1-caves.jpeg');"></div>
+          <div class="tg-phase-content">
+            <span class="tg-phase-num">One</span>
+            <h3 class="tg-phase-title">Foundations &amp; Acclimation</h3>
+            <p class="tg-phase-lead">Astronauts train in pools before they go to space. Divers find their gait in the shallow before the open ocean.</p>
+            <p class="tg-phase-body">We begin with clearing. With acclimation. With learning to hold our water through the altitude change. The day-to-day self is tended. New states of being are met without losing ground.</p>
+          </div>
+        </div>
+
+        <div class="tg-phase">
+          <div class="tg-phase-image" style="background-image: url('images/uploads/tg-phase-2-hands.png');"></div>
+          <div class="tg-phase-content">
+            <span class="tg-phase-num">Two</span>
+            <h3 class="tg-phase-title">Communication &amp; Etiquette</h3>
+            <p class="tg-phase-lead">Listening with clarity. Being communicated with clearly.</p>
+            <p class="tg-phase-body">The reciprocity, the discernment, the relational manners of working with the other worlds. The skill is developed, then carried back to the day-to-day self. The identity and ego come along as ballast &mdash; a pendulum acclimating to a higher oscillation, holding stable ground.</p>
+          </div>
+        </div>
+
+        <div class="tg-phase">
+          <div class="tg-phase-image" style="background-image: url('images/uploads/tg-phase-3-geometry.jpeg');"></div>
+          <div class="tg-phase-content">
+            <span class="tg-phase-num">Three</span>
+            <h3 class="tg-phase-title">Ritual as Technician</h3>
+            <p class="tg-phase-lead">In ceremony, you are a technician.</p>
+            <p class="tg-phase-body">Exploring the mechanics of what can and cannot be worked with. What is a lever. What is a pipe. The scope and skill of practice. You listen. You receive guidance. You discern. You implement.</p>
+          </div>
+        </div>
+
+        <div class="tg-phase">
+          <div class="tg-phase-image" style="background-image: url('images/uploads/tg-phase-4-spiral.png');"></div>
+          <div class="tg-phase-content">
+            <span class="tg-phase-num">Four</span>
+            <h3 class="tg-phase-title">Anchoring the Frequency</h3>
+            <p class="tg-phase-lead">The harder work.</p>
+            <p class="tg-phase-body">To rise in resonance and bring it back. To hold the field and anchor it down &mdash; here, in the body, in the day, in the world. We are not only meant to open to those energies. We are meant to anchor them down. This is what the world is asking of us now.</p>
+          </div>
+        </div>
+
+        <div class="tg-phase">
+          <div class="tg-phase-image" style="background-image: url('images/uploads/tg-phase-5-earth-hands.png');"></div>
+          <div class="tg-phase-content">
+            <span class="tg-phase-num">Five</span>
+            <h3 class="tg-phase-title">In Service to Others</h3>
+            <p class="tg-phase-lead">Once the practice is fluent, the work expands.</p>
+            <p class="tg-phase-body">Ceremony becomes rhythmic in your life. You become a liminal membrane. An oracular vessel. An interdimensional gateway. Information flows in and out &mdash; for yourself first, then for the world's intentions, then in service to others.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- ============================================
+       SECTION 8 — FOUR CAPACITIES
+       ============================================ -->
+  <section class="tg-benefits">
+    <div class="tg-benefits-inner">
+      <div class="tg-benefits-head">
+        <span class="tg-eyebrow">What This Cultivates</span>
+        <h2 class="tg-h2">Four formidable <em>capacities.</em></h2>
+      </div>
+      <div class="tg-benefits-grid">
+        <div class="tg-benefit">
+          <div class="tg-benefit-image" style="background-image: url('https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=400&h=400&fit=crop&q=80');"></div>
+          <span class="tg-benefit-glyph">I</span>
+          <h3 class="tg-benefit-title">Skilled mediation.</h3>
+          <p class="tg-benefit-body">The artisan's touch of inspirationally skilled mastery, applied between the worlds.</p>
+        </div>
+        <div class="tg-benefit">
+          <div class="tg-benefit-image" style="background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&h=400&fit=crop&q=80');"></div>
+          <span class="tg-benefit-glyph">II</span>
+          <h3 class="tg-benefit-title">Fluency in the worlds.</h3>
+          <p class="tg-benefit-body">Moving between the seen and the unseen with steadiness, etiquette, and discernment.</p>
+        </div>
+        <div class="tg-benefit">
+          <div class="tg-benefit-image" style="background-image: url('https://images.unsplash.com/photo-1519074002996-a69e7ac46a42?w=400&h=400&fit=crop&q=80');"></div>
+          <span class="tg-benefit-glyph">III</span>
+          <h3 class="tg-benefit-title">Spirit Doctoring.</h3>
+          <p class="tg-benefit-body">The work of medicine &mdash; diagnosis, intercession, restoration across the worlds.</p>
+        </div>
+        <div class="tg-benefit">
+          <div class="tg-benefit-image" style="background-image: url('https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=400&h=400&fit=crop&q=80');"></div>
+          <span class="tg-benefit-glyph">IV</span>
+          <h3 class="tg-benefit-title">Service in the world.</h3>
+          <p class="tg-benefit-body">Anchoring the frequency back here &mdash; in the body, in the day, in the world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ============================================
+       SECTION 9 — WHAT THIS SCHOOL INCLUDES
+       ============================================ -->
+  <section class="tg-includes">
+    <div class="tg-includes-inner">
+      <div class="tg-includes-head">
+        <span class="tg-eyebrow">What This School Includes</span>
+        <h2 class="tg-h2">Six provisions, in every <em>studio.</em></h2>
+      </div>
+      <div class="tg-includes-grid">
+        <div class="tg-include">
+          <div class="tg-include-image" style="background-image: url('https://images.unsplash.com/photo-1529176043003-72ea5fa9c7a7?w=300&h=300&fit=crop&q=80');"></div>
+          <h3 class="tg-include-title">Cohort teaching calls.</h3>
+          <p class="tg-include-body"><span class="tg-placeholder">Frequency TBD</span> live cohort calls held on the wheel of the year, in community with fellow practitioners.</p>
+        </div>
+        <div class="tg-include">
+          <div class="tg-include-image" style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?w=300&h=300&fit=crop&q=80');"></div>
+          <h3 class="tg-include-title">Pre-recorded foundational lessons.</h3>
+          <p class="tg-include-body"><span class="tg-placeholder">Hours TBD</span> of pre-recorded teachings on cosmology, lineage, and method.</p>
+        </div>
+        <div class="tg-include">
+          <div class="tg-include-image" style="background-image: url('https://images.unsplash.com/photo-1545208723-fa2da08a6a26?w=300&h=300&fit=crop&q=80');"></div>
+          <h3 class="tg-include-title">Practice &amp; ritual support calls.</h3>
+          <p class="tg-include-body">Ongoing support calls for guided practice, ceremony rehearsal, and questions that arise mid-walk.</p>
+        </div>
+        <div class="tg-include">
+          <div class="tg-include-image" style="background-image: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=300&h=300&fit=crop&q=80');"></div>
+          <h3 class="tg-include-title">One-on-one mentorship.</h3>
+          <p class="tg-include-body"><span class="tg-placeholder">Sessions TBD</span> per cohort &mdash; private mentorship with Adi Marie for personal discernment.</p>
+        </div>
+        <div class="tg-include">
+          <div class="tg-include-image" style="background-image: url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=300&h=300&fit=crop&q=80');"></div>
+          <h3 class="tg-include-title">Community of co-practitioners.</h3>
+          <p class="tg-include-body">A held community of fellow students, with small breakout groups and asynchronous discussion.</p>
+        </div>
+        <div class="tg-include">
+          <div class="tg-include-image" style="background-image: url('https://images.unsplash.com/photo-1490127252417-7c393f993ee4?w=300&h=300&fit=crop&q=80');"></div>
+          <h3 class="tg-include-title">Curated readings &amp; practices.</h3>
+          <p class="tg-include-body">Reading lists, guided meditations, ritual practice instructions, and source material from across lineages.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ============================================
+       ATMOSPHERIC DIVIDER — altar in forest
+       ============================================ -->
+  <div class="tg-divider tg-divider-altar" aria-hidden="true"></div>
+
+<!-- ============================================
+       SECTION 12 — VOICES FROM THE WORK
+       ============================================ -->
+  <section class="tg-voices">
+    <div class="tg-voices-inner">
+
+      <div class="tg-voices-head">
+        <span class="tg-eyebrow">Voices from the Work</span>
+        <h2 class="tg-h2">What students <em>carry forward.</em></h2>
+        <span class="tg-placeholder">Placeholder voices &mdash; Adi to provide real student quotes</span>
+      </div>
+
+      <div class="tg-voices-list">
+        <div class="tg-voice">
+          <p class="tg-voice-body">[Placeholder testimony &mdash; replace with student quote. Pattern: 2&ndash;4 sentences naming the experience of the work, what shifted, what they carry now. Direct, unembellished, in the student's own words.]</p>
+          <span class="tg-voice-attr">[Name] &middot; [Role / Location]</span>
+        </div>
+        <div class="tg-voice">
+          <p class="tg-voice-body">[Placeholder testimony &mdash; replace with student quote. Ideally a voice from a different studio than the first, or a different depth of engagement.]</p>
+          <span class="tg-voice-attr">[Name] &middot; [Role / Location]</span>
+        </div>
+        <div class="tg-voice">
+          <p class="tg-voice-body">[Placeholder testimony &mdash; consider one from a practitioner who integrates the work into their existing field (medicine, therapy, leadership, art).]</p>
+          <span class="tg-voice-attr">[Name] &middot; [Role / Location]</span>
+        </div>
+        <div class="tg-voice">
+          <p class="tg-voice-body">[Placeholder testimony &mdash; consider one that speaks to the long arc of practice across multiple cohorts.]</p>
+          <span class="tg-voice-attr">[Name] &middot; [Role / Location]</span>
+        </div>
+      </div>
+
+      <div class="tg-voices-cta">
+        <a href="voices.html" class="tg-cta-soft">Read more voices from the work &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+<!-- ============================================
+       ATMOSPHERIC DIVIDER — ceremonial smudge in forest
+       ============================================ -->
+  <div class="tg-divider tg-divider-smoke" aria-hidden="true"></div>
+
+<!-- ============================================
+       SECTION 10 — IS THIS FOR YOU / NOT FOR YOU (two-column)
+       ============================================ -->
+  <section class="tg-fit">
+    <div class="tg-fit-inner">
+      <div class="tg-fit-head">
+        <span class="tg-eyebrow">Honest Self-Selection</span>
+        <h2 class="tg-h2">Is this for <em>you?</em></h2>
+        <p class="tg-intro">The Training Grounds is not for everyone. Read both columns honestly.</p>
+      </div>
+      <div class="tg-fit-grid">
+
+        <div class="tg-fit-col">
+          <span class="tg-fit-col-label">This is for you if</span>
+          <h3>You recognize yourself here.</h3>
+          <ul class="tg-fit-list">
+            <li>You carry a calling to mediate between the worlds &mdash; even if you can't yet name it.</li>
+            <li>Your existing field (medicine, therapy, leadership, art, craft) calls for a layer of ceremonial fluency.</li>
+            <li>You are ready to do real interior work &mdash; clearing, acclimation, the long acclimation of a true practice.</li>
+            <li>You can show up to live cohort calls and commit to the rhythm of a year.</li>
+            <li>You have parallel support for ongoing therapeutic work if past trauma needs holding outside the school.</li>
+            <li>You understand reciprocity as participation, not transaction.</li>
+          </ul>
+        </div>
+
+        <div class="tg-fit-col tg-fit-col-no">
+          <span class="tg-fit-col-label">This is not for you if</span>
+          <h3>You may be looking elsewhere.</h3>
+          <ul class="tg-fit-list">
+            <li>You're looking for a weekend workshop or a one-time certification.</li>
+            <li>You want a quick credential to add to a marketing page.</li>
+            <li>You are in acute crisis right now and need clinical care first.</li>
+            <li>You cannot commit to live cohort participation across the year.</li>
+            <li>You're seeking entertainment, intellectual collection, or spiritual tourism.</li>
+            <li>You expect to bypass the application or skip the Intake &amp; Inquiry conversation.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- ============================================
+       SECTION 11 — PRICING & RECIPROCITY (tiered)
+       ============================================ -->
+  <section class="tg-pricing">
+    <div class="tg-pricing-inner">
+
+      <div class="tg-pricing-head">
+        <span class="tg-eyebrow">Reciprocity</span>
+        <h2 class="tg-h2">Reciprocity flows from the work that <em>takes shape.</em></h2>
+        <p class="tg-intro">Twelve students per cohort. One-year intervals, with tracks of one to eight years for those who walk the long arc. The four-tier Sacred Reciprocity sliding scale per year &mdash; choose the tier that reflects your relationship to abundance and access in this season of your life.</p>
+      </div>
+
+      <div class="tg-tier-grid">
+        <div class="tg-tier tg-tier-patron">
+          <span class="tg-tier-tier">Tier One</span>
+          <h3 class="tg-tier-name">Patron Rate</h3>
+          <p class="tg-tier-amount">$18,000</p>
+          <p class="tg-tier-period">per year &middot; 200% of accessibility</p>
+          <p class="tg-tier-desc">&ldquo;A blend of gratitude and generosity &mdash; one of the ways the accessibility rates are possible at all.&rdquo;</p>
+          <a href="school-application.html" class="tg-tier-cta">Apply &middot; Patron</a>
+        </div>
+        <div class="tg-tier tg-tier-abundance">
+          <span class="tg-tier-tier">Tier Two</span>
+          <h3 class="tg-tier-name">Abundance Rate</h3>
+          <p class="tg-tier-amount">$15,000</p>
+          <p class="tg-tier-period">per year &middot; the full rate</p>
+          <p class="tg-tier-desc">&ldquo;Reflects the real cost of my time, materials, preparation, and the depth of skill I bring.&rdquo;</p>
+          <a href="school-application.html" class="tg-tier-cta">Apply &middot; Abundance</a>
+        </div>
+        <div class="tg-tier tg-tier-community">
+          <span class="tg-tier-tier">Tier Three</span>
+          <h3 class="tg-tier-name">Community Rate</h3>
+          <p class="tg-tier-amount">$12,000</p>
+          <p class="tg-tier-period">per year &middot; at-cost community rate</p>
+          <p class="tg-tier-desc">&ldquo;This is where I break even &mdash; supportive, fair, sustainable.&rdquo;</p>
+          <a href="school-application.html" class="tg-tier-cta">Apply &middot; Community</a>
+        </div>
+        <div class="tg-tier tg-tier-accessibility">
+          <span class="tg-tier-tier">Tier Four</span>
+          <h3 class="tg-tier-name">Accessibility Rate</h3>
+          <p class="tg-tier-amount">$9,000</p>
+          <p class="tg-tier-period">per year &middot; limited number held</p>
+          <p class="tg-tier-desc">&ldquo;It&rsquo;s essentially a scholarship rate, held because care should remain reachable during hard seasons.&rdquo;</p>
+          <a href="school-application.html" class="tg-tier-cta">Apply &middot; Accessibility</a>
+        </div>
+      </div>
+
+      <p class="tg-tier-note">Payment plans are available at every tier &mdash; enrollment is held with a deposit. If what&rsquo;s true for you sits outside these four shapes, bring it into the Intake &amp; Inquiry. The arrangement is shaped together there, where context is held. The school is one room in this larger work &mdash; there are many other ways to be in it with me. <a href="sacred-reciprocity.html" class="tg-cta-soft" style="margin-top: 1rem;">Read about Sacred Reciprocity &rarr;</a></p>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       ATMOSPHERIC DIVIDER — ceremonial smudge in forest
+       ============================================ -->
+  <div class="tg-divider tg-divider-smudge" aria-hidden="true"></div>
+
+<!-- ============================================
+       FOUNDER LETTER — moved between smudge divider and Schedule
+       ============================================ -->
+  <section class="tg-letter">
+    <div class="tg-letter-inner">
+      <div class="tg-letter-portrait" style="background-image: url('images/uploads/tg-letter-portrait-outside.jpg');"></div>
+      <div class="tg-letter-head">
+        <span class="tg-eyebrow">A Note from Adi Marie</span>
+        <h2 class="tg-letter-h">A letter to the one who is <em>reading.</em></h2>
+      </div>
+      <div class="tg-letter-body">
+        <p class="tg-letter-greet">If you have read this far, I want you to know that I see you.</p>
+        <p>The world needs more practitioners. More people in the field. Holding sacred spaces. Holding front lines. Pollinating the flowers in the garden of life. Restoring beauty. Balance. Harmony.</p>
+        <p>I built this school for those of us who were born with the gifts but without the elders. For those who are ready to come into the discipline and devotion of a real practice. For those whose work is meant to matter beyond their own healing.</p>
+        <p>The Training Grounds is not the only school. But if you have read this far, it might be your school. The first step is a conversation. Apply when you are ready. We will meet you at the threshold.</p>
+        <p><em>With deep love,</em></p>
+      </div>
+      <div class="tg-letter-sign">
+        <span class="tg-letter-sign-name">Adi Marie</span>
+        <span class="tg-letter-sign-role">Founder &middot; The Animist Apothecary</span>
+      </div>
+    </div>
+  </section>
+
+<!-- ============================================
+       SECTION 13 — SCHEDULE & LOGISTICS
+       ============================================ -->
+  <section class="tg-schedule">
+    <div class="tg-schedule-inner">
+
+      <div class="tg-schedule-head">
+        <span class="tg-eyebrow">Schedule &amp; Logistics</span>
+        <h2 class="tg-h2">Cohorts open on the wheel of the <em>year.</em></h2>
+        <span class="tg-placeholder">Placeholder schedule &mdash; Adi to confirm cohort dates</span>
+      </div>
+
+      <div class="tg-schedule-grid">
+        <div class="tg-schedule-block">
+          <span class="tg-schedule-label">Next Cohort Opening</span>
+          <p class="tg-schedule-value">[Date TBD]</p>
+          <p class="tg-schedule-detail">Applications open <span class="tg-placeholder">[months]</span> before each cohort begins.</p>
+        </div>
+        <div class="tg-schedule-block">
+          <span class="tg-schedule-label">Cohort Length</span>
+          <p class="tg-schedule-value">One year per interval</p>
+          <p class="tg-schedule-detail">A full developmental arc held on the wheel of the year &mdash; equinox to equinox, or solstice to solstice. Tracks of one to eight years for those who walk the long arc.</p>
+        </div>
+        <div class="tg-schedule-block">
+          <span class="tg-schedule-label">Cohort Size</span>
+          <p class="tg-schedule-value">Twelve students</p>
+          <p class="tg-schedule-detail">Small intentional cohorts. Limited capacity per year so each student is held in real relationship.</p>
+        </div>
+        <div class="tg-schedule-block">
+          <span class="tg-schedule-label">Meeting Cadence</span>
+          <p class="tg-schedule-value"><span class="tg-placeholder">Frequency TBD</span></p>
+          <p class="tg-schedule-detail">Live cohort calls plus practice support sessions. All calls recorded; live participation strongly encouraged.</p>
+        </div>
+        <div class="tg-schedule-block">
+          <span class="tg-schedule-label">Time Zone</span>
+          <p class="tg-schedule-value">Pacific (primary)</p>
+          <p class="tg-schedule-detail">Calls held at <span class="tg-placeholder">[time TBD]</span> Pacific. Recordings available within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ============================================
+       SECTION 16 — ETHICS & CONTAINER — NEW
+       ============================================ -->
+  <section class="tg-ethics">
+    <div class="tg-ethics-inner">
+      <div class="tg-ethics-head">
+        <span class="tg-eyebrow">Ethics &amp; Container</span>
+        <h2 class="tg-h2">How the work is <em>held.</em></h2>
+      </div>
+      <div class="tg-ethics-grid">
+        <div class="tg-ethics-block">
+          <span class="tg-ethics-label">Consent &amp; Conduct</span>
+          <p class="tg-ethics-body">Every cohort begins with explicit agreements around consent, confidentiality, and conduct. The container is named, agreed to, and held throughout.</p>
+        </div>
+        <div class="tg-ethics-block">
+          <span class="tg-ethics-label">Refund &amp; Withdrawal</span>
+          <p class="tg-ethics-body"><span class="tg-placeholder">Refund window TBD</span>. After the cohort begins, withdrawal is honored case by case; the conversation is part of the work.</p>
+        </div>
+        <div class="tg-ethics-block">
+          <span class="tg-ethics-label">Scholarship Process</span>
+          <p class="tg-ethics-body">Scholarships are reviewed quarterly. Apply through the standard application, indicating the Scholarship tier. Decisions are made with care for need and capacity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ============================================
+       SECTION 17 — FAQ
+       ============================================ -->
+  <section class="tg-faq">
+    <div class="tg-faq-inner">
+
+      <div class="tg-faq-head">
+        <span class="tg-eyebrow">Frequently Asked Questions</span>
+        <h2 class="tg-h2">Common <em>questions.</em></h2>
+        <span class="tg-placeholder">Placeholder answers &mdash; Adi to refine each one</span>
+      </div>
+
+      <details>
+        <summary>What is the time commitment?</summary>
+        <div class="tg-faq-body">
+          <p>[Placeholder answer. Name the weekly time expectation (live calls + practice + reading), the cadence across the year, what's optional vs. required.]</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How is this different from psychotherapy or coaching?</summary>
+        <div class="tg-faq-body">
+          <p>[Placeholder answer. Name the relational-ceremonial scope, the lineage it sits in, how it relates to but does not replace therapeutic work.]</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do I need prior ceremony or shamanic experience?</summary>
+        <div class="tg-faq-body">
+          <p>[Placeholder answer. Clarify which studios are entry-level vs. for those with existing practice, what foundational orientation is provided.]</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What if I can't attend all the live calls?</summary>
+        <div class="tg-faq-body">
+          <p>[Placeholder answer. Recording policy, asynchronous participation, expectations around live attendance for community cohesion.]</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Are there in-person components?</summary>
+        <div class="tg-faq-body">
+          <p>[Placeholder answer. Virtual cohorts as the default, occasional in-person intensives in Topanga Canyon, private travel engagements.]</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What if I'm not sure which studio is right for me?</summary>
+        <div class="tg-faq-body">
+          <p>[Placeholder answer. The Intake &amp; Inquiry call is precisely for this &mdash; discernment, alignment, naming where you belong now and where you might travel next.]</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How are sensitive personal or family material held?</summary>
+        <div class="tg-faq-body">
+          <p>[Placeholder answer. Ethics of containment, limits of group work for processing trauma, recommendation for parallel therapeutic support, safety protocols held in cohort space.]</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How does the reciprocity / sliding scale work?</summary>
+        <div class="tg-faq-body">
+          <p>[Placeholder answer. Explain how the four tiers function, when payment plans are available, how the Intake &amp; Inquiry conversation shapes the right arrangement.]</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What is the application and enrollment process?</summary>
+        <div class="tg-faq-body">
+          <p>[Placeholder answer. Walk through Application &rarr; Invitation to Intake &amp; Inquiry call &rarr; Discernment together &rarr; Enrollment offered &rarr; Cohort opens. Name the timeline.]</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Can I apply to more than one studio?</summary>
+        <div class="tg-faq-body">
+          <p>[Placeholder answer. Typically one studio per cohort year; explain the layered curriculum across years if students wish to study multiple studios over time.]</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>I have a question that isn't here.</summary>
+        <div class="tg-faq-body">
+          <p>Write to us. Every inquiry is read by hand. <a href="inquiry.html" class="tg-cta-soft" style="display: inline-block; margin-top: 0.5rem;">Send a note &rarr;</a></p>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+<!-- ============================================
+       ATMOSPHERIC DIVIDER — ceremonial heart hands
+       ============================================ -->
+  <div class="tg-divider tg-divider-heart" aria-hidden="true"></div>
+
+<!-- ============================================
+       SECTION 19 — SEASONAL LETTERS
+       ============================================ -->
+  <section class="tg-newsletter" id="subscribe">
+    <div class="tg-newsletter-banner" role="img" aria-label="Adi Marie at the apothecary writing desk"></div>
+    <div class="tg-newsletter-inner">
+      <span class="tg-eyebrow">Seasonal Letters</span>
+      <h2 class="tg-h2">Stay close to the <em>work.</em></h2>
+      <p class="tg-body">Slow letters from the practice. Sent with the seasons. Free, no obligation.</p>
+      <form class="tg-newsletter-form" onsubmit="event.preventDefault();">
+        <input type="email" placeholder="email" required aria-label="email">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+<footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Solo Work</a></li>
+            <li><a href="group-work.html">Group Work</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="book.html">Begin Here</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="divinations.html">Divinations</a></li>
+            <li><a href="inquiry.html">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/content-loader.js" defer></script>
+  <script src="js/booking-modal.js" defer></script>
+</body>
+</html>

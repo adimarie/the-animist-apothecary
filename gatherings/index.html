@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon-180.png">
+  <link rel="shortcut icon" href="../favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Gatherings &middot; The Animist Apothecary</title>
+  <meta name="description" content="In-person ceremonial gatherings, held for the community.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=v32">
+  <link rel="stylesheet" href="../css/site-header.css?v=v18">
+  <style>
+    body[data-content-page="gatherings"] .gth-section { background: var(--paper, #F7F5F0); padding: 56px 24px 88px; }
+    body[data-content-page="gatherings"] .gth-inner { max-width: 760px; margin: 0 auto; }
+    body[data-content-page="gatherings"] .gth-intro { text-align: center; max-width: 620px; margin: 0 auto 40px; }
+    body[data-content-page="gatherings"] .gth-intro .section-label { display: block; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold, #C9A84C); font-weight: 600; margin-bottom: 14px; }
+    body[data-content-page="gatherings"] .gth-intro h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(28px, 5vw, 40px); font-weight: 500; line-height: 1.15; color: var(--bark, #2D2A26); margin: 0 0 16px; }
+    body[data-content-page="gatherings"] .gth-intro h2 em { font-style: italic; color: var(--gold, #C9A84C); }
+    body[data-content-page="gatherings"] .gth-intro p { font-size: 17px; line-height: 1.75; color: var(--ink-quiet, #5A554C); margin: 0 auto; }
+
+    /* ── Gate card (token entry) ── */
+    body[data-content-page="gatherings"] .gth-card { background: #fff; border: 1px solid rgba(45,42,38,0.10); border-radius: 14px; padding: 32px 30px; box-shadow: 0 10px 30px rgba(45,42,38,0.06); margin: 0 auto 28px; max-width: 560px; }
+    body[data-content-page="gatherings"] .gth-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--bark, #2D2A26); margin: 0 0 8px; text-align: center; }
+    body[data-content-page="gatherings"] .gth-card p.gth-helper { font-size: 14.5px; line-height: 1.65; color: var(--ink-quiet, #5A554C); text-align: center; margin: 0 0 18px; }
+    body[data-content-page="gatherings"] .gth-key-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    body[data-content-page="gatherings"] .gth-key-row input { flex: 1 1 200px; font-family: 'Inter', sans-serif; font-size: 15px; padding: 13px 16px; border: 1px solid rgba(45,42,38,0.18); border-radius: 10px; background: var(--paper, #F7F5F0); color: var(--bark, #2D2A26); outline: none; text-align: center; letter-spacing: 0.08em; }
+    body[data-content-page="gatherings"] .gth-key-row input:focus { border-color: var(--gold, #C9A84C); }
+    body[data-content-page="gatherings"] .gth-btn { font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; padding: 0.9rem 1.6rem; border-radius: 10px; border: none; cursor: pointer; transition: all 0.25s ease; display: inline-block; text-align: center; }
+    body[data-content-page="gatherings"] .gth-btn-primary { background: var(--bark, #2D2A26); color: var(--paper, #F7F5F0); }
+    body[data-content-page="gatherings"] .gth-btn-primary:hover { background: var(--gold, #C9A84C); color: var(--bark, #2D2A26); }
+    body[data-content-page="gatherings"] .gth-btn-primary:disabled { opacity: 0.5; cursor: default; }
+    body[data-content-page="gatherings"] .gth-error { display: none; color: #9a4a2f; font-size: 13.5px; text-align: center; margin-top: 12px; }
+
+    /* ── Newcomer gateway ── */
+    body[data-content-page="gatherings"] .gth-gateway { max-width: 620px; margin: 8px auto 0; text-align: center; }
+    body[data-content-page="gatherings"] .gth-divider { display: flex; align-items: center; gap: 14px; color: var(--gold, #C9A84C); margin: 36px auto 28px; max-width: 420px; font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; }
+    body[data-content-page="gatherings"] .gth-divider::before, body[data-content-page="gatherings"] .gth-divider::after { content: ""; flex: 1; height: 1px; background: rgba(201,168,76,0.35); }
+    body[data-content-page="gatherings"] .gth-gateway h3 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: var(--bark, #2D2A26); margin: 0 0 12px; }
+    body[data-content-page="gatherings"] .gth-gateway p { font-size: 15.5px; line-height: 1.75; color: var(--ink-quiet, #5A554C); margin: 0 auto 14px; }
+    body[data-content-page="gatherings"] .gth-steps { text-align: left; max-width: 520px; margin: 18px auto 26px; padding: 0; list-style: none; }
+    body[data-content-page="gatherings"] .gth-steps li { display: flex; gap: 14px; padding: 12px 0; border-top: 1px solid rgba(45,42,38,0.08); }
+    body[data-content-page="gatherings"] .gth-steps li:first-child { border-top: none; }
+    body[data-content-page="gatherings"] .gth-step-num { flex: 0 0 28px; height: 28px; border-radius: 50%; background: var(--parchment-warm, #F4EAD3); color: var(--copper, #886039); font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+    body[data-content-page="gatherings"] .gth-step-body { font-size: 14.5px; line-height: 1.6; color: var(--bark, #2D2A26); }
+    body[data-content-page="gatherings"] .gth-step-body a { color: var(--copper, #886039); }
+
+    /* ── Forms (questionnaire + registration) ── */
+    body[data-content-page="gatherings"] .gth-field { margin-bottom: 16px; text-align: left; }
+    body[data-content-page="gatherings"] .gth-field label { display: block; font-family: 'Inter', sans-serif; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-quiet, #5A554C); font-weight: 600; margin-bottom: 7px; }
+    body[data-content-page="gatherings"] .gth-field input, body[data-content-page="gatherings"] .gth-field textarea { width: 100%; box-sizing: border-box; font-family: 'Inter', sans-serif; font-size: 15px; color: var(--bark, #2D2A26); padding: 12px 14px; border: 1px solid rgba(45,42,38,0.18); border-radius: 10px; background: var(--paper, #F7F5F0); outline: none; }
+    body[data-content-page="gatherings"] .gth-field textarea { min-height: 92px; resize: vertical; line-height: 1.55; }
+    body[data-content-page="gatherings"] .gth-field input:focus, body[data-content-page="gatherings"] .gth-field textarea:focus { border-color: var(--gold, #C9A84C); }
+    body[data-content-page="gatherings"] .gth-two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    body[data-content-page="gatherings"] .gth-status { font-size: 14px; margin-top: 12px; text-align: center; min-height: 20px; }
+
+    /* ── Gated: gathering cards ── */
+    body[data-content-page="gatherings"] #gatedContent { display: none; }
+    body[data-content-page="gatherings"] .gth-welcome { text-align: center; margin: 0 auto 36px; max-width: 620px; }
+    body[data-content-page="gatherings"] .gth-season-label { font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold, #C9A84C); margin: 30px 0 16px; text-align: center; }
+    body[data-content-page="gatherings"] .gth-gathering { background: #fff; border: 1px solid rgba(45,42,38,0.10); border-radius: 14px; padding: 28px 28px; margin: 0 auto 18px; box-shadow: 0 8px 24px rgba(45,42,38,0.05); transition: box-shadow 0.3s ease, transform 0.3s ease; }
+    body[data-content-page="gatherings"] .gth-gathering:hover { box-shadow: 0 14px 34px rgba(45,42,38,0.09); transform: translateY(-2px); }
+    body[data-content-page="gatherings"] .gth-gathering .gth-kind { font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--copper, #886039); }
+    body[data-content-page="gatherings"] .gth-gathering h3 { font-family: 'Cormorant Garamond', serif; font-size: 27px; font-weight: 600; color: var(--bark, #2D2A26); margin: 6px 0 6px; }
+    body[data-content-page="gatherings"] .gth-gathering h3 em { font-style: italic; color: var(--gold, #C9A84C); }
+    body[data-content-page="gatherings"] .gth-meta { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--ink-quiet, #5A554C); margin: 0 0 12px; display: flex; gap: 16px; flex-wrap: wrap; }
+    body[data-content-page="gatherings"] .gth-meta span { display: inline-flex; align-items: center; gap: 6px; }
+    body[data-content-page="gatherings"] .gth-gathering .gth-desc { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.75; color: #3a3530; margin: 0 0 16px; }
+    body[data-content-page="gatherings"] .gth-reserve-bar { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; border-top: 1px solid rgba(45,42,38,0.08); padding-top: 16px; }
+    body[data-content-page="gatherings"] .gth-deposit { font-family: 'Inter', sans-serif; font-size: 13.5px; color: var(--ink-quiet, #5A554C); }
+    body[data-content-page="gatherings"] .gth-deposit strong { color: var(--bark, #2D2A26); font-size: 16px; }
+    body[data-content-page="gatherings"] .gth-regform { display: none; margin-top: 20px; border-top: 1px solid rgba(45,42,38,0.08); padding-top: 20px; }
+    body[data-content-page="gatherings"] .gth-regform.open { display: block; }
+    body[data-content-page="gatherings"] .gth-pay { text-align: center; margin-top: 8px; }
+    body[data-content-page="gatherings"] .gth-pay a { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; padding: 0.9rem 1.8rem; border-radius: 10px; background: var(--copper, #886039); color: #fff; }
+    body[data-content-page="gatherings"] .gth-pay a:hover { background: #6f4d2d; }
+    body[data-content-page="gatherings"] .gth-fine { font-size: 12.5px; color: var(--ink-quiet, #5A554C); margin-top: 12px; text-align: center; }
+    @media (max-width: 600px) {
+      body[data-content-page="gatherings"] .gth-two { grid-template-columns: 1fr; }
+      body[data-content-page="gatherings"] .gth-section { padding: 40px 16px 64px; }
+    }
+  </style>
+</head>
+<body data-content-page="gatherings">
+
+      <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <img src="../images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span>
+      </a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../ceremonial-coaching.html">Ceremonial Coaching</a></li>
+          <li><a href="../solo-work.html">Private Work</a></li>
+          <li><a href="../group-work.html">Group Work</a></li>
+          <li><a href="../training-grounds.html">The School</a></li>
+          <li><a href="../writings.html">Resources</a></li>
+        </ul>
+      </nav>
+      <a href="../sessions.html" class="nav-cta apply-btn">Apply</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="gth-section">
+    <div class="gth-inner">
+
+      <!-- ════════ GATEWAY (shown until a valid token unlocks) ════════ -->
+      <div id="communityGate">
+        <div class="gth-intro">
+          <span class="section-label">The Community</span>
+          <h2>The <em>gatherings</em></h2>
+          <p>The in-person work &mdash; seasonal sits, ceremonies, rituals, and retreats &mdash; is held close, by acquaintance, for the wellbeing of everyone in the circle.</p>
+        </div>
+
+        <div class="gth-card">
+          <h3>Enter with your key</h3>
+          <p class="gth-helper">If Adi Marie has welcomed you in, enter the personal key she sent you.</p>
+          <form id="gateForm" autocomplete="off">
+            <div class="gth-key-row">
+              <input id="gateToken" type="text" placeholder="your personal key" aria-label="Your personal access key" required>
+              <button type="submit" class="gth-btn gth-btn-primary">Enter</button>
+            </div>
+            <p class="gth-error" id="gateError">That key isn&rsquo;t recognized. The gatherings are entered by invitation &mdash; if you believe this is a mistake, write to Adi Marie.</p>
+          </form>
+        </div>
+
+        <div class="gth-gateway">
+          <div class="gth-divider">Not yet in the circle?</div>
+          <h3>Begin with an Intake &amp; Inquiry</h3>
+          <p>This work asks for relationship first. We meet, we listen, and we tend the ground with care before anyone is brought into the gatherings. Two gentle steps:</p>
+          <ul class="gth-steps">
+            <li>
+              <span class="gth-step-num">1</span>
+              <span class="gth-step-body"><strong>Schedule an Intake &amp; Inquiry call</strong> &mdash; a quiet hour to meet. <a href="../sessions.html#schedule">Find an hour &rarr;</a></span>
+            </li>
+            <li>
+              <span class="gth-step-num">2</span>
+              <span class="gth-step-body"><strong>Share a few reflections</strong> below, so Adi can hold your coming with sensitivity. Once you&rsquo;ve met, she&rsquo;ll send your personal key.</span>
+            </li>
+          </ul>
+
+          <div class="gth-card">
+            <h3>A few reflections</h3>
+            <p class="gth-helper">There are no wrong answers here. Share what feels true.</p>
+            <form id="communityIntakeForm" autocomplete="off">
+              <div class="gth-two">
+                <div class="gth-field"><label for="ci-first">First name</label><input id="ci-first" name="first_name" type="text" required></div>
+                <div class="gth-field"><label for="ci-last">Last name</label><input id="ci-last" name="last_name" type="text" required></div>
+              </div>
+              <div class="gth-two">
+                <div class="gth-field"><label for="ci-email">Email</label><input id="ci-email" name="email" type="email" required></div>
+                <div class="gth-field"><label for="ci-phone">Phone <span style="text-transform:none;opacity:0.6;">(optional)</span></label><input id="ci-phone" name="phone" type="tel"></div>
+              </div>
+              <div class="gth-field"><label for="ci-draw">What draws you toward this work?</label><textarea id="ci-draw" name="draw"></textarea></div>
+              <div class="gth-field"><label for="ci-path">Share something of your path and any experience with ceremony.</label><textarea id="ci-path" name="path"></textarea></div>
+              <div class="gth-field"><label for="ci-found">How did you come to find Adi Marie or this community?</label><textarea id="ci-found" name="found"></textarea></div>
+              <div class="gth-field"><label for="ci-care">Is there anything about your wellbeing you&rsquo;d want held with care?</label><textarea id="ci-care" name="care"></textarea></div>
+              <button type="submit" class="gth-btn gth-btn-primary" style="width:100%;">Send my reflections</button>
+              <p class="gth-status" id="ci-status" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════════ GATED CONTENT (members only) ════════ -->
+      <div id="gatedContent">
+        <div class="gth-welcome">
+          <span class="section-label" style="display:block;font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold,#C9A84C);font-weight:600;margin-bottom:14px;">Welcome, friend</span>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,40px);font-weight:500;line-height:1.15;color:var(--bark,#2D2A26);margin:0 0 14px;">The season&rsquo;s <em style="font-style:italic;color:var(--gold,#C9A84C);">gatherings</em></h2>
+          <p style="font-size:16px;line-height:1.75;color:var(--ink-quiet,#5A554C);margin:0;">Reserve a space with a deposit and a few words. Your place is held the moment your reflections arrive; Adi confirms by hand.</p>
+        </div>
+        <div id="gatherings-list"><p style="text-align:center;color:var(--ink-quiet,#5A554C);">Gathering the season&hellip;</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo"><img src="../images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+            <li><a href="../about.html">About Adi Marie</a></li>
+            <li><a href="../calendar.html">Calendar</a></li>
+            <li><a href="../sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="../solo-work.html">Private Work</a></li>
+            <li><a href="../group-work.html">Group Work</a></li>
+            <li><a href="../training-grounds.html">The School</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="../sessions.html">Schedule a Session</a></li>
+            <li><a href="../divinations.html">Divinations</a></li>
+            <li><a href="../inquiry.html">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/community-gate.js"></script>
+  <script>
+    (function () {
+      var G = window.AApCommunityGate;
+      var VENMO_USER = 'TheAnimistApothecary';
+
+      function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
+      function money(cents) { return '$' + (Math.round(cents) / 100).toFixed(0); }
+
+      /* ---------- Community questionnaire (gateway) ---------- */
+      var ciForm = document.getElementById('communityIntakeForm');
+      if (ciForm) {
+        ciForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var status = document.getElementById('ci-status');
+          var btn = ciForm.querySelector('button[type="submit"]');
+          var fd = new FormData(ciForm);
+          var payload = {
+            first_name: (fd.get('first_name') || '').trim(),
+            last_name: (fd.get('last_name') || '').trim(),
+            email: (fd.get('email') || '').trim().toLowerCase(),
+            phone: (fd.get('phone') || '').trim() || null,
+            answers: {
+              draw: (fd.get('draw') || '').trim(),
+              path: (fd.get('path') || '').trim(),
+              found: (fd.get('found') || '').trim(),
+              care: (fd.get('care') || '').trim()
+            }
+          };
+          if (!payload.first_name || !payload.email) { status.style.color = '#9a4a2f'; status.textContent = 'Please share your name and email.'; return; }
+          btn.disabled = true; status.style.color = 'var(--ink-quiet, #5A554C)'; status.textContent = 'Sending your reflections…';
+          fetch(G.SUPABASE_URL + '/rest/v1/community_member_intakes', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'apikey': G.ANON_KEY, 'Authorization': 'Bearer ' + G.ANON_KEY, 'Prefer': 'return=minimal' },
+            body: JSON.stringify(payload)
+          }).then(function (res) {
+            if (res.ok) {
+              ciForm.innerHTML = '<p style="text-align:center;font-family:\'Cormorant Garamond\',serif;font-size:1.25rem;line-height:1.7;color:var(--bark,#2D2A26);">Thank you. Your reflections have reached Adi Marie.<br>Once you’ve met for an Intake &amp; Inquiry, she’ll send your personal key to the gatherings.</p>';
+            } else {
+              btn.disabled = false; status.style.color = '#9a4a2f'; status.textContent = 'Something caught — please try again, or write to hello@theanimistapothecary.com.';
+            }
+          }).catch(function () {
+            btn.disabled = false; status.style.color = '#9a4a2f'; status.textContent = 'Something caught — please try again, or write to hello@theanimistapothecary.com.';
+          });
+        });
+      }
+
+      /* ---------- Gated: load + render the season's gatherings ---------- */
+      function loadGatherings() {
+        var list = document.getElementById('gatherings-list');
+        fetch(G.SUPABASE_URL + '/rest/v1/gatherings?is_published=eq.true&order=sort_order.asc,date_start.asc', {
+          headers: { 'apikey': G.ANON_KEY, 'Authorization': 'Bearer ' + G.ANON_KEY }
+        }).then(function (res) { return res.json(); }).then(function (rows) {
+          if (!rows || !rows.length) { list.innerHTML = '<p style="text-align:center;color:var(--ink-quiet,#5A554C);">No gatherings are open just now. Watch your inbox — the season’s circles are named here as they arrive.</p>'; return; }
+          var bySeason = {};
+          rows.forEach(function (g) { (bySeason[g.season || 'Upcoming'] = bySeason[g.season || 'Upcoming'] || []).push(g); });
+          var html = '';
+          Object.keys(bySeason).forEach(function (season) {
+            html += '<p class="gth-season-label">' + esc(season) + '</p>';
+            bySeason[season].forEach(function (g) { html += renderGathering(g); });
+          });
+          list.innerHTML = html;
+          rows.forEach(function (g) { wireGathering(g); });
+        }).catch(function () {
+          list.innerHTML = '<p style="text-align:center;color:#9a4a2f;">The gatherings couldn’t load right now. Please refresh, or write to hello@theanimistapothecary.com.</p>';
+        });
+      }
+
+      function renderGathering(g) {
+        var meta = [];
+        if (g.date_label) meta.push('<span>◇ ' + esc(g.date_label) + '</span>');
+        if (g.location) meta.push('<span>⚑ ' + esc(g.location) + '</span>');
+        if (g.capacity) meta.push('<span>○ ' + esc(g.capacity) + ' places</span>');
+        var fields = (g.intake_schema || []).map(function (q, i) {
+          return '<div class="gth-field"><label for="q-' + esc(g.slug) + '-' + i + '">' + esc(q.label) + '</label><textarea id="q-' + esc(g.slug) + '-' + i + '" data-key="' + esc(q.key) + '"></textarea></div>';
+        }).join('');
+        return '' +
+          '<div class="gth-gathering" data-slug="' + esc(g.slug) + '">' +
+            (g.kind ? '<span class="gth-kind">' + esc(g.kind) + '</span>' : '') +
+            '<h3>' + esc(g.title) + '</h3>' +
+            (meta.length ? '<div class="gth-meta">' + meta.join('') + '</div>' : '') +
+            (g.description ? '<p class="gth-desc">' + esc(g.description) + '</p>' : '') +
+            '<div class="gth-reserve-bar">' +
+              '<div class="gth-deposit">' + (g.deposit_amount_cents ? 'Deposit to hold your space &mdash; <strong>' + money(g.deposit_amount_cents) + '</strong>' : 'Reserve your space') + '</div>' +
+              '<button type="button" class="gth-btn gth-btn-primary" data-reserve="' + esc(g.slug) + '">Hold my space &rarr;</button>' +
+            '</div>' +
+            '<form class="gth-regform" data-regform="' + esc(g.slug) + '" autocomplete="off">' +
+              '<div class="gth-two">' +
+                '<div class="gth-field"><label>First name</label><input data-f="first" type="text" required></div>' +
+                '<div class="gth-field"><label>Last name</label><input data-f="last" type="text" required></div>' +
+              '</div>' +
+              '<div class="gth-two">' +
+                '<div class="gth-field"><label>Email</label><input data-f="email" type="email" required></div>' +
+                '<div class="gth-field"><label>Phone <span style="text-transform:none;opacity:0.6;">(optional)</span></label><input data-f="phone" type="tel"></div>' +
+              '</div>' +
+              fields +
+              '<button type="submit" class="gth-btn gth-btn-primary" style="width:100%;">Reserve my space</button>' +
+              '<p class="gth-status" data-status></p>' +
+            '</form>' +
+          '</div>';
+      }
+
+      function wireGathering(g) {
+        var card = document.querySelector('.gth-gathering[data-slug="' + cssEsc(g.slug) + '"]');
+        if (!card) return;
+        var form = card.querySelector('[data-regform]');
+        var reserveBtn = card.querySelector('[data-reserve]');
+        reserveBtn.addEventListener('click', function () {
+          form.classList.toggle('open');
+          if (form.classList.contains('open')) form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var status = form.querySelector('[data-status]');
+          var btn = form.querySelector('button[type="submit"]');
+          var first = form.querySelector('[data-f="first"]').value.trim();
+          var last = form.querySelector('[data-f="last"]').value.trim();
+          var email = form.querySelector('[data-f="email"]').value.trim().toLowerCase();
+          var phone = form.querySelector('[data-f="phone"]').value.trim();
+          if (!first || !email) { status.style.color = '#9a4a2f'; status.textContent = 'Please share your name and email.'; return; }
+          var answers = {};
+          form.querySelectorAll('textarea[data-key]').forEach(function (t) { answers[t.dataset.key] = t.value.trim(); });
+          btn.disabled = true; status.style.color = 'var(--ink-quiet, #5A554C)'; status.textContent = 'Holding your space…';
+          G.rpc('register_for_gathering', {
+            p_token: G.currentToken(), p_slug: g.slug,
+            p_first_name: first, p_last_name: last, p_email: email, p_phone: phone || null,
+            p_answers: answers
+          }).then(function (r) {
+            if (r && r.ok) {
+              showPay(form, g, first, r.deposit_cents);
+            } else {
+              btn.disabled = false; status.style.color = '#9a4a2f';
+              status.textContent = (r && r.error === 'full') ? 'This gathering is full. Write to Adi Marie to join the waitlist.'
+                : (r && r.error === 'invalid_token') ? 'Your key isn’t recognized — please re-enter it.'
+                : 'Something caught — please try again, or write to hello@theanimistapothecary.com.';
+            }
+          });
+        });
+      }
+
+      function showPay(form, g, first, depositCents) {
+        var amt = (depositCents || g.deposit_amount_cents || 0) / 100;
+        var memo = first + ' — ' + g.title + ' deposit';
+        var link = 'https://venmo.com/u/' + encodeURIComponent(VENMO_USER) + '?txn=pay' + (amt > 0 ? '&amount=' + encodeURIComponent(amt) : '') + '&note=' + encodeURIComponent(memo);
+        form.innerHTML = '' +
+          '<p style="text-align:center;font-family:\'Cormorant Garamond\',serif;font-size:1.3rem;line-height:1.6;color:var(--bark,#2D2A26);margin:0 0 6px;">Your space is held, ' + esc(first) + '.</p>' +
+          '<p style="text-align:center;color:var(--ink-quiet,#5A554C);font-size:14.5px;margin:0 0 16px;">' + (amt > 0 ? 'Send your deposit to complete the hold. Adi confirms by hand once it arrives.' : 'Adi will be in touch to confirm.') + '</p>' +
+          (amt > 0 ? '<div class="gth-pay"><a href="' + link + '" target="_blank" rel="noopener">Send ' + money(depositCents || g.deposit_amount_cents) + ' deposit on Venmo &nearr;</a></div>' +
+          '<p class="gth-fine">to <strong>@' + esc(VENMO_USER) + '</strong> &middot; please keep the note &ldquo;' + esc(memo) + '&rdquo;</p>' : '');
+      }
+
+      function cssEsc(s) { return String(s).replace(/["\\]/g, '\\$&'); }
+
+      // Load gatherings once unlocked (now, or on the unlock event)
+      if (G.currentLabel()) loadGatherings();
+      window.addEventListener('community:unlocked', loadGatherings);
+    })();
+  </script>
+</body>
+</html>

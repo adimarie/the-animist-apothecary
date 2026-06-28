@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An Open Door, By Invitation &mdash; The Animist Apothecary</title>
+  <meta name="description" content="How to enter the work &mdash; through someone you know. The Monthly Newcomers Q&A of The Animist Apothecary.">
+  <link rel="canonical" href="https://theanimistapothecary.com/letters/refer.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="An Open Door, By Invitation &mdash; The Animist Apothecary">
+  <meta property="og:description" content="The work enters through the people you know. Register for the Monthly Newcomers Q&A.">
+  <meta property="og:url" content="https://theanimistapothecary.com/letters/refer.html">
+  <meta property="og:site_name" content="The Animist Apothecary">
+  <meta property="og:image" content="https://theanimistapothecary.com/shared/og-image.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="An Open Door, By Invitation">
+  <meta name="twitter:description" content="The work enters through the people you know.">
+  <meta name="twitter:image" content="https://theanimistapothecary.com/shared/og-image.jpg">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon-180.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #F7F5F0;
+      --parchment: #F4EAD3;
+      --sand: #EFEDE6;
+      --bark: #2D2A26;
+      --bark-soft: rgba(45, 42, 38, 0.78);
+      --bark-deep: #1F1A18;
+      --gold: #C9A84C;
+      --gold-pale: #D9BB6F;
+      --sage-pale: #C5D9C6;
+      --sage-deep: #5B7553;
+      --hairline: rgba(45, 42, 38, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper);
+      color: var(--bark);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    em { font-style: italic; }
+
+    /* &mdash;&mdash;&mdash; Header &mdash;&mdash;&mdash; */
+    .slim-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 245, 240, 0.94);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border-bottom: 1px solid var(--hairline);
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+    }
+    .wordmark {
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+      font-size: 1.05rem;
+      letter-spacing: 0.22em;
+      color: var(--bark);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    /* &mdash;&mdash;&mdash; Shared &mdash;&mdash;&mdash; */
+    .eyebrow {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .hairline {
+      display: block;
+      width: 56px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem auto;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.18;
+      color: var(--bark);
+      margin-bottom: 1.5rem;
+    }
+    .section-title em { font-style: italic; }
+    p { margin-bottom: 1.25rem; color: var(--bark-soft); }
+    p:last-child { margin-bottom: 0; }
+    .center { text-align: center; }
+
+    /* &mdash;&mdash;&mdash; Inner-page hero (with image) &mdash;&mdash;&mdash; */
+    .refer-hero {
+      position: relative;
+      min-height: 78vh;
+      background: var(--bark-deep);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1.5rem 5rem;
+    }
+    .refer-hero-image {
+      position: absolute;
+      inset: 0;
+      background-image: url('../images/uploads/four-paths-labyrinth-fern.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.42;
+      filter: saturate(0.85);
+    }
+    .refer-hero-vignette {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 50%, transparent, rgba(31, 26, 24, 0.55) 80%),
+        linear-gradient(to bottom, rgba(31, 26, 24, 0.45), rgba(31, 26, 24, 0.7));
+    }
+    .refer-hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+    .refer-hero .eyebrow { color: var(--gold-pale); }
+    .refer-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: clamp(2.6rem, 5.6vw, 4.6rem);
+      line-height: 1.1;
+      color: var(--parchment);
+      margin: 0 0 1.5rem;
+    }
+    .refer-hero .subline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+      line-height: 1.55;
+      color: rgba(244, 234, 211, 0.82);
+      max-width: 600px;
+      margin: 1.5rem auto 0;
+    }
+    .refer-hero .hairline { background: var(--gold-pale); }
+
+    /* &mdash;&mdash;&mdash; Sections &mdash;&mdash;&mdash; */
+    .section {
+      padding: 4.5rem 1.5rem;
+    }
+    .section-inner {
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    .section.sand { background: var(--sand); }
+    .section.parchment { background: var(--parchment); }
+    .section.dark {
+      background: var(--bark-deep);
+      color: var(--parchment);
+      padding: 5.5rem 1.5rem;
+    }
+    .section.dark .section-title { color: var(--parchment); }
+    .section.dark .section-title em { color: var(--gold-pale); }
+    .section.dark p { color: rgba(244, 234, 211, 0.82); }
+    .section.dark .eyebrow { color: var(--gold-pale); }
+    .section.dark .hairline { background: var(--gold-pale); }
+
+    /* &mdash;&mdash;&mdash; The Q&A overview &mdash;&mdash;&mdash; */
+    .qa-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      text-align: left;
+    }
+    @media (max-width: 720px) {
+      .qa-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    .qa-item {
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(244, 234, 211, 0.18);
+    }
+    .qa-item .qa-mark {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.36em;
+      color: var(--gold-pale);
+      margin-bottom: 0.85rem;
+    }
+    .qa-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 1.25;
+      color: var(--parchment);
+      margin-bottom: 0.75rem;
+    }
+    .qa-item h3 em { font-style: italic; }
+    .qa-item p {
+      font-size: 1rem;
+      line-height: 1.55;
+      margin: 0;
+      color: rgba(244, 234, 211, 0.78);
+    }
+
+    /* &mdash;&mdash;&mdash; Form &mdash;&mdash;&mdash; */
+    .refer-form {
+      max-width: 520px;
+      margin: 2.5rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      text-align: left;
+    }
+    .refer-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+    @media (max-width: 520px) {
+      .refer-form-row { grid-template-columns: 1fr; }
+    }
+    .refer-form label {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.96rem;
+      color: var(--bark);
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+    .refer-form input,
+    .refer-form textarea {
+      width: 100%;
+      padding: 0.95rem 1rem;
+      background: var(--paper);
+      border: 1px solid var(--hairline);
+      border-radius: 4px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--bark);
+      transition: border-color 0.2s ease;
+    }
+    .refer-form textarea {
+      min-height: 110px;
+      resize: vertical;
+      line-height: 1.55;
+    }
+    .refer-form input:focus,
+    .refer-form textarea:focus {
+      outline: none;
+      border-color: var(--sage-deep);
+      box-shadow: 0 0 0 3px rgba(91, 117, 83, 0.12);
+    }
+    .field { display: flex; flex-direction: column; }
+    .refer-form button {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      padding: 1.1rem 1.5rem;
+      background: var(--bark-deep);
+      color: var(--parchment);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      margin-top: 0.75rem;
+    }
+    .refer-form button:hover { background: var(--bark); }
+
+    .trust-line {
+      margin-top: 1.5rem;
+      font-style: italic;
+      font-size: 0.98rem;
+      color: var(--bark-soft);
+    }
+    .field-note {
+      font-style: italic;
+      font-size: 0.92rem;
+      color: var(--bark-soft);
+      margin-top: 0.35rem;
+    }
+
+    .newsletter-status {
+      margin-top: 1rem;
+      font-style: italic;
+      font-size: 1rem;
+      min-height: 1.5em;
+      color: var(--bark-soft);
+      text-align: center;
+    }
+    .newsletter-status-pending { color: var(--bark-soft); }
+    .newsletter-status-success { color: var(--sage-deep); }
+    .newsletter-status-error { color: #a14a3a; }
+
+    /* &mdash;&mdash;&mdash; Referrer note (for existing community) &mdash;&mdash;&mdash; */
+    .referrer-note {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 3.5rem 1.5rem 4rem;
+      border-top: 1px solid var(--hairline);
+    }
+    .referrer-note .eyebrow { color: var(--bark); opacity: 0.65; }
+    .referrer-note h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.55rem;
+      line-height: 1.3;
+      color: var(--bark);
+      margin-bottom: 1rem;
+    }
+    .referrer-note p {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--bark-soft);
+    }
+    .referrer-note a {
+      color: var(--bark);
+      text-decoration: underline;
+      text-decoration-color: var(--gold-pale);
+      text-underline-offset: 4px;
+    }
+
+    /* &mdash;&mdash;&mdash; Sign-off &mdash;&mdash;&mdash; */
+    .signoff {
+      text-align: center;
+      padding: 4rem 1.5rem 5rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .signoff p { margin-bottom: 1rem; }
+    .signature {
+      font-family: 'Tangerine', cursive;
+      font-weight: 700;
+      font-size: 2.8rem;
+      line-height: 1;
+      color: var(--bark);
+      margin: 0.5rem 0 1.5rem;
+    }
+    .signoff-meta {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 1.5rem;
+    }
+
+    /* &mdash;&mdash;&mdash; Footer &mdash;&mdash;&mdash; */
+    .quiet-footer {
+      background: var(--bark-deep);
+      color: rgba(244, 234, 211, 0.65);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+    .quiet-footer a {
+      color: var(--parchment);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(244, 234, 211, 0.25);
+      padding-bottom: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="slim-header">
+    <a href="../index.html" class="wordmark">The Animist Apothecary</a>
+  </header>
+
+  <main>
+
+    <!-- &mdash;&mdash;&mdash; Hero &mdash;&mdash;&mdash; -->
+    <section class="refer-hero">
+      <div class="refer-hero-image" aria-hidden="true"></div>
+      <div class="refer-hero-vignette" aria-hidden="true"></div>
+      <div class="refer-hero-inner">
+        <span class="eyebrow">Bringing Someone In</span>
+        <h1>An open door,<br>by <em>invitation</em></h1>
+        <span class="hairline"></span>
+        <p class="subline">How to enter the work &mdash; through someone you know, into the room of those who keep it.</p>
+      </div>
+    </section>
+
+    <!-- &mdash;&mdash;&mdash; The philosophy of relational entry &mdash;&mdash;&mdash; -->
+    <section class="section">
+      <div class="section-inner">
+        <span class="eyebrow">A Word First</span>
+        <h2 class="section-title">This community grows by <em>relational fabric</em></h2>
+        <p>Not by cold finding. Not by ad pixel or feed scroll. Each newcomer enters the way old gatherings have always opened &mdash; through a name, through a relationship, through a thread of trust that someone is willing to carry on your behalf.</p>
+        <p>It is how the village remembers itself. It is how the elder houses kept their gates &mdash; not closed, but tended.</p>
+        <p>So if you are arriving here, you are arriving with someone in mind, or someone has put this in your hands. Either way: welcome. The door is here, and it is open.</p>
+      </div>
+    </section>
+
+    <!-- &mdash;&mdash;&mdash; Monthly Newcomers Q&A &mdash;&mdash;&mdash; -->
+    <section class="section dark">
+      <div class="section-inner center">
+        <span class="eyebrow">The Monthly Newcomers Q&amp;A</span>
+        <h2 class="section-title">An open hour, <em>once a month</em></h2>
+        <span class="hairline"></span>
+        <p>We hold this gathering on a monthly rhythm &mdash; an unhurried hour for the people arriving new to this work. To meet me. To meet a few others walking the same threshold. To ask the questions that brought you here, and to be met where you are.</p>
+
+        <div class="qa-grid">
+          <div class="qa-item">
+            <span class="qa-mark">&middot;</span>
+            <h3>What it <em>is</em></h3>
+            <p>An open hour of meeting &mdash; not a sales call, not a class. A gathering at the threshold for the people considering walking further in.</p>
+          </div>
+          <div class="qa-item">
+            <span class="qa-mark">&middot; &middot;</span>
+            <h3>What you <em>bring</em></h3>
+            <p>Your name. The name of the person who sent you. The questions you are carrying. A willingness to be seen and to listen.</p>
+          </div>
+          <div class="qa-item">
+            <span class="qa-mark">&middot; &middot; &middot;</span>
+            <h3>What you <em>leave with</em></h3>
+            <p>A clearer sense of whether this work is for you &mdash; and a place in the seasonal letter where the next gatherings live.</p>
+          </div>
+        </div>
+
+        <p style="margin-top: 3rem;">Dates and times are announced through the seasonal letter as each one approaches. Registration below holds your place on the list.</p>
+      </div>
+    </section>
+
+    <!-- &mdash;&mdash;&mdash; Registration form &mdash;&mdash;&mdash; -->
+    <section class="section parchment">
+      <div class="section-inner center">
+        <span class="eyebrow">Register Your Place</span>
+        <h2 class="section-title">Hold a seat at the next <em>Q&amp;A</em></h2>
+        <span class="hairline"></span>
+        <p>Tell me a little about you, and the person who sent you. The next gathering's time will arrive in the seasonal letter to your inbox.</p>
+
+        <form id="newsletter-form" class="refer-form newsletter-form" novalidate>
+          <div class="refer-form-row">
+            <div class="field">
+              <label for="first_name">Your first name</label>
+              <input id="first_name" type="text" name="first_name" required autocomplete="given-name">
+            </div>
+            <div class="field">
+              <label for="last_name">Your last name</label>
+              <input id="last_name" type="text" name="last_name" required autocomplete="family-name">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required autocomplete="email">
+          </div>
+
+          <div class="field">
+            <label for="referral_source">Who is bringing you to this work?</label>
+            <input id="referral_source" type="text" name="referral_source" required placeholder="Their full name" aria-describedby="referrer-note">
+            <p id="referrer-note" class="field-note">Required &mdash; attendance is by reference.</p>
+          </div>
+
+          <div class="field">
+            <label for="referral_detail">How do you know them, and what brings you?</label>
+            <textarea id="referral_detail" name="referral_detail" placeholder="A few sentences is enough."></textarea>
+          </div>
+
+          <button type="submit">Hold My Seat</button>
+        </form>
+
+        <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></div>
+
+        <p class="trust-line">Held with care, never shared. The seasonal letter is the channel for time and place.</p>
+      </div>
+    </section>
+
+    <!-- &mdash;&mdash;&mdash; Note for the referrer &mdash;&mdash;&mdash; -->
+    <section>
+      <div class="referrer-note">
+        <span class="eyebrow">If you are the one bringing someone in</span>
+        <h3>Thank you for the threshold-tending</h3>
+        <p>If you are reading this because someone you know would belong in this work, the simplest thing is to send them this page. Let them know you are the one sending them &mdash; and that your name is what holds the door open.</p>
+        <p>If you have questions, or want to think out loud about whether this is for them, <a href="mailto:its.adimarie@gmail.com?subject=A%20name%20for%20the%20Newcomers%20Q%26A">write to me directly</a>.</p>
+      </div>
+    </section>
+
+    <!-- &mdash;&mdash;&mdash; Sign-off &mdash;&mdash;&mdash; -->
+    <section class="signoff">
+      <p>With love,</p>
+      <p class="signature">Adi Marie</p>
+      <p class="signoff-meta">The Animist Apothecary &middot; Worldwide</p>
+    </section>
+
+  </main>
+
+  <footer class="quiet-footer">
+    <p>&copy; 2026 The Animist Apothecary &middot; <a href="welcome.html">Return to the seasonal letter</a> &middot; <a href="../index.html">Home</a></p>
+  </footer>
+
+  <script src="../js/newsletter.js" defer></script>
+</body>
+</html>
