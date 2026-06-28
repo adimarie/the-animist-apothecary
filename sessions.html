@@ -1880,35 +1880,44 @@
 
       <!-- Each booking option presented as an image card (page-scoped; keyed to the widget's data-svc slug) -->
       <style>
+        /* ── Wider widget + large, editorial option cards (3 per row) ── */
+        body[data-content-page="sessions"] #booking-calendar { max-width: 1180px; }
+        body[data-content-page="sessions"] .aap-bk-cal { max-width: 660px; margin-left: auto; margin-right: auto; }
         body[data-content-page="sessions"] .aap-bk-offerings {
-          display: flex; flex-wrap: wrap; justify-content: center; gap: 18px;
+          display: flex; flex-wrap: wrap; justify-content: center; gap: 26px; margin-top: 4px;
         }
         body[data-content-page="sessions"] .aap-bk-offering {
-          flex: 0 1 250px; max-width: 272px; padding: 168px 22px 22px; gap: 8px;
+          flex: 1 1 320px; max-width: 384px; gap: 0; padding: 0 0 26px;
+          border: 1px solid rgba(201,168,76,0.20); border-radius: 4px; background: #fff;
+          box-shadow: 0 8px 30px rgba(45,42,38,0.07);
+          transition: transform 0.45s cubic-bezier(.2,.7,.2,1), box-shadow 0.45s ease, border-color 0.3s ease;
         }
+        body[data-content-page="sessions"] .aap-bk-offering:hover { transform: translateY(-6px); box-shadow: 0 22px 48px rgba(45,42,38,0.14); border-color: var(--gold, #C9A84C); }
+        body[data-content-page="sessions"] .aap-bk-offering.is-on { border-color: var(--gold, #C9A84C); box-shadow: 0 0 0 1px var(--gold, #C9A84C) inset, 0 18px 42px rgba(45,42,38,0.13); }
         body[data-content-page="sessions"] .aap-bk-offering::before {
-          content: ""; position: absolute; top: 0; left: 0; right: 0; height: 150px;
+          content: ""; position: static; display: block; width: 100%; height: 216px; margin: 0 0 20px;
           background-color: var(--bk-paper, #F7F5F0); background-size: cover; background-position: center;
-          transform: none; transform-origin: center; border-radius: 0;
-          transition: filter 0.3s ease, transform 0.55s ease;
+          transform: none; transition: filter 0.45s ease, transform 0.6s cubic-bezier(.2,.7,.2,1);
         }
         body[data-content-page="sessions"] .aap-bk-offering:hover::before,
-        body[data-content-page="sessions"] .aap-bk-offering.is-on::before { filter: brightness(1.05); transform: scale(1.045); }
+        body[data-content-page="sessions"] .aap-bk-offering.is-on::before { filter: brightness(1.05) saturate(1.03); transform: scale(1.045); }
+        body[data-content-page="sessions"] .aap-bk-offering-dur { padding: 0 28px; }
+        body[data-content-page="sessions"] .aap-bk-offering-name { padding: 7px 28px 0; font-size: 30px; line-height: 1.1; }
+        body[data-content-page="sessions"] .aap-bk-offering-desc { padding: 11px 28px 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.17rem; line-height: 1.65; color: #3a3530; }
+        body[data-content-page="sessions"] .aap-bk-offering-price { margin: 18px 28px 0; padding-top: 16px; font-size: 23px; }
         body[data-content-page="sessions"] .aap-bk-offering[data-svc="intake-inquiry"]::before { background-image: url('images/uploads/download.jpg'); }
-        body[data-content-page="sessions"] .aap-bk-offering[data-svc="consultation"]::before { background-image: url('images/uploads/download-9.jpg'); }
+        body[data-content-page="sessions"] .aap-bk-offering[data-svc="consultation"]::before { background-image: url('images/uploads/download-8.jpg'); }
         body[data-content-page="sessions"] .aap-bk-offering[data-svc="guidance-counsel"]::before { background-image: url('images/uploads/cta-moss-smoke.jpg'); }
         body[data-content-page="sessions"] .aap-bk-offering[data-svc="integration-aftercare"]::before { background-image: url('images/uploads/download-6.jpg'); background-position: center 35%; }
         body[data-content-page="sessions"] .aap-bk-offering[data-svc="divination"]::before { background-image: url('images/uploads/divination-hands-medicine-bundle.jpg'); background-position: center 40%; }
-        @media (max-width: 560px) {
-          body[data-content-page="sessions"] .aap-bk-offering { flex: 1 1 100%; max-width: 340px; }
-        }
+        @media (max-width: 920px) { body[data-content-page="sessions"] .aap-bk-offering { flex: 1 1 100%; max-width: 440px; } }
       </style>
 
       <!-- In-house booking calendar (js/calendar-booking.js) — all five 1:1 sessions; each option shown as an image card -->
       <div id="booking-calendar"
            data-services="intake-inquiry,consultation,guidance-counsel,integration-aftercare,divination"
            data-category-label="One-on-One Virtual Sessions"
-           data-coming-soon="Virtual Group Sessions"
+           data-coming-soon=""
            data-venmo="TheAnimistApothecary"></div>
     </div>
   </section>
@@ -1983,6 +1992,77 @@
   </section>
 
   
+  <!-- =============================================================
+       WEEKLY GROUP VIRTUAL CALLS — the circles
+       ============================================================= -->
+  <style>
+    body[data-content-page="sessions"] .weekly-circles { background: linear-gradient(180deg, #ffffff 0%, var(--paper, #F7F5F0) 100%); padding: 5.5rem 2rem 6rem; border-top: 1px solid rgba(201,168,76,0.16); }
+    body[data-content-page="sessions"] .weekly-circles-inner { max-width: 1180px; margin: 0 auto; }
+    body[data-content-page="sessions"] .weekly-circles-head { text-align: center; max-width: 660px; margin: 0 auto 42px; }
+    body[data-content-page="sessions"] .weekly-circles-head .section-label { display: block; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold, #C9A84C); font-weight: 600; margin-bottom: 14px; }
+    body[data-content-page="sessions"] .weekly-circles-head h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(28px, 5vw, 42px); font-weight: 500; line-height: 1.12; color: var(--bark, #2D2A26); margin: 0 0 16px; }
+    body[data-content-page="sessions"] .weekly-circles-head h2 em { font-style: italic; color: var(--gold, #C9A84C); }
+    body[data-content-page="sessions"] .weekly-circles-head p { font-size: 17px; line-height: 1.75; color: var(--ink-quiet, #5A554C); margin: 0; }
+    body[data-content-page="sessions"] .weekly-circles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    body[data-content-page="sessions"] .circle-card { background: #fff; border: 1px solid rgba(201,168,76,0.20); border-radius: 4px; overflow: hidden; box-shadow: 0 8px 30px rgba(45,42,38,0.07); transition: transform 0.45s cubic-bezier(.2,.7,.2,1), box-shadow 0.45s ease, border-color 0.3s ease; display: flex; flex-direction: column; }
+    body[data-content-page="sessions"] .circle-card:hover { transform: translateY(-6px); box-shadow: 0 22px 48px rgba(45,42,38,0.14); border-color: var(--gold, #C9A84C); }
+    body[data-content-page="sessions"] .circle-card-img { height: 190px; background-size: cover; background-position: center; transition: filter 0.45s ease, transform 0.6s cubic-bezier(.2,.7,.2,1); }
+    body[data-content-page="sessions"] .circle-card:hover .circle-card-img { filter: brightness(1.05) saturate(1.03); transform: scale(1.045); }
+    body[data-content-page="sessions"] .circle-card-body { padding: 22px 24px 26px; flex: 1 1 auto; }
+    body[data-content-page="sessions"] .circle-card-eyebrow { font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold, #C9A84C); font-weight: 600; }
+    body[data-content-page="sessions"] .circle-card-body h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; font-weight: 600; line-height: 1.12; color: var(--bark, #2D2A26); margin: 5px 0 9px; }
+    body[data-content-page="sessions"] .circle-card-body p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; line-height: 1.6; color: #3a3530; margin: 0; }
+    body[data-content-page="sessions"] .weekly-circles-cta { text-align: center; margin: 40px auto 0; font-size: 16px; color: var(--ink-quiet, #5A554C); }
+    body[data-content-page="sessions"] .weekly-circles-cta a { color: var(--copper, #886039); font-weight: 500; }
+    @media (max-width: 980px) { body[data-content-page="sessions"] .weekly-circles-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px) { body[data-content-page="sessions"] .weekly-circles-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; } }
+  </style>
+
+  <section class="weekly-circles" id="circles">
+    <div class="weekly-circles-inner">
+      <div class="weekly-circles-head">
+        <span class="section-label">Gather Together</span>
+        <h2>The weekly <em>circles</em></h2>
+        <p>Beyond the one-on-one work, the community gathers each week over Zoom &mdash; open, recurring circles you can drop into. Four ways to sit together, in good company.</p>
+      </div>
+      <div class="weekly-circles-grid">
+        <article class="circle-card">
+          <div class="circle-card-img" style="background-image: url('images/uploads/download-5.jpg');"></div>
+          <div class="circle-card-body">
+            <span class="circle-card-eyebrow">Weekly &middot; Virtual</span>
+            <h3>Group Sessions</h3>
+            <p>Guided group work and shared processing &mdash; held together, witnessed together.</p>
+          </div>
+        </article>
+        <article class="circle-card">
+          <div class="circle-card-img" style="background-image: url('images/uploads/download-7.jpg');"></div>
+          <div class="circle-card-body">
+            <span class="circle-card-eyebrow">Weekly &middot; Virtual</span>
+            <h3>Sits</h3>
+            <p>Quiet sits in good company &mdash; breath, stillness, and presence, side by side.</p>
+          </div>
+        </article>
+        <article class="circle-card">
+          <div class="circle-card-img" style="background-image: url('images/uploads/download-9.jpg');"></div>
+          <div class="circle-card-body">
+            <span class="circle-card-eyebrow">Weekly &middot; Virtual</span>
+            <h3>Firesides</h3>
+            <p>Evening gatherings by the fire &mdash; story, song, and the slow turn of the season.</p>
+          </div>
+        </article>
+        <article class="circle-card">
+          <div class="circle-card-img" style="background-image: url('images/uploads/download-1.jpg');"></div>
+          <div class="circle-card-body">
+            <span class="circle-card-eyebrow">Weekly &middot; Virtual</span>
+            <h3>Tea</h3>
+            <p>An open hour over tea &mdash; informal and warm, a place to simply arrive among kin.</p>
+          </div>
+        </article>
+      </div>
+      <p class="weekly-circles-cta">These circles gather weekly over Zoom. <a href="inquiry.html">Write to Adi to join &rarr;</a></p>
+    </div>
+  </section>
+
   <!-- =============================================================
        SOFT ENHANCEMENTS + IN-PERSON GATHERINGS BRIDGE (2026-06-27)
        ============================================================= -->
