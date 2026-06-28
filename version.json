@@ -1,12 +1,12 @@
 {
-  "version": "v260628.03 3:51a",
-  "release": 3,
-  "sha": "ff6517cc",
-  "fullSha": "ff6517ccf030930578c81e39ceae43405af12bec",
+  "version": "v260628.04 4:16a",
+  "release": 4,
+  "sha": "df5d74cc",
+  "fullSha": "df5d74cc82acb3f63a9917eb4b60eaa7df3f65d1",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-27T20:51:19-07:00",
-  "commits": [{"sha":"ff6517cc","message":"Booking widget: opt-in dropdown session-type selector","author":"Adi Marie"}]
+  "pushedAt": "2026-06-27T21:16:34-07:00",
+  "commits": [{"sha":"df5d74cc","message":"Revert dropdown selector — session types shown as offering cards with descriptions","author":"Adi Marie"}]
 }
