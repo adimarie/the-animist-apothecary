@@ -1,12 +1,12 @@
 {
-  "version": "v260628.06 4:37a",
-  "release": 6,
-  "sha": "2f466ff0",
-  "fullSha": "2f466ff0fbf4f1ecbec3a4be5cc855d5867207b8",
+  "version": "v260628.07 4:05p",
+  "release": 7,
+  "sha": "0cb64789",
+  "fullSha": "0cb647897c185f7ca9bd79da0bce5fc6ecb87581",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-27T21:37:09-07:00",
-  "commits": [{"sha":"2f466ff0","message":"sessions: move 'Choose your session' scheduler to the top (just under the intro)","author":"Adi Marie"}]
+  "pushedAt": "2026-06-28T09:05:06-07:00",
+  "commits": [{"sha":"0cb64789","message":"sessions: elegant, editorial booking — large image option cards + weekly circles","author":"Adi Marie"}]
 }
