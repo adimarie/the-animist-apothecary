@@ -1,12 +1,12 @@
 {
-  "version": "v260628.02 3:37a",
-  "release": 2,
-  "sha": "517c9d06",
-  "fullSha": "517c9d0673bd6c8199a5c0524187e5f9479566ab",
+  "version": "v260628.03 3:51a",
+  "release": 3,
+  "sha": "ff6517cc",
+  "fullSha": "ff6517ccf030930578c81e39ceae43405af12bec",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-27T20:36:47-07:00",
-  "commits": [{"sha":"517c9d06","message":"sessions.html: one 1:1 scheduling widget across all 5 session types","author":"Adi Marie"}]
+  "pushedAt": "2026-06-27T20:51:19-07:00",
+  "commits": [{"sha":"ff6517cc","message":"Booking widget: opt-in dropdown session-type selector","author":"Adi Marie"}]
 }
