@@ -1946,11 +1946,31 @@
       <h2>Choose your session. <em>Find your hour.</em></h2>
       <p class="schedule-intro">Select the one-on-one session that fits, find an open hour on Adi Marie&rsquo;s calendar, share what brings you, and offer your reciprocity &mdash; all in one place. Every session is held on a sliding scale: <strong>$700 / $550 / $450 / $350</strong>, whichever is true for you.</p>
 
-      <!-- In-house booking calendar (js/calendar-booking.js) — all five 1:1 sessions; type is chosen in step 1 -->
+      <style>
+        body[data-content-page="sessions"] .aap-bk-offering-select {
+          width: 100%; box-sizing: border-box; font-family: 'Inter', sans-serif; font-size: 16px;
+          color: var(--bark, #2D2A26); padding: 14px 44px 14px 16px;
+          border: 1px solid rgba(45,42,38,0.22); border-radius: 10px; background-color: #fff;
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23886039" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+          background-repeat: no-repeat; background-position: right 16px center; background-size: 14px;
+          -webkit-appearance: none; -moz-appearance: none; appearance: none; cursor: pointer; transition: border-color 0.2s ease;
+        }
+        body[data-content-page="sessions"] .aap-bk-offering-select:focus { border-color: var(--gold, #C9A84C); outline: none; }
+        body[data-content-page="sessions"] .aap-bk-offering-chosen { margin-top: 14px; }
+        body[data-content-page="sessions"] .aap-bk-offering-chosen .aap-bk-offering-desc {
+          font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; line-height: 1.65; color: #3a3530; margin: 0 0 6px;
+        }
+        body[data-content-page="sessions"] .aap-bk-offering-chosen .aap-bk-offering-price {
+          font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper, #886039); margin: 0;
+        }
+      </style>
+
+      <!-- In-house booking calendar (js/calendar-booking.js) — five 1:1 sessions; type chosen via dropdown, calendar reveals after -->
       <div id="booking-calendar"
            data-services="intake-inquiry,consultation,guidance-counsel,integration-aftercare,divination"
            data-category-label="One-on-One Virtual Sessions"
            data-coming-soon="Virtual Group Sessions"
+           data-selector="dropdown"
            data-venmo="TheAnimistApothecary"></div>
     </div>
   </section>
