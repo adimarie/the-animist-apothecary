@@ -1,12 +1,12 @@
 {
-  "version": "v260628.05 4:31a",
-  "release": 5,
-  "sha": "fb8fec28",
-  "fullSha": "fb8fec287e19143c66273edabafe2ebc9f45d2b4",
+  "version": "v260628.06 4:37a",
+  "release": 6,
+  "sha": "2f466ff0",
+  "fullSha": "2f466ff0fbf4f1ecbec3a4be5cc855d5867207b8",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-27T21:30:44-07:00",
-  "commits": [{"sha":"fb8fec28","message":"sessions: present each booking option as an image card","author":"Adi Marie"}]
+  "pushedAt": "2026-06-27T21:37:09-07:00",
+  "commits": [{"sha":"2f466ff0","message":"sessions: move 'Choose your session' scheduler to the top (just under the intro)","author":"Adi Marie"}]
 }
