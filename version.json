@@ -1,12 +1,12 @@
 {
-  "version": "v260628.08 4:15p",
-  "release": 8,
-  "sha": "dda2a3c7",
-  "fullSha": "dda2a3c78fd6662ce826a2ab1da6bc6f32285783",
+  "version": "v260628.09 4:27p",
+  "release": 9,
+  "sha": "b45459f3",
+  "fullSha": "b45459f3b7207f8453b8434271f425780ec96e0a",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-28T09:15:15-07:00",
-  "commits": [{"sha":"dda2a3c7","message":"sessions: full-width booking widget, larger offering cards, remove redundant pay block","author":"Adi Marie"}]
+  "pushedAt": "2026-06-28T09:27:26-07:00",
+  "commits": [{"sha":"b45459f3","message":"sessions: Consultation first + sliding-scale bracket atop the offerings","author":"Adi Marie"}]
 }
