@@ -1877,6 +1877,7 @@
       <span class="section-label">Schedule a Session</span>
       <h2>Choose your session. <em>Find your hour.</em></h2>
       <p class="schedule-intro">Select the one-on-one session that fits, find an open hour on Adi Marie&rsquo;s calendar, share what brings you, and offer your reciprocity &mdash; all in one place. Every session is held on a sliding scale: <strong>$700 / $550 / $450 / $350</strong>, whichever is true for you.</p>
+      <p class="schedule-recip-note" style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.08rem; font-style:italic; color:var(--gold-pale,#DCC178); margin:0.5rem auto 0; max-width:760px; line-height:1.6;">More than a sliding scale &mdash; this is <a href="#reciprocity" style="color:var(--gold,#C9A84C); text-decoration:underline; text-underline-offset:3px;">Sacred Reciprocity</a>, a practice of social economics.</p>
 
       <!-- Each booking option presented as an image card (page-scoped; keyed to the widget's data-svc slug) -->
       <style>
@@ -1915,7 +1916,7 @@
 
       <!-- In-house booking calendar (js/calendar-booking.js) — all five 1:1 sessions; each option shown as an image card -->
       <div id="booking-calendar"
-           data-services="consultation,intake-inquiry,guidance-counsel,integration-aftercare,divination"
+           data-services="intake-inquiry,guidance-counsel,integration-aftercare"
            data-category-label="One-on-One Virtual Sessions"
            data-sliding-scale="700,550,450,350"
            data-coming-soon=""
@@ -1933,9 +1934,9 @@
 
       <!-- ===== A NOTE ON SACRED RECIPROCITY ===== -->
       <header class="reciprocity-note-header">
-        <span class="section-label">A Note On</span>
+        <span class="section-label">Beyond a Sliding Scale</span>
         <h2>Sacred <em>Reciprocity</em></h2>
-        <p class="reciprocity-intro">For an in-depth acquaintance with my economic community model and considerations, please take a moment to review the <a href="sacred-reciprocity.html">Sacred Reciprocity page</a>. If you&rsquo;d like to go into more depth in this regard, please <a href="mailto:adimarie@bodyworkandbotanicals.com?subject=Sacred%20Reciprocity%20%E2%80%94%20Sustainable%20Path">reach out</a> so we can find a sustainable path together.</p>
+        <p class="reciprocity-intro">The tiers aren&rsquo;t simply a sliding scale &mdash; they&rsquo;re a practice of <em>social economics</em>: a community model where those who are resourced help hold the door open for those who aren&rsquo;t. For an in-depth acquaintance with this model, please review the <a href="sacred-reciprocity.html">Sacred Reciprocity page</a>, or <a href="mailto:adimarie@bodyworkandbotanicals.com?subject=Sacred%20Reciprocity%20%E2%80%94%20Sustainable%20Path">reach out</a> so we can find a sustainable path together.</p>
         <p class="reciprocity-subhead">Here&rsquo;s what each tier means, in simplified terms:</p>
       </header>
 
@@ -1976,6 +1977,77 @@
 
   
   <!-- =============================================================
+       ORACULAR & ELEMENTAL DIVINATION — a distinct, full-width offering
+       (held apart from the calls; its own rhythm + its own calendar)
+       ============================================================= -->
+  <style>
+    body[data-content-page="sessions"] .divination-offering {
+      width: 100%; background: linear-gradient(180deg, var(--parchment-warm, #F4EAD3) 0%, #ffffff 100%);
+      border-top: 1px solid rgba(201,168,76,0.20);
+    }
+    body[data-content-page="sessions"] .div-inner {
+      display: grid; grid-template-columns: 1.05fr 1fr; align-items: stretch;
+      max-width: 1500px; margin: 0 auto;
+    }
+    body[data-content-page="sessions"] .div-media {
+      min-height: 460px; background-size: cover; background-position: center 38%;
+    }
+    body[data-content-page="sessions"] .div-body {
+      padding: 5rem 4.5rem; display: flex; flex-direction: column; justify-content: center;
+    }
+    body[data-content-page="sessions"] .div-eyebrow {
+      font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--gold, #C9A84C); font-weight: 600; margin: 0 0 1.1rem;
+    }
+    body[data-content-page="sessions"] .div-body h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(2.1rem, 4vw, 3rem);
+      line-height: 1.1; color: var(--bark, #2D2A26); margin: 0 0 1.3rem;
+    }
+    body[data-content-page="sessions"] .div-body h2 em { font-style: italic; color: var(--gold, #C9A84C); }
+    body[data-content-page="sessions"] .div-lead {
+      font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3rem; line-height: 1.6;
+      color: var(--bark, #2D2A26); margin: 0 0 1.1rem;
+    }
+    body[data-content-page="sessions"] .div-body-text {
+      font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.08rem; line-height: 1.8;
+      color: #3a3530; margin: 0 0 2.2rem;
+    }
+    body[data-content-page="sessions"] .div-actions { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; }
+    body[data-content-page="sessions"] .div-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
+      text-decoration: none; padding: 1rem 2rem; border-radius: 2px;
+      background: var(--bark, #2D2A26); color: var(--paper, #F7F5F0); border: 1px solid var(--bark, #2D2A26);
+      transition: all 0.3s ease;
+    }
+    body[data-content-page="sessions"] .div-cta:hover { background: var(--gold, #C9A84C); border-color: var(--gold, #C9A84C); color: var(--bark, #2D2A26); transform: translateY(-1px); }
+    body[data-content-page="sessions"] .div-price {
+      font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; color: var(--ink-quiet, #5A554C);
+    }
+    @media (max-width: 860px) {
+      body[data-content-page="sessions"] .div-inner { grid-template-columns: 1fr; }
+      body[data-content-page="sessions"] .div-media { min-height: 300px; order: -1; }
+      body[data-content-page="sessions"] .div-body { padding: 3.5rem 1.5rem; }
+    }
+  </style>
+
+  <section class="divination-offering" id="divination">
+    <div class="div-inner">
+      <div class="div-media" style="background-image: url('images/uploads/divination-hands-medicine-bundle.jpg');"></div>
+      <div class="div-body">
+        <span class="div-eyebrow">A Distinct Offering &middot; 2 Hours</span>
+        <h2>Oracular &amp; Elemental <em>Divination</em></h2>
+        <p class="div-lead">An ancestral reading in the Dagara tradition &mdash; listening with bone, stone, and elemental presence for the path ahead.</p>
+        <p class="div-body-text">Held apart from the one-on-one calls, with its own rhythm and its own calendar. A focused session to bring a question to the elements and receive guidance for what is moving in your life.</p>
+        <div class="div-actions">
+          <a class="div-cta" href="inquiry.html?offering=divination">Request a reading &rarr;</a>
+          <span class="div-price">$350&ndash;$700 &middot; sliding scale</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
        WEEKLY GROUP VIRTUAL CALLS — the circles
        ============================================================= -->
   <style>
@@ -2006,7 +2078,7 @@
       <div class="weekly-circles-head">
         <span class="section-label">Gather Together</span>
         <h2>The weekly <em>circles</em></h2>
-        <p>Beyond the one-on-one work, the community gathers each week over Zoom &mdash; open, recurring circles you can drop into. Four ways to sit together, in good company.</p>
+        <p>Beyond the one-on-one work, the community gathers each week over Zoom. Drop in for a single circle, or enroll in a season-long series &mdash; four ways to sit together, in good company.</p>
       </div>
       <div class="weekly-circles-grid">
         <article class="circle-card">
@@ -2042,7 +2114,7 @@
           </div>
         </article>
       </div>
-      <p class="weekly-circles-cta">These circles gather weekly over Zoom. <a href="inquiry.html">Write to Adi to join &rarr;</a></p>
+      <p class="weekly-circles-cta">Join a single circle, or enroll in a season-long series. <a href="inquiry.html">Write to Adi to enroll &rarr;</a></p>
     </div>
   </section>
 
@@ -2120,16 +2192,154 @@
 
   <section class="sessions-gatherings" id="gatherings">
     <div class="sessions-gatherings-inner">
-      <span class="section-label">Beyond the Virtual Threshold</span>
-      <h2>In-person <em>gatherings</em></h2>
-      <p class="sg-lead">The sessions above open directly. The in-person work &mdash; seasonal sits, ceremonies, rituals, and retreats &mdash; is held more closely, for the wellbeing of everyone in the circle.</p>
-      <p class="sg-body">These gatherings are entered through acquaintance. We begin with an Intake &amp; Inquiry and a few reflections, so the field can be tended with care. Once we&rsquo;ve met, you&rsquo;re welcomed into the community with your own private key to the season&rsquo;s calendar.</p>
+      <span class="section-label">Gather in Person</span>
+      <h2>In-person gatherings <em>&amp; events</em></h2>
+      <p class="sg-lead">Through the turning season, the community gathers in person &mdash; seasonal sits, fire circles, and days of tending the land and one another, shoulder to shoulder.</p>
+      <p class="sg-body">These gatherings are part of the community&rsquo;s shared life, held for those already walking with us. If you&rsquo;ve been welcomed in, the season&rsquo;s calendar is yours.</p>
       <div class="sg-actions">
-        <a class="sg-btn sg-btn-primary" href="#schedule">Begin with an Intake &amp; Inquiry</a>
-        <a class="sg-btn sg-btn-ghost" href="gatherings/">Already a member? Enter the gatherings &rarr;</a>
+        <a class="sg-btn sg-btn-primary" href="gatherings/">Already a member? Enter the gatherings &rarr;</a>
+        <a class="sg-btn sg-btn-ghost" href="#ceremonies">New here? Begin just below &darr;</a>
       </div>
     </div>
   </section>
+
+  <!-- =============================================================
+       CEREMONIES, RITUALS & RETREATS — the closed-community threshold
+       Intake & Inquiry redirection above; member key (token gate) below.
+       ============================================================= -->
+  <style>
+    body[data-content-page="sessions"] .ceremonies-threshold {
+      background: linear-gradient(180deg, #ffffff 0%, var(--parchment-warm, #F4EAD3) 100%);
+      padding: 6rem 2rem 6.5rem; border-top: 1px solid rgba(201,168,76,0.20);
+    }
+    body[data-content-page="sessions"] .ct-inner { max-width: 700px; margin: 0 auto; text-align: center; position: relative; }
+    body[data-content-page="sessions"] .ct-inner::before {
+      content: ""; display: block; width: 52px; height: 1px; background: var(--gold, #C9A84C); opacity: 0.6; margin: 0 auto 2rem;
+    }
+    body[data-content-page="sessions"] .ct-eyebrow {
+      font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold, #C9A84C); display: block; margin: 0 0 1.1rem; font-weight: 600;
+    }
+    body[data-content-page="sessions"] .ct-title {
+      font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: clamp(2rem, 4.4vw, 2.9rem);
+      line-height: 1.12; color: var(--bark, #2D2A26); margin: 0 0 1.3rem;
+    }
+    body[data-content-page="sessions"] .ct-title em { font-style: italic; color: var(--gold, #C9A84C); }
+    body[data-content-page="sessions"] .ct-lead {
+      font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.22rem; line-height: 1.75;
+      color: var(--bark, #2D2A26); margin: 0 auto 1.1rem; max-width: 600px;
+    }
+    body[data-content-page="sessions"] .ct-body {
+      font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.06rem; line-height: 1.82;
+      color: #3a3530; margin: 0 auto 2.4rem; max-width: 600px;
+    }
+    body[data-content-page="sessions"] .ct-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
+      text-decoration: none; padding: 1rem 2rem; border-radius: 2px;
+      background: var(--bark, #2D2A26); color: var(--paper, #F7F5F0); border: 1px solid var(--bark, #2D2A26);
+      transition: all 0.3s ease;
+    }
+    body[data-content-page="sessions"] .ct-cta:hover { background: var(--gold, #C9A84C); border-color: var(--gold, #C9A84C); color: var(--bark, #2D2A26); transform: translateY(-1px); }
+    body[data-content-page="sessions"] .ct-cta-note { font-size: 0.92rem; color: var(--ink-quiet, #5A554C); margin: 1.1rem auto 0; font-style: italic; }
+    body[data-content-page="sessions"] .ct-key { margin: 3rem auto 0; max-width: 450px; padding-top: 2.4rem; border-top: 1px solid rgba(201,168,76,0.32); }
+    body[data-content-page="sessions"] .ct-key-label {
+      font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--copper, #886039); display: block; margin-bottom: 1rem;
+    }
+    body[data-content-page="sessions"] .ct-key-form { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
+    body[data-content-page="sessions"] .ct-key-input {
+      flex: 1 1 230px; font-family: 'Inter', system-ui, sans-serif; font-size: 0.95rem; padding: 0.8rem 1rem;
+      border: 1px solid rgba(45,42,38,0.22); border-radius: 2px; background: #fff; color: var(--bark, #2D2A26);
+      text-align: center; letter-spacing: 0.06em;
+    }
+    body[data-content-page="sessions"] .ct-key-input:focus { outline: none; border-color: var(--gold, #C9A84C); box-shadow: 0 0 0 3px rgba(201,168,76,0.14); }
+    body[data-content-page="sessions"] .ct-key-btn {
+      font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 0.8rem 1.5rem; border-radius: 2px; cursor: pointer;
+      background: transparent; color: var(--copper, #886039); border: 1px solid rgba(201,168,76,0.5); transition: all 0.25s ease;
+    }
+    body[data-content-page="sessions"] .ct-key-btn:hover { background: rgba(201,168,76,0.10); }
+    body[data-content-page="sessions"] .ct-key-btn:disabled { opacity: 0.6; cursor: default; }
+    body[data-content-page="sessions"] .ct-key-msg { font-size: 0.9rem; color: var(--copper, #886039); margin: 1rem auto 0; line-height: 1.6; max-width: 430px; }
+    @media (max-width: 560px) {
+      body[data-content-page="sessions"] .ceremonies-threshold { padding: 4.5rem 1.25rem; }
+      body[data-content-page="sessions"] .ct-key-form { flex-direction: column; }
+    }
+  </style>
+
+  <section class="ceremonies-threshold" id="ceremonies">
+    <div class="ct-inner">
+      <span class="ct-eyebrow">A Closed Community</span>
+      <h2 class="ct-title">Ceremonies, rituals &amp; <em>retreats</em></h2>
+      <p class="ct-lead">The deepest containers &mdash; ceremonies, rituals, and retreats &mdash; are held within a closed community, for the wellbeing of everyone in the circle.</p>
+      <p class="ct-body">Each person arrives here through their own deep reflection and personal inquiry, followed by an Intake &amp; Inquiry conversation where we discern readiness together and feel for the mutuality of a good fit. This is done once, with occasional check-ins over the years &mdash; so the field stays tended and the trust stays whole.</p>
+      <a class="ct-cta" href="#schedule">Schedule an Intake &amp; Inquiry to begin &rarr;</a>
+      <p class="ct-cta-note">This is where every path into the deeper work begins.</p>
+
+      <div class="ct-key">
+        <span class="ct-key-label">Already initiated? Enter with your key</span>
+        <form class="ct-key-form" id="crGateForm" autocomplete="off">
+          <input class="ct-key-input" id="crGateToken" type="password" placeholder="Your private key" aria-label="Your private key" autocomplete="off" spellcheck="false">
+          <button class="ct-key-btn" type="submit">Enter</button>
+        </form>
+        <p class="ct-key-msg" id="crGateMsg" hidden>That key isn&rsquo;t recognized. If you&rsquo;ve been welcomed in, reach out to Adi Marie &mdash; or begin with an Intake &amp; Inquiry above.</p>
+      </div>
+    </div>
+  </section>
+  <script>
+    (function () {
+      // Member key gate — validates against the community token RPC, then glides
+      // into the gatherings calendar (same keys community-gate.js uses).
+      var SB = "https://wdecjlrfulsdklqeetqb.supabase.co";
+      var K = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndkZWNqbHJmdWxzZGtscWVldHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwODQwMTQsImV4cCI6MjA4ODY2MDAxNH0.mIBgkpU24IgxnzS8kR06FOL6_1Z9NmaEDe9z36CxtHs";
+      var form = document.getElementById("crGateForm");
+      if (form) {
+        var input = document.getElementById("crGateToken");
+        var msg = document.getElementById("crGateMsg");
+        var btn = form.querySelector("button");
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var t = (input.value || "").trim();
+          if (!t) return;
+          if (msg) msg.hidden = true;
+          btn.disabled = true; var orig = btn.textContent; btn.textContent = "Opening…";
+          fetch(SB + "/rest/v1/rpc/validate_community_token", {
+            method: "POST",
+            headers: { "apikey": K, "Authorization": "Bearer " + K, "Content-Type": "application/json" },
+            body: JSON.stringify({ p_token: t })
+          })
+            .then(function (r) { return r.json(); })
+            .then(function (d) {
+              if (d && d.valid) {
+                try {
+                  sessionStorage.setItem("aap-gatherings-unlocked", d.label || "member");
+                  sessionStorage.setItem("aap-gatherings-token", t);
+                } catch (err) {}
+                window.location.href = "gatherings/";
+              } else {
+                btn.disabled = false; btn.textContent = orig;
+                if (msg) msg.hidden = false;
+                input.value = ""; input.focus();
+              }
+            })
+            .catch(function () { window.location.href = "gatherings/?token=" + encodeURIComponent(t); });
+        });
+      }
+      // Begin-with-intake CTA: scroll to the booking widget and pre-select Intake & Inquiry.
+      var cta = document.querySelector('.ct-cta[href="#schedule"]');
+      if (cta) {
+        cta.addEventListener("click", function () {
+          var tries = 0;
+          var iv = setInterval(function () {
+            var card = document.querySelector('.aap-bk-offering[data-svc="intake-inquiry"]');
+            if (card) { card.click(); clearInterval(iv); }
+            if (++tries > 40) clearInterval(iv);
+          }, 150);
+        });
+      }
+    })();
+  </script>
 
   <!-- =============================================================
        PRACTICAL NOTES — payment, where we meet, contact + reply time
@@ -2307,7 +2517,24 @@
 
   <script src="js/main.js"></script>
   <script src="js/newsletter.js" defer></script>
+  <!--
+    Google appointment-schedule URLs per session (slug → embed URL with ?gv=true).
+    Sessions listed here book through Adi Marie's Google calendar availability
+    (auto-avoids her personal schedule). Sessions NOT listed (e.g. divination)
+    use the in-house calendar flow. To add a session: create its Google
+    appointment schedule, then paste its share URL with ?gv=true appended.
+  -->
+  <script>
+    // All three calls book into the same Google appointment schedule —
+    // Adi Marie's live availability (calendar.app.google/kDwksabgA2a9UQVr5).
+    var AAP_CALLS_SCHEDULE = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3dyFbMlqfjfF4pWZK_2y_ofqVJe5gbom-16JgdkZsRBDdn4o0_swhsNgDDemWzSlZ68mTzsEym?gv=true";
+    window.AAP_SCHEDULERS = {
+      "intake-inquiry":        AAP_CALLS_SCHEDULE,
+      "guidance-counsel":      AAP_CALLS_SCHEDULE,
+      "integration-aftercare": AAP_CALLS_SCHEDULE
+    };
+  </script>
   <script src="js/calendar-booking.js" defer></script>
-  <!-- Scheduling is handled by the in-house booking widget (js/calendar-booking.js) mounted in #booking-calendar above. The former Google Calendar appointment embeds were retired when the in-house flow launched. -->
+  <!-- Scheduling: in-house widget for divination; Google appointment schedules (window.AAP_SCHEDULERS) for sessions whose availability lives in Adi Marie's Google calendar. -->
 </body>
 </html>
