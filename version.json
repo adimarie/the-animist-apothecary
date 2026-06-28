@@ -1,12 +1,12 @@
 {
-  "version": "v260628.09 4:27p",
-  "release": 9,
-  "sha": "b45459f3",
-  "fullSha": "b45459f3b7207f8453b8434271f425780ec96e0a",
+  "version": "v260628.10 5:40p",
+  "release": 10,
+  "sha": "93f49a02",
+  "fullSha": "93f49a0253ae5fb3d233f3e0d9a4e4d85f8a4eb4",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-28T09:27:26-07:00",
-  "commits": [{"sha":"b45459f3","message":"sessions: Consultation first + sliding-scale bracket atop the offerings","author":"Adi Marie"}]
+  "pushedAt": "2026-06-28T10:40:31-07:00",
+  "commits": [{"sha":"93f49a02","message":"sessions: three calls embed shared Google scheduler; restructure the offering","author":"Adi Marie"}]
 }
