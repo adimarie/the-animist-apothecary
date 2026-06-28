@@ -1946,7 +1946,33 @@
       <h2>Choose your session. <em>Find your hour.</em></h2>
       <p class="schedule-intro">Select the one-on-one session that fits, find an open hour on Adi Marie&rsquo;s calendar, share what brings you, and offer your reciprocity &mdash; all in one place. Every session is held on a sliding scale: <strong>$700 / $550 / $450 / $350</strong>, whichever is true for you.</p>
 
-      <!-- In-house booking calendar (js/calendar-booking.js) — all five 1:1 sessions; type is chosen in step 1 -->
+      <!-- Each booking option presented as an image card (page-scoped; keyed to the widget's data-svc slug) -->
+      <style>
+        body[data-content-page="sessions"] .aap-bk-offerings {
+          display: flex; flex-wrap: wrap; justify-content: center; gap: 18px;
+        }
+        body[data-content-page="sessions"] .aap-bk-offering {
+          flex: 0 1 250px; max-width: 272px; padding: 168px 22px 22px; gap: 8px;
+        }
+        body[data-content-page="sessions"] .aap-bk-offering::before {
+          content: ""; position: absolute; top: 0; left: 0; right: 0; height: 150px;
+          background-color: var(--bk-paper, #F7F5F0); background-size: cover; background-position: center;
+          transform: none; transform-origin: center; border-radius: 0;
+          transition: filter 0.3s ease, transform 0.55s ease;
+        }
+        body[data-content-page="sessions"] .aap-bk-offering:hover::before,
+        body[data-content-page="sessions"] .aap-bk-offering.is-on::before { filter: brightness(1.05); transform: scale(1.045); }
+        body[data-content-page="sessions"] .aap-bk-offering[data-svc="intake-inquiry"]::before { background-image: url('images/uploads/download.jpg'); }
+        body[data-content-page="sessions"] .aap-bk-offering[data-svc="consultation"]::before { background-image: url('images/uploads/download-9.jpg'); }
+        body[data-content-page="sessions"] .aap-bk-offering[data-svc="guidance-counsel"]::before { background-image: url('images/uploads/cta-moss-smoke.jpg'); }
+        body[data-content-page="sessions"] .aap-bk-offering[data-svc="integration-aftercare"]::before { background-image: url('images/uploads/download-6.jpg'); background-position: center 35%; }
+        body[data-content-page="sessions"] .aap-bk-offering[data-svc="divination"]::before { background-image: url('images/uploads/divination-hands-medicine-bundle.jpg'); background-position: center 40%; }
+        @media (max-width: 560px) {
+          body[data-content-page="sessions"] .aap-bk-offering { flex: 1 1 100%; max-width: 340px; }
+        }
+      </style>
+
+      <!-- In-house booking calendar (js/calendar-booking.js) — all five 1:1 sessions; each option shown as an image card -->
       <div id="booking-calendar"
            data-services="intake-inquiry,consultation,guidance-counsel,integration-aftercare,divination"
            data-category-label="One-on-One Virtual Sessions"
