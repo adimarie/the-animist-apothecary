@@ -349,7 +349,7 @@
       background: rgba(201,168,76,0.4);
     }
     body[data-content-page="sessions"] .schedule-inner {
-      max-width: 1280px;
+      max-width: 1500px;
       margin: 0 auto;
       text-align: center;
     }
@@ -1881,13 +1881,13 @@
       <!-- Each booking option presented as an image card (page-scoped; keyed to the widget's data-svc slug) -->
       <style>
         /* ── Wider widget + large, editorial option cards (3 per row) ── */
-        body[data-content-page="sessions"] #booking-calendar { max-width: 1180px; }
+        body[data-content-page="sessions"] #booking-calendar { max-width: 1500px; }
         body[data-content-page="sessions"] .aap-bk-cal { max-width: 660px; margin-left: auto; margin-right: auto; }
         body[data-content-page="sessions"] .aap-bk-offerings {
           display: flex; flex-wrap: wrap; justify-content: center; gap: 26px; margin-top: 4px;
         }
         body[data-content-page="sessions"] .aap-bk-offering {
-          flex: 1 1 320px; max-width: 384px; gap: 0; padding: 0 0 26px;
+          flex: 1 1 400px; max-width: 480px; gap: 0; padding: 0 0 30px;
           border: 1px solid rgba(201,168,76,0.20); border-radius: 4px; background: #fff;
           box-shadow: 0 8px 30px rgba(45,42,38,0.07);
           transition: transform 0.45s cubic-bezier(.2,.7,.2,1), box-shadow 0.45s ease, border-color 0.3s ease;
@@ -1895,7 +1895,7 @@
         body[data-content-page="sessions"] .aap-bk-offering:hover { transform: translateY(-6px); box-shadow: 0 22px 48px rgba(45,42,38,0.14); border-color: var(--gold, #C9A84C); }
         body[data-content-page="sessions"] .aap-bk-offering.is-on { border-color: var(--gold, #C9A84C); box-shadow: 0 0 0 1px var(--gold, #C9A84C) inset, 0 18px 42px rgba(45,42,38,0.13); }
         body[data-content-page="sessions"] .aap-bk-offering::before {
-          content: ""; position: static; display: block; width: 100%; height: 216px; margin: 0 0 20px;
+          content: ""; position: static; display: block; width: 100%; height: 250px; margin: 0 0 22px;
           background-color: var(--bk-paper, #F7F5F0); background-size: cover; background-position: center;
           transform: none; transition: filter 0.45s ease, transform 0.6s cubic-bezier(.2,.7,.2,1);
         }
@@ -1930,25 +1930,7 @@
   <section class="reciprocity-note" id="reciprocity">
     <div class="reciprocity-note-inner">
 
-      <!-- ===== PART 1 · PAY FOR YOUR SESSION ===== -->
-      <header class="pay-header">
-        <span class="section-label">Sacred Exchange</span>
-        <h2>Pay for <em>your session</em></h2>
-        <p class="pay-line">When you book below, a Venmo prompt appears with your amount ready to send. Reciprocity is offered in full at the time of booking &mdash; sliding-scale rates are listed with each offering above.</p>
-        <div class="pay-buttons">
-          <a href="https://venmo.com/u/TheAnimistApothecary" target="_blank" rel="noopener" class="pay-button">
-            <span class="pay-button-label">Venmo</span>
-            <span class="pay-button-handle">@TheAnimistApothecary</span>
-          </a>
-        </div>
-      </header>
-
-      <!-- ===== visual divider between Pay and Reciprocity ===== -->
-      <div class="pay-reciprocity-divider" aria-hidden="true">
-        <span class="divider-glyph">&#9737;</span>
-      </div>
-
-      <!-- ===== PART 2 · A NOTE ON SACRED RECIPROCITY ===== -->
+      <!-- ===== A NOTE ON SACRED RECIPROCITY ===== -->
       <header class="reciprocity-note-header">
         <span class="section-label">A Note On</span>
         <h2>Sacred <em>Reciprocity</em></h2>
