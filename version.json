@@ -1,12 +1,12 @@
 {
-  "version": "v260628.11 6:25p",
-  "release": 11,
-  "sha": "0bbc7267",
-  "fullSha": "0bbc726753b1c93368525ac016b1358b95ba7cc1",
+  "version": "v260628.12 6:40p",
+  "release": 12,
+  "sha": "25f43caf",
+  "fullSha": "25f43caf20f0ad1ce99779623b52e86565c51a7c",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-28T11:24:46-07:00",
-  "commits": [{"sha":"0bbc7267","message":"sessions: wire Divination to its own Oracular & Elemental Divination Google schedule","author":"Adi Marie"}]
+  "pushedAt": "2026-06-28T11:40:09-07:00",
+  "commits": [{"sha":"25f43caf","message":"sessions: full-width alternating call cards, schedule CTAs, reciprocity moved up","author":"Adi Marie"}]
 }
