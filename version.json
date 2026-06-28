@@ -1,12 +1,12 @@
 {
-  "version": "v260626.03 10:43p",
-  "release": 3,
-  "sha": "0030417c",
-  "fullSha": "0030417cbcc506fccc17ac34b011a37c17aa4b44",
+  "version": "v260628.01 1:42a",
+  "release": 1,
+  "sha": "94ceabd7",
+  "fullSha": "94ceabd797cbfe3c0faf7d4ce1fd254463d541fe",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-26T15:43:38-07:00",
-  "commits": [{"sha":"0030417c","message":"Virtual Services: add Virtual Group Sessions + In-Person Gatherings sections","author":"Adi Marie"}]
+  "pushedAt": "2026-06-27T18:42:25-07:00",
+  "commits": [{"sha":"94ceabd7","message":"Add Guidance & Counsel offering card + token-gated Gatherings system","author":"Adi Marie"}]
 }
