@@ -90,7 +90,6 @@
       serviceTz: d.serviceTz || DEFAULTS.serviceTz,
       categoryLabel: d.categoryLabel != null ? d.categoryLabel : DEFAULTS.categoryLabel,
       comingSoon: (d.comingSoon != null ? d.comingSoon : DEFAULTS.comingSoon).split("|").map(trim).filter(Boolean),
-      selector: d.selector || "cards",
     };
   }
 
@@ -226,53 +225,31 @@
     var chosen = sel.service ? sel.service.name : "";
     var body = "";
     if (cfg.categoryLabel) body += '<p class="aap-bk-cat-label">' + esc(cfg.categoryLabel) + "</p>";
-    if (cfg.selector === "dropdown") {
-      // Compact dropdown selector — the calendar only appears once a type is chosen.
-      body += '<select class="aap-bk-offering-select" id="aap-bk-svc-select" aria-label="Choose your session type">';
-      body += '<option value="">Choose your session type…</option>';
-      catalog.forEach(function (s) {
-        var on = sel.service && sel.service.id === s.id;
-        body += '<option value="' + esc(s.slug) + '"' + (on ? " selected" : "") + ">" +
-          esc(s.name) + " · " + fmtDuration(s.duration_minutes) + "</option>";
-      });
-      (cfg.comingSoon || []).forEach(function (name) {
-        body += '<option value="" disabled>' + esc(name) + " · coming soon</option>";
-      });
-      body += "</select>";
-      if (sel.service) {
-        var rangeSel = priceRange(sel.service.tiers);
-        body += '<div class="aap-bk-offering-chosen">' +
-          (sel.service.description ? '<p class="aap-bk-offering-desc">' + esc(sel.service.description) + "</p>" : "") +
-          (rangeSel ? '<p class="aap-bk-offering-price">' + rangeSel + "</p>" : "") +
-          "</div>";
-      }
-    } else {
-      body += '<div class="aap-bk-offerings">';
-      catalog.forEach(function (s) {
-        var on = sel.service && sel.service.id === s.id;
-        var range = priceRange(s.tiers);
+    body += '<div class="aap-bk-offerings">';
+    catalog.forEach(function (s) {
+      var on = sel.service && sel.service.id === s.id;
+      var range = priceRange(s.tiers);
+      body +=
+        '<button type="button" class="aap-bk-offering' + (on ? " is-on" : "") +
+        '" data-svc="' + esc(s.slug) + '">' +
+        '<span class="aap-bk-offering-dur">' + fmtDuration(s.duration_minutes) + "</span>" +
+        '<span class="aap-bk-offering-name">' + esc(s.name) + "</span>" +
+        (s.description ? '<span class="aap-bk-offering-desc">' + esc(s.description) + "</span>" : "") +
+        (range ? '<span class="aap-bk-offering-price">' + range + "</span>" : "") +
+        "</button>";
+    });
+    body += "</div>";
+    // Coming-soon categories (not yet bookable)
+    if (cfg.comingSoon && cfg.comingSoon.length) {
+      body += '<div class="aap-bk-soon">';
+      cfg.comingSoon.forEach(function (name) {
         body +=
-          '<button type="button" class="aap-bk-offering' + (on ? " is-on" : "") +
-          '" data-svc="' + esc(s.slug) + '">' +
-          '<span class="aap-bk-offering-dur">' + fmtDuration(s.duration_minutes) + "</span>" +
-          '<span class="aap-bk-offering-name">' + esc(s.name) + "</span>" +
-          (s.description ? '<span class="aap-bk-offering-desc">' + esc(s.description) + "</span>" : "") +
-          (range ? '<span class="aap-bk-offering-price">' + range + "</span>" : "") +
-          "</button>";
+          '<div class="aap-bk-soon-card" aria-disabled="true">' +
+          '<span class="aap-bk-soon-name">' + esc(name) + "</span>" +
+          '<span class="aap-bk-soon-tag">Coming soon</span>' +
+          "</div>";
       });
       body += "</div>";
-      // Coming-soon categories (not yet bookable)
-      if (cfg.comingSoon && cfg.comingSoon.length) {
-        body += '<div class="aap-bk-soon">';
-        cfg.comingSoon.forEach(function (name) {
-          body +=
-            '<div class="aap-bk-soon-card" aria-disabled="true">' +
-            '<span class="aap-bk-soon-name">' + esc(name) + "</span>" +
-            '<span class="aap-bk-soon-tag">Coming soon</span>' +
-            "</div>";
-        });
-        body += "</div>";
-      }
     }
     return section("offering", stepHeader(1, "The offering", chosen, !chosen) + body, true);
   }
@@ -556,19 +533,6 @@
         paintMonthGrid();
       });
     });
-
-    var svcSelect = root.querySelector("#aap-bk-svc-select");
-    if (svcSelect) {
-      svcSelect.addEventListener("change", function () {
-        var s = catalog.find(function (x) { return x.slug === svcSelect.value; });
-        var changed = !sel.service || !s || sel.service.id !== s.id;
-        sel.service = s || null;
-        if (changed) { sel.dayKey = null; sel.slot = null; sel.tier = null; }
-        sel._scroll = true;
-        render();
-        if (sel.service) paintMonthGrid();
-      });
-    }
 
     root.querySelectorAll(".aap-bk-monthbtn").forEach(function (b) {
       b.addEventListener("click", function () {
