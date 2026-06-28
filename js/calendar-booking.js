@@ -89,6 +89,7 @@
       venmo: d.venmo || DEFAULTS.venmo,
       serviceTz: d.serviceTz || DEFAULTS.serviceTz,
       categoryLabel: d.categoryLabel != null ? d.categoryLabel : DEFAULTS.categoryLabel,
+      slidingScale: (d.slidingScale != null ? d.slidingScale : "").split(",").map(trim).filter(Boolean),
       comingSoon: (d.comingSoon != null ? d.comingSoon : DEFAULTS.comingSoon).split("|").map(trim).filter(Boolean),
     };
   }
@@ -225,6 +226,13 @@
     var chosen = sel.service ? sel.service.name : "";
     var body = "";
     if (cfg.categoryLabel) body += '<p class="aap-bk-cat-label">' + esc(cfg.categoryLabel) + "</p>";
+    if (cfg.slidingScale && cfg.slidingScale.length) {
+      body += '<div class="aap-bk-scale"><span class="aap-bk-scale-label">Sliding scale</span><span class="aap-bk-scale-values">';
+      cfg.slidingScale.forEach(function (v) {
+        body += '<span class="aap-bk-scale-val">$' + esc(String(v).replace(/[^0-9]/g, "")) + "</span>";
+      });
+      body += "</span></div>";
+    }
     body += '<div class="aap-bk-offerings">';
     catalog.forEach(function (s) {
       var on = sel.service && sel.service.id === s.id;
@@ -722,6 +730,10 @@
       ".aap-bk-offering-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:21px;font-weight:600;color:var(--bk-bark);margin-top:4px;padding-top:12px;border-top:1px solid var(--bk-line);}",
       "@media(max-width:640px){.aap-bk-offerings{grid-template-columns:1fr;}}",
       ".aap-bk-cat-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bk-gold);font-weight:600;margin:0 0 12px;}",
+      ".aap-bk-scale{display:flex;flex-wrap:wrap;align-items:center;gap:9px 14px;margin:0 0 22px;padding:0 0 18px;border-bottom:1px solid var(--bk-line);}",
+      ".aap-bk-scale-label{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--bk-gold);font-weight:600;}",
+      ".aap-bk-scale-values{display:inline-flex;flex-wrap:wrap;gap:8px;}",
+      ".aap-bk-scale-val{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:600;color:var(--bk-bark);line-height:1;padding:5px 15px;border:1px solid var(--bk-line);border-radius:999px;background:#fff;}",
       ".aap-bk-soon{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;}",
       ".aap-bk-soon-card{display:flex;flex-direction:column;gap:5px;padding:16px 18px;border:1px dashed var(--bk-line);border-radius:11px;background:transparent;opacity:.8;}",
       ".aap-bk-soon-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;font-weight:600;color:var(--bk-quiet);}",
