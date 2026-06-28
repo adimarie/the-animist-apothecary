@@ -1,12 +1,12 @@
 {
-  "version": "v260628.12 6:40p",
-  "release": 12,
-  "sha": "25f43caf",
-  "fullSha": "25f43caf20f0ad1ce99779623b52e86565c51a7c",
+  "version": "v260628.13 7:29p",
+  "release": 13,
+  "sha": "e18a9744",
+  "fullSha": "e18a97446c8fa3a06d112b37c4a9c38299b3ffe6",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-28T11:40:09-07:00",
-  "commits": [{"sha":"25f43caf","message":"sessions: full-width alternating call cards, schedule CTAs, reciprocity moved up","author":"Adi Marie"}]
+  "pushedAt": "2026-06-28T12:29:14-07:00",
+  "commits": [{"sha":"e18a9744","message":"sessions: add a forest banner image atop Sacred Reciprocity","author":"Adi Marie"}]
 }
