@@ -1,12 +1,12 @@
 {
-  "version": "v260628.04 4:16a",
-  "release": 4,
-  "sha": "df5d74cc",
-  "fullSha": "df5d74cc82acb3f63a9917eb4b60eaa7df3f65d1",
+  "version": "v260628.05 4:31a",
+  "release": 5,
+  "sha": "fb8fec28",
+  "fullSha": "fb8fec287e19143c66273edabafe2ebc9f45d2b4",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-27T21:16:34-07:00",
-  "commits": [{"sha":"df5d74cc","message":"Revert dropdown selector — session types shown as offering cards with descriptions","author":"Adi Marie"}]
+  "pushedAt": "2026-06-27T21:30:44-07:00",
+  "commits": [{"sha":"fb8fec28","message":"sessions: present each booking option as an image card","author":"Adi Marie"}]
 }
