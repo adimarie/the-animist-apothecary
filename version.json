@@ -1,12 +1,12 @@
 {
-  "version": "v260628.07 4:05p",
-  "release": 7,
-  "sha": "0cb64789",
-  "fullSha": "0cb647897c185f7ca9bd79da0bce5fc6ecb87581",
+  "version": "v260628.08 4:15p",
+  "release": 8,
+  "sha": "dda2a3c7",
+  "fullSha": "dda2a3c78fd6662ce826a2ab1da6bc6f32285783",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-28T09:05:06-07:00",
-  "commits": [{"sha":"0cb64789","message":"sessions: elegant, editorial booking — large image option cards + weekly circles","author":"Adi Marie"}]
+  "pushedAt": "2026-06-28T09:15:15-07:00",
+  "commits": [{"sha":"dda2a3c7","message":"sessions: full-width booking widget, larger offering cards, remove redundant pay block","author":"Adi Marie"}]
 }
