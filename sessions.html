@@ -2062,12 +2062,15 @@
       font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; color: var(--ink-quiet, #5A554C);
     }
     body[data-content-page="sessions"] .div-sched { max-width: 1100px; margin: 0 auto; padding: 0 2rem 4.5rem; }
-    body[data-content-page="sessions"] .div-sched-frame {
-      border: 1px solid rgba(201,168,76,0.25); border-radius: 12px; overflow: hidden; background: #fff;
-      box-shadow: 0 8px 28px rgba(45,42,38,0.08);
-    }
-    body[data-content-page="sessions"] .div-sched-frame iframe { width: 100%; height: 720px; border: 0; display: block; }
-    @media (max-width: 600px) { body[data-content-page="sessions"] .div-sched-frame iframe { height: 620px; } }
+    body[data-content-page="sessions"] .div-sched-panel { border: 1px solid rgba(201,168,76,0.25); border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 12px 38px rgba(45,42,38,0.11); }
+    body[data-content-page="sessions"] .div-sched-bar { display: flex; align-items: center; gap: 10px; padding: 13px 22px; background: linear-gradient(180deg, var(--parchment-warm,#F4EAD3), #fbf7ee); border-bottom: 1px solid rgba(201,168,76,0.25); }
+    body[data-content-page="sessions"] .div-sched-dot { flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: var(--gold,#C9A84C); animation: aapBkPulse 2.2s ease-out infinite; }
+    @keyframes aapBkPulse { 0% { box-shadow: 0 0 0 0 rgba(201,168,76,0.5); } 70% { box-shadow: 0 0 0 8px rgba(201,168,76,0); } 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0); } }
+    body[data-content-page="sessions"] .div-sched-bar-label { font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold,#C9A84C); font-weight: 600; }
+    body[data-content-page="sessions"] .div-sched-bar-name { margin-left: auto; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px; color: var(--ink-quiet,#5A554C); }
+    body[data-content-page="sessions"] .div-sched-frame { width: 100%; background: #fff; }
+    body[data-content-page="sessions"] .div-sched-frame iframe { width: 100%; height: 680px; border: 0; display: block; }
+    @media (max-width: 600px) { body[data-content-page="sessions"] .div-sched-frame iframe { height: 600px; } body[data-content-page="sessions"] .div-sched-bar-name { display: none; } }
     @media (max-width: 860px) {
       body[data-content-page="sessions"] .div-inner { grid-template-columns: 1fr; }
       body[data-content-page="sessions"] .div-media { min-height: 300px; order: -1; }
@@ -2090,8 +2093,11 @@
       </div>
     </div>
     <div class="div-sched" id="divSched" hidden>
-      <div class="div-sched-frame">
-        <iframe title="Oracular &amp; Elemental Divination &mdash; choose a time" data-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2JoEwPYwIPrTDoHGYGUdWVwXMukInHNzQAkD9A6ryF5kJVMgkfzcpUpzfPUfTaL_hIVtxPcRSE?gv=true" loading="lazy"></iframe>
+      <div class="div-sched-panel">
+        <div class="div-sched-bar"><span class="div-sched-dot" aria-hidden="true"></span><span class="div-sched-bar-label">Live availability</span><span class="div-sched-bar-name">Oracular &amp; Elemental Divination &middot; 2 hours</span></div>
+        <div class="div-sched-frame">
+          <iframe title="Oracular &amp; Elemental Divination &mdash; choose a time" data-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2JoEwPYwIPrTDoHGYGUdWVwXMukInHNzQAkD9A6ryF5kJVMgkfzcpUpzfPUfTaL_hIVtxPcRSE?gv=true" loading="lazy"></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -2583,12 +2589,19 @@
   <script src="js/main.js"></script>
   <script src="js/newsletter.js" defer></script>
   <!--
-    In-house custom booking widget (js/calendar-booking.js): choose a day → an open
-    hour → reciprocity tier → intake questions → Venmo handoff. Open hours come from
-    the get-availability edge function, which builds slots from availability_rules and
-    SUBTRACTS Adi Marie's Google-calendar busy times (read-only OAuth free/busy) so the
-    widget mirrors her live calendar. No Google embed.
+    Booking widget (js/calendar-booking.js): each offering card opens an elegantly
+    framed LIVE Google appointment scheduler (always synced to Adi Marie's calendar),
+    with the sliding-scale Venmo reciprocity below. window.AAP_SCHEDULERS maps each
+    call slug to its Google booking embed URL (?gv=true).
   -->
+  <script>
+    var AAP_CALLS_SCHEDULE = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3dyFbMlqfjfF4pWZK_2y_ofqVJe5gbom-16JgdkZsRBDdn4o0_swhsNgDDemWzSlZ68mTzsEym?gv=true";
+    window.AAP_SCHEDULERS = {
+      "intake-inquiry":        AAP_CALLS_SCHEDULE,
+      "guidance-counsel":      AAP_CALLS_SCHEDULE,
+      "integration-aftercare": AAP_CALLS_SCHEDULE
+    };
+  </script>
   <script src="js/calendar-booking.js" defer></script>
 </body>
 </html>

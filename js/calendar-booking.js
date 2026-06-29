@@ -477,9 +477,14 @@
       })
       .join("");
     var body =
-      '<p class="aap-bk-quiet aap-bk-sched-intro">Choose an open time on Adi Marie’s calendar below. A calendar invitation with the meeting link arrives in your inbox right away.</p>' +
+      '<p class="aap-bk-quiet aap-bk-sched-intro">Pick an open hour below — drawn live from Adi Marie’s calendar. A calendar invitation with the meeting link lands in your inbox the moment you confirm.</p>' +
+      '<div class="aap-bk-sched-panel">' +
+      '<div class="aap-bk-sched-bar"><span class="aap-bk-sched-dot" aria-hidden="true"></span>' +
+      '<span class="aap-bk-sched-bar-label">Live availability</span>' +
+      '<span class="aap-bk-sched-bar-name">' + esc(sel.service.name) + " · " + fmtDuration(sel.service.duration_minutes) + "</span></div>" +
       '<div class="aap-bk-sched-frame"><iframe title="' + esc(sel.service.name) +
       ' — choose a time" src="' + esc(url) + '" loading="lazy"></iframe></div>' +
+      "</div>" +
       (pills
         ? '<div class="aap-bk-sched-pay">' +
           '<p class="aap-bk-pay-label">Then complete your reciprocity</p>' +
@@ -831,13 +836,19 @@
       ".aap-bk-tier-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;font-weight:600;}",
       ".aap-bk-tier-amt{font-size:20px;font-weight:600;color:var(--bk-bark);}",
       // embedded Google appointment scheduler
-      ".aap-bk-sched-intro{margin:2px 0 18px;}",
-      ".aap-bk-sched-frame{position:relative;width:100%;border:1px solid var(--bk-line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 6px 22px rgba(45,42,38,0.06);}",
-      ".aap-bk-sched-frame iframe{width:100%;height:720px;border:0;display:block;}",
-      ".aap-bk-sched-pay{margin-top:28px;padding-top:24px;border-top:1px solid var(--bk-line);}",
+      ".aap-bk-sched-intro{margin:2px 0 20px;}",
+      ".aap-bk-sched-panel{border:1px solid var(--bk-line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 12px 38px rgba(45,42,38,0.11);}",
+      ".aap-bk-sched-bar{display:flex;align-items:center;gap:10px;padding:13px 22px;background:linear-gradient(180deg,var(--bk-parch,#F4EAD3),#fbf7ee);border-bottom:1px solid var(--bk-line);}",
+      ".aap-bk-sched-dot{flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:var(--bk-gold,#C9A84C);animation:aapBkPulse 2.2s ease-out infinite;}",
+      "@keyframes aapBkPulse{0%{box-shadow:0 0 0 0 rgba(201,168,76,0.5);}70%{box-shadow:0 0 0 8px rgba(201,168,76,0);}100%{box-shadow:0 0 0 0 rgba(201,168,76,0);}}",
+      ".aap-bk-sched-bar-label{font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--bk-gold,#C9A84C);font-weight:600;}",
+      ".aap-bk-sched-bar-name{margin-left:auto;font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;color:var(--bk-quiet,#5A554C);}",
+      ".aap-bk-sched-frame{position:relative;width:100%;background:#fff;}",
+      ".aap-bk-sched-frame iframe{width:100%;height:680px;border:0;display:block;}",
+      ".aap-bk-sched-pay{margin-top:30px;padding-top:26px;border-top:1px solid var(--bk-line);}",
       ".aap-bk-sched-payintro{margin:0 0 16px;}",
       ".aap-bk-tier--link{text-decoration:none;}",
-      "@media(max-width:600px){.aap-bk-sched-frame iframe{height:620px;}}",
+      "@media(max-width:600px){.aap-bk-sched-frame iframe{height:600px;}.aap-bk-sched-bar-name{display:none;}}",
       // form
       ".aap-bk-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}",
       ".aap-bk-fieldlabel{display:block;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--bk-quiet);font-weight:600;margin-bottom:14px;}",
