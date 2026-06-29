@@ -1,12 +1,12 @@
 {
-  "version": "v260629.01 3:37p",
-  "release": 1,
-  "sha": "24343282",
-  "fullSha": "243432824086021e1af2a0f581e5f114d337ccb8",
+  "version": "v260629.02 3:59p",
+  "release": 2,
+  "sha": "8ffebe83",
+  "fullSha": "8ffebe831eef60d42d36908113834a3df333607a",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-29T08:36:45-07:00",
-  "commits": [{"sha":"24343282","message":"sessions: calls return to the custom widget (intake questions), synced to Google","author":"Adi Marie"}]
+  "pushedAt": "2026-06-29T08:59:20-07:00",
+  "commits": [{"sha":"8ffebe83","message":"sessions: elegant 'scheduling face' for the live Google scheduler","author":"Adi Marie"}]
 }
