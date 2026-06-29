@@ -14,11 +14,23 @@
     "manage-booking.html",
     "events-dashboard.html",
     "proposals.html",
-    "calendar.html",
     "404.html"
   ];
   var file = (location.pathname.split("/").pop() || "").toLowerCase();
   if (LIVE.indexOf(file) !== -1) return;
+
+  // Dev / preview bypass — so Adi and Claude can build a page beneath the overlay
+  // while the public still sees "coming soon". Visit ANY page once with ?preview=1
+  // and the overlay stays hidden for this browser (persisted) until you visit with
+  // ?preview=0. Visitors without the flag always see the overlay.
+  try {
+    var qs = new URLSearchParams(location.search);
+    if (qs.has("preview")) {
+      if (qs.get("preview") === "0") localStorage.removeItem("aap-preview");
+      else localStorage.setItem("aap-preview", "1");
+    }
+    if (localStorage.getItem("aap-preview") === "1") return;
+  } catch (e) {}
 
   function build() {
     if (document.getElementById("aap-coming-soon")) return;
@@ -37,7 +49,7 @@
       "#aap-coming-soon .acs-lead{font-size:1.28rem;line-height:1.7;color:#3a3530;margin:0 0 2.5rem;}" +
       "#aap-coming-soon .acs-btn{display:inline-block;font-family:'Cinzel',serif;font-size:0.82rem;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;padding:1.05rem 2.3rem;border-radius:2px;background:#2D2A26;color:#F7F5F0;border:1px solid #2D2A26;transition:all 0.3s ease;}" +
       "#aap-coming-soon .acs-btn:hover{background:#C9A84C;border-color:#C9A84C;color:#2D2A26;}" +
-      "#aap-coming-soon .acs-home{display:inline-block;margin-top:1.7rem;font-size:1.02rem;color:#886039;text-decoration:underline;text-underline-offset:3px;}" +
+      "#aap-coming-soon .acs-home{display:block;margin-top:1.8rem;font-size:1.02rem;color:#886039;text-decoration:underline;text-underline-offset:3px;}" +
       "#aap-coming-soon .acs-home:hover{color:#C9A84C;}";
     document.head.appendChild(style);
 
