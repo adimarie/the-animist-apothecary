@@ -1,12 +1,12 @@
 {
-  "version": "v260629.02 3:59p",
-  "release": 2,
-  "sha": "8ffebe83",
-  "fullSha": "8ffebe831eef60d42d36908113834a3df333607a",
+  "version": "v260629.03 4:14p",
+  "release": 3,
+  "sha": "1289d547",
+  "fullSha": "1289d547156b97ac589445781ee8d509745992c5",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-29T08:59:20-07:00",
-  "commits": [{"sha":"8ffebe83","message":"sessions: elegant 'scheduling face' for the live Google scheduler","author":"Adi Marie"}]
+  "pushedAt": "2026-06-29T09:13:40-07:00",
+  "commits": [{"sha":"1289d547","message":"sessions: call cards now match the Divination band — full image panel + centered text","author":"Adi Marie"}]
 }
