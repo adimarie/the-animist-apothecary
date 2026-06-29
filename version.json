@@ -1,12 +1,12 @@
 {
-  "version": "v260629.06 4:59p",
-  "release": 6,
-  "sha": "c3349768",
-  "fullSha": "c33497688461d59da15bdefdb0a22b9714314e07",
+  "version": "v260629.07 5:07p",
+  "release": 7,
+  "sha": "406f02e0",
+  "fullSha": "406f02e0bc32eff790a13b36e86af43106836e6f",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-29T09:59:00-07:00",
-  "commits": [{"sha":"c3349768","message":"coming-soon: add ?preview bypass for dev, move home link below CTA, gate calendar (The Wheel)","author":"Adi Marie"}]
+  "pushedAt": "2026-06-29T10:07:00-07:00",
+  "commits": [{"sha":"406f02e0","message":"home: hero primary CTA -> 'Schedule a Call' linking to /sessions.html","author":"Adi Marie"}]
 }
