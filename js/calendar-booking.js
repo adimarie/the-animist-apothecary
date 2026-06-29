@@ -90,6 +90,7 @@
       serviceTz: d.serviceTz || DEFAULTS.serviceTz,
       categoryLabel: d.categoryLabel != null ? d.categoryLabel : DEFAULTS.categoryLabel,
       slidingScale: (d.slidingScale != null ? d.slidingScale : "").split(",").map(trim).filter(Boolean),
+      cardLayout: d.cardLayout || "",
       comingSoon: (d.comingSoon != null ? d.comingSoon : DEFAULTS.comingSoon).split("|").map(trim).filter(Boolean),
     };
   }
@@ -243,17 +244,28 @@
       body += "</span></div>";
     }
     body += '<div class="aap-bk-offerings">';
+    var wide = cfg.cardLayout === "wide";
     catalog.forEach(function (s) {
       var on = sel.service && sel.service.id === s.id;
       var range = priceRange(s.tiers);
-      body +=
-        '<button type="button" class="aap-bk-offering' + (on ? " is-on" : "") +
-        '" data-svc="' + esc(s.slug) + '">' +
+      var inner =
         '<span class="aap-bk-offering-dur">' + fmtDuration(s.duration_minutes) + "</span>" +
         '<span class="aap-bk-offering-name">' + esc(s.name) + "</span>" +
         (s.description ? '<span class="aap-bk-offering-desc">' + esc(s.description) + "</span>" : "") +
-        (range ? '<span class="aap-bk-offering-price">' + range + "</span>" : "") +
-        "</button>";
+        (range ? '<span class="aap-bk-offering-price">' + range + "</span>" : "");
+      if (wide) {
+        body +=
+          '<button type="button" class="aap-bk-offering aap-bk-offering--wide' + (on ? " is-on" : "") +
+          '" data-svc="' + esc(s.slug) + '">' +
+          '<span class="aap-bk-offering-media" aria-hidden="true"></span>' +
+          '<span class="aap-bk-offering-body">' + inner +
+          '<span class="aap-bk-offering-go">Schedule your session &rarr;</span></span>' +
+          "</button>";
+      } else {
+        body +=
+          '<button type="button" class="aap-bk-offering' + (on ? " is-on" : "") +
+          '" data-svc="' + esc(s.slug) + '">' + inner + "</button>";
+      }
     });
     body += "</div>";
     // Coming-soon categories (not yet bookable)

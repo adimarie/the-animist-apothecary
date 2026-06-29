@@ -1933,70 +1933,58 @@
 
       <!-- Each booking option presented as an image card (page-scoped; keyed to the widget's data-svc slug) -->
       <style>
-        /* ── Full-width, alternating editorial cards — image one side, text + CTA the other ── */
+        /* ── Full-width, alternating cards — image panel + centered text, matching the Divination band ── */
         body[data-content-page="sessions"] #booking-calendar { max-width: 1200px; }
         body[data-content-page="sessions"] .aap-bk-cal { max-width: 660px; margin-left: auto; margin-right: auto; }
         body[data-content-page="sessions"] .aap-bk-offerings { display: flex; flex-direction: column; gap: 30px; margin-top: 8px; }
-        body[data-content-page="sessions"] .aap-bk-offering {
+        body[data-content-page="sessions"] .aap-bk-offering--wide {
           width: 100%; max-width: none; gap: 0; padding: 0; overflow: hidden; text-align: left;
-          display: grid; grid-template-columns: 45% 55%; align-items: stretch; align-content: start;
+          display: grid; grid-template-columns: 46% 54%; align-items: stretch;
           border: 1px solid rgba(201,168,76,0.20); border-radius: 4px; background: #fff;
           box-shadow: 0 8px 30px rgba(45,42,38,0.07);
           transition: transform 0.45s cubic-bezier(.2,.7,.2,1), box-shadow 0.45s ease, border-color 0.3s ease;
         }
-        body[data-content-page="sessions"] .aap-bk-offering:hover { transform: translateY(-4px); box-shadow: 0 22px 48px rgba(45,42,38,0.14); border-color: var(--gold, #C9A84C); }
-        body[data-content-page="sessions"] .aap-bk-offering.is-on { border-color: var(--gold, #C9A84C); box-shadow: 0 0 0 1px var(--gold, #C9A84C) inset, 0 18px 42px rgba(45,42,38,0.13); }
-        /* image — fills one column, full height */
-        body[data-content-page="sessions"] .aap-bk-offering::before {
-          content: ""; display: block; position: static; transform: none; top: auto; left: auto; right: auto;
-          grid-column: 1; grid-row: 1 / -1; width: 100%; height: 100%; min-height: 320px; margin: 0;
-          background-color: var(--bk-paper, #F7F5F0); background-size: cover; background-position: center;
+        body[data-content-page="sessions"] .aap-bk-offering--wide::before { content: none; display: none; }
+        body[data-content-page="sessions"] .aap-bk-offering--wide:hover { transform: translateY(-4px); box-shadow: 0 22px 48px rgba(45,42,38,0.14); border-color: var(--gold, #C9A84C); }
+        body[data-content-page="sessions"] .aap-bk-offering--wide.is-on { border-color: var(--gold, #C9A84C); box-shadow: 0 0 0 1px var(--gold, #C9A84C) inset, 0 18px 42px rgba(45,42,38,0.13); }
+        /* image panel — fills the full card height, edge to edge */
+        body[data-content-page="sessions"] .aap-bk-offering-media {
+          grid-column: 1; grid-row: 1; min-height: 400px;
+          background-size: cover; background-position: center; background-color: var(--bk-paper, #F7F5F0);
           transition: filter 0.45s ease, transform 0.6s cubic-bezier(.2,.7,.2,1);
         }
-        body[data-content-page="sessions"] .aap-bk-offering:hover::before,
-        body[data-content-page="sessions"] .aap-bk-offering.is-on::before { filter: brightness(1.05) saturate(1.03); transform: scale(1.04); }
-        /* text — the other column */
-        body[data-content-page="sessions"] .aap-bk-offering-dur { grid-column: 2; grid-row: 1; padding: 3.2rem 3.4rem 0; }
-        body[data-content-page="sessions"] .aap-bk-offering-name { grid-column: 2; grid-row: 2; padding: 0.5rem 3.4rem 0; font-size: 34px; line-height: 1.08; }
-        body[data-content-page="sessions"] .aap-bk-offering-desc { grid-column: 2; grid-row: 3; padding: 0.9rem 3.4rem 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.2rem; line-height: 1.6; color: #3a3530; }
-        body[data-content-page="sessions"] .aap-bk-offering-price { grid-column: 2; grid-row: 4; margin: 0; padding: 1.3rem 3.4rem 0; border-top: none; font-size: 24px; }
-        /* the schedule affordance — the whole card is the button; this is its visual call to action */
-        body[data-content-page="sessions"] .aap-bk-offering::after {
-          content: "Schedule your session \2192"; grid-column: 2; grid-row: 5; justify-self: start; align-self: start;
-          margin: 1.5rem 3.4rem 3.2rem; padding: 0.9rem 1.9rem;
+        body[data-content-page="sessions"] .aap-bk-offering--wide:hover .aap-bk-offering-media,
+        body[data-content-page="sessions"] .aap-bk-offering--wide.is-on .aap-bk-offering-media { filter: brightness(1.04) saturate(1.03); transform: scale(1.03); }
+        /* text — vertically centered in its panel */
+        body[data-content-page="sessions"] .aap-bk-offering-body {
+          grid-column: 2; grid-row: 1; display: flex; flex-direction: column; justify-content: center; padding: 3.2rem 3.6rem;
+        }
+        body[data-content-page="sessions"] .aap-bk-offering-name { font-size: 34px; line-height: 1.08; margin-top: 0.5rem; }
+        body[data-content-page="sessions"] .aap-bk-offering-desc { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.2rem; line-height: 1.6; color: #3a3530; margin-top: 0.9rem; }
+        body[data-content-page="sessions"] .aap-bk-offering-price { font-size: 24px; margin-top: 1.3rem; padding-top: 0; border-top: none; }
+        body[data-content-page="sessions"] .aap-bk-offering-go {
+          align-self: flex-start; margin-top: 1.7rem; padding: 0.9rem 1.9rem;
           font-family: 'Cinzel', serif; font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase;
-          color: var(--bk-paper, #F7F5F0); background: var(--bk-bark, #2D2A26); border: 1px solid var(--bk-bark, #2D2A26);
+          color: var(--paper, #F7F5F0); background: var(--bark, #2D2A26); border: 1px solid var(--bark, #2D2A26);
           border-radius: 2px; transition: all 0.3s ease;
         }
-        body[data-content-page="sessions"] .aap-bk-offering:hover::after,
-        body[data-content-page="sessions"] .aap-bk-offering.is-on::after { background: var(--gold, #C9A84C); border-color: var(--gold, #C9A84C); color: var(--bk-bark, #2D2A26); }
+        body[data-content-page="sessions"] .aap-bk-offering--wide:hover .aap-bk-offering-go,
+        body[data-content-page="sessions"] .aap-bk-offering--wide.is-on .aap-bk-offering-go { background: var(--gold, #C9A84C); border-color: var(--gold, #C9A84C); color: var(--bark, #2D2A26); }
         /* alternate — even cards put the image on the right */
-        body[data-content-page="sessions"] .aap-bk-offering:nth-child(even) { grid-template-columns: 55% 45%; }
-        body[data-content-page="sessions"] .aap-bk-offering:nth-child(even)::before { grid-column: 2; }
-        body[data-content-page="sessions"] .aap-bk-offering:nth-child(even) .aap-bk-offering-dur,
-        body[data-content-page="sessions"] .aap-bk-offering:nth-child(even) .aap-bk-offering-name,
-        body[data-content-page="sessions"] .aap-bk-offering:nth-child(even) .aap-bk-offering-desc,
-        body[data-content-page="sessions"] .aap-bk-offering:nth-child(even) .aap-bk-offering-price,
-        body[data-content-page="sessions"] .aap-bk-offering:nth-child(even)::after { grid-column: 1; }
+        body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) { grid-template-columns: 54% 46%; }
+        body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-media { grid-column: 2; }
+        body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-body { grid-column: 1; }
         /* per-svc imagery */
-        body[data-content-page="sessions"] .aap-bk-offering[data-svc="intake-inquiry"]::before { background-image: url('images/uploads/download.jpg'); }
-        body[data-content-page="sessions"] .aap-bk-offering[data-svc="guidance-counsel"]::before { background-image: url('images/uploads/cta-moss-smoke.jpg'); }
-        body[data-content-page="sessions"] .aap-bk-offering[data-svc="integration-aftercare"]::before { background-image: url('images/uploads/download-6.jpg'); background-position: center 35%; }
+        body[data-content-page="sessions"] .aap-bk-offering[data-svc="intake-inquiry"] .aap-bk-offering-media { background-image: url('images/uploads/download.jpg'); }
+        body[data-content-page="sessions"] .aap-bk-offering[data-svc="guidance-counsel"] .aap-bk-offering-media { background-image: url('images/uploads/cta-moss-smoke.jpg'); }
+        body[data-content-page="sessions"] .aap-bk-offering[data-svc="integration-aftercare"] .aap-bk-offering-media { background-image: url('images/uploads/download-6.jpg'); background-position: center 35%; }
         @media (max-width: 820px) {
-          body[data-content-page="sessions"] .aap-bk-offering,
-          body[data-content-page="sessions"] .aap-bk-offering:nth-child(even) { grid-template-columns: 1fr; }
-          body[data-content-page="sessions"] .aap-bk-offering::before,
-          body[data-content-page="sessions"] .aap-bk-offering:nth-child(even)::before { grid-column: 1; grid-row: 1; min-height: 230px; }
-          body[data-content-page="sessions"] .aap-bk-offering-dur,
-          body[data-content-page="sessions"] .aap-bk-offering:nth-child(even) .aap-bk-offering-dur { grid-column: 1; grid-row: 2; padding: 2rem 1.6rem 0; }
-          body[data-content-page="sessions"] .aap-bk-offering-name,
-          body[data-content-page="sessions"] .aap-bk-offering:nth-child(even) .aap-bk-offering-name { grid-column: 1; grid-row: 3; padding-left: 1.6rem; padding-right: 1.6rem; }
-          body[data-content-page="sessions"] .aap-bk-offering-desc,
-          body[data-content-page="sessions"] .aap-bk-offering:nth-child(even) .aap-bk-offering-desc { grid-column: 1; grid-row: 4; padding-left: 1.6rem; padding-right: 1.6rem; }
-          body[data-content-page="sessions"] .aap-bk-offering-price,
-          body[data-content-page="sessions"] .aap-bk-offering:nth-child(even) .aap-bk-offering-price { grid-column: 1; grid-row: 5; padding-left: 1.6rem; padding-right: 1.6rem; }
-          body[data-content-page="sessions"] .aap-bk-offering::after,
-          body[data-content-page="sessions"] .aap-bk-offering:nth-child(even)::after { grid-column: 1; grid-row: 6; margin: 1.4rem 1.6rem 2.4rem; }
+          body[data-content-page="sessions"] .aap-bk-offering--wide,
+          body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) { grid-template-columns: 1fr; }
+          body[data-content-page="sessions"] .aap-bk-offering-media,
+          body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-media { grid-column: 1; grid-row: 1; min-height: 240px; }
+          body[data-content-page="sessions"] .aap-bk-offering-body,
+          body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-body { grid-column: 1; grid-row: 2; padding: 2.6rem 1.7rem; }
         }
       </style>
 
@@ -2005,6 +1993,7 @@
            data-services="intake-inquiry,guidance-counsel,integration-aftercare"
            data-category-label="One-on-One Virtual Sessions"
            data-sliding-scale="700,550,450,350"
+           data-card-layout="wide"
            data-coming-soon=""
            data-venmo="TheAnimistApothecary"></div>
     </div>
