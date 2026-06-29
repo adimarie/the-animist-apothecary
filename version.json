@@ -1,12 +1,12 @@
 {
-  "version": "v260629.04 4:38p",
-  "release": 4,
-  "sha": "2c485d7c",
-  "fullSha": "2c485d7c7affbb517f30ceed29e92586ca5a65ed",
+  "version": "v260629.05 4:50p",
+  "release": 5,
+  "sha": "065e881c",
+  "fullSha": "065e881cb606ca2b77baf9586723988bc96b58a1",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-29T09:38:27-07:00",
-  "commits": [{"sha":"2c485d7c","message":"sessions: remove Oracular Divination, In-person Gatherings & Events, and Ceremonies/Rituals/Retreats sections","author":"Adi Marie"}]
+  "pushedAt": "2026-06-29T09:49:59-07:00",
+  "commits": [{"sha":"065e881c","message":"site: gate all pages except Home + booking behind a 'coming soon' overlay","author":"Adi Marie"}]
 }
