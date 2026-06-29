@@ -1,12 +1,12 @@
 {
-  "version": "v260629.03 4:14p",
-  "release": 3,
-  "sha": "1289d547",
-  "fullSha": "1289d547156b97ac589445781ee8d509745992c5",
+  "version": "v260629.04 4:38p",
+  "release": 4,
+  "sha": "2c485d7c",
+  "fullSha": "2c485d7c7affbb517f30ceed29e92586ca5a65ed",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-29T09:13:40-07:00",
-  "commits": [{"sha":"1289d547","message":"sessions: call cards now match the Divination band — full image panel + centered text","author":"Adi Marie"}]
+  "pushedAt": "2026-06-29T09:38:27-07:00",
+  "commits": [{"sha":"2c485d7c","message":"sessions: remove Oracular Divination, In-person Gatherings & Events, and Ceremonies/Rituals/Retreats sections","author":"Adi Marie"}]
 }
