@@ -1,12 +1,12 @@
 {
-  "version": "v260629.07 5:07p",
-  "release": 7,
-  "sha": "406f02e0",
-  "fullSha": "406f02e0bc32eff790a13b36e86af43106836e6f",
+  "version": "v260702.01 4:16p",
+  "release": 1,
+  "sha": "c0088b57",
+  "fullSha": "c0088b57642b8587da057d3e29e4d80535ea0390",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervmmklqx",
-  "pushedAt": "2026-06-29T10:07:00-07:00",
-  "commits": [{"sha":"406f02e0","message":"home: hero primary CTA -> 'Schedule a Call' linking to /sessions.html","author":"Adi Marie"}]
+  "machine": "runnervmkkn4f",
+  "pushedAt": "2026-07-02T09:16:15-07:00",
+  "commits": [{"sha":"0045c0e1","message":"Add custom Virtual Services booking flow (schedule + intake + Venmo)","author":"Adi Marie"},{"sha":"5d176b0c","message":"Property platform removal + admin hub rebuild + Venmo unification (local snapshot)","author":"Adi Marie"},{"sha":"7a54a88d","message":"Six-page premium build: nav restructure, new pages, luxury design system","author":"Adi Marie"},{"sha":"c0088b57","message":"Merge origin/main: reconcile live-site sessions/gating work with premium build","author":"Adi Marie"}]
 }
