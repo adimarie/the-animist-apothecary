@@ -89,6 +89,8 @@
       venmo: d.venmo || DEFAULTS.venmo,
       serviceTz: d.serviceTz || DEFAULTS.serviceTz,
       categoryLabel: d.categoryLabel != null ? d.categoryLabel : DEFAULTS.categoryLabel,
+      slidingScale: (d.slidingScale != null ? d.slidingScale : "").split(",").map(trim).filter(Boolean),
+      cardLayout: d.cardLayout || "",
       comingSoon: (d.comingSoon != null ? d.comingSoon : DEFAULTS.comingSoon).split("|").map(trim).filter(Boolean),
     };
   }
@@ -194,10 +196,19 @@
     if (!sel.service && catalog.length === 1) sel.service = catalog[0];
     var html = "";
     html += stepOffering();
-    if (sel.service) html += stepDay();
-    if (sel.service && sel.dayKey) html += stepHour();
-    if (sel.slot) html += stepTier();
-    if (sel.tier) html += stepDetails();
+    if (sel.service) {
+      var schedUrl = schedulerUrlFor(sel.service);
+      if (schedUrl) {
+        // Sessions whose availability lives in a Google appointment schedule:
+        // embed Google's scheduler + the sliding-scale Venmo reciprocity.
+        html += stepScheduler(schedUrl);
+      } else {
+        html += stepDay();
+        if (sel.dayKey) html += stepHour();
+        if (sel.slot) html += stepTier();
+        if (sel.tier) html += stepDetails();
+      }
+    }
     root.innerHTML = '<div class="aap-bk-card">' + html + "</div>";
     bindShell();
     // Bring the newest revealed step into view (not on first paint).
@@ -225,18 +236,36 @@
     var chosen = sel.service ? sel.service.name : "";
     var body = "";
     if (cfg.categoryLabel) body += '<p class="aap-bk-cat-label">' + esc(cfg.categoryLabel) + "</p>";
+    if (cfg.slidingScale && cfg.slidingScale.length) {
+      body += '<div class="aap-bk-scale"><span class="aap-bk-scale-label">Sliding scale</span><span class="aap-bk-scale-values">';
+      cfg.slidingScale.forEach(function (v) {
+        body += '<span class="aap-bk-scale-val">$' + esc(String(v).replace(/[^0-9]/g, "")) + "</span>";
+      });
+      body += "</span></div>";
+    }
     body += '<div class="aap-bk-offerings">';
+    var wide = cfg.cardLayout === "wide";
     catalog.forEach(function (s) {
       var on = sel.service && sel.service.id === s.id;
       var range = priceRange(s.tiers);
-      body +=
-        '<button type="button" class="aap-bk-offering' + (on ? " is-on" : "") +
-        '" data-svc="' + esc(s.slug) + '">' +
+      var inner =
         '<span class="aap-bk-offering-dur">' + fmtDuration(s.duration_minutes) + "</span>" +
         '<span class="aap-bk-offering-name">' + esc(s.name) + "</span>" +
         (s.description ? '<span class="aap-bk-offering-desc">' + esc(s.description) + "</span>" : "") +
-        (range ? '<span class="aap-bk-offering-price">' + range + "</span>" : "") +
-        "</button>";
+        (range ? '<span class="aap-bk-offering-price">' + range + "</span>" : "");
+      if (wide) {
+        body +=
+          '<button type="button" class="aap-bk-offering aap-bk-offering--wide' + (on ? " is-on" : "") +
+          '" data-svc="' + esc(s.slug) + '">' +
+          '<span class="aap-bk-offering-media" aria-hidden="true"></span>' +
+          '<span class="aap-bk-offering-body">' + inner +
+          '<span class="aap-bk-offering-go">Schedule your session &rarr;</span></span>' +
+          "</button>";
+      } else {
+        body +=
+          '<button type="button" class="aap-bk-offering' + (on ? " is-on" : "") +
+          '" data-svc="' + esc(s.slug) + '">' + inner + "</button>";
+      }
     });
     body += "</div>";
     // Coming-soon categories (not yet bookable)
@@ -422,6 +451,61 @@
       '<div class="aap-bk-summary-row"><span>Length</span><strong>' + fmtDuration(sel.service.duration_minutes) + "</strong></div>" +
       '<div class="aap-bk-summary-row"><span>Reciprocity</span><strong>' + esc(sel.tier.tier_name) + " · " + money(sel.tier.min_amount_cents) + "</strong></div>"
     );
+  }
+
+  // ---- Step 2 (alt): Google appointment scheduler -------------------------
+  // For sessions whose availability is managed in a Google appointment
+  // schedule, we embed Google's own booking page (so the open times come
+  // straight from Adi's calendar and never clash with her personal schedule)
+  // and offer the sliding-scale reciprocity by Venmo alongside.
+  function schedulerUrlFor(s) {
+    if (!s) return null;
+    var map =
+      (typeof window !== "undefined" && window.AAP_SCHEDULERS) ||
+      (cfg && cfg.schedulers) || {};
+    var url = map[s.slug];
+    return url && /^https:\/\//.test(url) ? url : null;
+  }
+
+  function stepScheduler(url) {
+    var head = stepHeader(2, "Choose your time", "", true);
+    var venmoUser = cfg.venmo;
+    var tiers = sel.service.tiers || [];
+    var memo = sel.service.name + " — reciprocity";
+    var pills = tiers
+      .map(function (t) {
+        var amt = t.min_amount_cents / 100;
+        var link =
+          "https://venmo.com/u/" + encodeURIComponent(venmoUser) +
+          "?txn=pay&amount=" + encodeURIComponent(amt) +
+          "&note=" + encodeURIComponent(memo);
+        return (
+          '<a class="aap-bk-tier aap-bk-tier--link" href="' + link + '" target="_blank" rel="noopener">' +
+          (t.tier_eyebrow ? '<span class="aap-bk-tier-eyebrow">' + esc(t.tier_eyebrow) + "</span>" : "") +
+          '<span class="aap-bk-tier-name">' + esc(t.tier_name) + "</span>" +
+          '<span class="aap-bk-tier-amt">' + money(t.min_amount_cents) + "</span>" +
+          "</a>"
+        );
+      })
+      .join("");
+    var body =
+      '<p class="aap-bk-quiet aap-bk-sched-intro">Pick an open hour below — drawn live from Adi Marie’s calendar. A calendar invitation with the meeting link lands in your inbox the moment you confirm.</p>' +
+      '<div class="aap-bk-sched-panel">' +
+      '<div class="aap-bk-sched-bar"><span class="aap-bk-sched-dot" aria-hidden="true"></span>' +
+      '<span class="aap-bk-sched-bar-label">Live availability</span>' +
+      '<span class="aap-bk-sched-bar-name">' + esc(sel.service.name) + " · " + fmtDuration(sel.service.duration_minutes) + "</span></div>" +
+      '<div class="aap-bk-sched-frame"><iframe title="' + esc(sel.service.name) +
+      ' — choose a time" src="' + esc(url) + '" loading="lazy"></iframe></div>' +
+      "</div>" +
+      (pills
+        ? '<div class="aap-bk-sched-pay">' +
+          '<p class="aap-bk-pay-label">Then complete your reciprocity</p>' +
+          '<p class="aap-bk-quiet aap-bk-center aap-bk-sched-payintro">A sliding scale, offered in trust. Choose what is true for you, and send by Venmo to <strong>@' +
+          esc(venmoUser) + "</strong>.</p>" +
+          '<div class="aap-bk-tiers aap-bk-tiers--links">' + pills + "</div>" +
+          "</div>"
+        : "");
+    return section("scheduler", head + body, true);
   }
 
   // ---- Submit + confirmation ----------------------------------------------
@@ -722,6 +806,10 @@
       ".aap-bk-offering-price{font-family:'Cormorant Garamond',Georgia,serif;font-size:21px;font-weight:600;color:var(--bk-bark);margin-top:4px;padding-top:12px;border-top:1px solid var(--bk-line);}",
       "@media(max-width:640px){.aap-bk-offerings{grid-template-columns:1fr;}}",
       ".aap-bk-cat-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bk-gold);font-weight:600;margin:0 0 12px;}",
+      ".aap-bk-scale{display:flex;flex-wrap:wrap;align-items:center;gap:9px 14px;margin:0 0 22px;padding:0 0 18px;border-bottom:1px solid var(--bk-line);}",
+      ".aap-bk-scale-label{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--bk-gold);font-weight:600;}",
+      ".aap-bk-scale-values{display:inline-flex;flex-wrap:wrap;gap:8px;}",
+      ".aap-bk-scale-val{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:600;color:var(--bk-bark);line-height:1;padding:5px 15px;border:1px solid var(--bk-line);border-radius:999px;background:#fff;}",
       ".aap-bk-soon{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;}",
       ".aap-bk-soon-card{display:flex;flex-direction:column;gap:5px;padding:16px 18px;border:1px dashed var(--bk-line);border-radius:11px;background:transparent;opacity:.8;}",
       ".aap-bk-soon-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;font-weight:600;color:var(--bk-quiet);}",
@@ -759,6 +847,20 @@
       ".aap-bk-tier-eyebrow{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bk-gold);font-weight:600;}",
       ".aap-bk-tier-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;font-weight:600;}",
       ".aap-bk-tier-amt{font-size:20px;font-weight:600;color:var(--bk-bark);}",
+      // embedded Google appointment scheduler
+      ".aap-bk-sched-intro{margin:2px 0 20px;}",
+      ".aap-bk-sched-panel{border:1px solid var(--bk-line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 12px 38px rgba(45,42,38,0.11);}",
+      ".aap-bk-sched-bar{display:flex;align-items:center;gap:10px;padding:13px 22px;background:linear-gradient(180deg,var(--bk-parch,#F4EAD3),#fbf7ee);border-bottom:1px solid var(--bk-line);}",
+      ".aap-bk-sched-dot{flex:0 0 auto;width:8px;height:8px;border-radius:50%;background:var(--bk-gold,#C9A84C);animation:aapBkPulse 2.2s ease-out infinite;}",
+      "@keyframes aapBkPulse{0%{box-shadow:0 0 0 0 rgba(201,168,76,0.5);}70%{box-shadow:0 0 0 8px rgba(201,168,76,0);}100%{box-shadow:0 0 0 0 rgba(201,168,76,0);}}",
+      ".aap-bk-sched-bar-label{font-family:'Cinzel',serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--bk-gold,#C9A84C);font-weight:600;}",
+      ".aap-bk-sched-bar-name{margin-left:auto;font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;color:var(--bk-quiet,#5A554C);}",
+      ".aap-bk-sched-frame{position:relative;width:100%;background:#fff;}",
+      ".aap-bk-sched-frame iframe{width:100%;height:680px;border:0;display:block;}",
+      ".aap-bk-sched-pay{margin-top:30px;padding-top:26px;border-top:1px solid var(--bk-line);}",
+      ".aap-bk-sched-payintro{margin:0 0 16px;}",
+      ".aap-bk-tier--link{text-decoration:none;}",
+      "@media(max-width:600px){.aap-bk-sched-frame iframe{height:600px;}.aap-bk-sched-bar-name{display:none;}}",
       // form
       ".aap-bk-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}",
       ".aap-bk-fieldlabel{display:block;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--bk-quiet);font-weight:600;margin-bottom:14px;}",

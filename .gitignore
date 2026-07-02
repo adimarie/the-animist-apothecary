@@ -87,3 +87,5 @@ memory/
 
 # Private local backups of files removed for PII reasons (260528) — never commit
 private/
+docs/seven-figure-standards.md
+docs/site-languaging-principles-260701.md

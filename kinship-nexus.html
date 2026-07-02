@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Kinship Nexus &middot; The Animist Apothecary</title>
+  <meta name="description" content="The Kinship Nexus — a closed ceremonial community held by The Animist Apothecary. An invitational fellowship of ceremony, integration, and kinship, participating in growing an entheogenically awakened society. Entry by application and deep inquiry.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500&family=Inter:wght@300;400;500&family=Tangerine&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v19">
+  <style>
+    body[data-content-page^="offering-"] { background: #FAF8F3; color: var(--ink-deep, #2D2A26); }
+
+    /* ====== Hero ====== */
+    .kn-hero { position: relative; min-height: 74vh; display: flex; align-items: center; justify-content: center; padding: 7rem 3rem; overflow: hidden; }
+    .kn-hero-image { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 1; }
+    .kn-hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(18,16,12,0.58), rgba(28,24,18,0.80)); z-index: 2; }
+    .kn-hero-inner { position: relative; z-index: 3; max-width: 900px; text-align: center; color: #F5F3ED; }
+    .kn-hero-eyebrow { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-pale, #DCC178); margin-bottom: 1rem; }
+    .kn-hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(3.2rem, 6.8vw, 6rem); line-height: 1.04; margin: 0.4rem 0 1.2rem; letter-spacing: -0.005em; text-shadow: 0 2px 16px rgba(0,0,0,0.3); }
+    .kn-hero-title em { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-weight: 400; font-size: 1.45em; line-height: 0.9; color: var(--gold-pale, #DCC178); letter-spacing: 0; }
+    .kn-hero-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.18rem, 1.8vw, 1.55rem); line-height: 1.55; color: var(--gold-pale, #DCC178); margin: 0 auto; max-width: 760px; }
+
+    /* ====== Section scaffolding ====== */
+    .kn-body { padding: 6rem 3rem; }
+    .kn-body-inner { max-width: 1080px; margin: 0 auto; }
+    .kn-section { margin-bottom: 6rem; }
+    .kn-section:last-child { margin-bottom: 0; }
+    .kn-eyebrow { display: block; font-family: 'Cormorant SC', serif; font-size: 0.76rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 1rem; }
+    .kn-h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.18; letter-spacing: -0.005em; color: var(--ink-deep, #2D2A26); margin: 0 0 1.6rem; }
+    .kn-h2 em { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-weight: 400; font-size: 1.5em; line-height: 0.9; color: var(--gold, #c9a84c); }
+    .kn-prose { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; line-height: 1.78; color: var(--ink-soft, #3D3A36); max-width: 700px; }
+    .kn-prose p { margin: 0 0 1.2rem; }
+    .kn-prose p:last-child { margin-bottom: 0; }
+    .kn-prose em { font-style: italic; }
+    .kn-rule { display: block; width: 60px; height: 1px; background: var(--gold, #c9a84c); margin: 1.6rem 0 2rem; opacity: 0.55; }
+
+    /* ====== Centered impact sections ====== */
+    .kn-centered { text-align: center; }
+    .kn-centered .kn-rule { margin-left: auto; margin-right: auto; }
+    .kn-centered .kn-prose { max-width: 660px; margin: 0 auto; }
+
+    /* ====== Invocation ====== */
+    .kn-invocation { max-width: 760px; margin: 0 auto 6rem; text-align: center; }
+    .kn-invocation p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.45rem); line-height: 1.7; color: var(--ink-soft, #3D3A36); margin: 0; }
+
+    /* ====== Two-card weave: Kinship / Nexus ====== */
+    .kn-weave { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2.4rem; }
+    @media (max-width: 880px) { .kn-weave { grid-template-columns: 1fr; gap: 2.4rem; } }
+    .kn-weave-card { background: #F5F3ED; border: 1px solid rgba(201,168,76,0.16); border-radius: 4px; padding: 2.6rem 2.4rem; }
+    .kn-weave-img { aspect-ratio: 16/9; background-size: cover; background-position: center; border-radius: 3px; margin-bottom: 1.4rem; box-shadow: 0 8px 24px -12px rgba(20,16,8,0.3); }
+    .kn-weave-eyebrow { font-family: 'Cormorant SC', serif; font-size: 0.74rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 0.8rem; }
+    .kn-weave-name { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.7rem; line-height: 1.2; color: var(--ink-deep, #2D2A26); margin: 0 0 1rem; }
+    .kn-weave-body { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.72; color: var(--ink-soft, #3D3A36); margin: 0; }
+
+    /* ====== The rhythm cards ====== */
+    .kn-rhythm { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-top: 2.4rem; }
+    @media (max-width: 880px) { .kn-rhythm { grid-template-columns: 1fr; gap: 1.8rem; } }
+    .kn-rhythm-card { background: #F5F3ED; border: 1px solid rgba(201,168,76,0.16); border-radius: 4px; padding: 2.4rem 2rem; text-align: center; }
+    .kn-rhythm-symbol { font-family: 'Tangerine', serif; font-size: 4rem; line-height: 1; color: var(--gold, #c9a84c); margin: 0 0 0.4rem; }
+    .kn-rhythm-name { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.5rem; line-height: 1.2; color: var(--ink-deep, #2D2A26); margin: 0 0 1rem; }
+    .kn-rhythm-body { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.65; color: var(--ink-soft, #3D3A36); margin: 0; }
+
+    /* ====== Principles list ====== */
+    .kn-principles { list-style: none; padding: 0; margin: 1.6rem 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2.4rem; }
+    @media (max-width: 720px) { .kn-principles { grid-template-columns: 1fr; } }
+    .kn-principles li { font-family: 'Cormorant Garamond', serif; font-size: 1.04rem; line-height: 1.6; color: var(--ink-soft, #3D3A36); padding: 1rem 0; border-bottom: 1px solid rgba(201,168,76,0.18); }
+    .kn-principles li strong { color: var(--ink-deep, #2D2A26); font-weight: 500; }
+
+    /* ====== Split panel ====== */
+    .kn-duo { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 3.5rem; align-items: center; margin-top: 0.5rem; }
+    @media (max-width: 880px) { .kn-duo { grid-template-columns: 1fr; gap: 2rem; } }
+    .kn-duo-image { aspect-ratio: 4/5; background-size: cover; background-position: center; border-radius: 4px; box-shadow: 0 10px 40px -14px rgba(20,16,8,0.4); }
+    @media (max-width: 880px) { .kn-duo-image { aspect-ratio: 16/10; } }
+
+    /* ====== Interlude ====== */
+    .kn-interlude { position: relative; border-radius: 4px; overflow: hidden; min-height: 380px; display: flex; align-items: center; justify-content: center; padding: 3rem; background-size: cover; background-position: center; }
+    .kn-interlude::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(18,16,12,0.32), rgba(24,20,15,0.5)); }
+    .kn-interlude p { position: relative; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.5; color: #F7F4EC; max-width: 620px; text-align: center; margin: 0; text-shadow: 0 2px 18px rgba(0,0,0,0.45); }
+
+    /* ====== The creed ====== */
+    .kn-creed { position: relative; border: 1px solid rgba(220,193,120,0.35); border-radius: 4px; padding: 4.2rem 2.4rem; text-align: center; color: #F5F3ED; background: radial-gradient(ellipse 70% 55% at 50% 20%, rgba(220,193,120,0.18), rgba(28,24,18,0) 70%), linear-gradient(rgba(24,20,15,0.78), rgba(30,25,18,0.88)), url('https://images.unsplash.com/photo-1475483768296-6163e08872a1?w=2000&h=1000&fit=crop&q=80') center/cover no-repeat #23201B; }
+    @media (max-width: 720px) { .kn-creed { padding: 2.2rem 1.4rem; } }
+    .kn-creed-main { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.55; color: #F5F3ED; margin: 0 0 1.4rem; text-shadow: 0 2px 14px rgba(0,0,0,0.4); }
+    .kn-creed-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.08rem; line-height: 1.65; color: var(--gold-pale, #DCC178); max-width: 560px; margin: 0 auto; }
+
+    /* ====== The way in — steps ====== */
+    .kn-steps { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.6rem; margin-top: 2.4rem; }
+    @media (max-width: 1024px) { .kn-steps { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .kn-steps { grid-template-columns: 1fr; gap: 1.2rem; } }
+    .kn-step { background: #F5F3ED; border: 1px solid rgba(201,168,76,0.16); border-radius: 4px; padding: 2rem 1.6rem; text-align: center; }
+    .kn-step-num { display: block; font-family: 'Cormorant SC', serif; font-size: 1.05rem; letter-spacing: 0.22em; color: var(--gold, #c9a84c); margin-bottom: 0.6rem; }
+    .kn-step-name { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.32rem; line-height: 1.2; color: var(--ink-deep, #2D2A26); margin: 0 0 0.8rem; }
+    .kn-step-body { font-family: 'Cormorant Garamond', serif; font-size: 0.98rem; line-height: 1.62; color: var(--ink-soft, #3D3A36); margin: 0; }
+    .kn-steps-after { margin-top: 2.4rem; }
+    .kn-steps-whisper { font-style: italic; color: var(--gold, #a9853a); }
+
+    /* ====== Values strip ====== */
+    .kn-values { font-family: 'Cormorant SC', serif; font-size: 0.8rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold, #c9a84c); text-align: center; line-height: 2; margin: 0; }
+
+    /* ====== The way in ====== */
+    .kn-entry { background: linear-gradient(135deg, #F4EAD3 0%, #EFEDE6 100%); border-radius: 4px; padding: 3.5rem; text-align: center; }
+    @media (max-width: 720px) { .kn-entry { padding: 2.4rem; } }
+    .kn-entry-eyebrow { font-family: 'Cormorant SC', serif; font-size: 0.76rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 1rem; }
+    .kn-entry-h { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(1.8rem, 3.2vw, 2.6rem); line-height: 1.15; color: var(--ink-deep, #2D2A26); margin: 0 0 1rem; }
+    .kn-entry-h em { font-family: 'Tangerine', serif; font-style: normal; font-weight: 400; font-size: 1.5em; line-height: 0.9; color: var(--gold, #c9a84c); }
+    .kn-entry-body { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.12rem; line-height: 1.65; color: var(--ink-soft, #3D3A36); max-width: 620px; margin: 0 auto 1.8rem; }
+    .kn-entry-cta { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.82rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-deep, #2D2A26); padding: 0.9rem 2rem; border: 1px solid var(--ink-deep, #2D2A26); text-decoration: none; transition: background 0.2s, color 0.2s; }
+    .kn-entry-cta:hover { background: var(--ink-deep, #2D2A26); color: #F5F3ED; }
+
+
+    /* ====== Luxury motion ====== */
+    body.lux-anim .lux-reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.95s cubic-bezier(.22,.61,.36,1), transform 0.95s cubic-bezier(.22,.61,.36,1); }
+    body.lux-anim .lux-reveal.lux-in { opacity: 1; transform: none; }
+
+    /* ====== Legibility pass (2026-07-02) ====== */
+    .kn-body .kn-eyebrow, .kn-weave-eyebrow, .kn-step-num, .kn-entry-eyebrow { color: #8F6F2E; }
+    .kn-body .kn-h2 em, .kn-entry-h em { color: #A8842F; }
+    .kn-steps-whisper { color: #8F6F2E !important; }
+    .kn-rule { opacity: 0.75; }
+    .kn-interlude::before { background: linear-gradient(rgba(18,16,12,0.42), rgba(24,20,15,0.6)) !important; }
+    .kn-final-cta p { color: rgba(245,243,237,0.92); }
+    .kn-values { color: #8F6F2E; }
+
+    /* ====== Final CTA ====== */
+    .kn-final-cta { padding: 6rem 3rem; background: linear-gradient(rgba(28,24,18,0.8), rgba(34,28,20,0.9)), url('https://images.unsplash.com/photo-1475483768296-6163e08872a1?w=2400&h=1200&fit=crop&q=80') center/cover no-repeat #2D2A26; color: #F5F3ED; text-align: center; }
+    .kn-final-cta .kn-eyebrow { color: var(--gold-pale, #DCC178); }
+    .kn-final-cta h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2.2rem, 3.6vw, 3rem); line-height: 1.18; color: #F5F3ED; margin: 0.4rem 0 1.2rem; }
+    .kn-final-cta h2 em { font-family: 'Tangerine', serif; font-style: normal; font-weight: 400; font-size: 1.5em; line-height: 0.9; color: var(--gold-pale, #DCC178); }
+    .kn-final-cta p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.18rem; line-height: 1.6; color: rgba(245, 243, 237, 0.85); max-width: 640px; margin: 0 auto 2.2rem; }
+    .kn-final-cta-btn { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.84rem; letter-spacing: 0.26em; text-transform: uppercase; color: #2D2A26; background: var(--gold-pale, #DCC178); padding: 1rem 2.4rem; text-decoration: none; transition: background 0.2s; }
+    .kn-final-cta-btn:hover { background: #F5F3ED; }
+    .kn-recognition { font-size: 1.05rem !important; color: var(--gold-pale, #DCC178) !important; opacity: 0.92; margin-top: -0.8rem !important; }
+  </style>
+</head>
+<body data-content-page="offering-kinship-nexus">
+
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span></a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="ceremonial-coaching.html">Premium Coaching</a></li>
+          <li><a href="kinship-nexus.html">Kinship Nexus</a></li>
+          <li><a href="training-grounds.html">The Training Grounds</a></li>
+          <li><a href="public-offerings.html">Public Offerings</a></li>
+          <li><a href="writings.html">Resources</a></li>
+        </ul>
+      </nav>
+      <a href="sessions.html" class="nav-cta apply-btn">Apply</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="kn-hero">
+    <div class="kn-hero-image" style="background-image: url('https://images.unsplash.com/photo-1475483768296-6163e08872a1?w=2400&h=1400&fit=crop&q=85');"></div>
+    <div class="kn-hero-overlay"></div>
+    <div class="kn-hero-inner">
+      <span class="kn-hero-eyebrow">A Closed Ceremonial Community</span>
+      <h1 class="kn-hero-title">The Kinship <em>Nexus</em></h1>
+      <p class="kn-hero-sub">A place to grow in our depth, together &mdash; a web of kin gathered around one hearth, participating in growing an entheogenically awakened society.</p>
+    </div>
+  </section>
+
+  <section class="kn-body">
+    <div class="kn-body-inner">
+
+      <!-- INVOCATION -->
+      <div class="kn-invocation">
+        <p>Some work cannot happen in public. Not because it is secret, but because it is intimate &mdash; the kind of depth that only grows where the same faces return, season after season, to the same fire.</p>
+      </div>
+
+      <!-- 01 — The premise -->
+      <div class="kn-section">
+        <span class="kn-eyebrow">The Premise</span>
+        <h2 class="kn-h2">A community <em>in</em> ceremony.</h2>
+        <span class="kn-rule"></span>
+        <div class="kn-duo">
+          <div class="kn-duo-image" style="background-image: url('images/uploads/the-work-ceremony.jpg');"></div>
+          <div class="kn-prose">
+          <p>The Kinship Nexus is a sanctuary of integrity &mdash; a closed ceremonial community devoted to personal and collective transformation through intentional community, sacred practice, and ceremony. It is not a series of events you attend, but a body you belong to: the long fire of the Apothecary, an ongoing fellowship of practitioners, seekers, and stewards who have chosen to walk together over years rather than evenings.</p>
+          <p>Its premise is simple and vast: participating in growing an entheogenically awakened society. We gather to sit with our otherworldly teachers, and to bring what they show us back into our daily lives &mdash; to healthfully shape how we live and play and create and love. Here we cultivate deep relational bonds, ceremonial literacy, ecological reverence, and the courage to live in alignment with our highest nature.</p>
+          <p>Entering this space, we make promises to one another &mdash; of mutual respect and benevolence. We create this world together.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 — Kinship / Nexus weave -->
+      <div class="kn-section">
+        <span class="kn-eyebrow">The Name, In Two Halves</span>
+        <h2 class="kn-h2">Kinship, and the place it <em>crosses</em>.</h2>
+        <span class="kn-rule"></span>
+        <div class="kn-weave">
+          <div class="kn-weave-card">
+            <div class="kn-weave-img" style="background-image: url('images/uploads/pexels-veeterzy-38136.jpg');"></div>
+            <span class="kn-weave-eyebrow">Kinship</span>
+            <h3 class="kn-weave-name">The web of relation</h3>
+            <p class="kn-weave-body">Kinship here means more than fellowship among humans. It is the animist understanding that land, lineage, and the more-than-human world are relatives &mdash; and that a community in right relationship tends all of them. Within the circle, it means being genuinely known: not the polished self, but the becoming one, witnessed over years by people who have earned the seeing.</p>
+          </div>
+          <div class="kn-weave-card">
+            <div class="kn-weave-img" style="background-image: url('images/uploads/cta-moss-smoke.jpg');"></div>
+            <span class="kn-weave-eyebrow">Nexus</span>
+            <h3 class="kn-weave-name">The meeting place</h3>
+            <p class="kn-weave-body">A nexus is where the threads cross. This is the hearth the community gathers around &mdash; the ceremonies, the seasonal convenings, the shared practice that binds solitary paths into one weave. What each member carries alone between gatherings is brought back to the crossing point, where it is witnessed, tempered, and sent out again.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 — Who gathers here -->
+      <div class="kn-section">
+        <span class="kn-eyebrow">Who Gathers Here</span>
+        <h2 class="kn-h2">The company of the <em>fire</em>.</h2>
+        <span class="kn-rule"></span>
+        <div class="kn-duo">
+          <div class="kn-duo-image" style="background-image: url('images/uploads/luminous/ceremony-cushions.jpg');"></div>
+          <div class="kn-prose">
+          <p>Many of the Nexus&rsquo; members are high-level visionaries and innovators &mdash; people whose work in the world has brought goodness to the lives of many others by changing systems and cultures. Here, they set the public role down and are met as kin.</p>
+          <p>This is a place to gather and be inspired &mdash; by the teachers of the otherworlds, and by one another. What each member receives alone becomes, at this fire, something the whole circle grows by.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 — Why closed -->
+      <div class="kn-section kn-centered">
+        <span class="kn-eyebrow">Why the Door is Kept</span>
+        <h2 class="kn-h2">Closed, so it can be <em>deep</em>.</h2>
+        <span class="kn-rule"></span>
+        <div class="kn-prose">
+          <p>The door is not closed to exclude. It is closed the way a vessel is closed &mdash; because what happens inside needs walls to happen at all. Ceremony of real depth asks for continuity, confidentiality, and trust that has been built rather than assumed. A circle whose faces change every month can be warm; it cannot be deep.</p>
+          <p>So entry is guarded by a stringent screening &mdash; the promise the community makes to everyone already inside it: each person at the fire has been met, oriented, and found ready. Safety is the first hospitality.</p>
+        </div>
+      </div>
+
+      <!-- 05 — What we cultivate together -->
+      <div class="kn-section">
+        <span class="kn-eyebrow">What We Cultivate Together</span>
+        <h2 class="kn-h2">The life of the <em>circle</em>.</h2>
+        <span class="kn-rule"></span>
+        <div class="kn-prose">
+          <p>Membership opens into a wide weave of offerings held through the turning year &mdash; from lighthearted outings to the deepest immersive work &mdash; each one yours to opt into as you feel called.</p>
+        </div>
+        <ul class="kn-principles">
+          <li><strong>Ceremonial spaces &amp; gatherings.</strong> Regular ceremonial sits in a safe, held space, guided by experienced facilitators.</li>
+          <li><strong>Weekly integration circles.</strong> Ongoing support to process, share, and embody insights.</li>
+          <li><strong>Seasonal immersions.</strong> Multi-day experiences to deepen our connection to self, community, and the land.</li>
+          <li><strong>Teachings &amp; workshops.</strong> Ceremonial literacy, somatic practice, shadow work, ecology, ancestral traditions, and more.</li>
+          <li><strong>Land stewardship.</strong> Hands-on care for the land that nourishes us.</li>
+          <li><strong>A private community channel.</strong> Where gatherings, retreats, ceremonies, and outings are shared throughout the year, to join as you feel called.</li>
+          <li><strong>Library &amp; resource access.</strong> Curated books, teachings, and tools to support your path.</li>
+          <li><strong>Accountability &amp; support.</strong> We walk beside each other in our growth and commitment to the work.</li>
+        </ul>
+      </div>
+
+      <!-- Interlude -->
+      <div class="kn-section">
+        <div class="kn-interlude" style="background-image: url('images/uploads/newsletter-river-aerial.jpg');">
+          <p>The river taught that its waters belong to every shore it touches.</p>
+        </div>
+      </div>
+
+      <!-- 06 — Our agreements -->
+      <div class="kn-section">
+        <span class="kn-eyebrow">Our Agreements</span>
+        <h2 class="kn-h2">The bones of the <em>circle</em>.</h2>
+        <span class="kn-rule"></span>
+        <div class="kn-prose">
+          <p>The Nexus is held by agreements, not expectations. These are the bones of the container &mdash; the same for everyone inside it.</p>
+        </div>
+        <ul class="kn-principles">
+          <li><strong>Confidentiality is sacred.</strong> What lives inside the container stays inside the container. The stories of the circle are treated as holy ground.</li>
+          <li><strong>Do your own work.</strong> The circle witnesses and strengthens; it never replaces. Each member tends their own becoming.</li>
+          <li><strong>Speak from truth.</strong> Come from love as you express yourself &mdash; even when what you carry is hard, messy, or raw.</li>
+          <li><strong>No fixing, no rescuing.</strong> Each member remains the sovereign authority of their own life and path.</li>
+          <li><strong>Show up, be present.</strong> Membership is a sustained devotion, not a drop-in. The circle&rsquo;s depth is made of its members&rsquo; returning.</li>
+          <li><strong>Honor the medicine, the land, and each other.</strong> The kinship extends beyond the human &mdash; to lineage, to place, and to the more-than-human kin the ceremonies serve.</li>
+        </ul>
+      </div>
+
+      <!-- 07 — The creed -->
+      <div class="kn-section">
+        <div class="kn-creed">
+          <p class="kn-creed-main">We are not here to escape the world.<br>We are here to heal it &mdash;<br>by becoming who we truly are, together.</p>
+          <p class="kn-creed-sub">As within, so throughout. By healing ourselves, we help heal the land, our communities, and the generations to come. Together, we remember.</p>
+        </div>
+      </div>
+
+      <!-- Interlude -->
+      <div class="kn-section">
+        <div class="kn-interlude" style="background-image: url('images/uploads/luminous/forest-light.jpg');">
+          <p>We create this world together.</p>
+        </div>
+      </div>
+
+      <!-- 08 — The way in -->
+      <div class="kn-section">
+        <span class="kn-eyebrow">The Way In</span>
+        <h2 class="kn-h2">An invitational <em>path</em>.</h2>
+        <span class="kn-rule"></span>
+        <div class="kn-prose">
+          <p>The Kinship Nexus is an invitational community, and the way in is walked slowly &mdash; four movements, each one a deepening of the conversation.</p>
+        </div>
+        <div class="kn-steps">
+          <div class="kn-step">
+            <span class="kn-step-num">01</span>
+            <h3 class="kn-step-name">Reach Out</h3>
+            <p class="kn-step-body">Send a message expressing your interest and a little about yourself &mdash; what calls you, and what you carry.</p>
+          </div>
+          <div class="kn-step">
+            <span class="kn-step-num">02</span>
+            <h3 class="kn-step-name">Application &amp; Deep Inquiry</h3>
+            <p class="kn-step-body">A written application of real depth &mdash; personal reflections, history, and intention. This is where the conversation truly begins.</p>
+          </div>
+          <div class="kn-step">
+            <span class="kn-step-num">03</span>
+            <h3 class="kn-step-name">The Conversation</h3>
+            <p class="kn-step-body">A stringent screening and a genuine conversation &mdash; to ensure the Nexus is right for you, that you are ready for the commitment, and that safety is held for all.</p>
+          </div>
+          <div class="kn-step">
+            <span class="kn-step-num">04</span>
+            <h3 class="kn-step-name">Invitation &amp; Initiation</h3>
+            <p class="kn-step-body">If aligned, you are offered a place in the community, welcomed with a one-time initiation contribution, and brought to the fire.</p>
+          </div>
+        </div>
+        <div class="kn-prose kn-steps-after">
+          <p>Upon initiation, members join the private community channel &mdash; a living calendar of ceremonies, gatherings, retreats, and outings, answered as you feel called. And if the Nexus is not the right fit at this time, you are not turned away: the public community welcomes you, and the relationship keeps growing at its own pace.</p>
+          <p class="kn-steps-whisper">Not everyone is called. Not everyone is ready. But if you are &mdash; we would be honored to walk this path with you.</p>
+        </div>
+      </div>
+
+      <!-- 09 — Values -->
+      <div class="kn-section">
+        <p class="kn-values">Ceremonial Community &#10038; Sacred Reciprocity &#10038; Entheogenic Stewardship &#10038; Living in Right Relationship</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="kn-final-cta">
+    <span class="kn-eyebrow">Begin Here</span>
+    <h2>If the fire is <em>calling</em>.</h2>
+    <p>The Kinship Nexus is an invitational community. If you feel the call, we invite you to reach out &mdash; tell us who you are and what stirs, and we will begin the process together.</p>
+    <p class="kn-recognition">And if, reading this, you felt less like a visitor and more like someone remembering &mdash; then in the truest sense, you are already kin. The way in is simply the way home.</p>
+    <a href="inquiry.html" class="kn-final-cta-btn">Reach Out to Begin</a>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+              <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Virtual Sessions</a></li>
+            <li><a href="group-work.html">Gatherings</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="sessions.html">Book / Intake</a></li>
+            <li><a href="inquiry.html">Begin a Conversation</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="mailto:adimarie@bodyworkandbotanicals.com?subject=A%20Note%20to%20Adi%20Marie">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/coming-soon.js" defer></script>
+  <script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+    document.body.classList.add('lux-anim');
+    var els = document.querySelectorAll('.kn-invocation, .kn-section');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('lux-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { el.classList.add('lux-reveal'); io.observe(el); });
+  })();
+  </script>
+</body>
+</html>

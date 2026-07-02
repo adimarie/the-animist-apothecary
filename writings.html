@@ -9,19 +9,21 @@
   <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
   <link rel="shortcut icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Writings &amp; Letters &middot; The Animist Apothecary</title>
-  <meta name="description" content="Seasonal letters, tender reflections, and sacred teachings from the practice. Water, Milk, and Honey — the newsletter of The Animist Apothecary.">
+  <title>Resources &middot; The Animist Apothecary</title>
+  <meta name="description" content="The resource library of The Animist Apothecary — the best books and guides on Dagara cosmology, animism and earth-based practice, ceremony and ritual, grief work, and the entheogenic path. Plus seasonal letters from Adi Marie.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500&family=Inter:wght@300;400;500&family=Tangerine&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=v32">
-  <link rel="stylesheet" href="css/site-header.css?v=v18">
+  <link rel="stylesheet" href="css/site-header.css?v=v19">
+  <link rel="stylesheet" href="css/lux.css?v=1">
   <style>
     body[data-content-page^="offering-"] { background: #FAF8F3; color: var(--ink-deep, #2D2A26); }
     .offering-hero { position: relative; min-height: 55vh; display: flex; align-items: center; justify-content: center; padding: 6rem 3rem; overflow: hidden; background: #F5F3ED; }
     .offering-hero-inner { position: relative; z-index: 3; max-width: 880px; text-align: center; color: var(--ink-deep, #2D2A26); }
     .offering-hero-eyebrow { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 1rem; }
     .offering-hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(3.2rem, 6.5vw, 5.6rem); line-height: 1.05; margin: 0.4rem 0 0.6rem; letter-spacing: -0.005em; }
+    .offering-hero-title em { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-weight: 400; font-size: 1.45em; line-height: 0.9; }
     .offering-hero-script { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2.4rem, 4vw, 3.6rem); line-height: 1; color: var(--gold, #c9a84c); margin: 0 0 1rem; }
     .offering-hero-subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.55rem); line-height: 1.55; color: var(--ink-quiet, #5A554C); margin: 0 auto; max-width: 720px; }
 
@@ -46,7 +48,53 @@
     .past-letters .offering-section-title { font-size: 1.8rem; }
     .past-letters-note { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--ink-quiet, #5A554C); margin: 0; }
 
-    .offering-final-cta { padding: 5rem 3rem; background: #2D2A26; color: #F5F3ED; text-align: center; }
+    .writings-arrives { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.8rem; margin: 3.4rem 0; text-align: center; }
+    @media (max-width: 880px) { .writings-arrives { grid-template-columns: 1fr; gap: 1.4rem; } }
+    .writings-arrive-card { background: #F5F3ED; border: 1px solid rgba(201,168,76,0.16); border-radius: 4px; padding: 2.2rem 1.8rem; }
+    .writings-arrive-symbol { font-family: 'Tangerine', serif; font-size: 3.4rem; line-height: 1; color: var(--gold, #c9a84c); display: block; margin-bottom: 0.4rem; }
+    .writings-arrive-card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.4rem; line-height: 1.2; color: var(--ink-deep, #2D2A26); margin: 0 0 0.8rem; }
+    .writings-arrive-card p { font-family: 'Cormorant Garamond', serif; font-size: 1rem !important; line-height: 1.65; color: var(--ink-soft, #3D3A36); margin: 0 !important; }
+
+    /* ====== The Library ====== */
+    .lib-body { padding: 6rem 3rem; background: #F5F3ED; }
+    .lib-inner { max-width: 1080px; margin: 0 auto; }
+    .lib-head { text-align: center; max-width: 760px; margin: 0 auto 4.5rem; }
+    .lib-head .offering-section-title em { font-family: 'Tangerine', serif; font-style: normal; font-size: 1.5em; line-height: 0.9; color: var(--gold, #c9a84c); }
+    .lib-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; line-height: 1.75; color: var(--ink-soft, #3D3A36); margin: 0; }
+    .lib-trip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin: 0 0 4rem; }
+    @media (max-width: 720px) { .lib-trip { grid-template-columns: 1fr; } }
+    .lib-trip div { aspect-ratio: 4/3; background-size: cover; background-position: center; border-radius: 4px; box-shadow: 0 10px 30px -14px rgba(20,16,8,0.25); }
+    .lib-section { margin-bottom: 4.5rem; }
+    .lib-section:last-child { margin-bottom: 0; }
+    .lib-eyebrow { display: block; text-align: center; font-family: 'Cormorant SC', serif; font-size: 0.74rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 0.5rem; }
+    .lib-name { text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.7rem; line-height: 1.2; color: var(--ink-deep, #2D2A26); margin: 0 0 1.8rem; padding-bottom: 0.9rem; position: relative; }
+    .lib-name::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); bottom: 0; width: 60px; height: 1px; background: var(--gold, #c9a84c); opacity: 0.55; }
+    .lib-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2.6rem; }
+    @media (max-width: 760px) { .lib-list { grid-template-columns: 1fr; } }
+    .lib-list li { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.55; color: var(--ink-soft, #3D3A36); padding: 1rem 0; border-bottom: 1px solid rgba(201,168,76,0.22); }
+    .lib-list li strong { color: var(--ink-deep, #2D2A26); font-weight: 500; }
+    .lib-list li span { display: block; font-style: italic; font-size: 0.98rem; color: var(--ink-quiet, #5A554C); margin-top: 0.25rem; }
+    .lib-orgs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+    @media (max-width: 760px) { .lib-orgs { grid-template-columns: 1fr; } }
+    .lib-org { display: block; background: #FAF8F3; border: 1px solid rgba(201,168,76,0.2); border-radius: 4px; padding: 1.6rem 1.8rem; text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--ink-deep, #2D2A26); transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s; }
+    .lib-org:hover { border-color: rgba(201,168,76,0.55); box-shadow: 0 8px 28px -14px rgba(20,16,8,0.3); transform: translateY(-2px); }
+    .lib-org span { display: block; font-style: italic; font-size: 0.98rem; color: var(--ink-quiet, #5A554C); margin-top: 0.3rem; }
+    .lib-org--unlinked { cursor: default; }
+    .lib-org--unlinked:hover { border-color: rgba(201,168,76,0.2); box-shadow: none; transform: none; }
+    .lib-note { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.02rem; line-height: 1.65; color: var(--ink-quiet, #5A554C); max-width: 680px; margin: 2.6rem auto 0; text-align: center; }
+
+    .writings-interlude { position: relative; min-height: 360px; display: flex; align-items: center; justify-content: center; padding: 4rem 2rem; background-size: cover; background-position: center; overflow: hidden; }
+    .writings-interlude::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(250,248,243,0.4), rgba(250,248,243,0.55)); }
+    .writings-interlude p { position: relative; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.35rem, 2.3vw, 1.8rem); line-height: 1.55; color: var(--ink-deep, #2D2A26); max-width: 620px; text-align: center; margin: 0; }
+
+    /* ====== Legibility pass (2026-07-02) ====== */
+    .lib-eyebrow, .offering-section-label, .writings-arrive-symbol { color: #8F6F2E !important; }
+    .lib-head .offering-section-title em, .offering-hero-script { color: #A8842F; }
+    .lib-list li span, .lib-org span, .lib-note, .writings-newsletter-trust, .past-letters-note { color: #4A463E; }
+    .writings-interlude::before { background: linear-gradient(rgba(250,248,243,0.55), rgba(250,248,243,0.68)); }
+    .offering-final-cta p { color: rgba(245,243,237,0.92); }
+
+    .offering-final-cta { padding: 5rem 3rem; background: linear-gradient(rgba(32,28,22,0.85), rgba(38,32,24,0.92)), url('images/uploads/tg-divider-smoke.jpg') center/cover no-repeat #2D2A26; color: #F5F3ED; text-align: center; }
     .offering-final-cta h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1.2; color: #F5F3ED; margin: 0.4rem 0 1.2rem; }
     .offering-final-cta p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: rgba(245, 243, 237, 0.85); max-width: 600px; margin: 0 auto 2rem; }
   </style>
@@ -63,10 +111,10 @@
       <nav class="main-nav">
                                                 <ul>
           <li><a href="about.html">About</a></li>
-          <li><a href="ceremonial-coaching.html">A Seasonal Arc</a></li>
-          <li><a href="solo-work.html">Virtual Sessions</a></li>
-          <li><a href="group-work.html">Gatherings</a></li>
-          <li><a href="training-grounds.html">The School</a></li>
+          <li><a href="ceremonial-coaching.html">Premium Coaching</a></li>
+          <li><a href="kinship-nexus.html">Kinship Nexus</a></li>
+          <li><a href="training-grounds.html">The Training Grounds</a></li>
+          <li><a href="public-offerings.html">Public Offerings</a></li>
           <li><a href="writings.html">Resources</a></li>
         </ul>
       </nav>
@@ -75,10 +123,10 @@
     </div>
   </header>
 
-  <section class="offering-hero">
+  <section class="offering-hero lux-hero" style="background-image: url('images/uploads/luminous/letters-stone.jpg');">
     <div class="offering-hero-inner">
-      <span class="offering-hero-eyebrow">Seasonal Letters</span>
-      <h1 class="offering-hero-title">Writings &amp; Letters</h1>
+      <span class="offering-hero-eyebrow">Resources &middot; Seasonal Letters</span>
+      <h1 class="offering-hero-title">Writings &amp; <em>Letters</em></h1>
       <p class="offering-hero-script">Water, Milk, and Honey</p>
       <p class="offering-hero-subtitle">Tender reflections, sacred teachings, and quiet news from the practice &mdash; arriving with the turning of the seasons.</p>
     </div>
@@ -88,6 +136,24 @@
     <div class="offering-body-inner">
 
       <p>Letters from Adi Marie &mdash; sent in their own time, never rushed, never noisy. Reflections from the work, prayers from the land, news of public gatherings and seasonal offerings, the occasional surprise offering shared only with those who keep a quiet ear close to the practice.</p>
+
+      <div class="writings-arrives">
+        <div class="writings-arrive-card">
+          <span class="writings-arrive-symbol">&#x2727;</span>
+          <h3>Letters from the Work</h3>
+          <p>Reflections and teachings from inside the practice &mdash; what the ceremonies, the seasons, and the thresholds are teaching.</p>
+        </div>
+        <div class="writings-arrive-card">
+          <span class="writings-arrive-symbol">&#x2735;</span>
+          <h3>Prayers from the Land</h3>
+          <p>Notes from the canyon and the wilds &mdash; the slow correspondence between a practice and the living world that holds it.</p>
+        </div>
+        <div class="writings-arrive-card">
+          <span class="writings-arrive-symbol">&#x2731;</span>
+          <h3>News of Gatherings</h3>
+          <p>First word of public ceremonies, workshops, and seasonal offerings &mdash; often shared here before anywhere else.</p>
+        </div>
+      </div>
 
       <p>Begin the correspondence.</p>
 
@@ -112,10 +178,131 @@
     </div>
   </section>
 
+  <!-- THE LIBRARY -->
+  <section class="lib-body">
+    <div class="lib-inner">
+      <div class="lib-head">
+        <span class="offering-section-label">The Library</span>
+        <h2 class="offering-section-title">A shelf for <em>the path</em></h2>
+        <p class="lib-intro">The books and guides this practice reaches for most &mdash; the ones handed across the table, pressed into hands after ceremony, returned to year after year. Gathered from the worlds this work lives in: Dagara cosmology, the animate earth, ceremony and ritual, the tending of grief, and the entheogenic path walked with reverence.</p>
+      </div>
+
+      <div class="lib-trip">
+        <div style="background-image: url('images/uploads/luminous/letters-stone.jpg');"></div>
+        <div style="background-image: url('images/uploads/luminous/river-stones.jpg');"></div>
+        <div style="background-image: url('images/uploads/luminous/botanical-shadows.jpg');"></div>
+      </div>
+
+      <div class="lib-section">
+        <span class="lib-eyebrow">Dagara Cosmology &amp; African Wisdom</span>
+        <h3 class="lib-name">The lineage&rsquo;s own voice</h3>
+        <ul class="lib-list">
+          <li><strong>Of Water and the Spirit</strong> &mdash; Malidoma Patrice Som&eacute;<span>Initiation, exile, and return &mdash; the autobiography of the lineage&rsquo;s great emissary to the West.</span></li>
+          <li><strong>The Healing Wisdom of Africa</strong> &mdash; Malidoma Patrice Som&eacute;<span>Ritual, community, and purpose as medicine &mdash; the clearest map of Dagara cosmology in print.</span></li>
+          <li><strong>Ritual: Power, Healing and Community</strong> &mdash; Malidoma Patrice Som&eacute;<span>Small and potent &mdash; why ceremony is not optional for human beings.</span></li>
+          <li><strong>The Spirit of Intimacy</strong> &mdash; Sobonfu Som&eacute;<span>Ancestral teachings on love, community, and the sacred between people.</span></li>
+          <li><strong>Welcoming Spirit Home</strong> &mdash; Sobonfu Som&eacute;<span>Ritual, belonging, and the village that receives a soul.</span></li>
+        </ul>
+      </div>
+
+      <div class="lib-section">
+        <span class="lib-eyebrow">Animism &amp; the Living Earth</span>
+        <h3 class="lib-name">The world as relative</h3>
+        <ul class="lib-list">
+          <li><strong>Braiding Sweetgrass</strong> &mdash; Robin Wall Kimmerer<span>Reciprocity with the living world, written like a prayer.</span></li>
+          <li><strong>The Spell of the Sensuous</strong> &mdash; David Abram<span>How language and perception root us in &mdash; or exile us from &mdash; the animate earth.</span></li>
+          <li><strong>Sand Talk</strong> &mdash; Tyson Yunkaporta<span>An Indigenous systems view that will quietly rearrange your furniture.</span></li>
+          <li><strong>Plant Intelligence and the Imaginal Realm</strong> &mdash; Stephen Harrod Buhner<span>The doors of perception, opened botanically.</span></li>
+          <li><strong>The Unlikely Peace at Cuchumaquic</strong> &mdash; Mart&iacute;n Prechtel<span>Seeds, culture, and keeping the sacred alive through dark times.</span></li>
+        </ul>
+      </div>
+
+      <div class="lib-section">
+        <span class="lib-eyebrow">Ceremony, Ritual &amp; Rites of Passage</span>
+        <h3 class="lib-name">The architecture of crossings</h3>
+        <ul class="lib-list">
+          <li><strong>The Way of the Shaman</strong> &mdash; Michael Harner<span>The classic Western doorway into journeying practice.</span></li>
+          <li><strong>Shamanism: Archaic Techniques of Ecstasy</strong> &mdash; Mircea Eliade<span>The scholarly bedrock beneath the word itself.</span></li>
+          <li><strong>The Four-Fold Way</strong> &mdash; Angeles Arrien<span>Warrior, healer, teacher, visionary &mdash; a cross-cultural grammar of practice.</span></li>
+          <li><strong>The Rites of Passage</strong> &mdash; Arnold van Gennep<span>Where the language of thresholds began.</span></li>
+          <li><strong>Long Life, Honey in the Heart</strong> &mdash; Mart&iacute;n Prechtel<span>Village ritual life in full color &mdash; what ceremony is for.</span></li>
+        </ul>
+      </div>
+
+      <div class="lib-section">
+        <span class="lib-eyebrow">Grief &amp; Tending the Soul</span>
+        <h3 class="lib-name">The waters that must move</h3>
+        <ul class="lib-list">
+          <li><strong>The Wild Edge of Sorrow</strong> &mdash; Francis Weller<span>The five gates of grief &mdash; the book this practice hands people most often.</span></li>
+          <li><strong>The Smell of Rain on Dust</strong> &mdash; Mart&iacute;n Prechtel<span>Grief and praise, braided as one.</span></li>
+          <li><strong>When Things Fall Apart</strong> &mdash; Pema Ch&ouml;dr&ouml;n<span>Groundlessness as a path, not an emergency.</span></li>
+          <li><strong>Healing Through the Dark Emotions</strong> &mdash; Miriam Greenspan<span>Alchemy for despair, fear, and grief.</span></li>
+          <li><strong>Ancestral Medicine</strong> &mdash; Daniel Foor<span>Ritual repair for the lines that hold us &mdash; lineage healing taught with rigor and heart.</span></li>
+        </ul>
+      </div>
+
+      <div class="lib-section">
+        <span class="lib-eyebrow">The Entheogenic Path</span>
+        <h3 class="lib-name">Communion, studied and honored</h3>
+        <ul class="lib-list">
+          <li><strong>How to Change Your Mind</strong> &mdash; Michael Pollan<span>The mainstream doorway &mdash; careful, curious, well-reported.</span></li>
+          <li><strong>Sacred Knowledge</strong> &mdash; William A. Richards<span>A lifetime of research on entheogens and religious experience.</span></li>
+          <li><strong>The Way of the Psychonaut</strong> &mdash; Stanislav Grof<span>The great cartographer of non-ordinary states.</span></li>
+          <li><strong>The Doors of Perception</strong> &mdash; Aldous Huxley<span>The modern West&rsquo;s first honest report from the other side.</span></li>
+        </ul>
+      </div>
+
+      <div class="lib-section">
+        <span class="lib-eyebrow">Living Teachers &amp; Lineage Holders</span>
+        <h3 class="lib-name">Primary voices this practice studies with</h3>
+        <div class="lib-orgs">
+          <a class="lib-org" href="https://ancestralmedicine.org/" target="_blank" rel="noopener">Daniel Foor &middot; Ancestral Medicine<span>Ancestral lineage healing &mdash; ritual repair for the lines that hold us, taught with rigor and heart.</span></a>
+          <a class="lib-org" href="https://azrabertrand.com/" target="_blank" rel="noopener">Azra Bertrand &middot; Biomancy<span>Womb Awakening and Biomancy University &mdash; the body as the first mystery school.</span></a>
+          <a class="lib-org" href="https://www.pohala.net/" target="_blank" rel="noopener">Ke&rsquo;oni Hanalei &middot; P&#333;hala<span>Esoteric Hawaiian botanical medicine &mdash; fern medicine and the Principles of Aloha, carried through the Mu lineage.</span></a>
+          <a class="lib-org" href="https://www.gilhedley.com/" target="_blank" rel="noopener">Gil Hedley &middot; Integral Anatomy<span>Reverent, wonder-struck study of the body&rsquo;s inner landscape &mdash; anatomy as devotion.</span></a>
+          <a class="lib-org" href="https://aoda.org/" target="_blank" rel="noopener">Ancient Order of Druids in America<span>A living druid order &mdash; earth-path spirituality with a curriculum, earned by practice.</span></a>
+          <a class="lib-org" href="https://www.strategicsorcery.net/" target="_blank" rel="noopener">Jason Miller &middot; Strategic Sorcery<span>Practical magic taught soberly &mdash; sorcery as skill, ethics, and craft.</span></a>
+          <a class="lib-org" href="https://talismanicmedicine.com/" target="_blank" rel="noopener">Frank Giokas &middot; The Cosmic Medicine Wheel<span>Talismanic medicine &mdash; ceremony, divination, and talismanic devices, worked through ancestral and nature-based healing forces.</span></a>
+          <a class="lib-org" href="https://www.themythicbody.com/" target="_blank" rel="noopener">Joshua Michael Schrei &middot; The Mythic Body<span>The Emerald podcast &mdash; myth, story, and music as living transmission; embodied ethics and the animate imagination.</span></a>
+        </div>
+      </div>
+
+      <div class="lib-section">
+        <span class="lib-eyebrow">Schools of the Green Path</span>
+        <h3 class="lib-name">Where the plant path is taught</h3>
+        <div class="lib-orgs">
+          <a class="lib-org" href="https://www.evolutionaryherbalism.com/" target="_blank" rel="noopener">The School of Evolutionary Herbalism<span>Sajah Popham &mdash; vitalist, astrological, spagyric: herbalism as sacred science.</span></a>
+          <a class="lib-org" href="https://www.gaiaschoolofhealing.com/" target="_blank" rel="noopener">The Gaia School of Healing &amp; Earth Education<span>Sage Maurer &mdash; plant spirit medicine and folk herbalism, learned from the plants themselves.</span></a>
+          <a class="lib-org" href="https://theherbalacademy.com/" target="_blank" rel="noopener">Herbal Academy<span>The broadest doorway &mdash; structured herbal education from first steps to advanced practice.</span></a>
+        </div>
+      </div>
+
+      <div class="lib-section">
+        <span class="lib-eyebrow">Study, Safety &amp; Support</span>
+        <h3 class="lib-name">Organizations &amp; guides worth trusting</h3>
+        <div class="lib-orgs">
+          <a class="lib-org" href="https://www.iceers.org/" target="_blank" rel="noopener">ICEERS<span>Research and harm reduction from an international ethnobotanical lens.</span></a>
+          <a class="lib-org" href="https://chacruna.net/" target="_blank" rel="noopener">Chacruna Institute<span>Culture, reciprocity, and ceremonial scholarship.</span></a>
+          <a class="lib-org" href="https://maps.org/" target="_blank" rel="noopener">MAPS<span>Decades of clinical research, education, and policy work.</span></a>
+          <a class="lib-org" href="https://theconclave.info/" target="_blank" rel="noopener">The Conclave<span>Licensed clinicians devoted to entheogenic integration.</span></a>
+          <a class="lib-org" href="https://www.spiritpharmacist.com/" target="_blank" rel="noopener">Spirit Pharmacist<span>Pharmacology, interactions, and practical safety.</span></a>
+          <a class="lib-org" href="https://firesideproject.org/" target="_blank" rel="noopener">Fireside Project<span>Free, confidential peer support by phone or text.</span></a>
+          <a class="lib-org" href="https://zendoproject.org/" target="_blank" rel="noopener">Zendo Project<span>Compassionate care and the art of sitting with another.</span></a>
+          <a class="lib-org" href="https://chadcharles.net/therapeutic-window/" target="_blank" rel="noopener">Chad Charles &mdash; Essays<span>Orientation for ineffable territory: A Therapeutic Window, A Full Release, Dissociation vs. Transcendence.</span></a>
+        </div>
+        <p class="lib-note">This library is offered for education and orientation &mdash; not as medical advice, and never as a substitute for the discernment of your own practitioners. Some seasons are for catalysis; some are for strengthening the vessel. Let the reading meet you where you are.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="writings-interlude" style="background-image: url('images/uploads/luminous/vessel-botanicals.jpg');">
+    <p>The letters find the ones they are meant for. If you are here, one of them is probably already yours.</p>
+  </section>
+
   <section class="offering-final-cta">
     <h2>The practice tends <em>those who tend back</em>.</h2>
-    <p>If the letters resonate, the deeper work awaits. The first conversation, always, is the Intake &amp; Inquiry.</p>
-    <a href="sessions.html" class="btn-primary">Schedule the Intake</a>
+    <p>If the letters resonate, the deeper doorway is <a href="sessions.html" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">the Conversation</a> &mdash; whenever your season asks for it.</p>
   </section>
 
   <footer class="site-footer">
@@ -161,5 +348,7 @@
   <script src="js/main.js"></script>
   <script src="js/content-loader.js" defer></script>
   <script src="js/newsletter.js" defer></script>
+  <script src="js/coming-soon.js" defer></script>
+  <script src="js/lux.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Offerings &middot; The Animist Apothecary</title>
+  <meta name="description" content="The open doorways of The Animist Apothecary — virtual sessions, gatherings, workshops, and divinations with Adi Marie. Where the work begins, for anyone who is called.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500&family=Inter:wght@300;400;500&family=Tangerine&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=v32">
+  <link rel="stylesheet" href="css/site-header.css?v=v19">
+  <style>
+    body[data-content-page^="offering-"] { background: #FAF8F3; color: var(--ink-deep, #2D2A26); }
+
+    /* ====== Hero ====== */
+    .po-hero { position: relative; min-height: 74vh; display: flex; align-items: center; justify-content: center; padding: 7rem 3rem; overflow: hidden; }
+    .po-hero-image { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 1; }
+    .po-hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(18,16,12,0.55), rgba(28,24,18,0.78)); z-index: 2; }
+    .po-hero-inner { position: relative; z-index: 3; max-width: 900px; text-align: center; color: #F5F3ED; }
+    .po-hero-eyebrow { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-pale, #DCC178); margin-bottom: 1rem; }
+    .po-hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(3rem, 6.4vw, 5.4rem); line-height: 1.04; margin: 0.4rem 0 1.2rem; letter-spacing: -0.005em; text-shadow: 0 2px 16px rgba(0,0,0,0.3); }
+    .po-hero-title em { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-weight: 400; font-size: 1.45em; line-height: 0.9; color: var(--gold-pale, #DCC178); letter-spacing: 0; }
+    .po-hero-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.18rem, 1.8vw, 1.5rem); line-height: 1.55; color: var(--gold-pale, #DCC178); margin: 0 auto; max-width: 720px; }
+
+    /* ====== Body ====== */
+    .po-body { padding: 6rem 3rem; }
+    .po-body-inner { max-width: 1080px; margin: 0 auto; }
+    .po-invocation { max-width: 760px; margin: 0 auto 5rem; text-align: center; }
+    .po-invocation p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.45rem); line-height: 1.7; color: var(--ink-soft, #3D3A36); margin: 0; }
+
+    /* ====== Doorways head ====== */
+    .po-doors-head { margin-bottom: 2.6rem; text-align: center; }
+    .po-eyebrow-l { display: block; font-family: 'Cormorant SC', serif; font-size: 0.76rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 1rem; }
+    .po-h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.18; color: var(--ink-deep, #2D2A26); margin: 0 0 1.6rem; }
+    .po-h2 em { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-weight: 400; font-size: 1.5em; line-height: 0.9; color: var(--gold, #c9a84c); }
+    .po-rule { display: block; width: 60px; height: 1px; background: var(--gold, #c9a84c); margin: 0 auto 1rem; opacity: 0.55; }
+
+    /* ====== Doorway cards ====== */
+    .po-doors { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem; }
+    @media (max-width: 880px) { .po-doors { grid-template-columns: 1fr; gap: 1.8rem; } }
+    .po-door { display: block; background: #F5F3ED; border: 1px solid rgba(201,168,76,0.18); border-radius: 4px; padding: 0; overflow: hidden; text-decoration: none; transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s; }
+    .po-door-img { aspect-ratio: 16/9; background-size: cover; background-position: center; transition: transform 0.6s cubic-bezier(.22,.61,.36,1); }
+    .po-door:hover .po-door-img { transform: scale(1.035); }
+    .po-door-inner { padding: 2.2rem 2.4rem 2.6rem; }
+    .po-door:hover { border-color: rgba(201,168,76,0.5); box-shadow: 0 10px 34px -16px rgba(20,16,8,0.28); transform: translateY(-2px); }
+    .po-door-eyebrow { display: block; font-family: 'Cormorant SC', serif; font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 0.7rem; }
+    .po-door-name { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.8rem; line-height: 1.16; color: var(--ink-deep, #2D2A26); margin: 0 0 0.9rem; }
+    .po-door-name em { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-weight: 400; font-size: 1.5em; line-height: 0.9; color: var(--gold, #c9a84c); }
+    .po-door-body { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.7; color: var(--ink-soft, #3D3A36); margin: 0 0 1.4rem; }
+    .po-door-link { font-family: 'Cormorant SC', serif; font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold, #c9a84c); }
+
+
+    /* ====== Luxury motion ====== */
+    body.lux-anim .lux-reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.95s cubic-bezier(.22,.61,.36,1), transform 0.95s cubic-bezier(.22,.61,.36,1); }
+    body.lux-anim .lux-reveal.lux-in { opacity: 1; transform: none; }
+
+    /* ====== Triptych ====== */
+    .po-trip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin: 0 0 4rem; }
+    @media (max-width: 720px) { .po-trip { grid-template-columns: 1fr; } }
+    .po-trip div { aspect-ratio: 4/3; background-size: cover; background-position: center; border-radius: 4px; box-shadow: 0 10px 30px -14px rgba(20,16,8,0.3); }
+
+    /* ====== Interlude ====== */
+    .po-interlude { position: relative; min-height: 380px; display: flex; align-items: center; justify-content: center; padding: 4rem 2rem; background-size: cover; background-position: center; overflow: hidden; }
+    .po-interlude::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(18,16,12,0.4), rgba(24,20,15,0.58)); }
+    .po-interlude p { position: relative; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.5; color: #F7F4EC; max-width: 640px; text-align: center; margin: 0; text-shadow: 0 2px 18px rgba(0,0,0,0.5); }
+
+    /* ====== Legibility pass (2026-07-02) ====== */
+    .po-eyebrow-l, .po-door-eyebrow { color: #8F6F2E; }
+    .po-h2 em, .po-door-name em { color: #A8842F; }
+    .po-door-link { color: #8F6F2E; }
+    .po-interlude::before { background: linear-gradient(rgba(18,16,12,0.48), rgba(24,20,15,0.64)) !important; }
+    .po-final-cta p { color: rgba(245,243,237,0.92); }
+
+    /* ====== Final CTA ====== */
+    .po-final-cta { padding: 6rem 3rem; background: linear-gradient(rgba(30,26,20,0.78), rgba(38,32,24,0.88)), url('images/uploads/pexels-jplenio-1632790.jpg') center/cover no-repeat #2D2A26; color: #F5F3ED; text-align: center; }
+    .po-final-cta .po-eyebrow { display: block; font-family: 'Cormorant SC', serif; font-size: 0.76rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-pale, #DCC178); margin-bottom: 1rem; }
+    .po-final-cta h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2.2rem, 3.6vw, 3rem); line-height: 1.18; color: #F5F3ED; margin: 0.4rem 0 1.2rem; }
+    .po-final-cta h2 em { font-family: 'Tangerine', serif; font-style: normal; font-weight: 400; font-size: 1.5em; line-height: 0.9; color: var(--gold-pale, #DCC178); }
+    .po-final-cta p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.18rem; line-height: 1.6; color: rgba(245, 243, 237, 0.85); max-width: 640px; margin: 0 auto 2.2rem; }
+    .po-final-cta-btn { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.84rem; letter-spacing: 0.26em; text-transform: uppercase; color: #2D2A26; background: var(--gold-pale, #DCC178); padding: 1rem 2.4rem; text-decoration: none; transition: background 0.2s; }
+    .po-final-cta-btn:hover { background: #F5F3ED; }
+  </style>
+</head>
+<body data-content-page="offering-public-offerings">
+
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
+        <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span></a>
+      <div class="header-nav-row">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="ceremonial-coaching.html">Premium Coaching</a></li>
+          <li><a href="kinship-nexus.html">Kinship Nexus</a></li>
+          <li><a href="training-grounds.html">The Training Grounds</a></li>
+          <li><a href="public-offerings.html">Public Offerings</a></li>
+          <li><a href="writings.html">Resources</a></li>
+        </ul>
+      </nav>
+      <a href="sessions.html" class="nav-cta apply-btn">Apply</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="po-hero">
+    <div class="po-hero-image" style="background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=2400&h=1400&fit=crop&q=85');"></div>
+    <div class="po-hero-overlay"></div>
+    <div class="po-hero-inner">
+      <span class="po-hero-eyebrow">Open to All Who Are Called</span>
+      <h1 class="po-hero-title">Public <em>Offerings</em></h1>
+      <p class="po-hero-sub">The open doorways of the Apothecary &mdash; sessions, gatherings, workshops, and divinations. Where the work begins.</p>
+    </div>
+  </section>
+
+  <section class="po-body">
+    <div class="po-body-inner">
+
+      <!-- INVOCATION -->
+      <div class="po-invocation">
+        <p>Every deep path here begins at an open door. No invitation needed &mdash; only the calling, and the willingness to answer it.</p>
+      </div>
+
+      <!-- Triptych -->
+      <div class="po-trip">
+        <div style="background-image: url('images/uploads/luminous/ceremony-cushions.jpg');"></div>
+        <div style="background-image: url('images/uploads/luminous/luminous-meditation.jpg');"></div>
+        <div style="background-image: url('images/uploads/luminous/forest-light.jpg');"></div>
+      </div>
+
+      <!-- DOORWAYS -->
+      <div class="po-doors-head">
+        <span class="po-eyebrow-l">The Four Doorways</span>
+        <h2 class="po-h2">Choose your <em>door</em>.</h2>
+        <span class="po-rule"></span>
+      </div>
+      <div class="po-doors">
+        <a class="po-door" href="solo-work.html">
+          <div class="po-door-img" style="background-image: url('https://images.unsplash.com/photo-1762755126280-6d8a4f9d1115?w=1200&h=750&fit=crop&q=80');"></div>
+          <div class="po-door-inner">
+          <span class="po-door-eyebrow">One to One &middot; Online</span>
+          <h2 class="po-door-name">Virtual <em>Sessions</em></h2>
+          <p class="po-door-body">Private sessions with Adi Marie, held from wherever you are &mdash; intake and inquiry, guidance and counsel, aftercare and integration. The simplest place to begin, and the doorway every other offering opens from.</p>
+          <span class="po-door-link">Enter &rarr;</span>
+          </div>
+        </a>
+        <a class="po-door" href="group-work.html">
+          <div class="po-door-img" style="background-image: url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1200&h=750&fit=crop&q=80');"></div>
+          <div class="po-door-inner">
+          <span class="po-door-eyebrow">In Circle &middot; Together</span>
+          <h2 class="po-door-name">Ceremonial <em>Gatherings</em></h2>
+          <p class="po-door-body">Group work in ceremony &mdash; seasonal circles, fireside convenings, and gatherings where the work is held in common. For those who want to meet the path in the company of others walking it.</p>
+          <span class="po-door-link">Enter &rarr;</span>
+          </div>
+        </a>
+        <a class="po-door" href="how-to-journey.html">
+          <div class="po-door-img" style="background-image: url('images/uploads/four-paths-labyrinth-fern.jpg');"></div>
+          <div class="po-door-inner">
+          <span class="po-door-eyebrow">Learning &middot; Online</span>
+          <h2 class="po-door-name">Workshops &amp; <em>Classes</em></h2>
+          <p class="po-door-body">Live online teachings on the foundations of ceremonial practice &mdash; skill, literacy, and preparation for deeper work. Each workshop stands alone, and each one opens a door further in.</p>
+          <span class="po-door-link">Enter &rarr;</span>
+          </div>
+        </a>
+        <a class="po-door" href="divinations.html">
+          <div class="po-door-img" style="background-image: url('https://images.unsplash.com/photo-1627769916425-74c2344a3439?w=1200&h=750&fit=crop&q=80');"></div>
+          <div class="po-door-inner">
+          <span class="po-door-eyebrow">Counsel &middot; The Unseen</span>
+          <h2 class="po-door-name"><em>Divinations</em></h2>
+          <p class="po-door-body">Traditional divination with Adi Marie &mdash; counsel drawn from the unseen, for questions that ask more than analysis can answer. A single sitting, and often the beginning of a much longer conversation.</p>
+          <span class="po-door-link">Enter &rarr;</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interlude -->
+  <section class="po-interlude" style="background-image: url('images/uploads/four-paths-labyrinth-fern.jpg');">
+    <p>Four doorways, one threshold &mdash; every path here eventually meets the same fire.</p>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="po-final-cta">
+    <span class="po-eyebrow">Begin Here</span>
+    <h2>Not sure which <em>door</em>?</h2>
+    <p>You do not need to be ready to belong here &mdash; the world these doorways open has been holding a place for you all along. Begin with the Conversation: we meet, we listen, and we find the door that fits the season you are actually in.</p>
+    <a href="sessions.html" class="po-final-cta-btn">Schedule the Conversation</a>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><img src="images/uploads/logo-full.png" alt="The Animist Apothecary" class="footer-logo-img"></a>
+        <p class="footer-tagline">Ceremonial &amp; Ritual Stewardship, Interdimensional Intermediary &amp; Guide.<br>Based in Southern California. Available and serving worldwide.</p>
+      </div>
+      <nav class="footer-nav">
+        <div class="footer-col">
+          <h4>The Practice</h4>
+          <ul>
+              <li><a href="about.html">About Adi Marie</a></li>
+            <li><a href="calendar.html">Calendar</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>The Work</h4>
+          <ul>
+            <li><a href="solo-work.html">Virtual Sessions</a></li>
+            <li><a href="group-work.html">Gatherings</a></li>
+            <li><a href="training-grounds.html">The School</a></li>
+            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Begin Here</h4>
+          <ul>
+            <li><a href="sessions.html">Book / Intake</a></li>
+            <li><a href="inquiry.html">Begin a Conversation</a></li>
+            <li><a href="writings.html">Writings &amp; Letters</a></li>
+            <li><a href="mailto:adimarie@bodyworkandbotanicals.com?subject=A%20Note%20to%20Adi%20Marie">Send a Message</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 The Animist Apothecary. All rites reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/coming-soon.js" defer></script>
+  <script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+    document.body.classList.add('lux-anim');
+    var els = document.querySelectorAll('.po-invocation, .po-door');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('lux-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { el.classList.add('lux-reveal'); io.observe(el); });
+  })();
+  </script>
+</body>
+</html>

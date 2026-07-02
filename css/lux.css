@@ -1,0 +1,25 @@
+/* =============================================================
+   lux.css — sitewide luxury layer (2026-07-01)
+   Scroll-reveal motion + image-hero treatment for text-only heroes.
+   Loaded on all public pages. Motion is gated behind body.lux-anim
+   (added by js/lux.js) so content is always visible without JS,
+   and js/lux.js respects prefers-reduced-motion.
+   ============================================================= */
+
+body.lux-anim .lux-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.95s cubic-bezier(.22,.61,.36,1), transform 0.95s cubic-bezier(.22,.61,.36,1);
+}
+body.lux-anim .lux-reveal.lux-in { opacity: 1; transform: none; }
+
+/* Image hero treatment — add .lux-hero + inline background-image to any
+   text-only hero section to give it the full-bleed photographic treatment. */
+.lux-hero { position: relative; background-size: cover; background-position: center; overflow: hidden; }
+.lux-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(18,16,12,0.55), rgba(28,24,18,0.78)); z-index: 1; }
+.lux-hero > * { position: relative; z-index: 2; }
+.lux-hero h1 { color: #F5F3ED !important; text-shadow: 0 2px 16px rgba(0,0,0,0.35); }
+.lux-hero h1 em { color: #DCC178 !important; }
+.lux-hero span { color: #DCC178 !important; }
+.lux-hero p { color: rgba(245,243,237,0.9) !important; }
+.lux-hero .offering-hero-script { color: #DCC178 !important; }

@@ -410,3 +410,33 @@ body { padding-top: 130px !important; }
   /* Nav ~75px at this breakpoint + ~35px buffer */
   body { padding-top: 110px !important; }
 }
+
+/* =============================================================
+   Nav label accommodation — 2026-07-01
+   The July nav labels (Premium Coaching / Kinship Nexus /
+   The Training Grounds / Public Offerings) are longer than the
+   June set, so the type tiers engage earlier to keep every item
+   on ONE line. Header PADDING untouched (locked — see
+   memory/decisions_sub_nav_260608.md).
+   ============================================================= */
+.site-header .main-nav > ul > li > a { white-space: nowrap !important; }
+
+/* Mid tier from 1480 (was only ≤1200) */
+@media (max-width: 1480px) {
+  .site-header .main-nav ul { gap: 1.6rem !important; }
+  .site-header .main-nav > ul > li > a { font-size: 0.78rem !important; letter-spacing: 0.16em !important; }
+  .site-header .apply-btn { font-size: 0.78rem !important; letter-spacing: 0.16em !important; padding: 0.5rem 1.1rem !important; }
+}
+
+/* Tight tier for small desktop / landscape tablet */
+@media (max-width: 1160px) {
+  .site-header .main-nav ul { gap: 1rem !important; }
+  .site-header .main-nav > ul > li > a { font-size: 0.7rem !important; letter-spacing: 0.1em !important; }
+  .site-header .apply-btn { font-size: 0.7rem !important; letter-spacing: 0.1em !important; padding: 0.45rem 0.9rem !important; }
+}
+
+/* Below this the six labels cannot fit one line legibly —
+   fall to the mobile presentation (logo + Apply), previously ≤768 */
+@media (max-width: 950px) {
+  .site-header .main-nav { display: none !important; }
+}
