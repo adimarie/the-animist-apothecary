@@ -187,6 +187,11 @@
     .letter-title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(1.5rem, 2.4vw, 1.9rem); color: var(--ink-deep, #2D2A26); margin: 0 0 1.1rem; line-height: 1.2; }
     .letter-hero { width: 100%; border-radius: 3px; margin: 0 0 1.4rem; display: block; }
     .letter-body p { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; line-height: 1.75; color: #3a3530; margin: 0 0 1.1em; }
+    .letter-body h4 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.35rem; color: var(--ink-deep, #2D2A26); margin: 1.6em 0 0.5em; }
+    .letter-body blockquote { border-left: 2px solid var(--gold, #c9a84c); margin: 1.4em 0; padding-left: 1.1em; font-style: italic; color: #5A554C; }
+    .letter-body figure { margin: 1.6em 0; }
+    .letter-body figure img { width: 100%; border-radius: 3px; display: block; }
+    .letter-body figcaption { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: #5A554C; margin-top: 0.5em; }
   </style>
   <script>
     /* Render published letters from the practice database (read-only,
@@ -227,10 +232,55 @@
             }
             var body = document.createElement('div');
             body.className = 'letter-body';
-            String(post.body_md || '').split(/\n\s*\n/).forEach(function (para) {
-              if (!para.trim()) return;
+            /* Inline emphasis: **bold** and *italic*, built as DOM nodes (never HTML). */
+            function inlineInto(el, text) {
+              String(text).split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).forEach(function (part) {
+                if (!part) return;
+                if (/^\*\*[^*]+\*\*$/.test(part)) {
+                  var b = document.createElement('strong'); b.textContent = part.slice(2, -2); el.appendChild(b);
+                } else if (/^\*[^*]+\*$/.test(part)) {
+                  var em = document.createElement('em'); em.textContent = part.slice(1, -1); el.appendChild(em);
+                } else {
+                  el.appendChild(document.createTextNode(part));
+                }
+              });
+            }
+            String(post.body_md || '').split(/\n\s*\n/).forEach(function (block) {
+              block = block.trim();
+              if (!block) return;
+              var img = block.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+              if (img && /^https?:\/\//.test(img[2])) {
+                var fig = document.createElement('figure');
+                var image = document.createElement('img');
+                image.loading = 'lazy';
+                image.alt = img[1] || '';
+                image.src = img[2];
+                fig.appendChild(image);
+                if (img[1]) {
+                  var cap = document.createElement('figcaption');
+                  cap.textContent = img[1];
+                  fig.appendChild(cap);
+                }
+                body.appendChild(fig);
+                return;
+              }
+              if (block.indexOf('## ') === 0) {
+                var h4 = document.createElement('h4');
+                inlineInto(h4, block.slice(3));
+                body.appendChild(h4);
+                return;
+              }
+              if (block.indexOf('> ') === 0) {
+                var q = document.createElement('blockquote');
+                inlineInto(q, block.replace(/^> ?/gm, ''));
+                body.appendChild(q);
+                return;
+              }
               var p = document.createElement('p');
-              p.textContent = para.trim();
+              block.split('\n').forEach(function (line, idx, arr) {
+                inlineInto(p, line);
+                if (idx < arr.length - 1) p.appendChild(document.createElement('br'));
+              });
               body.appendChild(p);
             });
             entry.appendChild(body);
