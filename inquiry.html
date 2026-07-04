@@ -318,6 +318,7 @@
             }
             // Disable all inputs after success
             form.querySelectorAll('input, textarea, select, button').forEach(function (el) { el.disabled = true; });
+            try { if (window.aapTrack) window.aapTrack('inquiry'); } catch (e) {}
           } else {
             if (btn) { btn.disabled = false; btn.textContent = orig || 'Send'; }
             if (note) {

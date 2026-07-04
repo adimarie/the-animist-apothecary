@@ -86,6 +86,7 @@
         setStatus(statusEl, 'success', 'Held with care. The next letter will arrive with the season.');
         disableForm(form);
         if (submitBtn) submitBtn.textContent = '✓ Subscribed';
+        try { if (window.aapTrack) window.aapTrack('newsletter', { source: payload.source_list }); } catch (e) {}
       } else {
         const text = await response.text();
         let errMsg = 'Something went wrong. Please try again, or write to its.adimarie@gmail.com.';

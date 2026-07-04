@@ -559,6 +559,8 @@
   }
 
   function renderConfirmation(res, who) {
+    // Analytics only; wrapped so it can never disturb the booking flow.
+    try { if (window.aapTrack) window.aapTrack('booking', { service: sel.service && sel.service.name }); } catch (e) {}
     var amount = sel.tier.min_amount_cents / 100;
     var memo = who.first + " — " + sel.service.name + " " + shortDate(sel.slot.start, clientTz);
     var venmoUser = cfg.venmo;
