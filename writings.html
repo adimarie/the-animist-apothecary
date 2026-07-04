@@ -113,7 +113,7 @@
           <li><a href="about.html">About</a></li>
           <li><a href="ceremonial-coaching.html">Premium Coaching</a></li>
           <li><a href="kinship-nexus.html">Kinship Nexus</a></li>
-          <li><a href="training-grounds.html">The Training Grounds</a></li>
+          <li><a href="training-grounds.html">The School</a></li>
           <li><a href="public-offerings.html">Public Offerings</a></li>
           <li><a href="writings.html">Resources</a></li>
         </ul>
@@ -169,14 +169,77 @@
         <p class="writings-newsletter-trust">Held with care, never shared.</p>
       </div>
 
-      <div class="past-letters">
+      <div class="past-letters" id="past-letters">
         <span class="offering-section-label">Past Letters</span>
-        <h2 class="offering-section-title">The archive opens soon.</h2>
-        <p class="past-letters-note">The first letters are being gathered. They will appear here as the season turns.</p>
+        <h2 class="offering-section-title" id="past-letters-title">The archive opens soon.</h2>
+        <p class="past-letters-note" id="past-letters-note">The first letters are being gathered. They will appear here as the season turns.</p>
+        <div id="letters-archive"></div>
       </div>
 
     </div>
   </section>
+
+  <style>
+    /* Published letters, rendered from the practice database. */
+    .letter-entry { margin: 3.2rem auto 0; max-width: 640px; text-align: left; padding-top: 2.6rem; border-top: 1px solid rgba(201,168,76,0.35); }
+    .letter-entry:first-child { border-top: none; padding-top: 0; }
+    .letter-date { font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.72rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold, #c9a84c); display: block; margin-bottom: 0.7rem; }
+    .letter-title { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(1.5rem, 2.4vw, 1.9rem); color: var(--ink-deep, #2D2A26); margin: 0 0 1.1rem; line-height: 1.2; }
+    .letter-hero { width: 100%; border-radius: 3px; margin: 0 0 1.4rem; display: block; }
+    .letter-body p { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; line-height: 1.75; color: #3a3530; margin: 0 0 1.1em; }
+  </style>
+  <script>
+    /* Render published letters from the practice database (read-only,
+       published posts only, via the blog_posts_public view). */
+    (function () {
+      var URL = 'https://twmwqfmmfuwxvzkrwnui.supabase.co/rest/v1/blog_posts_public?select=title,slug,body_md,excerpt,hero_image_url,published_at&order=published_at.desc&limit=50';
+      var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3bXdxZm1tZnV3eHZ6a3J3bnVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNjQ5ODEsImV4cCI6MjA5NDc0MDk4MX0.sXjGyRuKg8yCNq_hlrhJU-UAV0XT5mBICtdlFNLEcRM';
+      fetch(URL, { headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY } })
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (posts) {
+          if (!posts || !posts.length) return; /* keep the "opens soon" note */
+          var title = document.getElementById('past-letters-title');
+          var note = document.getElementById('past-letters-note');
+          if (title) title.textContent = 'The letters, kept.';
+          if (note) note.remove();
+          var mount = document.getElementById('letters-archive');
+          if (!mount) return;
+          posts.forEach(function (post) {
+            var entry = document.createElement('article');
+            entry.className = 'letter-entry';
+            if (post.published_at) {
+              var d = document.createElement('span');
+              d.className = 'letter-date';
+              d.textContent = new Date(post.published_at).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+              entry.appendChild(d);
+            }
+            var h = document.createElement('h3');
+            h.className = 'letter-title';
+            h.textContent = post.title || '';
+            entry.appendChild(h);
+            if (post.hero_image_url && /^https?:\/\//.test(post.hero_image_url)) {
+              var img = document.createElement('img');
+              img.className = 'letter-hero';
+              img.loading = 'lazy';
+              img.alt = post.title || '';
+              img.src = post.hero_image_url;
+              entry.appendChild(img);
+            }
+            var body = document.createElement('div');
+            body.className = 'letter-body';
+            String(post.body_md || '').split(/\n\s*\n/).forEach(function (para) {
+              if (!para.trim()) return;
+              var p = document.createElement('p');
+              p.textContent = para.trim();
+              body.appendChild(p);
+            });
+            entry.appendChild(body);
+            mount.appendChild(entry);
+          });
+        })
+        .catch(function () { /* leave the quiet default */ });
+    })();
+  </script>
 
   <!-- THE LIBRARY -->
   <section class="lib-body">
@@ -350,5 +413,6 @@
   <script src="js/newsletter.js" defer></script>
   <script src="js/coming-soon.js" defer></script>
   <script src="js/lux.js" defer></script>
+  <script src="js/traffic.js" defer></script>
 </body>
 </html>
