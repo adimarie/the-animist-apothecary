@@ -1,12 +1,12 @@
 {
-  "version": "v260704.01 3:26p",
-  "release": 1,
-  "sha": "20a0fda7",
-  "fullSha": "20a0fda74db5f0beea6d2fe2a9e39e4f99656d70",
+  "version": "v260704.02 10:24p",
+  "release": 2,
+  "sha": "a1ee33c7",
+  "fullSha": "a1ee33c72a12199efdd05be3a3c4a794b7695403",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmkkn4f",
-  "pushedAt": "2026-07-04T08:26:21-07:00",
-  "commits": [{"sha":"47600004","message":"Add first-party traffic beacon sitewide + live letters archive on writings.html","author":"Adi Marie"},{"sha":"20a0fda7","message":"Merge origin/main (version bump)","author":"Adi Marie"}]
+  "pushedAt": "2026-07-04T15:23:51-07:00",
+  "commits": [{"sha":"0befea4c","message":"Analytics v2: engagement, campaigns, vitals, errors, conversions","author":"Adi Marie"},{"sha":"a1ee33c7","message":"Merge origin/main (version bump)","author":"Adi Marie"}]
 }
