@@ -1,12 +1,12 @@
 {
-  "version": "v260704.02 10:24p",
-  "release": 2,
-  "sha": "a1ee33c7",
-  "fullSha": "a1ee33c72a12199efdd05be3a3c4a794b7695403",
+  "version": "v260704.03 10:35p",
+  "release": 3,
+  "sha": "812c756a",
+  "fullSha": "812c756a27c8ecfb19bfe9193fdcf00c4b9506b9",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmkkn4f",
-  "pushedAt": "2026-07-04T15:23:51-07:00",
-  "commits": [{"sha":"0befea4c","message":"Analytics v2: engagement, campaigns, vitals, errors, conversions","author":"Adi Marie"},{"sha":"a1ee33c7","message":"Merge origin/main (version bump)","author":"Adi Marie"}]
+  "pushedAt": "2026-07-04T15:35:21-07:00",
+  "commits": [{"sha":"ada3b20d","message":"Letters archive: headings, quotes, images with captions, emphasis","author":"Adi Marie"},{"sha":"812c756a","message":"Merge origin/main (version bumps)","author":"Adi Marie"}]
 }
