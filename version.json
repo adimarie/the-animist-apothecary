@@ -1,12 +1,12 @@
 {
-  "version": "v260702.01 4:16p",
-  "release": 1,
-  "sha": "c0088b57",
-  "fullSha": "c0088b57642b8587da057d3e29e4d80535ea0390",
+  "version": "v260704.02 10:24p",
+  "release": 2,
+  "sha": "a1ee33c7",
+  "fullSha": "a1ee33c72a12199efdd05be3a3c4a794b7695403",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmkkn4f",
-  "pushedAt": "2026-07-02T09:16:15-07:00",
-  "commits": [{"sha":"0045c0e1","message":"Add custom Virtual Services booking flow (schedule + intake + Venmo)","author":"Adi Marie"},{"sha":"5d176b0c","message":"Property platform removal + admin hub rebuild + Venmo unification (local snapshot)","author":"Adi Marie"},{"sha":"7a54a88d","message":"Six-page premium build: nav restructure, new pages, luxury design system","author":"Adi Marie"},{"sha":"c0088b57","message":"Merge origin/main: reconcile live-site sessions/gating work with premium build","author":"Adi Marie"}]
+  "pushedAt": "2026-07-04T15:23:51-07:00",
+  "commits": [{"sha":"0befea4c","message":"Analytics v2: engagement, campaigns, vitals, errors, conversions","author":"Adi Marie"},{"sha":"a1ee33c7","message":"Merge origin/main (version bump)","author":"Adi Marie"}]
 }
