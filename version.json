@@ -1,12 +1,12 @@
 {
-  "version": "v260702.01 4:16p",
-  "release": 1,
-  "sha": "c0088b57",
-  "fullSha": "c0088b57642b8587da057d3e29e4d80535ea0390",
+  "version": "v260705.05 3:51p",
+  "release": 5,
+  "sha": "46bdaa85",
+  "fullSha": "46bdaa855a89f82f586d44f15e08e8dc56b254d0",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmkkn4f",
-  "pushedAt": "2026-07-02T09:16:15-07:00",
-  "commits": [{"sha":"0045c0e1","message":"Add custom Virtual Services booking flow (schedule + intake + Venmo)","author":"Adi Marie"},{"sha":"5d176b0c","message":"Property platform removal + admin hub rebuild + Venmo unification (local snapshot)","author":"Adi Marie"},{"sha":"7a54a88d","message":"Six-page premium build: nav restructure, new pages, luxury design system","author":"Adi Marie"},{"sha":"c0088b57","message":"Merge origin/main: reconcile live-site sessions/gating work with premium build","author":"Adi Marie"}]
+  "pushedAt": "2026-07-05T08:50:46-07:00",
+  "commits": [{"sha":"46bdaa85","message":"Create CNAME","author":"adimarie"}]
 }
