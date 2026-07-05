@@ -1,12 +1,12 @@
 {
-  "version": "v260705.07 3:54p",
-  "release": 7,
-  "sha": "716399da",
-  "fullSha": "716399da09fdb1938f2880f38fc31190f7229247",
+  "version": "v260705.08 3:59p",
+  "release": 8,
+  "sha": "9d7f6c0a",
+  "fullSha": "9d7f6c0a6a1a6a38de4dd45f0e51549f99e5d607",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmkkn4f",
-  "pushedAt": "2026-07-05T08:53:55-07:00",
-  "commits": [{"sha":"716399da","message":"Create CNAME","author":"adimarie"}]
+  "pushedAt": "2026-07-05T08:58:59-07:00",
+  "commits": [{"sha":"cbab1089","message":"404: the Count of Days stands open","author":"Adi Marie"},{"sha":"9d7f6c0a","message":"Merge origin/main (version bump)","author":"Adi Marie"}]
 }
