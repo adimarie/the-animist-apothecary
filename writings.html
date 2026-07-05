@@ -164,6 +164,16 @@
             <input type="text" name="last_name" placeholder="Last Name" required autocomplete="family-name" aria-label="Last Name">
           </div>
           <input type="email" name="email" placeholder="Email Address" required autocomplete="email" aria-label="Email Address">
+        <select name="referral_source" required aria-label="Where are you coming from?">
+          <option value="" disabled selected>Where are you coming from?</option>
+          <option value="Gathering">A gathering</option>
+          <option value="Event or workshop">An event or workshop</option>
+          <option value="Class">A class</option>
+          <option value="Ceremony">A ceremony</option>
+          <option value="Referral">A referral from someone</option>
+          <option value="Online">Online (social, search)</option>
+          <option value="Other">Other</option>
+        </select>
           <button type="submit">Subscribe</button>
         </form>
         <p class="writings-newsletter-trust">Held with care, never shared.</p>

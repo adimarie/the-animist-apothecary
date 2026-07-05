@@ -73,6 +73,10 @@
       halt('Your full name, please — first and last — so the letters know who they are going to.');
       return;
     }
+    if (!payload.referred_by) {
+      halt('One more thing: where are you coming from? Choose the door you arrived through.');
+      return;
+    }
     if (!payload.email) {
       halt('Please enter your email address.');
       return;

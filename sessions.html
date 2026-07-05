@@ -1452,9 +1452,9 @@
       box-shadow: 0 8px 28px rgba(0,0,0,0.10);
     }
     body[data-content-page="sessions"] .recip-tier-gold   { border-top-color: #c9a84c; }
-    body[data-content-page="sessions"] .recip-tier-green  { border-top-color: #6b8f5e; }
-    body[data-content-page="sessions"] .recip-tier-blue   { border-top-color: #5a7fa0; }
-    body[data-content-page="sessions"] .recip-tier-purple { border-top-color: #7b6b8a; }
+    body[data-content-page="sessions"] .recip-tier-green  { border-top-color: #5B7553; }
+    body[data-content-page="sessions"] .recip-tier-blue   { border-top-color: #886039; }
+    body[data-content-page="sessions"] .recip-tier-purple { border-top-color: #8A6A52; }
 
     body[data-content-page="sessions"] .recip-eyebrow {
       font-family: 'Cinzel', serif;
@@ -1465,9 +1465,9 @@
       margin: 0;
     }
     body[data-content-page="sessions"] .recip-tier-gold   .recip-eyebrow { color: #c9a84c; }
-    body[data-content-page="sessions"] .recip-tier-green  .recip-eyebrow { color: #6b8f5e; }
-    body[data-content-page="sessions"] .recip-tier-blue   .recip-eyebrow { color: #5a7fa0; }
-    body[data-content-page="sessions"] .recip-tier-purple .recip-eyebrow { color: #7b6b8a; }
+    body[data-content-page="sessions"] .recip-tier-green  .recip-eyebrow { color: #4A6344; }
+    body[data-content-page="sessions"] .recip-tier-blue   .recip-eyebrow { color: #886039; }
+    body[data-content-page="sessions"] .recip-tier-purple .recip-eyebrow { color: #8A6A52; }
 
     body[data-content-page="sessions"] .recip-tier h3 {
       font-family: 'Cormorant Garamond', serif;
@@ -1822,6 +1822,21 @@
       }
     }
   </style>
+  <style>
+    /* ===== Sessions UX pass (2026-07-04) ===== */
+    section[id] { scroll-margin-top: 110px; }
+    .sessions-hero-door { display: inline-block; margin-top: 1.8rem; font-family: 'Cormorant SC', 'Cinzel', serif; font-size: 0.84rem; letter-spacing: 0.24em; text-transform: uppercase; color: #2D2A26; background: var(--gold-pale, #DCC178); padding: 1rem 2.2rem; border-radius: 2px; text-decoration: none; transition: background 0.25s, transform 0.25s; }
+    .sessions-hero-door:hover { background: #F5F3ED; transform: translateY(-2px); }
+    .sessions-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem; padding: 1.4rem 1.5rem; background: #F7F5F0; border-bottom: 1px solid rgba(201,168,76,0.18); }
+    .sessions-pills a { font-family: 'Cormorant SC', 'Cinzel', serif; font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: #6b5b33; text-decoration: none; padding: 0.55rem 1.15rem; border: 1px solid rgba(143,111,46,0.35); border-radius: 999px; transition: all 0.25s; background: transparent; }
+    .sessions-pills a:hover { background: #2D2A26; border-color: #2D2A26; color: #F5F3ED; }
+    /* legibility: deep gold on light grounds */
+    body[data-content-page="sessions"] .section-label { color: #8F6F2E !important; }
+    body[data-content-page="sessions"] .recip-eyebrow { font-weight: 600; }
+    /* schedule section headline spacing rhythm */
+    body[data-content-page="sessions"] .schedule-intro strong { color: #1F1A18; }
+    @media (max-width: 640px) { .sessions-pills { gap: 0.45rem; padding: 1rem 0.8rem; } .sessions-pills a { font-size: 0.66rem; padding: 0.45rem 0.85rem; } }
+  </style>
 </head>
 <body data-content-page="sessions">
 
@@ -1856,7 +1871,8 @@
       <div style="max-width: 520px;">
         <p class="hero-eyebrow" style="color: var(--gold-pale, #DBC079);">The Sessions</p>
         <h1 class="page-hero-title">It begins with <em>sitting together</em>.</h1>
-        <p class="page-hero-subtitle">Five one-on-one sessions, held over Zoom &mdash; worldwide.</p>
+        <p class="page-hero-subtitle">One-on-one sessions, held over Zoom &mdash; worldwide.</p>
+        <a href="#schedule" class="sessions-hero-door">Choose Your Session &darr;</a>
       </div>
     </div>
   </section>
@@ -1864,11 +1880,101 @@
   <!-- =============================================================
        INTRO
        ============================================================= -->
+  <nav class="sessions-pills" aria-label="On this page">
+    <a href="#schedule">The Sessions</a>
+    <a href="#reciprocity">Sacred Reciprocity</a>
+    <a href="#circles">Weekly Circles</a>
+    <a href="#practical">Practical Notes</a>
+  </nav>
+
   <section class="sessions-intro">
     <h2>A place where anyone can <em>begin</em>.</h2>
-    <p>Five one-on-one sessions open here directly. Choose the one that fits, find an open hour, and offer your reciprocity &mdash; all in one place, just below.</p>
+    <p>The one-on-one sessions open here directly. Choose the one that fits, find an open hour, and offer your reciprocity &mdash; all in one place, just below. The Intake &amp; Inquiry is the Conversation &mdash; the threshold every deeper path shares.</p>
     <p>The deeper paths ask differently. Seasons of Change, the Metamorphic Year, ceremony commissions, community engagements. These are carefully curated and intentionally tended fields, entered through acquaintance. <a href="intake.html">Begin one here &rarr;</a></p>
   </section>
+
+  <!-- =============================================================
+       PAY + SACRED RECIPROCITY — merged section
+       (top: payment action · bottom: philosophy + 4-tier descriptor)
+       ============================================================= -->
+  <section class="schedule-section" id="schedule">
+    <div class="schedule-inner">
+      <span class="section-label">Schedule a Session</span>
+      <h2>Choose your session. <em>Find your hour.</em></h2>
+      <p class="schedule-intro">Select the one-on-one session that fits, find an open hour on Adi Marie&rsquo;s calendar, share what brings you, and offer your reciprocity &mdash; all in one place. Every session is held on a sliding scale: <strong>$700 / $550 / $450 / $350</strong>, whichever is true for you.</p>
+      <p class="schedule-recip-note" style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.08rem; font-style:italic; color:var(--gold-pale,#DCC178); margin:0.5rem auto 0; max-width:760px; line-height:1.6;">More than a sliding scale &mdash; this is <a href="#reciprocity" style="color:var(--gold,#C9A84C); text-decoration:underline; text-underline-offset:3px;">Sacred Reciprocity</a>, a practice of social economics.</p>
+
+      <!-- Each booking option presented as an image card (page-scoped; keyed to the widget's data-svc slug) -->
+      <style>
+        /* ── Full-width, alternating cards — image panel + centered text, matching the Divination band ── */
+        body[data-content-page="sessions"] #booking-calendar { max-width: 1200px; }
+        body[data-content-page="sessions"] .aap-bk-cal { max-width: 660px; margin-left: auto; margin-right: auto; }
+        body[data-content-page="sessions"] .aap-bk-offerings { display: flex; flex-direction: column; gap: 30px; margin-top: 8px; }
+        body[data-content-page="sessions"] .aap-bk-offering--wide {
+          width: 100%; max-width: none; gap: 0; padding: 0; overflow: hidden; text-align: left;
+          display: grid; grid-template-columns: 46% 54%; align-items: stretch;
+          border: 1px solid rgba(201,168,76,0.20); border-radius: 4px; background: #fff;
+          box-shadow: 0 8px 30px rgba(45,42,38,0.07);
+          transition: transform 0.45s cubic-bezier(.2,.7,.2,1), box-shadow 0.45s ease, border-color 0.3s ease;
+        }
+        body[data-content-page="sessions"] .aap-bk-offering--wide::before { content: none; display: none; }
+        body[data-content-page="sessions"] .aap-bk-offering--wide:hover { transform: translateY(-4px); box-shadow: 0 22px 48px rgba(45,42,38,0.14); border-color: var(--gold, #C9A84C); }
+        body[data-content-page="sessions"] .aap-bk-offering--wide.is-on { border-color: var(--gold, #C9A84C); box-shadow: 0 0 0 1px var(--gold, #C9A84C) inset, 0 18px 42px rgba(45,42,38,0.13); }
+        /* image panel — fills the full card height, edge to edge */
+        body[data-content-page="sessions"] .aap-bk-offering-media {
+          grid-column: 1; grid-row: 1; min-height: 400px;
+          background-size: cover; background-position: center; background-color: var(--bk-paper, #F7F5F0);
+          transition: filter 0.45s ease, transform 0.6s cubic-bezier(.2,.7,.2,1);
+        }
+        body[data-content-page="sessions"] .aap-bk-offering--wide:hover .aap-bk-offering-media,
+        body[data-content-page="sessions"] .aap-bk-offering--wide.is-on .aap-bk-offering-media { filter: brightness(1.04) saturate(1.03); transform: scale(1.03); }
+        /* text — vertically centered in its panel */
+        body[data-content-page="sessions"] .aap-bk-offering-body {
+          grid-column: 2; grid-row: 1; display: flex; flex-direction: column; justify-content: center; padding: 3.2rem 3.6rem;
+        }
+        body[data-content-page="sessions"] .aap-bk-offering-name { font-size: 34px; line-height: 1.08; margin-top: 0.5rem; }
+        body[data-content-page="sessions"] .aap-bk-offering-desc { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.2rem; line-height: 1.6; color: #3a3530; margin-top: 0.9rem; }
+        body[data-content-page="sessions"] .aap-bk-offering-price { font-size: 24px; margin-top: 1.3rem; padding-top: 0; border-top: none; }
+        body[data-content-page="sessions"] .aap-bk-offering-go {
+          align-self: flex-start; margin-top: 1.7rem; padding: 0.9rem 1.9rem;
+          font-family: 'Cinzel', serif; font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase;
+          color: var(--paper, #F7F5F0); background: var(--bark, #2D2A26); border: 1px solid var(--bark, #2D2A26);
+          border-radius: 2px; transition: all 0.3s ease;
+        }
+        body[data-content-page="sessions"] .aap-bk-offering--wide:hover .aap-bk-offering-go,
+        body[data-content-page="sessions"] .aap-bk-offering--wide.is-on .aap-bk-offering-go { background: var(--gold, #C9A84C); border-color: var(--gold, #C9A84C); color: var(--bark, #2D2A26); }
+        /* alternate — even cards put the image on the right */
+        body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) { grid-template-columns: 54% 46%; }
+        body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-media { grid-column: 2; }
+        body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-body { grid-column: 1; }
+        /* per-svc imagery */
+        body[data-content-page="sessions"] .aap-bk-offering[data-svc="divination"] .aap-bk-offering-media { background-image: url('images/uploads/divination-hands-medicine-bundle.jpg'); background-position: center 40%; }
+        body[data-content-page="sessions"] .aap-bk-offering[data-svc="intake-inquiry"] .aap-bk-offering-media { background-image: url('images/uploads/download.jpg'); }
+        body[data-content-page="sessions"] .aap-bk-offering[data-svc="guidance-counsel"] .aap-bk-offering-media { background-image: url('images/uploads/cta-moss-smoke.jpg'); }
+        body[data-content-page="sessions"] .aap-bk-offering[data-svc="integration-aftercare"] .aap-bk-offering-media { background-image: url('images/uploads/download-6.jpg'); background-position: center 35%; }
+        @media (max-width: 820px) {
+          body[data-content-page="sessions"] .aap-bk-offering--wide,
+          body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) { grid-template-columns: 1fr; }
+          body[data-content-page="sessions"] .aap-bk-offering-media,
+          body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-media { grid-column: 1; grid-row: 1; min-height: 240px; }
+          body[data-content-page="sessions"] .aap-bk-offering-body,
+          body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-body { grid-column: 1; grid-row: 2; padding: 2.6rem 1.7rem; }
+        }
+      </style>
+
+      <!-- In-house booking calendar (js/calendar-booking.js) — all five 1:1 sessions; each option shown as an image card -->
+      <div id="booking-calendar"
+           data-services="divination,intake-inquiry,guidance-counsel,integration-aftercare"
+           data-category-label="One-on-One Virtual Sessions"
+           data-sliding-scale="700,550,450,350"
+           data-card-layout="wide"
+           data-coming-soon=""
+           data-venmo="TheAnimistApothecary"></div>
+    </div>
+  </section>
+
+
+
 
   <!-- =============================================================
        PAY + SACRED RECIPROCITY — merged section
@@ -1925,80 +2031,7 @@
 <!-- =============================================================
        SCHEDULE A SESSION — full-width inline calendar, tabbed
        ============================================================= -->
-  <section class="schedule-section" id="schedule">
-    <div class="schedule-inner">
-      <span class="section-label">Schedule a Session</span>
-      <h2>Choose your session. <em>Find your hour.</em></h2>
-      <p class="schedule-intro">Select the one-on-one session that fits, find an open hour on Adi Marie&rsquo;s calendar, share what brings you, and offer your reciprocity &mdash; all in one place. Every session is held on a sliding scale: <strong>$700 / $550 / $450 / $350</strong>, whichever is true for you.</p>
-      <p class="schedule-recip-note" style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.08rem; font-style:italic; color:var(--gold-pale,#DCC178); margin:0.5rem auto 0; max-width:760px; line-height:1.6;">More than a sliding scale &mdash; this is <a href="#reciprocity" style="color:var(--gold,#C9A84C); text-decoration:underline; text-underline-offset:3px;">Sacred Reciprocity</a>, a practice of social economics.</p>
 
-      <!-- Each booking option presented as an image card (page-scoped; keyed to the widget's data-svc slug) -->
-      <style>
-        /* ── Full-width, alternating cards — image panel + centered text, matching the Divination band ── */
-        body[data-content-page="sessions"] #booking-calendar { max-width: 1200px; }
-        body[data-content-page="sessions"] .aap-bk-cal { max-width: 660px; margin-left: auto; margin-right: auto; }
-        body[data-content-page="sessions"] .aap-bk-offerings { display: flex; flex-direction: column; gap: 30px; margin-top: 8px; }
-        body[data-content-page="sessions"] .aap-bk-offering--wide {
-          width: 100%; max-width: none; gap: 0; padding: 0; overflow: hidden; text-align: left;
-          display: grid; grid-template-columns: 46% 54%; align-items: stretch;
-          border: 1px solid rgba(201,168,76,0.20); border-radius: 4px; background: #fff;
-          box-shadow: 0 8px 30px rgba(45,42,38,0.07);
-          transition: transform 0.45s cubic-bezier(.2,.7,.2,1), box-shadow 0.45s ease, border-color 0.3s ease;
-        }
-        body[data-content-page="sessions"] .aap-bk-offering--wide::before { content: none; display: none; }
-        body[data-content-page="sessions"] .aap-bk-offering--wide:hover { transform: translateY(-4px); box-shadow: 0 22px 48px rgba(45,42,38,0.14); border-color: var(--gold, #C9A84C); }
-        body[data-content-page="sessions"] .aap-bk-offering--wide.is-on { border-color: var(--gold, #C9A84C); box-shadow: 0 0 0 1px var(--gold, #C9A84C) inset, 0 18px 42px rgba(45,42,38,0.13); }
-        /* image panel — fills the full card height, edge to edge */
-        body[data-content-page="sessions"] .aap-bk-offering-media {
-          grid-column: 1; grid-row: 1; min-height: 400px;
-          background-size: cover; background-position: center; background-color: var(--bk-paper, #F7F5F0);
-          transition: filter 0.45s ease, transform 0.6s cubic-bezier(.2,.7,.2,1);
-        }
-        body[data-content-page="sessions"] .aap-bk-offering--wide:hover .aap-bk-offering-media,
-        body[data-content-page="sessions"] .aap-bk-offering--wide.is-on .aap-bk-offering-media { filter: brightness(1.04) saturate(1.03); transform: scale(1.03); }
-        /* text — vertically centered in its panel */
-        body[data-content-page="sessions"] .aap-bk-offering-body {
-          grid-column: 2; grid-row: 1; display: flex; flex-direction: column; justify-content: center; padding: 3.2rem 3.6rem;
-        }
-        body[data-content-page="sessions"] .aap-bk-offering-name { font-size: 34px; line-height: 1.08; margin-top: 0.5rem; }
-        body[data-content-page="sessions"] .aap-bk-offering-desc { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.2rem; line-height: 1.6; color: #3a3530; margin-top: 0.9rem; }
-        body[data-content-page="sessions"] .aap-bk-offering-price { font-size: 24px; margin-top: 1.3rem; padding-top: 0; border-top: none; }
-        body[data-content-page="sessions"] .aap-bk-offering-go {
-          align-self: flex-start; margin-top: 1.7rem; padding: 0.9rem 1.9rem;
-          font-family: 'Cinzel', serif; font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase;
-          color: var(--paper, #F7F5F0); background: var(--bark, #2D2A26); border: 1px solid var(--bark, #2D2A26);
-          border-radius: 2px; transition: all 0.3s ease;
-        }
-        body[data-content-page="sessions"] .aap-bk-offering--wide:hover .aap-bk-offering-go,
-        body[data-content-page="sessions"] .aap-bk-offering--wide.is-on .aap-bk-offering-go { background: var(--gold, #C9A84C); border-color: var(--gold, #C9A84C); color: var(--bark, #2D2A26); }
-        /* alternate — even cards put the image on the right */
-        body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) { grid-template-columns: 54% 46%; }
-        body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-media { grid-column: 2; }
-        body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-body { grid-column: 1; }
-        /* per-svc imagery */
-        body[data-content-page="sessions"] .aap-bk-offering[data-svc="intake-inquiry"] .aap-bk-offering-media { background-image: url('images/uploads/download.jpg'); }
-        body[data-content-page="sessions"] .aap-bk-offering[data-svc="guidance-counsel"] .aap-bk-offering-media { background-image: url('images/uploads/cta-moss-smoke.jpg'); }
-        body[data-content-page="sessions"] .aap-bk-offering[data-svc="integration-aftercare"] .aap-bk-offering-media { background-image: url('images/uploads/download-6.jpg'); background-position: center 35%; }
-        @media (max-width: 820px) {
-          body[data-content-page="sessions"] .aap-bk-offering--wide,
-          body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) { grid-template-columns: 1fr; }
-          body[data-content-page="sessions"] .aap-bk-offering-media,
-          body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-media { grid-column: 1; grid-row: 1; min-height: 240px; }
-          body[data-content-page="sessions"] .aap-bk-offering-body,
-          body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-body { grid-column: 1; grid-row: 2; padding: 2.6rem 1.7rem; }
-        }
-      </style>
-
-      <!-- In-house booking calendar (js/calendar-booking.js) — all five 1:1 sessions; each option shown as an image card -->
-      <div id="booking-calendar"
-           data-services="intake-inquiry,guidance-counsel,integration-aftercare"
-           data-category-label="One-on-One Virtual Sessions"
-           data-sliding-scale="700,550,450,350"
-           data-card-layout="wide"
-           data-coming-soon=""
-           data-venmo="TheAnimistApothecary"></div>
-    </div>
-  </section>
 
 
 
@@ -2032,9 +2065,9 @@
   <section class="weekly-circles" id="circles">
     <div class="weekly-circles-inner">
       <div class="weekly-circles-head">
-        <span class="section-label">Gather Together</span>
+        <span class="section-label">Public Offerings &middot; Gather Together</span>
         <h2>The weekly <em>circles</em></h2>
-        <p>Beyond the one-on-one work, the community gathers each week over Zoom. Drop in for a single circle, or enroll in a season-long series &mdash; four ways to sit together, in good company.</p>
+        <p>The open calendar of the practice &mdash; Zoom classes, calls, and discourse, gathered each week. Drop in for a single circle, or enroll in a season-long series &mdash; four ways to sit together, in good company.</p>
       </div>
       <div class="weekly-circles-grid">
         <article class="circle-card">
@@ -2070,7 +2103,7 @@
           </div>
         </article>
       </div>
-      <p class="weekly-circles-cta">Join a single circle, or enroll in a season-long series. <a href="inquiry.html">Write to Adi to enroll &rarr;</a></p>
+      <p class="weekly-circles-cta">Join a single circle, enroll in a season-long series, or see all the <a href="public-offerings.html">open doorways of the practice &rarr;</a>. <a href="inquiry.html">Write to Adi to enroll &rarr;</a></p>
     </div>
   </section>
 
@@ -2198,6 +2231,16 @@
           <input type="text" name="last_name" placeholder="Last Name" required autocomplete="family-name" aria-label="Last Name">
         </div>
         <input type="email" name="email" placeholder="Email Address" required autocomplete="email" aria-label="Email Address">
+        <select name="referral_source" required aria-label="Where are you coming from?">
+          <option value="" disabled selected>Where are you coming from?</option>
+          <option value="Gathering">A gathering</option>
+          <option value="Event or workshop">An event or workshop</option>
+          <option value="Class">A class</option>
+          <option value="Ceremony">A ceremony</option>
+          <option value="Referral">A referral from someone</option>
+          <option value="Online">Online (social, search)</option>
+          <option value="Other">Other</option>
+        </select>
         <button type="submit" class="newsletter-submit">Subscribe</button>
       </form>
 
@@ -2220,7 +2263,7 @@
       <h2>Some work requires <em>more context</em>.</h2>
       <p>Please fill in a deeper inquiry and self-reflection to indicate your safety, health screening, and readiness for this work.</p>
       <p class="intake-once-note">This intake form needs only to be completed once.</p>
-      <a href="sessions.html" class="intake-cta-btn" target="_blank" rel="noopener">
+      <a href="intake.html" class="intake-cta-btn" target="_blank" rel="noopener">
         <span class="intake-cta-label">Complete the Immersion Intake</span>
         <span class="intake-cta-arrow">&nearr;</span>
       </a>
