@@ -1,12 +1,12 @@
 {
-  "version": "v260704.03 10:35p",
-  "release": 3,
-  "sha": "812c756a",
-  "fullSha": "812c756a27c8ecfb19bfe9193fdcf00c4b9506b9",
+  "version": "v260705.01 2:04a",
+  "release": 1,
+  "sha": "5ae7ffad",
+  "fullSha": "5ae7ffad159080737e8d453808b95b76584d0a17",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmkkn4f",
-  "pushedAt": "2026-07-04T15:35:21-07:00",
-  "commits": [{"sha":"ada3b20d","message":"Letters archive: headings, quotes, images with captions, emphasis","author":"Adi Marie"},{"sha":"812c756a","message":"Merge origin/main (version bumps)","author":"Adi Marie"}]
+  "pushedAt": "2026-07-04T19:03:40-07:00",
+  "commits": [{"sha":"1183f2f9","message":"Newsletter enrollment requires full name and email","author":"Adi Marie"},{"sha":"5ae7ffad","message":"Merge origin/main (version bump)","author":"Adi Marie"}]
 }
