@@ -64,9 +64,21 @@
       is_subscribed: true,
     };
 
-    if (!payload.email) {
-      setStatus(statusEl, 'error', 'Please enter your email address.');
+    // Full name and email are required for newsletter enrollment.
+    function halt(message) {
+      setStatus(statusEl, 'error', message);
       if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
+    }
+    if (!payload.first_name || !payload.last_name) {
+      halt('Your full name, please — first and last — so the letters know who they are going to.');
+      return;
+    }
+    if (!payload.email) {
+      halt('Please enter your email address.');
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(payload.email)) {
+      halt('That email address looks incomplete. One more look?');
       return;
     }
 
