@@ -1,13 +1,18 @@
 /*
   coming-soon.js — soft "work in progress" overlay for pages still being built.
-  Live pages (NO overlay): the home page, the booking page (sessions.html), and a
-  few functional/admin pages. Everywhere else, this drops an opacity layer over the
-  page that reads "work in progress · coming soon" and funnels visitors to begin
-  with an introductory session at sessions.html.
 
-  This self-gates by filename, so it is harmless even if loaded on a live page.
+  v2: the list of live pages is managed from the intranet (Site → Pages).
+  This script reads that list (cached for 60s per browser session) and lifts
+  the veil for any page Adi has switched to Live. The hardcoded LIVE list
+  below is the fail-safe baseline: those pages are never gated, even if the
+  network read fails.
+
+  Flow for a gated-by-default page: the overlay appears immediately (no
+  flash of content), then lifts within a moment if the intranet list says
+  the page is live.
 */
 (function () {
+  // Fail-safe baseline — never gated, no network needed.
   var LIVE = [
     "", "index.html",
     "sessions.html",
@@ -19,10 +24,8 @@
   var file = (location.pathname.split("/").pop() || "").toLowerCase();
   if (LIVE.indexOf(file) !== -1) return;
 
-  // Dev / preview bypass — so Adi and Claude can build a page beneath the overlay
-  // while the public still sees "coming soon". Visit ANY page once with ?preview=1
-  // and the overlay stays hidden for this browser (persisted) until you visit with
-  // ?preview=0. Visitors without the flag always see the overlay.
+  // Dev / preview bypass — visit any page once with ?preview=1 and the
+  // overlay stays hidden for this browser until ?preview=0.
   try {
     var qs = new URLSearchParams(location.search);
     if (qs.has("preview")) {
@@ -31,6 +34,21 @@
     }
     if (localStorage.getItem("aap-preview") === "1") return;
   } catch (e) {}
+
+  // Cached allowlist from the intranet (60s TTL).
+  var CACHE_KEY = "aap-live-pages";
+  var TTL = 60000;
+  function readCache() {
+    try {
+      var raw = sessionStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      var parsed = JSON.parse(raw);
+      if (!parsed || !parsed.ts || Date.now() - parsed.ts > TTL) return null;
+      return parsed.pages || null;
+    } catch (e) { return null; }
+  }
+  var cachedPages = readCache();
+  if (cachedPages && cachedPages.indexOf(file) !== -1) return; // known live
 
   function build() {
     if (document.getElementById("aap-coming-soon")) return;
@@ -73,6 +91,28 @@
     document.body.style.overflow = "hidden";
   }
 
+  function lift() {
+    var ov = document.getElementById("aap-coming-soon");
+    if (ov && ov.parentNode) ov.parentNode.removeChild(ov);
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+  }
+
   if (document.body) build();
   else document.addEventListener("DOMContentLoaded", build);
+
+  // Ask the intranet whether this page has been switched to Live.
+  try {
+    var URL_ = "https://twmwqfmmfuwxvzkrwnui.supabase.co/rest/v1/site_pages_public?select=page";
+    var KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR3bXdxZm1tZnV3eHZ6a3J3bnVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNjQ5ODEsImV4cCI6MjA5NDc0MDk4MX0.sXjGyRuKg8yCNq_hlrhJU-UAV0XT5mBICtdlFNLEcRM";
+    fetch(URL_, { headers: { apikey: KEY, Authorization: "Bearer " + KEY } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (rows) {
+        if (!rows) return; // network trouble: veil stays, fail-safe
+        var pages = rows.map(function (r) { return String(r.page || "").toLowerCase(); });
+        try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), pages: pages })); } catch (e) {}
+        if (pages.indexOf(file) !== -1) lift();
+      })
+      .catch(function () { /* veil stays */ });
+  } catch (e) {}
 })();
