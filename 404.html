@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
-  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512.png">
+  <link rel="shortcut icon" href="/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex">
   <title>A Wrong Turn &middot; The Animist Apothecary</title>
@@ -92,7 +92,7 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      background-image: url('images/uploads/four-paths-labyrinth-fern.jpg');
+      background-image: url('/images/uploads/four-paths-labyrinth-fern.jpg');
       background-size: cover;
       background-position: center;
     }
@@ -183,24 +183,26 @@
     .lost-quiet a { color: var(--sage-dark); text-decoration: underline; text-underline-offset: 3px; }
     .lost-quiet a:hover { color: var(--gold); }
 
-    /* ── The easter egg: today's tonal ─────────────────── */
-    .tonal-summon {
-      margin: 3.4rem auto 0;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.02rem;
-      color: var(--ink-quiet);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      transition: color 0.3s ease;
+    /* ── The count of days: today's tonal, always open ──── */
+    .tonal-section {
+      margin-top: 3.8rem;
+      padding-top: 2.8rem;
+      border-top: 1px solid rgba(201,168,76,0.3);
     }
-    .tonal-summon .mark { color: var(--gold); font-size: 1.35rem; font-style: normal; transition: transform 0.5s ease; }
-    .tonal-summon:hover { color: var(--earth); }
-    .tonal-summon:hover .mark { transform: rotate(90deg); }
+    .tonal-head { margin-bottom: 1.4rem; }
+    .tonal-mark { color: var(--gold); font-size: 1.15rem; letter-spacing: 0; margin-right: 0.3rem; }
+    .tonal-explain {
+      max-width: 560px;
+      margin: 0 auto 1.7rem;
+      text-align: left;
+    }
+    .tonal-explain p {
+      font-size: 1.13rem;
+      line-height: 1.72;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+    }
+    .tonal-explain p:last-child { margin-bottom: 0; font-style: italic; color: var(--ink-quiet); }
     .tonal-card {
       display: none;
       margin: 1.8rem auto 0;
@@ -265,7 +267,7 @@
 <body>
   <div class="lost-ground" id="lostGround" aria-hidden="true"></div>
   <main class="lost">
-    <div class="lost-logo"><img src="images/uploads/logo-mark-trio.png" alt=""></div>
+    <div class="lost-logo"><img src="/images/uploads/logo-mark-trio.png" alt=""></div>
     <div class="lost-wordmark">The Animist <em>Apothecary</em></div>
 
     <span class="lost-eyebrow">A Wrong Turn</span>
@@ -277,14 +279,31 @@
     </p>
     <span class="lost-code">404 &middot; nothing is held at this address</span>
 
-    <a class="lost-btn" href="index.html">Return to the hearth &rarr;</a>
-    <span class="lost-quiet">or begin where everyone begins &mdash; <a href="sessions.html">an introductory session</a></span>
+    <a class="lost-btn" href="/index.html">Return to the hearth &rarr;</a>
+    <span class="lost-quiet">or begin where everyone begins &mdash; <a href="/sessions.html">an introductory session</a></span>
 
-    <button class="tonal-summon" id="tonalSummon" aria-expanded="false" aria-controls="tonalCard">
-      <span class="mark">&#10087;</span> So you don't leave empty-handed: today's tonal
-    </button>
+    <section class="tonal-section">
+      <span class="lost-eyebrow tonal-head"><span class="tonal-mark">&#10087;</span> The Count of Days</span>
+      <div class="tonal-explain">
+        <p>
+          Long before clocks, the peoples of Mesoamerica kept a second calendar
+          beside the solar year &mdash; a sacred count of 260 days, called the
+          tzolk&#699;in by the Maya and the tonalpohualli by the Nahua. It is built
+          of two wheels turning together: thirteen numbers and twenty day-signs.
+          Each day arrives wearing one number and one face, a pairing that will
+          not come again for nine moons. Time, kept this way, is not a line to
+          hurry along. It is a procession of living qualities, each day a visitor
+          with its own temperament and its own request.
+        </p>
+        <p>
+          A tonal is that day&rsquo;s spirit-tone &mdash; the animal, element, or
+          force that colors its hours, and, in the old understanding, the
+          companion energy a soul carries from the day that first received it.
+          So you don&rsquo;t leave empty-handed: the sign holding this day.
+        </p>
+      </div>
 
-    <div class="tonal-card" id="tonalCard" role="region" aria-label="Today's tonal">
+      <div class="tonal-card open" id="tonalCard" role="region" aria-label="Today's tonal">
       <img class="tonal-image" id="tonalImage" src="" alt="">
       <div class="tonal-body">
         <span class="tonal-eyebrow">Today's Tonal</span>
@@ -294,7 +313,8 @@
         <p class="tonal-carry" id="tonalCarry"></p>
         <p class="tonal-foot">The day count as this hearth keeps it, turning through the twenty signs and thirteen numbers. A small gift for the wrong turn that brought you here.</p>
       </div>
-    </div>
+      </div>
+    </section>
 
     <p class="lost-foot">Adi Marie &middot; Los Angeles</p>
   </main>
@@ -392,21 +412,13 @@
       var sign = SIGNS[days % 20];
       var number = (days % 13) + 1;
 
-      var btn = document.getElementById('tonalSummon');
-      var card = document.getElementById('tonalCard');
-      btn.addEventListener('click', function () {
-        var open = card.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        if (open) {
-          document.getElementById('tonalImage').src = 'images/uploads/luminous/' + sign.img;
-          document.getElementById('tonalImage').alt = sign.e + ' day imagery';
-          document.getElementById('tonalName').innerHTML = sign.n + ' &middot; <span>' + sign.e + '</span>';
-          document.getElementById('tonalNumber').textContent = NUMBERS[number - 1];
-          document.getElementById('tonalDesc').textContent = sign.d;
-          document.getElementById('tonalCarry').textContent = 'Carried today: ' + sign.c;
-          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      });
+      // The section stands open; the day's sign fills it on arrival.
+      document.getElementById('tonalImage').src = '/images/uploads/luminous/' + sign.img;
+      document.getElementById('tonalImage').alt = sign.e + ' day imagery';
+      document.getElementById('tonalName').innerHTML = sign.n + ' &middot; <span>' + sign.e + '</span>';
+      document.getElementById('tonalNumber').textContent = NUMBERS[number - 1];
+      document.getElementById('tonalDesc').textContent = sign.d;
+      document.getElementById('tonalCarry').textContent = 'Carried today: ' + sign.c;
     })();
   </script>
   <script>
@@ -416,12 +428,12 @@
       var candidate = new Image();
       candidate.onload = function () {
         var g = document.getElementById('lostGround');
-        if (g) g.style.backgroundImage = "url('images/uploads/404-labyrinth.jpg')";
+        if (g) g.style.backgroundImage = "url('/images/uploads/404-labyrinth.jpg')";
       };
-      candidate.src = 'images/uploads/404-labyrinth.jpg';
+      candidate.src = '/images/uploads/404-labyrinth.jpg';
     })();
   </script>
-  <script src="js/traffic.js" defer></script>
-  <script src="js/announce.js" defer></script>
+  <script src="/js/traffic.js" defer></script>
+  <script src="/js/announce.js" defer></script>
 </body>
 </html>
