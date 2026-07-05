@@ -192,17 +192,25 @@
     .tonal-head { margin-bottom: 1.4rem; }
     .tonal-mark { color: var(--gold); font-size: 1.15rem; letter-spacing: 0; margin-right: 0.3rem; }
     .tonal-explain {
-      max-width: 560px;
+      max-width: 520px;
       margin: 0 auto 1.7rem;
-      text-align: left;
+      text-align: center;
     }
     .tonal-explain p {
-      font-size: 1.13rem;
+      font-size: 1.14rem;
       line-height: 1.72;
-      color: var(--ink-soft);
-      margin-bottom: 1rem;
+      font-style: italic;
+      color: var(--ink-quiet);
     }
-    .tonal-explain p:last-child { margin-bottom: 0; font-style: italic; color: var(--ink-quiet); }
+    .tonal-seal {
+      display: flex;
+      justify-content: center;
+      padding: 2.2rem 0 0.4rem;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(201,168,76,0.10), rgba(201,168,76,0) 62%),
+        var(--paper);
+    }
+    .tonal-seal svg { width: 136px; height: 136px; display: block; }
     .tonal-card {
       display: none;
       margin: 1.8rem auto 0;
@@ -283,28 +291,18 @@
     <span class="lost-quiet">or begin where everyone begins &mdash; <a href="/sessions.html">an introductory session</a></span>
 
     <section class="tonal-section">
-      <span class="lost-eyebrow tonal-head"><span class="tonal-mark">&#10087;</span> The Count of Days</span>
+      <span class="lost-eyebrow tonal-head"><span class="tonal-mark">&#10087;</span> A Parting Gift</span>
       <div class="tonal-explain">
         <p>
-          Long before clocks, the peoples of Mesoamerica kept a second calendar
-          beside the solar year &mdash; a sacred count of 260 days, called the
-          tzolk&#699;in by the Maya and the tonalpohualli by the Nahua. It is built
-          of two wheels turning together: thirteen numbers and twenty day-signs.
-          Each day arrives wearing one number and one face, a pairing that will
-          not come again for nine moons. Time, kept this way, is not a line to
-          hurry along. It is a procession of living qualities, each day a visitor
-          with its own temperament and its own request.
-        </p>
-        <p>
-          A tonal is that day&rsquo;s spirit-tone &mdash; the animal, element, or
-          force that colors its hours, and, in the old understanding, the
-          companion energy a soul carries from the day that first received it.
-          So you don&rsquo;t leave empty-handed: the sign holding this day.
+          So you don&rsquo;t leave empty-handed: today&rsquo;s tonal &mdash; the
+          spirit-tone of this very day in the old Mesoamerican count, where
+          twenty signs and thirteen numbers turn together and every day arrives
+          wearing a face of its own.
         </p>
       </div>
 
       <div class="tonal-card open" id="tonalCard" role="region" aria-label="Today's tonal">
-      <img class="tonal-image" id="tonalImage" src="" alt="">
+      <div class="tonal-seal" id="tonalSeal" aria-hidden="true"></div>
       <div class="tonal-body">
         <span class="tonal-eyebrow">Today's Tonal</span>
         <h2 class="tonal-name" id="tonalName"></h2>
@@ -326,64 +324,64 @@
     // one number, the same for every visitor that day.
     (function () {
       var SIGNS = [
-        { n: "Cipactli", e: "Crocodile", img: "river-stones.jpg",
+        { n: "Cipactli", e: "Crocodile", g: "<path d='M34 72 q26 14 52 0'/><path d='M36 68 l5 -11 l7 9 l6 -12 l7 10 l6 -11 l7 9 l6 -8'/><circle cx='47' cy='75' r='2.6' fill='#c9a84c' stroke='none'/>",
           d: "The first sign: the great primal body floating in the waters before anything had a name. Cipactli days carry the feeling of raw beginnings, of ground that has only just risen from the deep and is still soft underfoot. Whatever starts today starts close to the source, unformed and full of appetite for becoming.",
           c: "Begin the thing gently. Do not ask it to be finished; ask it to be alive." },
-        { n: "Ehecatl", e: "Wind", img: "forest-light.jpg",
+        { n: "Ehecatl", e: "Wind", g: "<path d='M62 60 a6 6 0 1 1 -6 -6 a12 12 0 1 0 12 12 a19 19 0 1 1 -19 -19'/><path d='M80 46 h12 M82 58 h14 M80 70 h12'/>",
           d: "The breath that moves between worlds. Ehecatl days are restless and speaking days; messages arrive sideways, through a song, an overheard sentence, a change in the air. Wind clears what has gone stale and carries seed and scent to new ground, but it cannot be held in the hand.",
           c: "Let what wants to move, move. Say the sentence you have been holding." },
-        { n: "Calli", e: "House", img: "ceremony-cushions.jpg",
+        { n: "Calli", e: "House", g: "<path d='M40 80 v-22 h40 v22 M36 58 l24 -16 l24 16'/><path d='M54 80 v-14 h12 v14'/>",
           d: "The shelter, the hearth, the dark interior where the fire is kept. Calli days turn the attention homeward: the body as first house, the dwelling as second, the circle of kin as third. What is tended inside these walls today is tended deeply.",
           c: "Sweep one corner, in the house or in yourself. Let the inside matter more than the outside." },
-        { n: "Cuetzpalin", e: "Lizard", img: "botanical-shadows.jpg",
+        { n: "Cuetzpalin", e: "Lizard", g: "<path d='M40 78 q8 -24 34 -32'/><circle cx='78' cy='44' r='4'/><path d='M50 68 l-9 5 M57 58 l-10 2 M64 52 l-4 -9 M70 48 l4 -9'/><path d='M40 78 q-7 5 -13 5'/>",
           d: "The small sun-warmed body that regrows what it loses. Cuetzpalin days hold quick vitality and the quiet miracle of regeneration; what was cut off is already beginning again beneath the skin. A day of appetite, warmth, and small persistent life.",
           c: "Feed your vitality something real: sun, water, rest, touch. The regrowing is already underway." },
-        { n: "Coatl", e: "Serpent", img: "vessel-botanicals.jpg",
+        { n: "Coatl", e: "Serpent", g: "<path d='M34 72 q12 -12 22 -3 q10 9 20 -3 q4 -5 8 -4'/><circle cx='84' cy='60' r='4.5'/><path d='M88 58 l8 -3 M88 62 l8 2'/>",
           d: "The one who travels belly-to-earth and sheds what no longer fits. Coatl days are days of skin left in the grass: an old self loosening, an energy rising up the spine of things. The serpent does not mourn the shed skin; it simply keeps moving, newer than before.",
           c: "Notice what is ready to be shed. You do not have to tear it; it will loosen." },
-        { n: "Miquiztli", e: "Death", img: "letters-stone.jpg",
+        { n: "Miquiztli", e: "Death", g: "<circle cx='60' cy='54' r='16'/><circle cx='54' cy='51' r='2.6' fill='#c9a84c' stroke='none'/><circle cx='66' cy='51' r='2.6' fill='#c9a84c' stroke='none'/><path d='M58 58 l2 4 l2 -4'/><path d='M48 70 h24 M53 70 v8 M60 70 v9 M67 70 v8'/>",
           d: "Not an ending to fear but the great composter, the ancestor door. Miquiztli days bring the dead close in the kindest way: memory, inheritance, the sudden knowledge of what truly matters when everything extra falls away. What dies today was finished; what remains is essence.",
           c: "Light something small for someone gone. Let what is over be over, with honor." },
-        { n: "Mazatl", e: "Deer", img: "forest-light.jpg",
+        { n: "Mazatl", e: "Deer", g: "<path d='M50 72 v-14 q0 -12 -11 -18 M50 60 q-9 -1 -13 -9 M70 72 v-14 q0 -12 11 -18 M70 60 q9 -1 13 -9'/><path d='M50 72 a10 9 0 0 0 20 0'/><circle cx='56' cy='74' r='1.8' fill='#c9a84c' stroke='none'/><circle cx='64' cy='74' r='1.8' fill='#c9a84c' stroke='none'/>",
           d: "The soft-footed one who knows every path through the forest and takes none of them carelessly. Mazatl days carry grace, shyness, and the wild alertness of the heart. The deer teaches gentleness that is not weakness: it survives by listening better than anything else in the wood.",
           c: "Walk somewhere green if you can. Move quietly enough to hear what usually hides." },
-        { n: "Tochtli", e: "Rabbit", img: "botanical-shadows.jpg",
+        { n: "Tochtli", e: "Rabbit", g: "<path d='M52 60 q-7 -24 3 -28 q7 3 5 28 M66 60 q-1 -25 9 -27 q7 5 -1 27'/><circle cx='60' cy='72' r='13'/><circle cx='56' cy='69' r='1.8' fill='#c9a84c' stroke='none'/>",
           d: "The fertile, multiplying, moon-bellied one. Tochtli days brim with abundance and play, with things that increase when shared. There is a sweetness here and also a caution: the rabbit's gifts multiply whatever they touch, so choose carefully what you let multiply today.",
           c: "Share something freely and watch it double. Keep your attention on what you want more of." },
-        { n: "Atl", e: "Water", img: "river-stones.jpg",
+        { n: "Atl", e: "Water", g: "<path d='M36 54 q8 -8 16 0 t16 0 t16 0 M36 66 q8 -8 16 0 t16 0 t16 0'/><circle cx='52' cy='80' r='2.4' fill='#c9a84c' stroke='none'/><circle cx='68' cy='80' r='2.4' fill='#c9a84c' stroke='none'/>",
           d: "The mover through all things, the carrier of memory. Atl days run deep and emotional; old currents surface, and what has been frozen begins to move again. Water never argues with the stone; it simply keeps arriving until the way opens.",
           c: "Drink slowly, weep freely if it comes, and let one hard thing be worn smooth by patience." },
-        { n: "Itzcuintli", e: "Dog", img: "hands-of-light.jpg",
+        { n: "Itzcuintli", e: "Dog", g: "<path d='M42 74 q-2 -18 14 -22 l5 -12 l8 11 q15 1 15 15 q0 9 -9 11 q-16 3 -33 -3'/><circle cx='66' cy='60' r='2.4' fill='#c9a84c' stroke='none'/><path d='M78 70 l8 4'/>",
           d: "The loyal companion who walks souls across the river. Itzcuintli days are days of faithfulness: to friends, to the dead, to the ones who have walked beside you without asking for anything. The dog asks a single question of a day: who do you belong to, and do they know it?",
           c: "Tell one loyal presence in your life that you see them. Loyalty spoken aloud becomes stronger." },
-        { n: "Ozomahtli", e: "Monkey", img: "vessel-botanicals.jpg",
+        { n: "Ozomahtli", e: "Monkey", g: "<circle cx='54' cy='48' r='9'/><path d='M50 57 q-6 14 6 22 q8 5 16 2'/><path d='M72 80 q14 0 13 -11 a7 7 0 1 0 -7 7'/><circle cx='51' cy='46' r='1.7' fill='#c9a84c' stroke='none'/><circle cx='57' cy='46' r='1.7' fill='#c9a84c' stroke='none'/>",
           d: "The trickster artist, the laughing hand of creation. Ozomahtli days refuse solemnity; they braid play into work and mischief into medicine. Whatever you make today will carry more life if you let it be a little unruly, a little embarrassing, a little too joyful for polite company.",
           c: "Make something without judging it. Laugh at least once from the belly." },
-        { n: "Malinalli", e: "Grass", img: "botanical-shadows.jpg",
+        { n: "Malinalli", e: "Grass", g: "<path d='M50 84 q20 -11 0 -24 q-20 -13 0 -24 M70 84 q-20 -11 0 -24 q20 -13 0 -24'/><path d='M60 32 v-4 M60 92 v-4'/>",
           d: "The twisted fiber, the humble green that becomes rope, mat, and binding. Malinalli days teach tenacity through flexibility: grass survives what breaks oaks because it knows how to bend and how to weave itself with others. What is braided today holds.",
           c: "Braid, do not force. Join your strand to others and let the weave carry the weight." },
-        { n: "Acatl", e: "Reed", img: "letters-stone.jpg",
+        { n: "Acatl", e: "Reed", g: "<path d='M60 86 v-42'/><path d='M60 32 l-7 13 h14 z' fill='#c9a84c' stroke='none'/><path d='M51 78 l9 -7 l9 7 M51 68 l9 -7 l9 7'/>",
           d: "The hollow stalk that becomes arrow, flute, and pen. Acatl days ask for direction: the reed is only useful once it is emptied and aimed. There is a straightness available today, a clean line between intention and act, for anyone willing to be hollowed of distraction.",
           c: "Choose one aim and remove two distractions. Let yourself be an instrument something can move through." },
-        { n: "Ocelotl", e: "Jaguar", img: "botanical-shadows.jpg",
+        { n: "Ocelotl", e: "Jaguar", g: "<circle cx='60' cy='60' r='22'/><path d='M46 44 q-4 -4 -2 -9 M74 44 q4 -4 2 -9'/><circle cx='60' cy='47' r='2.2' fill='#c9a84c' stroke='none'/><circle cx='49' cy='57' r='2.2' fill='#c9a84c' stroke='none'/><circle cx='71' cy='57' r='2.2' fill='#c9a84c' stroke='none'/><circle cx='53' cy='69' r='2.2' fill='#c9a84c' stroke='none'/><circle cx='67' cy='69' r='2.2' fill='#c9a84c' stroke='none'/>",
           d: "The night-hearted sovereign of the wild places, the one who sees in the dark. Ocelotl days carry power that does not announce itself. The jaguar teaches the dignified use of strength: silent, precise, unhurried, and never cruel. Shadows are not enemies today; they are territory.",
           c: "Walk into one thing you have been circling. You have more night-vision than you think." },
-        { n: "Cuauhtli", e: "Eagle", img: "forest-light.jpg",
+        { n: "Cuauhtli", e: "Eagle", g: "<path d='M34 70 q26 -24 52 0 M41 60 q19 -17 38 0 M48 50 q12 -10 24 0'/><circle cx='60' cy='40' r='3'/><path d='M63 40 l7 3 l-7 4'/>",
           d: "The high-flyer who carries prayers toward the sun. Cuauhtli days lift the gaze: from the task to the arc of the whole life, from the argument to the pattern beneath it. The eagle's medicine is perspective, the mercy of seeing how small and how connected everything is from height.",
           c: "Climb something, literally or otherwise, and look back at your life from above. Then descend kindly." },
-        { n: "Cozcacuauhtli", e: "Vulture", img: "letters-stone.jpg",
+        { n: "Cozcacuauhtli", e: "Vulture", g: "<path d='M48 52 q10 -12 22 -4 q9 6 3 15 l-7 -2 q5 8 -2 13'/><circle cx='62' cy='52' r='2' fill='#c9a84c' stroke='none'/><circle cx='44' cy='78' r='2.2' fill='#c9a84c' stroke='none'/><circle cx='52' cy='81' r='2.2' fill='#c9a84c' stroke='none'/><circle cx='60' cy='82' r='2.2' fill='#c9a84c' stroke='none'/><circle cx='68' cy='81' r='2.2' fill='#c9a84c' stroke='none'/><circle cx='76' cy='78' r='2.2' fill='#c9a84c' stroke='none'/>",
           d: "The elder bird, the patient purifier who wastes nothing. Cozcacuauhtli days carry the wisdom of long life: what looks like ending is being turned into nourishment for something not yet visible. The vulture is never in a hurry and is never hungry for long.",
           c: "Honor the elders, in your lineage or in your bones. Let something spent become compost, not shame." },
-        { n: "Ollin", e: "Movement", img: "river-stones.jpg",
+        { n: "Ollin", e: "Movement", g: "<path d='M44 38 q-9 22 0 44 M76 38 q9 22 0 44 M44 38 q17 11 32 44 M76 38 q-17 11 -32 44'/><circle cx='60' cy='60' r='4.5'/>",
           d: "The earthquake glyph, the trembling at the center of things. Ollin days are hinge days: the world shifts its weight, and what was stuck comes loose all at once. There is no standing still inside an Ollin day; the only choice is whether to move with the shaking or against it.",
           c: "When the ground moves, dance. Change one thing you were pretending was permanent." },
-        { n: "Tecpatl", e: "Flint", img: "letters-stone.jpg",
+        { n: "Tecpatl", e: "Flint", g: "<path d='M60 32 q13 15 7 46 q-7 7 -14 0 q-6 -31 7 -46 z'/><path d='M60 38 v36'/><circle cx='53' cy='58' r='1.8' fill='#c9a84c' stroke='none'/><circle cx='67' cy='58' r='1.8' fill='#c9a84c' stroke='none'/>",
           d: "The struck stone, the blade of truth. Tecpatl days cut cleanly through what has been vague: a decision arrives, a sentence lands, a cord is severed with one honest stroke. Flint is not unkind; it is exact, and its exactness is a mercy the dull knife never manages.",
           c: "Say the precise thing instead of the comfortable thing. One clean cut heals faster than many ragged ones." },
-        { n: "Quiahuitl", e: "Rain", img: "hands-of-light.jpg",
+        { n: "Quiahuitl", e: "Rain", g: "<path d='M38 58 q5 -14 22 -14 t22 14'/><path d='M44 66 l-4 10 M58 66 l-4 12 M72 66 l-4 10 M84 64 l-4 9'/>",
           d: "The blessing that falls on everything without checking names. Quiahuitl days arrive with a soft insistence: nourishment coming down whether or not you feel ready to receive it. Some rains are storms and some are mists, but all of them end in green.",
           c: "Let yourself be rained on, by weather or by kindness. Receiving is also a practice." },
-        { n: "Xochitl", e: "Flower", img: "vessel-botanicals.jpg",
+        { n: "Xochitl", e: "Flower", g: "<path d='M60 42 q9 9 0 18 q-9 -9 0 -18 M60 60 q9 9 0 18 q-9 -9 0 -18 M42 60 q9 -9 18 0 q-9 9 -18 0 M60 60 q9 -9 18 0 q-9 9 -18 0'/><circle cx='60' cy='60' r='4' fill='#c9a84c' stroke='none'/>",
           d: "The last of the twenty: the bloom, the beauty that is its own entire reason. Xochitl days complete the count the way a flower completes a stem, uselessly and perfectly. Art, song, love, and ornament are not extra today; they are the point the whole cycle was climbing toward.",
           c: "Do one beautiful, unnecessary thing. The bloom justifies the root." }
       ];
@@ -413,8 +411,11 @@
       var number = (days % 13) + 1;
 
       // The section stands open; the day's sign fills it on arrival.
-      document.getElementById('tonalImage').src = '/images/uploads/luminous/' + sign.img;
-      document.getElementById('tonalImage').alt = sign.e + ' day imagery';
+      // Each sign carries its own seal: gold line-work in the hearth's hand.
+      function seal(inner) {
+        return "<svg viewBox='0 0 120 120' role='img' aria-hidden='true'><g fill='none' stroke='#c9a84c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><circle cx='60' cy='60' r='55'/><circle cx='60' cy='60' r='48' stroke-dasharray='1 6' opacity='0.55'/>" + inner + "</g></svg>";
+      }
+      document.getElementById('tonalSeal').innerHTML = seal(sign.g);
       document.getElementById('tonalName').innerHTML = sign.n + ' &middot; <span>' + sign.e + '</span>';
       document.getElementById('tonalNumber').textContent = NUMBERS[number - 1];
       document.getElementById('tonalDesc').textContent = sign.d;
