@@ -9,256 +9,385 @@
   <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
   <link rel="shortcut icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <title>Page Not Found — The Animist Apothecary</title>
+  <meta name="robots" content="noindex">
+  <title>A Wrong Turn &middot; The Animist Apothecary</title>
   <script>
-    // GitHub Pages SPA routing fallback
-    // When a 404 occurs, redirect to the appropriate page if known
-    const path = window.location.pathname;
-
-    // Known valid paths - redirect to their index.html
+    // Old-address kindness: familiar short paths still find their pages.
+    // (Pruned 2026-07-05: only this practice's paths live here now.)
+    const path = window.location.pathname.replace(/\/+$/, '') || '/';
     const validPaths = {
-      // Main site pages
-      '/your-app': '/',
       '/': '/index.html',
-      '/contact': '/contact/',
-      '/contact/': '/contact/index.html',
-      // Hidden pages
-      '/welcome': '/welcome/',
-      '/welcome/': '/welcome/index.html',
-      '/sundays': '/sundays/',
-      '/sundays/': '/sundays/index.html',
-      // Mistiq subsite
-      '/mistiq': '/mistiq/',
-      '/mistiq/': '/mistiq/index.html',
-      '/mistiq/apply': '/mistiq/apply/',
-      '/mistiq/apply/': '/mistiq/apply/index.html',
-      '/login': '/login/',
-      '/login/': '/login/index.html',
-      // Tesla OAuth callback
-      '/auth/tesla/callback': '/auth/tesla/callback.html',
-      // Kiosk/display
-      '/kioskhall': '/kioskhall/',
-      '/kioskhall/': '/kioskhall/index.html',
-      // Claude sessions
-      '/sessions': '/rahulio/pages/claudesessions/',
-      '/sessions/': '/rahulio/pages/claudesessions/',
-      // Animist Apothecary public pages
       '/about': '/about.html',
       '/book': '/book.html',
       '/begin-here': '/book.html',
+      '/sessions': '/sessions.html',
+      '/booking': '/sessions.html',
+      '/inquiry': '/inquiry.html',
+      '/intake': '/intake.html',
+      '/writings': '/writings.html',
+      '/resources': '/writings.html',
+      '/letters': '/writings.html',
+      '/newsletter': '/index.html',
       '/deep-work': '/deep-work.html',
       '/shamanic-bodywork': '/shamanic-bodywork.html',
       '/personal-immersions': '/personal-immersions.html',
       '/ceremonial-therapeutics': '/ceremonial-therapeutics.html',
+      '/ceremonial-coaching': '/ceremonial-coaching.html',
+      '/premium-coaching': '/ceremonial-coaching.html',
+      '/kinship-nexus': '/kinship-nexus.html',
+      '/training-grounds': '/training-grounds.html',
+      '/the-school': '/training-grounds.html',
+      '/public-offerings': '/public-offerings.html',
       '/platicas': '/platicas.html',
       '/divinations': '/divinations.html',
       '/private-group-ceremonies': '/private-group-ceremonies.html',
       '/mythopoetic': '/mythopoetic.html',
       '/mythopoetic-living': '/mythopoetic.html',
       '/sacred-reciprocity': '/sacred-reciprocity.html',
-      '/the-living-web': '/community.html',
-      '/community-hubs': '/community.html',
-      '/ceremonialist-training': '/community.html#training',
-      '/newsletter': '/community.html#newsletter',
       '/community': '/community.html',
-      '/community/': '/community.html',
-      '/events': '/events/',
-      '/events/': '/events/index.html',
-      '/offerings': '/offerings/',
-      '/offerings/': '/offerings/index.html',
       '/hearth': '/hearth.html',
       '/ceremony-prep': '/ceremony-prep.html',
+      '/how-to-journey': '/how-to-journey.html',
+      '/wilds': '/wilds.html',
+      '/entheo-ecology': '/entheo-ecology.html',
+      '/calendar': '/calendar.html',
+      '/faq': '/faq.html',
+      '/ethics': '/ethics.html'
     };
-
-    // Reserved top-level paths (existing directories/files — never treat as user slugs)
-    const RESERVED_PATHS = [
-      'spaces', 'residents', 'associates', 'login', 'shared', 'mobile',
-      'supabase', 'auth', 'scripts', 'visiting', 'visiting-1', 'lost',
-      'index', 'directory', 'kioskhall', 'welcome', 'photos', 'sundays',
-      'orientation', 'overnight', 'worktrade', 'contact', 'community',
-      'events', 'mistiq', 'docs', 'assets', 'styles',
-      'bug-reporter-extension', 'bug-reporter-firefox', 'bug-fixer',
-      'feature-builder', 'camera-event-poller', 'image-gen',
-      'lg-poller', 'tesla-poller', 'spirit-whisper-worker',
-      'migrations', '.well-known', 'your-app', 'sessions',
-      'about', 'book', 'begin-here', 'deep-work', 'shamanic-bodywork',
-      'personal-immersions', 'ceremonial-therapeutics', 'platicas',
-      'divinations', 'private-group-ceremonies', 'mythopoetic',
-      'sacred-reciprocity', 'offerings', 'ceremony', 'portal', 'admin',
-      'hearth', 'intake', 'practice', 'pay', 'waiver', 'experiences',
-      'ceremony-prep'
-    ];
-
-    // Check if it's a known path (preserve query params AND hash for OAuth callbacks)
-    if (validPaths[path]) {
-      window.location.replace(validPaths[path] + window.location.search + window.location.hash);
-    } else {
-      // Unknown path — show the 404 page
-      document.getElementById('notFoundPage').style.display = 'flex';
+    if (validPaths[path.toLowerCase()]) {
+      window.location.replace(validPaths[path.toLowerCase()] + window.location.search + window.location.hash);
     }
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Cormorant+SC:wght@400;500&family=Cinzel:wght@400;600&family=Tangerine&family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
-
     :root {
       --cream: #F7F5F0;
       --cream-dark: #EFEDE6;
+      --paper: #FFFFFF;
       --earth: #2D2A26;
-      --earth-light: #5A5650;
+      --ink-soft: #3a3530;
+      --ink-quiet: #5A554C;
       --sage: #5B7553;
       --sage-dark: #4A6344;
       --gold: #c9a84c;
+      --copper: #B86A3A;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       background: var(--cream);
       color: var(--earth);
-      font-family: 'Inter', -apple-system, sans-serif;
+      font-family: 'Cormorant Garamond', Georgia, serif;
       min-height: 100vh;
-    }
-
-    #notFoundPage {
-      display: none;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      flex-direction: column;
-    }
-
-    .container {
       display: flex;
-      flex-direction: column;
       align-items: center;
-      gap: 1.5rem;
-      padding: 2rem;
-      max-width: 520px;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+    .lost {
+      max-width: 640px;
       width: 100%;
       text-align: center;
     }
-
-    .logo-text {
+    .lost-logo { margin-bottom: 1.4rem; }
+    .lost-logo img { height: 54px; width: auto; display: inline-block; }
+    .lost-wordmark {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 500;
-      color: var(--earth);
       letter-spacing: 0.02em;
+      margin-bottom: 2.6rem;
     }
-
-    .logo-accent {
-      font-style: italic;
-      color: var(--sage);
-    }
-
-    .code {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 5rem;
-      font-weight: 300;
-      color: var(--sage);
-      line-height: 1;
-    }
-
-    .message {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.35rem;
-      color: var(--earth-light);
-      font-style: italic;
-    }
-
-    .quote-card {
-      background: var(--cream-dark);
-      border-radius: 8px;
-      padding: 1.5rem 1.75rem;
-      text-align: center;
-      width: 100%;
-      border: 1px solid rgba(139,115,85,0.1);
-    }
-
-    .quote-label {
-      font-size: 0.6rem;
+    .lost-wordmark em { font-style: italic; color: var(--sage); }
+    .lost-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
-      letter-spacing: 0.25em;
       color: var(--gold);
-      margin-bottom: 0.5rem;
-      font-weight: 500;
+      display: block;
+      margin-bottom: 1.6rem;
     }
-
-    .quote-text {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.05rem;
-      line-height: 1.6;
-      color: var(--earth-light);
-      font-style: italic;
+    .lost-title {
+      font-weight: 400;
+      font-size: clamp(2.1rem, 5.4vw, 3.2rem);
+      line-height: 1.12;
+      margin-bottom: 1.3rem;
     }
-
-    .nav-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--sage);
-      border: 1px solid var(--sage);
-      border-radius: 2px;
-      padding: 0.75rem 2rem;
-      font-size: 0.75rem;
+    .lost-title em {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif;
+      font-style: normal;
+      font-size: 1.5em;
+      line-height: 0.85;
+      color: var(--gold);
+    }
+    .lost-lead {
+      font-size: 1.22rem;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 520px;
+      margin: 0 auto 2.6rem;
+    }
+    .lost-code {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.3em;
+      color: var(--ink-quiet);
+      opacity: 0.7;
+      margin-bottom: 2.4rem;
+      display: block;
+    }
+    .lost-btn {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--cream);
-      font-weight: 500;
       text-decoration: none;
-      transition: all 0.35s ease;
+      padding: 1.02rem 2.3rem;
+      border-radius: 2px;
+      background: var(--earth);
+      color: var(--cream);
+      border: 1px solid var(--earth);
+      transition: all 0.3s ease;
     }
-
-    .nav-link:hover {
-      background: var(--sage-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 15px rgba(91,117,83,0.25);
+    .lost-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--earth); }
+    .lost-quiet {
+      display: block;
+      margin-top: 1.5rem;
+      font-size: 1.02rem;
+      font-style: italic;
+      color: var(--ink-quiet);
     }
+    .lost-quiet a { color: var(--sage-dark); text-decoration: underline; text-underline-offset: 3px; }
+    .lost-quiet a:hover { color: var(--gold); }
 
-    .footer {
-      font-size: 0.7rem;
-      color: var(--earth-light);
-      opacity: 0.5;
-      margin-top: 1rem;
+    /* ── The easter egg: today's tonal ─────────────────── */
+    .tonal-summon {
+      margin: 3.4rem auto 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.02rem;
+      color: var(--ink-quiet);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      transition: color 0.3s ease;
+    }
+    .tonal-summon .mark { color: var(--gold); font-size: 1.35rem; font-style: normal; transition: transform 0.5s ease; }
+    .tonal-summon:hover { color: var(--earth); }
+    .tonal-summon:hover .mark { transform: rotate(90deg); }
+    .tonal-card {
+      display: none;
+      margin: 1.8rem auto 0;
+      max-width: 560px;
+      background: var(--paper);
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 4px;
+      overflow: hidden;
+      text-align: left;
+      box-shadow: 0 18px 50px -22px rgba(20,16,8,0.28);
+    }
+    .tonal-card.open { display: block; animation: tonalrise 0.7s ease; }
+    @keyframes tonalrise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    .tonal-image { width: 100%; height: 210px; object-fit: cover; display: block; }
+    .tonal-body { padding: 1.7rem 1.9rem 1.9rem; }
+    .tonal-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.65rem;
+    }
+    .tonal-name {
+      font-size: 1.75rem;
+      font-weight: 500;
+      line-height: 1.15;
+      margin-bottom: 0.2rem;
+    }
+    .tonal-name span { font-style: italic; color: var(--sage-dark); }
+    .tonal-number {
+      font-family: 'Cormorant SC', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      color: var(--copper);
+      display: block;
+      margin-bottom: 1.05rem;
+    }
+    .tonal-desc { font-size: 1.08rem; line-height: 1.72; color: var(--ink-soft); margin-bottom: 1.05rem; }
+    .tonal-carry { font-size: 1.02rem; font-style: italic; line-height: 1.65; color: var(--ink-quiet); }
+    .tonal-foot {
+      margin-top: 1.3rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(201,168,76,0.25);
+      font-size: 0.86rem;
+      font-style: italic;
+      color: var(--ink-quiet);
+      opacity: 0.85;
+    }
+    .lost-foot {
+      margin-top: 3rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--ink-quiet);
+      opacity: 0.65;
     }
   </style>
 </head>
 <body>
-  <div id="notFoundPage">
-    <div class="container">
-      <div class="logo-text">The Animist <em class="logo-accent">Apothecary</em></div>
+  <main class="lost">
+    <div class="lost-logo"><img src="images/uploads/logo-mark-trio.png" alt=""></div>
+    <div class="lost-wordmark">The Animist <em>Apothecary</em></div>
 
-      <div class="code">404</div>
-      <p class="message">This page could not be found.</p>
+    <span class="lost-eyebrow">A Wrong Turn</span>
+    <h1 class="lost-title">The rite to open this door was left <em>unfinished</em>.</h1>
+    <p class="lost-lead">
+      Either what lived here has moved on, or the proper ritual to summon this
+      page was never quite completed. No harm done. The forest keeps no grudges,
+      and every wrong turn teaches the shape of the land.
+    </p>
+    <span class="lost-code">404 &middot; nothing is held at this address</span>
 
-      <div class="quote-card">
-        <div class="quote-label">A Thought for the Path</div>
-        <p class="quote-text" id="quoteText">Not all who wander are lost — but sometimes the trail simply ends, and a new one begins.</p>
-      </div>
+    <a class="lost-btn" href="index.html">Return to the hearth &rarr;</a>
+    <span class="lost-quiet">or begin where everyone begins &mdash; <a href="sessions.html">an introductory session</a></span>
 
-      <a href="/" class="nav-link">Return Home</a>
+    <button class="tonal-summon" id="tonalSummon" aria-expanded="false" aria-controls="tonalCard">
+      <span class="mark">&#10087;</span> So you don't leave empty-handed: today's tonal
+    </button>
 
-      <div class="footer">
-        Adi Marie
+    <div class="tonal-card" id="tonalCard" role="region" aria-label="Today's tonal">
+      <img class="tonal-image" id="tonalImage" src="" alt="">
+      <div class="tonal-body">
+        <span class="tonal-eyebrow">Today's Tonal</span>
+        <h2 class="tonal-name" id="tonalName"></h2>
+        <span class="tonal-number" id="tonalNumber"></span>
+        <p class="tonal-desc" id="tonalDesc"></p>
+        <p class="tonal-carry" id="tonalCarry"></p>
+        <p class="tonal-foot">The day count as this hearth keeps it, turning through the twenty signs and thirteen numbers. A small gift for the wrong turn that brought you here.</p>
       </div>
     </div>
-  </div>
+
+    <p class="lost-foot">Adi Marie &middot; Los Angeles</p>
+  </main>
 
   <script>
-    const quotes = [
-      "Not all who wander are lost — but sometimes the trail simply ends, and a new one begins.",
-      "The earth remembers every footstep. Perhaps this path is asking you to walk a different way.",
-      "In the space between seeking and finding, there is medicine.",
-      "Sometimes the door we knock on is not the door we are meant to enter.",
-      "The roots of the oak do not apologize for growing in unexpected directions.",
-      "What you are looking for may be looking for you — just along a different trail.",
-      "Even in the forest, not every path leads where you expect. That is part of the journey.",
-      "Rest here a moment. Then follow the thread that feels most alive.",
-    ];
-    const el = document.getElementById('quoteText');
-    if (el) el.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+    // ── Today's tonal ────────────────────────────────────────────────
+    // Twenty day-signs and thirteen numbers, turning together. The count
+    // runs from this hearth's own epoch; each day carries one sign and
+    // one number, the same for every visitor that day.
+    (function () {
+      var SIGNS = [
+        { n: "Cipactli", e: "Crocodile", img: "river-stones.jpg",
+          d: "The first sign: the great primal body floating in the waters before anything had a name. Cipactli days carry the feeling of raw beginnings, of ground that has only just risen from the deep and is still soft underfoot. Whatever starts today starts close to the source, unformed and full of appetite for becoming.",
+          c: "Begin the thing gently. Do not ask it to be finished; ask it to be alive." },
+        { n: "Ehecatl", e: "Wind", img: "forest-light.jpg",
+          d: "The breath that moves between worlds. Ehecatl days are restless and speaking days; messages arrive sideways, through a song, an overheard sentence, a change in the air. Wind clears what has gone stale and carries seed and scent to new ground, but it cannot be held in the hand.",
+          c: "Let what wants to move, move. Say the sentence you have been holding." },
+        { n: "Calli", e: "House", img: "ceremony-cushions.jpg",
+          d: "The shelter, the hearth, the dark interior where the fire is kept. Calli days turn the attention homeward: the body as first house, the dwelling as second, the circle of kin as third. What is tended inside these walls today is tended deeply.",
+          c: "Sweep one corner, in the house or in yourself. Let the inside matter more than the outside." },
+        { n: "Cuetzpalin", e: "Lizard", img: "botanical-shadows.jpg",
+          d: "The small sun-warmed body that regrows what it loses. Cuetzpalin days hold quick vitality and the quiet miracle of regeneration; what was cut off is already beginning again beneath the skin. A day of appetite, warmth, and small persistent life.",
+          c: "Feed your vitality something real: sun, water, rest, touch. The regrowing is already underway." },
+        { n: "Coatl", e: "Serpent", img: "vessel-botanicals.jpg",
+          d: "The one who travels belly-to-earth and sheds what no longer fits. Coatl days are days of skin left in the grass: an old self loosening, an energy rising up the spine of things. The serpent does not mourn the shed skin; it simply keeps moving, newer than before.",
+          c: "Notice what is ready to be shed. You do not have to tear it; it will loosen." },
+        { n: "Miquiztli", e: "Death", img: "letters-stone.jpg",
+          d: "Not an ending to fear but the great composter, the ancestor door. Miquiztli days bring the dead close in the kindest way: memory, inheritance, the sudden knowledge of what truly matters when everything extra falls away. What dies today was finished; what remains is essence.",
+          c: "Light something small for someone gone. Let what is over be over, with honor." },
+        { n: "Mazatl", e: "Deer", img: "forest-light.jpg",
+          d: "The soft-footed one who knows every path through the forest and takes none of them carelessly. Mazatl days carry grace, shyness, and the wild alertness of the heart. The deer teaches gentleness that is not weakness: it survives by listening better than anything else in the wood.",
+          c: "Walk somewhere green if you can. Move quietly enough to hear what usually hides." },
+        { n: "Tochtli", e: "Rabbit", img: "botanical-shadows.jpg",
+          d: "The fertile, multiplying, moon-bellied one. Tochtli days brim with abundance and play, with things that increase when shared. There is a sweetness here and also a caution: the rabbit's gifts multiply whatever they touch, so choose carefully what you let multiply today.",
+          c: "Share something freely and watch it double. Keep your attention on what you want more of." },
+        { n: "Atl", e: "Water", img: "river-stones.jpg",
+          d: "The mover through all things, the carrier of memory. Atl days run deep and emotional; old currents surface, and what has been frozen begins to move again. Water never argues with the stone; it simply keeps arriving until the way opens.",
+          c: "Drink slowly, weep freely if it comes, and let one hard thing be worn smooth by patience." },
+        { n: "Itzcuintli", e: "Dog", img: "hands-of-light.jpg",
+          d: "The loyal companion who walks souls across the river. Itzcuintli days are days of faithfulness: to friends, to the dead, to the ones who have walked beside you without asking for anything. The dog asks a single question of a day: who do you belong to, and do they know it?",
+          c: "Tell one loyal presence in your life that you see them. Loyalty spoken aloud becomes stronger." },
+        { n: "Ozomahtli", e: "Monkey", img: "vessel-botanicals.jpg",
+          d: "The trickster artist, the laughing hand of creation. Ozomahtli days refuse solemnity; they braid play into work and mischief into medicine. Whatever you make today will carry more life if you let it be a little unruly, a little embarrassing, a little too joyful for polite company.",
+          c: "Make something without judging it. Laugh at least once from the belly." },
+        { n: "Malinalli", e: "Grass", img: "botanical-shadows.jpg",
+          d: "The twisted fiber, the humble green that becomes rope, mat, and binding. Malinalli days teach tenacity through flexibility: grass survives what breaks oaks because it knows how to bend and how to weave itself with others. What is braided today holds.",
+          c: "Braid, do not force. Join your strand to others and let the weave carry the weight." },
+        { n: "Acatl", e: "Reed", img: "letters-stone.jpg",
+          d: "The hollow stalk that becomes arrow, flute, and pen. Acatl days ask for direction: the reed is only useful once it is emptied and aimed. There is a straightness available today, a clean line between intention and act, for anyone willing to be hollowed of distraction.",
+          c: "Choose one aim and remove two distractions. Let yourself be an instrument something can move through." },
+        { n: "Ocelotl", e: "Jaguar", img: "botanical-shadows.jpg",
+          d: "The night-hearted sovereign of the wild places, the one who sees in the dark. Ocelotl days carry power that does not announce itself. The jaguar teaches the dignified use of strength: silent, precise, unhurried, and never cruel. Shadows are not enemies today; they are territory.",
+          c: "Walk into one thing you have been circling. You have more night-vision than you think." },
+        { n: "Cuauhtli", e: "Eagle", img: "forest-light.jpg",
+          d: "The high-flyer who carries prayers toward the sun. Cuauhtli days lift the gaze: from the task to the arc of the whole life, from the argument to the pattern beneath it. The eagle's medicine is perspective, the mercy of seeing how small and how connected everything is from height.",
+          c: "Climb something, literally or otherwise, and look back at your life from above. Then descend kindly." },
+        { n: "Cozcacuauhtli", e: "Vulture", img: "letters-stone.jpg",
+          d: "The elder bird, the patient purifier who wastes nothing. Cozcacuauhtli days carry the wisdom of long life: what looks like ending is being turned into nourishment for something not yet visible. The vulture is never in a hurry and is never hungry for long.",
+          c: "Honor the elders, in your lineage or in your bones. Let something spent become compost, not shame." },
+        { n: "Ollin", e: "Movement", img: "river-stones.jpg",
+          d: "The earthquake glyph, the trembling at the center of things. Ollin days are hinge days: the world shifts its weight, and what was stuck comes loose all at once. There is no standing still inside an Ollin day; the only choice is whether to move with the shaking or against it.",
+          c: "When the ground moves, dance. Change one thing you were pretending was permanent." },
+        { n: "Tecpatl", e: "Flint", img: "letters-stone.jpg",
+          d: "The struck stone, the blade of truth. Tecpatl days cut cleanly through what has been vague: a decision arrives, a sentence lands, a cord is severed with one honest stroke. Flint is not unkind; it is exact, and its exactness is a mercy the dull knife never manages.",
+          c: "Say the precise thing instead of the comfortable thing. One clean cut heals faster than many ragged ones." },
+        { n: "Quiahuitl", e: "Rain", img: "hands-of-light.jpg",
+          d: "The blessing that falls on everything without checking names. Quiahuitl days arrive with a soft insistence: nourishment coming down whether or not you feel ready to receive it. Some rains are storms and some are mists, but all of them end in green.",
+          c: "Let yourself be rained on, by weather or by kindness. Receiving is also a practice." },
+        { n: "Xochitl", e: "Flower", img: "vessel-botanicals.jpg",
+          d: "The last of the twenty: the bloom, the beauty that is its own entire reason. Xochitl days complete the count the way a flower completes a stem, uselessly and perfectly. Art, song, love, and ornament are not extra today; they are the point the whole cycle was climbing toward.",
+          c: "Do one beautiful, unnecessary thing. The bloom justifies the root." }
+      ];
+      var NUMBERS = [
+        "one — the seed, whole and unproven",
+        "two — the meeting of this and that",
+        "three — the spark that makes it move",
+        "four — the four directions, steady ground",
+        "five — the center of the crossroads",
+        "six — the rhythm finding its stride",
+        "seven — the summit of the climb",
+        "eight — the weave of justice and balance",
+        "nine — the deep waters, the far reach",
+        "ten — the harvest of what was planted",
+        "eleven — the loosening before the change",
+        "twelve — the gathering of the whole story",
+        "thirteen — the completion that opens the next count"
+      ];
+
+      // This hearth's epoch: the count begins at 1 Cipactli on the first
+      // dawn of 2026. Days advance one sign and one number together.
+      var EPOCH = Date.UTC(2026, 0, 1);
+      var today = new Date();
+      var todayUTC = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+      var days = Math.max(0, Math.round((todayUTC - EPOCH) / 86400000));
+      var sign = SIGNS[days % 20];
+      var number = (days % 13) + 1;
+
+      var btn = document.getElementById('tonalSummon');
+      var card = document.getElementById('tonalCard');
+      btn.addEventListener('click', function () {
+        var open = card.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (open) {
+          document.getElementById('tonalImage').src = 'images/uploads/luminous/' + sign.img;
+          document.getElementById('tonalImage').alt = sign.e + ' day imagery';
+          document.getElementById('tonalName').innerHTML = sign.n + ' &middot; <span>' + sign.e + '</span>';
+          document.getElementById('tonalNumber').textContent = NUMBERS[number - 1];
+          document.getElementById('tonalDesc').textContent = sign.d;
+          document.getElementById('tonalCarry').textContent = 'Carried today: ' + sign.c;
+          card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    })();
   </script>
   <script src="js/traffic.js" defer></script>
   <script src="js/announce.js" defer></script>
