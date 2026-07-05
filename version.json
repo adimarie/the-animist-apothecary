@@ -1,12 +1,12 @@
 {
-  "version": "v260705.11 8:10p",
-  "release": 11,
-  "sha": "b2406d35",
-  "fullSha": "b2406d35aa6f785280d4b3fa34dc65ae15c30a0f",
+  "version": "v260705.12 9:22p",
+  "release": 12,
+  "sha": "0d04b2b9",
+  "fullSha": "0d04b2b96759c8b31bd6a095e2a9e824f6cb6a02",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmkkn4f",
-  "pushedAt": "2026-07-05T13:10:11-07:00",
-  "commits": [{"sha":"b2406d35","message":"Create CNAME","author":"adimarie"}]
+  "pushedAt": "2026-07-05T14:21:48-07:00",
+  "commits": [{"sha":"a34fc9f5","message":"404: the daykeeper count, from the tradition this hearth walks with","author":"Adi Marie"},{"sha":"0d04b2b9","message":"Merge origin/main (version bump)","author":"Adi Marie"}]
 }
