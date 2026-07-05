@@ -1,12 +1,12 @@
 {
-  "version": "v260705.03 3:02p",
-  "release": 3,
-  "sha": "cb0853e1",
-  "fullSha": "cb0853e1b103850785cd859948c0f16ae29a2de9",
+  "version": "v260705.04 3:47p",
+  "release": 4,
+  "sha": "8a6b2fec",
+  "fullSha": "8a6b2fecb784d0c114cb1656c3c64c072a76cf14",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmkkn4f",
-  "pushedAt": "2026-07-05T08:02:11-07:00",
-  "commits": [{"sha":"1b6e6906","message":"Site Control: DB-driven page gating + announcement band","author":"Adi Marie"},{"sha":"cb0853e1","message":"Merge origin/main (version bump)","author":"Adi Marie"}]
+  "pushedAt": "2026-07-05T08:47:17-07:00",
+  "commits": [{"sha":"cfd2e180","message":"404 rebuilt: brand-true wrong turn + daily tonal easter egg","author":"Adi Marie"},{"sha":"8a6b2fec","message":"Merge origin/main (version bump)","author":"Adi Marie"}]
 }
