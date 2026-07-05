@@ -1,12 +1,12 @@
 {
-  "version": "v260705.09 4:00p",
-  "release": 9,
-  "sha": "d817015e",
-  "fullSha": "d817015e6da4585ff69866b4f520e060920443b8",
+  "version": "v260705.10 8:09p",
+  "release": 10,
+  "sha": "8887cbb7",
+  "fullSha": "8887cbb729533a47d32c4f38cedfdc6c4b9c7550",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmkkn4f",
-  "pushedAt": "2026-07-05T08:59:42-07:00",
-  "commits": [{"sha":"d817015e","message":"Create CNAME","author":"adimarie"}]
+  "pushedAt": "2026-07-05T13:09:29-07:00",
+  "commits": [{"sha":"48570cf1","message":"404: a parting gift, sealed","author":"Adi Marie"},{"sha":"8887cbb7","message":"Merge origin/main (version bump)","author":"Adi Marie"}]
 }
