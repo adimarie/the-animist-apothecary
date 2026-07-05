@@ -1,12 +1,12 @@
 {
-  "version": "v260705.02 2:08a",
-  "release": 2,
-  "sha": "9a30a7cb",
-  "fullSha": "9a30a7cb1ef4b5007c4ba455d45e75584eb0144b",
+  "version": "v260705.03 3:02p",
+  "release": 3,
+  "sha": "cb0853e1",
+  "fullSha": "cb0853e1b103850785cd859948c0f16ae29a2de9",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmkkn4f",
-  "pushedAt": "2026-07-04T19:07:47-07:00",
-  "commits": [{"sha":"9629e30e","message":"Newsletter enrollment: where-are-you-coming-from is now required","author":"Adi Marie"},{"sha":"9a30a7cb","message":"Merge origin/main (version bump)","author":"Adi Marie"}]
+  "pushedAt": "2026-07-05T08:02:11-07:00",
+  "commits": [{"sha":"1b6e6906","message":"Site Control: DB-driven page gating + announcement band","author":"Adi Marie"},{"sha":"cb0853e1","message":"Merge origin/main (version bump)","author":"Adi Marie"}]
 }
