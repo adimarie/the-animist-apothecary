@@ -183,87 +183,6 @@
     .lost-quiet a { color: var(--sage-dark); text-decoration: underline; text-underline-offset: 3px; }
     .lost-quiet a:hover { color: var(--gold); }
 
-    /* ── The count of days: today's tonal, always open ──── */
-    .tonal-section {
-      margin-top: 3.8rem;
-      padding-top: 2.8rem;
-      border-top: 1px solid rgba(201,168,76,0.3);
-    }
-    .tonal-head { margin-bottom: 1.4rem; }
-    .tonal-mark { color: var(--gold); font-size: 1.15rem; letter-spacing: 0; margin-right: 0.3rem; }
-    .tonal-explain {
-      max-width: 520px;
-      margin: 0 auto 1.7rem;
-      text-align: center;
-    }
-    .tonal-explain p {
-      font-size: 1.14rem;
-      line-height: 1.72;
-      font-style: italic;
-      color: var(--ink-quiet);
-    }
-    .tonal-seal {
-      display: flex;
-      justify-content: center;
-      padding: 2.2rem 0 0.4rem;
-      background:
-        radial-gradient(circle at 50% 42%, rgba(201,168,76,0.10), rgba(201,168,76,0) 62%),
-        var(--paper);
-    }
-    .tonal-seal svg { width: 136px; height: 136px; display: block; }
-    .tonal-foot a { color: var(--sage-dark); text-decoration: underline; text-underline-offset: 3px; }
-    .tonal-foot a:hover { color: var(--gold); }
-    .tonal-card {
-      display: none;
-      margin: 1.8rem auto 0;
-      max-width: 560px;
-      background: var(--paper);
-      border: 1px solid rgba(201,168,76,0.4);
-      border-radius: 4px;
-      overflow: hidden;
-      text-align: left;
-      box-shadow: 0 18px 50px -22px rgba(20,16,8,0.28);
-    }
-    .tonal-card.open { display: block; animation: tonalrise 0.7s ease; }
-    @keyframes tonalrise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-    .tonal-image { width: 100%; height: 210px; object-fit: cover; display: block; }
-    .tonal-body { padding: 1.7rem 1.9rem 1.9rem; }
-    .tonal-eyebrow {
-      font-family: 'Cinzel', serif;
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: block;
-      margin-bottom: 0.65rem;
-    }
-    .tonal-name {
-      font-size: 1.75rem;
-      font-weight: 500;
-      line-height: 1.15;
-      margin-bottom: 0.2rem;
-    }
-    .tonal-name span { font-style: italic; color: var(--sage-dark); }
-    .tonal-number {
-      font-family: 'Cormorant SC', serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.16em;
-      color: var(--copper);
-      display: block;
-      margin-bottom: 1.05rem;
-    }
-    .tonal-desc { font-size: 1.08rem; line-height: 1.72; color: var(--ink-soft); margin-bottom: 1.05rem; }
-    .tonal-carry { font-size: 1.02rem; font-style: italic; line-height: 1.65; color: var(--ink-quiet); }
-    .tonal-foot {
-      margin-top: 1.3rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(201,168,76,0.25);
-      font-size: 0.86rem;
-      font-style: italic;
-      color: var(--ink-quiet);
-      opacity: 0.85;
-    }
     .lost-foot {
       margin-top: 3rem;
       font-family: 'Cormorant Garamond', serif;
@@ -292,40 +211,8 @@
     <a class="lost-btn" href="/index.html">Return to the hearth &rarr;</a>
     <span class="lost-quiet">or begin where everyone begins &mdash; <a href="/sessions.html">an introductory session</a></span>
 
-    <section class="tonal-section">
-      <span class="lost-eyebrow tonal-head"><span class="tonal-mark">&#10087;</span> A Parting Gift</span>
-      <div class="tonal-explain">
-        <p>
-          So you don&rsquo;t leave empty-handed: today&rsquo;s tonal &mdash; the
-          daykeeper of this very hour, as the Mayan count turns it. Twenty solar
-          seals and thirteen tones weave together, and every day arrives wearing
-          a face and a tone of its own.
-        </p>
-      </div>
-
-      <div class="tonal-card open" id="tonalCard" role="region" aria-label="Today's tonal">
-      <div class="tonal-seal" id="tonalSeal" aria-hidden="true"></div>
-      <div class="tonal-body">
-        <span class="tonal-eyebrow">Today's Tonal</span>
-        <h2 class="tonal-name" id="tonalName"></h2>
-        <span class="tonal-number" id="tonalNumber"></span>
-        <p class="tonal-desc" id="tonalDesc"></p>
-        <p class="tonal-carry" id="tonalCarry"></p>
-        <p class="tonal-foot">
-          The count as this hearth keeps it, turning the twenty seals and thirteen
-          tones. A small gift for the wrong turn that brought you here &mdash; and a
-          doorway, if you want one, into the living
-          <a href="https://mayanlanguages.wiki/resource/117/en?langcode=en" target="_blank" rel="noopener">Mayan languages</a>
-          this way of keeping days comes from.
-        </p>
-      </div>
-      </div>
-    </section>
-
     <p class="lost-foot">Adi Marie &middot; Los Angeles</p>
   </main>
-
-  <script src="/js/tonal.js" defer></script>
   <script>
     // If a dedicated labyrinth image is ever placed at
     // images/uploads/404-labyrinth.jpg, prefer it — no code change needed.
