@@ -1,12 +1,12 @@
 {
-  "version": "v260702.01 4:16p",
-  "release": 1,
-  "sha": "c0088b57",
-  "fullSha": "c0088b57642b8587da057d3e29e4d80535ea0390",
+  "version": "v260705.03 3:02p",
+  "release": 3,
+  "sha": "cb0853e1",
+  "fullSha": "cb0853e1b103850785cd859948c0f16ae29a2de9",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervmkkn4f",
-  "pushedAt": "2026-07-02T09:16:15-07:00",
-  "commits": [{"sha":"0045c0e1","message":"Add custom Virtual Services booking flow (schedule + intake + Venmo)","author":"Adi Marie"},{"sha":"5d176b0c","message":"Property platform removal + admin hub rebuild + Venmo unification (local snapshot)","author":"Adi Marie"},{"sha":"7a54a88d","message":"Six-page premium build: nav restructure, new pages, luxury design system","author":"Adi Marie"},{"sha":"c0088b57","message":"Merge origin/main: reconcile live-site sessions/gating work with premium build","author":"Adi Marie"}]
+  "pushedAt": "2026-07-05T08:02:11-07:00",
+  "commits": [{"sha":"1b6e6906","message":"Site Control: DB-driven page gating + announcement band","author":"Adi Marie"},{"sha":"cb0853e1","message":"Merge origin/main (version bump)","author":"Adi Marie"}]
 }
