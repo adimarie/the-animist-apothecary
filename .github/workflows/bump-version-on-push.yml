@@ -1,5 +1,6 @@
 # Bump version on every push to main.
 # Runs only when the push is NOT our own bump commit ([skip ci]), so we avoid a loop.
+# CNAME-only pushes (GitHub Pages custom-domain saves) are ignored — no version bump needed.
 # Version is incremented and all HTML + version.json are updated, then committed and pushed.
 
 name: Bump version on push to main
@@ -7,6 +8,8 @@ name: Bump version on push to main
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - 'CNAME'
 
 jobs:
   bump:
@@ -50,4 +53,15 @@ jobs:
           git add -A
           git diff --staged --quiet && echo "No version changes (unexpected)" && exit 1 || true
           git commit -m "chore: bump version [skip ci]"
-          git push origin main
+          # main can move under us (e.g. Pages settings saves commit CNAME changes),
+          # so rebase and retry instead of failing on a non-fast-forward push.
+          for attempt in 1 2 3 4 5; do
+            if git push origin main; then
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt), rebasing onto latest main..."
+            git fetch origin main
+            git rebase origin/main
+          done
+          echo "Failed to push version bump after 5 attempts" >&2
+          exit 1
