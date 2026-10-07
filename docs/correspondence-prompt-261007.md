@@ -11,14 +11,20 @@ document is in the repo.
 
 > Run the **Midday Pass** of the Correspondence Practice.
 >
-> Read `docs/correspondence-prompt-261007.md` and `docs/correspondence-pathways-261007.md`
-> and follow them exactly. Sweep every channel you can reach. Triage by tier. Draft what
-> the pathways say to draft, in my voice, per `docs/voice-prompt-260601.md`. Hold everything
-> as a draft — send nothing. Write the ledger. Give me the briefing.
+> Read `docs/correspondence-prompt-261007.md`, `docs/correspondence-pathways-261007.md` and
+> `docs/correspondence-phone-channels-261007.md`, and follow them exactly.
+>
+> Texts and WhatsApp first: read every `untriaged` row the phone bridge has landed in the
+> ledger since the last pass. Then Gmail. Triage by tier. Draft what the pathways say to
+> draft, in my voice, per `docs/voice-prompt-260601.md`. Hold everything as a draft — send
+> nothing. Write the ledger. Give me the briefing, with text and WhatsApp drafts first and
+> copy-ready.
 >
 > Then keep on me: name what is older than its window, and what I have been avoiding.
 
-Evening is the same, with *Evening Pass*.
+Evening is the same, with *Evening Pass*. On the Mac, the companion is the **Phone Pass** —
+the one that reads texts and WhatsApp directly and can send; its prompt is in
+`docs/correspondence-phone-channels-261007.md`.
 
 That is the whole invocation. Everything below is the operating context it refers to —
 you do not need to paste the rest.
@@ -51,44 +57,52 @@ it is room to prepare — not room to speak in her stead.
 Stated plainly, because a prompt that promises channels it cannot touch is worse than no
 prompt. Verified 2026-10-07.
 
-### Live today — real, usable, no setup
+### The two that matter most — texts and WhatsApp
+
+Both live on the phone, and a cloud session cannot see a phone. That is a fact, not a
+setting. So they reach the practice through a bridge, built in this repo and laid out in
+full in `docs/correspondence-phone-channels-261007.md`:
+
+- **Texts → the ledger, from the phone itself.** An iOS Shortcut fires on every incoming
+  text and posts it to the `correspondence-inbound` Edge Function, which lands it in the
+  ledger as an `untriaged` row. The cloud Passes see it within seconds of its arrival.
+  Five minutes to set up once the function is deployed.
+- **Texts and WhatsApp, in full, from the Mac.** Messages in iCloud mirrors every text to
+  the Mac's Messages database; `scripts/correspondence/imessage_since.py` reads it. WhatsApp
+  Desktop shows her personal threads. A Claude Code session *on the Mac* — the **Phone
+  Pass** — reads both, drafts, and on her *yes* sends: AppleScript for texts, typed into the
+  conversation for WhatsApp. This is the only half of the system that can send to the phone.
+
+The cloud Passes draft replies to texts and WhatsApp like anything else — but they surface
+them copy-ready in the briefing, because sending to the phone is the Mac's job, or hers.
+
+### Live from the cloud — real, usable, no setup
 
 | Channel | What I can do |
 |---|---|
+| **The ledger** (Supabase) | Read every thread the phone bridge and the Mac have landed; write triage, drafts, state |
 | **Gmail** | Search, read threads, read labels, create and update drafts, apply labels, archive, send when told |
 | **Google Calendar** | Read and write events — so I can check a date before a reply promises one |
 | **Google Drive** | Read and write files |
-| **Supabase** | Read and write the practice database — clients, appointments, the ledger |
 
-Gmail is the real instrument. It is also where the backlog is.
-
-### Not reachable from here — and why
+### Not reachable, and why
 
 | Channel | The honest state |
 |---|---|
-| **Text / iMessage** | Lives on the phone. No connector. `send-sms` and `telnyx-webhook` Edge Functions exist in this repo, but they are scaffolding inherited from the infra template — there is no `telnyx_config` table in the live database, and `sms_logs` is empty. Nothing is wired. |
-| **WhatsApp** | Same. `send-whatsapp` and `whatsapp-webhook` exist; no `whatsapp_config` table; the message types in that code are the template's (`lease_sent`, `move_in_confirmed`) and have nothing to do with this practice. Also: the WhatsApp Business API is a *separate business number*. It would never read the personal WhatsApp threads where the actual relationships live. |
-| **Signal** | No API by design. Signal's privacy model forbids exactly this. There is no honest path to automated reading. |
-| **Telegram** | A bot can be reached; a personal account's history cannot. The OpenClaw gateway on the Hostinger VPS has a Telegram channel enabled, but that is a bot inbox, not her Telegram. |
+| **Signal** | No API by design. Signal's privacy model forbids exactly this. Forward or paste; the ledger takes it from there. |
+| **Telegram** | A bot can be reached; a personal account's history cannot. Same remedy. |
+| **WhatsApp Business API** | A *separate business number*. It would never read the personal threads where the relationships live. Not the path. |
 
-**So the phone channels need a human bridge, and the simplest one is the best one:**
-forward or paste. When something arrives on Signal, WhatsApp, Telegram or text that wants
-a real reply, send it to me — forwarded to Gmail, or pasted into a session. I will triage
-it, draft the reply, and log it in the ledger alongside everything else. The pathways work
-identically whatever channel carried the message.
+The `send-sms`, `telnyx-webhook`, `send-whatsapp` and `whatsapp-webhook` Edge Functions
+already in this repo are scaffolding inherited from the infra template — no `telnyx_config`
+or `whatsapp_config` table exists in the live database, and the message types in that code
+(`lease_sent`, `move_in_confirmed`) belong to the template, not to this practice. They are
+not the bridge and should not be mistaken for it.
 
-Two paths exist for making those channels native later. Neither is small, and neither
-should be built before the Gmail practice is actually holding:
-
-1. **Claude Code on her Mac.** Local iMessage history is readable from `chat.db` on macOS;
-   WhatsApp, Telegram and Signal all have desktop clients. A local session can reach what
-   a cloud session cannot. This is the realistic route for text and iMessage.
-2. **WhatsApp Business API, properly.** Only worth it if the practice wants a dedicated
-   business WhatsApp number that clients are asked to use — not for her existing threads.
-
-Say the word and I will scope either. Until then: forward or paste, and the practice still
-runs daily.
-
+**Until the bridge is up: forward or paste.** Anything that arrives on the phone and wants a
+real reply — send it to me, forwarded to Gmail or pasted into a session. It is triaged,
+drafted and logged alongside everything else. The pathways work identically whatever
+channel carried the message.
 ---
 
 ## 3. THE CADENCE
@@ -102,6 +116,10 @@ them while the day can still carry a reply.
 **The Evening Pass — around 7:30pm.** Catches the day and closes it. Reconciles what she
 sent against what I drafted, clears what resolved itself, and names what is now overdue.
 Ends with tomorrow's short list — no more than three threads.
+
+**Within each pass, the order is fixed: the ledger's `untriaged` rows first — that is where
+texts and WhatsApp land — then Gmail.** The phone channels are where the relationships are
+most alive and where her own attention is thinnest; they are never left for after the inbox.
 
 Neither pass is a reading of everything. A pass that surfaces forty threads has failed; she
 will read none of them. **Surface at most seven, in order.** The rest go to the ledger and
@@ -315,6 +333,12 @@ So the ledger is load-bearing, not bookkeeping. Three tables, defined in
 - **`correspondence_pathways`** — the compendium, queryable, with each pathway's autonomy
   setting and how often it has been used.
 
+The phone bridge writes to the first of these. `supabase/functions/correspondence-inbound`
+takes a message relayed from the phone or the Mac and lands it as an `untriaged` row carrying
+`last_inbound_body` — the message itself — so a Pass can triage it without the phone in
+hand. A repeat sender updates their row and reopens it as `new`; whatever tier and flags a
+Pass or Adi Marie already set are kept.
+
 All three are RLS authenticated-only, never anon-readable — they hold names and the gist
 of what people said.
 
@@ -452,13 +476,16 @@ Verified 2026-10-07, so the first passes have a baseline:
 | Starred | 279 threads |
 | **Drafts unsent** | **99** |
 | Bookings & Calendar label | 464 threads, 183 unread — the largest single body |
-| Live channels | Gmail, Calendar, Drive, Supabase |
-| Channels needing a bridge | text, WhatsApp, Signal, Telegram — forward or paste |
-| Ledger | written, not yet applied |
+| Live from the cloud | Gmail, Calendar, Drive, the ledger |
+| **Texts** | Bridge written: Shortcut → `correspondence-inbound` → ledger; Mac reader `imessage_since.py`. Not yet deployed or tested. |
+| **WhatsApp** | Mac Phone Pass only — local store if readable, otherwise on screen. Unverified until first run. |
+| Signal, Telegram | Forward or paste |
+| Ledger | written and updated for the bridge, not yet applied |
 | Pathways at `standing_send` | none — everything starts as a draft |
 
-The 99 drafts are the place to start. They are the clearest signal of what this is costing,
-and the fastest thing to relieve.
+The 99 drafts are the place to start in Gmail. But the first thing to bring up is the phone
+bridge — texts and WhatsApp are where this is costing the most, and the ledger is what lets
+the practice see them at all. The order is in `docs/correspondence-phone-channels-261007.md`.
 
 ---
 

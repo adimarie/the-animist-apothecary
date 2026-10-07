@@ -20,11 +20,14 @@ create table if not exists public.correspondence_threads (
   client_id       uuid references public.clients(id) on delete set null,
 
   -- triage (tiers per docs/correspondence-prompt-261007.md §4)
-  tier            text not null check (tier in
-                    ('immediate','living_arc','threshold','wheel','kin','admin','field','noise')),
+  tier            text not null default 'untriaged' check (tier in
+                    ('untriaged','immediate','living_arc','threshold','wheel','kin','admin','field','noise')),
+                                           -- 'untriaged' = landed by the phone bridge, awaiting a Pass
   pathway         text,                    -- slug from correspondence_pathways
   subject         text,
   gist            text,                    -- one-line read of what they are asking
+  last_inbound_body text,                  -- the message itself, so a Pass can triage without the phone
+  source          text,                    -- how it reached the ledger: shortcut | mac-agent | paste | gmail-sweep
 
   -- state
   status          text not null default 'new' check (status in
@@ -47,12 +50,15 @@ create table if not exists public.correspondence_threads (
 );
 
 create unique index if not exists correspondence_threads_channel_external
-  on public.correspondence_threads (channel, external_id)
-  where external_id is not null;
+  on public.correspondence_threads (channel, external_id);
 
 create index if not exists correspondence_threads_open
   on public.correspondence_threads (tier, status, last_inbound_at desc)
   where is_archived = false;
+
+create index if not exists correspondence_threads_untriaged
+  on public.correspondence_threads (last_inbound_at desc)
+  where tier = 'untriaged' and is_archived = false;
 
 create index if not exists correspondence_threads_promised
   on public.correspondence_threads (promised_by)
