@@ -26,7 +26,39 @@ So the architecture has two halves, and the ledger is the seam between them:
                 triages, drafts, briefs, nudges
 ```
 
-Three pieces. Two are built and in this repo. One is a five-minute setup on the phone.
+Four pieces. Piece 0 needs nothing built and works today. Two more are built and in this repo. One is a five-minute setup on the phone.
+
+---
+
+## Piece 0 — Works today, no backend: the phone mails itself
+
+Before any function is deployed or any table exists, the phone can already feed the
+practice — because the cloud Passes read Gmail, and the phone can send Gmail.
+
+**Texts — an iOS Shortcut that emails each incoming text to her own inbox.**
+Shortcuts → Automation → + → *Message* → Run Immediately → action *Send Email*:
+- To: her own practice Gmail address
+- Subject: `[TEXT] ` followed by *Shortcut Input → Sender*
+- Body: *Shortcut Input → Content*
+- Show Compose Sheet: **off**
+
+Every text now lands in Gmail within seconds, tagged by subject. The Passes treat
+`subject:[TEXT]` as channel `sms`, triage it with everything else, and draft the reply
+copy-ready in the briefing. Nothing to deploy. Five minutes.
+
+**WhatsApp — forward the ones that matter.** On the phone: long-press the message →
+Forward → share → Mail → to herself, subject `[WA] ` and the person's name. One or two taps.
+The Passes treat `subject:[WA]` as channel `whatsapp`. Not automatic — WhatsApp offers no
+trigger — but it is the honest fast path for the threads that actually need a reply.
+
+**Anything, instantly — share into the Claude app.** From any message on the phone: share
+→ Claude → *draft a reply to this, per the Correspondence Practice*. The reply comes back
+in her voice, to copy and send. This is the path for a message that cannot wait for the
+next Pass.
+
+Piece 0 is not a lesser version. It is the bridge that exists the moment she builds the
+Shortcut. Pieces 1 and 2 add completeness (history, what she sent, WhatsApp without a tap)
+and sending from the Mac.
 
 ---
 

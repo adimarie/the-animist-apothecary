@@ -99,10 +99,13 @@ or `whatsapp_config` table exists in the live database, and the message types in
 (`lease_sent`, `move_in_confirmed`) belong to the template, not to this practice. They are
 not the bridge and should not be mistaken for it.
 
-**Until the bridge is up: forward or paste.** Anything that arrives on the phone and wants a
-real reply — send it to me, forwarded to Gmail or pasted into a session. It is triaged,
-drafted and logged alongside everything else. The pathways work identically whatever
-channel carried the message.
+**Working today, with nothing deployed — the phone mails itself.** An iOS Shortcut emails
+every incoming text to her own Gmail with the subject `[TEXT] <sender>`; WhatsApp messages
+that need a reply are forwarded the same way with `[WA] <name>`. Every pass searches
+`subject:[TEXT] OR subject:[WA]` first and treats those as channel `sms` / `whatsapp` — same
+tiers, same pathways, reply drafted copy-ready in the briefing. Piece 0 in the phone-channels
+document. Anything that cannot wait for a pass: share it into the Claude app and ask for the
+reply.
 ---
 
 ## 3. THE CADENCE
@@ -117,8 +120,8 @@ them while the day can still carry a reply.
 sent against what I drafted, clears what resolved itself, and names what is now overdue.
 Ends with tomorrow's short list — no more than three threads.
 
-**Within each pass, the order is fixed: the ledger's `untriaged` rows first — that is where
-texts and WhatsApp land — then Gmail.** The phone channels are where the relationships are
+**Within each pass, the order is fixed: texts and WhatsApp first — the ledger's `untriaged`
+rows and the `[TEXT]` / `[WA]` emails the phone sent itself — then the rest of Gmail.** The phone channels are where the relationships are
 most alive and where her own attention is thinnest; they are never left for after the inbox.
 
 Neither pass is a reading of everything. A pass that surfaces forty threads has failed; she
@@ -342,9 +345,12 @@ Pass or Adi Marie already set are kept.
 All three are RLS authenticated-only, never anon-readable — they hold names and the gist
 of what people said.
 
-**The migration is written but not applied.** It is hers to read first. When she says run
-it, I run it. Until then each pass holds its state in the briefing only, which works for a
-day and not for a week.
+**The migration is written but not applied** — it was declined twice at the permission
+prompt, and that stands until she says *run the ledger*. **Until then the ledger lives in
+Google Drive:** `correspondence-ledger.json` in the folder *The Correspondence Practice*,
+one object per thread with the same fields. Every pass reads it first and rewrites it last.
+Slower and plainer than the database, but durable, phone-readable, and enough to keep on
+her across days. The Supabase ledger takes over the moment it exists.
 
 ---
 
