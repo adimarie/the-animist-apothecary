@@ -80,8 +80,21 @@ def read_messages(db_path: str, since: dt.datetime, inbound_only: bool):
     if not os.path.exists(db_path):
         sys.exit(f"Messages database not found at {db_path}. Is Messages in iCloud on?")
     # Read-only URI so we never take a write lock on Messages' own database.
-    conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
-    conn.row_factory = sqlite3.Row
+    try:
+        conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
+        conn.row_factory = sqlite3.Row
+        conn.execute("select 1 from message limit 1")
+    except sqlite3.DatabaseError as e:
+        if "authorization denied" in str(e) or "unable to open" in str(e):
+            sys.exit(
+                "\nmacOS is refusing access to the Messages database (Full Disk Access).\n"
+                "One-time fix:\n"
+                "  1. System Settings → Privacy & Security → Full Disk Access\n"
+                "  2. Click +, add Terminal (and the Claude app if it will run this), toggle on\n"
+                "  3. Quit Terminal completely (⌘Q) and reopen it — the grant applies to new windows only\n"
+                "  4. Run this command again\n"
+            )
+        raise
     sql = """
         select
           m.ROWID                                  as rowid,
