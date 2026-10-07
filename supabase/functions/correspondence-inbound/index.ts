@@ -65,6 +65,23 @@ function normalizeHandle(raw: string): string {
   return trimmed.toLowerCase();
 }
 
+/** The shared secret: function env first, then the service_credentials table. */
+async function expectedSecret(supabase: ReturnType<typeof createClient>): Promise<string | null> {
+  const fromEnv = Deno.env.get("CORRESPONDENCE_INBOUND_SECRET");
+  if (fromEnv) return fromEnv;
+  const { data, error } = await supabase
+    .from("service_credentials")
+    .select("credential_value")
+    .eq("service_name", "correspondence_inbound")
+    .eq("credential_type", "shared_secret")
+    .maybeSingle();
+  if (error) {
+    console.error("secret lookup failed:", error.message);
+    return null;
+  }
+  return data?.credential_value ?? null;
+}
+
 serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
@@ -73,8 +90,15 @@ serve(async (req: Request) => {
     return json(405, { error: "POST only" });
   }
 
-  // Auth: a shared secret the Shortcut and the Mac agent carry. No secret set = closed.
-  const expected = Deno.env.get("CORRESPONDENCE_INBOUND_SECRET");
+  const supabase = createClient(
+    Deno.env.get("SUPABASE_URL")!,
+    Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
+  );
+
+  // Auth: a shared secret the Shortcut and the Mac agent carry. Read from the function's
+  // env if set, otherwise from service_credentials (service_name = correspondence_inbound).
+  // No secret anywhere = the door stays closed.
+  const expected = await expectedSecret(supabase);
   const provided = req.headers.get("x-correspondence-secret");
   if (!expected || !provided || provided !== expected) {
     return json(401, { error: "Not authorized" });
@@ -108,11 +132,6 @@ serve(async (req: Request) => {
   const gist = body.length > 140 ? body.slice(0, 137) + "…" : body;
 
   try {
-    const supabase = createClient(
-      Deno.env.get("SUPABASE_URL")!,
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
-    );
-
     const { data: existing, error: findError } = await supabase
       .from("correspondence_threads")
       .select("id, tier, status, nudge_count")
