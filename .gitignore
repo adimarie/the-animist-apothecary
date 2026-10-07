@@ -89,3 +89,7 @@ memory/
 private/
 docs/seven-figure-standards.md
 docs/site-languaging-principles-260701.md
+
+# Python bytecode (scripts/correspondence)
+__pycache__/
+*.pyc
