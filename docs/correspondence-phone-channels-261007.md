@@ -1,6 +1,6 @@
 # THE PHONE CHANNELS — TEXTS AND WHATSAPP
 ## The Animist Apothecary — how the two channels that matter most reach the practice
-### Companion to `correspondence-prompt-261007.md`. Working version 2026.10.07.
+### Companion to `correspondence-prompt-261007.md`. Working version 2026.10.08.
 
 ---
 
@@ -223,6 +223,46 @@ local store (unverified — the Phone Pass checks and says); Route B, reading un
 conversations on screen with her present. Both are slower and partial. The bridge is the
 one to build.
 
+### Reaching the bridge from the cloud (Route 0b — not yet built)
+
+The bridge above serves the Mac. The Midday and Evening Passes run in the cloud and cannot
+see a program on her Mac unless the bridge is given an address. The project supports this:
+the MCP server can speak Streamable HTTP instead of stdio.
+
+```
+WHATSAPP_MCP_TRANSPORT=http WHATSAPP_MCP_PORT=8000 uv run main.py     # serves /mcp
+```
+
+Two facts from the project's own README decide the design. It binds to loopback
+(`127.0.0.1`) by default, and **it has no authentication of its own**. So it is never put on
+a public address bare. It needs an HTTPS front door on hardware she owns — the Mac kept
+awake, or a small VPS of hers — and that door has to carry the key in the URL itself,
+because a claude.ai custom connector sends no custom headers. A long random path segment is
+the key. Which front door, and the exact steps, are chosen together at install time, after
+Route 0 is proven; nothing here is to be improvised.
+
+Once the address exists: claude.ai → Settings → Connectors → *Add custom connector*. The
+connector attaches to new sessions, so the two routines are recreated to fire into a session
+that carries it. From that point the cloud passes read WhatsApp directly — and the protocol
+does not move: read freely, draft, send only on her yes.
+
+Trade-offs, plainly. On the Mac, the door is closed whenever the Mac sleeps. A VPS she owns
+removes that at a monthly cost and more setup. Both keep every message on hardware that is
+hers, which is the point.
+
+**Routes considered and set aside (2026-10-08):**
+
+- *Blueticks* — a hosted MCP for a personal number. It would let the cloud passes read
+  WhatsApp with no Mac, but her linked session and her clients' messages would sit on a
+  vendor's servers, and no privacy, retention or pricing terms could be found. Not for
+  ceremonial and medical confidences unless she decides otherwise with eyes open.
+- *Composio, Zapier, "WhatsApp Business API"* — all built on Meta's Business Cloud API: a
+  separate business number, templates, webhooks. They cannot read her personal chats, and
+  the Zapier recipe is an auto-responder, which the First Rule forbids.
+- *"Claude Code channel" plugins* (claude-whatsapp and kin) — these turn a Claude session
+  into a bot that answers people inside WhatsApp. The wrong direction entirely.
+- *Awesome Claude's "2 ways"* — way one is this same bridge; way two is the Business API.
+
 ### Sending texts from the Mac
 
 Messages on the Mac can be driven by AppleScript, which means an approved draft can go out
@@ -309,6 +349,7 @@ because it is a daily automated send, even if only to herself.
 | `imessage_since.py` | Written. Untested against a real Messages database — test on the Mac with `--hours 24`. |
 | iOS Shortcut | Recipe above. Five minutes on the phone once the function is deployed. |
 | WhatsApp bridge (Route 0) | Setup written with her Mac's paths; not yet installed. Once linked, the Phone Pass reads WhatsApp completely. |
+| Bridge reachable from the cloud (Route 0b) | Design written; HTTP transport verified in the project README. Not built. After Route 0 is proven. |
 | Mac Phone Pass | Prompt above, updated for the bridge. Repo is cloned on the Mac; Full Disk Access granted. |
 
 The order to bring it up now: install the WhatsApp bridge and link it → run the Phone Pass
@@ -322,8 +363,8 @@ once by hand → build the `[TEXT]` Shortcut → (later) the ledger, the functio
   design. Signal messages that want a reply get forwarded or pasted, and the ledger takes
   them from there.
 - It does not read Telegram's personal history. Same remedy.
-- It does not make the cloud session able to send a text or a WhatsApp message. Only the
-  Mac can, and only on her word.
+- It does not make the cloud session able to send a text. Only the Mac can, and only on her
+  word. WhatsApp from the cloud waits on Route 0b — and even then, sending stays on her yes.
 - It does not run the Phone Pass if the Mac is asleep.
 
 Nothing here is a trick. It is two honest channels into one ledger, and a Mac that can do
