@@ -1,12 +1,12 @@
 {
-  "version": "v260705.14 9:29p",
-  "release": 14,
-  "sha": "885edd15",
-  "fullSha": "885edd15bcef8c7ea173145a20230c0ffd6a408f",
+  "version": "v261103.01 4:36p",
+  "release": 1,
+  "sha": "278141b7",
+  "fullSha": "278141b7b7e236ec1e8ae1afc55ac6cff4ea855e",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervmkkn4f",
-  "pushedAt": "2026-07-05T14:28:34-07:00",
-  "commits": [{"sha":"885edd15","message":"Create CNAME","author":"adimarie"}]
+  "machine": "runnervm48cm3",
+  "pushedAt": "2026-11-03T08:31:25-08:00",
+  "commits": [{"sha":"e45e08b2","message":"Hidden page: /apply-to-participate forwards to the application form","author":"Adi Marie"},{"sha":"278141b7","message":"Open three rooms: Premium Coaching and Public Offerings un-gated; Home routes straight to the booking page","author":"Adi Marie"}]
 }
