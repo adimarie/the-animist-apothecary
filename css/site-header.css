@@ -646,3 +646,43 @@ body { padding-top: 130px !important; }
   .site-header .logo-mark { height: 48px !important; }
   body { padding-top: 92px !important; }
 }
+
+/* ---- Header refinement — 2026-11-03 (Adi: "please optimize the design
+   of the nav bar and header"). Logo brought down to a proportionate
+   64px, menu type up and evenly spaced (largest on screens 1900px and
+   wider, where there is room), everything centred on one axis, and the
+   bar slims as the page scrolls. Toggle below 1200px unchanged. ---- */
+.site-header { padding: 0.55rem 0 !important; transition: padding 0.25s ease; }
+.site-header.scrolled { padding: 0.35rem 0 !important; }
+.site-header .header-inner { max-width: 1880px; }
+.site-header .logo-mark { height: 64px !important; transition: height 0.25s ease; }
+.site-header.scrolled .logo-mark { height: 52px !important; }
+.site-header .main-nav > ul { gap: 1.6rem !important; justify-content: flex-end; }
+.site-header .main-nav > ul > li > a {
+  font-size: 0.66rem !important; letter-spacing: 0.14em !important;
+  line-height: 1; padding: 0.4rem 0 !important;
+}
+@media (min-width: 1900px) {
+  .site-header .main-nav > ul { gap: 2.2rem !important; }
+  .site-header .main-nav > ul > li > a { font-size: 0.74rem !important; letter-spacing: 0.16em !important; }
+}
+@media (max-width: 1749px) {
+  .site-header .main-nav > ul { gap: 1.2rem !important; }
+  .site-header .main-nav > ul > li > a { font-size: 0.62rem !important; letter-spacing: 0.1em !important; }
+}
+@media (max-width: 1499px) {
+  .site-header .main-nav > ul { gap: 0.95rem !important; }
+  .site-header .main-nav > ul > li > a { font-size: 0.6rem !important; letter-spacing: 0.08em !important; }
+}
+@media (max-width: 1299px) {
+  .site-header .logo-mark { height: 56px !important; }
+  .site-header .main-nav > ul { gap: 0.85rem !important; }
+  .site-header .main-nav > ul > li > a { font-size: 0.52rem !important; letter-spacing: 0.06em !important; }
+}
+@media (max-width: 1199px) { .site-header .logo-mark { height: 52px !important; } }
+@media (max-width: 480px)  { .site-header .logo-mark { height: 48px !important; } }
+/* nav→hero spacing for the slimmer bar */
+body { padding-top: 112px !important; }
+@media (max-width: 1299px) { body { padding-top: 104px !important; } }
+@media (max-width: 1199px) { body { padding-top: 100px !important; } }
+@media (max-width: 480px)  { body { padding-top: 92px !important; } }
