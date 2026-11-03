@@ -5,7 +5,7 @@ hero:
     A place of ritual and ceremonial practice — for those becoming interdimensional intermediaries
     in service to the well-being, restoration, and healing of this world.
   cta_primary_text: Schedule a Call
-  cta_primary_url: /sessions.html
+  cta_primary_url: /divination-and-consultation.html
   cta_secondary_text: The Training Grounds
   cta_secondary_url: training-grounds.html
   image: /images/uploads/adi-hero-temple-grounds.jpg
@@ -291,7 +291,7 @@ cta_section:
     hold a community in need, a ceremony to be led, or a gathering to be tended. Either way, the
     season begins at the threshold.
   cta_text: Apply to Begin
-  cta_url: sessions.html
+  cta_url: divination-and-consultation.html
   cta_primary_note: For yourself or the deeper path
   credentials: >-
     19 years devoted service · Initiated medicine woman · Lineage-trained · Southern
@@ -305,4 +305,4 @@ newsletter:
   cta_text: Subscribe
   trust_line: Held with care, never shared.
   intake_pointer_text: For ceremony or private work, begin with an Intake & Inquiry Call
-  intake_pointer_url: sessions.html
+  intake_pointer_url: divination-and-consultation.html

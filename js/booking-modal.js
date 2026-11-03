@@ -10,7 +10,7 @@
         data-eyebrow="Multi-Day Private"
         data-desc="2–7 day private ceremonial retreats..."
         data-reciprocity="By inquiry · Reciprocity discussed at Intake"
-        data-schedule-url="sessions.html#schedule"
+        data-schedule-url="divination-and-consultation.html#schedule"
         data-venmo-url="https://venmo.com/u/TheAnimistApothecary"
         data-inquire-email-subject="Multi-Day Intensive Inquiry">
        Schedule & Inquire →
@@ -250,7 +250,7 @@
     els.title.textContent = d.title || '';
     els.desc.textContent = d.desc || '';
     els.reciprocity.textContent = d.reciprocity || 'Reciprocity discussed at Intake & Inquiry.';
-    els.schedule.href = d.scheduleUrl || 'sessions.html#schedule';
+    els.schedule.href = d.scheduleUrl || 'divination-and-consultation.html#schedule';
     els.venmo.href = d.venmoUrl || 'https://venmo.com/u/TheAnimistApothecary';
     const subject = encodeURIComponent(d.inquireEmailSubject || (d.title + ' — Inquiry'));
     els.inquire.href = 'mailto:its.adimarie@gmail.com?subject=' + subject;

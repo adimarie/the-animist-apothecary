@@ -16,6 +16,7 @@
   var LIVE = [
     "", "index.html",
     "sessions.html",
+    "divination-and-consultation.html",
     "manage-booking.html",
     "events-dashboard.html",
     "proposals.html",
@@ -84,7 +85,7 @@
       '<h1 class="acs-title">This part of the site is still being <em>woven</em>.</h1>' +
       '<p class="acs-sub">Work in progress &middot; Coming soon</p>' +
       '<p class="acs-lead">In the meantime, begin where everyone begins &mdash; an introductory session, one&#8209;on&#8209;one.</p>' +
-      '<a class="acs-btn" href="sessions.html">Begin with an introductory session &rarr;</a>' +
+      '<a class="acs-btn" href="divination-and-consultation.html">Begin with an introductory session &rarr;</a>' +
       '<a class="acs-home" href="index.html">Return to the home page</a>' +
       "</div>";
     document.body.appendChild(ov);

@@ -67,7 +67,7 @@
       <nav class="main-nav" id="site-menu" aria-label="Main menu">
         <ul>
           <li><a href="about.html">About</a></li>
-          <li><a href="sessions.html">Divination &amp; Consultation</a></li>
+          <li><a href="divination-and-consultation.html">Divination &amp; Consultation</a></li>
           <li><a href="seasons-of-change.html">Spiritual Development</a></li>
           <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
           <li><a href="public-offerings.html">Community Offerings</a></li>
@@ -155,9 +155,9 @@
       }
 
       if (state.is_cancelled) {
-        html += '<div class="mb-ok">This booking has been cancelled. To find a new time, <a href="sessions.html">schedule a session</a>.</div>';
+        html += '<div class="mb-ok">This booking has been cancelled. To find a new time, <a href="divination-and-consultation.html">schedule a session</a>.</div>';
       } else if (state.is_past) {
-        html += '<p class="mb-note">This session has passed. To book again, <a href="sessions.html">schedule a session</a>.</p>';
+        html += '<p class="mb-note">This session has passed. To book again, <a href="divination-and-consultation.html">schedule a session</a>.</p>';
       } else {
         html += '<div class="mb-actions">';
         if (state.can_reschedule) html += '<button class="mb-btn mb-btn--primary" id="mb-resched-btn">Reschedule</button>';
