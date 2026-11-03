@@ -28,7 +28,7 @@
   btn.addEventListener('click', function () { if (isOpen()) close(false); else open(); });
   nav.addEventListener('click', function (e) { if (e.target.closest('a')) close(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen()) close(true); });
-  var wide = window.matchMedia('(min-width: 1000px)');
+  var wide = window.matchMedia('(min-width: 1200px)');
   function onChange() { if (wide.matches) close(false); }
   if (wide.addEventListener) wide.addEventListener('change', onChange); else wide.addListener(onChange);
   window.addEventListener('resize', function () { if (isOpen()) setHeaderHeight(); }, { passive: true });

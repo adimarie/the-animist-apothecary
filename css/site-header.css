@@ -504,7 +504,7 @@ body { padding-top: 168px !important; }
 .site-header .nav-toggle[aria-expanded="true"] .nav-toggle-bars i:nth-child(3) { top: 6px; transform: rotate(-45deg); }
 .site-header .nav-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
-@media (max-width: 999px) {
+@media (max-width: 1199px) {
   .site-header .main-nav { display: none !important; }
   .site-header .nav-toggle { display: inline-flex !important; }
   body { padding-top: 112px !important; }
@@ -543,7 +543,7 @@ body { padding-top: 168px !important; }
 .site-header .logo-text em,
 .site-header .logo-accent { display: inline !important; font-style: normal !important; color: var(--bark) !important; }
 @media (max-width: 1200px) { .site-header .logo-text { font-size: 0.9rem !important; letter-spacing: 0.24em !important; } }
-@media (max-width: 999px)  { .site-header .logo { gap: 10px !important; } .site-header .logo-text { font-size: 0.72rem !important; letter-spacing: 0.16em !important; } }
+@media (max-width: 1199px)  { .site-header .logo { gap: 10px !important; } .site-header .logo-text { font-size: 0.72rem !important; letter-spacing: 0.16em !important; } }
 @media (max-width: 400px)  { .site-header .logo-text { font-size: 0.6rem !important; letter-spacing: 0.12em !important; } }
 
 /* ---- Fit tuning after the 1440 / 375 checks, 2026-11-03 ----
@@ -561,7 +561,7 @@ body { padding-top: 168px !important; }
   .site-header .main-nav > ul { gap: 1rem !important; }
   .site-header .main-nav > ul > li > a { font-size: 0.58rem !important; letter-spacing: 0.08em !important; }
 }
-@media (max-width: 999px) {
+@media (max-width: 1199px) {
   .site-header .header-inner { flex-wrap: nowrap !important; }
   .site-header .logo { min-width: 0; flex: 1 1 auto; }
   .site-header .nav-toggle { flex: 0 0 auto; }
@@ -575,4 +575,74 @@ body { padding-top: 168px !important; }
 @media (max-width: 360px) {
   .site-header .header-inner { gap: 12px !important; }
   .site-header .logo-text { font-size: 0.52rem !important; }
+}
+
+/* ---- Logo at the full height of the bar; wordmark centred on the page.
+   2026-11-03 (Adi: "make the logo large and to be the full height of the
+   nav bar - and center 'the animist apothecary' on the page") ---- */
+.site-header { padding: 0.3rem 0 !important; }
+.site-header.scrolled { padding: 0.3rem 0 !important; }
+.site-header .header-inner { position: relative; }
+.site-header .logo { position: static !important; }
+.site-header .logo-mark { height: 84px !important; }
+.site-header .logo-text {
+  position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+  height: 84px; display: inline-flex !important; align-items: center;
+  font-size: 1.15rem !important; letter-spacing: 0.34em !important;
+  margin: 0 !important; pointer-events: auto;
+}
+@media (max-width: 1200px) {
+  .site-header .logo-mark { height: 72px !important; }
+  .site-header .logo-text { height: 72px; font-size: 0.98rem !important; letter-spacing: 0.26em !important; }
+}
+@media (max-width: 1199px) {
+  .site-header .logo-mark { height: 52px !important; }
+  .site-header .logo-text { height: 52px; font-size: 0.66rem !important; letter-spacing: 0.14em !important; }
+}
+@media (max-width: 480px) {
+  .site-header .logo-mark { height: 48px !important; }
+  .site-header .logo-text { height: 48px; font-size: 0.58rem !important; letter-spacing: 0.1em !important; }
+}
+@media (max-width: 360px) {
+  .site-header .logo-text { font-size: 0.5rem !important; letter-spacing: 0.08em !important; }
+}
+
+/* ---- SINGLE LINE: logo at the bar's full height, the eight items on the
+   same row, no wordmark. 2026-11-03 (Adi: "or make it all single line
+   across the nav bar - and remove the animist apothecary"). Below 1200px
+   eight labels cannot share the row, so the Menu toggle takes over there
+   (the 1199px rules above). Header-inner padding still untouched. ---- */
+.site-header .logo-text { display: none !important; }
+.site-header .header-inner { flex-wrap: nowrap !important; row-gap: 0 !important; }
+.site-header .logo { flex: 0 0 auto; }
+.site-header .main-nav {
+  order: 2; flex: 1 1 auto !important; min-width: 0;
+  border-top: 0 !important; margin-top: 0 !important;
+}
+.site-header .main-nav > ul {
+  justify-content: flex-end; flex-wrap: wrap !important; row-gap: 0.1rem;
+  padding: 0 !important; gap: 1.2rem !important;
+}
+.site-header .main-nav > ul > li > a { font-size: 0.62rem !important; letter-spacing: 0.1em !important; padding: 0.2rem 0 !important; }
+.site-header .logo-mark { height: 84px !important; }
+body { padding-top: 130px !important; }
+@media (max-width: 1499px) {
+  .site-header .logo-mark { height: 76px !important; }
+  .site-header .main-nav > ul { gap: 0.95rem !important; }
+  .site-header .main-nav > ul > li > a { font-size: 0.6rem !important; letter-spacing: 0.08em !important; }
+  body { padding-top: 122px !important; }
+}
+@media (max-width: 1299px) {
+  .site-header .logo-mark { height: 64px !important; }
+  .site-header .main-nav > ul { gap: 0.85rem !important; }
+  .site-header .main-nav > ul > li > a { font-size: 0.52rem !important; letter-spacing: 0.06em !important; }
+  body { padding-top: 112px !important; }
+}
+@media (max-width: 1199px) {
+  .site-header .logo-mark { height: 52px !important; }
+  body { padding-top: 100px !important; }
+}
+@media (max-width: 480px) {
+  .site-header .logo-mark { height: 48px !important; }
+  body { padding-top: 92px !important; }
 }
