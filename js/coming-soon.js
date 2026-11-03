@@ -22,6 +22,8 @@
     "404.html"
   ];
   var file = (location.pathname.split("/").pop() || "").toLowerCase();
+  // Hosts that serve clean URLs give "/about" for about.html; normalise so the LIVE lists still match.
+  if (file && file.indexOf(".") === -1) file += ".html";
   if (LIVE.indexOf(file) !== -1) return;
 
   // Dev / preview bypass — visit any page once with ?preview=1 and the
