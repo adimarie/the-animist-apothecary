@@ -1,12 +1,12 @@
 {
-  "version": "v261103.01 4:36p",
-  "release": 1,
-  "sha": "278141b7",
-  "fullSha": "278141b7b7e236ec1e8ae1afc55ac6cff4ea855e",
+  "version": "v261103.02 4:40p",
+  "release": 2,
+  "sha": "3a82b308",
+  "fullSha": "3a82b308b50b41f779c6c23f8ea8acf38a840f45",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm48cm3",
-  "pushedAt": "2026-11-03T08:31:25-08:00",
-  "commits": [{"sha":"e45e08b2","message":"Hidden page: /apply-to-participate forwards to the application form","author":"Adi Marie"},{"sha":"278141b7","message":"Open three rooms: Premium Coaching and Public Offerings un-gated; Home routes straight to the booking page","author":"Adi Marie"}]
+  "pushedAt": "2026-11-03T08:37:06-08:00",
+  "commits": [{"sha":"47149dd8","message":"Publish the participant portal and the join page","author":"Adi Marie"},{"sha":"26e45925","message":"Split intake: /intake becomes a short gated inquiry note","author":"Adi Marie"},{"sha":"3a82b308","message":"Add a clean, hardened build for Cloudflare Pages","author":"Adi Marie"}]
 }
