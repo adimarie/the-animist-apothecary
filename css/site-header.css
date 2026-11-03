@@ -440,3 +440,139 @@ body { padding-top: 130px !important; }
 @media (max-width: 950px) {
   .site-header .main-nav { display: none !important; }
 }
+
+/* =============================================================
+   Eight-item menu + phone menu — 2026-11-03 (DRAFT for Adi)
+   Labels: About / Divination & Consultation / Spiritual Development /
+   Shamanic Coaching / Community Offerings / Workshops & Courses /
+   Resources / Newsletter. Eight labels do not fit one row beside
+   the logo and Apply at any common width, so from 1000px up the
+   header is TWO rows: logo + Apply on row one, the menu centred on
+   row two. Below 1000px the menu is a full-height panel behind a
+   toggle (the site had NO phone menu before: the row was hidden).
+   Header-inner PADDING untouched (locked, 2026-06-08).
+   Body padding-top below is the nav→hero single source of truth
+   for this layout (replaces the 130/120/110 values above).
+   ============================================================= */
+.site-header .header-inner { flex-wrap: wrap !important; row-gap: 0 !important; }
+.site-header .header-nav-row { display: contents !important; }
+.site-header .logo { order: 1; }
+/* Apply button removed from the header 2026-11-03 (Adi). Row one is the logo alone; the toggle sits right on phones. */
+.site-header .nav-toggle { order: 3; display: none; margin-left: auto; }
+.site-header .main-nav {
+  order: 4; flex: 1 0 100% !important; display: block !important;
+  border-top: 1px solid rgba(45, 42, 38, 0.08); margin-top: 6px;
+}
+.site-header .main-nav > ul {
+  display: flex; justify-content: center; align-items: center; flex-wrap: nowrap;
+  gap: 2rem !important; margin: 0; padding: 0.45rem 0 0.5rem; list-style: none;
+}
+.site-header .main-nav > ul > li > a {
+  font-size: 0.74rem !important; letter-spacing: 0.16em !important;
+  padding: 0.3rem 0 !important; white-space: nowrap !important;
+}
+.site-header .main-nav > ul > li > a.nav-active { color: var(--gold) !important; }
+@media (max-width: 1360px) {
+  .site-header .main-nav > ul { gap: 1.4rem !important; }
+  .site-header .main-nav > ul > li > a { font-size: 0.7rem !important; letter-spacing: 0.12em !important; }
+}
+@media (max-width: 1160px) {
+  .site-header .main-nav > ul { gap: 1.1rem !important; }
+  .site-header .main-nav > ul > li > a { font-size: 0.66rem !important; letter-spacing: 0.1em !important; }
+}
+/* nav→hero spacing for the two-row header */
+body { padding-top: 168px !important; }
+@media (max-width: 1200px) { body { padding-top: 168px !important; } }
+
+/* ---- Toggle button (phones and small tablets) ---- */
+.site-header .nav-toggle {
+  align-items: center; gap: 0.5rem; min-width: 44px; min-height: 44px;
+  padding: 0 0 0 0.6rem; margin: 0; background: transparent; border: 0; cursor: pointer;
+  color: var(--bark); font-family: 'Cinzel', 'Cormorant SC', serif; font-size: 0.66rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.site-header .nav-toggle-bars { position: relative; width: 22px; height: 14px; display: block; }
+.site-header .nav-toggle-bars i {
+  position: absolute; left: 0; width: 22px; height: 1.5px; background: currentColor;
+  transition: transform 0.22s, opacity 0.22s, top 0.22s;
+}
+.site-header .nav-toggle-bars i:nth-child(1) { top: 0; }
+.site-header .nav-toggle-bars i:nth-child(2) { top: 6px; }
+.site-header .nav-toggle-bars i:nth-child(3) { top: 12px; }
+.site-header .nav-toggle[aria-expanded="true"] .nav-toggle-bars i:nth-child(1) { top: 6px; transform: rotate(45deg); }
+.site-header .nav-toggle[aria-expanded="true"] .nav-toggle-bars i:nth-child(2) { opacity: 0; }
+.site-header .nav-toggle[aria-expanded="true"] .nav-toggle-bars i:nth-child(3) { top: 6px; transform: rotate(-45deg); }
+.site-header .nav-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+@media (max-width: 999px) {
+  .site-header .main-nav { display: none !important; }
+  .site-header .nav-toggle { display: inline-flex !important; }
+  body { padding-top: 112px !important; }
+  body.menu-open { overflow: hidden; }
+  body.menu-open .site-header .main-nav {
+    /* absolute, not fixed: the header's backdrop-filter makes it the
+       containing block for fixed descendants, so fixed collapsed to 0px */
+    display: block !important; position: absolute !important;
+    left: 0; right: 0; top: 100%;
+    height: calc(100vh - var(--aap-header-h, 76px));
+    height: calc(100dvh - var(--aap-header-h, 76px));
+    margin: 0; padding: 0.5rem 24px 3rem; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    background: var(--parchment-warm, #F7EFD9); border-top: 1px solid rgba(45, 42, 38, 0.10);
+    z-index: 998;
+  }
+  body.menu-open .site-header .main-nav > ul { flex-direction: column; align-items: stretch; gap: 0 !important; padding: 0; }
+  body.menu-open .site-header .main-nav > ul > li { border-bottom: 1px solid rgba(45, 42, 38, 0.08); }
+  body.menu-open .site-header .main-nav > ul > li > a {
+    display: flex !important; align-items: center; min-height: 56px;
+    font-size: 0.92rem !important; letter-spacing: 0.14em !important;
+    padding: 0.4rem 0 !important; white-space: normal !important;
+  }
+}
+@media (max-width: 960px) { body { padding-top: 104px !important; } }
+
+/* ---- Wordmark shown again beside the trio — 2026-11-03 (Adi: "insert the
+   title: THE ANIMIST APOTHECARY as the header at the top of the page") ---- */
+.site-header .logo { gap: 14px !important; }
+.site-header .logo-text {
+  display: inline-block !important;
+  font-family: 'Cinzel', 'Cormorant SC', serif !important;
+  font-size: 1.02rem !important; letter-spacing: 0.3em !important;
+  text-transform: uppercase !important; font-weight: 500 !important;
+  color: var(--bark) !important; line-height: 1.1 !important; white-space: nowrap;
+}
+.site-header .logo-text em,
+.site-header .logo-accent { display: inline !important; font-style: normal !important; color: var(--bark) !important; }
+@media (max-width: 1200px) { .site-header .logo-text { font-size: 0.9rem !important; letter-spacing: 0.24em !important; } }
+@media (max-width: 999px)  { .site-header .logo { gap: 10px !important; } .site-header .logo-text { font-size: 0.72rem !important; letter-spacing: 0.16em !important; } }
+@media (max-width: 400px)  { .site-header .logo-text { font-size: 0.6rem !important; letter-spacing: 0.12em !important; } }
+
+/* ---- Fit tuning after the 1440 / 375 checks, 2026-11-03 ----
+   Eight labels: the row is allowed to wrap rather than clip, and the
+   type steps down so one line holds from ~1200px up. On phones the
+   header row never wraps; the wordmark shrinks and the "Menu" word
+   gives way to the bars alone under 480px. */
+.site-header .main-nav > ul { flex-wrap: wrap !important; row-gap: 0.15rem; gap: 1.5rem !important; }
+.site-header .main-nav > ul > li > a { font-size: 0.66rem !important; letter-spacing: 0.12em !important; }
+@media (max-width: 1430px) {
+  .site-header .main-nav > ul { gap: 1.2rem !important; }
+  .site-header .main-nav > ul > li > a { font-size: 0.62rem !important; letter-spacing: 0.1em !important; }
+}
+@media (max-width: 1300px) {
+  .site-header .main-nav > ul { gap: 1rem !important; }
+  .site-header .main-nav > ul > li > a { font-size: 0.58rem !important; letter-spacing: 0.08em !important; }
+}
+@media (max-width: 999px) {
+  .site-header .header-inner { flex-wrap: nowrap !important; }
+  .site-header .logo { min-width: 0; flex: 1 1 auto; }
+  .site-header .nav-toggle { flex: 0 0 auto; }
+  .site-header .logo-text { font-size: 0.66rem !important; letter-spacing: 0.14em !important; }
+}
+@media (max-width: 480px) {
+  .site-header .logo-text { font-size: 0.58rem !important; letter-spacing: 0.1em !important; }
+  .site-header .nav-toggle-word { display: none !important; }
+  .site-header .nav-toggle { padding-left: 0; min-width: 44px; justify-content: center; }
+}
+@media (max-width: 360px) {
+  .site-header .header-inner { gap: 12px !important; }
+  .site-header .logo-text { font-size: 0.52rem !important; }
+}

@@ -12,7 +12,8 @@ if (header) {
 
 // ── Active nav link from current page ───────────────
 (function () {
-  const page = location.pathname.split('/').pop() || 'index.html';
+  let page = location.pathname.split('/').pop() || 'index.html';
+  if (page.indexOf('.') === -1) page += '.html'; // hosts that serve clean URLs (Cloudflare Pages)
   document.querySelectorAll('.main-nav > ul > li > a').forEach(a => {
     if (a.getAttribute('href') === page) a.classList.add('nav-active');
   });

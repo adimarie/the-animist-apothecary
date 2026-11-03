@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500&family=Inter:wght@300;400;500&family=Tangerine&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=v32">
-  <link rel="stylesheet" href="css/site-header.css?v=v19">
+  <link rel="stylesheet" href="css/site-header.css?v=v24">
   <link rel="stylesheet" href="css/lux.css?v=1">
   <style>
     body[data-content-page^="offering-"] { background: #FAF8F3; color: var(--ink-deep, #2D2A26); }
@@ -108,17 +108,19 @@
         <img src="images/uploads/logo-mark-trio.png" alt="" class="logo-mark" aria-hidden="true">
         <span class="logo-text">The Animist <em class="logo-accent">Apothecary</em></span></a>
       <div class="header-nav-row">
-      <nav class="main-nav">
-                                                <ul>
+      <nav class="main-nav" id="site-menu" aria-label="Main menu">
+        <ul>
           <li><a href="about.html">About</a></li>
-          <li><a href="ceremonial-coaching.html">Premium Coaching</a></li>
-          <li><a href="kinship-nexus.html">Kinship Nexus</a></li>
-          <li><a href="training-grounds.html">The School</a></li>
-          <li><a href="public-offerings.html">Public Offerings</a></li>
+          <li><a href="sessions.html">Divination &amp; Consultation</a></li>
+          <li><a href="seasons-of-change.html">Spiritual Development</a></li>
+          <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
+          <li><a href="public-offerings.html">Community Offerings</a></li>
+          <li><a href="workshops-and-courses.html">Workshops &amp; Courses</a></li>
           <li><a href="writings.html">Resources</a></li>
+          <li><a href="seasonal-letters.html">Newsletter</a></li>
         </ul>
       </nav>
-      <a href="sessions.html" class="nav-cta apply-btn">Apply</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="nav-toggle-word" aria-hidden="true">Menu</span></button>
       </div>
     </div>
   </header>
@@ -475,5 +477,6 @@
   <script src="js/lux.js" defer></script>
   <script src="js/traffic.js" defer></script>
   <script src="js/announce.js" defer></script>
+  <script src="js/site-menu.js" defer></script>
 </body>
 </html>
