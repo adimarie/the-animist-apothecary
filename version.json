@@ -1,12 +1,12 @@
 {
-  "version": "v261103.06 10:30p",
-  "release": 6,
-  "sha": "b0b5bc53",
-  "fullSha": "b0b5bc5395a35c0f3942c4490e2c9d7c8146eed1",
+  "version": "v261103.07 10:38p",
+  "release": 7,
+  "sha": "f36c7701",
+  "fullSha": "f36c7701e8d7daa0c3763ca7f8d497c126d264bb",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm48cm3",
-  "pushedAt": "2026-11-03T14:29:01-08:00",
-  "commits": [{"sha":"b0b5bc53","message":"Bump the header stylesheet to v28: the CDN cached the old file under v27","author":"Adi Marie"}]
+  "pushedAt": "2026-11-03T14:38:00-08:00",
+  "commits": [{"sha":"f36c7701","message":"Scheduling lives on each offering page; the single booking page retires","author":"Adi Marie"}]
 }
