@@ -1,12 +1,12 @@
 {
-  "version": "v261103.05 10:25p",
-  "release": 5,
-  "sha": "50eb0ebd",
-  "fullSha": "50eb0ebd01bb95d836560ebb3dc98f22fceed5e3",
+  "version": "v261103.06 10:30p",
+  "release": 6,
+  "sha": "b0b5bc53",
+  "fullSha": "b0b5bc5395a35c0f3942c4490e2c9d7c8146eed1",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm48cm3",
-  "pushedAt": "2026-11-03T14:22:41-08:00",
-  "commits": [{"sha":"50eb0ebd","message":"Booking page: Divination books through its Google schedule; audit's no-decision fixes","author":"Adi Marie"}]
+  "pushedAt": "2026-11-03T14:29:01-08:00",
+  "commits": [{"sha":"b0b5bc53","message":"Bump the header stylesheet to v28: the CDN cached the old file under v27","author":"Adi Marie"}]
 }
