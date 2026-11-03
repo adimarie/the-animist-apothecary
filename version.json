@@ -1,12 +1,12 @@
 {
-  "version": "v261103.07 10:38p",
-  "release": 7,
-  "sha": "f36c7701",
-  "fullSha": "f36c7701e8d7daa0c3763ca7f8d497c126d264bb",
+  "version": "v261103.08 10:43p",
+  "release": 8,
+  "sha": "e77dab62",
+  "fullSha": "e77dab62ec77eb4e94fa3e358b1528ddaf0a8a27",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm48cm3",
-  "pushedAt": "2026-11-03T14:38:00-08:00",
-  "commits": [{"sha":"f36c7701","message":"Scheduling lives on each offering page; the single booking page retires","author":"Adi Marie"}]
+  "pushedAt": "2026-11-03T14:41:14-08:00",
+  "commits": [{"sha":"e77dab62","message":"Header refinement: proportionate logo, larger evenly spaced menu type, slimmer bar on scroll","author":"Adi Marie"}]
 }
