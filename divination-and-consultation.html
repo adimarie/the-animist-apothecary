@@ -11,6 +11,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Divination &amp; Consultation &middot; Adi Marie</title>
   <meta name="description" content="Divination and consultation with Adi Marie: Oracular &amp; Elemental Divination (2 hr) and the Intake &amp; Inquiry conversation (90 min), booked directly on her calendar. Sliding scale. Virtual worldwide or in person by arrangement.">
+  <link rel="canonical" href="https://theanimistapothecary.com/divination-and-consultation.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Animist Apothecary">
+  <meta property="og:title" content="Divination &amp; Consultation &middot; Adi Marie">
+  <meta property="og:description" content="Divination and consultation with Adi Marie: Oracular &amp; Elemental Divination (2 hr) and the Intake &amp; Inquiry conversation (90 min), booked directly on her calendar. Sliding scale. Virtual worldwide or in person by arrangement.">
+  <meta property="og:url" content="https://theanimistapothecary.com/divination-and-consultation.html">
+  <meta property="og:image" content="https://theanimistapothecary.com/images/uploads/lounging-hero-green-gold.jpg">
+  <meta property="og:image:width" content="1916">
+  <meta property="og:image:height" content="821">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Divination &amp; Consultation &middot; Adi Marie">
+  <meta name="twitter:description" content="Divination and consultation with Adi Marie: Oracular &amp; Elemental Divination (2 hr) and the Intake &amp; Inquiry conversation (90 min), booked directly on her calendar. Sliding scale. Virtual worldwide or in person by arrangement.">
+  <meta name="twitter:image" content="https://theanimistapothecary.com/images/uploads/lounging-hero-green-gold.jpg">
+  <link rel="preload" as="image" href="images/uploads/lounging-hero-green-gold.jpg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
@@ -591,6 +605,31 @@
       body[data-content-page="sessions"] .sessions-portrait-inner > div {
         margin: 0 auto;
       }
+    }
+    /* Phones: inner-page collapse — the photo becomes a banner and the words sit
+       below it on parchment, so the headline and the door never depend on an
+       overlay or a reveal (Mobile pass, 2026-11-03). */
+    @media (max-width: 640px) {
+      body[data-content-page="sessions"] .sessions-portrait-hero {
+        background-image: url('images/uploads/lounging-hero-green-gold.jpg') !important;
+        background-color: var(--paper, #F7F5F0) !important;
+        background-size: auto 58vw !important;
+        background-position: 72% 0 !important;
+        background-repeat: no-repeat !important;
+        aspect-ratio: auto !important; min-height: 0 !important;
+        padding: 58vw 0 0 !important;
+        display: block !important;
+      }
+      body[data-content-page="sessions"] .sessions-portrait-inner {
+        background: var(--paper, #F7F5F0);
+        padding: 1.5rem 1.25rem 2rem !important; text-align: center !important;
+      }
+      body[data-content-page="sessions"] .sessions-portrait-inner .hero-eyebrow { color: #8F6F2E !important; }
+      body[data-content-page="sessions"] .sessions-portrait-inner .page-hero-title { color: var(--bark, #2D2A26) !important; font-size: 2.15rem !important; line-height: 1.12 !important; text-shadow: none !important; }
+      body[data-content-page="sessions"] .sessions-portrait-inner .page-hero-title em { color: #A8842F !important; }
+      body[data-content-page="sessions"] .sessions-portrait-inner .page-hero-subtitle { color: var(--ink-soft, #3D3A36) !important; text-shadow: none !important; }
+      body[data-content-page="sessions"] .sessions-portrait-inner .hero-eyebrow { text-shadow: none !important; }
+      body[data-content-page="sessions"] .sessions-hero-door { display: block; width: 100%; max-width: 360px; margin: 1.2rem auto 0; text-align: center; background: var(--bark, #2D2A26); color: var(--paper, #F7F5F0); }
     }
 
     /* ============================================================
