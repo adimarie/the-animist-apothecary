@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,2782,t=>{"use strict";var e=t.i(18566),c=t.i(71645);t.s(["default",0,function(){let t=(0,e.useRouter)();return(0,c.useEffect)(()=>{t.replace("/intranet/participants/contacts")},[t]),null}])}]);

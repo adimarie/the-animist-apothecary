@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,42232,e=>{"use strict";var t=e.i(18566),n=e.i(71645);e.s(["default",0,function(){let e=(0,t.useRouter)();return(0,n.useEffect)(()=>{e.replace("/intranet/personal/notion")},[e]),null}])}]);
