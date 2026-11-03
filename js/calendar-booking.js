@@ -497,6 +497,8 @@
       '<div class="aap-bk-sched-frame"><iframe title="' + esc(sel.service.name) +
       ' — choose a time" src="' + esc(url) + '" loading="lazy"></iframe></div>' +
       "</div>" +
+      '<p class="aap-bk-quiet aap-bk-center aap-bk-sched-fallback">If the calendar does not appear, <a href="' + esc(url) +
+      '" target="_blank" rel="noopener">open the booking page in a new tab &rarr;</a></p>' +
       (pills
         ? '<div class="aap-bk-sched-pay">' +
           '<p class="aap-bk-pay-label">Then complete your reciprocity</p>' +
@@ -859,6 +861,7 @@
       ".aap-bk-sched-bar-name{margin-left:auto;font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;color:var(--bk-quiet,#5A554C);}",
       ".aap-bk-sched-frame{position:relative;width:100%;background:#fff;}",
       ".aap-bk-sched-frame iframe{width:100%;height:680px;border:0;display:block;}",
+      ".aap-bk-sched-fallback{margin:.7rem 0 0;font-size:.92rem;}",
       ".aap-bk-sched-pay{margin-top:30px;padding-top:26px;border-top:1px solid var(--bk-line);}",
       ".aap-bk-sched-payintro{margin:0 0 16px;}",
       ".aap-bk-tier--link{text-decoration:none;}",

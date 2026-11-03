@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book a Session &middot; Adi Marie</title>
-  <meta name="description" content="Book a session directly with Adi Marie. One-on-one virtual sessions: Intake &amp; Inquiry and Guidance &amp; Counsel (90 min), and Oracular &amp; Elemental Divination (2 hr). Sliding scale. Virtual worldwide or in person by arrangement.">
+  <meta name="description" content="Book a session directly with Adi Marie. One-on-one virtual sessions: Intake &amp; Inquiry, Guidance &amp; Counsel and Integration &amp; Aftercare (90 min), and Oracular &amp; Elemental Divination (2 hr). Sliding scale. Virtual worldwide or in person by arrangement.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
@@ -580,7 +580,7 @@
     @media (max-width: 900px) {
       body[data-content-page="sessions"] .sessions-portrait-hero {
         min-height: 60vh !important;
-        background-image: linear-gradient(180deg, rgba(28,22,16,0.4) 0%, rgba(28,22,16,0.75) 60%, rgba(28,22,16,0.92) 100%), url('images/uploads/lounging-hero-green-gold.png') !important;
+        background-image: linear-gradient(180deg, rgba(28,22,16,0.4) 0%, rgba(28,22,16,0.75) 60%, rgba(28,22,16,0.92) 100%), url('images/uploads/lounging-hero-green-gold.jpg') !important;
         background-position: center 30% !important;
         align-items: flex-end !important;
       }
@@ -1830,6 +1830,8 @@
     .sessions-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem; padding: 1.4rem 1.5rem; background: #F7F5F0; border-bottom: 1px solid rgba(201,168,76,0.18); }
     .sessions-pills a { font-family: 'Cormorant SC', 'Cinzel', serif; font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: #6b5b33; text-decoration: none; padding: 0.55rem 1.15rem; border: 1px solid rgba(143,111,46,0.35); border-radius: 999px; transition: all 0.25s; background: transparent; }
     .sessions-pills a:hover { background: #2D2A26; border-color: #2D2A26; color: #F5F3ED; }
+    .sessions-pills a, .aap-bk-tier--link { min-height: 44px; box-sizing: border-box; }
+    .sessions-pills a { display: inline-flex; align-items: center; }
     /* legibility: deep gold on light grounds */
     body[data-content-page="sessions"] .section-label { color: #8F6F2E !important; }
     body[data-content-page="sessions"] .recip-eyebrow { font-weight: 600; }
@@ -1868,7 +1870,7 @@
   <!-- =============================================================
        HERO
        ============================================================= -->
-  <section class="page-hero sessions-portrait-hero" style="background-image: linear-gradient(100deg, rgba(28,22,16,0.78) 0%, rgba(28,22,16,0.55) 38%, rgba(28,22,16,0.15) 60%, rgba(28,22,16,0) 80%), url('images/uploads/lounging-hero-green-gold.png'); background-position: right center; background-size: cover; padding-top: 1.5rem; padding-bottom: 1.5rem; aspect-ratio: 21 / 9; min-height: 540px; display: flex; align-items: center;">
+  <section class="page-hero sessions-portrait-hero" style="background-image: linear-gradient(100deg, rgba(28,22,16,0.78) 0%, rgba(28,22,16,0.55) 38%, rgba(28,22,16,0.15) 60%, rgba(28,22,16,0) 80%), url('images/uploads/lounging-hero-green-gold.jpg'); background-position: right center; background-size: cover; padding-top: 1.5rem; padding-bottom: 1.5rem; aspect-ratio: 21 / 9; min-height: 540px; display: flex; align-items: center;">
     <div class="hero-inner sessions-portrait-inner" style="text-align: left; max-width: 1280px; width: 100%; margin: 0 auto; padding: 0 4rem;">
       <div style="max-width: 520px;">
         <p class="hero-eyebrow" style="color: var(--gold-pale, #DBC079);">The Sessions</p>
@@ -1891,7 +1893,7 @@
 
   <section class="sessions-intro">
     <h2>A place where anyone can <em>begin</em>.</h2>
-    <p>The one-on-one sessions open here directly. Choose the one that fits, find an open hour, and offer your reciprocity &mdash; all in one place, just below. The Intake &amp; Inquiry is the Conversation &mdash; the threshold every deeper path shares.</p>
+    <p>The one-on-one sessions open here directly, just below. The Intake &amp; Inquiry is the Conversation &mdash; the threshold every deeper path shares.</p>
     <p>The deeper paths ask differently. Seasons of Change, the Metamorphic Year, ceremony commissions, community engagements. These are carefully curated and intentionally tended fields, entered through acquaintance. <a href="intake.html">Begin one here &rarr;</a></p>
   </section>
 
@@ -1964,11 +1966,10 @@
         }
       </style>
 
-      <!-- In-house booking calendar (js/calendar-booking.js) — all five 1:1 sessions; each option shown as an image card -->
+      <!-- Booking widget (js/calendar-booking.js): four 1:1 sessions, each booked through its Google appointment schedule (window.AAP_SCHEDULERS); each option shown as an image card -->
       <div id="booking-calendar"
            data-services="divination,intake-inquiry,guidance-counsel,integration-aftercare"
            data-category-label="One-on-One Virtual Sessions"
-           data-sliding-scale="700,550,450,350"
            data-card-layout="wide"
            data-coming-soon=""
            data-venmo="TheAnimistApothecary"></div>
@@ -2249,7 +2250,7 @@
       <p class="newsletter-trust">
         <span>Held with care, never shared.</span>
         <span aria-hidden="true"> &middot; </span>
-        <a href="sessions.html">For ceremony or private work, begin with an Intake &amp; Inquiry Call</a> &rarr;
+        <a href="#schedule">For ceremony or private work, begin with an Intake &amp; Inquiry Call</a> &rarr;
       </p>
 
       <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></div>
@@ -2325,10 +2326,12 @@
   -->
   <script>
     var AAP_CALLS_SCHEDULE = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3dyFbMlqfjfF4pWZK_2y_ofqVJe5gbom-16JgdkZsRBDdn4o0_swhsNgDDemWzSlZ68mTzsEym?gv=true";
+    var AAP_DIVINATION_SCHEDULE = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2JoEwPYwIPrTDoHGYGUdWVwXMukInHNzQAkD9A6ryF5kJVMgkfzcpUpzfPUfTaL_hIVtxPcRSE?gv=true";
     window.AAP_SCHEDULERS = {
       "intake-inquiry":        AAP_CALLS_SCHEDULE,
       "guidance-counsel":      AAP_CALLS_SCHEDULE,
-      "integration-aftercare": AAP_CALLS_SCHEDULE
+      "integration-aftercare": AAP_CALLS_SCHEDULE,
+      "divination":            AAP_DIVINATION_SCHEDULE
     };
   </script>
   <script src="js/calendar-booking.js" defer></script>
