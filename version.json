@@ -1,12 +1,12 @@
 {
-  "version": "v261103.02 4:40p",
-  "release": 2,
-  "sha": "3a82b308",
-  "fullSha": "3a82b308b50b41f779c6c23f8ea8acf38a840f45",
+  "version": "v261103.03 9:42p",
+  "release": 3,
+  "sha": "9fd7bf5a",
+  "fullSha": "9fd7bf5ae6d702ab6e2c993664694523c77fdbff",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm48cm3",
-  "pushedAt": "2026-11-03T08:37:06-08:00",
-  "commits": [{"sha":"47149dd8","message":"Publish the participant portal and the join page","author":"Adi Marie"},{"sha":"26e45925","message":"Split intake: /intake becomes a short gated inquiry note","author":"Adi Marie"},{"sha":"3a82b308","message":"Add a clean, hardened build for Cloudflare Pages","author":"Adi Marie"}]
+  "machine": "ip-10-0-128-110",
+  "pushedAt": "2026-11-03T13:38:29-08:00",
+  "commits": [{"sha":"9fd7bf5a","message":"Restructure the site menu: eight destinations on every page, phone menu, no Apply button","author":"Adi Marie"}]
 }
