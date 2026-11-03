@@ -2059,7 +2059,7 @@ em, i { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var
 .hero-image {
   position: absolute;
   inset: 0;
-  background: url('images/uploads/hero-tree-of-life.jpg') center 60%/cover no-repeat;
+  background: url('../images/uploads/hero-tree-of-life.jpg') center 60%/cover no-repeat;
   z-index: 1;
 }
 .hero-image::after {
