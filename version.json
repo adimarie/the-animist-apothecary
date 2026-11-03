@@ -1,12 +1,12 @@
 {
-  "version": "v261103.04 10:16p",
-  "release": 4,
-  "sha": "37a08412",
-  "fullSha": "37a0841228f22aa9e205ccb0584de1afeee032eb",
+  "version": "v261103.05 10:25p",
+  "release": 5,
+  "sha": "50eb0ebd",
+  "fullSha": "50eb0ebd01bb95d836560ebb3dc98f22fceed5e3",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-03T14:15:19-08:00",
-  "commits": [{"sha":"37a08412","message":"Header: single line with the tall trio logo, no wordmark; Menu toggle below 1200px","author":"Adi Marie"}]
+  "machine": "runnervm48cm3",
+  "pushedAt": "2026-11-03T14:22:41-08:00",
+  "commits": [{"sha":"50eb0ebd","message":"Booking page: Divination books through its Google schedule; audit's no-decision fixes","author":"Adi Marie"}]
 }
