@@ -1,12 +1,12 @@
 {
-  "version": "v261103.08 10:43p",
-  "release": 8,
-  "sha": "e77dab62",
-  "fullSha": "e77dab62ec77eb4e94fa3e358b1528ddaf0a8a27",
+  "version": "v261103.09 10:54p",
+  "release": 9,
+  "sha": "0d089a87",
+  "fullSha": "0d089a87c9fc4113a7186cc3ef24044cd63dcd94",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm48cm3",
-  "pushedAt": "2026-11-03T14:41:14-08:00",
-  "commits": [{"sha":"e77dab62","message":"Header refinement: proportionate logo, larger evenly spaced menu type, slimmer bar on scroll","author":"Adi Marie"}]
+  "pushedAt": "2026-11-03T14:53:03-08:00",
+  "commits": [{"sha":"0d089a87","message":"Divination & Consultation: phone hero collapse, canonical and social cards","author":"Adi Marie"}]
 }
