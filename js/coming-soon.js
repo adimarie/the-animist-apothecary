@@ -45,9 +45,12 @@
     var style = document.createElement("style");
     style.textContent =
       "#aap-coming-soon{position:fixed;inset:0;z-index:2147483600;display:flex;align-items:center;justify-content:center;" +
-      "padding:2rem 1.25rem;background:rgba(247,245,240,0.975);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);" +
+      "padding:2rem 1.25rem;background-color:#F7F5F0;" +
+      "background-image:linear-gradient(rgba(247,245,240,0.76),rgba(247,245,240,0.76)),url('/images/uploads/veil-forest-path.jpg');" +
+      "background-size:cover;background-position:center;background-repeat:no-repeat;" +
       "font-family:'Cormorant Garamond',Georgia,serif;color:#2D2A26;text-align:center;overflow:auto;-webkit-overflow-scrolling:touch;}" +
-      "#aap-coming-soon .acs-inner{max-width:620px;width:100%;margin:auto;}" +
+      "#aap-coming-soon .acs-inner{max-width:620px;width:100%;margin:auto;padding:2.2rem 1.5rem;border-radius:4px;" +
+      "background:radial-gradient(ellipse at center,rgba(247,245,240,0.72) 0%,rgba(247,245,240,0.5) 55%,rgba(247,245,240,0) 100%);}" +
       "#aap-coming-soon .acs-mark{font-size:1.7rem;line-height:1;color:#C9A84C;margin-bottom:1.5rem;}" +
       "#aap-coming-soon .acs-eyebrow{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:#C9A84C;display:block;margin-bottom:1.7rem;font-weight:600;}" +
       "#aap-coming-soon .acs-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(2rem,5vw,3rem);line-height:1.12;margin:0 0 1rem;color:#2D2A26;}" +
