@@ -1,35 +1,39 @@
 /*
-  coming-soon.js — "under construction" veil for every page except Home.
+  coming-soon.js — the veil: every page except Home shows the "still being
+  woven" notice with a form to join the email list (newsletters and
+  announcements). The form posts to the same intranet RPC as the Home signup
+  (contact_upsert_public, tag "Newsletter"), so every signup lands in
+  Contacts > Newsletter.
 
-  v3 (2026-11-04, look and words of v2 restored the same day at Adi's ask): Adi's call — while the site is rebuilt room by room, every
-  page other than the home page shows an under-construction notice with a
-  form to join the email list (newsletters and announcements). The form posts
-  to the same intranet RPC as the Home signup (contact_upsert_public, tag
-  "Newsletter"), so every signup lands in Contacts > Newsletter.
-
-  LIVE below is the only allowlist now (the intranet Site → Pages list is no
-  longer consulted). To open a page, add its file name to LIVE and bump the
+  v4 (2026-11-04): path-aware. Only "/" and "/index.html" are Home; pages in
+  sub-folders (letters/, portal/, _drafts/, admin/ …) are veiled like the rest,
+  and the script is loaded by absolute path (/js/coming-soon.js) so it works
+  from any folder. LIVE below is the only allowlist (the intranet Site → Pages
+  list is not consulted). To open a page, add its path to LIVE and bump the
   ?v= on every page's script tag.
 
-  Dev / preview bypass: visit any page once with ?preview=1 and the veil stays
-  hidden for this browser until ?preview=0.
+  Preview: add ?veil=off to any address to hide the veil for THIS TAB only
+  (sessionStorage; closing the tab restores it). ?veil=on restores it at once.
+  The old ?preview=1 bypass was sticky per browser and is retired: any stored
+  flag from it is cleared here so no browser stays veil-less by accident.
 */
 (function () {
   var LIVE = [
-    "", "index.html",
-    "intake.html", "immersion-intake.html"   // participant intake notes already in use (phrase-gated / linked from invitations)
+    "/", "/index.html",
+    "/intake.html", "/immersion-intake.html"   // participant intake notes already in use (phrase-gated / linked from invitations)
   ];
-  var file = (location.pathname.split("/").pop() || "").toLowerCase();
-  if (file && file.indexOf(".") === -1) file += ".html";
-  if (LIVE.indexOf(file) !== -1) return;
+  var path = (location.pathname || "/").toLowerCase();
+  var last = path.split("/").pop();
+  if (last && last.indexOf(".") === -1) path += ".html";       // clean URLs: /about -> /about.html
+  if (LIVE.indexOf(path) !== -1) return;
+  var file = last || "index";                                    // for the signup note
 
+  try { localStorage.removeItem("aap-preview"); } catch (e) {}  // retire the old sticky bypass
   try {
     var qs = new URLSearchParams(location.search);
-    if (qs.has("preview")) {
-      if (qs.get("preview") === "0") localStorage.removeItem("aap-preview");
-      else localStorage.setItem("aap-preview", "1");
-    }
-    if (localStorage.getItem("aap-preview") === "1") return;
+    if (qs.get("veil") === "off") sessionStorage.setItem("aap-veil-off", "1");
+    if (qs.get("veil") === "on") sessionStorage.removeItem("aap-veil-off");
+    if (sessionStorage.getItem("aap-veil-off") === "1") return;
   } catch (e) {}
 
   var INTRANET_URL = "https://twmwqfmmfuwxvzkrwnui.supabase.co";
@@ -100,7 +104,7 @@
       "</form>" +
       '<p class="acs-status" id="acs-status" aria-live="polite"></p>' +
       '<p class="acs-trust">No spam, ever. Unsubscribe any time.</p>' +
-      '<a class="acs-home" href="index.html">Return to the home page</a>' +
+      '<a class="acs-home" href="/">Return to the home page</a>' +
       "</div>";
     document.body.appendChild(ov);
     document.documentElement.style.overflow = "hidden";
@@ -119,8 +123,8 @@
         first_name: String(fd.get("first_name") || "").trim(),
         last_name: String(fd.get("last_name") || "").trim(),
         referred_by: String(fd.get("referral_source") || "").trim(),
-        notes: "Joined from the under-construction notice on " + (file || "the site"),
-        source_list: "under-construction:" + (file ? file.replace(/\.html$/, "") : "unknown"),
+        notes: "Joined from the veil on " + path,
+        source_list: "veil:" + path.replace(/^\//, "").replace(/\.html$/, "").replace(/\/$/, "") || "veil",
         tags: ["Newsletter"],
         is_subscribed: true
       };
