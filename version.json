@@ -1,12 +1,12 @@
 {
-  "version": "v261103.09 10:54p",
-  "release": 9,
-  "sha": "0d089a87",
-  "fullSha": "0d089a87c9fc4113a7186cc3ef24044cd63dcd94",
+  "version": "v261104.01 1:33a",
+  "release": 1,
+  "sha": "a6f80efd",
+  "fullSha": "a6f80efdba3930ba3bfc033c896de5c0733af933",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm48cm3",
-  "pushedAt": "2026-11-03T14:53:03-08:00",
-  "commits": [{"sha":"0d089a87","message":"Divination & Consultation: phone hero collapse, canonical and social cards","author":"Adi Marie"}]
+  "pushedAt": "2026-11-03T17:32:51-08:00",
+  "commits": [{"sha":"a6f80efd","message":"Divination & Consultation: \"Begin one here\" opens the Intake card; widget cards addressable by #book-<slug>","author":"Adi Marie"}]
 }
