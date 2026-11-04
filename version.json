@@ -1,12 +1,12 @@
 {
-  "version": "v261104.02 11:23p",
-  "release": 2,
-  "sha": "b1fde15f",
-  "fullSha": "b1fde15ff5c272db63382eede6353393eb0f9929",
+  "version": "v261104.03 11:27p",
+  "release": 3,
+  "sha": "1475a2b9",
+  "fullSha": "1475a2b98fadd12d4b8e0ca5677a4a912264c6e1",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-04T15:22:44-08:00",
-  "commits": [{"sha":"b1fde15f","message":"Under construction: every page except Home shows the notice with a join-the-list form","author":"Adi Marie"}]
+  "pushedAt": "2026-11-04T15:26:57-08:00",
+  "commits": [{"sha":"1475a2b9","message":"Veil wording: \"This page is still in gestation\" / \"Still being woven · Room by room\"","author":"Adi Marie"}]
 }
