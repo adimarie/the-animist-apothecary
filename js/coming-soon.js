@@ -72,13 +72,13 @@
     var ov = document.createElement("div");
     ov.id = "aap-coming-soon";
     ov.setAttribute("role", "dialog");
-    ov.setAttribute("aria-label", "This page is under construction");
+    ov.setAttribute("aria-label", "This page is still in gestation");
     ov.innerHTML =
       '<div class="acs-inner">' +
       '<div class="acs-mark">❧</div>' +
       '<span class="acs-eyebrow">The Animist Apothecary</span>' +
-      '<h1 class="acs-title">This page is <em>under construction</em>.</h1>' +
-      '<p class="acs-sub">The site is being rebuilt, room by room</p>' +
+      '<h1 class="acs-title">This page is still in <em>gestation</em>.</h1>' +
+      '<p class="acs-sub">Still being woven &middot; Room by room</p>' +
       '<p class="acs-lead">Leave your name and email to join the list. Newsletters and announcements will reach you as each door opens.</p>' +
       '<form id="acs-form" novalidate>' +
       '<div class="acs-names">' +
