@@ -1,12 +1,12 @@
 {
-  "version": "v261104.05 11:44p",
-  "release": 5,
-  "sha": "5a9dd4f5",
-  "fullSha": "5a9dd4f5fdb4dfe94310b569f41aef295beff7aa",
+  "version": "v261104.06 11:52p",
+  "release": 6,
+  "sha": "d4e74ef6",
+  "fullSha": "d4e74ef65962129496b6bd4c0a85716024fad9dc",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-04T15:44:24-08:00",
-  "commits": [{"sha":"5a9dd4f5","message":"Veil on every page but Home: sub-folder pages tagged (absolute path), path-aware Home check, sticky preview bypass retired","author":"Adi Marie"}]
+  "pushedAt": "2026-11-04T15:51:44-08:00",
+  "commits": [{"sha":"d4e74ef6","message":"Veil form: same fields as the Home signup (Zip Code, Tell us more), same labels and trust line","author":"Adi Marie"}]
 }
