@@ -71,13 +71,37 @@
     sel.viewMonth = now.getMonth();
     renderLoading();
     loadCatalog()
-      .then(function () { render(); })
+      .then(function () {
+        render();
+        openFromHash();
+        window.addEventListener("hashchange", openFromHash);
+      })
       .catch(function (err) {
         renderFatal(
           "The booking calendar couldn't load right now. Please refresh, or write to Adi at hello@theanimistapothecary.com.",
           err
         );
       });
+  }
+
+  // A link such as #book-intake-inquiry opens that card (same page or from elsewhere).
+  function openFromHash() {
+    var m = /^#book-([a-z0-9-]+)$/.exec(location.hash || "");
+    if (!m) return;
+    var s = catalog.find(function (x) { return x.slug === m[1]; });
+    if (!s) return;
+    var changed = !sel.service || sel.service.id !== s.id;
+    sel.service = s;
+    if (changed) { sel.dayKey = null; sel.slot = null; sel.tier = null; }
+    sel._scroll = false;
+    render();
+    paintMonthGrid();
+    var card = document.getElementById("book-" + s.slug);
+    if (card) {
+      var header = document.querySelector(".site-header");
+      var offset = (header ? header.offsetHeight : 90) + 16;
+      window.scrollTo({ top: card.getBoundingClientRect().top + window.scrollY - offset, behavior: "smooth" });
+    }
   }
 
   function readConfig(el) {
@@ -255,7 +279,7 @@
         (range ? '<span class="aap-bk-offering-price">' + range + "</span>" : "");
       if (wide) {
         body +=
-          '<button type="button" class="aap-bk-offering aap-bk-offering--wide' + (on ? " is-on" : "") +
+          '<button type="button" id="book-' + esc(s.slug) + '" class="aap-bk-offering aap-bk-offering--wide' + (on ? " is-on" : "") +
           '" data-svc="' + esc(s.slug) + '">' +
           '<span class="aap-bk-offering-media" aria-hidden="true"></span>' +
           '<span class="aap-bk-offering-body">' + inner +
@@ -263,7 +287,7 @@
           "</button>";
       } else {
         body +=
-          '<button type="button" class="aap-bk-offering' + (on ? " is-on" : "") +
+          '<button type="button" id="book-' + esc(s.slug) + '" class="aap-bk-offering' + (on ? " is-on" : "") +
           '" data-svc="' + esc(s.slug) + '">' + inner + "</button>";
       }
     });

@@ -25,6 +25,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const id = a.getAttribute('href').slice(1);
     const target = document.getElementById(id);
     if (!target) return;
+    // Links into the booking widget (#book-<slug>) change the hash so the widget opens that card.
+    if (target.closest('#booking-calendar')) return;
     e.preventDefault();
     const top = target.getBoundingClientRect().top + scrollY - 90;
     window.scrollTo({ top, behavior: 'smooth' });
