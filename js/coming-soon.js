@@ -86,10 +86,11 @@
       '<p class="acs-lead">In the meantime, leave your name and email to join the list &mdash; newsletters and announcements will reach you as each door opens.</p>' +
       '<form id="acs-form" novalidate>' +
       '<div class="acs-names">' +
-      '<input type="text" name="first_name" placeholder="First name" required autocomplete="given-name" aria-label="First name">' +
-      '<input type="text" name="last_name" placeholder="Last name" required autocomplete="family-name" aria-label="Last name">' +
+      '<input type="text" name="first_name" placeholder="First Name" required autocomplete="given-name" aria-label="First Name">' +
+      '<input type="text" name="last_name" placeholder="Last Name" required autocomplete="family-name" aria-label="Last Name">' +
       "</div>" +
-      '<input type="email" name="email" placeholder="Email address" required autocomplete="email" aria-label="Email address">' +
+      '<input type="email" name="email" placeholder="Email Address" required autocomplete="email" aria-label="Email Address">' +
+      '<input type="text" name="zip_code" placeholder="Zip Code" inputmode="numeric" autocomplete="postal-code" maxlength="10" aria-label="Zip Code">' +
       '<select name="referral_source" required aria-label="Where are you coming from?">' +
       '<option value="" disabled selected>Where are you coming from?</option>' +
       '<option value="Gathering">A gathering</option>' +
@@ -100,10 +101,11 @@
       '<option value="Online">Online (social, search)</option>' +
       '<option value="Other">Other</option>' +
       "</select>" +
+      '<input type="text" name="referral_detail" placeholder="Tell us more" aria-label="Tell us more" maxlength="200">' +
       '<button type="submit" class="acs-btn">Join the list</button>' +
       "</form>" +
       '<p class="acs-status" id="acs-status" aria-live="polite"></p>' +
-      '<p class="acs-trust">No spam, ever. Unsubscribe any time.</p>' +
+      '<p class="acs-trust">Held with care, never shared.</p>' +
       '<a class="acs-home" href="/">Return to the home page</a>' +
       "</div>";
     document.body.appendChild(ov);
@@ -122,8 +124,9 @@
         email: String(fd.get("email") || "").trim().toLowerCase(),
         first_name: String(fd.get("first_name") || "").trim(),
         last_name: String(fd.get("last_name") || "").trim(),
+        zip: String(fd.get("zip_code") || "").trim(),
         referred_by: String(fd.get("referral_source") || "").trim(),
-        notes: "Joined from the veil on " + path,
+        notes: [String(fd.get("referral_source") || "").trim(), String(fd.get("referral_detail") || "").trim()].filter(Boolean).join(" — "),
         source_list: "veil:" + path.replace(/^\//, "").replace(/\.html$/, "").replace(/\/$/, "") || "veil",
         tags: ["Newsletter"],
         is_subscribed: true
