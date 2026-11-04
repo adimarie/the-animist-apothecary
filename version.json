@@ -1,12 +1,12 @@
 {
-  "version": "v261104.04 11:29p",
-  "release": 4,
-  "sha": "01592afe",
-  "fullSha": "01592afe1ad5137fe18e784774b7bf6af1e0bbef",
+  "version": "v261104.05 11:44p",
+  "release": 5,
+  "sha": "5a9dd4f5",
+  "fullSha": "5a9dd4f5fdb4dfe94310b569f41aef295beff7aa",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm48cm3",
-  "pushedAt": "2026-11-04T15:29:08-08:00",
-  "commits": [{"sha":"01592afe","message":"Veil: restore the July notice (\"This part of the site is still being woven.\"), form beneath it","author":"Adi Marie"}]
+  "machine": "runnervm7aw5e",
+  "pushedAt": "2026-11-04T15:44:24-08:00",
+  "commits": [{"sha":"5a9dd4f5","message":"Veil on every page but Home: sub-folder pages tagged (absolute path), path-aware Home check, sticky preview bypass retired","author":"Adi Marie"}]
 }
