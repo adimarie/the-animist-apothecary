@@ -1,12 +1,12 @@
 {
-  "version": "v261104.01 1:33a",
-  "release": 1,
-  "sha": "a6f80efd",
-  "fullSha": "a6f80efdba3930ba3bfc033c896de5c0733af933",
+  "version": "v261104.02 11:23p",
+  "release": 2,
+  "sha": "b1fde15f",
+  "fullSha": "b1fde15ff5c272db63382eede6353393eb0f9929",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm48cm3",
-  "pushedAt": "2026-11-03T17:32:51-08:00",
-  "commits": [{"sha":"a6f80efd","message":"Divination & Consultation: \"Begin one here\" opens the Intake card; widget cards addressable by #book-<slug>","author":"Adi Marie"}]
+  "machine": "runnervm7aw5e",
+  "pushedAt": "2026-11-04T15:22:44-08:00",
+  "commits": [{"sha":"b1fde15f","message":"Under construction: every page except Home shows the notice with a join-the-list form","author":"Adi Marie"}]
 }
