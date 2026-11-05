@@ -1,12 +1,12 @@
 {
-  "version": "v261104.07 11:57p",
-  "release": 7,
-  "sha": "af82a580",
-  "fullSha": "af82a580e4e1e585182525c9deab3df0876abe02",
+  "version": "v261105.01 12:19a",
+  "release": 1,
+  "sha": "d598a3d5",
+  "fullSha": "d598a3d5a65dbe1f2275d6917eb1c43854ca04af",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "ip-10-0-129-232",
-  "pushedAt": "2026-11-04T15:57:03-08:00",
-  "commits": [{"sha":"af82a580","message":"Veil: forest-path photograph beneath a cream wash","author":"Adi Marie"}]
+  "machine": "runnervm7aw5e",
+  "pushedAt": "2026-11-04T16:18:49-08:00",
+  "commits": [{"sha":"d598a3d5","message":"Veil: stronger cream wash and glow behind the words for legibility","author":"Adi Marie"}]
 }
