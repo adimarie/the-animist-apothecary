@@ -46,17 +46,17 @@
     style.textContent =
       "#aap-coming-soon{position:fixed;inset:0;z-index:2147483600;display:flex;align-items:center;justify-content:center;" +
       "padding:2rem 1.25rem;background-color:#F7F5F0;" +
-      "background-image:linear-gradient(rgba(247,245,240,0.76),rgba(247,245,240,0.76)),url('/images/uploads/veil-forest-path.jpg');" +
+      "background-image:linear-gradient(rgba(247,245,240,0.86),rgba(247,245,240,0.86)),url('/images/uploads/veil-forest-path.jpg');" +
       "background-size:cover;background-position:center;background-repeat:no-repeat;" +
       "font-family:'Cormorant Garamond',Georgia,serif;color:#2D2A26;text-align:center;overflow:auto;-webkit-overflow-scrolling:touch;}" +
       "#aap-coming-soon .acs-inner{max-width:620px;width:100%;margin:auto;padding:2.2rem 1.5rem;border-radius:4px;" +
-      "background:radial-gradient(ellipse at center,rgba(247,245,240,0.72) 0%,rgba(247,245,240,0.5) 55%,rgba(247,245,240,0) 100%);}" +
+      "background:radial-gradient(ellipse at center,rgba(247,245,240,0.92) 0%,rgba(247,245,240,0.78) 60%,rgba(247,245,240,0.2) 100%);}" +
       "#aap-coming-soon .acs-mark{font-size:1.7rem;line-height:1;color:#C9A84C;margin-bottom:1.5rem;}" +
       "#aap-coming-soon .acs-eyebrow{font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:#C9A84C;display:block;margin-bottom:1.7rem;font-weight:600;}" +
-      "#aap-coming-soon .acs-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(2rem,5vw,3rem);line-height:1.12;margin:0 0 1rem;color:#2D2A26;}" +
+      "#aap-coming-soon .acs-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:clamp(2rem,5vw,3rem);line-height:1.12;margin:0 0 1rem;color:#2D2A26;}" +
       "#aap-coming-soon .acs-title em{font-style:italic;color:#C9A84C;}" +
       "#aap-coming-soon .acs-sub{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:#886039;margin:0 0 2.1rem;}" +
-      "#aap-coming-soon .acs-lead{font-size:1.28rem;line-height:1.7;color:#3a3530;margin:0 auto 2rem;max-width:30em;}" +
+      "#aap-coming-soon .acs-lead{font-size:1.28rem;line-height:1.7;color:#2D2A26;margin:0 auto 2rem;max-width:30em;}" +
       "#aap-coming-soon form{display:grid;gap:0.7rem;text-align:left;max-width:480px;margin:0 auto;}" +
       "#aap-coming-soon .acs-names{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;}" +
       "#aap-coming-soon input,#aap-coming-soon select{width:100%;box-sizing:border-box;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.08rem;color:#2D2A26;background:#fff;border:1px solid #D9D2C5;border-radius:2px;padding:0.8rem 0.95rem;outline:none;-webkit-appearance:none;appearance:none;}" +
