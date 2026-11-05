@@ -1,12 +1,12 @@
 {
-  "version": "v261105.01 12:19a",
-  "release": 1,
-  "sha": "d598a3d5",
-  "fullSha": "d598a3d5a65dbe1f2275d6917eb1c43854ca04af",
+  "version": "v261105.02 12:21a",
+  "release": 2,
+  "sha": "7341c822",
+  "fullSha": "7341c822fa3ec5fd05ccb2b34ba62268f160a8c7",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-04T16:18:49-08:00",
-  "commits": [{"sha":"d598a3d5","message":"Veil: stronger cream wash and glow behind the words for legibility","author":"Adi Marie"}]
+  "machine": "runnervm48cm3",
+  "pushedAt": "2026-11-04T16:20:56-08:00",
+  "commits": [{"sha":"7341c822","message":"Veil: fresh script version so the stronger wash cannot be served stale","author":"Adi Marie"}]
 }
