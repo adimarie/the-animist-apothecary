@@ -1,12 +1,12 @@
 {
-  "version": "v261105.02 12:21a",
-  "release": 2,
-  "sha": "7341c822",
-  "fullSha": "7341c822fa3ec5fd05ccb2b34ba62268f160a8c7",
+  "version": "v261106.01 11:51p",
+  "release": 1,
+  "sha": "80b304fa",
+  "fullSha": "80b304fa11238fffc6522ccc61cabab67ef8215c",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm48cm3",
-  "pushedAt": "2026-11-04T16:20:56-08:00",
-  "commits": [{"sha":"7341c822","message":"Veil: fresh script version so the stronger wash cannot be served stale","author":"Adi Marie"}]
+  "machine": "runnervm7aw5e",
+  "pushedAt": "2026-11-06T15:51:32-08:00",
+  "commits": [{"sha":"80b304fa","message":"Menu: Workshops & Courses opens the Training Grounds page; old hub address redirects","author":"Adi Marie"}]
 }
