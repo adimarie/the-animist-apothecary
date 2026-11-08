@@ -186,3 +186,8 @@
 .dr-chapter-head--inbody { margin: 0 auto 2rem; }
 .dr-prose--inbody { margin-bottom: 2.6rem; }
 .dr-prose--inbody p { text-align: center; font-size: 1.2rem; }
+
+/* ---- cards that the menu lands on sit clear of the header and the sticky index ---- */
+.am-three-card[id], .sub-offering-card[id], .dr-room[id] { scroll-margin-top: 150px; }
+
+.dr-sub[id] { scroll-margin-top: 120px; }

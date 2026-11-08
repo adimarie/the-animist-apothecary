@@ -34,3 +34,19 @@
   window.addEventListener('resize', function () { if (isOpen()) setHeaderHeight(); }, { passive: true });
   window.addEventListener('scroll', function () { if (isOpen()) setHeaderHeight(); }, { passive: true });
 })();
+
+/* Menu links land on anchors deep in long pages. Images above the target can load after the jump
+   and push it down, so once the page has fully loaded we jump again — instantly, never animated. */
+(function () {
+  function rejump() {
+    var h = window.location.hash;
+    if (!h || h.length < 2) return;
+    var el = null;
+    try { el = document.getElementById(decodeURIComponent(h.slice(1))); } catch (e) { el = null; }
+    if (!el) return;
+    var top = el.getBoundingClientRect().top;
+    if (top < 60 || top > 220) el.scrollIntoView({ block: 'start', behavior: 'auto' });
+  }
+  window.addEventListener('load', function () { rejump(); setTimeout(rejump, 700); setTimeout(rejump, 1600); });
+  window.addEventListener('hashchange', function () { setTimeout(rejump, 50); });
+})();
