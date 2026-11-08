@@ -191,3 +191,30 @@
 .am-three-card[id], .sub-offering-card[id], .dr-room[id] { scroll-margin-top: 150px; }
 
 .dr-sub[id] { scroll-margin-top: 120px; }
+
+.dr-agreements { list-style: none; margin: 1.6rem 0 0; padding: 0; }
+.dr-agreements li { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.25rem; line-height: 1.55; color: #2D2A26; padding: 1rem 0; border-top: 1px solid rgba(201,168,76,.35); text-align: center; font-style: italic; }
+.dr-agreements li:last-child { border-bottom: 1px solid rgba(201,168,76,.35); }
+
+/* ---- Gateways: the rooms of a door, as doors (one band under each hero; the drop-down order, made visible) ---- */
+.dr-gates { padding: 3.2rem 1.5rem 3.6rem; background: #F3EDE0; border-bottom: 1px solid rgba(201,168,76,.28); }
+.dr-gates-head { max-width: 760px; margin: 0 auto 2rem; text-align: center; }
+.dr-gates-head .section-label { margin-bottom: .6rem; }
+.dr-gates-head p { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.15rem; line-height: 1.55; color: #5a534a; margin: 0; }
+.dr-gates-grid { display: grid; grid-template-columns: repeat(var(--gates, 3), minmax(0, 1fr)); gap: 1.2rem; max-width: 1240px; margin: 0 auto; }
+.dr-gate { position: relative; display: flex; flex-direction: column; justify-content: flex-end; aspect-ratio: 4 / 5; padding: 1.5rem 1.4rem 1.4rem; background: var(--gate-img) var(--gate-pos, center) / cover no-repeat, #1F1A18; color: #F4EAD3; text-decoration: none; border: 1px solid rgba(201,168,76,.5); box-shadow: 0 16px 40px rgba(31,26,24,.14); overflow: hidden; min-width: 0; }
+.dr-gate::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(var(--gate-tint, 20,16,12), .08) 0%, rgba(var(--gate-tint, 20,16,12), .34) 45%, rgba(var(--gate-tint, 20,16,12), .86) 100%); }
+.dr-gate::after { content: ''; position: absolute; inset: 8px; border: 1px solid rgba(201,168,76,.38); pointer-events: none; }
+.dr-gate > * { position: relative; }
+.dr-gate .dr-gate-num { font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: .3em; text-transform: uppercase; color: #DCC178; margin-bottom: .5rem; }
+.dr-gate .dr-gate-name { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: clamp(1.35rem, 1.7vw, 1.75rem); line-height: 1.12; color: #F7F1E3; margin: 0 0 .45rem; text-wrap: balance; }
+.dr-gate .dr-gate-name em { font-style: italic; color: #E6CE8A; }
+.dr-gate .dr-gate-line { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: .98rem; line-height: 1.45; color: rgba(244,234,211,.85); margin: 0 0 .9rem; }
+.dr-gate .dr-gate-enter { font-family: 'Cinzel', serif; font-size: .6rem; letter-spacing: .24em; text-transform: uppercase; color: #DCC178; border-top: 1px solid rgba(220,193,120,.45); padding-top: .7rem; }
+.dr-gate:hover { border-color: #E6CE8A; }
+.dr-gate:hover .dr-gate-enter { color: #F7F1E3; }
+.dr-gates-grid[style*="--gates: 6"] .dr-gate, .dr-gates-grid[style*="--gates: 5"] .dr-gate { aspect-ratio: 3 / 4; padding: 1.2rem 1.1rem 1.1rem; }
+.dr-gates-grid[style*="--gates: 6"] .dr-gate-name, .dr-gates-grid[style*="--gates: 5"] .dr-gate-name { font-size: clamp(1.1rem, 1.3vw, 1.35rem); }
+.dr-gates-grid[style*="--gates: 6"] .dr-gate-line, .dr-gates-grid[style*="--gates: 5"] .dr-gate-line { display: none; }
+@media (max-width: 1100px) { .dr-gates-grid { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; } .dr-gates-grid[style*="--gates: 4"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+@media (max-width: 640px) { .dr-gates-grid, .dr-gates-grid[style*="--gates: 4"] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: .8rem; } .dr-gates { padding: 2.4rem 1.25rem 2.8rem; } .dr-gate { aspect-ratio: 4 / 5; padding: 1rem .9rem .9rem; } .dr-gate .dr-gate-line { display: none; } .dr-gate .dr-gate-name { font-size: 1.15rem; } }
