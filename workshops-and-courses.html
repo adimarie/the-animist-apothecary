@@ -87,8 +87,12 @@
     .po-final-cta-btn { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.84rem; letter-spacing: 0.26em; text-transform: uppercase; color: #2D2A26; background: var(--gold-pale, #DCC178); padding: 1rem 2.4rem; text-decoration: none; transition: background 0.2s; }
     .po-final-cta-btn:hover { background: #F5F3ED; }
   </style>
+  <link rel="stylesheet" href="css/elevate.css?v=261106">
+  <link rel="stylesheet" href="css/luxe.css?v=261106">
+  <link rel="stylesheet" href="css/worlds.css?v=261106">
+  <link rel="stylesheet" href="css/still.css?v=261106">
 </head>
-<body>
+<body data-world="school">
 
 
   <header class="site-header">
@@ -103,10 +107,10 @@
           <li><a href="divination-and-consultation.html">Divination &amp; Consultation</a></li>
           <li><a href="seasons-of-change.html">Spiritual Development</a></li>
           <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
-          <li><a href="public-offerings.html">Community Offerings</a></li>
-          <li><a href="workshops-and-courses.html">Workshops &amp; Courses</a></li>
-          <li><a href="writings.html">Resources</a></li>
-          <li><a href="seasonal-letters.html">Newsletter</a></li>
+          <li><a href="public-offerings.html">Community</a></li>
+          <li><a href="training-grounds.html#workshops">Training Grounds</a></li>
+          <li><a href="writings.html">Library</a></li>
+          <li><a href="inquiry.html">Begin Here</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="nav-toggle-word" aria-hidden="true">Menu</span></button>
@@ -115,7 +119,8 @@
   </header>
 
   <!-- HERO -->
-  <section class="po-hero">
+  <section class="lx-hero po-hero">
+    <span class="lx-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     <div class="po-hero-image" style="background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=2400&h=1400&fit=crop&q=85');"></div>
     <div class="po-hero-overlay"></div>
     <div class="po-hero-inner">
@@ -141,13 +146,29 @@
       </div>
 
       <!-- DOORWAYS -->
-      <div class="po-doors-head">
+      
+    </div>
+  </section>
+
+  <!-- world: vista (school-vista) -->
+  <section class="wd-vista" data-worlds style="--vista-img:url('/images/worlds/school-vista.jpg');--vista-pos:center 50%">
+    <span class="lx-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="wd-vista-inner">
+      <span class="wd-vista-eyebrow">The School</span>
+      <p class="wd-vista-line">A formation ground for interdimensional intermediaries.</p>
+      <span class="wd-vista-orn" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <section class="po-body">
+    <div class="po-body-inner">
+    <div class="po-doors-head">
         <span class="po-eyebrow-l">The School&rsquo;s Four Doors</span>
         <h2 class="po-h2">Choose your <em>door</em>.</h2>
         <span class="po-rule"></span>
       </div>
       <div class="po-doors">
-        <a class="po-door" href="training-grounds.html">
+        <a class="po-door" href="training-grounds.html#workshops">
           <div class="po-door-img" style="background-image: url('images/uploads/tg-hero-4k.jpg');"></div>
           <div class="po-door-inner">
           <span class="po-door-eyebrow">The School &middot; The Long Program</span>
@@ -161,11 +182,11 @@
           <div class="po-door-inner">
           <span class="po-door-eyebrow">Workshop &middot; Online &middot; Live</span>
           <h2 class="po-door-name">How to <em>Journey</em></h2>
-          <p class="po-door-body">The foundational skills within interdimensional work — a live online evening at the drum, learning to cross into the other worlds and return whole. Tuesday, June 30, 5:00–7:00pm PT. Beginner–Intermediate. Sacred Reciprocity, $35–70 sliding.</p>
+          <p class="po-door-body">The foundational skills within interdimensional work — a live online evening at the drum, learning to cross into the other worlds and return whole. Tuesday, June 30, 5:00–7:00pm PT. Beginner–Intermediate. Sacred Reciprocity, sliding scale.</p>
           <span class="po-door-link">Enter &rarr;</span>
           </div>
         </a>
-        <a class="po-door" href="virtual-gatherings.html">
+        <a class="po-door" href="public-offerings.html#virtual">
           <div class="po-door-img" style="background-image: url('images/uploads/luminous/ceremony-cushions.jpg');"></div>
           <div class="po-door-inner">
           <span class="po-door-eyebrow">Series &middot; Online</span>
@@ -175,7 +196,7 @@
           </div>
         </a>
         <a class="po-door" href="entheo-ecology.html">
-          <div class="po-door-img" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=2400&h=1400&fit=crop&q=85');"></div>
+          <div class="po-door-img" style="background-image: url('images/uploads/pexels-robert-hacker-308724377-32289533.jpg');"></div>
           <div class="po-door-inner">
           <span class="po-door-eyebrow">Seasonal &middot; The Wheel of the Year</span>
           <h2 class="po-door-name">Entheo<em>Ecology</em></h2>
@@ -189,6 +210,18 @@
   </section>
 
   <!-- Interlude -->
+    <!-- world: cluster (school-a+school-b) -->
+  <section class="wd-cluster wd-cluster--pair" data-worlds>
+    <div class="wd-cluster-inner">
+      <div class="wd-cluster-grid">
+        <figure class="wd-fig"><img src="/images/worlds/school-a.jpg" alt="Columns of a vaulted hall, reflected" loading="lazy" decoding="async"></figure>
+        <figure class="wd-fig"><img src="/images/worlds/school-b.jpg" alt="A ruin open to the stars" loading="lazy" decoding="async"></figure>
+      </div>
+      <p class="wd-cluster-line">Each stands alone, and each opens the next.</p>
+      <span class="wd-cluster-orn" aria-hidden="true"></span>
+    </div>
+  </section>
+
   <section class="po-interlude" style="background-image: url('images/uploads/four-paths-labyrinth-fern.jpg');">
     <p>Four ways in, one fire &mdash; every teaching here leads back to the same hearth.</p>
   </section>
@@ -201,6 +234,33 @@
     <a href="divination-and-consultation.html" class="po-final-cta-btn">Schedule the Conversation</a>
   </section>
 
+    <!-- world: continue to -->
+  <section class="wd-doors wd-doors--next" data-worlds data-worlds-next>
+    <div class="wd-doors-head">
+      <span class="wd-doors-eyebrow">The Doorways</span>
+    </div>
+    <div class="wd-doors-grid">
+      <a class="wd-door" href="writings.html" style="--pos:50% 50%">
+        <img class="wd-door-img" src="/images/worlds/library-vista.jpg" alt="A woman tending an altar in the forest" loading="lazy" decoding="async">
+        <span class="wd-door-inner">
+          <span class="wd-door-eyebrow">Resources · Seasonal Letters</span>
+          <span class="wd-door-name" role="heading" aria-level="3">Library</span>
+          <span class="wd-door-line" style="display:block">Tender reflections, sacred teachings, and quiet news from the practice.</span>
+          <span class="wd-door-enter">Enter &rarr;</span>
+        </span>
+      </a>
+      <a class="wd-door" href="writings.html#letters" style="--pos:50% 50%">
+        <img class="wd-door-img" src="/images/worlds/river-a.jpg" alt="A turquoise river winding through forest" loading="lazy" decoding="async">
+        <span class="wd-door-inner">
+          <span class="wd-door-eyebrow">Seasonal Letters</span>
+          <span class="wd-door-name" role="heading" aria-level="3">Seasonal Letters</span>
+          <span class="wd-door-line" style="display:block">A few times a year, when the season turns — field notes from the practice, sent by hand.</span>
+          <span class="wd-door-enter">Enter &rarr;</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -209,29 +269,33 @@
       </div>
       <nav class="footer-nav">
         <div class="footer-col">
-          <h4>The Practice</h4>
+          <h4>The Doors</h4>
           <ul>
-              <li><a href="about.html">About Adi Marie</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="divination-and-consultation.html">Divination &amp; Consultation</a></li>
+            <li><a href="seasons-of-change.html">Spiritual Development</a></li>
+            <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
+            <li><a href="public-offerings.html">Community</a></li>
+            <li><a href="training-grounds.html#workshops">Training Grounds</a></li>
+            <li><a href="writings.html">Library</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>The Work</h4>
+          <h4>Inside</h4>
           <ul>
-            <li><a href="solo-work.html">Virtual Sessions</a></li>
-            <li><a href="group-work.html">Gatherings</a></li>
-            <li><a href="training-grounds.html">The School</a></li>
-            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+            <li><a href="calendar.html">The Wheel</a></li>
+            <li><a href="writings.html#letters">Seasonal Letters</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="about.html#ethics">Ethics &amp; Consent</a></li>
+            <li><a href="about.html#questions">Common Questions</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Begin Here</h4>
           <ul>
-            <li><a href="divination-and-consultation.html">Book / Intake</a></li>
-            <li><a href="inquiry.html">Begin a Conversation</a></li>
-            <li><a href="writings.html">Writings &amp; Letters</a></li>
-            <li><a href="mailto:adimarie@bodyworkandbotanicals.com?subject=A%20Note%20to%20Adi%20Marie">Send a Message</a></li>
+            <li><a href="inquiry.html">Begin Here</a></li>
+            <li><a href="divination-and-consultation.html#schedule">The Conversation</a></li>
+            <li><a href="inquiry.html#note">Write a Note</a></li>
           </ul>
         </div>
       </nav>

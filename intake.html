@@ -81,8 +81,10 @@ h1{font:italic 400 clamp(42px,9.5vw,64px)/1.05 "Cormorant Garamond",Georgia,seri
 #gate .row-gate{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
 #gate input[type=text]{flex:1 1 240px}
 </style>
+  <link rel="stylesheet" href="css/elevate-misc.css?v=261106">
+  <link rel="stylesheet" href="css/still.css?v=261106">
 </head>
-<body>
+<body data-elevate="intake">
 <div class="frame">
   <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
   <header class="mast" aria-hidden="true"><span>The Animist Apothecary</span><span>Autumn 2026</span></header>
@@ -450,7 +452,7 @@ function done(row, silent, preview) {
   $("#thanks").hidden = false;
   $("#thanksBody").textContent = "I read every note by hand and will reply within " + CONFIG.RESPONSE_WINDOW + ".\n" +
     "The next step is a 30-minute Inquiry Conversation, offered on a sliding scale: " +
-    "Accessibility $150 · Community $175 · Abundance $200 · Patron $250. " +
+    "Accessibility · Community · Abundance · Patron. " +
     "Choose the tier that is true for you. A payment link follows your booking.";
   if (CONFIG.BOOKING_URL && !preview) {
     $("#bookLink").href = CONFIG.BOOKING_URL;

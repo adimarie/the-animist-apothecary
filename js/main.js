@@ -3,12 +3,8 @@
    =================================================== */
 
 // ── Header: add .scrolled on scroll ─────────────────
+// 2026-11-06: the site holds still. The header no longer shrinks or changes on scroll.
 const header = document.querySelector('.site-header');
-if (header) {
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 50);
-  }, { passive: true });
-}
 
 // ── Active nav link from current page ───────────────
 (function () {
@@ -29,7 +25,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target.closest('#booking-calendar')) return;
     e.preventDefault();
     const top = target.getBoundingClientRect().top + scrollY - 90;
-    window.scrollTo({ top, behavior: 'smooth' });
+    window.scrollTo({ top, behavior: 'auto' });
   });
 });
 

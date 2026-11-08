@@ -1,0 +1,183 @@
+/* ============================================================
+   worlds.css — each nav page is its own world
+   Divination & Consultation · Spiritual Development · Shamanic Coaching ·
+   Community Offerings · Workshops & Courses · Resources · Newsletter · Home
+   Layered after luxe.css. Presentation only; every line of text on these
+   pages is the page's own. No motion (still.css).
+   Hooks: body[data-world], .wd-vista, .wd-cluster, .wd-doors
+   Images live in /images/worlds/<slot>.jpg: replace a file, keep its name.
+   ============================================================ */
+
+/* ---------- Each world's light ---------- */
+body[data-world] {
+  --w-deep-rgb: 20, 26, 18;  --w-mid-rgb: 29, 38, 26;
+  --w-glow: rgba(201, 168, 76, .14);  --w-wash: rgba(201, 168, 76, .06);
+  --w-deep: rgb(var(--w-deep-rgb));  --w-mid: rgb(var(--w-mid-rgb));
+}
+body[data-world="oracle"]  { --w-deep-rgb: 15, 16, 32; --w-mid-rgb: 26, 27, 56; --w-glow: rgba(160, 150, 235, .17); --w-wash: rgba(140, 130, 220, .06); }
+body[data-world="seasons"] { --w-deep-rgb: 17, 25, 15; --w-mid-rgb: 26, 38, 22; --w-glow: rgba(150, 190, 110, .15); --w-wash: rgba(120, 160, 90, .06); }
+body[data-world="hearth"]  { --w-deep-rgb: 28, 17, 12; --w-mid-rgb: 42, 24, 16; --w-glow: rgba(214, 120, 60, .17); --w-wash: rgba(200, 110, 60, .06); }
+body[data-world="village"] { --w-deep-rgb: 29, 22, 13; --w-mid-rgb: 43, 32, 16; --w-glow: rgba(222, 170, 70, .17); --w-wash: rgba(210, 160, 70, .07); }
+body[data-world="school"]  { --w-deep-rgb: 21, 18, 13; --w-mid-rgb: 35, 29, 20; --w-glow: rgba(230, 200, 130, .16); --w-wash: rgba(190, 160, 100, .07); }
+body[data-world="library"] { --w-deep-rgb: 15, 23, 20; --w-mid-rgb: 24, 37, 33; --w-glow: rgba(130, 190, 160, .14); --w-wash: rgba(110, 170, 140, .06); }
+body[data-world="river"]   { --w-deep-rgb: 11, 25, 27; --w-mid-rgb: 18, 41, 44; --w-glow: rgba(90, 190, 200, .16); --w-wash: rgba(80, 170, 180, .06); }
+
+/* a faint tint of the world's colour across the light sections */
+body[data-world] :is(.offering-body, .po-body, .cc-body, .pg-section, .sessions-intro, .reciprocity-note, .practical-notes, .lib-body, .weekly-circles) {
+  background-image: radial-gradient(ellipse 90% 36% at 50% 0%, var(--w-wash), transparent 70%);
+}
+/* and the dark bands take the world's depth */
+body[data-world] :is(.schedule-section, .offering-final-cta, .po-final-cta, .cc-final-cta, .po-interlude, .writings-interlude) {
+  box-shadow: inset 0 0 220px 40px rgba(var(--w-deep-rgb), .55);
+}
+
+/* ============================================================
+   Vista: a full-bleed threshold of one image and one line
+   ============================================================ */
+.wd-vista {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: clamp(540px, 84vh, 860px);
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: clamp(5.5rem, 9vw, 8rem) clamp(1.4rem, 4vw, 2.5rem);
+  background: var(--w-deep);
+  color: #F4EAD3;
+}
+.wd-vista::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: var(--vista-img) var(--vista-pos, center) / cover no-repeat;
+  filter: saturate(1.04) contrast(1.05);
+}
+.wd-vista::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 56% 52% at 50% 50%, rgba(var(--w-deep-rgb), .66), rgba(var(--w-deep-rgb), 0) 100%),
+    linear-gradient(180deg, rgba(var(--w-deep-rgb), .86) 0%, rgba(var(--w-deep-rgb), .08) 26%, rgba(var(--w-deep-rgb), .16) 64%, rgba(var(--w-deep-rgb), .94) 100%);
+}
+.wd-vista > .lx-frame { z-index: 3 !important; }
+.wd-vista-inner { position: relative; z-index: 2; max-width: 880px; }
+.wd-vista-eyebrow {
+  display: block; margin: 0 0 1.8rem;
+  font-family: 'Cinzel', serif; font-weight: 500; font-size: clamp(.76rem, 1vw, .9rem);
+  letter-spacing: .4em; text-transform: uppercase; color: #F5E4AE;
+  text-shadow: 0 0 18px rgba(0, 0, 0, .85), 0 1px 4px rgba(0, 0, 0, .6);
+}
+.wd-vista-line {
+  margin: 0 auto; max-width: 20ch;
+  font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300;
+  font-size: clamp(2.3rem, 5vw, 4.3rem); line-height: 1.12; letter-spacing: -.01em; text-wrap: balance;
+  color: #F7EFD9; text-shadow: 0 2px 40px rgba(0, 0, 0, .7), 0 0 4px rgba(0, 0, 0, .35);
+}
+.wd-vista-line.is-long { max-width: 26ch; font-size: clamp(2rem, 4.2vw, 3.5rem); }
+.wd-vista-orn {
+  display: block; width: 150px; margin: 2.2rem auto 0; text-align: center;
+  font-size: .5rem; line-height: 8px; color: #E6CE8A;
+  background:
+    linear-gradient(90deg, transparent, #E6CE8A) left center / 56px 1px no-repeat,
+    linear-gradient(90deg, #E6CE8A, transparent) right center / 56px 1px no-repeat;
+}
+.wd-vista-orn::after { content: "\25C6"; }
+
+/* ============================================================
+   Cluster: framed photographs with a single line beneath
+   ============================================================ */
+.wd-cluster {
+  position: relative; text-align: center; overflow: hidden;
+  padding: clamp(5rem, 8vw, 7.5rem) clamp(1.4rem, 4vw, 2.5rem);
+  background: radial-gradient(ellipse at 50% 0%, var(--w-glow), transparent 62%), var(--w-deep);
+  color: #F4EAD3;
+}
+.wd-cluster::before, .wd-cluster::after {
+  content: ""; position: absolute; left: 50%; width: 1px; height: 2.6rem; z-index: 2;
+  background: linear-gradient(180deg, rgba(201, 168, 76, 0), rgba(201, 168, 76, .65));
+}
+.wd-cluster::before { top: 0; transform: translateX(-50%); }
+.wd-cluster::after { bottom: 0; transform: translateX(-50%) rotate(180deg); }
+.wd-cluster-inner { position: relative; max-width: 1120px; margin: 0 auto; }
+.wd-cluster-grid { display: grid; gap: clamp(1rem, 3vw, 2.4rem); align-items: start; }
+.wd-cluster--pair .wd-cluster-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 860px; margin: 0 auto; }
+.wd-cluster--trio .wd-cluster-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.wd-cluster--quad .wd-cluster-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.wd-fig {
+  margin: 0; position: relative; aspect-ratio: 4 / 5; overflow: hidden;
+  outline: 1px solid rgba(201, 168, 76, .42); outline-offset: 8px;
+  box-shadow: 0 26px 54px -22px rgba(0, 0, 0, .72);
+}
+.wd-fig img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); display: block; filter: saturate(.96) contrast(1.03); }
+.wd-cluster-grid > .wd-fig:nth-child(even) { margin-top: 3.2rem; }
+.wd-cluster-line {
+  margin: 4.2rem auto 0; max-width: 24ch;
+  font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300;
+  font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.32; text-wrap: balance;
+  color: #F4EAD3; text-shadow: 0 2px 18px rgba(0, 0, 0, .5);
+}
+.wd-cluster-line.is-long { max-width: 34ch; font-size: clamp(1.5rem, 2.5vw, 2.1rem); }
+.wd-cluster-orn { display: block; width: 150px; margin: 2rem auto 0; text-align: center; font-size: .5rem; line-height: 8px; color: var(--lx-gold, #C9A84C);
+  background: linear-gradient(90deg, transparent, #C9A84C) left center / 56px 1px no-repeat, linear-gradient(90deg, #C9A84C, transparent) right center / 56px 1px no-repeat; }
+.wd-cluster-orn::after { content: "\25C6"; }
+
+/* ============================================================
+   Doors (home): the worlds, as a field of thresholds
+   ============================================================ */
+.wd-doors {
+  position: relative; text-align: center; color: #F4EAD3;
+  padding: clamp(5rem, 8vw, 8rem) clamp(1rem, 3vw, 2.5rem);
+  background: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(201, 168, 76, .12), transparent 62%), #141A12;
+}
+.wd-doors-head { max-width: 760px; margin: 0 auto clamp(2.6rem, 5vw, 4.2rem); }
+.wd-doors-eyebrow { display: inline-flex; align-items: center; gap: 1.1rem; margin: 0 0 1.4rem;
+  font-family: 'Cinzel', serif; font-weight: 500; font-size: .8rem; letter-spacing: .4em; text-transform: uppercase; color: #E6CE8A; }
+.wd-doors-eyebrow::before, .wd-doors-eyebrow::after { content: ""; flex: 0 0 38px; height: 1px; background: linear-gradient(90deg, transparent, #C9A84C); }
+.wd-doors-eyebrow::after { transform: scaleX(-1); }
+.wd-doors-title { margin: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2.6rem, 5.4vw, 4.4rem); line-height: 1.04; color: #F7EFD9; }
+.wd-doors-title em { display: inline-block; padding: 0 .02em .1em 0; color: transparent !important; background-image: linear-gradient(100deg, #E6CE8A, #F6E6B0 50%, #D4B056); -webkit-background-clip: text; background-clip: text; }
+.wd-doors-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(.8rem, 1.6vw, 1.4rem); max-width: 1320px; margin: 0 auto; }
+.wd-door {
+  grid-column: span 4; position: relative; isolation: isolate; overflow: hidden;
+  display: flex; align-items: flex-end; text-align: left; text-decoration: none; color: #F4EAD3;
+  min-height: clamp(280px, 30vw, 420px); background: var(--w-deep, #141A12);
+  outline: 1px solid rgba(220, 193, 120, .34); outline-offset: -10px;
+}
+.wd-door:nth-child(1), .wd-door:nth-child(2), .wd-door:nth-child(6), .wd-door:nth-child(7) { grid-column: span 6; }
+.wd-door-img { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); filter: saturate(1.04) contrast(1.04); }
+.wd-door::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(14, 12, 9, .1) 20%, rgba(14, 12, 9, .5) 58%, rgba(14, 12, 9, .9) 100%); }
+.wd-door-inner { position: relative; z-index: 2; padding: clamp(1.6rem, 3vw, 2.6rem); max-width: 40rem; }
+.wd-door-eyebrow { display: block; margin: 0 0 .7rem; font-family: 'Cinzel', serif; font-weight: 500; font-size: .7rem; letter-spacing: .32em; text-transform: uppercase; color: #F0DDA0; text-shadow: 0 1px 10px rgba(0, 0, 0, .8); }
+.wd-door-name { margin: 0 0 .7rem; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(1.9rem, 2.8vw, 2.7rem); line-height: 1.05; color: #F7EFD9; text-shadow: 0 2px 22px rgba(0, 0, 0, .7); }
+.wd-door-line { margin: 0 0 1.2rem; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.12rem; line-height: 1.5; color: rgba(247, 239, 217, .92); text-shadow: 0 1px 14px rgba(0, 0, 0, .8); }
+.wd-door-enter { display: inline-block; font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .3em; text-transform: uppercase; color: #E6CE8A; border-bottom: 1px solid rgba(230, 206, 138, .5); padding-bottom: .3rem; }
+.wd-door:hover, .wd-door:focus-visible { outline-color: #E6CE8A; }
+.wd-door:hover .wd-door-enter, .wd-door:focus-visible .wd-door-enter { color: #fff3c9; border-bottom-color: #fff3c9; }
+
+/* ============================================================
+   The world's key reaches the hero and the footer, so the page
+   reads in one colour from top to bottom. (Not the home page.)
+   ============================================================ */
+body[data-world]:not([data-world="home"]) .lx-hero :is(.offering-hero-overlay, .po-hero-overlay, .cc-hero-overlay, .hero-overlay),
+body[data-world]:not([data-world="home"]) .page-hero:not(:has(.hero-overlay))::after,
+body[data-world]:not([data-world="home"]) .lux-hero::before,
+body[data-world]:not([data-world="home"]) .pg-hero::after {
+  box-shadow: inset 0 0 0 100vmax rgba(var(--w-deep-rgb), .3);
+}
+body[data-world]:not([data-world="home"]) .site-footer {
+  box-shadow: inset 0 0 280px 60px rgba(var(--w-deep-rgb), .6);
+}
+/* luxe.css paints body-level eyebrows ink-gold; on these dark bands they are lit */
+body > section.wd-vista .wd-vista-eyebrow, body > section.wd-doors .wd-doors-eyebrow, body > section.wd-doors .wd-door-eyebrow { color: #F5E4AE !important; }
+body > section.wd-doors .wd-door-eyebrow { color: #F0DDA0 !important; }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 900px) {
+  .wd-cluster--trio .wd-cluster-grid, .wd-cluster--quad .wd-cluster-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wd-cluster--trio .wd-fig:nth-child(3) { grid-column: 1 / -1; aspect-ratio: 16 / 10; margin-top: 0; }
+  .wd-doors-grid { grid-template-columns: 1fr; }
+  .wd-door, .wd-door:nth-child(n) { grid-column: auto; min-height: 320px; }
+}
+@media (max-width: 640px) {
+  .wd-cluster-grid { gap: .9rem; }
+  .wd-fig { outline-offset: 5px; }
+  .wd-cluster-grid > .wd-fig:nth-child(even) { margin-top: 1.8rem; }
+  .wd-cluster-line { margin-top: 3rem; }
+  .wd-vista { min-height: clamp(480px, 78vh, 700px); }
+  .wd-vista-eyebrow { letter-spacing: .26em; }
+}

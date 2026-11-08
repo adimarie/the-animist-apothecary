@@ -100,7 +100,7 @@
     if (card) {
       var header = document.querySelector(".site-header");
       var offset = (header ? header.offsetHeight : 90) + 16;
-      window.scrollTo({ top: card.getBoundingClientRect().top + window.scrollY - offset, behavior: "smooth" });
+      window.scrollTo({ top: card.getBoundingClientRect().top + window.scrollY - offset, behavior: "auto" });
     }
   }
 
@@ -239,7 +239,7 @@
     if (sel.service) {
       var active = root.querySelector(".aap-bk-step--active:last-of-type");
       if (active && sel._scroll) {
-        active.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        active.scrollIntoView({ behavior: "auto", block: "nearest" });
       }
     }
     sel._scroll = false;
@@ -260,23 +260,14 @@
     var chosen = sel.service ? sel.service.name : "";
     var body = "";
     if (cfg.categoryLabel) body += '<p class="aap-bk-cat-label">' + esc(cfg.categoryLabel) + "</p>";
-    if (cfg.slidingScale && cfg.slidingScale.length) {
-      body += '<div class="aap-bk-scale"><span class="aap-bk-scale-label">Sliding scale</span><span class="aap-bk-scale-values">';
-      cfg.slidingScale.forEach(function (v) {
-        body += '<span class="aap-bk-scale-val">$' + esc(String(v).replace(/[^0-9]/g, "")) + "</span>";
-      });
-      body += "</span></div>";
-    }
     body += '<div class="aap-bk-offerings">';
     var wide = cfg.cardLayout === "wide";
     catalog.forEach(function (s) {
       var on = sel.service && sel.service.id === s.id;
-      var range = priceRange(s.tiers);
       var inner =
         '<span class="aap-bk-offering-dur">' + fmtDuration(s.duration_minutes) + "</span>" +
         '<span class="aap-bk-offering-name">' + esc(s.name) + "</span>" +
-        (s.description ? '<span class="aap-bk-offering-desc">' + esc(s.description) + "</span>" : "") +
-        (range ? '<span class="aap-bk-offering-price">' + range + "</span>" : "");
+        (s.description ? '<span class="aap-bk-offering-desc">' + esc(s.description) + "</span>" : "");
       if (wide) {
         body +=
           '<button type="button" id="book-' + esc(s.slug) + '" class="aap-bk-offering aap-bk-offering--wide' + (on ? " is-on" : "") +
@@ -414,7 +405,7 @@
 
   // ---- Step 4: tier --------------------------------------------------------
   function stepTier() {
-    var chosen = sel.tier ? sel.tier.tier_name + " · " + money(sel.tier.min_amount_cents) : "";
+    var chosen = sel.tier ? sel.tier.tier_name : "";
     var head = stepHeader(4, "Your reciprocity", chosen, !!sel.slot && !sel.tier);
     var body =
       '<p class="aap-bk-quiet aap-bk-tier-intro">A sliding scale, offered in trust. Choose what is true for you now.</p>' +
@@ -426,7 +417,6 @@
         '" data-tier="' + esc(t.id) + '">' +
         (t.tier_eyebrow ? '<span class="aap-bk-tier-eyebrow">' + esc(t.tier_eyebrow) + "</span>" : "") +
         '<span class="aap-bk-tier-name">' + esc(t.tier_name) + "</span>" +
-        '<span class="aap-bk-tier-amt">' + money(t.min_amount_cents) + "</span>" +
         "</button>";
     });
     body += "</div>";
@@ -473,7 +463,7 @@
       '<div class="aap-bk-summary-row"><span>When</span><strong>' + esc(prettyDay(sel.dayKey)) + ", " + fmtTime(sel.slot.start, clientTz) +
       " &ndash; " + fmtTime(sel.slot.end, clientTz) + "</strong></div>" +
       '<div class="aap-bk-summary-row"><span>Length</span><strong>' + fmtDuration(sel.service.duration_minutes) + "</strong></div>" +
-      '<div class="aap-bk-summary-row"><span>Reciprocity</span><strong>' + esc(sel.tier.tier_name) + " · " + money(sel.tier.min_amount_cents) + "</strong></div>"
+      '<div class="aap-bk-summary-row"><span>Reciprocity</span><strong>' + esc(sel.tier.tier_name) + "</strong></div>"
     );
   }
 
@@ -507,7 +497,6 @@
           '<a class="aap-bk-tier aap-bk-tier--link" href="' + link + '" target="_blank" rel="noopener">' +
           (t.tier_eyebrow ? '<span class="aap-bk-tier-eyebrow">' + esc(t.tier_eyebrow) + "</span>" : "") +
           '<span class="aap-bk-tier-name">' + esc(t.tier_name) + "</span>" +
-          '<span class="aap-bk-tier-amt">' + money(t.min_amount_cents) + "</span>" +
           "</a>"
         );
       })
@@ -612,7 +601,7 @@
         : '<p class="aap-bk-quiet aap-bk-center">A confirmation with the meeting link is on its way to your inbox.</p>') +
       '<div class="aap-bk-pay">' +
       '<p class="aap-bk-pay-label">Complete your reciprocity</p>' +
-      '<p class="aap-bk-pay-amount">' + money(sel.tier.min_amount_cents) + "</p>" +
+      '<p class="aap-bk-pay-amount">' + esc(sel.tier.tier_name) + "</p>" +
       '<a class="aap-bk-pay-btn" href="' + payLink + '" target="_blank" rel="noopener">Pay with Venmo &nearr;</a>' +
       '<p class="aap-bk-pay-handle">to <strong>@' + esc(venmoUser) + "</strong></p>" +
       '<div class="aap-bk-pay-memo">' +
@@ -628,7 +617,7 @@
       "</div>";
     root.innerHTML = html;
     bindConfirm();
-    root.scrollIntoView({ behavior: "smooth", block: "start" });
+    root.scrollIntoView({ behavior: "auto", block: "start" });
   }
 
   // ---- Event binding -------------------------------------------------------
@@ -783,12 +772,6 @@
   function money(cents) {
     var n = cents / 100;
     return "$" + (n % 1 === 0 ? n.toFixed(0) : n.toFixed(2));
-  }
-  function priceRange(tiers) {
-    if (!tiers || !tiers.length) return "";
-    var amts = tiers.map(function (t) { return t.min_amount_cents; });
-    var lo = Math.min.apply(null, amts), hi = Math.max.apply(null, amts);
-    return lo === hi ? money(lo) : money(lo) + "–" + money(hi);
   }
   function isViewBeforeOrAtCurrentMonth() {
     var now = new Date();

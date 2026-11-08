@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About &middot; The Animist Apothecary</title>
-  <meta name="description" content="The Animist Apothecary is a ministry of the living world — its principles, the nature of our times, and its founder, Adi Marie: initiated diviner, medicine woman, and somatic practitioner of Mesoamerican and Caribbean lineage.">
+  <meta name="description" content="The Animist Apothecary is a ministry of the living world and a conservatory of esoteric mysteries, founded and stewarded by Adi Marie: initiated diviner and medicine woman, of Mesoamerican and Caribbean ancestry.">
   <link rel="canonical" href="https://theanimistapothecary.com/about.html">
   <meta property="og:type" content="profile">
   <meta property="og:title" content="About Adi Marie &middot; The Animist Apothecary">
@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="css/site-header.css?v=v29">
 
   <!-- Preload hero LCP image for fastest paint -->
-  <link rel="preload" as="image" href="images/uploads/adi-hero-hillside-2026-05-22.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="images/uploads/about-hero-eclipse-pillars.jpg" fetchpriority="high">
 
   <!-- JSON-LD Person schema -->
   <script type="application/ld+json">
@@ -38,7 +38,7 @@
     "name": "Adi Marie",
     "url": "https://theanimistapothecary.com/about.html",
     "image": "https://theanimistapothecary.com/images/uploads/adi-hero-hillside-2026-05-22.jpg",
-    "jobTitle": "Medicine Woman, Ceremonialist, and Somatic Medium",
+    "jobTitle": "Founder, The Animist Apothecary; Initiated Diviner and Medicine Woman",
     "description": "Shamanic healer, ceremonialist, and somatic medium with sixteen years of practice rooted in Southern California. Initiated diviner in the Dagara tradition of West Africa.",
     "address": {
       "@type": "PostalAddress",
@@ -491,7 +491,316 @@
       .about-origin-image { order: -1; }
       .about-origin-text { max-width: none; }
     }
+
+    /* ====== Redesign 2026-11-06: premise, three works, the School, founder, credentials, speaking, working with us, writings ====== */
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    section[id] { scroll-margin-top: 90px; }
+    .am-wide { max-width: 1100px !important; }
+    .am-center { display: block; text-align: center; }
+    .am-center-rule { margin-left: auto; margin-right: auto; }
+    .am-center-intro { text-align: center; max-width: 720px; margin-left: auto !important; margin-right: auto !important; }
+
+    /* Premise */
+    .am-premise { padding: 6.5rem 2rem 4.5rem; background: linear-gradient(rgba(244,234,211,0.92), rgba(244,234,211,0.96)); text-align: center; }
+    .am-premise-lead { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.7rem, 3.2vw, 2.5rem); line-height: 1.35; color: var(--bark, #2D2A26); max-width: 820px; margin: 0 auto 1.6rem; text-wrap: balance; }
+    .am-premise-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.15rem, 1.7vw, 1.4rem); line-height: 1.8; color: var(--bark, #2D2A26); max-width: 760px; margin: 0 auto 1.3rem; }
+    .am-premise-seal { font-family: 'Cinzel', serif; font-size: .74rem; letter-spacing: .28em; text-transform: uppercase; color: #8F6F2E; margin: 2rem auto 0; max-width: 640px; line-height: 1.9; }
+    .am-index { display: flex; flex-wrap: wrap; justify-content: center; gap: .55rem .6rem; margin: 2.6rem auto 0; max-width: 980px; }
+    .am-index a { font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: #8F6F2E; padding: .55rem .95rem; border: 1px solid rgba(143,111,46,.35); text-decoration: none; transition: background .2s, color .2s, border-color .2s; }
+    .am-index a:hover, .am-index a:focus-visible { background: #8F6F2E; color: #F7F5F0; border-color: #8F6F2E; outline: none; }
+
+    /* Three bodies */
+    .am-three-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; margin-top: 3rem; }
+    .am-three-card { background: var(--paper, #F7F5F0); padding: 2.4rem 2rem 2rem; box-shadow: 0 4px 24px rgba(31,26,24,.07); border-top: 2px solid rgba(201,168,76,.6); display: flex; flex-direction: column; gap: 1rem; }
+    .am-three-card .current-card-desc { flex: 1; }
+    .am-three-link { font-family: 'Cinzel', serif; font-size: .64rem; letter-spacing: .22em; text-transform: uppercase; color: #1F1A18; text-decoration: none; padding-top: .9rem; border-top: 1px solid rgba(201,168,76,.3); }
+    .am-three-link:hover { color: #8F6F2E; }
+
+    /* The School */
+    .am-school { background: #F7F5F0; }
+    .am-path { list-style: none; padding: 0; margin: 3rem 0 3.2rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem 1.6rem; counter-reset: none; }
+    .am-path li { border-top: 1px solid rgba(201,168,76,.55); padding-top: 1.1rem; }
+    .am-path-n { display: block; font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .24em; color: #8F6F2E; margin-bottom: .5rem; }
+    .am-path h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; font-weight: 500; margin: 0 0 .5rem; color: #2D2A26; line-height: 1.2; }
+    .am-path p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.02rem; line-height: 1.65; margin: 0; color: #3D3A36; }
+    .am-arc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: #1F1A18; color: #F4EAD3; margin: 0 0 3rem; }
+    .am-arc div { padding: 2rem 1.5rem; border-right: 1px solid rgba(201,168,76,.25); }
+    .am-arc div:last-child { border-right: 0; }
+    .am-arc b { display: block; font-family: 'Cinzel', serif; font-weight: 500; font-size: .82rem; letter-spacing: .28em; text-transform: uppercase; color: #C9A84C; margin-bottom: .7rem; }
+    .am-arc span { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.02rem; line-height: 1.6; color: rgba(244,234,211,.88); }
+    .am-school-for { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 3rem 0 2.5rem; }
+    .am-school-for h3 { font-family: 'Cinzel', serif; font-size: .76rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; color: #8F6F2E; margin: 0 0 .6rem; }
+    .am-school-for p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; line-height: 1.7; margin: 0; color: #2D2A26; }
+    .am-school-close { margin-top: 1rem; }
+    .am-school .btn-primary { display: inline-block; margin-top: .5rem; }
+
+    /* Founder */
+    .about-origin-image figcaption { font-family: 'Cormorant SC', serif; font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; color: #8F6F2E; margin-top: .9rem; text-align: center; }
+    .am-signature { font-family: 'Tangerine', cursive; font-size: 2.6rem; line-height: 1; color: #8F6F2E; margin: 1.4rem 0 0; }
+    .am-history { background: #F7F5F0; padding-top: 2rem; }
+    .am-subhead { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.9rem; font-weight: 400; text-align: center; color: #2D2A26; margin: 3.5rem 0 1.2rem; }
+    .am-people { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; padding: 1.8rem 0; border-top: 1px solid rgba(201,168,76,.45); border-bottom: 1px solid rgba(201,168,76,.45); }
+    .am-people-eyebrow { display: block; font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; color: #8F6F2E; margin-bottom: .55rem; line-height: 1.6; }
+    .am-people p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; line-height: 1.65; margin: 0; color: #2D2A26; }
+
+    /* Credentials */
+    .am-cred { background: #EFE6D8; }
+    .am-cred-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.6; color: #2D2A26; max-width: 780px; margin: 1.5rem auto 3rem; text-align: center; border: 0; padding: 0; }
+    .am-cred-quote cite { display: block; font-style: normal; font-family: 'Cinzel', serif; font-size: .68rem; letter-spacing: .24em; text-transform: uppercase; color: #8F6F2E; margin-top: 1rem; }
+    .am-cred-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.2rem; margin-bottom: 2.4rem; }
+    .am-cred-grid h3 { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .24em; text-transform: uppercase; font-weight: 500; color: #8F6F2E; margin: 0 0 1rem; padding-bottom: .8rem; border-bottom: 1px solid rgba(201,168,76,.5); }
+    .am-cred-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .9rem; }
+    .am-cred-grid li { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.04rem; line-height: 1.65; color: #2D2A26; }
+    .am-cred-grid li strong { font-weight: 600; color: #1F1A18; }
+
+    /* Speaking */
+    .am-talks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin: 3rem 0; }
+    .am-talks article { background: #F7F5F0; padding: 1.7rem 1.5rem; border-top: 2px solid rgba(201,168,76,.55); box-shadow: 0 4px 20px rgba(31,26,24,.06); }
+    .am-talks h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3rem; font-weight: 500; margin: 0 0 .6rem; color: #2D2A26; line-height: 1.25; }
+    .am-talks p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1rem; line-height: 1.65; margin: 0; color: #3D3A36; }
+    .am-speak-host { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; padding-top: 2.2rem; border-top: 1px solid rgba(201,168,76,.45); }
+    .am-speak-host h3 { font-family: 'Cinzel', serif; font-size: .74rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 500; color: #8F6F2E; margin: 0 0 .6rem; }
+    .am-speak-host p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.04rem; line-height: 1.7; margin: 0 0 1rem; color: #2D2A26; }
+    .am-speak-host .btn-primary { display: inline-block; }
+
+    /* Working with us */
+    .am-work { background: #F7F5F0; }
+    .am-pathways { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; margin: 3rem 0; }
+    .am-pathway { display: flex; flex-direction: column; gap: .6rem; padding: 1.8rem 1.5rem; background: #F4EAD3; text-decoration: none; color: inherit; border-top: 2px solid rgba(201,168,76,.6); transition: transform .25s ease, box-shadow .25s ease; }
+    .am-pathway:hover, .am-pathway:focus-visible { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(31,26,24,.12); outline: none; }
+    .am-pathway span { font-family: 'Cinzel', serif; font-size: .6rem; letter-spacing: .24em; text-transform: uppercase; color: #8F6F2E; }
+    .am-pathway h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.4rem; font-weight: 500; margin: 0; color: #2D2A26; line-height: 1.2; }
+    .am-pathway p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1rem; line-height: 1.65; margin: 0; flex: 1; color: #3D3A36; }
+    .am-pathway em { font-style: normal; font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: #1F1A18; padding-top: .8rem; border-top: 1px solid rgba(201,168,76,.35); }
+    .am-steps { list-style: none; padding: 0; margin: 0 0 2.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; counter-reset: none; }
+    .am-steps li { border-top: 1px solid rgba(201,168,76,.55); padding-top: 1.1rem; }
+    .am-steps li > span { display: inline-block; font-family: 'Cinzel', serif; font-size: .8rem; letter-spacing: .1em; color: #8F6F2E; border: 1px solid rgba(143,111,46,.5); width: 2rem; height: 2rem; line-height: 1.85rem; text-align: center; border-radius: 50%; margin-bottom: .6rem; }
+    .am-steps h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3rem; font-weight: 500; margin: 0 0 .4rem; color: #2D2A26; }
+    .am-steps p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1rem; line-height: 1.65; margin: 0; color: #3D3A36; }
+
+    /* Writings */
+    .am-write .about-currents-grid { grid-template-columns: repeat(2, 1fr); }
+    .am-card-static { cursor: default; }
+    .am-card-static:hover { transform: none; box-shadow: 0 4px 24px rgba(31,26,24,.07); }
+    .am-card-static .current-card-cta { color: #8F6F2E; }
+
+    @media (max-width: 1000px) {
+      .am-path, .am-pathways, .am-steps { grid-template-columns: repeat(2, 1fr); }
+      .am-talks { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 820px) {
+      .am-three-grid, .am-cred-grid, .am-school-for, .am-speak-host, .am-people { grid-template-columns: 1fr; }
+      .am-arc { grid-template-columns: repeat(2, 1fr); }
+      .am-arc div:nth-child(2) { border-right: 0; }
+      .am-arc div:nth-child(-n+2) { border-bottom: 1px solid rgba(201,168,76,.25); }
+      .am-write .about-currents-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .am-premise { padding: 4.5rem 1.4rem 3.5rem; }
+      .am-path, .am-pathways, .am-steps, .am-talks { grid-template-columns: 1fr; }
+      .am-arc { grid-template-columns: 1fr; }
+      .am-arc div { border-right: 0; border-bottom: 1px solid rgba(201,168,76,.25); }
+      .am-arc div:last-child { border-bottom: 0; }
+      .am-index a { font-size: .58rem; padding: .5rem .75rem; }
+      .am-subhead { font-size: 1.55rem; }
+    }
+
+    /* Founder layout: keep the portrait beside the text; crop the second portrait */
+    @media (min-width: 881px) {
+      .about-origin-split { align-items: start; }
+      .about-origin-image { position: sticky; top: 100px; }
+    }
+    .am-history .about-narrative-image { max-width: 100%; }
+    .am-history .about-narrative-image img { aspect-ratio: 16 / 10; object-fit: cover; object-position: center 28%; }
+
+    /* Statement of Nature (legal-clarity block in the Covenant) */
+    .am-nature { margin: 3rem auto 0; max-width: 760px; padding: 1.8rem 2rem; border: 1px solid rgba(143,111,46,.45); background: rgba(247,245,240,.7); }
+    .am-nature h3 { font-family: 'Cinzel', serif; font-size: .74rem; letter-spacing: .26em; text-transform: uppercase; font-weight: 500; color: #8F6F2E; margin: 0 0 .9rem; text-align: center; }
+    .am-nature p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1rem; line-height: 1.7; color: #2D2A26; margin: 0 0 .8rem; }
+    .am-nature p:last-child { margin-bottom: 0; }
+
+    .am-roles { font-family: 'Cinzel', serif; font-size: .64rem; letter-spacing: .26em; text-transform: uppercase; color: #8F6F2E; margin: .4rem 0 0; }
+    .am-write .am-cred-quote { margin-top: 1rem; }
+    .am-stay { margin-top: 2.5rem; text-align: center; }
+    .am-stay .btn-primary { display: inline-block; }
+
+    /* Image pass A (2026-11-06) */
+    .am-three-card .am-card-img { display: block; width: calc(100% + 4rem); max-width: none; margin: -2.4rem -2rem .2rem; aspect-ratio: 16 / 10; object-fit: cover; }
+    .am-three-card:nth-child(1) .am-card-img { object-position: center 40%; }
+    .am-three-card:nth-child(3) .am-card-img { object-position: center 58%; }
+
+
+    /* ================= Elevation pass (2026-11-06) ================= */
+    ::selection { background: rgba(201,168,76,.35); color: #1F1A18; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #8F6F2E; outline-offset: 3px; }
+    section[id] { scroll-margin-top: 130px; }
+    .about-narrative, .about-practice, .about-lineage, .about-currents, .about-ministry { padding-top: 7.5rem; padding-bottom: 7.5rem; }
+    @media (max-width: 720px) { .about-narrative, .about-practice, .about-lineage, .about-currents, .about-ministry { padding-top: 4.5rem; padding-bottom: 4.5rem; } }
+
+    /* Section headers: centered label, larger title, ornamental rule */
+    body .about-narrative-inner > .section-label,
+    body .about-practice-inner > .section-label,
+    body .about-lineage-inner > .section-label,
+    body .about-ministry-inner > .section-label,
+    body .about-currents-inner > .section-label { display: block !important; text-align: center; }
+    body .about-narrative .section-title, body .about-practice .section-title, body .about-lineage .section-title,
+    body .about-ministry .section-title, body .about-currents .section-title { font-size: clamp(2.3rem, 4.4vw, 3.6rem) !important; line-height: 1.12; margin-bottom: 1.6rem; }
+    body .about-narrative .story-divider, body .about-practice .story-divider, body .about-lineage .story-divider,
+    body .about-ministry .story-divider, body .about-currents .story-divider {
+      width: 170px; height: 11px !important; opacity: 1 !important; margin: 0 auto 2.6rem !important; position: relative;
+      background: linear-gradient(90deg, transparent, #C9A84C) left center / calc(50% - 14px) 1px no-repeat,
+                  linear-gradient(270deg, transparent, #C9A84C) right center / calc(50% - 14px) 1px no-repeat !important;
+    }
+    body .about-narrative .story-divider::after, body .about-practice .story-divider::after, body .about-lineage .story-divider::after,
+    body .about-ministry .story-divider::after, body .about-currents .story-divider::after {
+      content: ''; position: absolute; left: 50%; top: 50%; width: 7px; height: 7px; background: #C9A84C; transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .about-narrative .narrative-paragraph, .about-practice .narrative-paragraph, .about-lineage .narrative-paragraph { font-size: 1.18rem; line-height: 1.9; }
+
+    /* Premise frame (echoes the brand's tile frame) */
+    .am-premise { padding: 7rem 2rem 6rem; }
+    .am-frame { position: relative; max-width: 980px; margin: 0 auto; padding: 4.2rem 3.6rem 3.4rem; border: 1px solid rgba(143,111,46,.38); }
+    .am-frame::before { content: ''; position: absolute; inset: 9px; border: 1px solid rgba(143,111,46,.16); pointer-events: none; }
+    .am-corner { position: absolute; width: 24px; height: 24px; border: 1px solid #B8923A; }
+    .am-corner.tl { top: -7px; left: -7px; border-right: 0; border-bottom: 0; }
+    .am-corner.tr { top: -7px; right: -7px; border-left: 0; border-bottom: 0; }
+    .am-corner.bl { bottom: -7px; left: -7px; border-right: 0; border-top: 0; }
+    .am-corner.br { bottom: -7px; right: -7px; border-left: 0; border-top: 0; }
+    .am-premise-lead { font-size: clamp(1.8rem, 3.4vw, 2.7rem); }
+    @media (max-width: 720px) { .am-frame { padding: 3rem 1.4rem 2.4rem; } }
+
+    /* Sticky sub-navigation */
+    .am-subnav { position: sticky; top: var(--hdr, 73px); z-index: 60; display: flex; justify-content: center; gap: .2rem 1.9rem; padding: .85rem 1.5rem; overflow-x: auto; scrollbar-width: none;
+      background: rgba(247,239,217,.93); -webkit-backdrop-filter: saturate(140%) blur(12px); backdrop-filter: saturate(140%) blur(12px); border-bottom: 1px solid rgba(201,168,76,.4); box-shadow: 0 6px 18px rgba(45,42,38,.05); }
+    .am-subnav::-webkit-scrollbar { display: none; }
+    .am-subnav a { font-family: 'Cinzel', serif; font-size: .6rem; letter-spacing: .24em; text-transform: uppercase; color: #6B5A38; text-decoration: none; padding: .45rem .1rem; position: relative; white-space: nowrap; transition: color .25s; }
+    .am-subnav a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: #8F6F2E; transform: scaleX(0); transform-origin: left; transition: transform .35s ease; }
+    .am-subnav a:hover, .am-subnav a.is-active { color: #1F1A18; }
+    .am-subnav a:hover::after, .am-subnav a.is-active::after { transform: scaleX(1); }
+    @media (max-width: 900px) { .am-subnav { justify-content: flex-start; gap: .2rem 1.4rem; } }
+
+    /* Quote frames: the star becomes a seal on the top edge */
+    .am-quote-framed { padding: 2.8rem 3rem !important; margin: 3rem auto !important; max-width: 860px; text-align: center; background: rgba(255,255,255,.35); }
+    .am-quote-framed::before { left: 50% !important; top: -8px !important; transform: translateX(-50%) !important; width: 15px !important; height: 15px !important; }
+    @media (max-width: 720px) { .am-quote-framed { padding: 2.2rem 1.4rem !important; } }
+
+    /* Three bodies: finer cards */
+    .am-three-card { border: 1px solid rgba(201,168,76,.28); border-top: 2px solid rgba(201,168,76,.7); box-shadow: 0 10px 34px rgba(31,26,24,.07); transition: transform .35s ease, box-shadow .35s ease; overflow: hidden; }
+    .am-three-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(31,26,24,.12); }
+    .am-three-card .am-card-img { transition: transform .9s cubic-bezier(.22,.61,.36,1); }
+    .am-three-card:hover .am-card-img { transform: scale(1.04); }
+    .am-three-card .current-card-title { font-size: 1.7rem; }
+    .am-three-link { transition: color .25s, letter-spacing .3s; }
+    .am-three-link:hover { letter-spacing: .3em; }
+
+    /* The path: a connected line with diamond nodes */
+    .am-path { gap: 2.6rem 1.8rem; }
+    .am-path li { position: relative; border-top: 0 !important; padding-top: 1.9rem; }
+    .am-path li::before { content: ''; position: absolute; top: 0; left: 0; right: -1.8rem; height: 1px; background: linear-gradient(90deg, #C9A84C, rgba(201,168,76,.3)); }
+    .am-path li::after { content: ''; position: absolute; top: -4px; left: 0; width: 9px; height: 9px; background: #C9A84C; transform: rotate(45deg); }
+    .am-path li:nth-child(4)::before, .am-path li:nth-child(7)::before { right: 0; }
+    .am-path-n { font-size: .8rem !important; letter-spacing: .3em !important; }
+    .am-path h3 { font-size: 1.45rem !important; }
+    .am-arc { position: relative; background: radial-gradient(ellipse at 50% 0%, #2B2520 0%, #1F1A18 70%); border-top: 1px solid rgba(201,168,76,.5); border-bottom: 1px solid rgba(201,168,76,.5); }
+    .am-arc div { position: relative; padding: 2.4rem 1.7rem; }
+    .am-arc div:not(:last-child)::after { content: '\203A'; position: absolute; right: -.45rem; top: 50%; transform: translateY(-50%); font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #C9A84C; background: #1F1A18; line-height: 1; padding: 0 .1rem; z-index: 1; }
+    .am-arc b { font-size: .88rem; }
+    @media (max-width: 820px) { .am-arc div::after { display: none; } }
+    .am-school-for h3 { display: flex; align-items: center; gap: .7rem; }
+    .am-school-for h3::before { content: ''; width: 7px; height: 7px; background: #C9A84C; transform: rotate(45deg); flex: none; }
+
+    /* Founder */
+    .about-origin-split { padding-top: 8rem; padding-bottom: 7rem; }
+    .about-origin-image figure { position: relative; isolation: isolate; }
+    .about-origin-image figure::after { content: ''; position: absolute; inset: 16px -16px -16px 16px; border: 1px solid rgba(201,168,76,.55); z-index: -1; }
+    .about-origin-text .narrative-paragraph { font-size: 1.2rem; line-height: 1.9; }
+    .about-origin-text .story-divider + .narrative-paragraph::first-letter { font-family: 'Cinzel', serif; font-size: 3.7rem; float: left; line-height: .82; padding: .32rem .7rem 0 0; color: #8F6F2E; }
+    .about-origin-text .section-title em { font-size: 1.15em; }
+    .am-signature { font-size: 3rem; }
+    .am-subhead { font-size: 2.1rem; margin-top: 4.2rem; }
+    .am-people { gap: 0; padding: 2.2rem 0; }
+    .am-people > div { padding: 0 1.6rem; border-right: 1px solid rgba(201,168,76,.35); }
+    .am-people > div:first-child { padding-left: 0; }
+    .am-people > div:last-child { border-right: 0; padding-right: 0; }
+    @media (max-width: 820px) { .am-people > div { padding: 0 0 1.2rem; border-right: 0; border-bottom: 1px solid rgba(201,168,76,.3); margin-bottom: 1.2rem; } .am-people > div:last-child { border-bottom: 0; margin-bottom: 0; } }
+
+    /* Credentials */
+    .am-cred-quote { font-size: clamp(1.35rem, 2.2vw, 1.75rem); }
+    .am-cred-quote::before { content: '\201C'; display: block; font-family: 'Tangerine', cursive; font-style: normal; font-size: 5.5rem; line-height: .55; color: #C9A84C; margin-bottom: .6rem; }
+    .am-cred-grid > div { background: rgba(247,245,240,.75); border: 1px solid rgba(201,168,76,.3); border-top: 2px solid rgba(201,168,76,.7); padding: 2rem 1.8rem 1.8rem; box-shadow: 0 8px 26px rgba(31,26,24,.05); }
+    .am-cred-grid h3 { border-bottom: 1px solid rgba(201,168,76,.4); }
+
+    /* Speaking */
+    .am-talks article { border: 1px solid rgba(201,168,76,.25); border-top: 2px solid rgba(201,168,76,.7); transition: transform .3s ease, box-shadow .3s ease; }
+    .am-talks article:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(31,26,24,.1); }
+    .am-talks h3 { font-size: 1.4rem; }
+
+    /* Working with us */
+    .am-pathway { border: 1px solid rgba(201,168,76,.28); border-top: 2px solid rgba(201,168,76,.7); background: rgba(244,234,211,.7); }
+    .am-steps li { position: relative; border-top: 0 !important; padding-top: 0 !important; }
+    .am-steps li:not(:last-child)::after { content: ''; position: absolute; top: 1rem; left: 2.7rem; right: -.8rem; height: 1px; background: linear-gradient(90deg, rgba(143,111,46,.55), rgba(143,111,46,.15)); }
+    @media (max-width: 1000px) { .am-steps li::after { display: none; } }
+
+    /* Writings & covenant */
+    .am-write .current-card { border: 1px solid rgba(201,168,76,.25); border-top: 2px solid rgba(201,168,76,.7); }
+    .am-nature { border-color: rgba(143,111,46,.5); background: rgba(255,255,255,.45); }
+    .am-nature h3::before, .am-nature h3::after { content: '\2726'; color: #C9A84C; margin: 0 .8rem; font-size: .7rem; }
+
+    /* Interludes: taller, softer vignette, larger type */
+    .about-interlude { min-height: 480px; }
+    .about-interlude p { font-size: clamp(1.7rem, 3.2vw, 2.7rem) !important; text-wrap: balance; max-width: 900px; }
+
+    @media (prefers-reduced-motion: reduce) { .am-three-card, .am-three-card .am-card-img, .am-talks article, .am-pathway, .am-subnav a::after { transition: none !important; } }
+    body .about-narrative-inner > .section-label::after,
+    body .about-practice-inner > .section-label::after,
+    body .about-lineage-inner > .section-label::after,
+    body .about-ministry-inner > .section-label::after,
+    body .about-currents-inner > .section-label::after { left: 50%; transform: translateX(-50%); }
+
+    /* Final touches */
+    .am-quote-framed::before { width: 24px !important; height: 24px !important; top: -12px !important; padding: 5px !important; background-color: #F7F5F0 !important; border-radius: 50%; }
+    body .about-conversation .story-divider { width: 170px; height: 11px !important; opacity: 1 !important; margin: 1.2rem auto 2rem !important; position: relative;
+      background: linear-gradient(90deg, transparent, #C9A84C) left center / calc(50% - 14px) 1px no-repeat, linear-gradient(270deg, transparent, #C9A84C) right center / calc(50% - 14px) 1px no-repeat !important; }
+    body .about-conversation .story-divider::after { content: ''; position: absolute; left: 50%; top: 50%; width: 7px; height: 7px; background: #C9A84C; transform: translate(-50%, -50%) rotate(45deg); }
+    .about-conversation .narrative-paragraph { font-family: 'Cormorant Garamond', Georgia, serif !important; font-style: italic; font-size: 1.3rem !important; line-height: 1.7; }
+    .about-conversation .section-title { font-size: clamp(2.3rem, 4.4vw, 3.6rem) !important; }
+
+/* Core tenets, woven into the Premise */
+.am-premise-tenet{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(1.45rem,2.6vw,1.95rem);line-height:1.4;color:#7A5C1E;max-width:700px;margin:2.1rem auto 2.3rem;padding-top:1.7rem;position:relative;text-wrap:balance}
+.am-premise-tenet::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:44px;height:1px;background:#C9A84C}
+
+/* Hero: temple columns and the lunar cycle. Title rides the dark upper sky; the eclipse stays visible below it. */
+body .page-hero{min-height:clamp(600px,88vh,800px) !important;align-items:flex-start}
+body .page-hero .page-hero-img{object-position:center 58%}
+body .page-hero .page-hero-content{padding-top:.4rem}
+body .page-hero .hero-overlay{background:linear-gradient(180deg,rgba(10,9,7,.80) 0%,rgba(10,9,7,.62) 34%,rgba(10,9,7,.18) 62%,rgba(10,9,7,.42) 100%)}
+@media (max-width:640px){body .page-hero{min-height:640px !important}body .page-hero .page-hero-content{padding-top:3rem}body .page-hero .page-hero-img{object-position:center 62%}}
+
+/* Image clusters: each short line becomes the caption of a themed pair of photographs */
+.am-cluster{background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.09),transparent 62%),#141A12;padding:5.4rem 2rem 5rem;text-align:center;position:relative}
+.am-cluster::before,.am-cluster::after{content:"";position:absolute;left:50%;transform:translateX(-50%);width:1px;height:2.6rem;background:linear-gradient(180deg,rgba(201,168,76,0),rgba(201,168,76,.6))}
+.am-cluster::before{top:0}
+.am-cluster::after{bottom:0;transform:translateX(-50%) rotate(180deg)}
+.am-cluster-inner{max-width:1000px;margin:0 auto}
+.am-cluster-pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,3vw,2.4rem);align-items:start}
+.am-cl-fig{margin:0;position:relative;aspect-ratio:4/5;overflow:hidden;outline:1px solid rgba(201,168,76,.42);outline-offset:8px;box-shadow:0 24px 50px -22px rgba(0,0,0,.7)}
+.am-cl-fig img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.94) contrast(1.02)}
+.am-cl-b{margin-top:3.2rem}
+.am-cluster-line{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:clamp(1.5rem,2.6vw,2.15rem);line-height:1.45;color:#F4EAD3;max-width:640px;margin:3.4rem auto 0;text-wrap:balance;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+@media (max-width:640px){
+  .am-cluster{padding:4.2rem 1.4rem 4rem}
+  .am-cluster-pair{gap:.9rem}
+  .am-cl-fig{outline-offset:5px}
+  .am-cl-b{margin-top:1.8rem}
+  .am-cluster-line{margin-top:2.6rem}
+}
+
   </style>
+  <link rel="stylesheet" href="css/elevate.css?v=261106">
+  <link rel="stylesheet" href="css/luxe.css?v=261106">
+  <link rel="stylesheet" href="css/doors.css?v=261107">
+  <link rel="stylesheet" href="css/still.css?v=261106">
 </head>
 <body data-content-page="about">
 
@@ -509,10 +818,10 @@
           <li><a href="divination-and-consultation.html">Divination &amp; Consultation</a></li>
           <li><a href="seasons-of-change.html">Spiritual Development</a></li>
           <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
-          <li><a href="public-offerings.html">Community Offerings</a></li>
-          <li><a href="workshops-and-courses.html">Workshops &amp; Courses</a></li>
-          <li><a href="writings.html">Resources</a></li>
-          <li><a href="seasonal-letters.html">Newsletter</a></li>
+          <li><a href="public-offerings.html">Community</a></li>
+          <li><a href="training-grounds.html">Training Grounds</a></li>
+          <li><a href="writings.html">Library</a></li>
+          <li><a href="inquiry.html">Begin Here</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="nav-toggle-word" aria-hidden="true">Menu</span></button>
@@ -520,30 +829,51 @@
     </div>
   </header>
 
-  <!-- SECTION 1. Hero. LCP image migrated to <img fetchpriority="high"> for proper paint priority. -->
+  <!-- HERO -->
   <section class="page-hero" style="padding-top: 80px;">
+    <span class="lx-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     <img class="page-hero-img"
-         src="images/uploads/adi-hero-hillside-2026-05-22.jpg"
-         alt=""
+         src="images/uploads/about-hero-eclipse-pillars.jpg"
+         alt="A total solar eclipse and the phases of the moon, arranged in an arc above the columns of an ancient temple"
          fetchpriority="high"
          decoding="async"
          data-content="hero.image" data-content-type="image">
     <div class="hero-overlay"></div>
     <div class="page-hero-content">
-      <span class="hero-eyebrow" data-content="hero.eyebrow">A Ministry of the Living World</span>
+      <span class="hero-eyebrow" data-content="hero.eyebrow">A Ministry of the Living World &middot; A Conservatory of Esoteric Mysteries</span>
       <h1 class="page-hero-title" data-content="hero.title" data-content-type="html">The Animist <em>Apothecary</em></h1>
-      <p class="page-hero-subtitle" data-content="hero.subtitle">Ceremony, kinship, and the tending of the sacred &mdash; founded and stewarded by Adi Marie.</p>
-      <p class="page-hero-est">Tended without interruption since 2010 &middot; Southern California &middot; Serving worldwide</p>
+      <p class="page-hero-subtitle" data-content="hero.subtitle">An experiential apothecary for the restoration of an animist relational practice and world view.</p>
+      <p class="page-hero-est">Founded and stewarded by Adi Marie &middot; Tended without interruption since 2010 &middot; Southern California &middot; Serving worldwide</p>
     </div>
   </section>
 
-  <!-- MISSION -->
-  <section class="am-mission">
+  <!-- PREMISE -->
+  <section class="am-premise" id="premise">
+    <div class="am-frame">
+      <i class="am-corner tl"></i><i class="am-corner tr"></i><i class="am-corner bl"></i><i class="am-corner br"></i>
     <img src="images/uploads/logo-mark-trio.png" alt="" class="am-mission-mark" aria-hidden="true">
-    <span class="am-mission-eyebrow">The Mission</span>
-    <p class="am-mission-text">The Animist Apothecary exists to restore right relationship between people and the living world &mdash; through ceremony, counsel, kinship, and the tending of the sacred. We accompany those who are being called into their gifts, and we steward the old ways with reverence, safety, and sacred reciprocity &mdash; so that what is received in the otherworlds returns as goodness in this one.</p>
+    <span class="am-mission-eyebrow">The Premise</span>
+    <p class="am-premise-lead">The Animist Apothecary exists within an animist frame, and explores, exercises, and expresses itself as such.</p>
+    <p class="am-premise-tenet" data-content="tenets.one" data-content-type="html">Awakening more fully to the <span style="white-space:nowrap">ever-present</span> beauty of creation upon this world.</p>
+    <p class="am-premise-text">We are here for the restoration of balance and peace. We serve as emissaries and intermediaries and, at our very best, as honorable interdimensional diplomats.</p>
+    <p class="am-premise-text">Humanity is preparing to emerge onto the planes of galactic consciousness, and it is imperative that we assume the dignity of the responsibilities that accompany such work, especially at such times. We begin with the respectful, restorative responsibility of our inheritance of this Earth, and of our many, many, many other-than-human, at times non-corporeal, Kin.</p>
+    <p class="am-premise-tenet" data-content="tenets.two">What does it mean to emerge as an entheogenically awakened society?</p>
+    <p class="am-premise-seal">This is the premise of the School, of the Foundation, and of the Ministry.</p>
     <span class="am-mission-rule"></span>
+    </div>
   </section>
+
+  <nav class="am-subnav" id="am-subnav" aria-label="On this page">
+    <a href="#principles">What We Hold True</a>
+    <a href="#three-works">The Three Works</a>
+    <a href="#school">The School</a>
+    <a href="#founder">The Founder</a>
+    <a href="#lineage">Credentials</a>
+    <a href="#speaking">Speaking</a>
+    <a href="#work-with-us">Working With Us</a>
+    <a href="#writings">Writings, Books &amp; Art</a>
+    <a href="#rooms">The Rooms</a>
+  </nav>
 
   <!-- SECTION 2. The Principles of The Animist Apothecary -->
   <section class="about-narrative" id="principles">
@@ -594,46 +924,123 @@
   </section>
 
   <!-- Interlude: the porous world -->
-  <section class="about-interlude" style="background-image: url('images/uploads/longer-story-tree-of-light.jpg');">
-    <p>The world is more porous than the world insists.</p>
-  </section>
+  <section class="am-cluster"><div class="am-cluster-inner"><div class="am-cluster-pair"><figure class="am-cl-fig am-cl-a"><img src="images/uploads/about-faces-in-stone.jpg" alt="Faces carved into a mossy stone wall, each set in its own hollow" loading="lazy" decoding="async"></figure><figure class="am-cl-fig am-cl-b"><img src="images/uploads/about-ruin-open-to-stars.jpg" alt="A ruined, roofless church whose arches open onto the Milky Way" loading="lazy" decoding="async"></figure></div><p class="am-cluster-line">The world is more porous than the world insists.</p></div></section>
 
-  <!-- SECTION 1.5. Origin / The Calling. Asymmetric split — image LEFT, text RIGHT. -->
-  <section class="about-origin" id="origin">
-    <div class="about-origin-split">
-      <div class="about-origin-image">
-        <figure>
-          <img src="images/uploads/tg-letter-portrait-outside.jpg"
-               alt="Adi Marie in an outdoor portrait — soft light, candid posture"
-               loading="lazy"
-               decoding="async"
-               data-content="origin.image" data-content-type="image"
-               data-content-alt="origin.image_alt">
-        </figure>
-      </div>
-      <div class="about-origin-text">
-        <span class="section-label" data-content="origin.section_label">III &middot; The Founder</span>
-        <h2 class="section-title" data-content="origin.title" data-content-type="html">How I came to <em>this work</em></h2>
-        <div class="story-divider"></div>
-        <p class="narrative-paragraph" data-content="origin.paragraph_1">The calling arrived before the language for it. Long before training, before lineage, before the medicine basket &mdash; there was a felt sense of the world being more porous than the world insists. The dead were not gone. The land was not silent. The body knew things the mind had not been taught to translate.</p>
-        <p class="narrative-paragraph" data-content="origin.paragraph_2">The first formal door was the hands. Licensed bodywork in 2010, the somatic foundation under everything that followed. To work with the body honestly is to apprentice to a way of knowing that does not lie. From there the path opened &mdash; initiations into traditions that had been waiting, study with elders who recognized what I had been carrying since childhood, ceremony as the structure beneath the work.</p>
-        <p class="narrative-paragraph" data-content="origin.paragraph_3">Sixteen years on, the work has gathered itself into a practice. Solo sessions. Community ceremonies. Long arcs of accompaniment. The same intention threads through all of it: to meet what is real, to hold what others cannot hold, and to walk alongside those whose own calling is asking something of them they cannot yet name.</p>
+  <!-- III. ONE WORK, THREE BODIES -->
+  <section class="about-currents am-three" id="three-works">
+    <div class="about-currents-inner">
+      <span class="section-label am-center">III &middot; One Work, Three Bodies</span>
+      <h2 class="section-title am-center">A ministry, a foundation, <em>a conservatory</em></h2>
+      <div class="story-divider am-center-rule"></div>
+      <p class="narrative-paragraph am-center-intro">One premise, held three ways: as pastoral care, as restorative stewardship, and as the formation of those who are called.</p>
+
+      <div class="am-three-grid">
+        <article class="am-three-card">
+          <img class="am-card-img" src="images/uploads/luminous/hands-of-light.jpg" alt="Hands held together in a prayerful gesture" loading="lazy" decoding="async">
+          <span class="current-card-eyebrow">The Ministry &middot; the pastoral work</span>
+          <h3 class="current-card-title">Ceremony, counsel, and rites of passage</h3>
+          <p class="current-card-desc">The rites that mark a life, and the ceremonies that hold it. Divination and spiritual counsel. Grief and ancestral work. Ceremonial bodywork. The passing of teaching to those called into lineage. All of it is bound by four precepts: consent, readiness, confidentiality, and the duty to refer beyond our scope.</p>
+          <a class="am-three-link" href="#covenant">The covenant &rarr;</a>
+        </article>
+        <article class="am-three-card">
+          <img class="am-card-img" src="images/uploads/newsletter-river-aerial.jpg" alt="A river winding through green land, seen from above" loading="lazy" decoding="async">
+          <span class="current-card-eyebrow">The Foundation &middot; the restorative work</span>
+          <h3 class="current-card-title">Reciprocity, access, and repair</h3>
+          <p class="current-card-desc">Sacred reciprocity is how the work sustains itself and keeps its doors open. Offerings are tiered so that no one is turned away for lack of means, and what is given at the patron tier supports elders and culture-bearers, ecological restoration, and a community care fund.</p>
+          <a class="am-three-link" href="sacred-reciprocity.html">Sacred reciprocity &rarr;</a>
+        </article>
+        <article class="am-three-card">
+          <img class="am-card-img" src="images/uploads/divider-milkyway-nuut-arch.jpg" alt="The Milky Way arching over an ancient petroglyph site at night" loading="lazy" decoding="async">
+          <span class="current-card-eyebrow">The Conservatory &middot; the teaching work</span>
+          <h3 class="current-card-title">An esoteric school of somatic shamanic arts</h3>
+          <p class="current-card-desc">A training ground and specialized school for forming skilled interdimensional intermediaries: people who can mediate, on behalf of the seen and unseen worlds, between the human and the other-than-human. Here ceremonial practice is formalized and embodied as procedural ritual technology.</p>
+          <a class="am-three-link" href="#school">The path of the School &rarr;</a>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 2. Bio. Single-column Pema-style with two interspersed images. -->
-  <section class="about-narrative">
-    <div class="about-narrative-inner">
-      <span class="section-label" data-content="bio.section_label">IV &middot; Sixteen Years in the Work</span>
-      <h2 class="section-title" data-content="bio.title" data-content-type="html">A medicine basket, <em>carefully tended</em></h2>
+  <!-- Interlude: the map and the terrain -->
+  <section class="am-cluster"><div class="am-cluster-inner"><div class="am-cluster-pair"><figure class="am-cl-fig am-cl-a"><img src="images/uploads/about-moss-wall-berries.jpg" alt="Wild flowers and red berries growing from a moss-covered stone wall" loading="lazy" decoding="async"></figure><figure class="am-cl-fig am-cl-b"><img src="images/uploads/about-moss-and-stone.jpg" alt="Green moss growing over weathered grey stone" loading="lazy" decoding="async"></figure></div><p class="am-cluster-line">There is the map. There is the terrain.</p></div></section>
+
+  <!-- IV. THE CONSERVATORY -->
+  <section class="about-narrative am-school" id="school">
+    <div class="about-narrative-inner am-principles-wide">
+      <span class="section-label">IV &middot; The Conservatory of Esoteric Mysteries</span>
+      <h2 class="section-title">How a practitioner <em>is formed</em></h2>
       <div class="story-divider"></div>
 
-      <p class="narrative-paragraph" data-content="bio.paragraph_1">Adi Marie is a shamanic healer, ceremonialist, and somatic medium with sixteen years of practice rooted in Southern California. What began as deep hands-on bodywork and therapeutic touch evolved &mdash; through initiation, study, and the relentless demands of a genuine calling &mdash; into something far more encompassing.</p>
+      <p class="narrative-paragraph am-center-intro">This is the restoration of a way of life, a way of being in right relationship. Here you sit in tutelage to the other worlds: to their teachings, their initiations, and their attunements. The aim is to engage interdimensionally with skill, poise, and rapport, and with the artisan&rsquo;s touch of inspired, skilled mastery.</p>
+      <p class="narrative-paragraph am-center-intro">We begin where every practice begins: with foundational skills and relationship. The School teaches in several studios at once. Each has its own ethos, body of knowledge, and skill set, and all of them follow the same path.</p>
 
-      <p class="narrative-paragraph" data-content="bio.paragraph_2">She is a first-generation American of indigenous Mesoamerican and Caribbean heritage &mdash; her ancestral bloodlines descend from the Maya, Chorti, Nahuatl, Lenca, and Pipil peoples of Mesoamerica, and the Arawak and Ta&iacute;no peoples of the Caribbean. The ceremonial, divinatory, and healing practices of these peoples are not techniques she adopted; they are her direct cultural and spiritual inheritance, born into and deepened across a lifetime.</p>
+      <ol class="am-path">
+        <li><span class="am-path-n">I</span><h3>The Map</h3><p>The context every student needs first: the maps that have come before, known and unknown, and your own embodied reading of them.</p></li>
+        <li><span class="am-path-n">II</span><h3>Navigating the Map</h3><p>The key and the legend. What the symbols mean, how the terrains differ, and the principles and working equations that let you find your way.</p></li>
+        <li><span class="am-path-n">III</span><h3>Walking the Terrain</h3><p>First-person, lived exploration. Here you gain fluency: to communicate and be communicated with clearly, and to return to your everyday self.</p></li>
+        <li><span class="am-path-n">IV</span><h3>Field Training</h3><p>Practice as an intermediary, in service to community and to others.</p></li>
+        <li><span class="am-path-n">V</span><h3>Theory &amp; Practicum</h3><p>Classroom study, applied practice, and the tests that show where you stand.</p></li>
+        <li><span class="am-path-n">VI</span><h3>Initiation</h3><p>The threshold, held in ceremony, after the clearing work that prepares you for it.</p></li>
+        <li><span class="am-path-n">VII</span><h3>Refinement &amp; Mentorship</h3><p>Ongoing mentorship, at whatever depth and intimacy each person is here for.</p></li>
+      </ol>
 
-      <p class="narrative-paragraph" data-content="bio.paragraph_2b">Her calling was not self-appointed. It was received, witnessed, and confirmed &mdash; independently, by recognized diviners and elders across the traditions that hold her.</p>
+      <div class="am-arc" role="group" aria-label="The arc of the work">
+        <div><b>Go</b><span>Open ceremony and cross into the other world.</span></div>
+        <div><b>Communicate</b><span>Listen, receive guidance and discernment, and be communicated with clearly.</span></div>
+        <div><b>Return</b><span>Come back to the human self, who must metabolize what was received.</span></div>
+        <div><b>Anchor</b><span>Hold the resonance and the field, and implement it here.</span></div>
+      </div>
+
+      <blockquote class="story-quote am-quote-framed">&ldquo;We not only are meant to open up to those energies, we&rsquo;re meant to anchor them down.&rdquo; <strong>&mdash; Adi Marie</strong></blockquote>
+
+      <div class="am-school-for">
+        <div><h3>Students of the map</h3><p>Some come for the theory, to learn the concepts and explore them for themselves.</p></div>
+        <div><h3>Practitioners</h3><p>Some come to change their lives and the way they touch the lives of others. They sit in ceremony.</p></div>
+        <div><h3>Ceremonialists</h3><p>Those in careers of service who bring this into their field, and those who choose to move ceremony from a stealth layer to a primary practice, as ceremonial ritual practitioners, interdimensional intermediaries, stewards, and guides.</p></div>
+      </div>
+
+      <p class="narrative-paragraph am-center-intro am-school-close">We need more practitioners out in the world, holding these sacred spaces and these front lines, pollinating the garden of life, and restoring beauty, balance, and harmony. We are here to participate in the miracle. This school is for those called to take part in this way, at this time.</p>
+      <p class="am-center-intro"><a class="btn-primary" href="training-grounds.html">Enter the School</a></p>
+    </div>
+  </section>
+
+  <!-- Interlude: the tending -->
+  <section class="am-cluster"><div class="am-cluster-inner"><div class="am-cluster-pair"><figure class="am-cl-fig am-cl-a"><img src="images/uploads/about-roots-hands.jpg" alt="Two hands holding a tangle of fine roots and soil in a forest, backlit by the sun" loading="lazy" decoding="async"></figure><figure class="am-cl-fig am-cl-b"><img src="images/uploads/about-candles-on-water.jpg" alt="Candles floating among petals on mossy, still water" loading="lazy" decoding="async"></figure></div><p class="am-cluster-line">Ceremony is how the web is tended.</p></div></section>
+
+  <!-- V. THE FOUNDER -->
+  <section class="about-origin" id="founder">
+    <div class="about-origin-split">
+      <div class="about-origin-image">
+        <figure>
+          <img src="images/uploads/tg-letter-portrait-outside.jpg"
+               alt="Adi Marie in an outdoor portrait, soft light, candid posture"
+               loading="lazy"
+               decoding="async"
+               data-content="origin.image" data-content-type="image"
+               data-content-alt="origin.image_alt">
+          <figcaption>Adi Marie, founder of The Animist Apothecary</figcaption>
+        </figure>
+      </div>
+      <div class="about-origin-text">
+        <span class="section-label" data-content="origin.section_label">V &middot; The Founder</span>
+        <h2 class="section-title" data-content="origin.birth_title" data-content-type="html">Who I am <em>by birth</em></h2>
+        <div class="story-divider"></div>
+        <p class="narrative-paragraph" data-content="origin.birth_paragraph_1">The most important part of this is who and what I am, and have always been, by birth. There has been a dismemberment: an intentional deconstruction, a severance of ancestral roots, of lineages, of the ancient families of power through whom these kinds of gifts come forth into the world. It came through colonization, imperialism, and the diaspora, the diasporic dismemberment of these families of power, of these lineages of medicine people. There is no true teacher who holds the oral traditions of who and what we are intact. This is by blood, this is by nature, this is by the ancestry of my bones, this is by the ancestry of my spirit and of my soul.</p>
+        <p class="narrative-paragraph" data-content="origin.birth_paragraph_2">That being said, otherworldly initiating bodies and forces have initiated me across the developmental thresholds of my life. They have deeply molded, shaped, and changed the infrastructure and very nature of my life, and the very nature of reality, in irrefutable ways. This has been extremely challenging to do on my own for the majority of my life. I did have support from different plant medicines, from different animal spirits, from different celestial and otherworldly guides, as well as my own soul, my own oversoul, and the different beings who have come forward at different times to help me further become.</p>
+        <p class="narrative-paragraph" data-content="origin.birth_paragraph_3">It wasn't until recently that I was brought into a 40,000-year intact oral tradition, a closed lineage, by the Dagara people. Many people within that clan, within that family of medicine people, priests, priestesses, shamans, and diviners, have helped me ground and embody what has been moving through me and as me, like oceanic swells, onto the shorelines of this life.</p>
+        <p class="am-signature">Adi Marie</p>
+        <p class="am-roles">Poet &middot; Author &middot; Artisan &middot; Diviner</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-narrative am-history" id="history">
+    <div class="about-narrative-inner">
+      <span class="section-label">The Founder &middot; The Path</span>
+      <h2 class="section-title" data-content="origin.title" data-content-type="html">How I came to <em>this work</em></h2>
+      <div class="story-divider"></div>
+      <p class="narrative-paragraph" data-content="origin.paragraph_1">The calling arrived before the language for it. Long before training, before lineage, before the medicine basket &mdash; there was a felt sense of the world being more porous than the world insists. The dead were not gone. The land was not silent. The body knew things the mind had not been taught to translate.</p>
+      <p class="narrative-paragraph" data-content="origin.paragraph_2">The first formal door was the hands. Licensed bodywork in 2010, the somatic foundation under everything that followed. To work with the body honestly is to apprentice to a way of knowing that does not lie. From there the path opened &mdash; initiations into traditions that had been waiting, study with elders who recognized what I had been carrying since childhood, ceremony as the structure that could hold it.</p>
+      <p class="narrative-paragraph" data-content="origin.paragraph_3">Sixteen years on, the work has gathered itself into a practice. Solo sessions. Community ceremonies. Long arcs of accompaniment. The same intention threads through all of it: to meet what is real, to hold what others cannot hold, and to walk alongside those whose own calling is asking something of them they cannot yet name.</p>
 
       <figure class="about-narrative-image">
         <img src="images/uploads/practitioner-portrait-2026-05-23.jpg"
@@ -644,27 +1051,76 @@
              data-content-alt="bio.image_1_alt">
       </figure>
 
-      <p class="narrative-paragraph" data-content="bio.paragraph_3">Her medicine basket is vast and carefully tended. But what defines her practice is not the accumulation of techniques &mdash; it is the quality of presence she brings to every session, every ceremony, every threshold crossing. She has the rare ability to hold space at the edge of the known world, where the personal becomes mythic and the mythic becomes liveable &mdash; and she is known for her ferocious love, her uncommon insight, and her capacity to hold the full spectrum of the human experience without flinching.</p>
+      <h3 class="am-subhead">Where my people come from</h3>
+      <p class="narrative-paragraph">I am part of a cultural refugee diaspora, descended from practices already syncretic through colonization and empire. In Central America, successive colonizations have diluted, and in places abjectly destroyed, my family&rsquo;s relationship to animism and earth-based spirituality.</p>
 
-      <p class="narrative-paragraph" data-content="bio.paragraph_4">She works with doctors, medicine people, therapists, artists, and leaders whose decisions shape the trajectory of this earth ship &mdash; united by one commitment: healing that changes the shape of a life, not just its surface.</p>
+      <div class="am-people">
+        <div>
+          <span class="am-people-eyebrow">My father&rsquo;s line &middot; El Salvador</span>
+          <p>The Lenca people, as far as we can trace; the Maya, Pipil, and Ch&rsquo;orti&rsquo;; the Ta&iacute;no and the Arawak.</p>
+        </div>
+        <div>
+          <span class="am-people-eyebrow">My mother&rsquo;s line &middot; Cuba</span>
+          <p>The Caribbean, with its deep African influence: ancestors from Senegal and from the Canary Islands.</p>
+        </div>
+        <div>
+          <span class="am-people-eyebrow">Iberia &amp; the northern isles</span>
+          <p>Galician and Castilian roots and, further back, the Celtic peoples.</p>
+        </div>
+      </div>
 
-      <figure class="about-narrative-image">
-        <img src="images/uploads/the-work-ceremony.jpg"
-             alt="Ceremonial setting &mdash; candles, smoke, sacred objects gathered for the work"
-             loading="lazy"
-             decoding="async"
-             data-content="bio.image_2" data-content-type="image"
-             data-content-alt="bio.image_2_alt">
-      </figure>
+      <blockquote class="story-quote am-quote-framed">&ldquo;No one of us in the modern world comes from a single cultural heritage. There&rsquo;s a confluence of seas, of oceanic tides within me, and planes of remembering that I am synthesizing within my own life and bringing forward in my life&rsquo;s expression.&rdquo; <strong>&mdash; Adi Marie</strong></blockquote>
 
-      <p class="narrative-paragraph" data-content="bio.paragraph_5">Based in the canyon lands of Southern California, Adi Marie offers private sessions and intensives in person, and is available worldwide for virtual sessions, private travel engagements, and select community events.</p>
+      <p class="narrative-paragraph">Caribbean, African, and Mesoamerican ancestry is expressing itself through me, though I do not have the educational and cultural context that shaped me this way. These are things remembering themselves through me: my ancestors, sharing themselves through the remembrance of my bones.</p>
+
+      <p class="narrative-paragraph am-center-intro">Based in the canyon lands of Southern California, I offer private sessions and intensives in person, and I am available worldwide for virtual sessions, private travel engagements, and select community events.</p>
+    </div>
+  </section>
+
+  <!-- VI. CREDENTIALS -->
+  <section class="about-lineage am-cred" id="lineage">
+    <div class="about-lineage-inner am-wide">
+      <span class="section-label" data-content="lineage.section_label">VI &middot; Credentials &amp; Training</span>
+      <h2 class="section-title" data-content="lineage.title" data-content-type="html">The frameworks that <em>give the work architecture</em></h2>
+      <div class="story-divider"></div>
+
+      <blockquote class="am-cred-quote">&ldquo;They&rsquo;re more frameworks that have helped me have a little bit more architecture to how I interface with the raw primal thing that&rsquo;s expressing itself through and as me.&rdquo; <cite>Adi Marie</cite></blockquote>
+
+      <div class="am-cred-grid">
+        <div>
+          <h3>Initiation &amp; Lineage</h3>
+          <ul>
+            <li><strong>Initiated Diviner &amp; Medicine Woman</strong> of the Dagara tradition of West Africa, received under the mentorship of recognized lineage elders. She carries the ceremonial responsibilities of a priestess of the wilds and of the waters.</li>
+            <li><strong>Munay-Ki</strong>, the nine rites of the Andean and Quechua lineage.</li>
+            <li><strong>Mesoamerican spiritism &amp; curanderismo</strong>, inherited through her ancestry and carried through ongoing practice and mentorship.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Craft &amp; Training</h3>
+          <ul>
+            <li><strong>Licensed somatic therapeutic bodyworker</strong>, in continuous practice since 2010.</li>
+            <li>Generative trance hypnosis, and expressive arts as ceremonial tools.</li>
+            <li>Ritual architecture and ceremonial design, the botanical healing arts, and entheogenic medicine facilitation.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Ministry &amp; Service</h3>
+          <ul>
+            <li><strong>Founder</strong> of The Animist Apothecary, tended without interruption since 2010.</li>
+            <li>Facilitator of ceremony, divination, rites of passage, and ancestral work.</li>
+            <li>Her calling was received, witnessed, and confirmed, independently, by recognized diviners and elders across the traditions that hold her.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="narrative-paragraph am-center-intro">She works with doctors, medicine people, therapists, artists, and leaders whose decisions shape the trajectory of this earth ship, all of them united by one commitment: work that changes the shape of a life, not just its surface.</p>
     </div>
   </section>
 
   <!-- SECTION 4. In Conversation. Dark editorial band framing a YouTube interview embed. -->
   <section class="about-conversation" id="conversation">
     <div class="about-conversation-inner">
-      <span class="section-label" data-content="conversation.section_label">V &middot; In Conversation</span>
+      <span class="section-label" data-content="conversation.section_label">VII &middot; In Conversation</span>
       <h2 class="section-title" data-content="conversation.title" data-content-type="html">Recent <em>conversations</em></h2>
       <div class="story-divider"></div>
       <p class="narrative-paragraph" data-content="conversation.intro">An interview from the practice &mdash; on the work, on lineage, and on what these times are asking of us.</p>
@@ -682,41 +1138,108 @@
     </div>
   </section>
 
-  <!-- SECTION 5. Lineage & Training. Three marquee tags + narrative with dates/lineage holders. -->
-  <section class="about-lineage" id="lineage">
-    <div class="about-lineage-inner">
-      <span class="section-label" data-content="lineage.section_label">VI &middot; Lineage &amp; Training</span>
-      <h2 class="section-title" data-content="lineage.title" data-content-type="html">A path tended across <em>multiple traditions</em></h2>
+  <!-- VIII. SPEAKING -->
+  <section class="about-practice am-speak" id="speaking">
+    <div class="about-practice-inner am-wide">
+      <span class="section-label">VIII &middot; Speaking &amp; Appearances</span>
+      <h2 class="section-title">Invitations <em>to speak</em></h2>
       <div class="story-divider"></div>
+      <p class="narrative-paragraph am-center-intro">Adi Marie speaks at ritual, esoteric, and comparative-religion gatherings, to retreat and event hosts and practitioner trainings, and on podcasts and panels. Her subjects are ceremony, the turning of the year, the ancestors, and the craft of building a container.</p>
 
-      <div class="lineage-tags" data-content-list="lineage.tags">
-        <span class="lineage-tag" data-content-list-template data-content=".">Initiated Dagara Diviner &amp; Medicine Woman</span>
-        <span class="lineage-tag">Munay-Ki &mdash; The Nine Rites</span>
-        <span class="lineage-tag">Mesoamerican Curanderismo Inheritance</span>
-        <span class="lineage-tag">Ceremonial &amp; Ritual Stewardship</span>
-        <span class="lineage-tag">Licensed Somatic Bodywork &mdash; 16+ Years</span>
+      <div class="am-talks">
+        <article><h3>The Year Read Through the Roots</h3><p>Mesoamerican, Caribbean, and African ways of keeping time beside the Western wheel, credited by people. 45 to 60 minutes.</p></article>
+        <article><h3>Ceremony Is a Craft</h3><p>Reverence and rigor in the building of a container. For practitioner trainings and leadership programs. 60 to 90 minutes.</p></article>
+        <article><h3>The Year as an Altar</h3><p>Building a ceremonial calendar from the solstices up. For gathering designers and ritual communities. 45 to 60 minutes.</p></article>
+        <article><h3>Same World, Different Alphabets</h3><p>Holding Western, Chinese, and Dagara elemental systems side by side without merging them. 45 minutes.</p></article>
+        <article><h3>Anchoring</h3><p>Bringing what comes through down into this world. 45 minutes.</p></article>
+        <article><h3>The Lineage in the Bones</h3><p>Ancestral practice for people without a lineage to inherit. 45 to 60 minutes.</p></article>
       </div>
 
-      <p class="narrative-paragraph" data-content="lineage.paragraph_1">Adi Marie's practice has been tended without interruption since 2010 &mdash; sixteen years of devoted service, more than a decade of formal initiation and study, and an ongoing apprenticeship to the wild lands of Southern California. The foundation was laid as a licensed massage therapist and somatic bodyworker, and every layer since has been added one initiation at a time.</p>
-
-      <p class="narrative-paragraph" data-content="lineage.paragraph_2">She is an initiated diviner and medicine woman of the Dagara tradition of West Africa &mdash; a lineage carrying ancient technologies of ancestral connection, elemental medicine, oracular divination, and communal healing &mdash; received under the mentorship of recognized lineage elders. Within this tradition she carries the ceremonial responsibilities of a priestess of the wilds and of the waters, working through oracular divination, trance, song, ritual, and offerings. Her relationship with the lineage and its elders is ongoing &mdash; divinations are read, ceremonies are kept, and the medicine is returned to the living web that gave it.</p>
-
-      <p class="narrative-paragraph" data-content="lineage.paragraph_2b">She has received the nine rites of initiation of the Andean and Quechua Munay-Ki lineage. And she carries, through ongoing practice and mentorship, the inherited Mesoamerican spiritism and curanderismo of her ancestry &mdash; the ritual use of water, candles, flowers, and sacred smoke, <em>limpias</em> (spiritual cleansings), and ancestral altar work.</p>
-
-      <p class="narrative-paragraph" data-content="lineage.paragraph_3">Her formation continues across multiple disciplines &mdash; entheogenic medicine facilitation, generative hypnosis, expressive arts as ceremonial tool, ritual architecture, and the botanical healing arts. She trains with elders and lineage holders, and apprentices to the medicines themselves.</p>
-
+      <div class="am-speak-host">
+        <div>
+          <h3>What she brings</h3>
+          <p>A slide deck in the house style, a one-page seasonal wheel handout, and a list of sources, with an optional five-minute opening practice and, for in-person rooms, a drum.</p>
+        </div>
+        <div>
+          <h3>Subject matter</h3>
+          <p>Ceremony, calendar, cosmology, and craft, for audiences of 10 to 300, in person or live online.</p>
+        </div>
+        <div>
+          <h3>To invite her</h3>
+          <p>Send the format, the length, and the audience size. She will reply with her availability, the speaker one-sheet, and a recommended talk.</p>
+          <a class="btn-primary" href="inquiry.html">Invite Adi Marie</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Interlude: the tending -->
-  <section class="about-interlude about-interlude--tall" style="background-image: url('images/uploads/tg-divider-mandala-glen.jpg');">
-    <p>Ceremony is how the web is tended.</p>
+  <!-- IX. WORKING WITH US -->
+  <section class="about-narrative am-work" id="work-with-us">
+    <div class="about-narrative-inner am-principles-wide">
+      <span class="section-label">IX &middot; Working With Us</span>
+      <h2 class="section-title">How to <em>begin</em></h2>
+      <div class="story-divider"></div>
+      <p class="narrative-paragraph am-center-intro">There is a door for each way of coming to this work. Whichever you choose, it begins with a conversation.</p>
+
+      <div class="am-pathways">
+        <a class="am-pathway" href="divination-and-consultation.html"><span>For individuals</span><h3>One-to-one work</h3><p>Divination and consultation, shamanic coaching, and long arcs of spiritual development.</p><em>Begin here &rarr;</em></a>
+        <a class="am-pathway" href="public-offerings.html"><span>For community</span><h3>Circles &amp; gatherings</h3><p>Seasonal ceremonies, circles, and gatherings held by relationship and invitation.</p><em>See the offerings &rarr;</em></a>
+        <a class="am-pathway" href="training-grounds.html"><span>For practitioners</span><h3>The School</h3><p>Formation as a ceremonialist and interdimensional intermediary, with mentorship.</p><em>Enter the School &rarr;</em></a>
+        <a class="am-pathway" href="inquiry.html"><span>For hosts &amp; the press</span><h3>Speaking &amp; partnership</h3><p>Podcasts, panels, retreats, and events. Send a message with the details.</p><em>Send a message &rarr;</em></a>
+      </div>
+
+      <ol class="am-steps">
+        <li><span>1</span><h3>The conversation</h3><p>A 30-minute Intake &amp; Onboarding conversation. We meet, we learn how you are arriving, and you learn how the room is held.</p></li>
+        <li><span>2</span><h3>Preparation</h3><p>Screening, readiness, and preparation. No one sits in ceremony without them.</p></li>
+        <li><span>3</span><h3>The container</h3><p>The session, arc, or gathering that fits where you are, held with care.</p></li>
+        <li><span>4</span><h3>Integration</h3><p>Aftercare and counsel, so that what you received can take root in your life.</p></li>
+      </ol>
+      <p class="narrative-paragraph am-center-intro">Offerings are held on a sliding scale, and no one is turned away for financial incapacity. <a href="sacred-reciprocity.html">Read about sacred reciprocity.</a></p>
+    </div>
+  </section>
+
+  <!-- X. WRITINGS, BOOKS & ART -->
+  <section class="about-currents am-write" id="writings">
+    <div class="about-currents-inner">
+      <span class="section-label am-center">X &middot; Writings, Books &amp; Art</span>
+      <h2 class="section-title am-center">The written and <em>made work</em></h2>
+      <div class="story-divider am-center-rule"></div>
+      <blockquote class="am-cred-quote">&ldquo;I&rsquo;m a poet and an author by nature. I&rsquo;m an artisan and an artist, and I paint and I write and I sculpt, and there are many works to the creative expression of my arts and my crafts.&rdquo; <cite>Adi Marie</cite></blockquote>
+
+      <div class="about-currents-grid">
+        <a class="current-card" href="writings.html">
+          <span class="current-card-eyebrow">Writings</span>
+          <h3 class="current-card-title">Essays &amp; poetic transmissions</h3>
+          <p class="current-card-desc">Reflective essays, poetic transmissions, and candid meditations on healing, initiation, and the living world, published in installments.</p>
+          <span class="current-card-cta">Read the writings &rarr;</span>
+        </a>
+        <div class="current-card am-card-static">
+          <span class="current-card-eyebrow">Publications &amp; books</span>
+          <h3 class="current-card-title">There will be publications, there will be books</h3>
+          <p class="current-card-desc">Poetry, essays, and books are coming from this work. Titles and dates will be announced first in the letters.</p>
+          <span class="current-card-cta">Forthcoming</span>
+        </div>
+        <div class="current-card am-card-static">
+          <span class="current-card-eyebrow">The Mystery School Compendium</span>
+          <h3 class="current-card-title">A year-long synthesis</h3>
+          <p class="current-card-desc">The wheel of the year, the elements, the alchemical arc, and the shamanic cosmos, woven through her ancestral roots and published through the year in diagrams and essays.</p>
+          <span class="current-card-cta">In progress</span>
+        </div>
+        <div class="current-card am-card-static">
+          <span class="current-card-eyebrow">The art</span>
+          <h3 class="current-card-title">Painting, sculpture &amp; craft</h3>
+          <p class="current-card-desc">The creative expression of her arts and crafts, shared as it is made: paintings, sculpture, and the work of an artisan&rsquo;s hands.</p>
+          <span class="current-card-cta">Shared in time</span>
+        </div>
+      </div>
+      <p class="am-center-intro am-stay"><a class="btn-primary" href="writings.html#letters">Stay updated through the letters</a></p>
+    </div>
   </section>
 
   <!-- SECTION: The Ministry -->
-  <section class="about-ministry" id="ministry">
+  <section class="about-ministry" id="covenant">
     <div class="about-ministry-inner">
-      <span class="section-label">VII &middot; The Ministry</span>
+      <span class="section-label">XI &middot; The Covenant</span>
       <h2 class="section-title">A ministry, not a <em>marketplace</em></h2>
       <div class="story-divider"></div>
 
@@ -734,54 +1257,167 @@
       <p class="narrative-paragraph">The ministry&rsquo;s economic life is ordered by <a href="sacred-reciprocity.html">sacred reciprocity</a> &mdash; tiered pathways of offering, held so that no one is turned away for reasons of financial incapacity. And it is held with a clear understanding, spoken plainly to every person who enters: this work is not medical or psychological treatment. It is a ceremonial and somatic journey into the depths of being &mdash; slow, relational, and sacred.</p>
 
       <p class="narrative-paragraph">Those who give at the patron tier do more than enter the work &mdash; they endow it. Every arc held in abundance keeps a seat open at the fire for someone in a thin season. This is how a ministry sustains itself without becoming a marketplace: the circle carries its own.</p>
-    </div>
-  </section>
 
-  <!-- SECTION 6. Other Currents. 2x2 card grid (Writing / Workshops / Speaking / Journal). -->
-  <section class="about-currents">
-    <div class="about-currents-inner">
-      <span class="section-label" data-content="other_currents.section_label">Writing, Teaching, Other Currents</span>
-      <h2 class="section-title" data-content="other_currents.title" data-content-type="html">Currents that run <em>alongside the practice</em></h2>
-      <div class="story-divider"></div>
-      <p class="narrative-paragraph" data-content="other_currents.intro">Beyond the one-to-one work, four currents run alongside &mdash; places where the practice meets writing, teaching, public speaking, and the slow gathering of a journal.</p>
-
-      <div class="about-currents-grid" data-content-list="other_currents.cards">
-
-        <a class="current-card" data-content-list-template data-content-href=".cta_url" href="community.html#newsletter">
-          <span class="current-card-eyebrow" data-content=".eyebrow">From the Interworlds</span>
-          <h3 class="current-card-title" data-content=".title">Writing &amp; Poetics</h3>
-          <p class="current-card-desc" data-content=".desc">Reflective essays, poetic transmissions, and candid meditations on the nature of healing, initiation, and the living world. Gathered now &mdash; published in installments to come.</p>
-          <span class="current-card-cta" data-content=".cta_text">Receive the Dispatches &rarr;</span>
-        </a>
-
-        <a class="current-card" href="divination-and-consultation.html">
-          <span class="current-card-eyebrow">For Practitioners</span>
-          <h3 class="current-card-title">Workshops &amp; Teaching</h3>
-          <p class="current-card-desc">Workshops and intensive teaching programs for those developing their own ceremonial and healing practice. Animist cosmology, sacred breath facilitation, ceremonial design, ancestral healing, somatic awareness, expressive arts as ritual. Private engagements available for groups of six or more.</p>
-          <span class="current-card-cta">Inquire About Teaching &rarr;</span>
-        </a>
-
-        <a class="current-card" href="mailto:adimarie@bodyworkandbotanicals.com?subject=Speaking%20Inquiry">
-          <span class="current-card-eyebrow">For Event Organizers</span>
-          <h3 class="current-card-title">Appearances &amp; Speaking</h3>
-          <p class="current-card-desc">Speaking engagements, panel participation, podcast appearances, and ceremonial leadership at events. Animist worldviews, indigenous wisdom in contemporary healing, somatic intelligence, ecological grief, ceremonial culture as collective medicine.</p>
-          <span class="current-card-cta">Inquire by Email &rarr;</span>
-        </a>
-
-        <a class="current-card" href="community.html#newsletter">
-          <span class="current-card-eyebrow">A Living Document</span>
-          <h3 class="current-card-title">The Journal</h3>
-          <p class="current-card-desc">Recurring threads &mdash; the grief of the living world and why we must feel it; what the body knows that the mind hasn&rsquo;t caught up to yet; the difference between spirituality and spiritual bypassing; canyon medicine, and what the wild lands teach those who listen.</p>
-          <span class="current-card-cta">Read on &rarr;</span>
-        </a>
-
-      </div>
+      <aside class="am-nature" aria-labelledby="nature-title">
+        <h3 id="nature-title">Statement of Nature</h3>
+        <p>The Animist Apothecary is a ministry of Gaian-based animism, a religious and spiritual body whose ceremonies, rites, divination, and counsel are acts of religious practice. They are not medical, psychological, or legal services. They do not diagnose or treat any condition, and they do not replace the care of a licensed professional.</p>
+        <p>Participation is by invitation, preparation, and demonstrated readiness, and is limited to adults. What is reciprocated is the seat, the facilitation, and the container. Offerings of reciprocity are not charitable donations and are not tax-deductible.</p>
+      </aside>
     </div>
   </section>
 
   <!-- SECTION 7. Testimonial. Currently in scaffold state (publishable "note from the practice").
        When a real testimony is offered with consent: replace YAML keys (testimonial.text,
        testimonial.author) and remove the "about-testimonial--scaffold" modifier class below. -->
+
+  <!-- THE ROOMS OF THE HOUSE (2026-11-07): the-apothecary, the-lineages, interdimensional-work, sacraments, ethics, faq, voices, press folded in — her words verbatim -->
+  <section class="dr-rooms" id="rooms">
+    <div class="dr-rooms-head">
+      <span class="section-label">The Threshold</span>
+      <h2>The rooms of the <em>house</em>.</h2>
+      <p class="dr-lede">A literal place &mdash; altars, hearth, library, garden &mdash; where the work is held.</p>
+    </div>
+    <div class="dr-rooms-grid">
+      <article class="dr-room" id="apothecary">
+        <span class="num">I</span>
+        <h3>The <em>Apothecary</em></h3>
+        <p class="dr-lede">A literal place &mdash; altars, hearth, library, garden &mdash; where the work is held.</p>
+      <p>The Apothecary is not only a brand &mdash; it is a physical place, slowly built over years. A space where altars are tended daily, where medicines are gathered and prepared, where the work happens within walls that hold their own memory.</p>
+        <details>
+          <summary>Still to come</summary>
+          <ul>
+          <li>The Altars — what they hold and how they're tended</li>
+          <li>The Hearth — where ceremony happens</li>
+          <li>The Garden — the green companions outside the door</li>
+          <li>The Library — the books, oracles, and lineage texts</li>
+          <li>A Visual Tour — photographs of the space (forthcoming)</li>
+          </ul>
+        </details>
+      </article>
+      <article class="dr-room" id="the-lineages">
+        <span class="num">II</span>
+        <h3>The <em>Lineages</em></h3>
+        <p class="dr-lede">The traditions, teachers, and bodies of knowledge that hold this practice in place.</p>
+      <p>No practice arises alone. What I carry comes through long lines of teachers, traditions, and bodies of knowledge &mdash; each owed care, study, and credit.</p>
+        <details>
+          <summary>Still to come</summary>
+          <ul>
+          <li>Dagara Divination &mdash; the West African oracular tradition I am initiated in</li>
+          <li>First Peoples Heritage &mdash; my ancestral roots and inheritance</li>
+          <li>Ethnopharmacology &amp; Botanical Medicine</li>
+          <li>Somatic Psychology &amp; Trauma-Informed Care</li>
+          <li>Western Therapeutic Arts &amp; Eastern Wellness Modalities</li>
+          <li>Teachers, Elders &amp; Acknowledgments</li>
+          </ul>
+        </details>
+      </article>
+      <article class="dr-room" id="interdimensional-work">
+        <span class="num">III</span>
+        <h3>Interdimensional <em>Work</em></h3>
+        <p class="dr-lede">A field guide to the practices, principles, and protocols of journeying with the unseen realms, ancestral lineages, and spirit kin.</p>
+      <p>Interdimensional work is not a metaphor. It is the conscious crossing of thresholds &mdash; into ancestral memory, elemental kinship, dream territory, the worlds that ride alongside this one. It asks for protocol, posture, and patience.</p>
+      <p>What we are learning to do is move with reverence between rooms that most of modern life pretends are not there. The ones who go well are the ones who learn the manners of those rooms: how to enter, how to greet, how to listen, how to take leave. </p>
+        <details>
+          <summary>Still to come</summary>
+          <ul>
+          <li>First principles &mdash; consent, reciprocity, sovereignty, slowness</li>
+          <li>The architecture of the worlds &mdash; lower, middle, upper, and the lateral kin</li>
+          <li>Allies &amp; relations &mdash; ancestors, lineages, elemental beings, more-than-human kin</li>
+          <li>Posture &mdash; the body as instrument and offering</li>
+          <li>Protocols &mdash; opening, closing, calling, releasing</li>
+          <li>Discernment &mdash; what is real, what is projection, what is asking</li>
+          <li>Common pitfalls and how to walk around them</li>
+          </ul>
+        </details>
+      </article>
+      <article class="dr-room" id="sacraments">
+        <span class="num">IV</span>
+        <h3><em>Sacraments</em></h3>
+        <p class="dr-lede">The plant allies, ritual objects, and gathered medicines stewarded in this practice.</p>
+      <p>What is held in an apothecary is more than substance &mdash; it is relationship. Each sacrament gathered here arrives through years of relationship with the plant, the place, the people who tend it. None are taken; all are received.</p><p>This page is a slow inventory of what lives on the altars and in the ritual baskets &mdash; the leaves and roots, the stones and shells, the smoke and oil, the bones and bowls.</p>
+        <details>
+          <summary>Still to come</summary>
+          <ul>
+          <li>Plant Allies — the green medicines and their tendencies</li>
+          <li>Ritual Objects — bowls, bones, shells, stones, and what they hold</li>
+          <li>Smoke & Resin — the aromatic medicines and their gathering</li>
+          <li>Tinctures, Oils &amp; Salves — apothecary preparations</li>
+          <li>Sacred Sourcing — the ethics of relationship, not extraction</li>
+          </ul>
+        </details>
+      </article>
+      <article class="dr-room" id="ethics">
+        <span class="num">V</span>
+        <h3>Ethics &amp; <em>Consent</em></h3>
+        <p class="dr-lede">The professional standards, scope of practice, and harm-reduction commitments held within this work.</p>
+      <p>This work touches what is most sacred and most tender in a life. The ethics that hold it are not abstract &mdash; they are the bones of how safe this space can be.</p>
+        <details>
+          <summary>Still to come</summary>
+          <ul>
+          <li>Scope of Practice &mdash; what I do, what I don't</li>
+          <li>Confidentiality &mdash; what is shared in session remains in session</li>
+          <li>Consent &mdash; how it is asked, given, and respected throughout</li>
+          <li>Boundaries &mdash; what is appropriate, what is not</li>
+          <li>Harm Reduction &mdash; the commitments that hold sacramental work</li>
+          <li>Referrals &mdash; when this is not the right space, where to go instead</li>
+          <li>Complaints &amp; Accountability</li>
+          </ul>
+        </details>
+      </article>
+      <article class="dr-room" id="questions">
+        <span class="num">VI</span>
+        <h3>Common <em>Questions</em></h3>
+        <p class="dr-lede">The questions most often asked, answered with care and honesty.</p>
+      <p>If you're new to this kind of work &mdash; or to me &mdash; this page is a gentle door. The questions here are the ones I'm asked most often. The answers are honest, not perfect.</p>
+        <details>
+          <summary>Still to come</summary>
+          <ul>
+          <li>What is animism, and what does it mean in practice?</li>
+          <li>Who is this work for &mdash; and who is it not for?</li>
+          <li>How does the sliding scale work?</li>
+          <li>Do I need to have prior experience with ceremony or plant medicine?</li>
+          <li>How do I know which offering is right for me?</li>
+          <li>What if I need to cancel or reschedule?</li>
+          <li>Is what I share confidential?</li>
+          <li>How do I prepare for a session, ceremony, or immersion?</li>
+          </ul>
+        </details>
+      </article>
+      <article class="dr-room" id="voices">
+        <span class="num">VII</span>
+        <h3>Voices from <em>the Work</em></h3>
+        <p class="dr-lede">What participants, clients, and community have shared after sitting in this work.</p>
+      <p>This is not a showcase. It is a small archive of what people have offered back &mdash; in their own words &mdash; after sitting in session, holding a ceremony, completing a year. Each voice is shared with permission.</p>
+        <details>
+          <summary>Still to come</summary>
+          <ul>
+          <li>Voices from Intake &amp; Inquiry Sessions</li>
+          <li>Voices from Ancestral Divinations</li>
+          <li>Voices from Seasons of Change &amp; the Metamorphic Year</li>
+          <li>Voices from Community Ceremonies</li>
+          <li>Voices from The School cohorts</li>
+          </ul>
+        </details>
+      </article>
+      <article class="dr-room" id="press">
+        <span class="num">VIII</span>
+        <h3>Press &amp; <em>Speaking</em></h3>
+        <p class="dr-lede">Podcasts, articles, panels, and platforms where Adi Marie has been featured or invited to speak.</p>
+      <p>Public-facing work, gathered here for those exploring this practice for the first time, or considering an invitation to a stage, microphone, or page.</p>
+        <details>
+          <summary>Still to come</summary>
+          <ul>
+          <li>Podcast Appearances</li>
+          <li>Articles &amp; Essays (by and about Adi Marie)</li>
+          <li>Panels &amp; Conferences</li>
+          <li>Press Mentions</li>
+          <li>Booking Adi Marie — what to know for speaking invitations</li>
+          </ul>
+        </details>
+      </article>
+    </div>
+  </section>
+
   <section class="section-testimonial about-testimonial about-testimonial--scaffold">
     <div class="testimonial-carousel">
       <div class="testimonial-slides">
@@ -803,9 +1439,7 @@
   </section>
 
   <!-- Interlude: the wheel -->
-  <section class="about-interlude" style="background-image: url('images/uploads/the-work-seasons.jpg');">
-    <p>The wheel turns; the work remains.</p>
-  </section>
+  <section class="am-cluster"><div class="am-cluster-inner"><div class="am-cluster-pair"><figure class="am-cl-fig am-cl-a"><img src="images/uploads/about-vaulted-reflection.jpg" alt="A vaulted stone hall mirrored in still water" loading="lazy" decoding="async"></figure><figure class="am-cl-fig am-cl-b"><img src="images/uploads/about-starfield-valley.jpg" alt="A valley of wildflowers under the Milky Way" loading="lazy" decoding="async"></figure></div><p class="am-cluster-line">The wheel turns; the work remains.</p></div></section>
 
   <!-- SEAL -->
   <section class="am-seal">
@@ -819,7 +1453,7 @@
       <span class="section-label" data-content="cta_section.eyebrow">When You&rsquo;re Ready</span>
       <h2 class="section-title" data-content="cta_section.title" data-content-type="html">Cross the <em>threshold</em></h2>
       <p class="section-body" data-content="cta_section.body">If reading this stirred something old in you &mdash; that is not curiosity. That is recognition. The web of relation you just read about already includes you; the only question is how consciously you want to live inside it. Send a note. We&rsquo;ll find an hour, hear what you&rsquo;re carrying, and see where the work meets you.</p>
-      <a href="divination-and-consultation.html" class="btn-primary" data-content="cta_section.cta_text" data-content-href="cta_section.cta_url">Schedule the Conversation</a>
+      <a href="divination-and-consultation.html" class="btn-primary" data-content="cta_section.cta_text" data-content-href="cta_section.cta_url">Begin with a Conversation</a>
     </div>
   </section>
 
@@ -831,29 +1465,33 @@
       </div>
       <nav class="footer-nav">
         <div class="footer-col">
-          <h4>The Practice</h4>
+          <h4>The Doors</h4>
           <ul>
-              <li><a href="about.html">About Adi Marie</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="divination-and-consultation.html">Divination &amp; Consultation</a></li>
+            <li><a href="seasons-of-change.html">Spiritual Development</a></li>
+            <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
+            <li><a href="public-offerings.html">Community</a></li>
+            <li><a href="training-grounds.html">Training Grounds</a></li>
+            <li><a href="writings.html">Library</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>The Work</h4>
+          <h4>Inside</h4>
           <ul>
-            <li><a href="solo-work.html">Virtual Sessions</a></li>
-            <li><a href="group-work.html">Gatherings</a></li>
-            <li><a href="training-grounds.html">The School</a></li>
-            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+            <li><a href="calendar.html">The Wheel</a></li>
+            <li><a href="writings.html#letters">Seasonal Letters</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="about.html#ethics">Ethics &amp; Consent</a></li>
+            <li><a href="about.html#questions">Common Questions</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Begin Here</h4>
           <ul>
-            <li><a href="inquiry.html">Apply / Intake</a></li>
-            <li><a href="writings.html">Writings &amp; Letters</a></li>
-            <li><a href="divinations.html">Divinations</a></li>
-            <li><a href="inquiry.html">Send a Message</a></li>
+            <li><a href="inquiry.html">Begin Here</a></li>
+            <li><a href="divination-and-consultation.html#schedule">The Conversation</a></li>
+            <li><a href="inquiry.html#note">Write a Note</a></li>
           </ul>
         </div>
       </nav>
@@ -877,6 +1515,28 @@
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     els.forEach(function (el) { el.classList.add('lux-reveal'); io.observe(el); });
+  })();
+  </script>
+  <script>
+  (function () {
+    var hdr = document.querySelector('.site-header');
+    function setHdr() { if (hdr) document.documentElement.style.setProperty('--hdr', hdr.offsetHeight + 'px'); }
+    setHdr(); window.addEventListener('resize', setHdr);
+    var links = document.querySelectorAll('#am-subnav a');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var map = {};
+    links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && map[e.target.id]) {
+          links.forEach(function (a) { a.classList.remove('is-active'); });
+          map[e.target.id].classList.add('is-active');
+          var bar = document.getElementById('am-subnav'), a = map[e.target.id];
+          if (bar && bar.scrollWidth > bar.clientWidth) { bar.scrollTo({ left: a.offsetLeft - 24, behavior: 'smooth' }); }
+        }
+      });
+    }, { rootMargin: '-35% 0px -60% 0px' });
+    Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
   })();
   </script>
   <script src="js/traffic.js" defer></script>

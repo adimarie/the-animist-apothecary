@@ -1878,8 +1878,13 @@
     body[data-content-page="sessions"] .schedule-intro strong { color: #1F1A18; }
     @media (max-width: 640px) { .sessions-pills { gap: 0.45rem; padding: 1rem 0.8rem; } .sessions-pills a { font-size: 0.66rem; padding: 0.45rem 0.85rem; } }
   </style>
+  <link rel="stylesheet" href="css/elevate.css?v=261106">
+  <link rel="stylesheet" href="css/luxe.css?v=261106">
+  <link rel="stylesheet" href="css/worlds.css?v=261106">
+  <link rel="stylesheet" href="css/doors.css?v=261107">
+  <link rel="stylesheet" href="css/still.css?v=261106">
 </head>
-<body data-content-page="sessions">
+<body data-world="oracle" data-content-page="sessions">
 
 
   <header class="site-header">
@@ -1895,10 +1900,10 @@
           <li><a href="divination-and-consultation.html">Divination &amp; Consultation</a></li>
           <li><a href="seasons-of-change.html">Spiritual Development</a></li>
           <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
-          <li><a href="public-offerings.html">Community Offerings</a></li>
-          <li><a href="workshops-and-courses.html">Workshops &amp; Courses</a></li>
-          <li><a href="writings.html">Resources</a></li>
-          <li><a href="seasonal-letters.html">Newsletter</a></li>
+          <li><a href="public-offerings.html">Community</a></li>
+          <li><a href="training-grounds.html">Training Grounds</a></li>
+          <li><a href="writings.html">Library</a></li>
+          <li><a href="inquiry.html">Begin Here</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="nav-toggle-word" aria-hidden="true">Menu</span></button>
@@ -1909,7 +1914,8 @@
   <!-- =============================================================
        HERO
        ============================================================= -->
-  <section class="page-hero sessions-portrait-hero" style="background-image: linear-gradient(100deg, rgba(28,22,16,0.78) 0%, rgba(28,22,16,0.55) 38%, rgba(28,22,16,0.15) 60%, rgba(28,22,16,0) 80%), url('images/uploads/lounging-hero-green-gold.jpg'); background-position: right center; background-size: cover; padding-top: 1.5rem; padding-bottom: 1.5rem; aspect-ratio: 21 / 9; min-height: 540px; display: flex; align-items: center;">
+  <section class="lx-hero page-hero sessions-portrait-hero" style="background-image: linear-gradient(100deg, rgba(28,22,16,0.78) 0%, rgba(28,22,16,0.55) 38%, rgba(28,22,16,0.15) 60%, rgba(28,22,16,0) 80%), url('images/uploads/lounging-hero-green-gold.jpg'); background-position: right center; background-size: cover; padding-top: 1.5rem; padding-bottom: 1.5rem; aspect-ratio: 21 / 9; min-height: 540px; display: flex; align-items: center;">
+    <span class="lx-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     <div class="hero-inner sessions-portrait-inner" style="text-align: left; max-width: 1280px; width: 100%; margin: 0 auto; padding: 0 4rem;">
       <div style="max-width: 520px;">
         <p class="hero-eyebrow" style="color: var(--gold-pale, #DBC079);">The Sessions</p>
@@ -1932,18 +1938,33 @@
   <section class="sessions-intro">
     <h2>A place where anyone can <em>begin</em>.</h2>
     <p>The one-on-one sessions open here directly, just below. The Intake &amp; Inquiry is the Conversation &mdash; the threshold every deeper path shares.</p>
-    <p>The deeper paths ask differently. Seasons of Change, the Metamorphic Year, ceremony commissions, community engagements. These are carefully curated and intentionally tended fields, entered through acquaintance. <a href="#book-intake-inquiry">Begin one here &rarr;</a></p>
+    <p>The deeper paths ask differently. Seasons of Change, the Metamorphic Year, ceremony commissions, community engagements. These are carefully curated and intentionally tended fields, entered through acquaintance. <a href="#schedule">Begin one here &rarr;</a></p>
   </section>
+
+  <!-- On this page (doors map, 2026-11-07) -->
+  <nav class="dr-subnav" aria-label="On this page">
+    <a href="#schedule">Schedule</a><a href="#divination">Divination</a><a href="#counsel">Guidance &amp; Counsel</a><a href="#preparing">Preparing</a><a href="#integration">Integration</a><a href="#reciprocity">Reciprocity</a><a href="#practical">Practical Notes</a>
+  </nav>
 
   <!-- =============================================================
        PAY + SACRED RECIPROCITY — merged section
        (top: payment action · bottom: philosophy + 4-tier descriptor)
        ============================================================= -->
+    <!-- world: vista (oracle-vista) -->
+  <section class="wd-vista" data-worlds style="--vista-img:url('/images/worlds/oracle-vista.jpg');--vista-pos:center 45%">
+    <span class="lx-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="wd-vista-inner">
+      <span class="wd-vista-eyebrow">The deeper paths</span>
+      <p class="wd-vista-line is-long">These are carefully curated and intentionally tended fields, entered through acquaintance.</p>
+      <span class="wd-vista-orn" aria-hidden="true"></span>
+    </div>
+  </section>
+
   <section class="schedule-section" id="schedule">
     <div class="schedule-inner">
       <span class="section-label">Schedule a Session</span>
       <h2>Choose your session. <em>Find your hour.</em></h2>
-      <p class="schedule-intro">Select the one-on-one session that fits, find an open hour on Adi Marie&rsquo;s calendar, share what brings you, and offer your reciprocity &mdash; all in one place. Every session is held on a sliding scale: <strong>$700 / $550 / $450 / $350</strong>, whichever is true for you.</p>
+      <p class="schedule-intro">Select the one-on-one session that fits, find an open hour on Adi Marie&rsquo;s calendar, share what brings you, and offer your reciprocity &mdash; all in one place. Every session is held on a sliding scale &mdash; <strong>Accessibility, Community, Abundance or Patron</strong>, whichever is true for you.</p>
       <p class="schedule-recip-note" style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.08rem; font-style:italic; color:var(--gold-pale,#DCC178); margin:0.5rem auto 0; max-width:760px; line-height:1.6;">More than a sliding scale &mdash; this is <a href="#reciprocity" style="color:var(--gold,#C9A84C); text-decoration:underline; text-underline-offset:3px;">Sacred Reciprocity</a>, a practice of social economics.</p>
 
       <!-- Each booking option presented as an image card (page-scoped; keyed to the widget's data-svc slug) -->
@@ -2021,6 +2042,244 @@
        PAY + SACRED RECIPROCITY — merged section
        (top: payment action · bottom: philosophy + 4-tier descriptor)
        ============================================================= -->
+    <!-- world: cluster (oracle-a+oracle-b) -->
+  <section class="wd-cluster wd-cluster--pair" data-worlds>
+    <div class="wd-cluster-inner">
+      <div class="wd-cluster-grid">
+        <figure class="wd-fig" style="--pos:50% 50%"><img src="/images/worlds/oracle-a.jpg" alt="Incense smoke rising over moss, in low light" loading="lazy" decoding="async"></figure>
+        <figure class="wd-fig" style="--pos:50% 40%"><img src="/images/worlds/oracle-b.jpg" alt="Tools of divination laid out on dark brown paper" loading="lazy" decoding="async"></figure>
+      </div>
+      <p class="wd-cluster-line">What is shared in session remains in session.</p>
+      <span class="wd-cluster-orn" aria-hidden="true"></span>
+    </div>
+  </section>
+
+
+  <!-- ===== Folded chapters (2026-11-07): divinations.html, platicas.html, preparatory-and-intake.html, aftercare-and-integration.html — her words, verbatim ===== -->
+  <section class="dr-chapter" id="divination">
+    <div class="dr-chapter-head">
+      <span class="section-label">Ancestral &amp; Elemental Divination</span>
+      <h2>An unbroken lineage of <em>earth-based medicine</em></h2>
+    </div>
+    <div class="offering-detail-layout"><div class="offering-detail-inner"><div class="offering-detail-body">
+      <p class="section-label">The Dagara Tradition</p>
+      <h2 class="section-title">An unbroken lineage of <em>earth-based medicine</em></h2>
+      <div class="story-divider"></div>
+
+      <p>The Dagara people of Burkina Faso and northern Ghana, in the North West regions of the South Sahel, have tended an unbroken lineage of earth-based, community-centered spiritual practice for over 20,000 years.</p>
+
+      <p>Their cosmology was, at the request of the Spirits, brought to the Americas by four Medicine Elders who were chosen for this voyage out into the world of modernity. As a culture, their entire existence rests on a living truth &mdash; that all things are alive: the Earth, the Elements, our ancestors, and the unseen intelligences that animate creation.</p>
+
+      <p>A divination is a sacred conversation between you, your Spirit, your Ancestors, and the elemental forces that walk with you. Through an ancient technology of oracular communication &mdash; using sticks and stones, and shells, and bones &mdash; the benevolent Spirits offer clarity, healing, and ritual prescriptions to realign your life with harmony and purpose.</p>
+
+      <p>This work is not fortune-telling; it is <strong>energetic and ancestral diagnostics</strong> &mdash; a dialogue of revelation, guided entirely by Spirit.</p>
+
+      <blockquote class="story-quote">The ancestors are not silent. The elements are not indifferent. They have been trying to reach you. A divination creates the conditions for that contact &mdash; and for receiving what they&rsquo;ve been trying to say. <strong>&mdash; Adi Marie</strong></blockquote>
+
+      <h3>The Five Elemental Forces</h3>
+      <p>The Dagara worldview moves through five elemental forces, each a living realm of intelligence:</p>
+
+      <div class="path-card">
+        <h4>Fire</h4>
+        <p><em>Transformation, clarity, and vision.</em></p>
+      </div>
+      <div class="path-card">
+        <h4>Water</h4>
+        <p><em>Purification, emotional and spiritual flow.</em></p>
+      </div>
+      <div class="path-card">
+        <h4>Earth</h4>
+        <p><em>Grounding, belonging, community.</em></p>
+      </div>
+      <div class="path-card">
+        <h4>Mineral</h4>
+        <p><em>Ancestry, memory, communication.</em></p>
+      </div>
+      <div class="path-card">
+        <h4>The Wilds</h4>
+        <p><em>Life-force, creativity, wild intelligence.</em></p>
+      </div>
+
+      <p>Each being and life passage holds a unique elemental balance. The divination reveals which forces are strong, which are calling for attention, and which ancestral presences wish to work with you at this time.</p>
+
+      <p>This lineage is an animist tradition &mdash; a way of life in which everything is spirit, and ritual is the language of relationship. The Dagara people view healing not as fixing what is broken but as restoring harmony among the human, ancestral, elemental, and communal worlds.</p>
+
+      <h3>A Note on Lineage</h3>
+
+      <p>My own training and initiation has come through oral tradition and initiation, as preserved by the elders of Burkina Faso, into the holding of The House of Bahki, through the Som&eacute; family, and thus delivered by my first mentor and initiating Elder: Mark Bockley. By this tradition and the tending of its many Guardian Spirits, I am now in service as a Wedem&eacute; Medicine Woman and Stick Diviner &mdash; a Priestess of the Wilds, and a Kont&ocirc;mbl&eacute; Medicine Woman and Voice Diviner &mdash; a Priestess of the Waters.</p>
+
+      <p>These forms of Divination are an ancient, earth-rooted technology of the sacred &mdash; a lineage of practice spanning more than 8,000 years &mdash; through which the spirit realms are called upon to illuminate the path, offering insight, guidance and procedural ritual instruction to help bring healing, harmony, growth, and benevolent change.</p>
+
+      <p>It is my privilege and responsibility to offer this medicine with humility and respect for the Dagara elders, whose wisdom and rituals have been preserved through oral transmission for millennia; and with utmost reverential gratitude for the Spirits which called me forth and entrusted me as a Medicine Woman of this lineage and of this path.</p>
+
+      <h3>About Your Session</h3>
+
+      <p>Your <strong>2-hour divination</strong> is a ceremony of listening and revelation. Before we begin, you&rsquo;ll be invited to <strong>whisper your question into a quarter or .25 cent coin</strong> &mdash; privately, without telling me. Spirit hears through the metal and energetics of interchange in currency, and I read the answer as it arises through the field via my diviner&rsquo;s kit.</p>
+
+      <p>During our time, you&rsquo;ll receive messages, insights, and ritual guidance to help bring balance and movement into your life. Some rituals are simple, such as offering water to the Earth. Others are more intricate, depending on what is revealed. Each will be clearly explained and contextualized.</p>
+
+      <p>Because so much information flows through, I encourage you to <strong>record the session</strong> &mdash; this allows you to revisit and integrate what unfolds afterward.</p>
+
+      <h4>Before Your Divination</h4>
+      <ul>
+        <li>Reflect on two to three areas of life where you seek clarity or support.</li>
+        <li>Bring a <strong>quarter or .25 cent coin</strong>, perhaps a journal, a recording device (we can also record on Zoom), and get comfortable.</li>
+        <li>You&rsquo;re welcome to have nearby any <strong>sacred items</strong> (stones, photos, heirlooms, etc.) you&rsquo;d like to keep close.</li>
+      </ul>
+
+      <p><strong>Duration:</strong> 2 hours<br>
+      <strong>Location:</strong> via Zoom or in person at The Haven (Southern California, by arrangement)</p>
+
+      <h3>Proceeding with Your Rituals</h3>
+
+      <p>Take the rituals slowly and progressively, think of them as climates moving into your life. Please give each prescription its own space and time to fully open and soak into the weave of your life. Be attentive to dreams that arise, especially around ritual time.</p>
+
+      <p>Additionally, as you experience significant shifts and healing through this work, it is important and customary to send a medicine piece, to become part of my diviner&rsquo;s kit &mdash; a significant object representing and meant to hold the energy of the healing that has occurred for you from your divination. Your healing thus becomes part of the community&rsquo;s medicine so that others may, in time, be guided by the light of your process.</p>
+
+      <p>When the time comes, please reach out for the mailing address so you can send your offering of your Medicine Piece. <a href="inquiry.html">Email Adi Marie</a> and she will send you the current address privately.</p>
+
+      <p>Also, more imminently, if you would send your coin from your divination in the mail, this is an important closing and completing component to your divination. It is important to offer it to my medicine shrines as a token, and also as the energetic signature of your questions and the healing you&rsquo;ve begun to welcome, a talismanic piece.</p>
+
+      <h3>Learning Resources</h3>
+
+      <p>If you are interested in learning more about this medicine and want to immerse yourself in the stories and cosmology of the Dagara, the best way is to live it, and fully immerse yourself in the process of walking the path. This medicine is the experiential medicine of homecoming; a return of elemental relationships with the thrumming, vibrant, living world all around and within us.</p>
+
+      <p>For a wonderful supplement and primer, these two books were written by Elder Malidoma Som&eacute;, one of four medicine people who came to the Americas as the Spirits were wanting to make their way out of Africa and to awaken the many Children of long dormant medicine lineages across the world:</p>
+
+      <div style="display: flex; gap: 1.5rem; margin: 1.5rem 0; flex-wrap: wrap;">
+        <a href="https://www.amazon.com/Ritual-Power-Healing-and-Community/dp/B09NS36723/" target="_blank" style="text-decoration: none; color: var(--earth);">
+          <em>Ritual: Power, Healing and Community</em> &mdash; Malidoma Som&eacute;
+        </a>
+        <a href="https://www.amazon.com/Of-Water-and-Spirit-audiobook/dp/B00PR41XAA/" target="_blank" style="text-decoration: none; color: var(--earth);">
+          <em>Of Water and the Spirit</em> &mdash; Malidoma Som&eacute;
+        </a>
+      </div>
+
+      <p>This work reconnects us to the web of life &mdash; to our ancestors, our elements, and the animating forces that guide our becoming.</p>
+
+      <p>Connecting with the direct guidance of spirit and the powers of the Living World has brought great potency and coherence to every other aspect of my medicine walk. It is my honor to walk beside you in this conversation with Spirit and to open the way for what wishes to be revealed through you.</p>
+
+      <p style="margin-top: 2rem;">With reverence and warmth,</p>
+      <p><strong>Adi Marie</strong><br>
+      <em>Diviner | Medicine Woman | Somatic Practitioner</em><br>
+      The Animist Apothecary<br>
+      <a href="https://theanimistapothecary.com/" style="color: var(--gold);">theanimistapothecary.com</a></p>
+
+    
+    </div></div></div>
+    <p class="dr-door">The ancestors are waiting. <a href="#schedule">Book a reading and receive the transmission that has been waiting for you. &rarr;</a></p>
+  </section>
+
+  <section class="dr-chapter dr-chapter--alt" id="counsel">
+    <div class="dr-chapter-head">
+      <span class="section-label">Guidance &amp; Counsel</span>
+      <h2>A space to be <em>truly witnessed</em></h2>
+    </div>
+    <div class="offering-detail-layout"><div class="offering-detail-inner"><div class="offering-detail-body">
+        <p class="section-label">The Offering</p>
+        <h2 class="section-title">A space to be <em>truly witnessed</em></h2>
+        <div class="story-divider"></div>
+
+        <p>Pl&aacute;tica is a Spanish word meaning conversation &mdash; but in the context of this work, it means the kind of conversation that doesn't happen at dinner parties or in therapy offices &mdash; the conversation where you are seen all the way down, without flinching, without fixing, without rushing.</p>
+
+        <p>A Pl&aacute;tica session with Adi Marie is a two-hour sacred conversation: part spiritual direction, part integration support, part strategic counsel. For those who are navigating something difficult and want perspective from someone who has walked many edges and can see what others miss.</p>
+
+        <p>These sessions are also the integration arm of the Developmental Arc &mdash; the Guidance &amp; Counsel sessions that run alongside Sacred Breath sessions in the Mythopoetic Living program. But they are available on their own for those who need a single session of honest, skillful witnessing.</p>
+
+        <blockquote class="story-quote">There is a kind of conversation that changes you &mdash; not because of the advice given, but because of the quality of attention brought to your truth. <strong>That is what a Pl&aacute;tica is.</strong></blockquote>
+
+        <h3>What Pl&aacute;ticas Are Good For</h3>
+
+        <ul class="offering-feature-list">
+          <li class="offering-feature-item">
+            <span class="feature-dot">&mdash;</span>
+            <p>Integration after a ceremony, plant medicine experience, or significant spiritual opening</p>
+          </li>
+          <li class="offering-feature-item">
+            <span class="feature-dot">&mdash;</span>
+            <p>Navigating a major life decision with spiritual intelligence and clear-eyed counsel</p>
+          </li>
+          <li class="offering-feature-item">
+            <span class="feature-dot">&mdash;</span>
+            <p>Processing grief, loss, transition, or any significant threshold crossing</p>
+          </li>
+          <li class="offering-feature-item">
+            <span class="feature-dot">&mdash;</span>
+            <p>Spiritual direction for those developing their own practice or navigating a calling</p>
+          </li>
+          <li class="offering-feature-item">
+            <span class="feature-dot">&mdash;</span>
+            <p>A check-in, a recalibration, a moment of honest reflection with someone who will tell you the truth</p>
+          </li>
+          <li class="offering-feature-item">
+            <span class="feature-dot">&mdash;</span>
+            <p>Ongoing integration support as part of the Developmental Arc</p>
+          </li>
+        </ul>
+
+        <p>Sessions are 2 hours. Available virtually worldwide via video call, and in person by arrangement. Recordings available upon request. Single sessions and packages available.</p>
+      
+    </div></div></div>
+    <p class="dr-door">Say what&rsquo;s actually happening. <a href="#schedule">Book a Pl&aacute;tica and step into the conversation your life has been asking for. &rarr;</a></p>
+  </section>
+
+  <section class="dr-chapter" id="preparing">
+    <div class="dr-chapter-head">
+      <span class="section-label">Preparatory &amp; Intake</span>
+      <h2>Before any threshold is crossed, there is a season of <em>readying</em>.</h2>
+      <p class="dr-lede">How to ready yourself for ceremony, what the Intake &amp; Inquiry conversation includes, and what readiness looks like before stepping into journeywork.</p>
+    </div>
+    <div class="dr-prose">
+      <p>Before any threshold is crossed, there is a season of readying. The intake is not paperwork &mdash; it is a first liturgy. A conversation that begins to attune body, intention, and field to the work ahead.</p>
+
+      <p>Preparation tends what arrives. The body, the lineage, the dreams, the calendar, the diet, the company you keep, the silences you make. Everything that helps the medicine land cleanly when its hour comes.</p>
+
+      <div class="planned-sections">
+        <h4>Still to come</h4>
+        <ul>
+          <li>The Intake &amp; Inquiry conversation &mdash; what it is, how it&rsquo;s held, what to bring</li>
+          <li>Readiness markers &mdash; somatic, relational, practical, spiritual</li>
+          <li>Pre-ceremony rhythms &mdash; dietary practice, abstentions, sleep, prayer</li>
+          <li>What to bring &mdash; objects, intentions, ancestors, allies</li>
+          <li>Communication windows &mdash; when and how we&rsquo;re in touch before the work</li>
+          <li>Safety, contraindications, and honest conversation</li>
+        </ul>
+      </div>
+
+      
+    </div>
+    <p class="dr-door"><a href="#schedule">The intake is a first liturgy. Begin with the Conversation &rarr;</a></p>
+  </section>
+
+  <section class="dr-chapter dr-chapter--alt" id="integration">
+    <div class="dr-chapter-head">
+      <span class="section-label">Integration &amp; Aftercare</span>
+      <h2>Integration is the slow, devoted <em>return</em>.</h2>
+      <p class="dr-lede">How to tend the days, weeks, and seasons after ceremony. Practices, rhythms, and supports for the weaving of what was opened.</p>
+    </div>
+    <div class="dr-prose">
+      <p>The medicine continues working long after the ceremony ends. What was opened wants to be tended &mdash; not closed, not rushed, not forgotten. Integration is the slow, devoted return.</p>
+
+      <p>Aftercare is not optional and it is not a quick conversation. It is a season &mdash; sometimes a year, sometimes longer &mdash; in which what was met is woven into ordinary life. The body re-patterns. Relationships re-arrange. The new is given room to root.</p>
+
+      <div class="planned-sections">
+        <h4>Still to come</h4>
+        <ul>
+          <li>The first 72 hours &mdash; rest, hydration, silence, what to avoid</li>
+          <li>The first month &mdash; rhythms, journaling, dreams, conversation</li>
+          <li>The first year &mdash; deeper integration, return cycles, anniversary practice</li>
+          <li>Working with what surfaces &mdash; grief, vision, somatic releases, ancestral movement</li>
+          <li>Integration calls &mdash; what they hold and how they&rsquo;re scheduled</li>
+          <li>When to reach out, when to sit still, when to come back to ceremony</li>
+          <li>Long-arc care &mdash; living the work after the door has closed</li>
+        </ul>
+      </div>
+
+      
+    </div>
+    <p class="dr-door"><a href="#schedule">What was opened wants to be tended. Schedule an integration session &rarr;</a></p>
+  </section>
+
   <section class="reciprocity-note" id="reciprocity">
     <div class="reciprocity-note-inner">
 
@@ -2260,6 +2519,34 @@
   <!-- =============================================================
        FOOTER
        ============================================================= -->
+    <!-- world: continue to -->
+  <section class="wd-doors wd-doors--next" data-worlds data-worlds-next>
+    <div class="wd-doors-head">
+      <span class="wd-doors-eyebrow">The Doorways</span>
+      <h2 class="wd-doors-title">Choose your <em>door</em>.</h2>
+    </div>
+    <div class="wd-doors-grid">
+      <a class="wd-door" href="seasons-of-change.html" style="--pos:50% 40%">
+        <img class="wd-door-img" src="/images/worlds/seasons-vista.jpg" alt="Sunlight through a great old tree" loading="lazy" decoding="async">
+        <span class="wd-door-inner">
+          <span class="wd-door-eyebrow">Personal Container</span>
+          <span class="wd-door-name" role="heading" aria-level="3">Spiritual Development</span>
+          <span class="wd-door-line" style="display:block">Ceremonially-Assisted Coaching Containers.</span>
+          <span class="wd-door-enter">Enter &rarr;</span>
+        </span>
+      </a>
+      <a class="wd-door" href="ceremonial-coaching.html" style="--pos:50% 55%">
+        <img class="wd-door-img" src="/images/worlds/hearth-vista.jpg" alt="Red sandstone, layered and warm" loading="lazy" decoding="async">
+        <span class="wd-door-inner">
+          <span class="wd-door-eyebrow">Premium Coaching · One to One</span>
+          <span class="wd-door-name" role="heading" aria-level="3">Shamanic Coaching</span>
+          <span class="wd-door-line" style="display:block">Bespoke, specialized accompaniment for those coming into their spiritual gifts — guidance and counsel, woven with in-person interdimensional ceremonial work.</span>
+          <span class="wd-door-enter">Enter &rarr;</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -2268,29 +2555,33 @@
       </div>
       <nav class="footer-nav">
         <div class="footer-col">
-          <h4>The Practice</h4>
+          <h4>The Doors</h4>
           <ul>
-              <li><a href="about.html">About Adi Marie</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="divination-and-consultation.html">Divination &amp; Consultation</a></li>
+            <li><a href="seasons-of-change.html">Spiritual Development</a></li>
+            <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
+            <li><a href="public-offerings.html">Community</a></li>
+            <li><a href="training-grounds.html">Training Grounds</a></li>
+            <li><a href="writings.html">Library</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>The Work</h4>
+          <h4>Inside</h4>
           <ul>
-            <li><a href="solo-work.html">Virtual Sessions</a></li>
-            <li><a href="group-work.html">Gatherings</a></li>
-            <li><a href="training-grounds.html">The School</a></li>
-            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+            <li><a href="calendar.html">The Wheel</a></li>
+            <li><a href="writings.html#letters">Seasonal Letters</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="about.html#ethics">Ethics &amp; Consent</a></li>
+            <li><a href="about.html#questions">Common Questions</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Begin Here</h4>
           <ul>
-            <li><a href="divination-and-consultation.html">Book a Session</a></li>
-            <li><a href="inquiry.html">Begin a Conversation</a></li>
-            <li><a href="writings.html">Writings &amp; Letters</a></li>
-            <li><a href="inquiry.html">Send a Message</a></li>
+            <li><a href="inquiry.html">Begin Here</a></li>
+            <li><a href="divination-and-consultation.html#schedule">The Conversation</a></li>
+            <li><a href="inquiry.html#note">Write a Note</a></li>
           </ul>
         </div>
       </nav>

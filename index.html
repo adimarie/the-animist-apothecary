@@ -2140,6 +2140,7 @@
 
     }
   </style>
+  <link rel="stylesheet" href="css/still.css?v=261106">
 </head>
 <body data-content-page="home">
 
@@ -2156,10 +2157,10 @@
           <li><a href="divination-and-consultation.html">Divination &amp; Consultation</a></li>
           <li><a href="seasons-of-change.html">Spiritual Development</a></li>
           <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
-          <li><a href="public-offerings.html">Community Offerings</a></li>
-          <li><a href="workshops-and-courses.html">Workshops &amp; Courses</a></li>
-          <li><a href="writings.html">Resources</a></li>
-          <li><a href="seasonal-letters.html">Newsletter</a></li>
+          <li><a href="public-offerings.html">Community</a></li>
+          <li><a href="training-grounds.html">Training Grounds</a></li>
+          <li><a href="writings.html">Library</a></li>
+          <li><a href="inquiry.html">Begin Here</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="nav-toggle-word" aria-hidden="true">Menu</span></button>
@@ -2285,7 +2286,7 @@
       <p class="the-work-intro">Each is its own world. Each leads to its own dedicated container. The first conversation, always, is the Intake &amp; Inquiry.</p>
 
       <div class="the-work-paths">
-        <a href="solo-work.html" class="work-path">
+        <a href="seasons-of-change.html#solo-work" class="work-path">
           <div class="work-path-image-wrap">
             <div class="work-path-image" style="background-image: url('images/uploads/the-work-ceremony.jpg'); background-position: center 35%;"></div>
           </div>
@@ -2299,7 +2300,7 @@
           </ul>
           <span class="work-path-cta">Enter Solo Work &rarr;</span>
         </a>
-        <a href="group-work.html" class="work-path">
+        <a href="public-offerings.html#gatherings" class="work-path">
           <div class="work-path-image-wrap">
             <div class="work-path-image" style="background-image: url('images/uploads/the-work-seasons.jpg'); background-position: center center;"></div>
           </div>
@@ -2386,7 +2387,7 @@
           slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
           dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
         };
-        const reset = () => { clearInterval(timer); timer = setInterval(() => show(idx + 1), 9000); };
+        const reset = () => { clearInterval(timer); };
         const go = (n) => { show(n); reset(); };
         prev && prev.addEventListener('click', () => go(idx - 1));
         next && next.addEventListener('click', () => go(idx + 1));
@@ -2421,7 +2422,7 @@
             <p class="begin-doorway-desc">A conversation for attunement, alignment, and safety assessment &mdash; the required first step before ceremony or cohort enrollment.</p>
             <span class="begin-doorway-cta">Schedule the Intake &rarr;</span>
           </a>
-          <a href="divinations.html" class="begin-doorway">
+          <a href="divination-and-consultation.html#divination" class="begin-doorway">
             <span class="begin-doorway-eyebrow">The Oracular Threshold</span>
             <h3 class="begin-doorway-title">Ancestral &amp; Elemental Divination</h3>
             <p class="begin-doorway-desc">A reading drawn from spirit, ancestor, and element &mdash; for those whose first question is for the unseen, before the words come.</p>
@@ -2485,29 +2486,33 @@
       </div>
       <nav class="footer-nav">
         <div class="footer-col">
-          <h4>The Practice</h4>
+          <h4>The Doors</h4>
           <ul>
-              <li><a href="about.html">About Adi Marie</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="divination-and-consultation.html">Divination &amp; Consultation</a></li>
+            <li><a href="seasons-of-change.html">Spiritual Development</a></li>
+            <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
+            <li><a href="public-offerings.html">Community</a></li>
+            <li><a href="training-grounds.html">Training Grounds</a></li>
+            <li><a href="writings.html">Library</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>The Work</h4>
+          <h4>Inside</h4>
           <ul>
-            <li><a href="solo-work.html">Virtual Sessions</a></li>
-            <li><a href="group-work.html">Gatherings</a></li>
-            <li><a href="training-grounds.html">The School</a></li>
-            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+            <li><a href="calendar.html">The Wheel</a></li>
+            <li><a href="writings.html#letters">Seasonal Letters</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="about.html#ethics">Ethics &amp; Consent</a></li>
+            <li><a href="about.html#questions">Common Questions</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Begin Here</h4>
           <ul>
-            <li><a href="divination-and-consultation.html">Apply / Intake</a></li>
-            <li><a href="writings.html">Writings &amp; Letters</a></li>
-            <li><a href="divinations.html">Divinations</a></li>
-            <li><a href="divination-and-consultation.html">Send a Message</a></li>
+            <li><a href="inquiry.html">Begin Here</a></li>
+            <li><a href="divination-and-consultation.html#schedule">The Conversation</a></li>
+            <li><a href="inquiry.html#note">Write a Note</a></li>
           </ul>
         </div>
       </nav>

@@ -164,8 +164,13 @@
 .weekly-circles-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
 }
   </style>
+  <link rel="stylesheet" href="css/elevate.css?v=261106">
+  <link rel="stylesheet" href="css/luxe.css?v=261106">
+  <link rel="stylesheet" href="css/worlds.css?v=261106">
+  <link rel="stylesheet" href="css/doors.css?v=261107">
+  <link rel="stylesheet" href="css/still.css?v=261106">
 </head>
-<body data-content-page="offering-public-offerings">
+<body data-world="village" data-content-page="offering-public-offerings">
 
 
   <header class="site-header">
@@ -180,10 +185,10 @@
           <li><a href="divination-and-consultation.html">Divination &amp; Consultation</a></li>
           <li><a href="seasons-of-change.html">Spiritual Development</a></li>
           <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
-          <li><a href="public-offerings.html">Community Offerings</a></li>
-          <li><a href="workshops-and-courses.html">Workshops &amp; Courses</a></li>
-          <li><a href="writings.html">Resources</a></li>
-          <li><a href="seasonal-letters.html">Newsletter</a></li>
+          <li><a href="public-offerings.html">Community</a></li>
+          <li><a href="training-grounds.html">Training Grounds</a></li>
+          <li><a href="writings.html">Library</a></li>
+          <li><a href="inquiry.html">Begin Here</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="nav-toggle-word" aria-hidden="true">Menu</span></button>
@@ -192,7 +197,8 @@
   </header>
 
   <!-- HERO -->
-  <section class="po-hero">
+  <section class="lx-hero po-hero">
+    <span class="lx-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     <div class="po-hero-image" style="background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=2400&h=1400&fit=crop&q=85');"></div>
     <div class="po-hero-overlay"></div>
     <div class="po-hero-inner">
@@ -201,6 +207,10 @@
       <p class="po-hero-sub">The open doorways of the Apothecary &mdash; sessions, gatherings, workshops, and divinations. Where the work begins.</p>
     </div>
   </section>
+  <!-- On this page (doors map, 2026-11-07) -->
+  <nav class="dr-subnav dr-subnav--top" aria-label="On this page">
+    <a href="#wheel">The Wheel</a><a href="#doors">The Four Doorways</a><a href="#circles">Weekly Circles</a><a href="#gather">Gather in the Circle</a><a href="#virtual">Virtual Gatherings</a><a href="#gatherings">Gatherings &amp; Excursions</a><a href="#kinship">The Kinship Nexus</a>
+  </nav>
 
   <section class="po-body">
     <div class="po-body-inner">
@@ -218,7 +228,7 @@
       </div>
 
       <!-- DOORWAYS -->
-      <div class="po-doors-head">
+      <div class="po-doors-head" id="doors">
         <span class="po-eyebrow-l">The Four Doorways</span>
         <h2 class="po-h2">Choose your <em>door</em>.</h2>
         <span class="po-rule"></span>
@@ -233,7 +243,7 @@
           <span class="po-door-link">Enter &rarr;</span>
           </div>
         </a>
-        <a class="po-door" href="group-work.html">
+        <a class="po-door" href="public-offerings.html#gatherings">
           <div class="po-door-img" style="background-image: url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1200&h=750&fit=crop&q=80');"></div>
           <div class="po-door-inner">
           <span class="po-door-eyebrow">In Circle &middot; Together</span>
@@ -242,7 +252,7 @@
           <span class="po-door-link">Enter &rarr;</span>
           </div>
         </a>
-        <a class="po-door" href="how-to-journey.html">
+        <a class="po-door" href="training-grounds.html#workshops">
           <div class="po-door-img" style="background-image: url('images/uploads/four-paths-labyrinth-fern.jpg');"></div>
           <div class="po-door-inner">
           <span class="po-door-eyebrow">Learning &middot; Online</span>
@@ -251,7 +261,7 @@
           <span class="po-door-link">Enter &rarr;</span>
           </div>
         </a>
-        <a class="po-door" href="divinations.html">
+        <a class="po-door" href="divination-and-consultation.html#divination">
           <div class="po-door-img" style="background-image: url('https://images.unsplash.com/photo-1627769916425-74c2344a3439?w=1200&h=750&fit=crop&q=80');"></div>
           <div class="po-door-inner">
           <span class="po-door-eyebrow">Counsel &middot; The Unseen</span>
@@ -265,7 +275,29 @@
     </div>
   </section>
 
-<section class="weekly-circles" id="circles">
+  <!-- world: vista (village-vista) -->
+  <section class="wd-vista" data-worlds style="--vista-img:url('/images/worlds/village-vista.jpg');--vista-pos:center 60%">
+    <span class="lx-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="wd-vista-inner">
+      <span class="wd-vista-eyebrow">Open to All Who Are Called</span>
+      <p class="wd-vista-line">Four ways to sit together, in good company.</p>
+      <span class="wd-vista-orn" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <!-- The Wheel (2026-11-07): the living clock — her lines from calendar.html; the Wheel itself stays its own page -->
+  <section class="dr-band" id="wheel">
+    <div class="dr-band-inner">
+      <span class="section-label">The Wheel</span>
+      <h2>The coming <em>season</em></h2>
+      <p class="dr-lede">Where the work meets the year &mdash; and where I'll be when.</p>
+      <p>The practice follows a migratory rhythm &mdash; Southern California as anchor, the wider lands as called.</p>
+      <p class="dr-door"><a href="calendar.html">See the Wheel &rarr;</a></p>
+    </div>
+  </section>
+
+
+  <section class="weekly-circles" id="circles">
     <div class="weekly-circles-inner">
       <div class="weekly-circles-head">
         <span class="section-label">Public Offerings &middot; Gather Together</span>
@@ -311,6 +343,206 @@
   </section>
 
   <!-- Interlude -->
+    <!-- world: cluster (village-a+village-b+village-c) -->
+  <section class="wd-cluster wd-cluster--trio" data-worlds>
+    <div class="wd-cluster-inner">
+      <div class="wd-cluster-grid">
+        <figure class="wd-fig"><img src="/images/worlds/village-a.jpg" alt="A path through the forest" loading="lazy" decoding="async"></figure>
+        <figure class="wd-fig"><img src="/images/worlds/village-b.jpg" alt="Cowrie shells laid in a pattern" loading="lazy" decoding="async"></figure>
+        <figure class="wd-fig"><img src="/images/worlds/village-c.jpg" alt="A figure in a woven hat and green fringe, in the woods" loading="lazy" decoding="async"></figure>
+      </div>
+      <p class="wd-cluster-line is-long">Evening gatherings by the fire — story, song, and the slow turn of the season.</p>
+      <span class="wd-cluster-orn" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <!-- ===== Folded chapters (2026-11-07): ceremony-and-ritual.html (community half), virtual-gatherings.html, group-work.html — her words, verbatim ===== -->
+  <section class="dr-chapter" id="gather">
+    <div class="dr-chapter-head">
+      <span class="section-label">Ceremony &amp; Ritual</span>
+      <h2>Gather in the <em>circle</em>.</h2>
+      <p class="dr-lede">Rites of passage, initiation, healing, learning, and awakening &mdash; through interdimensional and ceremonial journey work.</p>
+    </div>
+    <div class="dr-prose">
+      <p>Sacred space tended with full reverence. Held with the lineages, with the elements, and with the Spirit Worlds as collaborators. Ceremony is the technology our ancestors carried for thresholds, transformations, and the deepest work of becoming &mdash; it is what the soul remembers.</p>
+      <p>Open enrollment for community gatherings. Where the kin come together to tend the work as one &mdash; in seasonal ceremony, women's and men's circles, grief and healing circles, prayers for peace, and rites of passage held throughout the wheel of the year.</p>
+    </div>
+    <div class="dr-wide">
+      <div class="sub-offering-grid">
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">Monthly</span>
+            <h3 class="sub-offering-title">Moon Circles</h3>
+            <p class="sub-offering-desc">Aligned with each new and full moon. The lunar rhythm tended in circle.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">Seasonal &middot; 8 turning points</span>
+            <h3 class="sub-offering-title">Wheel of the Year</h3>
+            <p class="sub-offering-desc">Solstices, equinoxes, cross-quarters. Held in seasonal ceremony with the land.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">Drop-in</span>
+            <h3 class="sub-offering-title">Healing Circles</h3>
+            <p class="sub-offering-desc">Held space for collective healing. A circle for the weight that asks to be carried by more than one.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">By Threshold</span>
+            <h3 class="sub-offering-title">Rites of Passage</h3>
+            <p class="sub-offering-desc">Marking life thresholds in community &mdash; birth, coming-of-age, marriage, eldership, death.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">Cohorted</span>
+            <h3 class="sub-offering-title">Women&rsquo;s &amp; Men&rsquo;s Work</h3>
+            <p class="sub-offering-desc">Gender-aligned circles. Deep work in the company of kin who share the territory.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">Themed</span>
+            <h3 class="sub-offering-title">Prayers for Peace</h3>
+            <p class="sub-offering-desc">Collective prayer for the world, the lands, the people. Convened in moments of need.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">By Tradition</span>
+            <h3 class="sub-offering-title">EntheoEcology</h3>
+            <p class="sub-offering-desc">Plant medicine in earth-relation. Ceremonial education on entheogens and the living world.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">Somatic</span>
+            <h3 class="sub-offering-title">Emotional Progressions</h3>
+            <p class="sub-offering-desc">Cohorted somatic work moving through the emotional terrain in deliberate sequence.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+          <a href="calendar.html" class="sub-offering-card">
+            <span class="sub-offering-eyebrow">By Tradition</span>
+            <h3 class="sub-offering-title">Mesoamerica Diaspora</h3>
+            <p class="sub-offering-desc">Lineage-honoring circles for those reclaiming ancestral threads from Mesoamerica.</p>
+            <span class="sub-offering-cta">See in the Calendar &rarr;</span>
+          </a>
+
+        </div>
+    </div>
+    <p class="dr-note">All community ceremonies are listed on the Calendar with their dates, format, and reciprocity. Register from the calendar event itself.</p>
+  </section>
+
+  <section class="dr-chapter dr-chapter--alt" id="virtual">
+    <div class="dr-chapter-head">
+      <span class="section-label">Virtual Gatherings</span>
+      <h2>From a single evening to a season of <em>depth</em></h2>
+      <p class="dr-lede">Evenings at the drum and the threshold — join from anywhere.</p>
+    </div>
+    <div class="dr-prose">
+      <span class="section-label">Next Gathering</span>
+      <article class="dr-room dr-room--single">
+        <span class="num">Tuesday, June 30 · 5:00–7:00pm PT</span>
+        <h3>How to Journey</h3>
+        <p class="dr-lede">Beginner – Intermediate</p>
+        <p>The first doorway — learning to cross into the other worlds under your own power, and return whole.</p>
+        <p class="offering-meta">Online &middot; 2 hours &middot; <strong>Sacred Reciprocity, sliding scale</strong></p>
+        <p class="dr-door dr-door--left"><a href="how-to-journey.html">Reserve Your Place →</a></p>
+      </article>
+    </div>
+    <div class="dr-rooms-grid dr-rooms-grid--3">
+        <article class="dr-room dr-room--mini"><span class="num">One Evening, One Topic</span><h3>Single Sessions</h3><p>Classes, lectures, and workshops — drop in for a night and leave with something you can practice. A new topic each month, on the wheel of the year.</p><p class="note">Coming: Ceremonial Terrain · the Elements · Ancestral Support &amp; more — dates in the Seasonal Letters.</p></article>
+        <article class="dr-room dr-room--mini"><span class="num">One Theme, Deepened</span><h3>A Series of Work</h3><p>A continual dive that unfolds over weeks and months — one theme, tended in depth, for those called to go further than a single evening.</p><p class="note">Opens by season — first word in the Seasonal Letters.</p></article>
+        <article class="dr-room dr-room--mini"><span class="num">We Gather Together</span><h3>Community &amp; Sharing Circles</h3><p>Open, relational evenings — we come to share, to witness, and to tend the fire together. Less teaching, more communion.</p><p class="note">Announced in the Seasonal Letters.</p></article>
+    </div>
+    <p class="dr-note">Dates open quietly, and the circles are kept small. The Seasonal Letters carry the first word when a new evening opens its doors.</p>
+    <p class="dr-door"><a href="writings.html#letters">Receive the Seasonal Letters →</a></p>
+  </section>
+
+  <section class="dr-chapter" id="gatherings">
+    <div class="dr-chapter-head">
+      <span class="section-label">Group Work</span>
+      <h2>Five paths into the communal work.</h2>
+      <p class="dr-lede">Where the village remembers itself &mdash; through fireside study, gathered tending, ceremony, clinic, and immersion.</p>
+    </div>
+    <div class="dr-prose"><p>From virtual fireside study to in-person tending, from ceremonial gathering to deep healing clinic and multi-day immersion &mdash; each a different shape of the same field, gathered as one.</p></div>
+    <div class="dr-sub" id="gw-fireside">
+      <span class="section-label">Virtual Classroom</span>
+      <h3>The Fireside</h3>
+      <p class="dr-tag">Workshops, educational series, and gatherings &mdash; held by Zoom, around the digital fire.</p>
+      <p>The Fireside is where the practice teaches itself across distance. Cohorted educational series, single-evening workshops, and open practice gatherings &mdash; all held virtually so the kin can come together no matter the lands they're on. Some are part of an arc; some stand alone. All are tended with the same reverence as the work held in person.</p>
+      <p class="dr-door"><a href="calendar.html">See the full Fireside calendar &rarr;</a></p>
+    </div>
+    <div class="dr-sub" id="gw-in-person">
+      <span class="section-label">Community Tending &middot; Kinship &middot; Hearth</span>
+      <h3>In-Person Gatherings &amp; Excursions</h3>
+      <p class="dr-tag">Where we gather, replenish, and thrive in the company of those who understand the work.</p>
+      <p>A place to be with others living life in similar values and alignments. The kinship that comes from being seen in the work, the hearth that holds the long arc of practice, the small excursions that bring the body into shared land. Less ceremony, more communion &mdash; the everyday tending that keeps the field warm.</p>
+      <div class="dr-rooms-grid dr-rooms-grid--3 dr-rooms-grid--inprose">
+        <article class="dr-room dr-room--mini"><span class="num">Monthly</span><h4>Hearth Suppers</h4><p>A shared meal among the kin. Held in Southern California, the hearth that holds the practice.</p></article>
+        <article class="dr-room dr-room--mini"><span class="num">Seasonal</span><h4>Land Days</h4><p>A day held on the land &mdash; hiking, foraging, sitting with what the land has to teach.</p></article>
+        <article class="dr-room dr-room--mini"><span class="num">Curated</span><h4>Cultural Excursions</h4><p>Visits to gardens, museums, sacred sites, and elders &mdash; gathered in small kin.</p></article>
+      </div>
+      <p class="dr-door"><a href="calendar.html">See upcoming gatherings &rarr;</a></p>
+    </div>
+    <div class="dr-sub" id="gw-ceremonial-gatherings">
+      <span class="section-label">Exploration &middot; Experimentation &middot; Genesis</span>
+      <h3>Ceremonial Gatherings</h3>
+      <p class="dr-tag">Modern re-creation and genesis work &mdash; tending the liminal thresholds, restoring the shorelines.</p>
+      <p>Here we are tending to the liminal thresholds, and in the shorelines restoring and replenishing the thriving community and our place within it. We gather for connection with the earth, practice and share in ritual and feasts, celebrations and holi-days &mdash; the modern re-creation and genesis elements of this work, where new ceremony forms come into being through gathered hands.</p>
+      <div class="dr-rooms-grid dr-rooms-grid--3 dr-rooms-grid--inprose">
+        <article class="dr-room dr-room--mini"><span class="num">8 Turning Points</span><h4>Wheel of the Year</h4><p>Solstices, equinoxes, cross-quarters &mdash; held in seasonal ceremony with the land.</p></article>
+        <article class="dr-room dr-room--mini"><span class="num">Lunar Rhythm</span><h4>Moon Tendings</h4><p>New and full moon circles. The lunar rhythm tended in community.</p></article>
+        <article class="dr-room dr-room--mini"><span class="num">Celebrations &amp; Holi-Days</span><h4>Feast Days</h4><p>Modern feasts and holi-days. Communal celebrations woven from old threads and new fabric.</p></article>
+      </div>
+      <p class="dr-door"><a href="calendar.html">See upcoming ceremonies &rarr;</a></p>
+    </div>
+    <div class="dr-sub" id="gw-community-clinics">
+      <span class="section-label">Single-Day &middot; Deep Focus &middot; Curated</span>
+      <h3>Community Clinics</h3>
+      <p class="dr-tag">Single-day sessions, sits, rituals, and ceremonies for deep healing &mdash; held within the other worlds.</p>
+      <p>Gatherings and sacramental circles with deep focus, curation, and intent. These are spaces to sit in for healing and learning, and are full within the holding of the other worlds &mdash; single-day containers tended with the same care as multi-day work. The clinic shape: come for the day, sit fully, leave changed.</p>
+      <div class="dr-rooms-grid dr-rooms-grid--3 dr-rooms-grid--inprose">
+        <article class="dr-room dr-room--mini"><span class="num">Healing Circle</span><h4>Collective Healing</h4><p>Held space for the weight that asks to be carried by more than one.</p></article>
+        <article class="dr-room dr-room--mini"><span class="num">Sacramental</span><h4>Sacramental Sits</h4><p>Deep ceremony for a small curated circle. Single-day, full container.</p></article>
+        <article class="dr-room dr-room--mini"><span class="num">Themed</span><h4>Themed Clinics</h4><p>Days held for grief, ancestors, fire-clearing, fertility, threshold work &mdash; curated by theme.</p></article>
+      </div>
+      <p class="dr-door"><a href="calendar.html">See upcoming clinics &rarr;</a></p>
+    </div>
+    <div class="dr-sub" id="gw-ceremonial-retreats">
+      <span class="section-label">Multi-Day &middot; Initiatory &middot; Cohorted</span>
+      <h3>Ceremonial Retreats</h3>
+      <p class="dr-tag">Multi-day gatherings inside a larger group field &mdash; preparation, immersion, integration as one arc.</p>
+      <p>Often initiatory experiences, the retreats are for those ready to immerse themselves in otherworldly space for several days. A group spends a few weeks preparing virtually before gathering in person for deep inner and interdimensional work &mdash; coming together through multiple preparatory sessions, calls, and instructional classes so the in-person container coheres into a potent and beautiful experience. Several aftercare and integration calls are held for the group as well as one-on-one with each participant.</p>
+      <div class="dr-rooms-grid dr-rooms-grid--3 dr-rooms-grid--inprose">
+        <article class="dr-room dr-room--mini"><span class="num">Phase 1 &middot; Weeks Before</span><h4>Preparation</h4><p>Virtual preparatory sessions, calls, and instructional classes. The group coheres before it arrives.</p></article>
+        <article class="dr-room dr-room--mini"><span class="num">Phase 2 &middot; Several Days</span><h4>Immersion</h4><p>In person, on the land, in the otherworldly space. Deep inner and interdimensional work, held as one.</p></article>
+        <article class="dr-room dr-room--mini"><span class="num">Phase 3 &middot; Weeks After</span><h4>Integration</h4><p>Group aftercare calls and one-on-one integration sessions with each participant. The container closes slowly.</p></article>
+      </div>
+      <p class="dr-door"><a href="calendar.html">See upcoming retreats &rarr;</a></p>
+    </div>
+  </section>
+
+  <section class="dr-chapter dr-chapter--alt" id="kinship">
+    <div class="dr-chapter-head">
+      <span class="section-label">The Kinship Nexus &middot; By Invitation</span>
+      <h2>A community <em>in</em> ceremony.</h2>
+      <p class="dr-lede">A place to grow in our depth, together &mdash; a web of kin gathered around one hearth, participating in growing an entheogenically awakened society.</p>
+    </div>
+    <div class="dr-prose">
+      <p>Some work cannot happen in public. Not because it is secret, but because it is intimate &mdash; the kind of depth that only grows where the same faces return, season after season, to the same fire.</p>
+      <p>The Kinship Nexus is a sanctuary of integrity &mdash; a closed ceremonial community devoted to personal and collective transformation through intentional community, sacred practice, and ceremony. It is not a series of events you attend, but a body you belong to: the long fire of the Apothecary, an ongoing fellowship of practitioners, seekers, and stewards who have chosen to walk together over years rather than evenings.</p>
+    </div>
+    <p class="dr-door">If the fire is calling. <a href="kinship-nexus.html">Enter the Kinship Nexus &rarr;</a></p>
+  </section>
+
+
+
   <section class="po-interlude" style="background-image: url('images/uploads/four-paths-labyrinth-fern.jpg');">
     <p>Four doorways, one threshold &mdash; every path here eventually meets the same fire.</p>
   </section>
@@ -323,6 +555,33 @@
     <a href="divination-and-consultation.html" class="po-final-cta-btn">Schedule the Conversation</a>
   </section>
 
+    <!-- world: continue to -->
+  <section class="wd-doors wd-doors--next" data-worlds data-worlds-next>
+    <div class="wd-doors-head">
+      <span class="wd-doors-eyebrow">The Doorways</span>
+    </div>
+    <div class="wd-doors-grid">
+      <a class="wd-door" href="training-grounds.html" style="--pos:50% 50%">
+        <img class="wd-door-img" src="/images/worlds/school-vista.jpg" alt="Books, candles and stones laid out for study" loading="lazy" decoding="async">
+        <span class="wd-door-inner">
+          <span class="wd-door-eyebrow">The School · Workshops &amp; Courses</span>
+          <span class="wd-door-name" role="heading" aria-level="3">Training Grounds</span>
+          <span class="wd-door-line" style="display:block">Where the skills of the work are learned.</span>
+          <span class="wd-door-enter">Enter &rarr;</span>
+        </span>
+      </a>
+      <a class="wd-door" href="writings.html" style="--pos:50% 50%">
+        <img class="wd-door-img" src="/images/worlds/library-vista.jpg" alt="A woman tending an altar in the forest" loading="lazy" decoding="async">
+        <span class="wd-door-inner">
+          <span class="wd-door-eyebrow">Resources · Seasonal Letters</span>
+          <span class="wd-door-name" role="heading" aria-level="3">Library</span>
+          <span class="wd-door-line" style="display:block">Tender reflections, sacred teachings, and quiet news from the practice.</span>
+          <span class="wd-door-enter">Enter &rarr;</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -331,29 +590,33 @@
       </div>
       <nav class="footer-nav">
         <div class="footer-col">
-          <h4>The Practice</h4>
+          <h4>The Doors</h4>
           <ul>
-              <li><a href="about.html">About Adi Marie</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="divination-and-consultation.html">Divination &amp; Consultation</a></li>
+            <li><a href="seasons-of-change.html">Spiritual Development</a></li>
+            <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
+            <li><a href="public-offerings.html">Community</a></li>
+            <li><a href="training-grounds.html">Training Grounds</a></li>
+            <li><a href="writings.html">Library</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>The Work</h4>
+          <h4>Inside</h4>
           <ul>
-            <li><a href="solo-work.html">Virtual Sessions</a></li>
-            <li><a href="group-work.html">Gatherings</a></li>
-            <li><a href="training-grounds.html">The School</a></li>
-            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+            <li><a href="calendar.html">The Wheel</a></li>
+            <li><a href="writings.html#letters">Seasonal Letters</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="about.html#ethics">Ethics &amp; Consent</a></li>
+            <li><a href="about.html#questions">Common Questions</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Begin Here</h4>
           <ul>
-            <li><a href="divination-and-consultation.html">Book / Intake</a></li>
-            <li><a href="inquiry.html">Begin a Conversation</a></li>
-            <li><a href="writings.html">Writings &amp; Letters</a></li>
-            <li><a href="mailto:adimarie@bodyworkandbotanicals.com?subject=A%20Note%20to%20Adi%20Marie">Send a Message</a></li>
+            <li><a href="inquiry.html">Begin Here</a></li>
+            <li><a href="divination-and-consultation.html#schedule">The Conversation</a></li>
+            <li><a href="inquiry.html#note">Write a Note</a></li>
           </ul>
         </div>
       </nav>

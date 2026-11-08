@@ -1,0 +1,188 @@
+/* doors.css — the eight-door map (2026-11-07): page sub-navigation, folded chapters, the path on Begin Here.
+   No motion anywhere; still.css is linked after this file on every page. */
+
+/* ---- On-this-page sub-navigation ---- */
+.dr-subnav { display: flex; flex-wrap: wrap; justify-content: center; gap: .45rem .6rem; max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 2.8rem; }
+.dr-subnav a { font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: #8F6F2E; text-decoration: none; padding: .6rem 1.05rem; border: 1px solid rgba(143,111,46,.38); background: rgba(255,255,255,.4); }
+.dr-subnav a:hover { border-color: #8F6F2E; color: #1F1A18; }
+
+/* ---- Folded chapters ---- */
+.dr-chapter { padding: 5.5rem 1.5rem 5rem; scroll-margin-top: 96px; border-top: 1px solid rgba(201,168,76,.28); background: #F7F5F0; }
+.dr-chapter--alt { background: #F3EDE0; }
+.dr-chapter-head { max-width: 780px; margin: 0 auto 2.4rem; text-align: center; }
+.dr-chapter-head .section-label { margin-bottom: 1.1rem; }
+.dr-chapter-head h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2rem, 3.4vw, 2.8rem); line-height: 1.15; color: #2D2A26; margin: 0; text-wrap: balance; }
+.dr-chapter-head h2 em { font-style: italic; color: #8F6F2E; }
+.dr-chapter-head .dr-lede { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.15rem; line-height: 1.6; color: #5a534a; max-width: 640px; margin: 1.2rem auto 0; }
+.dr-chapter .offering-detail-layout { padding: 0; background: transparent; }
+.dr-chapter .offering-detail-inner { display: block; max-width: 820px; margin: 0 auto; }
+.dr-chapter .offering-detail-body { max-width: none; }
+.dr-chapter .offering-detail-body > .section-label:first-child,
+.dr-chapter .offering-detail-body > .section-title,
+.dr-chapter .offering-detail-body > .story-divider { display: none; } /* the chapter head already carries them */
+.dr-chapter .planned-sections { margin: 2.4rem auto 0; padding: 1.8rem 2rem 1.6rem; border: 1px solid rgba(143,111,46,.4); background: rgba(255,255,255,.55); }
+.dr-chapter .planned-sections h4 { font-family: 'Cinzel', serif; font-size: .66rem; letter-spacing: .24em; text-transform: uppercase; color: #8F6F2E; margin: 0 0 1rem; }
+.dr-chapter .planned-sections ul { margin: 0; padding-left: 1.1rem; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.06rem; line-height: 1.7; color: #2D2A26; }
+.dr-chapter .planned-sections li { margin: 0 0 .35rem; }
+.dr-prose { max-width: 820px; margin: 0 auto; }
+.dr-prose p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; line-height: 1.8; color: #2D2A26; margin: 0 0 1.3rem; }
+.dr-door { max-width: 820px; margin: 2.8rem auto 0; text-align: center; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.28rem; line-height: 1.5; }
+.dr-door a { color: #8F6F2E; text-decoration: none; border-bottom: 1px solid rgba(143,111,46,.45); padding-bottom: 2px; }
+.dr-door a:hover { color: #1F1A18; border-color: #1F1A18; }
+
+/* ---- Begin Here ---- */
+.dr-who { padding: 5.5rem 1.5rem 4.5rem; text-align: center; background: #F7F5F0; }
+.dr-who-inner { max-width: 720px; margin: 0 auto; }
+.dr-who .section-label { margin-bottom: 1.4rem; }
+.dr-who p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.15rem, 1.6vw, 1.38rem); line-height: 1.75; color: #2D2A26; margin: 0 0 1.4rem; text-wrap: pretty; }
+.dr-who p:last-child { margin-bottom: 0; }
+
+.dr-path { position: relative; padding: 6rem 1.5rem; background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.13), transparent 60%), #1F1A18; color: #F4EAD3; border-top: 1px solid rgba(201,168,76,.5); border-bottom: 1px solid rgba(201,168,76,.5); }
+.dr-path-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+.dr-path .section-label { color: #C9A84C; }
+.dr-path h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2rem, 3.4vw, 2.8rem); line-height: 1.15; margin: 0 0 1rem; color: #F4EAD3; text-wrap: balance; }
+.dr-path h2 em { color: #DCC178; font-style: italic; }
+.dr-path .dr-lede { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.15rem; line-height: 1.6; color: rgba(244,234,211,.78); max-width: 620px; margin: 0 auto 3rem; }
+.dr-path ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; text-align: left; }
+.dr-path li { position: relative; padding: 1.8rem 1.6rem 1.7rem; border: 1px solid rgba(201,168,76,.38); background: rgba(244,234,211,.03); min-width: 0; }
+.dr-path li::after { content: ''; position: absolute; inset: 6px; border: 1px solid rgba(201,168,76,.14); pointer-events: none; }
+.dr-path .num { display: block; font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .3em; color: #C9A84C; margin-bottom: .9rem; }
+.dr-path .name { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.55rem; line-height: 1.15; color: #F4EAD3; text-decoration: none; margin-bottom: .6rem; }
+.dr-path .name:hover { color: #E6CE8A; }
+.dr-path .line { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.05rem; line-height: 1.6; color: rgba(244,234,211,.8); margin: 0; }
+
+.dr-schedule { background: radial-gradient(ellipse at top, rgba(201,168,76,.06), transparent 60%), #2D2A26; color: #F7F5F0; padding: 5.5rem 1.5rem 6.5rem; scroll-margin-top: 80px; }
+.dr-schedule-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+.dr-schedule .section-label { color: #C9A84C; }
+.dr-schedule h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2rem, 3.4vw, 2.8rem); line-height: 1.15; color: #F7F5F0; margin: 0 0 1rem; }
+.dr-schedule h2 em { color: #DCC178; font-style: italic; }
+.dr-schedule .dr-lede { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.15rem; line-height: 1.6; color: rgba(247,245,240,.8); max-width: 640px; margin: 0 auto 2.6rem; }
+.dr-schedule #booking-calendar { max-width: 1100px; margin: 0 auto; text-align: left; }
+
+#note { scroll-margin-top: 80px; }
+#note .section-label { display: block; text-align: center; margin-bottom: 1rem; }
+
+@media (max-width: 900px) { .dr-path ol { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) {
+  .dr-path ol { grid-template-columns: 1fr; }
+  .dr-chapter { padding: 4rem 1.25rem 3.6rem; }
+  .dr-path, .dr-schedule, .dr-who { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .dr-subnav { padding-bottom: 2.2rem; }
+}
+
+/* ---- Folded articles read in the page's own serif, not the global sans ---- */
+.dr-chapter .offering-detail-body p,
+.dr-chapter .offering-detail-body li,
+.dr-chapter .offering-feature-item p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; line-height: 1.8; color: #2D2A26; }
+.dr-chapter .offering-detail-body h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 1.75rem; line-height: 1.2; color: #2D2A26; margin: 2.8rem 0 1rem; }
+.dr-chapter .offering-detail-body > h4 { font-family: 'Cinzel', serif; font-weight: 500; font-size: .74rem; letter-spacing: .22em; text-transform: uppercase; color: #8F6F2E; margin: 2.2rem 0 .9rem; }
+.dr-chapter .offering-detail-body .story-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.3rem; line-height: 1.55; color: #2D2A26; border-left: 1px solid #C9A84C; padding-left: 1.6rem; margin: 2.4rem 0; }
+.dr-chapter .offering-detail-body .path-card { border: 1px solid rgba(201,168,76,.35); background: rgba(255,255,255,.5); padding: 1.1rem 1.4rem; margin: 0 0 .8rem; box-shadow: none; }
+.dr-chapter .offering-detail-body .path-card h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3rem; font-weight: 500; margin: 0 0 .25rem; color: #2D2A26; }
+.dr-chapter .offering-detail-body .path-card p { margin: 0; font-size: 1.05rem; }
+.dr-chapter .offering-detail-body a { color: #8F6F2E; }
+
+/* ---- Begin Here: the Conversation as one wide card (image panel + text), as on the Shamanic Coaching page ---- */
+.dr-schedule .aap-bk-offerings { display: flex; flex-direction: column; gap: 30px; margin-top: 8px; }
+.dr-schedule .aap-bk-offering--wide { width: 100%; max-width: none; gap: 0; padding: 0; overflow: hidden; text-align: left; display: grid; grid-template-columns: 46% 54%; align-items: stretch; border: 1px solid rgba(201,168,76,.2); border-radius: 4px; background: #fff; box-shadow: 0 8px 30px rgba(45,42,38,.07); }
+.dr-schedule .aap-bk-offering--wide::before { content: none; display: none; }
+.dr-schedule .aap-bk-offering--wide:hover, .dr-schedule .aap-bk-offering--wide.is-on { border-color: #C9A84C; box-shadow: 0 0 0 1px #C9A84C inset, 0 18px 42px rgba(45,42,38,.13); }
+.dr-schedule .aap-bk-offering-media { grid-column: 1; grid-row: 1; min-height: 380px; background-size: cover; background-position: center; background-color: #F7F5F0; }
+.dr-schedule .aap-bk-offering[data-svc="intake-inquiry"] .aap-bk-offering-media { background-image: url('../images/uploads/download.jpg'); }
+.dr-schedule .aap-bk-offering-body { grid-column: 2; grid-row: 1; display: flex; flex-direction: column; justify-content: center; padding: 3.2rem 3.6rem; }
+.dr-schedule .aap-bk-offering-name { font-size: 34px; line-height: 1.08; margin-top: .5rem; }
+.dr-schedule .aap-bk-offering-desc { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.2rem; line-height: 1.6; color: #3a3530; margin-top: .9rem; }
+.dr-schedule .aap-bk-offering-go { align-self: flex-start; margin-top: 1.7rem; padding: .9rem 1.9rem; font-family: 'Cinzel', serif; font-size: .76rem; letter-spacing: .16em; text-transform: uppercase; color: #F7F5F0; background: #2D2A26; border: 1px solid #2D2A26; border-radius: 2px; }
+.dr-schedule .aap-bk-offering--wide:hover .aap-bk-offering-go, .dr-schedule .aap-bk-offering--wide.is-on .aap-bk-offering-go { background: #C9A84C; border-color: #C9A84C; color: #2D2A26; }
+@media (max-width: 820px) {
+  .dr-schedule .aap-bk-offering--wide { grid-template-columns: 1fr; }
+  .dr-schedule .aap-bk-offering-media { grid-column: 1; grid-row: 1; min-height: 240px; }
+  .dr-schedule .aap-bk-offering-body { grid-column: 1; grid-row: 2; padding: 2.4rem 1.6rem; }
+}
+
+/* ---- About, the Threshold: sub-nav under the hero + the Rooms of the House (eight folded pages) ---- */
+.dr-subnav--top { padding-top: 2.6rem; }
+.dr-rooms { padding: 5.5rem 1.5rem 5.5rem; background: #F3EDE0; border-top: 1px solid rgba(201,168,76,.28); scroll-margin-top: 96px; }
+.dr-rooms-head { max-width: 780px; margin: 0 auto 3rem; text-align: center; }
+.dr-rooms-head h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2rem, 3.4vw, 2.8rem); line-height: 1.15; color: #2D2A26; margin: 0; text-wrap: balance; }
+.dr-rooms-head h2 em { font-style: italic; color: #8F6F2E; }
+.dr-rooms-head .dr-lede { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.15rem; line-height: 1.6; color: #5a534a; max-width: 640px; margin: 1.2rem auto 0; }
+.dr-rooms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; max-width: 1180px; margin: 0 auto; }
+.dr-room { position: relative; padding: 2.4rem 2.2rem 2.2rem; background: rgba(255,255,255,.55); border: 1px solid rgba(201,168,76,.4); border-top: 2px solid rgba(201,168,76,.7); box-shadow: 0 10px 34px rgba(31,26,24,.06); scroll-margin-top: 110px; min-width: 0; }
+.dr-room::after { content: ''; position: absolute; inset: 7px; border: 1px solid rgba(201,168,76,.14); pointer-events: none; }
+.dr-room .num { display: block; font-family: 'Cinzel', serif; font-size: .66rem; letter-spacing: .3em; color: #8F6F2E; margin-bottom: .8rem; }
+.dr-room h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 1.9rem; line-height: 1.1; color: #2D2A26; margin: 0 0 .6rem; }
+.dr-room .dr-lede { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.08rem; line-height: 1.55; color: #5a534a; margin: 0 0 1.2rem; }
+.dr-room p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.1rem; line-height: 1.75; color: #2D2A26; margin: 0 0 1rem; }
+.dr-room details { margin-top: 1.2rem; border-top: 1px solid rgba(143,111,46,.3); padding-top: .9rem; }
+.dr-room summary { font-family: 'Cinzel', serif; font-size: .64rem; letter-spacing: .24em; text-transform: uppercase; color: #8F6F2E; cursor: pointer; list-style: none; }
+.dr-room summary::-webkit-details-marker { display: none; }
+.dr-room summary::after { content: '  +'; }
+.dr-room details[open] summary::after { content: '  \2013'; }
+.dr-room details ul { margin: .8rem 0 0; padding-left: 1.1rem; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.02rem; line-height: 1.65; color: #2D2A26; }
+.dr-room details li { margin: 0 0 .3rem; }
+@media (max-width: 820px) { .dr-rooms-grid { grid-template-columns: 1fr; } .dr-room { padding: 2rem 1.5rem 1.8rem; } }
+
+/* ---- Seasons chapters ---- */
+.dr-prose .dr-h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 1.75rem; line-height: 1.2; color: #2D2A26; margin: 2.4rem 0 .9rem; }
+.dr-prose .offering-meta { font-family: 'Cinzel', serif; font-size: .66rem; letter-spacing: .22em; text-transform: uppercase; color: #8F6F2E; margin: 1.4rem 0 0; }
+.dr-room--single { margin-top: 1.6rem; }
+.dr-room--single .num { letter-spacing: .24em; }
+.dr-door--left { text-align: left; margin: 1.4rem 0 0; font-size: 1.12rem; }
+
+/* ---- 'Still to come' inside a prose chapter ---- */
+.dr-prose .dr-details { margin-top: 1.6rem; border-top: 1px solid rgba(143,111,46,.3); padding-top: .9rem; }
+.dr-prose .dr-details summary { font-family: 'Cinzel', serif; font-size: .64rem; letter-spacing: .24em; text-transform: uppercase; color: #8F6F2E; cursor: pointer; list-style: none; }
+.dr-prose .dr-details summary::-webkit-details-marker { display: none; }
+.dr-prose .dr-details summary::after { content: '  +'; }
+.dr-prose .dr-details[open] summary::after { content: '  \2013'; }
+.dr-prose .dr-details ul { margin: .8rem 0 0; padding-left: 1.1rem; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.04rem; line-height: 1.65; color: #2D2A26; }
+
+/* ---- Village: dark band (the Wheel), wide grids, mini cards, sub-blocks ---- */
+.dr-band { position: relative; padding: 5.5rem 1.5rem; background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,.13), transparent 60%), #1F1A18; color: #F4EAD3; border-top: 1px solid rgba(201,168,76,.5); border-bottom: 1px solid rgba(201,168,76,.5); scroll-margin-top: 90px; text-align: center; }
+.dr-band-inner { max-width: 760px; margin: 0 auto; }
+.dr-band .section-label { color: #C9A84C; }
+.dr-band h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2rem, 3.4vw, 2.8rem); line-height: 1.15; margin: 0 0 1rem; color: #F4EAD3; text-wrap: balance; }
+.dr-band h2 em { color: #DCC178; font-style: italic; }
+.dr-band .dr-lede { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.18rem; line-height: 1.6; color: rgba(244,234,211,.8); margin: 0 auto 1.4rem; }
+.dr-band p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.12rem; line-height: 1.75; color: rgba(244,234,211,.9); margin: 0 0 1.2rem; }
+.dr-band .dr-door { margin-top: 1.8rem; }
+.dr-band .dr-door a { color: #DCC178; border-color: rgba(220,193,120,.5); }
+.dr-band .dr-door a:hover { color: #F4EAD3; border-color: #F4EAD3; }
+.dr-wide { max-width: 1100px; margin: 2.4rem auto 0; }
+.dr-wide .sub-offering-grid { margin-top: 0; }
+.dr-note { max-width: 820px; margin: 1.6rem auto 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.02rem; line-height: 1.6; color: #5a534a; text-align: center; }
+.dr-rooms-grid--3 { grid-template-columns: repeat(3, 1fr); max-width: 1100px; margin: 1.8rem auto 0; }
+.dr-rooms-grid--inprose { max-width: 820px; }
+.dr-room--mini { padding: 1.6rem 1.4rem 1.4rem; box-shadow: none; }
+.dr-room--mini h3, .dr-room--mini h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 1.3rem; line-height: 1.15; color: #2D2A26; margin: 0 0 .4rem; }
+.dr-room--mini p { font-size: 1.02rem; line-height: 1.6; margin: 0; }
+.dr-room--mini .note { font-style: italic; color: #5a534a; margin-top: .6rem; font-size: .98rem; }
+.dr-sub { max-width: 820px; margin: 3.2rem auto 0; }
+.dr-sub + .dr-sub { margin-top: 3.6rem; padding-top: 2.6rem; border-top: 1px solid rgba(201,168,76,.3); }
+.dr-sub .section-label { margin-bottom: .6rem; }
+.dr-sub h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 1.85rem; line-height: 1.15; color: #2D2A26; margin: 0 0 .5rem; }
+.dr-sub .dr-tag { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.1rem; line-height: 1.55; color: #5a534a; margin: 0 0 1.1rem; }
+.dr-sub p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.12rem; line-height: 1.75; color: #2D2A26; margin: 0 0 1rem; }
+.dr-sub .dr-rooms-grid { margin-top: 1.4rem; }
+.dr-sub .dr-door { text-align: left; margin: 1.2rem 0 0; font-size: 1.1rem; }
+@media (max-width: 900px) { .dr-rooms-grid--3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .dr-rooms-grid--3 { grid-template-columns: 1fr; } .dr-band { padding: 4rem 1.25rem; } }
+
+/* ---- Offering cards carried from ceremony-and-ritual (their styles lived on that page) ---- */
+.dr-wide .sub-offering-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin: 0; }
+.dr-wide .sub-offering-card { position: relative; display: flex; flex-direction: column; gap: .5rem; padding: 1.8rem 1.6rem 1.5rem; background: rgba(255,255,255,.55); border: 1px solid rgba(201,168,76,.4); border-top: 2px solid rgba(201,168,76,.7); box-shadow: 0 10px 34px rgba(31,26,24,.05); text-decoration: none; color: inherit; min-width: 0; }
+.dr-wide .sub-offering-card::after { content: ''; position: absolute; inset: 7px; border: 1px solid rgba(201,168,76,.14); pointer-events: none; }
+.dr-wide .sub-offering-card:hover { border-color: #C9A84C; background: rgba(255,255,255,.8); }
+.dr-wide .sub-offering-eyebrow { font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: .24em; text-transform: uppercase; color: #8F6F2E; }
+.dr-wide .sub-offering-title { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; font-size: 1.5rem; line-height: 1.15; color: #2D2A26; margin: 0; }
+.dr-wide .sub-offering-desc { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; line-height: 1.6; color: #2D2A26; margin: 0; }
+.dr-wide .sub-offering-cta { margin-top: auto; padding-top: .9rem; border-top: 1px solid rgba(143,111,46,.3); font-family: 'Cinzel', serif; font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; color: #8F6F2E; }
+@media (max-width: 900px) { .dr-wide .sub-offering-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .dr-wide .sub-offering-grid { grid-template-columns: 1fr; } }
+.dr-room .offering-meta { text-align: left; font-size: .62rem; letter-spacing: .2em; margin: .2rem 0 .4rem; }
+
+/* ---- Library: the Letters open the first room inside the page's own body ---- */
+.dr-chapter-head--inbody { margin: 0 auto 2rem; }
+.dr-prose--inbody { margin-bottom: 2.6rem; }
+.dr-prose--inbody p { text-align: center; font-size: 1.2rem; }

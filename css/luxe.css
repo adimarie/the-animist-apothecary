@@ -1,0 +1,270 @@
+/* ============================================================
+   luxe.css — the studio finish, for every page that uses styles.css
+   (the pages that carry css/elevate.css). Layered AFTER elevate.css.
+   Presentation only: no copy, no structure beyond one decorative
+   <span class="lx-frame"> per hero. No motion (see still.css).
+   ============================================================ */
+
+:root {
+  --lx-gold: #C9A84C;
+  --lx-gold-hi: #E6CE8A;
+  --lx-gold-pale: #DCC178;
+  --lx-gold-ink: #8F6F2E;
+  --lx-gold-deep: #A97F26;
+  --lx-night: #0E0C09;
+  --lx-in: clamp(12px, 1.8vw, 26px);
+}
+
+::selection { background: rgba(201, 168, 76, .38); color: #1F1A18; }
+
+/* ---------- Hero: the frame ---------- */
+.lx-hero, .page-hero, .hero-fullbleed { position: relative; }
+.lx-frame, .lx-hero > .lx-frame, .lux-hero > .lx-frame, .page-hero > .lx-frame {
+  position: absolute !important; inset: 0 !important; z-index: 5 !important; pointer-events: none;
+  background: radial-gradient(ellipse 98% 92% at 50% 50%, transparent 64%, rgba(14, 12, 9, .38) 100%);
+}
+.lx-frame::before {
+  content: ""; position: absolute; inset: var(--lx-in);
+  border: 1px solid rgba(220, 193, 120, .34);
+}
+.lx-frame i { position: absolute; width: 34px; height: 34px; border: 0 solid var(--lx-gold-pale); }
+.lx-frame i:nth-child(1) { top: calc(var(--lx-in) - 1px); left: calc(var(--lx-in) - 1px); border-width: 1px 0 0 1px; }
+.lx-frame i:nth-child(2) { top: calc(var(--lx-in) - 1px); right: calc(var(--lx-in) - 1px); border-width: 1px 1px 0 0; }
+.lx-frame i:nth-child(3) { bottom: calc(var(--lx-in) - 1px); left: calc(var(--lx-in) - 1px); border-width: 0 0 1px 1px; }
+.lx-frame i:nth-child(4) { bottom: calc(var(--lx-in) - 1px); right: calc(var(--lx-in) - 1px); border-width: 0 1px 1px 0; }
+
+/* stub heroes: one lighter scrim (lux.css and elevate.css each laid their own) so the photograph keeps its colour */
+body .stub-hero.lx-hero.lux-hero::after {
+  background:
+    linear-gradient(180deg, rgba(14, 12, 9, .5) 0%, rgba(14, 12, 9, .2) 42%, rgba(14, 12, 9, .66) 100%),
+    radial-gradient(ellipse 62% 56% at 50% 52%, rgba(14, 12, 9, .6), rgba(14, 12, 9, 0) 100%);
+}
+body .stub-hero.lx-hero .eyebrow { font-size: .86rem !important; letter-spacing: .36em !important; }
+
+/* ---------- Hero: scale and voice ---------- */
+body .lx-hero:not(.hero-fullbleed) {
+  min-height: clamp(520px, 78vh, 800px) !important;
+  padding-top: 7rem !important;
+  padding-bottom: 5.5rem !important;
+}
+body .stub-hero.lx-hero { min-height: clamp(420px, 60vh, 600px) !important; padding-top: 6rem !important; padding-bottom: 4.5rem !important; }
+
+.lx-hero h1 {
+  font-weight: 300 !important; letter-spacing: -.015em !important;
+  color: #F7EFD9 !important;
+  text-shadow: 0 2px 40px rgba(0, 0, 0, .6);
+}
+.lx-hero:not(.hero-fullbleed) h1 { font-size: clamp(2.8rem, 6.2vw, 5.6rem) !important; line-height: 1.02 !important; }
+.lx-hero h1 em, .lx-hero h1 span.accent {
+  display: inline-block; max-width: 100%; padding: 0 .02em .12em 0; margin-right: -.03em;
+  color: transparent !important;
+  background-image: linear-gradient(100deg, #E6CE8A 0%, #F6E6B0 48%, #D4B056 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+.lx-hero [class*="eyebrow"], .lx-hero [class*="brand-text"] {
+  color: #F5E4AE !important; letter-spacing: .38em !important; font-weight: 500 !important;
+  text-shadow: 0 0 18px rgba(0, 0, 0, .85), 0 1px 4px rgba(0, 0, 0, .6);
+}
+.lx-hero p, .lx-hero [class*="-sub"], .lx-hero [class*="subtitle"], .lx-hero [class*="script"] {
+  color: #F7EFD9 !important;
+  text-shadow: 0 0 22px rgba(0, 0, 0, .85), 0 1px 5px rgba(0, 0, 0, .55);
+}
+.lx-hero:not(.hero-fullbleed) p, .lx-hero:not(.hero-fullbleed) [class*="-sub"] { font-size: clamp(1.15rem, 1.7vw, 1.5rem); line-height: 1.55; }
+.lx-hero:not(.hero-fullbleed) [class*="eyebrow"] { font-size: clamp(.78rem, 1vw, .92rem) !important; }
+
+/* ---------- Section rhythm: a fading gold hairline between sections ---------- */
+body > section:not(.lx-hero) {
+  border-top: 1px solid transparent;
+  border-image: linear-gradient(90deg, transparent 0%, rgba(201, 168, 76, .6) 50%, transparent 100%) 1;
+}
+
+/* ---------- Headings ---------- */
+section h1, section h2 { font-weight: 300; letter-spacing: -.012em; }
+section h2 { text-wrap: balance; }
+section h1 em, section h2 em {
+  display: inline-block; max-width: 100%; padding: 0 .02em .1em 0; margin-right: -.03em;
+  color: transparent !important;
+  background-image: linear-gradient(100deg, #A97F26 0%, #D9BA5E 52%, #B38A30 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+/* on dark bands the script word is lit */
+:is(.offering-final-cta, .po-final-cta, .cc-final-cta, .schedule-section, .section-cta, .po-interlude, .writings-interlude, .section-dark, .section-tree-divider, .wd-vista, .wd-cluster, .wd-doors) :is(h1, h2) em {
+  background-image: linear-gradient(100deg, #E6CE8A, #F6E6B0 50%, #D4B056);
+}
+.lx-hero h1 em { padding-bottom: .12em; }
+
+/* ---------- Eyebrows and labels in the body: ink-gold, readable, with a short rule ---------- */
+body > section:not(.lx-hero) :is(.section-label, .offering-section-label, [class$="-eyebrow"], [class*="-eyebrow "], .eyebrow, .pg-label, .cc-eyebrow, .po-eyebrow) {
+  color: var(--lx-gold-ink) !important; font-weight: 500 !important; letter-spacing: .34em !important;
+}
+:is(.offering-final-cta, .po-final-cta, .cc-final-cta, .schedule-section, .section-cta, .po-interlude, .writings-interlude, .section-dark) :is(.section-label, .offering-section-label, [class$="-eyebrow"], .eyebrow, .pg-label, .cc-eyebrow, .po-eyebrow) {
+  color: var(--lx-gold-pale) !important;
+}
+body > section:is(.wd-vista, .wd-cluster, .wd-doors) [class$="-eyebrow"] { color: #F5E4AE !important; }
+
+/* ---------- Cards: a second, inner hairline and a soft lift of shadow ---------- */
+:is(.card, [class$="-card"], [class*="-card "]):not(.nav-drop-deepwork-card):not(.site-header *) {
+  outline: 1px solid rgba(201, 168, 76, .26); outline-offset: -7px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .75) inset, 0 26px 52px -30px rgba(45, 42, 38, .32);
+}
+
+/* ---------- Dark closing bands: the same gold frame as the heroes ---------- */
+:is(.offering-final-cta, .po-final-cta, .cc-final-cta, .section-cta, .schedule-section) {
+  outline: 1px solid rgba(220, 193, 120, .3); outline-offset: calc(-1 * var(--lx-in));
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid transparent;
+  border-image: linear-gradient(90deg, transparent 0%, rgba(201, 168, 76, .7) 50%, transparent 100%) 1;
+}
+
+
+/* ============================================================
+   Body families: offering-*, po-*, cc-*, pg-*, stub-*
+   The studio pattern: a centred head (label, title, jewelled rule),
+   then the text in its own column; cards lifted onto paper.
+   ============================================================ */
+:is(.offering-body, .po-body, .cc-body, .pg-section, .stub-body) { padding-top: clamp(4.5rem, 8vw, 8rem); padding-bottom: clamp(4.5rem, 8vw, 8rem); }
+
+/* centred section heads */
+:is(.offering-body, .po-body, .cc-body) :is(.offering-section-label, .po-eyebrow, .cc-eyebrow, .po-label) {
+  display: flex; align-items: center; justify-content: center; gap: 1.1rem; text-align: center;
+}
+:is(.offering-body, .po-body, .cc-body) :is(.offering-section-label, .po-eyebrow, .cc-eyebrow, .po-label)::before,
+:is(.offering-body, .po-body, .cc-body) :is(.offering-section-label, .po-eyebrow, .cc-eyebrow, .po-label)::after {
+  content: ""; flex: 0 0 38px; height: 1px; background: linear-gradient(90deg, transparent, var(--lx-gold));
+}
+:is(.offering-body, .po-body, .cc-body) :is(.offering-section-label, .po-eyebrow, .cc-eyebrow, .po-label)::after { transform: scaleX(-1); }
+:is(.offering-body, .po-body, .cc-body) :is(.offering-section-title, .po-h2, .cc-h2) {
+  text-align: center; font-size: clamp(2.4rem, 4.6vw, 3.8rem) !important; line-height: 1.06 !important;
+}
+:is(.offering-body, .po-body, .cc-body) :is(.offering-section-title, .po-h2, .cc-h2)::after {
+  content: "\25C6"; display: block; width: 150px; margin: 1.5rem auto 0;
+  text-align: center; font-size: .5rem; line-height: 8px; color: var(--lx-gold);
+  background:
+    linear-gradient(90deg, transparent, var(--lx-gold)) left center / 56px 1px no-repeat,
+    linear-gradient(90deg, var(--lx-gold), transparent) right center / 56px 1px no-repeat;
+}
+
+/* cards onto paper */
+:is(.offering-body, .po-body, .cc-body, .pg-section, .stub-body) :is(.three-path-card, .sub-offering-card, .po-card, .cc-card, .writings-arrive-card, .planned-card) {
+  background: linear-gradient(180deg, #FFFFFF, #FBF8F1) !important;
+  border: 1px solid rgba(201, 168, 76, .28) !important;
+  border-top: 1px solid var(--lx-gold) !important;
+}
+
+/* four cards read as 2 x 2, never 3 + 1 */
+@media (min-width: 900px) {
+  .sub-offering-grid:has(> :nth-child(4)):not(:has(> :nth-child(5))) { grid-template-columns: repeat(2, 1fr) !important; }
+}
+.offering-meta { text-align: center; font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important; font-size: .95rem !important; letter-spacing: .32em; text-transform: uppercase; color: var(--lx-gold-ink) !important; margin-top: 2.4rem !important; }
+:is(.sub-offering-cta, .sub-offering-eyebrow, .three-path-eyebrow) { color: var(--lx-gold-ink) !important; }
+
+/* ---------- Triptych strips (public offerings, workshops, the library): framed photographs, not thumbnails ---------- */
+:is(.po-trip, .lib-trip) { gap: clamp(1.2rem, 3vw, 2.4rem) !important; margin-bottom: clamp(3.5rem, 6vw, 5.5rem) !important; align-items: start; }
+:is(.po-trip, .lib-trip) > div {
+  aspect-ratio: 4 / 5 !important; border-radius: 0 !important;
+  outline: 1px solid rgba(201, 168, 76, .42); outline-offset: 7px;
+  box-shadow: 0 28px 56px -26px rgba(45, 42, 38, .5) !important;
+}
+:is(.po-trip, .lib-trip) > div:nth-child(2) { margin-top: 2.6rem; }
+@media (max-width: 720px) {
+  :is(.po-trip, .lib-trip) { grid-template-columns: 1fr 1fr !important; }
+  :is(.po-trip, .lib-trip) > div { aspect-ratio: 4 / 5 !important; outline-offset: 5px; }
+  :is(.po-trip, .lib-trip) > div:nth-child(2) { margin-top: 1.6rem; }
+  :is(.po-trip, .lib-trip) > div:nth-child(3) { grid-column: 1 / -1; aspect-ratio: 16 / 10 !important; margin-top: .4rem; }
+}
+
+/* ---------- The library (writings): each shelf gets the studio head ---------- */
+.lib-section .lib-eyebrow { display: flex; align-items: center; justify-content: center; gap: 1.1rem; color: var(--lx-gold-ink) !important; font-weight: 500; letter-spacing: .34em !important; }
+.lib-section .lib-eyebrow::before, .lib-section .lib-eyebrow::after { content: ""; flex: 0 0 38px; height: 1px; background: linear-gradient(90deg, transparent, var(--lx-gold)); }
+.lib-section .lib-eyebrow::after { transform: scaleX(-1); }
+.lib-section .lib-name { font-weight: 300 !important; font-size: clamp(2rem, 3.6vw, 2.9rem) !important; line-height: 1.08 !important; padding-bottom: 0 !important; margin-bottom: 2.2rem !important; }
+.lib-section .lib-name::after {
+  content: "\25C6"; position: static; display: block; width: 150px; height: auto; margin: 1.2rem auto 0; transform: none; opacity: 1;
+  text-align: center; font-size: .5rem; line-height: 8px; color: var(--lx-gold);
+  background: linear-gradient(90deg, transparent, var(--lx-gold)) left center / 56px 1px no-repeat, linear-gradient(90deg, var(--lx-gold), transparent) right center / 56px 1px no-repeat;
+}
+.lib-org { border-radius: 0 !important; outline: 1px solid rgba(201, 168, 76, .22); outline-offset: -6px; box-shadow: 0 1px 0 rgba(255, 255, 255, .75) inset, 0 22px 44px -28px rgba(45, 42, 38, .3); }
+
+/* ---------- The placeholder pages (ethics, faq, voices, press, ...): the stub body reads as a page, not a note ---------- */
+body[data-content-page] .stub-body { padding-top: clamp(4.5rem, 8vw, 7rem) !important; padding-bottom: clamp(4.5rem, 8vw, 7rem) !important; background-image: radial-gradient(ellipse 80% 38% at 50% 0%, rgba(201, 168, 76, .085), transparent 70%); }
+body[data-content-page] .stub-body-inner { max-width: 720px; }
+body[data-content-page] .stub-body p { font-size: 1.22rem; line-height: 1.84; }
+body[data-content-page] .stub-body p:first-child { font-size: clamp(1.3rem, 2vw, 1.55rem); line-height: 1.6; font-style: italic; text-align: center; color: #2D2A26; margin-bottom: 2.4rem; }
+body[data-content-page] .stub-body .planned-sections {
+  position: relative; margin: 3rem 0; padding: 2.2rem 2.4rem 2rem;
+  background: linear-gradient(180deg, #FFFFFF, #FBF8F1); border: 1px solid rgba(201, 168, 76, .28); border-left: 3px solid var(--lx-gold);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset, 0 26px 52px -30px rgba(45, 42, 38, .3);
+}
+body[data-content-page] .stub-body .planned-sections::before { content: ""; position: absolute; inset: 6px; pointer-events: none; border: 1px solid rgba(201, 168, 76, .14); }
+body[data-content-page] .stub-body .planned-sections h4 { color: var(--lx-gold-ink); letter-spacing: .34em; }
+body[data-content-page] .stub-body .planned-sections li { padding-left: 1.4rem; position: relative; border-bottom: 1px solid rgba(201, 168, 76, .18); }
+body[data-content-page] .stub-body .planned-sections li::before { content: ""; position: absolute; left: .2rem; top: 1.05rem; width: 5px; height: 5px; background: var(--lx-gold); transform: rotate(45deg); }
+body[data-content-page] .stub-body .building-note { text-align: center; font-style: italic; color: #5A554C; }
+
+/* the sessions hero on phones: a real hero (her portrait, light type at the foot), not a strip above paper */
+@media (max-width: 720px) {
+  body[data-content-page="sessions"] .lx-hero.sessions-portrait-hero {
+    background-image:
+      linear-gradient(180deg, rgba(14, 12, 9, .12) 0%, rgba(14, 12, 9, .18) 38%, rgba(14, 12, 9, .84) 68%, rgba(14, 12, 9, .97) 100%),
+      url('../images/uploads/lounging-hero-green-gold.jpg') !important;
+    background-size: cover !important; background-position: 80% 20% !important; background-repeat: no-repeat !important;
+    background-color: #0E0C09 !important;
+    min-height: clamp(560px, 88vh, 760px) !important; padding: 0 0 2.6rem !important;
+    display: flex !important; align-items: flex-end !important;
+  }
+  body[data-content-page="sessions"] .lx-hero.sessions-portrait-hero .sessions-portrait-inner { padding: 0 1.4rem !important; }
+  body[data-content-page="sessions"] .lx-hero.sessions-portrait-hero .sessions-portrait-inner > div { max-width: none !important; }
+  body[data-content-page="sessions"] .lx-hero.sessions-portrait-hero::after {
+    content: "" !important; position: absolute !important; inset: 0 !important; z-index: 1 !important; pointer-events: none;
+    background: linear-gradient(180deg, rgba(14, 12, 9, 0) 0%, rgba(14, 12, 9, .1) 36%, rgba(14, 12, 9, .8) 66%, rgba(14, 12, 9, .97) 100%) !important;
+    box-shadow: none !important;
+  }
+  body[data-content-page="sessions"] .lx-hero.sessions-portrait-hero .sessions-portrait-inner,
+  body[data-content-page="sessions"] .lx-hero.sessions-portrait-hero .sessions-portrait-inner > div { position: relative; z-index: 3; background: transparent !important; box-shadow: none !important; border: 0 !important; }
+  body[data-content-page="sessions"] .lx-hero.sessions-portrait-hero .page-hero-title { color: #F7EFD9 !important; text-shadow: 0 2px 30px rgba(0, 0, 0, .7) !important; }
+  body[data-content-page="sessions"] .lx-hero.sessions-portrait-hero .page-hero-title em { color: transparent !important; background-image: linear-gradient(100deg, #E6CE8A, #F6E6B0 48%, #D4B056) !important; -webkit-background-clip: text; background-clip: text; }
+  body[data-content-page="sessions"] .lx-hero.sessions-portrait-hero .page-hero-subtitle { color: #F7EFD9 !important; text-shadow: 0 1px 14px rgba(0, 0, 0, .7) !important; }
+  body[data-content-page="sessions"] .lx-hero.sessions-portrait-hero .hero-eyebrow { color: #F5E4AE !important; text-shadow: 0 1px 10px rgba(0, 0, 0, .7) !important; }
+  body[data-content-page="sessions"] .lx-hero.sessions-portrait-hero .sessions-hero-door { background: #C9A84C !important; color: #1F1A18 !important; border-color: #C9A84C !important; }
+}
+
+/* the inquiry hero: a lighter veil over the trees, and a title with presence */
+body[data-content-page="inquiry"] .hero-fullbleed:not(:has(.hero-overlay))::before {
+  background:
+    radial-gradient(ellipse 46% 50% at 50% 50%, rgba(14, 12, 9, .74), rgba(14, 12, 9, .3) 60%, rgba(14, 12, 9, 0) 100%),
+    linear-gradient(180deg, rgba(14, 12, 9, .6) 0%, rgba(14, 12, 9, .24) 30%, rgba(14, 12, 9, .3) 62%, rgba(14, 12, 9, .9) 100%);
+}
+body[data-content-page="inquiry"] .hero-fullbleed .hero-title { font-size: clamp(3rem, 7vw, 6rem) !important; }
+body[data-content-page="inquiry"] .hero-fullbleed .hero-subtitle { font-size: clamp(1.2rem, 1.8vw, 1.5rem) !important; }
+
+/* the coaching quote bands: a dark, framed interlude rather than a washed-out photograph */
+.cc-body .cc-interlude {
+  border-radius: 0 !important; min-height: clamp(380px, 48vh, 520px) !important;
+  outline: 1px solid rgba(220, 193, 120, .34); outline-offset: -14px;
+  box-shadow: 0 34px 70px -34px rgba(20, 16, 8, .55);
+}
+.cc-body .cc-interlude::before {
+  background:
+    radial-gradient(ellipse 58% 54% at 50% 50%, rgba(14, 12, 9, .6), rgba(14, 12, 9, .25) 100%),
+    linear-gradient(180deg, rgba(14, 12, 9, .5), rgba(14, 12, 9, .7)) !important;
+}
+.cc-body .cc-interlude p {
+  color: #F7EFD9 !important; font-weight: 300; font-size: clamp(1.6rem, 2.8vw, 2.3rem) !important; line-height: 1.4 !important;
+  max-width: 24ch; text-wrap: balance; text-shadow: 0 2px 30px rgba(0, 0, 0, .7), 0 0 4px rgba(0, 0, 0, .35);
+}
+
+/* never a sideways scroll: decorative pseudo-elements may overhang, the page does not */
+html, body { overflow-x: clip; }
+@media (max-width: 720px) {
+  .writings-newsletter-form-names { grid-template-columns: minmax(0, 1fr) !important; }
+}
+input, select, textarea { max-width: 100%; }
+
+@media (max-width: 720px) {
+  body .lx-hero:not(.hero-fullbleed) { min-height: clamp(480px, 82vh, 700px) !important; padding-top: 5.5rem !important; padding-bottom: 4rem !important; }
+  .lx-frame i { width: 24px; height: 24px; }
+  .lx-hero [class*="eyebrow"] { letter-spacing: .26em !important; }
+}

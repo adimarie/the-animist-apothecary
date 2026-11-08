@@ -627,8 +627,10 @@
             animation: fadeUp 0.8s ease forwards;
         }
     </style>
+  <link rel="stylesheet" href="css/elevate-misc.css?v=261106">
+  <link rel="stylesheet" href="css/still.css?v=261106">
 </head>
-<body>
+<body data-elevate="ceremony-prep">
 
     <!-- Password Gate -->
     <div class="password-gate" id="passwordGate">
@@ -809,8 +811,17 @@
         const passwordInput = document.getElementById('passwordInput');
         const passwordSubmit = document.getElementById('passwordSubmit');
         const gateError = document.getElementById('gateError');
-        const COPECT_PASSWORD = 'ceremony2026';
+        // The access code is no longer written in this file: only its SHA-256 fingerprint is.
+        // (A curtain, not a lock: this page's content is still in the HTML. For a real lock,
+        // check the phrase in the database the way intake.html does.)
+        const PASSWORD_SHA256 = 'f35462a97fc200f92e25e7554ad72789ccb728df4deaf92fd5aae209b224fc7c';
         const SESSION_KEY = 'ceremonyAccessGranted';
+
+        async function sha256Hex(text) {
+            const bytes = new TextEncoder().encode(text);
+            const digest = await crypto.subtle.digest('SHA-256', bytes);
+            return Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
 
         // Check if already authenticated in this session
         if (sessionStorage.getItem(SESSION_KEY)) {
@@ -818,11 +829,18 @@
         }
 
         // Handle password submission
-        function handlePasswordSubmit() {
-            const enteredPassword = passwordInput.value;
+        async function handlePasswordSubmit() {
+            const enteredPassword = passwordInput.value.trim();
             gateError.classList.remove('show');
 
-            if (enteredPassword === CORRECT_PASSWORD) {
+            let matches = false;
+            try {
+                matches = (await sha256Hex(enteredPassword)) === PASSWORD_SHA256;
+            } catch (err) {
+                matches = false; // no secure crypto available: stay closed
+            }
+
+            if (matches) {
                 sessionStorage.setItem(SESSION_KEY, 'true');
                 passwordGate.classList.add('hidden');
             } else {

@@ -1,0 +1,44 @@
+/* ============================================================
+   still.css — the site holds still.
+   No animation, no fades in or out, no moving parts. Loaded last on
+   every public page. (Same intent as styles.css "POLISH v19 — ZERO
+   MOTION", extended to the pages that do not load styles.css and to
+   the lux scroll-reveal.)  Static positioning transforms (centering,
+   dropdown placement) are left alone.
+   ============================================================ */
+
+html, body { scroll-behavior: auto !important; }
+
+/* high-specificity on purpose: it has to beat component rules that carry their own !important */
+html:root,
+:root :not(#st-a):not(#st-b):not(#st-c),
+:root :not(#st-a):not(#st-b):not(#st-c)::before,
+:root :not(#st-a):not(#st-b):not(#st-c)::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+/* nothing waits invisibly for a scroll-reveal */
+.lux-reveal, body.lux-anim .lux-reveal,
+.fade-in, .js-ready .fade-in, section.fade-in, .rv {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* no hover lifts or image zooms */
+.btn-primary:hover, .btn-ghost:hover, .btn-outline:hover, .btn-gold-outline:hover,
+.nav-cta:hover, .nav-drop-deepwork-card:hover,
+.offering-card:hover, .modality-card:hover, .community-card:hover, .vision-pillar:hover,
+.offering-featured-card:hover, .sub-offering-card:hover, .cohort-card:hover, .path-card:hover, .tier-card:hover,
+.site-header .nav-dropdown .nav-feature:hover,
+.spec:hover, .tier:hover, .team-card:hover, .card:hover, .back-to-top:hover, .lost-btn:hover {
+  transform: none !important;
+}
+.offering-card:hover .offering-image, .modality-card:hover .modality-image,
+.community-card:hover .community-card-image, .offering-featured-card:hover .ofc-image {
+  transform: none !important;
+}
+
+/* scroll cues are decorative motion: keep them out */
+.hero-scroll { display: none !important; }

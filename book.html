@@ -11,19 +11,40 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="shortcut icon" href="favicon.ico">
   <style>
-    html, body { height: 100%; margin: 0; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #F7F5F0; color: #2D2A26;
-      display: flex; align-items: center; justify-content: center;
-      text-align: center; padding: 2rem;
-    }
-    a { color: #886039; }
+    :root{--gold:#C9A84C;--gold-pale:#DCC178;--parch:#F4EAD3}
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%}
+    body{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem;
+      background:radial-gradient(ellipse at 50% 34%,rgba(201,168,76,.19),transparent 58%),radial-gradient(ellipse at 50% 125%,rgba(201,168,76,.08),transparent 55%),#141A12;
+      color:var(--parch);font-family:'Cormorant Garamond',Georgia,serif;text-align:center;-webkit-font-smoothing:antialiased}
+    .th-frame{position:relative;width:min(520px,100%);padding:3.2rem 2.4rem 3.1rem;border:1px solid rgba(201,168,76,.46);outline:1px solid rgba(201,168,76,.22);outline-offset:7px;
+      background:linear-gradient(180deg,rgba(26,34,24,.6),rgba(20,26,18,.78));box-shadow:0 40px 90px -40px rgba(0,0,0,.8)}
+    .th-frame .c{position:absolute;width:15px;height:15px;border:1px solid var(--gold)}
+    .th-frame .tl{top:-8px;left:-8px;border-right:0;border-bottom:0}.th-frame .tr{top:-8px;right:-8px;border-left:0;border-bottom:0}
+    .th-frame .bl{bottom:-8px;left:-8px;border-right:0;border-top:0}.th-frame .br{bottom:-8px;right:-8px;border-left:0;border-top:0}
+    .th-mark{display:block;width:118px;margin:0 auto 1.25rem}
+    .th-rule{display:block;position:relative;height:1px;width:72px;margin:0 auto 1.7rem;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+    .th-rule i{position:absolute;left:50%;top:50%;width:7px;height:7px;background:#141A12;border:1px solid var(--gold);transform:translate(-50%,-50%) rotate(45deg)}
+    .th-line{font-size:clamp(1.35rem,3.6vw,1.75rem);font-style:italic;line-height:1.5;margin:0 0 2.1rem;color:var(--parch);text-wrap:balance}
+    .th-line:last-child{margin-bottom:.4rem}
+    .th-line em{color:var(--gold-pale)}
+    .th-line a{color:var(--gold-pale);text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(220,193,120,.5)}
+    .th-btn{display:inline-block;padding:.9rem 2.1rem;font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;text-decoration:none;color:#1A2218;
+      background:linear-gradient(135deg,#B8923A 0%,#E6CF8E 48%,#C9A84C 100%);box-shadow:0 12px 30px -14px rgba(201,168,76,.6);transition:transform .35s ease,box-shadow .35s ease}
+    .th-btn:hover{transform:translateY(-2px);box-shadow:0 18px 38px -14px rgba(201,168,76,.75)}
+    .th-btn:focus-visible,.th-line a:focus-visible{outline:2px solid var(--parch);outline-offset:4px}
+    .th-prog{position:absolute;left:2.4rem;right:2.4rem;bottom:1.15rem;height:1px;background:rgba(201,168,76,.18);overflow:hidden}
+    .th-prog::after{content:"";position:absolute;inset:0;background:var(--gold);transform-origin:left;animation:th-fill 1.5s ease-out forwards}
+    @keyframes th-fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    @media (prefers-reduced-motion:reduce){.th-prog::after{animation:none}.th-btn{transition:none}}
+    @media (max-width:480px){.th-frame{padding:2.6rem 1.5rem 2.8rem}.th-prog{left:1.5rem;right:1.5rem}}
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/still.css?v=261106">
 </head>
 <body>
   <!-- Apply / Intake consolidated onto sessions.html (2026-06-27). -->
-  <p>Begin here &mdash; taking you to <a href="divination-and-consultation.html">Schedule an Intake &amp; Inquiry</a>&hellip;</p>
+  <main class="th-frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i><img class="th-mark" src="images/uploads/logo-mark-trio.png" alt="" aria-hidden="true"><span class="th-rule" aria-hidden="true"><i></i></span><p class="th-line">Begin here &mdash; taking you to <a href="divination-and-consultation.html">Schedule an Intake &amp; Inquiry</a>&hellip;</p><span class="th-prog" aria-hidden="true"></span></main>
   <script src="/js/coming-soon.js?v=261104h" defer></script>
   <script src="js/traffic.js" defer></script>
   <script src="js/announce.js" defer></script>

@@ -1,0 +1,136 @@
+/* elevate.css — sitewide elevation layer (2026-11-06)
+   Polish only: legibility, finish, motion, forms, footer. Keeps the existing palette,
+   type, and layout; the locked header padding is untouched. Load last. */
+
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+::selection { background: rgba(201,168,76,.35); color: #1F1A18; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid #8F6F2E; outline-offset: 3px; }
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+section[id] { scroll-margin-top: 110px; }
+
+/* ---- Hero legibility: a real scrim, and soft text shadow ---- */
+body .hero-fullbleed .hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(16,14,10,.84) 0%, rgba(16,14,10,.58) 46%, rgba(16,14,10,.18) 100%),
+    linear-gradient(0deg, rgba(16,14,10,.55) 0%, rgba(16,14,10,0) 42%) !important;
+}
+body .hero-fullbleed .hero-title,
+body .hero-fullbleed .hero-subtitle,
+body .hero-fullbleed .hero-eyebrow,
+body .hero-fullbleed .hero-brand-text { text-shadow: 0 2px 26px rgba(10,8,6,.7), 0 1px 2px rgba(10,8,6,.5); }
+body .hero-fullbleed .hero-subtitle, body .hero-fullbleed .hero-eyebrow { color: rgba(247,239,217,.94) !important; }
+body .hero-fullbleed .hero-cta-row .btn-primary { background: #C9A84C; color: #1F1A18; border-color: #C9A84C; }
+body .hero-fullbleed .hero-cta-row .btn-primary:hover { background: #DCC178; border-color: #DCC178; }
+body .hero-fullbleed .hero-cta-row .btn-outline,
+body .hero-fullbleed .hero-cta-row .btn-ghost { color: #F7F0D9; border-color: rgba(220,193,120,.85); background: rgba(16,14,10,.38); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+body .hero-fullbleed .hero-cta-row .btn-outline:hover,
+body .hero-fullbleed .hero-cta-row .btn-ghost:hover { background: rgba(201,168,76,.22); }
+
+/* Inner-page heroes: the accent word must never fade into the image */
+body .page-hero-title em, body .pg-title em, body .lux-hero h1 em { color: #DCC178 !important; text-shadow: 0 2px 22px rgba(10,8,6,.6); }
+body .page-hero-title, body .pg-title { text-shadow: 0 2px 26px rgba(10,8,6,.55); }
+body .pg-sub, body .page-hero-subtitle { text-shadow: 0 1px 14px rgba(10,8,6,.6); }
+
+/* ---- Buttons ---- */
+body .btn-primary:hover, body .btn-outline:hover, body .btn-ghost:hover { box-shadow: 0 8px 22px rgba(31,26,24,.16); }
+
+/* ---- Cards: hairline gold border and a gentle lift ---- */
+.sub-offering-card, .cohort-card, .path-card, .tier-card, .circle-card, .cc-weave-card, .cc-season-card,
+.three-path-card, .practical-card, .htj-card, .gw-subcard, .ee-temple-card, .writings-arrive-card, .current-card {
+  border: 1px solid rgba(201,168,76,.28);
+  }
+.sub-offering-card:hover, .cohort-card:hover, .path-card:hover, .tier-card:hover, .circle-card:hover, .cc-weave-card:hover, .cc-season-card:hover,
+.three-path-card:hover, .practical-card:hover, .htj-card:hover, .gw-subcard:hover, .ee-temple-card:hover, .writings-arrive-card:hover, .current-card:hover {
+  box-shadow: 0 16px 40px rgba(31,26,24,.11); border-color: rgba(201,168,76,.55);
+}
+
+/* ---- Forms: finished, legible, on-brand ---- */
+body input[type="text"], body input[type="email"], body input[type="tel"], body input[type="url"], body input[type="search"], body textarea, body select {
+  font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.08rem; color: #2D2A26;
+  background-color: rgba(255,255,255,.88); border: 1px solid rgba(143,111,46,.38); border-radius: 3px; padding: .85rem 1rem;
+  }
+/* currentColor keeps placeholders legible on both light and dark forms */
+body input::placeholder, body textarea::placeholder { color: currentColor !important; opacity: .55 !important; font-style: italic; }
+body input[type="text"]:focus, body input[type="email"]:focus, body input[type="tel"]:focus, body textarea:focus, body select:focus {
+  border-color: #8F6F2E; box-shadow: 0 0 0 3px rgba(201,168,76,.22); outline: none; background-color: #fff;
+}
+body select {
+  -webkit-appearance: none; appearance: none; padding-right: 2.6rem; cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'><path d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%238F6F2E' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat; background-position: right 1rem center; background-size: 12px 8px;
+}
+
+/* ---- Dark call-to-action bands: readable body copy ---- */
+.section-cta .section-body, .section-cta p { color: rgba(247,239,217,.92); }
+.section-cta .section-title { text-shadow: 0 2px 20px rgba(10,8,6,.45); }
+
+/* ---- Footer: finer type, stronger contrast, gold hairline ---- */
+.site-footer { border-top: 1px solid rgba(201,168,76,.4); }
+.site-footer .footer-tagline { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.08rem; line-height: 1.7; color: rgba(244,234,211,.8); }
+.site-footer .footer-col h4 { color: #C9A84C; letter-spacing: .3em; }
+.site-footer .footer-col a { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.04rem; color: rgba(244,234,211,.82); }
+.site-footer .footer-col a:hover { color: #DCC178; }
+.site-footer .footer-bottom p { color: rgba(244,234,211,.6); font-family: 'Cormorant Garamond', Georgia, serif; font-size: .95rem; }
+
+/* ---- Header: a quiet gold underline on hover (padding stays locked) ---- */
+.site-header .main-nav > ul > li > a { position: relative; }
+.site-header .main-nav > ul > li > a::after { content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: #8F6F2E; transform: scaleX(0); transform-origin: left; }
+.site-header .main-nav > ul > li > a:hover::after { transform: scaleX(1); }
+
+/* ── Stub heroes: restore the dark scrim that per-page inline CSS overwrote ──
+   Per-page rules repurpose .stub-hero::before as a 50px gold rule, which knocked
+   out lux.css's full-bleed scrim and left white titles on bright photos. The scrim
+   now lives on ::after so it cannot be overridden by that rule. */
+body .stub-hero.lux-hero { min-height: clamp(300px, 46vh, 440px); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+body .stub-hero.lux-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(16,14,10,.62) 0%, rgba(16,14,10,.50) 45%, rgba(16,14,10,.78) 100%),
+    radial-gradient(ellipse at 50% 55%, rgba(16,14,10,.28) 0%, rgba(16,14,10,0) 70%);
+}
+body .stub-hero.lux-hero::before { position: relative; z-index: 2; background: #DCC178 !important; opacity: .8 !important; }
+body .stub-hero.lux-hero > * { position: relative; z-index: 2; }
+body .stub-hero.lux-hero h1 { color: #F7F1E1 !important; text-shadow: 0 2px 22px rgba(0,0,0,.55); }
+body .stub-hero.lux-hero h1 em { color: #E6CE8A !important; }
+body .stub-hero.lux-hero .eyebrow, body .stub-hero.lux-hero span { color: #DCC178 !important; text-shadow: 0 1px 10px rgba(0,0,0,.5); }
+body .stub-hero.lux-hero .sub, body .stub-hero.lux-hero p { color: rgba(247,241,225,.92) !important; opacity: 1 !important; text-shadow: 0 1px 12px rgba(0,0,0,.5); }
+
+/* ── Heroes with no overlay element (inquiry, platicas, others): give them one ──
+   Same protective scrim, applied only where the page markup lacks .hero-overlay. */
+body .hero-fullbleed:not(:has(.hero-overlay))::before,
+body .page-hero:not(:has(.hero-overlay))::after {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(16,14,10,.72) 0%, rgba(16,14,10,.52) 50%, rgba(16,14,10,.30) 100%),
+    linear-gradient(0deg, rgba(16,14,10,.62) 0%, rgba(16,14,10,0) 45%);
+}
+body .page-hero:not(:has(.hero-overlay))::after {
+  background:
+    radial-gradient(ellipse at 50% 55%, rgba(16,14,10,.70) 0%, rgba(16,14,10,.40) 55%, rgba(16,14,10,.20) 100%),
+    linear-gradient(180deg, rgba(16,14,10,.45) 0%, rgba(16,14,10,.62) 100%);
+}
+body .hero-fullbleed:not(:has(.hero-overlay)) > .hero-content,
+body .page-hero:not(:has(.hero-overlay)) > .hero-inner { position: relative; z-index: 3; }
+body .page-hero:not(:has(.hero-overlay)) .page-hero-title { color: #F7F1E1; text-shadow: 0 2px 22px rgba(0,0,0,.6); }
+body .page-hero:not(:has(.hero-overlay)) .page-hero-subtitle { color: rgba(247,241,225,.92); text-shadow: 0 1px 12px rgba(0,0,0,.55); }
+
+/* Offering hero (group-work etc.): lift the subtitle over busy photography */
+body .offering-hero-subtitle, body .offering-hero-eyebrow { text-shadow: 0 1px 14px rgba(0,0,0,.6); }
+body .offering-hero-subtitle { color: rgba(247,241,225,.95) !important; }
+body .page-hero:not(:has(.hero-overlay)) { min-height: clamp(340px, 50vh, 480px) !important; padding-bottom: 2.5rem; }
+
+/* ── Dark bands: restore legibility of labels, bold figures and emphasised words ──
+   Several pages set a deep-gold label colour or a near-black <strong> that was meant
+   for light grounds, then reuse it inside a dark booking / closing band. */
+body .schedule-section .section-label,
+body .offering-final-cta .section-label,
+body .po-final-cta .po-eyebrow { color: #DCC178 !important; }
+body .schedule-section .schedule-intro strong,
+body .schedule-section strong { color: #E6CE8A !important; font-weight: 500; }
+body .schedule-section .schedule-intro a,
+body .schedule-section .schedule-recip-note a { color: #DCC178 !important; text-decoration-color: rgba(220,193,120,.5); }
+body .schedule-section .schedule-intro { color: rgba(247,241,225,.86); max-width: 860px; margin-left: auto; margin-right: auto; }
+body .offering-final-cta h2 em,
+body .schedule-section h2 em,
+body .po-final-cta h2 em { color: #DCC178 !important; }

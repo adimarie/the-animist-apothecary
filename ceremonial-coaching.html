@@ -405,8 +405,13 @@
     .section-label { color: #8F6F2E !important; }
 .weekly-circles-head .section-label { display: block; font-family: 'Cinzel', serif; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold, #C9A84C); font-weight: 600; margin-bottom: 14px; }
   </style>
+  <link rel="stylesheet" href="css/elevate.css?v=261106">
+  <link rel="stylesheet" href="css/luxe.css?v=261106">
+  <link rel="stylesheet" href="css/worlds.css?v=261106">
+  <link rel="stylesheet" href="css/doors.css?v=261107">
+  <link rel="stylesheet" href="css/still.css?v=261106">
 </head>
-<body data-content-page="offering-ceremonial-coaching">
+<body data-world="hearth" data-content-page="offering-ceremonial-coaching">
 
 
   <header class="site-header">
@@ -421,10 +426,10 @@
           <li><a href="divination-and-consultation.html">Divination &amp; Consultation</a></li>
           <li><a href="seasons-of-change.html">Spiritual Development</a></li>
           <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
-          <li><a href="public-offerings.html">Community Offerings</a></li>
-          <li><a href="workshops-and-courses.html">Workshops &amp; Courses</a></li>
-          <li><a href="writings.html">Resources</a></li>
-          <li><a href="seasonal-letters.html">Newsletter</a></li>
+          <li><a href="public-offerings.html">Community</a></li>
+          <li><a href="training-grounds.html">Training Grounds</a></li>
+          <li><a href="writings.html">Library</a></li>
+          <li><a href="inquiry.html">Begin Here</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="nav-toggle-word" aria-hidden="true">Menu</span></button>
@@ -433,7 +438,8 @@
   </header>
 
   <!-- HERO -->
-  <section class="cc-hero">
+  <section class="lx-hero cc-hero">
+    <span class="lx-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     <div class="cc-hero-image" style="background-image: url('images/uploads/luminous/forest-light.jpg');"></div>
     <div class="cc-hero-overlay"></div>
     <div class="cc-hero-inner">
@@ -442,6 +448,10 @@
       <p class="cc-hero-sub">Bespoke, specialized accompaniment for those coming into their spiritual gifts &mdash; guidance and counsel, woven with in-person interdimensional ceremonial work. A season of change, held for the one you are becoming.</p>
     </div>
   </section>
+  <!-- On this page (doors map, 2026-11-07) -->
+  <nav class="dr-subnav dr-subnav--top" aria-label="On this page">
+    <a href="#coaching">The Work</a><a href="#luminous-breath">The Luminous Breath</a><a href="#season">The Arc</a><a href="#depths">Three Depths</a><a href="#leadership">For Those Who Lead</a><a href="#private-ceremonies">Private Ceremonies</a><a href="#schedule">The Conversation</a><a href="#deeper-paths">The Deeper Paths</a>
+  </nav>
 
   <section class="cc-body">
     <div class="cc-body-inner">
@@ -452,7 +462,7 @@
       </div>
 
       <!-- 01 — What this is -->
-      <div class="cc-section cc-centered">
+      <div class="cc-section cc-centered" id="coaching">
         <span class="cc-eyebrow">The Work</span>
         <h2 class="cc-h2">Ceremonially supported <em>coaching</em>.</h2>
         <span class="cc-rule"></span>
@@ -481,7 +491,23 @@
       </div>
 
       <!-- 03 — The arc, three movements -->
-      <div class="cc-section">
+      
+    </div>
+  </section>
+
+  <!-- world: vista (hearth-vista) -->
+  <section class="wd-vista" data-worlds style="--vista-img:url('/images/worlds/hearth-vista.jpg');--vista-pos:center 55%">
+    <span class="lx-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="wd-vista-inner">
+      <span class="wd-vista-eyebrow">Premium Coaching · One to One</span>
+      <p class="wd-vista-line">That threshold is rarely meant to be crossed alone.</p>
+      <span class="wd-vista-orn" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <section class="cc-body">
+    <div class="cc-body-inner">
+    <div class="cc-section" id="journey">
         <span class="cc-eyebrow">The Shape of the Journey</span>
         <h2 class="cc-h2">Between the realms, into <em>this</em> one.</h2>
         <span class="cc-rule"></span>
@@ -511,7 +537,7 @@
       </div>
 
       <!-- 04 — Two currents, one weave -->
-      <div class="cc-section">
+      <div class="cc-section" id="currents">
         <span class="cc-eyebrow">How the Work is Held</span>
         <h2 class="cc-h2">Two currents, held as <em>one</em>.</h2>
         <span class="cc-rule"></span>
@@ -533,7 +559,7 @@
       </div>
 
       <!-- 05 — The Luminous Breath -->
-      <div class="cc-section">
+      <div class="cc-section" id="luminous-breath">
         <div class="cc-lumen">
           <span class="cc-lumen-eyebrow">The Ceremonial Heart</span>
           <h2 class="cc-lumen-h">The Luminous <em>Breath</em></h2>
@@ -567,7 +593,7 @@
       </div>
 
       <!-- 06 — The shape of a season -->
-      <div class="cc-section">
+      <div class="cc-section" id="season">
         <span class="cc-eyebrow">The Shape of a Season</span>
         <h2 class="cc-h2">A season, given <em>form</em>.</h2>
         <span class="cc-rule"></span>
@@ -592,7 +618,7 @@
       </div>
 
       <!-- 07 — The long arc -->
-      <div class="cc-section cc-centered">
+      <div class="cc-section cc-centered" id="long-arc">
         <span class="cc-eyebrow">Nothing Here Is in a Rush</span>
         <h2 class="cc-h2">The long <em>arc</em>.</h2>
         <span class="cc-rule"></span>
@@ -647,7 +673,7 @@
       </div>
 
       <!-- 08b — The arcs & the seat -->
-      <div class="cc-section cc-centered">
+      <div class="cc-section cc-centered" id="depths">
         <span class="cc-eyebrow">The Arcs</span>
         <h2 class="cc-h2">Three depths of <em>devotion</em>.</h2>
         <span class="cc-rule"></span>
@@ -689,7 +715,7 @@
       </div>
 
       <!-- 09 — Principles of the container -->
-      <div class="cc-section">
+      <div class="cc-section" id="shape">
         <span class="cc-eyebrow">What the Container Asks</span>
         <h2 class="cc-h2">The shape of the <em>arc</em>.</h2>
         <span class="cc-rule"></span>
@@ -721,6 +747,133 @@
   </section>
 
   <!-- FINAL CTA -->
+    <!-- world: cluster (hearth-a+hearth-b+hearth-c) -->
+  <section class="wd-cluster wd-cluster--trio" data-worlds>
+    <div class="wd-cluster-inner">
+      <div class="wd-cluster-grid">
+        <figure class="wd-fig"><img src="/images/worlds/hearth-a.jpg" alt="Hands pressed into the earth" loading="lazy" decoding="async"></figure>
+        <figure class="wd-fig"><img src="/images/worlds/hearth-b.jpg" alt="An altar of books, candles and stones" loading="lazy" decoding="async"></figure>
+        <figure class="wd-fig"><img src="/images/worlds/hearth-c.jpg" alt="A spiral shell resting in a larger shell" loading="lazy" decoding="async"></figure>
+      </div>
+      <p class="wd-cluster-line">Trust the intelligence of the process.</p>
+      <span class="wd-cluster-orn" aria-hidden="true"></span>
+    </div>
+  </section>
+
+
+  <!-- Folded chapter (2026-11-07): conscious-leadership.html — her words, verbatim -->
+  <section class="dr-chapter" id="leadership">
+    <div class="dr-chapter-head">
+      <span class="section-label">For Those Who Lead</span>
+      <h2>Leadership from <em>the Soul</em></h2>
+      <p class="dr-lede">For those leading teams, communities, organizations, or movements &mdash; animist ethics, somatic capacity, and ceremonial practice brought into the seat of leadership.</p>
+    </div>
+    <div class="dr-prose">
+      <p>Leadership is a kind of ceremony. The way a person holds a room, makes a call, listens to dissent, names what's true &mdash; this is liturgy whether or not it's named as such. The question is whether it's tended.</p>
+      <p>Leadership from the Soul is a circle for those carrying responsibility for others. Founders, executive directors, community elders, organizers, healers building practices &mdash; anyone whose decisions shape conditions for many. We meet to develop the inner capacity that leadership asks of the body and spirit, not just the mind.</p>
+      <details class="dr-details">
+        <summary>Still to come</summary>
+          <ul>
+          <li>Who this is for &mdash; founders, organizers, healers, elders, those at thresholds of responsibility</li>
+          <li>What we work with &mdash; somatic capacity, ethics under pressure, ceremonial decision-making, ancestral inheritance</li>
+          <li>The rhythm &mdash; group size, cadence, format (cohort vs. ongoing circle)</li>
+          <li>Sliding Scale &amp; Sacred Reciprocity</li>
+          <li>Past cohorts &amp; voices from the work</li>
+          <li>How to begin &mdash; a first Intake &amp; Inquiry call</li>
+          </ul>
+      </details>
+    </div>
+    <p class="dr-door">Leadership is a kind of ceremony. <a href="#schedule">Begin with the Conversation &rarr;</a></p>
+  </section>
+
+
+  <!-- Folded chapter (2026-11-07): ceremony-and-ritual.html, the private half — her words, verbatim -->
+  <section class="dr-chapter dr-chapter--alt" id="private-ceremonies">
+    <div class="dr-chapter-head">
+      <span class="section-label">Bespoke Containers</span>
+      <h2>Custom-tended <em>ceremony</em>.</h2>
+    </div>
+    <div class="dr-prose"><p>Unique and custom bespoke ceremonial experiences &mdash; for individuals, couples, families, and small groups. Multi-day rituals, immersive retreats, and one-of-a-kind ceremonies tended fully to your needs.</p></div>
+    <div class="dr-wide">
+      <div class="sub-offering-grid">
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Multi-Day Private"
+             data-title="Multi-Day Intensives"
+             data-desc="2–7 day private ceremonial retreats, custom-tended to your moment. Held on the land, in your home, or at a venue arranged together. Reciprocity scales with duration and travel."
+             data-reciprocity="By inquiry · Reciprocity discussed at Intake & Inquiry"
+             data-inquire-email-subject="Multi-Day Intensive — Inquiry">
+            <span class="sub-offering-eyebrow">Multi-Day &middot; Private</span>
+            <h3 class="sub-offering-title">Multi-Day Intensives</h3>
+            <p class="sub-offering-desc">2&ndash;7 day private ceremonial retreats. Held on the land, custom-tended.</p>
+            <span class="sub-offering-cta">Schedule &amp; Inquire &rarr;</span>
+          </a>
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="By Threshold"
+             data-title="Custom Rites of Passage"
+             data-desc="Marriage, birth, death, transition, eldership. Held with full ceremonial reverence for the threshold you're crossing. Each rite custom-built with you and the field around you."
+             data-reciprocity="By inquiry · Reciprocity custom to the rite"
+             data-inquire-email-subject="Custom Rite of Passage — Inquiry">
+            <span class="sub-offering-eyebrow">By Threshold</span>
+            <h3 class="sub-offering-title">Custom Rites of Passage</h3>
+            <p class="sub-offering-desc">Marriage, birth, death, transition &mdash; each rite held with full ceremonial reverence.</p>
+            <span class="sub-offering-cta">Schedule &amp; Inquire &rarr;</span>
+          </a>
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Family Field"
+             data-title="Family Ceremonies"
+             data-desc="Ceremony held for the whole family field at once. For blended families, families in repair, families crossing thresholds together. The work that meets the entire system."
+             data-reciprocity="By inquiry · Reciprocity by group size and scope"
+             data-inquire-email-subject="Family Ceremony — Inquiry">
+            <span class="sub-offering-eyebrow">Family Field</span>
+            <h3 class="sub-offering-title">Family Ceremonies</h3>
+            <p class="sub-offering-desc">Held for the whole family system at once. For repair, transition, and crossing thresholds together.</p>
+            <span class="sub-offering-cta">Schedule &amp; Inquire &rarr;</span>
+          </a>
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Partnership"
+             data-title="Couple's Rites"
+             data-desc="Partnership ceremony for couples in transition, repair, deepening, or renewal. Held with both partners present and the relationship itself as the third presence in the room."
+             data-reciprocity="By inquiry · Reciprocity discussed at Intake"
+             data-inquire-email-subject="Couple's Rite — Inquiry">
+            <span class="sub-offering-eyebrow">Partnership</span>
+            <h3 class="sub-offering-title">Couple&rsquo;s Rites</h3>
+            <p class="sub-offering-desc">Partnership ceremony for transition, repair, deepening, or renewal.</p>
+            <span class="sub-offering-cta">Schedule &amp; Inquire &rarr;</span>
+          </a>
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Singular"
+             data-title="Threshold Work"
+             data-desc="A single sacred moment, held. For the one specific passage that asks for ceremony. Not a series, not a retreat — one held container for one threshold."
+             data-reciprocity="By inquiry · Single-session reciprocity"
+             data-inquire-email-subject="Threshold Work — Inquiry">
+            <span class="sub-offering-eyebrow">Singular</span>
+            <h3 class="sub-offering-title">Threshold Work</h3>
+            <p class="sub-offering-desc">A single sacred moment, held. One container for one specific threshold.</p>
+            <span class="sub-offering-cta">Schedule &amp; Inquire &rarr;</span>
+          </a>
+
+          <a href="#" class="sub-offering-card" data-modal-open
+             data-eyebrow="Immersion"
+             data-title="Private Retreats"
+             data-desc="Adi held for you alone. Multi-day immersion in the practice — set on your land, at a venue, or by arrangement in Southern California. Designed entirely to your needs over the arc."
+             data-reciprocity="By inquiry · Reciprocity by duration and location"
+             data-inquire-email-subject="Private Retreat — Inquiry">
+            <span class="sub-offering-eyebrow">Immersion</span>
+            <h3 class="sub-offering-title">Private Retreats</h3>
+            <p class="sub-offering-desc">Adi held for you alone. Multi-day immersion designed entirely to your arc.</p>
+            <span class="sub-offering-cta">Schedule &amp; Inquire &rarr;</span>
+          </a>
+
+        </div>
+    </div>
+    <p class="dr-note" style="font-family:'Cinzel',serif;font-style:normal;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:#8F6F2E">By Application &middot; Held on Location &middot; Travel Available</p>
+  </section>
+
   <section class="cc-final-cta">
     <span class="cc-eyebrow">Begin Here</span>
     <h2>If the threshold is <em>calling</em>.</h2>
@@ -734,64 +887,64 @@
     <div class="schedule-inner">
       <span class="section-label">Schedule a Session</span>
       <h2>Begin with the Conversation. <em>Find your hour.</em></h2>
-      <p class="schedule-intro">Every arc begins with the Intake &amp; Inquiry conversation. Find an open hour on Adi Marie&rsquo;s calendar, share what brings you, and offer your reciprocity &mdash; on a sliding scale of <strong>$700 / $550 / $450 / $350</strong>, whichever is true for you.</p>
-      <p class="schedule-recip-note" style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.08rem; font-style:italic; color:var(--gold-pale,#DCC178); margin:0.5rem auto 0; max-width:760px; line-height:1.6;">More than a sliding scale &mdash; this is <a href="#reciprocity" style="color:var(--gold,#C9A84C); text-decoration:underline; text-underline-offset:3px;">Sacred Reciprocity</a>, a practice of social economics.</p>
+      <p class="schedule-intro">Every arc begins with the Intake &amp; Inquiry conversation. Find an open hour on Adi Marie&rsquo;s calendar, share what brings you, and offer your reciprocity &mdash; on a sliding scale &mdash; <strong>Accessibility, Community, Abundance or Patron</strong>, whichever is true for you.</p>
+      <p class="schedule-recip-note" style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.08rem; font-style:italic; color:var(--gold-pale,#DCC178); margin:0.5rem auto 0; max-width:760px; line-height:1.6;">More than a sliding scale &mdash; this is <a href="sacred-reciprocity.html" style="color:var(--gold,#C9A84C); text-decoration:underline; text-underline-offset:3px;">Sacred Reciprocity</a>, a practice of social economics.</p>
 
       <!-- Each booking option presented as an image card (page-scoped; keyed to the widget's data-svc slug) -->
       <style>
         /* ── Full-width, alternating cards — image panel + centered text, matching the Divination band ── */
-        body[data-content-page="sessions"] #booking-calendar { max-width: 1200px; }
-        body[data-content-page="sessions"] .aap-bk-cal { max-width: 660px; margin-left: auto; margin-right: auto; }
-        body[data-content-page="sessions"] .aap-bk-offerings { display: flex; flex-direction: column; gap: 30px; margin-top: 8px; }
-        body[data-content-page="sessions"] .aap-bk-offering--wide {
+        body[data-content-page="offering-ceremonial-coaching"] #booking-calendar { max-width: 1200px; }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-cal { max-width: 660px; margin-left: auto; margin-right: auto; }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offerings { display: flex; flex-direction: column; gap: 30px; margin-top: 8px; }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide {
           width: 100%; max-width: none; gap: 0; padding: 0; overflow: hidden; text-align: left;
           display: grid; grid-template-columns: 46% 54%; align-items: stretch;
           border: 1px solid rgba(201,168,76,0.20); border-radius: 4px; background: #fff;
           box-shadow: 0 8px 30px rgba(45,42,38,0.07);
           transition: transform 0.45s cubic-bezier(.2,.7,.2,1), box-shadow 0.45s ease, border-color 0.3s ease;
         }
-        body[data-content-page="sessions"] .aap-bk-offering--wide::before { content: none; display: none; }
-        body[data-content-page="sessions"] .aap-bk-offering--wide:hover { transform: translateY(-4px); box-shadow: 0 22px 48px rgba(45,42,38,0.14); border-color: var(--gold, #C9A84C); }
-        body[data-content-page="sessions"] .aap-bk-offering--wide.is-on { border-color: var(--gold, #C9A84C); box-shadow: 0 0 0 1px var(--gold, #C9A84C) inset, 0 18px 42px rgba(45,42,38,0.13); }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide::before { content: none; display: none; }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide:hover { transform: translateY(-4px); box-shadow: 0 22px 48px rgba(45,42,38,0.14); border-color: var(--gold, #C9A84C); }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide.is-on { border-color: var(--gold, #C9A84C); box-shadow: 0 0 0 1px var(--gold, #C9A84C) inset, 0 18px 42px rgba(45,42,38,0.13); }
         /* image panel — fills the full card height, edge to edge */
-        body[data-content-page="sessions"] .aap-bk-offering-media {
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering-media {
           grid-column: 1; grid-row: 1; min-height: 400px;
           background-size: cover; background-position: center; background-color: var(--bk-paper, #F7F5F0);
           transition: filter 0.45s ease, transform 0.6s cubic-bezier(.2,.7,.2,1);
         }
-        body[data-content-page="sessions"] .aap-bk-offering--wide:hover .aap-bk-offering-media,
-        body[data-content-page="sessions"] .aap-bk-offering--wide.is-on .aap-bk-offering-media { filter: brightness(1.04) saturate(1.03); transform: scale(1.03); }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide:hover .aap-bk-offering-media,
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide.is-on .aap-bk-offering-media { filter: brightness(1.04) saturate(1.03); transform: scale(1.03); }
         /* text — vertically centered in its panel */
-        body[data-content-page="sessions"] .aap-bk-offering-body {
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering-body {
           grid-column: 2; grid-row: 1; display: flex; flex-direction: column; justify-content: center; padding: 3.2rem 3.6rem;
         }
-        body[data-content-page="sessions"] .aap-bk-offering-name { font-size: 34px; line-height: 1.08; margin-top: 0.5rem; }
-        body[data-content-page="sessions"] .aap-bk-offering-desc { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.2rem; line-height: 1.6; color: #3a3530; margin-top: 0.9rem; }
-        body[data-content-page="sessions"] .aap-bk-offering-price { font-size: 24px; margin-top: 1.3rem; padding-top: 0; border-top: none; }
-        body[data-content-page="sessions"] .aap-bk-offering-go {
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering-name { font-size: 34px; line-height: 1.08; margin-top: 0.5rem; }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering-desc { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.2rem; line-height: 1.6; color: #3a3530; margin-top: 0.9rem; }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering-price { font-size: 24px; margin-top: 1.3rem; padding-top: 0; border-top: none; }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering-go {
           align-self: flex-start; margin-top: 1.7rem; padding: 0.9rem 1.9rem;
           font-family: 'Cinzel', serif; font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase;
           color: var(--paper, #F7F5F0); background: var(--bark, #2D2A26); border: 1px solid var(--bark, #2D2A26);
           border-radius: 2px; transition: all 0.3s ease;
         }
-        body[data-content-page="sessions"] .aap-bk-offering--wide:hover .aap-bk-offering-go,
-        body[data-content-page="sessions"] .aap-bk-offering--wide.is-on .aap-bk-offering-go { background: var(--gold, #C9A84C); border-color: var(--gold, #C9A84C); color: var(--bark, #2D2A26); }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide:hover .aap-bk-offering-go,
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide.is-on .aap-bk-offering-go { background: var(--gold, #C9A84C); border-color: var(--gold, #C9A84C); color: var(--bark, #2D2A26); }
         /* alternate — even cards put the image on the right */
-        body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) { grid-template-columns: 54% 46%; }
-        body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-media { grid-column: 2; }
-        body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-body { grid-column: 1; }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide:nth-child(even) { grid-template-columns: 54% 46%; }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-media { grid-column: 2; }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-body { grid-column: 1; }
         /* per-svc imagery */
-        body[data-content-page="sessions"] .aap-bk-offering[data-svc="divination"] .aap-bk-offering-media { background-image: url('images/uploads/divination-hands-medicine-bundle.jpg'); background-position: center 40%; }
-        body[data-content-page="sessions"] .aap-bk-offering[data-svc="intake-inquiry"] .aap-bk-offering-media { background-image: url('images/uploads/download.jpg'); }
-        body[data-content-page="sessions"] .aap-bk-offering[data-svc="guidance-counsel"] .aap-bk-offering-media { background-image: url('images/uploads/cta-moss-smoke.jpg'); }
-        body[data-content-page="sessions"] .aap-bk-offering[data-svc="integration-aftercare"] .aap-bk-offering-media { background-image: url('images/uploads/download-6.jpg'); background-position: center 35%; }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering[data-svc="divination"] .aap-bk-offering-media { background-image: url('images/uploads/divination-hands-medicine-bundle.jpg'); background-position: center 40%; }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering[data-svc="intake-inquiry"] .aap-bk-offering-media { background-image: url('images/uploads/download.jpg'); }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering[data-svc="guidance-counsel"] .aap-bk-offering-media { background-image: url('images/uploads/cta-moss-smoke.jpg'); }
+        body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering[data-svc="integration-aftercare"] .aap-bk-offering-media { background-image: url('images/uploads/download-6.jpg'); background-position: center 35%; }
         @media (max-width: 820px) {
-          body[data-content-page="sessions"] .aap-bk-offering--wide,
-          body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) { grid-template-columns: 1fr; }
-          body[data-content-page="sessions"] .aap-bk-offering-media,
-          body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-media { grid-column: 1; grid-row: 1; min-height: 240px; }
-          body[data-content-page="sessions"] .aap-bk-offering-body,
-          body[data-content-page="sessions"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-body { grid-column: 1; grid-row: 2; padding: 2.6rem 1.7rem; }
+          body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide,
+          body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide:nth-child(even) { grid-template-columns: 1fr; }
+          body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering-media,
+          body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-media { grid-column: 1; grid-row: 1; min-height: 240px; }
+          body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering-body,
+          body[data-content-page="offering-ceremonial-coaching"] .aap-bk-offering--wide:nth-child(even) .aap-bk-offering-body { grid-column: 1; grid-row: 2; padding: 2.6rem 1.7rem; }
         }
       </style>
 
@@ -805,7 +958,7 @@
     </div>
   </section>
 
-<section class="deeper-paths">
+<section class="deeper-paths" id="deeper-paths">
     <div class="inner">
       <span class="section-label">For the Deeper Paths</span>
       <h2>Some work requires <em>more context</em>.</h2>
@@ -818,6 +971,34 @@
     </div>
   </section>
 
+    <!-- world: continue to -->
+  <section class="wd-doors wd-doors--next" data-worlds data-worlds-next>
+    <div class="wd-doors-head">
+      <span class="wd-doors-eyebrow">The Doorways</span>
+      <h2 class="wd-doors-title">Choose your <em>door</em>.</h2>
+    </div>
+    <div class="wd-doors-grid">
+      <a class="wd-door" href="public-offerings.html" style="--pos:50% 60%">
+        <img class="wd-door-img" src="/images/worlds/village-vista.jpg" alt="The roots and branches of an enormous banyan tree" loading="lazy" decoding="async">
+        <span class="wd-door-inner">
+          <span class="wd-door-eyebrow">Open to All Who Are Called</span>
+          <span class="wd-door-name" role="heading" aria-level="3">Community</span>
+          <span class="wd-door-line" style="display:block">The open doorways of the Apothecary — sessions, gatherings, workshops, and divinations.</span>
+          <span class="wd-door-enter">Enter &rarr;</span>
+        </span>
+      </a>
+      <a class="wd-door" href="training-grounds.html" style="--pos:50% 50%">
+        <img class="wd-door-img" src="/images/worlds/school-vista.jpg" alt="Books, candles and stones laid out for study" loading="lazy" decoding="async">
+        <span class="wd-door-inner">
+          <span class="wd-door-eyebrow">The School · Workshops &amp; Courses</span>
+          <span class="wd-door-name" role="heading" aria-level="3">Training Grounds</span>
+          <span class="wd-door-line" style="display:block">Where the skills of the work are learned.</span>
+          <span class="wd-door-enter">Enter &rarr;</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -826,29 +1007,33 @@
       </div>
       <nav class="footer-nav">
         <div class="footer-col">
-          <h4>The Practice</h4>
+          <h4>The Doors</h4>
           <ul>
-              <li><a href="about.html">About Adi Marie</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="divination-and-consultation.html">Divination &amp; Consultation</a></li>
+            <li><a href="seasons-of-change.html">Spiritual Development</a></li>
+            <li><a href="ceremonial-coaching.html">Shamanic Coaching</a></li>
+            <li><a href="public-offerings.html">Community</a></li>
+            <li><a href="training-grounds.html">Training Grounds</a></li>
+            <li><a href="writings.html">Library</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>The Work</h4>
+          <h4>Inside</h4>
           <ul>
-            <li><a href="solo-work.html">Virtual Sessions</a></li>
-            <li><a href="group-work.html">Gatherings</a></li>
-            <li><a href="training-grounds.html">The School</a></li>
-            <li><a href="metamorphic-year.html">The Metamorphic Year</a></li>
+            <li><a href="calendar.html">The Wheel</a></li>
+            <li><a href="writings.html#letters">Seasonal Letters</a></li>
+            <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
+            <li><a href="about.html#ethics">Ethics &amp; Consent</a></li>
+            <li><a href="about.html#questions">Common Questions</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Begin Here</h4>
           <ul>
-            <li><a href="divination-and-consultation.html">Book / Intake</a></li>
-            <li><a href="inquiry.html">Begin a Conversation</a></li>
-            <li><a href="writings.html">Writings &amp; Letters</a></li>
-            <li><a href="mailto:adimarie@bodyworkandbotanicals.com?subject=A%20Note%20to%20Adi%20Marie">Send a Message</a></li>
+            <li><a href="inquiry.html">Begin Here</a></li>
+            <li><a href="divination-and-consultation.html#schedule">The Conversation</a></li>
+            <li><a href="inquiry.html#note">Write a Note</a></li>
           </ul>
         </div>
       </nav>
@@ -875,6 +1060,7 @@
   </script>
   <script src="js/traffic.js" defer></script>
   <script src="js/announce.js" defer></script>
+  <script src="js/booking-modal.js" defer></script>
   <script src="js/site-menu.js?v=261103b" defer></script>
   <script>
     var AAP_CALLS_SCHEDULE = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3dyFbMlqfjfF4pWZK_2y_ofqVJe5gbom-16JgdkZsRBDdn4o0_swhsNgDDemWzSlZ68mTzsEym?gv=true";

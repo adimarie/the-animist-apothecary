@@ -1,6 +1,7 @@
 /* lux.js — sitewide scroll-reveal (2026-07-01). Safe by construction:
    no-JS and reduced-motion users always see full content. */
 (function () {
+  return; // 2026-11-06: the site holds still. Scroll-reveal retired (see css/still.css).
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (!('IntersectionObserver' in window)) return;
   var start = function () {

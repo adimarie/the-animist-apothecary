@@ -3,13 +3,13 @@
 # Form wiring is queued for Phase 3 (edge function, captcha, contact upsert, email templates).
 
 hero:
-  image: "https://images.unsplash.com/photo-1672196799313-047c77f87f80?w=1400&h=600&fit=crop&q=80"
+  image: "/images/uploads/hero-inquiry-canopy.jpg"
   image_alt: "Imagery for the first note, the inquiry page at The Animist Apothecary."
   image_position: "center"
   image_size: "cover"
-  eyebrow: "The First Note"
-  title: "Write to <em>us</em>."
-  subtitle: "Every message is read by hand."
+  eyebrow: "Begin Here"
+  title: "It begins with <em>sitting together</em>."
+  subtitle: "The Intake & Inquiry is the Conversation — the threshold every deeper path shares."
 
 form_intro:
   title: "Tell us what <em>brings you</em>."
