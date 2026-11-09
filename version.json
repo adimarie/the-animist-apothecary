@@ -1,12 +1,12 @@
 {
-  "version": "v261109.08 8:12p",
-  "release": 8,
-  "sha": "62cd8e13",
-  "fullSha": "62cd8e1393efa6675af609f5fbafb63673bc6e83",
+  "version": "v261109.09 10:06p",
+  "release": 9,
+  "sha": "5771c8af",
+  "fullSha": "5771c8afc1ed4daa796147292cda06f7238a7aa3",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-09T12:12:17-08:00",
-  "commits": [{"sha":"62cd8e13","message":"Begin Here: rebuilt from her brief — how to begin, the path, reciprocity, one schedule, thank you, the note","author":"Adi Marie"}]
+  "pushedAt": "2026-11-09T14:06:13-08:00",
+  "commits": [{"sha":"5771c8af","message":"Veil: open /portal (the participant portal) at Adi Marie's word","author":"Adi Marie"}]
 }
