@@ -20,6 +20,7 @@
 (function () {
   var LIVE = [
     "/", "/index.html",
+    "/inquiry.html",                           // Begin Here — opened 2026-11-08 at Adi Marie's word, so Home's buttons lead somewhere real
     "/intake.html", "/immersion-intake.html"   // participant intake notes already in use (phrase-gated / linked from invitations)
   ];
   var path = (location.pathname || "/").toLowerCase();
