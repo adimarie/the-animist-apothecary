@@ -1,12 +1,12 @@
 {
-  "version": "v261109.04 1:59a",
-  "release": 4,
-  "sha": "97b52c68",
-  "fullSha": "97b52c68b4ede32fb9978f82a565dd6a064580d8",
+  "version": "v261109.05 2:28a",
+  "release": 5,
+  "sha": "e5d69f3b",
+  "fullSha": "e5d69f3b1f957acae21bf09db47fa6cc1558b375",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-08T17:59:29-08:00",
-  "commits": [{"sha":"97b52c68","message":"Home: her deepened hero shade, small fixes in the photograph, gold labels that read","author":"Adi Marie"}]
+  "pushedAt": "2026-11-08T18:28:37-08:00",
+  "commits": [{"sha":"e5d69f3b","message":"Home hero: her final shade, 44 more strokes by her hand","author":"Adi Marie"}]
 }
