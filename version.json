@@ -1,12 +1,12 @@
 {
-  "version": "v261109.09 10:06p",
-  "release": 9,
-  "sha": "5771c8af",
-  "fullSha": "5771c8afc1ed4daa796147292cda06f7238a7aa3",
+  "version": "v261109.10 10:14p",
+  "release": 10,
+  "sha": "677fa8c8",
+  "fullSha": "677fa8c8fd1f8d90b688f6a7f36e701a49e2b2b1",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-09T14:06:13-08:00",
-  "commits": [{"sha":"5771c8af","message":"Veil: open /portal (the participant portal) at Adi Marie's word","author":"Adi Marie"}]
+  "pushedAt": "2026-11-09T14:14:12-08:00",
+  "commits": [{"sha":"677fa8c8","message":"Veil: fresh script version on the portal page so the edge serves the new open list","author":"Adi Marie"}]
 }
