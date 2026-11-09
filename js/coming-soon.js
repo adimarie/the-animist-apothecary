@@ -73,6 +73,12 @@
       "#aap-coming-soon .acs-status.is-success{color:#4f6b3a;}" +
       "#aap-coming-soon .acs-status.is-error{color:#9b3c2d;}" +
       "#aap-coming-soon .acs-trust{margin:0.8rem 0 0;font-size:0.98rem;color:#8a8278;}" +
+      "#aap-coming-soon .acs-way{max-width:480px;margin:0 auto;}" +
+      "#aap-coming-soon .acs-way--list{margin-top:2.2rem;padding-top:2.1rem;border-top:1px solid rgba(201,168,76,0.55);}" +
+      "#aap-coming-soon .acs-q{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:500;font-size:1.5rem;line-height:1.3;color:#2D2A26;margin:0 0 0.55rem;text-wrap:balance;}" +
+      "#aap-coming-soon .acs-line{font-size:1.2rem;line-height:1.55;color:#2D2A26;margin:0 -1.25rem 1.35rem;text-wrap:balance;}" +
+      "#aap-coming-soon a.acs-btn{box-sizing:border-box;}" +
+      "#aap-coming-soon .acs-btn{line-height:1.4;}" +
       "#aap-coming-soon .acs-home{display:inline-block;margin-top:1.8rem;font-size:1.02rem;color:#886039;text-decoration:underline;text-underline-offset:3px;}" +
       "#aap-coming-soon .acs-home:hover{color:#C9A84C;}" +
       "@media(max-width:480px){#aap-coming-soon .acs-names{grid-template-columns:1fr;}}";
@@ -88,7 +94,16 @@
       '<span class="acs-eyebrow">The Animist Apothecary</span>' +
       '<h1 class="acs-title">This part of the site is still being <em>woven</em>.</h1>' +
       '<p class="acs-sub">Work in progress &middot; Coming soon</p>' +
-      '<p class="acs-lead">In the meantime, leave your name and email to join the list &mdash; newsletters and announcements will reach you as each door opens.</p>' +
+      // 2026-11-09, her arrangement: two ways, both in view. First, those ready to join an upcoming group who have not sat
+      // with us before; then the gold line; then the list for those not yet ready. Her words, set in order; garble fixed only.
+      '<div class="acs-way acs-way--group">' +
+      '<p class="acs-q">Are you ready to join an upcoming group, but haven&rsquo;t sat with us before?</p>' +
+      '<p class="acs-line">Schedule your intake to the community with our lead practitioner.</p>' +
+      '<a class="acs-btn" href="/inquiry.html">Press here to apply</a>' +
+      "</div>" +
+      '<div class="acs-way acs-way--list">' +
+      '<p class="acs-q">Not yet ready, but still want to stay up to date on upcoming gatherings and events, for when it might be time?</p>' +
+      '<p class="acs-line">Newsletters, announcements, and offerings from our medicine basket to yours.</p>' +
       '<form id="acs-form" novalidate>' +
       '<div class="acs-names">' +
       '<input type="text" name="first_name" placeholder="First Name" required autocomplete="given-name" aria-label="First Name">' +
@@ -111,6 +126,7 @@
       "</form>" +
       '<p class="acs-status" id="acs-status" aria-live="polite"></p>' +
       '<p class="acs-trust">Held with care, never shared.</p>' +
+      "</div>" +
       '<a class="acs-home" href="/">Return to the home page</a>' +
       "</div>";
     document.body.appendChild(ov);
