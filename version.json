@@ -1,12 +1,12 @@
 {
-  "version": "v261109.06 7:36p",
-  "release": 6,
-  "sha": "9f42356c",
-  "fullSha": "9f42356c729eeb7284be7e9577c3460a0b32ce11",
+  "version": "v261109.07 7:58p",
+  "release": 7,
+  "sha": "25b3cf4b",
+  "fullSha": "25b3cf4b6c9409f24ebcd695d691e33d4b7274fa",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-09T11:36:01-08:00",
-  "commits": [{"sha":"9f42356c","message":"Home: her six card pictures, simpler three ways lists, plain ground, type pass","author":"Adi Marie"}]
+  "pushedAt": "2026-11-09T11:58:04-08:00",
+  "commits": [{"sha":"25b3cf4b","message":"Veil: two ways on every woven page — apply for a group first, then the list","author":"Adi Marie"}]
 }
