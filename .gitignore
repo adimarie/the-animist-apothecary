@@ -95,3 +95,6 @@ dist/
 
 # Personal Claude Code overrides for this checkout
 .claude/settings.local.json
+
+# local-only hero arrange tool
+js/hero-arrange.dev.js

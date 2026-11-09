@@ -1769,11 +1769,10 @@
       padding-top: 0 !important;
     }
 
-    /* Newsletter section — between Vision and Offerings.
-       Full-bleed image of Adi at the forest altar; the form sits in the right third
-       inside a soft cream card so Adi's figure stays visible on the left. */
+    /* Newsletter section (2026-11-08): the writing-desk photograph framed beside the
+       letters card, both on the pale ground; the card is linen like the territories. */
     body[data-content-page="home"] .section-newsletter {
-      background: url('images/uploads/newsletter-adi-altar-forest.jpg') center/cover no-repeat !important;
+      background: #FCFBF8 !important;
       min-height: 700px !important;
       padding: 4rem 10% 4rem 0 !important;
       display: flex !important;
@@ -2139,8 +2138,91 @@
       }
 
     }
+  
+    /* Begin your journey (2026-11-08): the whole fern at its own 4:3, two doorways beside it */
+    body[data-content-page="home"] .process-container--split { grid-template-columns: minmax(520px, 2fr) minmax(300px, .8fr) !important; max-width: 1480px !important; }
+    body[data-content-page="home"] .process-image-frame { min-height: 0 !important; aspect-ratio: 4 / 3; background-size: cover !important; }
+    @media (max-width: 880px) { body[data-content-page="home"] .process-image-frame { aspect-ratio: 4 / 3; min-height: 0 !important; max-height: none !important; } }
+    /* Water, Milk, and Honey — a full-width linen bar (2026-11-08) */
+    body[data-content-page="home"] .section-newsletter.nl-bar { min-height: 0 !important; display: block !important; padding: 0 1.5rem 5.5rem !important; background: var(--parchment-deep, #E8E5DC) !important; border: 0; text-align: center !important; }
+    body[data-content-page="home"] .section-process { padding-bottom: 3.5rem !important; }
+    body[data-content-page="home"] .nl-bar-inner { max-width: 980px; margin: 0 auto; padding: 3rem clamp(1.5rem, 4vw, 3.5rem) 2.6rem; background: #FAF8F3; border: 1px solid rgba(201,168,76,.28); border-radius: 3px; box-shadow: 0 1px 2px rgba(45,42,38,.03), 0 14px 40px rgba(45,42,38,.06); }
+    body[data-content-page="home"] .nl-bar-head { max-width: 40em; margin: 0 auto 2rem; }
+        body[data-content-page="home"] .nl-bar .newsletter-title { font-size: clamp(2.8rem, 3.6vw, 3.8rem) !important; line-height: 1 !important; margin: 0 0 .8rem !important; }
+    body[data-content-page="home"] .nl-bar .newsletter-body { font-size: 1.05rem !important; line-height: 1.55 !important; margin: 0 auto !important; max-width: 40em !important; color: #3D3A36 !important; }
+    body[data-content-page="home"] .nl-bar .newsletter-form { display: grid !important; grid-template-columns: 1fr 1fr; gap: .7rem .9rem; max-width: 760px !important; margin: 0 auto !important; }
+    body[data-content-page="home"] .nl-bar .newsletter-form-names { display: contents !important; }
+    body[data-content-page="home"] .nl-bar .newsletter-form input, body[data-content-page="home"] .nl-bar .newsletter-form select { width: 100% !important; margin: 0 !important; padding: .75rem .95rem !important; font-size: .92rem !important; min-height: 0 !important; background: rgba(255,255,255,.75) !important; border: 1px solid rgba(90,80,70,.18) !important; }
+    body[data-content-page="home"] .nl-bar .newsletter-submit { grid-column: 1 / -1; justify-self: center; width: 280px !important; max-width: 100% !important; margin: .6rem 0 0 !important; padding: .85rem 1rem !important; }
+    body[data-content-page="home"] .nl-bar .newsletter-trust { font-size: .82rem !important; line-height: 1.5 !important; margin: 1.1rem 0 0 !important; text-align: center !important; }
+    body[data-content-page="home"] .nl-bar .newsletter-trust-sep { display: inline !important; opacity: 1 !important; height: auto !important; }
+    body[data-content-page="home"] .nl-photo { margin: 0; padding: 0; background: #1b1513; }
+    body[data-content-page="home"] .nl-photo img { display: block; width: 100%; height: auto; }
+    @media (max-width: 700px) {
+      body[data-content-page="home"] .section-newsletter.nl-bar { padding: 0 1rem 3rem !important; }
+      body[data-content-page="home"] .nl-bar-inner { padding: 2rem 1.1rem 1.75rem; }
+      body[data-content-page="home"] .nl-bar .newsletter-form { grid-template-columns: 1fr; }
+      body[data-content-page="home"] .nl-bar .newsletter-submit { width: 100% !important; }
+      body[data-content-page="home"] .nl-bar .newsletter-trust-sep { display: block !important; opacity: 0 !important; height: .4rem !important; }
+      body[data-content-page="home"] .nl-photo img { aspect-ratio: 16 / 9; object-fit: cover; object-position: 42% 40%; }
+    }
+    /* Hero as a tall banner (2026-11-08, her ask): the whole 16:9 photograph. No box. The words stand in the negative space
+       at her left, inside a shade that deepens the plants on that side and leans along her outline.
+       Two pieces, each placed by three numbers (left in vw, top in % of the hero, size):
+         the words    --hx --hy --hs   on .hero-overlay-inner
+         the buttons  --bx --by --bs   on .hero-cta-row
+       Every measure inside a piece is a multiple of its --u, so each scales as one and looks the same at every width.
+       (The hero is exactly 16:9 here, so 1% of its height is .5625vw.) */
+    @media (min-width: 821px) {
+      body[data-content-page="home"] .hero-fullbleed { aspect-ratio: 16 / 9 !important; max-height: none !important; min-height: 0 !important; }
+      body[data-content-page="home"] .hero-image { background-position: 50% 50% !important; }
+      body[data-content-page="home"] .hero-overlay { display: block !important; padding: 0 !important; }
+      body[data-content-page="home"] .hero-overlay::before { content: '' !important; position: absolute !important; inset: 0 !important; z-index: 1 !important; pointer-events: none !important;
+        /* pools of shade laid along the fern bank behind the column of words: long under the name (out past APOTHECARY),
+           a broad one behind the three-line title, one behind the sentence, a lighter one under the buttons at the
+           waterline, and the left edge held dark. Nothing reaches her. */
+        background:
+          radial-gradient(ellipse 36% 13% at 37% 15%, rgba(4,10,7,.72) 0%, rgba(4,10,7,.52) 45%, rgba(4,10,7,.18) 78%, rgba(4,10,7,0) 100%),
+          radial-gradient(ellipse 38% 28% at 28% 40%, rgba(4,10,7,.80) 0%, rgba(4,10,7,.60) 44%, rgba(4,10,7,.22) 76%, rgba(4,10,7,0) 100%),
+          radial-gradient(ellipse 32% 16% at 24% 63%, rgba(4,10,7,.72) 0%, rgba(4,10,7,.50) 46%, rgba(4,10,7,.18) 76%, rgba(4,10,7,0) 100%),
+          radial-gradient(ellipse 27% 12% at 22% 75%, rgba(4,10,7,.58) 0%, rgba(4,10,7,.36) 50%, rgba(4,10,7,0) 100%),
+          radial-gradient(ellipse 20% 70% at 0% 42%, rgba(4,10,7,.66) 0%, rgba(4,10,7,.40) 50%, rgba(4,10,7,0) 100%) !important; }
+      /* her hand-painted shade (188 brush strokes, 2026-11-08), rendered from hero-lock/hero-strokes-final-261108.json */
+      body[data-content-page="home"] .hero-overlay::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: url('images/uploads/hero-shade-painted.png?v=188') center / 100% 100% no-repeat; }
+      body[data-content-page="home"] .hero-fullbleed.aa-arranging .hero-overlay::after { display: none; }
+      body[data-content-page="home"] .hero-overlay-inner { --hx: 5.463; --hy: 8.709; --hs: 1.46; --u: calc(1vw * var(--hs));
+        position: absolute !important; z-index: 2; left: calc(var(--hx) * 1vw); top: calc(var(--hy) * .5625vw); bottom: auto; width: max-content !important; max-width: none !important; padding: calc(var(--u) * 1.2) !important; margin: 0 !important; display: flex !important; flex-direction: column; align-items: flex-start; text-align: left !important; background: none; box-shadow: none; }
+      body[data-content-page="home"] .hero-brand { margin: 0 0 calc(var(--u) * 1.06) !important; display: block; }
+      body[data-content-page="home"] .hero-brand-text { font-size: calc(var(--u) * 1.6) !important; line-height: 1 !important; white-space: nowrap; display: block; color: #FBF8F0 !important; text-shadow: 0 calc(var(--u) * 0.05) calc(var(--u) * 0.1) rgba(0,0,0,.95), 0 0 calc(var(--u) * 0.45) rgba(0,0,0,.85), 0 0 calc(var(--u) * 1.3) rgba(0,0,0,.65) !important; }
+      body[data-content-page="home"] .hero-brand-text em, body[data-content-page="home"] .hero-brand-accent { color: #FBF8F0 !important; }
+      body[data-content-page="home"] .hero-brand-rule { display: none !important; }
+      body[data-content-page="home"] .hero-overlay .hero-eyebrow { font-size: calc(var(--u) * 1.15) !important; font-weight: 500 !important; line-height: 1.2 !important; margin: 0 0 calc(var(--u) * 0.73) !important; white-space: nowrap; color: #F0DCA0 !important; text-shadow: 0 calc(var(--u) * 0.05) calc(var(--u) * 0.1) rgba(0,0,0,.95), 0 0 calc(var(--u) * 0.45) rgba(0,0,0,.85), 0 0 calc(var(--u) * 1.3) rgba(0,0,0,.65); }
+      body[data-content-page="home"] .hero-overlay .hero-title { font-size: calc(var(--u) * 3.1) !important; line-height: 1.06 !important; margin: 0 0 calc(var(--u) * 0.84) !important; text-align: left !important; white-space: nowrap; color: #FFFFFF !important; text-shadow: 0 calc(var(--u) * 0.07) calc(var(--u) * 0.14) rgba(0,0,0,.90), 0 0 calc(var(--u) * 0.7) rgba(0,0,0,.75), 0 0 calc(var(--u) * 2) rgba(0,0,0,.55) !important; }
+      body[data-content-page="home"] .hero-overlay .hero-title em { color: #EBD79C !important; font-size: 1.5em !important; line-height: .8 !important; }
+      body[data-content-page="home"] .hero-overlay .hero-title .ht, body[data-content-page="home"] .hero-overlay .hero-subtitle .hs { display: block; }
+      body[data-content-page="home"] .hero-overlay .hero-title .ht-3 { margin-top: calc(var(--u) * -0.28); }
+      body[data-content-page="home"] .hero-overlay .hero-subtitle { font-size: calc(var(--u) * 1.55) !important; font-weight: 500 !important; line-height: 1.385 !important; width: max-content !important; max-width: none !important; margin: 0 !important; opacity: 1 !important; color: #FBF8F0 !important; text-shadow: 0 calc(var(--u) * 0.05) calc(var(--u) * 0.1) rgba(0,0,0,.95), 0 0 calc(var(--u) * 0.45) rgba(0,0,0,.85), 0 0 calc(var(--u) * 1.3) rgba(0,0,0,.65) !important; }
+      body[data-content-page="home"] .hero-overlay .hero-cta-row { --bx: 7.545; --by: 68.956; --bs: 1.18; --u: calc(1vw * var(--bs));
+        position: absolute !important; left: calc((var(--bx) - var(--hx)) * 1vw); top: calc((var(--by) - var(--hy)) * .5625vw); width: max-content; margin: 0 !important; display: grid !important; grid-template-columns: 1fr; gap: calc(var(--u) * 0.8) !important; }
+      body[data-content-page="home"] .hero-overlay .hero-btn { font-size: calc(var(--u) * 0.9) !important; padding: calc(var(--u) * 1.05) calc(var(--u) * 1.8) !important; white-space: nowrap; text-align: center !important; background: rgba(4,10,7,.46) !important; border: 1px solid !important; border-radius: 2px !important; text-shadow: 0 0 calc(var(--u) * 0.4) rgba(0,0,0,.8); }
+      body[data-content-page="home"] .hero-overlay .hero-btn-primary { border-color: #E6CE8E !important; color: #F0DCA0 !important; }
+      body[data-content-page="home"] .hero-overlay .hero-btn-secondary { border-color: rgba(251,248,240,.8) !important; color: #FBF8F0 !important; }
+      body[data-content-page="home"] .hero-overlay .hero-btn-secondary::after { content: none !important; }
+    }
+    @media (max-width: 820px) {
+      /* phone: she shows above, the words gather below her; the header already carries the name */
+      body[data-content-page="home"] .hero-overlay .hero-btn-secondary::after { content: none !important; }
+      body[data-content-page="home"] .hero-overlay .hero-title .ht, body[data-content-page="home"] .hero-overlay .hero-subtitle .hs { display: block; }
+      body[data-content-page="home"] .hero-fullbleed { aspect-ratio: 3 / 4 !important; }
+      body[data-content-page="home"] .hero-image { background-position: 72% 50% !important; }
+      body[data-content-page="home"] .hero-overlay { align-items: flex-end !important; }
+      body[data-content-page="home"] .hero-overlay-inner { padding: 1rem 1.25rem 1.4rem !important; }
+      body[data-content-page="home"] .hero-brand, body[data-content-page="home"] .hero-brand-rule { display: none !important; }
+      body[data-content-page="home"] .hero-overlay::before { background: linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.08) 30%, rgba(0,0,0,.62) 58%, rgba(0,0,0,.78) 100%) !important; }
+    }
   </style>
-  <link rel="stylesheet" href="css/menu.css?v=261107">
+  <link rel="stylesheet" href="css/doors.css?v=261108">
+  <link rel="stylesheet" href="css/menu.css?v=261108">
   <link rel="stylesheet" href="css/still.css?v=261106">
 </head>
 <body data-content-page="home">
@@ -2156,11 +2238,11 @@
         <ul>
           <li class="has-sub"><a href="about.html">About</a>
             <ul class="sub-menu">
-              <li><a href="about.html#premise">The Animist Apothecary</a></li>
-              <li><a href="about.html#founder">Our Founder</a></li>
               <li><a href="about.html#covenant">The Ministry</a></li>
               <li><a href="about.html#foundation">The Foundation</a></li>
               <li><a href="about.html#school">The Conservatory</a></li>
+              <li><a href="about.html#premise">Our Mission</a></li>
+              <li><a href="about.html#founder">Our Founder</a></li>
               <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
             </ul>
           </li>
@@ -2195,7 +2277,7 @@
               <li class="has-sub2"><a href="training-grounds.html#courses">Courses</a>
                 <ul class="sub-menu2">
                   <li><a href="spirit-mediation.html">Spirit Mediation</a></li>
-                  <li><a href="shamanic-bodywork.html">Shamanic Bodywork</a></li>
+                  <li><a href="divination-and-consultation.html#bodywork">Shamanic Bodywork</a></li>
                   <li><a href="ceremonialist-training.html">Ceremonialist Training</a></li>
                 </ul>
               </li>
@@ -2236,7 +2318,7 @@
   <!-- &mdash;&mdash;&mdash; HERO (portrait on right, text overlay on the dark left) &mdash;&mdash;&mdash; -->
   <section class="hero-fullbleed">
     <div class="hero-image" role="img"
-         aria-label="Adi Marie in a brown wool shawl, low-key portrait against an earthy interior wall"
+         aria-label="Adi Marie seated at the edge of a forest creek in a plum linen dress, one hand resting in the water"
          data-content="hero.image" data-content-type="image" data-content-alt="hero.image_alt"
          data-content-bgpos="hero.image_position" data-content-bgsize="hero.image_size"></div>
     <div class="hero-overlay">
@@ -2245,16 +2327,19 @@
           <span class="hero-brand-text">The Animist <em class="hero-brand-accent">Apothecary</em></span>
         </a>
         <span class="hero-brand-rule" aria-hidden="true"></span>
-        <span class="hero-eyebrow" data-content="hero.eyebrow" data-content-type="html">Ceremonial &amp; Ritual Stewardship<br>Interdimensional Intermediary &amp; Guide</span>
-        <h1 class="hero-title" data-content="hero.title" data-content-type="html">Formidable gifts for<br>an <em>era of awakening</em></h1>
-        <p class="hero-subtitle" data-content="hero.subtitle">A place of ritual and ceremonial practice &mdash; for those becoming interdimensional intermediaries in service to the well-being, restoration, and healing of this world.</p>
+        <span class="hero-eyebrow" data-content="hero.eyebrow" data-content-type="html">A Ministry of Living Mysteries</span>
+        <h1 class="hero-title" data-content="hero.title" data-content-type="html"><span class="ht ht-1">A restoration</span><span class="ht ht-2">of relational balance</span><span class="ht ht-3"><em>amidst the many worlds</em>.</span></h1>
+        <p class="hero-subtitle" data-content="hero.subtitle" data-content-type="html"><span class="hs">An experiential apothecary</span><span class="hs">of ritual, community, and ceremony.</span></p>
         <div class="hero-cta-row">
-          <a href="/sessions.html" class="hero-btn hero-btn-primary" data-content="hero.cta_primary_text" data-content-href="hero.cta_primary_url">Schedule a Call</a>
-          <a href="divination-and-consultation.html" class="hero-btn hero-btn-secondary" data-content="hero.cta_secondary_text" data-content-href="hero.cta_secondary_url">Apply</a>
+          <a href="#subscribe" class="hero-btn hero-btn-secondary" data-content="hero.cta_secondary_text" data-content-href="hero.cta_secondary_url">Receive the Letters</a>
+          <a href="inquiry.html" class="hero-btn hero-btn-primary" data-content="hero.cta_primary_text" data-content-href="hero.cta_primary_url">Join the Community</a>
         </div>
       </div>
     </div>
   </section>
+  <!-- arrange mode (local tool, not shipped): with ?arrange=1 this loads js/hero-arrange.dev.js if it exists on this machine -->
+  <script>if(/[?&]arrange=1\b/.test(location.search)){var s=document.createElement('script');s.src='js/hero-arrange.dev.js';document.body.appendChild(s);}</script>
+
 
   <!-- &mdash;&mdash;&mdash; METAMORPHOSIS &mdash;&mdash;&mdash; -->
   <section class="section-story">
@@ -2281,69 +2366,10 @@
       </aside>
     </div>
   </section>
-
-  <!-- &mdash;&mdash;&mdash; TREE-OF-LIFE DIVIDER &mdash;&mdash;&mdash; -->
+    <!-- &mdash;&mdash;&mdash; TREE-OF-LIFE DIVIDER &mdash;&mdash;&mdash; -->
   <section class="section-tree-divider" aria-hidden="true"
            style="background-image: url('images/uploads/divider-milkyway-nuut-arch.jpg');"></section>
 
-  <!-- &mdash;&mdash;&mdash; PRACTITIONER &mdash;&mdash;&mdash; -->
-  <section class="section-practitioner">
-    <div class="practitioner-container">
-      <div class="practitioner-image-home" data-content="practitioner.image" data-content-type="image" data-content-bgpos="practitioner.image_position" style="background-image:url('images/uploads/practitioner-midnight-sorceress.jpg'); background-position: center top;"></div>
-      <div class="practitioner-content-home">
-        <span class="section-label" data-content="practitioner.section_label">Your Practitioner</span>
-        <h2 class="section-title" data-content="practitioner.title" data-content-type="html"><em>Adi Marie</em></h2>
-        <div class="story-divider"></div>
-        <div class="practitioner-quals-home" data-content-list="practitioner.quals">
-          <span class="qual-tag" data-content-list-template data-content=".">Interdimensional Intermediary &amp; Guide</span>
-          <span class="qual-tag">Somatic Medium &amp; Oracular Diviner</span>
-          <span class="qual-tag">Ceremonial &amp; Ritual Stewardship</span>
-        </div>
-        <p data-content="practitioner.paragraph_1">This work is based in Southern California with a regular migratory route along the North American West Coast. Adi Marie is flown around the world serving individuals and communities ready to embark upon and enact great change &mdash; first and foremost within themselves, to then do so to the world around.</p>
-        <p data-content="practitioner.paragraph_2">Adi has always had an immense power and gift in the spoken word, serving as an oracular poet, mythmaker, and storyteller &mdash; synthesizing and cohering the messages from the otherworlds into a tapestry of tales for us to live within. This gift has been formalized through her initiation as a voice diviner, having been chosen for the role by the Spirit World.</p>
-        <p data-content="practitioner.paragraph_3">Her gifts of somatic mediumship led her into medical, therapeutic, and shamanic bodywork, providing deep spiritual and emotional openings for physicalization and somatic expression and embodiment of the psyche and soul. Adi Marie has over 19 years of experience in the world of medicines of the wilds, specializing in entheogenic sacraments &mdash; guiding others through specialized and extraordinary states of visionary consciousness.</p>
-      </div>
-    </div>
-
-    <div class="practitioner-serves-quote">
-      <div class="practitioner-serves-flourish" aria-hidden="true"></div>
-      <p class="practitioner-serves-epigraph" data-content="practitioner.serves_quote_epigraph">For those whose inner work moves outward &mdash; and impacts thousands of lives &mdash; whose healing shapes collective fields of community and industry &mdash; for the innovators, the creators, and the world shapers, this work is for you.</p>
-      <p class="practitioner-serves-stanza" data-content="practitioner.serves_quote_stanza_1">Adi Marie works with visionary leaders and masters of craft &mdash; those passionate in their disciplines, ready to step deeper into the mysteries of the ineffable within their inner worlds, and to plunge the depths to bring more light to the worlds we share.</p>
-      <p class="practitioner-serves-stanza" data-content="practitioner.serves_quote_stanza_2">She also works with established communities to further their healing &mdash; so that those who are ready may begin to step into their leadership and elderhood, forming nutritive and nourishing ecosystems within which the children, the troubled, the lost, and the youth may heal and be held, thrive and grow, and bring forth hope for the restoration of the village amidst the urban sprawl.</p>
-      <p class="practitioner-serves-stanza" data-content="practitioner.serves_quote_stanza_3">She helps those ready to hone their burgeoning spiritual gifts into formidable powers &mdash; to be wielded benevolently in the shaping of a more beautiful world we all know is possible.</p>
-    </div>
-
-    <div class="practitioner-cta-row">
-      <a href="about.html" class="btn-outline" data-content="practitioner.cta_text" data-content-href="practitioner.cta_url">Read the longer story</a>
-    </div>
-  </section>
-
-  <!-- CTA (peak conversion ask — title + buttons stacked top-left, smudge visible right, body + credentials along bottom) -->
-  <section class="section-cta">
-    <div class="cta-container">
-
-      <div class="cta-topleft">
-        <span class="section-label" style="color:rgba(220,193,120,0.78);" data-content="cta_section.section_label">Begin the Work</span>
-        <h2 data-content="cta_section.title" data-content-type="html">Rites of passage for <em>modern humans</em>.</h2>
-        <p class="cta-subtitle" data-content="cta_section.subtitle">Are you ready to step in?</p>
-
-        <div class="cta-button-stack">
-          <div class="cta-button-row-item">
-            <a href="divination-and-consultation.html" class="btn-primary" data-content="cta_section.cta_text" data-content-href="cta_section.cta_url">Apply to Begin</a>
-            <p class="cta-button-note" data-content="cta_section.cta_primary_note">For yourself or the deeper path</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="cta-bottom">
-        <p class="cta-body-text" data-content="cta_section.body">Some come for their own healing. Some come for the deeper training. Some come because they hold a community in need, a ceremony to be led, or a gathering to be tended. Either way, the season begins at the threshold.</p>
-        <p class="cta-credentials" data-content="cta_section.credentials">19 years devoted service &middot; Initiated medicine woman &middot; Lineage-trained &middot; Southern California-based</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- &mdash;&mdash;&mdash; THE WORK — Unified three-path overview (replaces all individual offering sections) &mdash;&mdash;&mdash; -->
   <section class="section-the-work">
     <div class="the-work-inner">
       <span class="section-label the-work-label">The Work</span>
@@ -2351,53 +2377,52 @@
       <p class="the-work-intro">Each is its own world. Each leads to its own dedicated container. The first conversation, always, is the Intake &amp; Inquiry.</p>
 
       <div class="the-work-paths">
-        <a href="ceremonial-coaching.html#solo-work" class="work-path">
+        <a href="ceremonial-coaching.html" class="work-path">
           <div class="work-path-image-wrap">
             <div class="work-path-image" style="background-image: url('images/uploads/the-work-ceremony.jpg'); background-position: center 35%;"></div>
           </div>
           <span class="work-path-eyebrow">One-on-One Containers</span>
           <h3 class="work-path-title">Solo Work</h3>
-          <p class="work-path-desc">The long, private arc &mdash; sustained 1:1 ceremonial coaching and bespoke private ceremony, tended in singular relationship.</p>
+          <p class="work-path-desc">The path that is singularly your own. Guidance, mentorship, spiritual development, personal immersions &mdash; a hand on the unique path that is exclusively and singularly your own. Investment in the development of your life, your soul path, and the burgeoning of who and what you are.</p>
           <ul class="work-path-bullets">
-            <li>Seasons of Change &mdash; Ceremonial Coaching</li>
-            <li>Private Ceremonies &mdash; Custom Bespoke Rites</li>
-            <li>Pl&aacute;ticas &mdash; Guidance &amp; Counsel</li>
+            <li>Shamanic Sanctuary</li>
+            <li>Oracular Divinations</li>
           </ul>
-          <span class="work-path-cta">Enter Solo Work &rarr;</span>
+          <span class="work-path-cta">Enter the Sanctuary</span>
         </a>
-        <a href="public-offerings.html#gatherings" class="work-path">
+        <a href="public-offerings.html" class="work-path">
           <div class="work-path-image-wrap">
             <div class="work-path-image" style="background-image: url('images/uploads/the-work-seasons.jpg'); background-position: center center;"></div>
           </div>
           <span class="work-path-eyebrow">Communal Containers</span>
           <h3 class="work-path-title">Group Work</h3>
-          <p class="work-path-desc">Where the village remembers itself &mdash; through ceremony, through circle, through the gathered counsel of leaders.</p>
+          <p class="work-path-desc">Where the village remembers itself. The work we do in relational fields, in community and in relationship &mdash; because some wounds can only be mended relationally, as that is how they occurred, and some works require the communal field to mend. We are meant to be in community.</p>
           <ul class="work-path-bullets">
-            <li>Community Ceremonies &mdash; Circles &amp; Gatherings</li>
-            <li>The Metamorphic Year &mdash; A Gathered Counsel</li>
-            <li>Calendar of Gatherings &mdash; Wheel of the Year</li>
+            <li>Rites of Passage</li>
+            <li>Ritual &amp; Ceremony</li>
+            <li>Community Firesides</li>
+            <li>Wellness Gatherings</li>
+            <li>Speaking Engagements</li>
           </ul>
-          <span class="work-path-cta">Enter Group Work &rarr;</span>
+          <span class="work-path-cta">Enter the Village</span>
         </a>
         <a href="training-grounds.html" class="work-path">
           <div class="work-path-image-wrap">
             <div class="work-path-image" style="background-image: url('images/uploads/the-work-training.jpg'); background-position: center 55%;"></div>
           </div>
-          <span class="work-path-eyebrow">Cohort Trajectories</span>
+          <span class="work-path-eyebrow">The Conservatory</span>
           <h3 class="work-path-title">The School</h3>
-          <p class="work-path-desc">A school of somatic shamanic arts &mdash; for those becoming practitioners themselves. Six cohort trajectories on the wheel of the year.</p>
+          <p class="work-path-desc">A place of skill and technical development &mdash; for those in devotion to artisan craftsmanship with their spiritual gifts, in relationship to ritual and ceremony; developing as practitioners and technicians, skilled in roles of service, restoration, and practice.</p>
           <ul class="work-path-bullets">
-            <li>The Six Cohorts &mdash; Apply Per Trajectory</li>
-            <li>Wheel of the Year &mdash; Seasonal Enrollment</li>
-            <li>Ceremonialist Training &mdash; Steward the Work</li>
+            <li>Courses</li>
+            <li>Trainings</li>
+            <li>Workshops</li>
           </ul>
-          <span class="work-path-cta">Apply to the School &rarr;</span>
+          <span class="work-path-cta">Enter the Conservatory</span>
         </a>
       </div>
     </div>
   </section>
-
-  <!-- &mdash;&mdash;&mdash; TESTIMONIAL (placed between Process and CTA — peak conversion moment) &mdash;&mdash;&mdash; -->
   <section class="section-testimonial">
     <div class="testimonial-carousel">
 
@@ -2464,7 +2489,128 @@
     </script>
   </section>
 
-  <!-- &mdash;&mdash;&mdash; PROCESS / CHOOSE HOW YOU BEGIN — 50/50 split: labyrinth fern image on left, title+doorways on right &mdash;&mdash;&mdash; -->
+  <!-- THE TERRITORIES (2026-11-08, her ask): what you'll find inside — one linen card per door, its rooms listed in drop-down order; her lines from each page; lede is mine (flagged) -->
+  <div class="dr-terr-wrap">
+  <section class="dr-terr-head" id="territories">
+    <h2>What you&rsquo;ll find inside.</h2>
+    <p>Every door leads deeper. Step through any one.</p>
+  </section>
+  <section class="dr-terr">
+    <figure class="dr-terr-fig" style="--terr-pos:center"><img src="images/uploads/about-vaulted-reflection.jpg" alt="A vaulted stone hall, light falling across the pillars" loading="lazy" decoding="async"></figure>
+    <div class="dr-terr-text">
+      <span class="dr-terr-door">About</span>
+      <h2>A ministry, a foundation, <em>a conservatory</em>.</h2>
+      <p class="dr-terr-line">Awakening more fully to the ever-present beauty of creation upon this world.</p>
+      <ul class="dr-terr-rooms"><li><a href="about.html#covenant">The Ministry</a></li><li><a href="about.html#foundation">The Foundation</a></li><li><a href="about.html#school">The Conservatory</a></li><li><a href="about.html#premise">Our Mission</a></li><li><a href="about.html#founder">Our Founder</a></li><li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li></ul>
+      <a class="dr-terr-enter" href="about.html">Enter the Apothecary</a>
+    </div>
+  </section>
+  <section class="dr-terr">
+    <figure class="dr-terr-fig" style="--terr-pos:center 55%"><img src="images/worlds/hearth-vista.jpg" alt="Red canyon walls in late light" loading="lazy" decoding="async"></figure>
+    <div class="dr-terr-text">
+      <span class="dr-terr-door">Shamanic Sanctuary</span>
+      <h2>A season of change, held for the one you are <em>becoming</em>.</h2>
+      <p class="dr-terr-line">Counsel woven with in-person ceremony, across the seasons of your becoming.</p>
+      <ul class="dr-terr-rooms"><li><a href="ceremonial-coaching.html#season-of-change">A Season of Change</a></li><li><a href="ceremonial-coaching.html#metamorphic-year">The Metamorphic Year</a></li><li><a href="ceremonial-coaching.html#coaching">Ceremonially Assisted Coaching</a></li><li><a href="ceremonial-coaching.html#guidance">Spiritual Guidance &amp; Development</a></li></ul>
+      <a class="dr-terr-enter" href="ceremonial-coaching.html">Enter the Sanctuary</a>
+    </div>
+  </section>
+  <section class="dr-terr">
+    <figure class="dr-terr-fig" style="--terr-pos:center 45%"><img src="images/worlds/oracle-vista.jpg" alt="A night sky over a dark valley" loading="lazy" decoding="async"></figure>
+    <div class="dr-terr-text">
+      <span class="dr-terr-door">Oracular Divinations</span>
+      <h2>It begins with <em>sitting together</em>.</h2>
+      <p class="dr-terr-line">A sacred conversation between you, your Spirit, your Ancestors, and the elemental forces that walk with you.</p>
+      <ul class="dr-terr-rooms"><li><a href="divination-and-consultation.html#divination">Dagara Divinations</a></li><li><a href="divination-and-consultation.html#bodywork">Shamanic Bodywork</a></li><li><a href="divination-and-consultation.html#mediumship">Oracular Mediumship</a></li></ul>
+      <a class="dr-terr-enter" href="divination-and-consultation.html">Enter the Oracle</a>
+    </div>
+  </section>
+  <section class="dr-terr">
+    <figure class="dr-terr-fig" style="--terr-pos:center 60%"><img src="images/worlds/village-vista.jpg" alt="The roots and branches of an enormous banyan tree" loading="lazy" decoding="async"></figure>
+    <div class="dr-terr-text">
+      <span class="dr-terr-door">The Village</span>
+      <h2>Where the village <em>remembers itself</em>.</h2>
+      <p class="dr-terr-line">The open doorways of the Apothecary: sessions, gatherings, workshops, and divinations.</p>
+      <ul class="dr-terr-rooms"><li><a href="public-offerings.html#kinship">Entheogenically Awakened Society</a></li><li><a href="public-offerings.html#etiquette">Etiquette &amp; Decorum</a></li><li><a href="public-offerings.html#rites">Rites of Passage</a></li><li><a href="public-offerings.html#gather">Ritual &amp; Ceremony</a></li><li><a href="public-offerings.html#firesides">Community Firesides</a></li><li><a href="public-offerings.html#wellness">Wellness Gatherings</a></li><li><a href="public-offerings.html#speaking">Speaking Engagements</a></li></ul>
+      <a class="dr-terr-enter" href="public-offerings.html">Enter the Village</a>
+    </div>
+  </section>
+  <section class="dr-terr">
+    <figure class="dr-terr-fig" style="--terr-pos:center 50%"><img src="images/worlds/school-vista.jpg" alt="Books, candles and stones laid out for study" loading="lazy" decoding="async"></figure>
+    <div class="dr-terr-text">
+      <span class="dr-terr-door">The Conservatory</span>
+      <h2>Three depths of <em>commitment</em>.</h2>
+      <p class="dr-terr-line">Courses are the longest form and the fullest devotion to the craft. Trainings are shorter in term. Workshops are a single day, or two to three.</p>
+      <ul class="dr-terr-rooms"><li><a href="training-grounds.html#courses">Courses</a></li><li><a href="training-grounds.html#trainings">Trainings</a></li><li><a href="training-grounds.html#workshops-list">Workshops</a></li></ul>
+      <a class="dr-terr-enter" href="training-grounds.html">Enter the Conservatory</a>
+    </div>
+  </section>
+  <section class="dr-terr">
+    <figure class="dr-terr-fig" style="--terr-pos:center 40%"><img src="images/worlds/library-vista.jpg" alt="A reading table by a window" loading="lazy" decoding="async"></figure>
+    <div class="dr-terr-text">
+      <span class="dr-terr-door">The Library &amp; The Well</span>
+      <h2>Direct revelation, and all we have made <em>of it</em>.</h2>
+      <p class="dr-terr-line">The Well is direct, first-person revelatory experience; the Library is the aggregate of human interpretation, study and narrative, to which we are contributories.</p>
+      <ul class="dr-terr-rooms"><li><a href="writings.html#water-milk-honey">Water, Milk, and Honey</a></li><li><a href="writings.html#essays">Essays &amp; Writings</a></li><li><a href="writings.html#shelf">The Library</a></li><li><a href="writings.html#letters">The Well</a></li></ul>
+      <a class="dr-terr-enter" href="writings.html">Enter the Library</a>
+    </div>
+  </section>
+  </div>
+
+<section class="section-cta">
+    <div class="cta-container">
+
+      <div class="cta-topleft">
+        <span class="section-label" style="color:rgba(220,193,120,0.78);" data-content="cta_section.section_label">Begin the Work</span>
+        <h2 data-content="cta_section.title" data-content-type="html">Revivifying the sacred amidst the <em>mundane</em>.</h2>
+        <p class="cta-subtitle" data-content="cta_section.subtitle">Are you ready to step in?</p>
+
+        <div class="cta-button-stack">
+          <div class="cta-button-row-item">
+            <a href="inquiry.html" class="btn-primary" data-content="cta_section.cta_text" data-content-href="cta_section.cta_url">Begin Here</a>
+            <p class="cta-button-note" data-content="cta_section.cta_primary_note">For yourself or the deeper path</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-bottom">
+        <p class="cta-body-text" data-content="cta_section.body">Some come for their own healing. Some come for the deeper training. Some come because they hold a community in need, a ceremony to be led, or a gathering to be tended. Either way, the season begins at the threshold.</p>
+        <p class="cta-credentials" data-content="cta_section.credentials">19 years devoted service &middot; Initiated medicine woman &middot; Lineage-trained &middot; Southern California-based</p>
+      </div>
+
+    </div>
+  </section>
+
+<section class="section-practitioner">
+    <div class="practitioner-container">
+      <div class="practitioner-image-home" data-content="practitioner.image" data-content-type="image" data-content-bgpos="practitioner.image_position" style="background-image:url('images/uploads/practitioner-midnight-sorceress.jpg'); background-position: center top;"></div>
+      <div class="practitioner-content-home">
+        <span class="section-label" data-content="practitioner.section_label">Our Founder</span>
+        <h2 class="section-title" data-content="practitioner.title" data-content-type="html"><em>Adi Marie</em></h2>
+        <div class="story-divider"></div>
+        <div class="practitioner-quals-home" data-content-list="practitioner.quals">
+          <span class="qual-tag" data-content-list-template data-content=".">Interdimensional Intermediary &amp; Guide</span>
+          <span class="qual-tag">Somatic Medium &amp; Oracular Diviner</span>
+          <span class="qual-tag">Ceremonial &amp; Ritual Stewardship</span>
+        </div>
+        <p data-content="practitioner.paragraph_1">This work is based in Southern California with a regular migratory route along the North American West Coast. Adi Marie is flown around the world serving individuals and communities ready to embark upon and enact great change &mdash; first and foremost within themselves, to then do so to the world around.</p>
+        <p data-content="practitioner.paragraph_2">Adi Marie has always had an immense power and gift in the spoken word, serving as an oracular poet, mythmaker, and storyteller &mdash; synthesizing and cohering the messages from the otherworlds into a tapestry of tales for us to live within. This gift has been formalized through her initiation as a voice diviner, having been chosen for the role by the Spirit World.</p>
+        <p data-content="practitioner.paragraph_3">Her gifts of somatic mediumship led her into medical, therapeutic, and shamanic bodywork, providing deep spiritual and emotional openings for physicalization and somatic expression and embodiment of the psyche and soul. Adi Marie has over 19 years of experience in the world of medicines of the wilds, specializing in entheogenic sacraments &mdash; guiding others through specialized and extraordinary states of visionary consciousness.</p>
+      </div>
+    </div>
+
+    <div class="practitioner-serves-quote">
+      <div class="practitioner-serves-flourish" aria-hidden="true"></div>
+      <p class="practitioner-serves-epigraph" data-content="practitioner.serves_quote_epigraph">For those whose inner work moves outward &mdash; and impacts thousands of lives &mdash; whose healing shapes collective fields of community and industry &mdash; for the innovators, the creators, and the world shapers, this work is for you.</p>
+      <p class="practitioner-serves-stanza" data-content="practitioner.serves_quote_stanza_1">Adi Marie works with visionary leaders and masters of craft &mdash; those passionate in their disciplines, ready to step deeper into the mysteries of the ineffable within their inner worlds, and to plunge the depths to bring more light to the worlds we share.</p>
+      <p class="practitioner-serves-stanza" data-content="practitioner.serves_quote_stanza_2">She also works with established communities to further their healing &mdash; so that those who are ready may begin to step into their leadership and elderhood, forming nutritive and nourishing ecosystems within which the children, the troubled, the lost, and the youth may heal and be held, thrive and grow, and bring forth hope for the restoration of the village amidst the urban sprawl.</p>
+      <p class="practitioner-serves-stanza" data-content="practitioner.serves_quote_stanza_3">She helps those ready to hone their burgeoning spiritual gifts into formidable powers &mdash; to be wielded benevolently in the shaping of a more beautiful world we all know is possible.</p>
+    </div>
+
+    <div class="practitioner-cta-row">
+      <a href="about.html#founder" class="btn-outline" data-content="practitioner.cta_text" data-content-href="practitioner.cta_url">Read the longer story</a>
+    </div>
+  </section>
   <section class="section-process" id="begin">
     <div class="process-container process-container--split">
 
@@ -2476,20 +2622,20 @@
       <div class="process-content-col">
         <div class="process-header">
           <span class="section-label">How to Begin</span>
-          <h2 class="section-title">Choose how you begin.</h2>
-          <p class="section-body">Two thresholds, both held with care. One opens through conversation. The other opens through oracular reading. Either is a clean way in.</p>
+          <h2 class="section-title">Begin your <em>journey</em>.</h2>
+          <p class="section-body">Two thresholds, each held with care. One opens through conversation. One opens through oracular reading. Either is a clean way in.</p>
         </div>
 
         <div class="begin-doorways">
-          <a href="divination-and-consultation.html" class="begin-doorway">
-            <span class="begin-doorway-eyebrow">The Standard Threshold</span>
-            <h3 class="begin-doorway-title">Intake &amp; Inquiry</h3>
+          <a href="inquiry.html" class="begin-doorway">
+            <span class="begin-doorway-eyebrow">The First Threshold</span>
+            <h3 class="begin-doorway-title">The Conversation</h3>
             <p class="begin-doorway-desc">A conversation for attunement, alignment, and safety assessment &mdash; the required first step before ceremony or cohort enrollment.</p>
-            <span class="begin-doorway-cta">Schedule the Intake &rarr;</span>
+            <span class="begin-doorway-cta">Begin Here &rarr;</span>
           </a>
           <a href="divination-and-consultation.html#divination" class="begin-doorway">
             <span class="begin-doorway-eyebrow">The Oracular Threshold</span>
-            <h3 class="begin-doorway-title">Ancestral &amp; Elemental Divination</h3>
+            <h3 class="begin-doorway-title">A Divination</h3>
             <p class="begin-doorway-desc">A reading drawn from spirit, ancestor, and element &mdash; for those whose first question is for the unseen, before the words come.</p>
             <span class="begin-doorway-cta">Request a Divination &rarr;</span>
           </a>
@@ -2499,13 +2645,24 @@
     </div>
   </section>
 
-  <!-- &mdash;&mdash;&mdash; NEWSLETTER (placed before final CTA — soft entry for warm leads not ready to apply) &mdash;&mdash;&mdash; -->
-  <section id="subscribe" class="section-newsletter">
-    <div class="newsletter-inner">
-      <span class="section-label" data-content="newsletter.section_label">Seasonal Letters</span>
-      <h2 class="newsletter-title" data-content="newsletter.title" data-content-type="html">Water, Milk, and Honey</h2>
-      <p class="newsletter-body" data-content="newsletter.body">Tender reflections, sacred teachings, and updates from the practice &mdash; workshops, public gatherings, the occasional surprise offering.</p>
+  <!-- &mdash;&mdash;&mdash; PRACTITIONER &mdash;&mdash;&mdash; -->
 
+  <!-- CTA (peak conversion ask — title + buttons stacked top-left, smudge visible right, body + credentials along bottom) -->
+
+  <!-- &mdash;&mdash;&mdash; THE WORK — Unified three-path overview (replaces all individual offering sections) &mdash;&mdash;&mdash; -->
+
+  <!-- &mdash;&mdash;&mdash; TESTIMONIAL (placed between Process and CTA — peak conversion moment) &mdash;&mdash;&mdash; -->
+
+  <!-- &mdash;&mdash;&mdash; PROCESS / CHOOSE HOW YOU BEGIN — 50/50 split: labyrinth fern image on left, title+doorways on right &mdash;&mdash;&mdash; -->
+
+  <!-- &mdash;&mdash;&mdash; NEWSLETTER (placed before final CTA — soft entry for warm leads not ready to apply) &mdash;&mdash;&mdash; -->
+  <!-- Water, Milk, and Honey (2026-11-08, her ask): a full-width letters bar after Begin your journey, then her writing-desk photograph closes the page -->
+  <section id="subscribe" class="section-newsletter nl-bar">
+    <div class="nl-bar-inner">
+      <div class="nl-bar-head">
+        <h2 class="newsletter-title" data-content="newsletter.title" data-content-type="html">Water, Milk, and Honey</h2>
+        <p class="newsletter-body" data-content="newsletter.body">A compendium of correspondences. Tender reflections, sacred teachings, and updates from the practice &mdash; workshops, public gatherings, the occasional surprise offering.</p>
+      </div>
       <form id="newsletter-form" class="newsletter-form" novalidate>
         <div class="newsletter-form-names">
           <input type="text" name="first_name" placeholder="First Name" required autocomplete="given-name" aria-label="First Name">
@@ -2526,19 +2683,20 @@
         <input type="text" name="referral_detail" placeholder="Tell us more" aria-label="Tell us more" maxlength="200">
         <button type="submit" class="btn-primary newsletter-submit" data-content="newsletter.cta_text">Subscribe</button>
       </form>
-
       <p class="newsletter-trust">
         <span data-content="newsletter.trust_line">Held with care, never shared.</span>
         <span class="newsletter-trust-sep" aria-hidden="true"> &middot; </span>
         <a href="divination-and-consultation.html" class="newsletter-intake-link" data-content="newsletter.intake_pointer_text" data-content-href="newsletter.intake_pointer_url">For ceremony or private work, begin with an Intake &amp; Inquiry Call</a> &rarr;
       </p>
-
       <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></div>
     </div>
   </section>
+  <section class="nl-photo" aria-label="Adi Marie writing in her studio">
+    <img src="images/uploads/newsletter-writing-desk.jpg" alt="Adi Marie writing in a journal at a wooden table in her studio, a massage table and shelves of herbs behind her" loading="lazy" decoding="async">
+  </section>
 
   <!-- Sticky scroll CTA (appears after hero is scrolled past). Quiet, brand-aligned pill in the bottom-right corner. -->
-  <a href="divination-and-consultation.html" id="sticky-cta" class="sticky-cta" aria-label="Apply to Begin">
+  <a href="inquiry.html" id="sticky-cta" class="sticky-cta" aria-label="Apply to Begin">
     <span class="sticky-cta-label">Apply to Begin</span>
     <span class="sticky-cta-arrow" aria-hidden="true">&rarr;</span>
   </a>
@@ -2557,7 +2715,7 @@
             <li><a href="ceremonial-coaching.html">Shamanic Sanctuary</a></li>
             <li><a href="divination-and-consultation.html">Oracular Divinations</a></li>
             <li><a href="public-offerings.html">The Village</a></li>
-            <li><a href="training-grounds.html">The Conservatory</a></li>
+            <li><a href="about.html#school">The Conservatory</a></li>
             <li><a href="writings.html">The Library &amp; The Well</a></li>
           </ul>
         </div>

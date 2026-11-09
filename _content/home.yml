@@ -1,15 +1,13 @@
 hero:
-  eyebrow: "Ceremonial &amp; Ritual Stewardship<br>Interdimensional Intermediary &amp; Guide"
-  title: Formidable gifts for<br>an <em>era of awakening</em>
-  subtitle: >-
-    A place of ritual and ceremonial practice — for those becoming interdimensional intermediaries
-    in service to the well-being, restoration, and healing of this world.
-  cta_primary_text: Schedule a Call
-  cta_primary_url: /divination-and-consultation.html
-  cta_secondary_text: The Training Grounds
-  cta_secondary_url: training-grounds.html
-  image: /images/uploads/adi-hero-temple-grounds.jpg
-  image_alt: Adi Marie in a navy patterned shawl seated in a soft-lit adobe temple sanctuary
+  eyebrow: "A Ministry of Living Mysteries"
+  title: '<span class="ht ht-1">A restoration</span><span class="ht ht-2">of relational balance</span><span class="ht ht-3"><em>amidst the many worlds</em>.</span>'
+  subtitle: '<span class="hs">An experiential apothecary</span><span class="hs">of ritual, community, and ceremony.</span>'
+  cta_primary_text: Join the Community
+  cta_primary_url: inquiry.html
+  cta_secondary_text: Receive the Letters
+  cta_secondary_url: "#subscribe"
+  image: /images/uploads/hero-creek-hand-in-water-v2.jpg
+  image_alt: Adi Marie seated at the edge of a forest creek in a plum linen dress, one hand resting in the water
   image_position: center
   image_size: cover
 metamorphosis:
@@ -203,7 +201,7 @@ offerings:
 practitioner:
   image: /images/uploads/practitioner-midnight-sorceress.jpg
   image_position: center top
-  section_label: Your Practitioner
+  section_label: Our Founder
   title: <em>Adi Marie</em>
   quals:
     - Interdimensional Intermediary & Guide
@@ -215,7 +213,7 @@ practitioner:
     ready to embark upon and enact great change — first and foremost within themselves, to then
     do so to the world around.
   paragraph_2: >-
-    Adi has always had an immense power and gift in the spoken word, serving as an oracular poet,
+    Adi Marie has always had an immense power and gift in the spoken word, serving as an oracular poet,
     mythmaker, and storyteller — synthesizing and cohering the messages from the otherworlds into
     a tapestry of tales for us to live within. This gift has been formalized through her initiation
     as a voice diviner, having been chosen for the role by the Spirit World.
@@ -243,7 +241,7 @@ practitioner:
     She helps those ready to hone their burgeoning spiritual gifts into formidable powers — to be
     wielded benevolently in the shaping of a more beautiful world we all know is possible.
   cta_text: Read the longer story
-  cta_url: about.html
+  cta_url: about.html#founder
 process:
   section_label: How to Begin
   title: Three ways to enter the <em>work</em>
@@ -284,14 +282,14 @@ fern_feature:
   # TODO: swap to images/uploads/fern-labyrinth.jpg once Adi saves the file
 cta_section:
   section_label: Begin the Work
-  title: Rites of passage for <em>modern humans</em>.
+  title: Revivifying the sacred amidst the <em>mundane</em>.
   subtitle: Are you ready to step in?
   body: >-
     Some come for their own healing. Some come for the deeper training. Some come because they
     hold a community in need, a ceremony to be led, or a gathering to be tended. Either way, the
     season begins at the threshold.
-  cta_text: Apply to Begin
-  cta_url: divination-and-consultation.html
+  cta_text: Begin Here
+  cta_url: inquiry.html
   cta_primary_note: For yourself or the deeper path
   credentials: >-
     19 years devoted service · Initiated medicine woman · Lineage-trained · Southern
@@ -300,8 +298,8 @@ newsletter:
   section_label: Seasonal Letters
   title: Water, Milk, and Honey
   body: >-
-    Tender reflections, sacred teachings, and updates from the practice — workshops, public
-    gatherings, the occasional surprise offering.
+    A compendium of correspondences. Tender reflections, sacred teachings, and updates from the
+    practice — workshops, public gatherings, the occasional surprise offering.
   cta_text: Subscribe
   trust_line: Held with care, never shared.
   intake_pointer_text: For ceremony or private work, begin with an Intake & Inquiry Call
