@@ -1,12 +1,12 @@
 {
-  "version": "v261109.01 12:08a",
-  "release": 1,
-  "sha": "3ef957b1",
-  "fullSha": "3ef957b18f672e6e1bed45d2efe66a5171981dee",
+  "version": "v261109.02 12:13a",
+  "release": 2,
+  "sha": "03a9df8d",
+  "fullSha": "03a9df8dea4784c368b4fdcc9ec99a78756586dc",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-08T16:08:10-08:00",
-  "commits": [{"sha":"a07d164a","message":"Site: the eight-door map, Begin Here, folded pages, elevated finish, no motion, no prices","author":"Adi Marie"},{"sha":"845495a5","message":"Images: stand-in photographs for the worlds, the heroes and the studios","author":"Adi Marie"},{"sha":"92a7db2c","message":"Menu: Adi Marie's hand-drawn map with drop-downs; About, Village, Conservatory and Library tiers in her order","author":"Adi Marie"},{"sha":"f2f6f7ab","message":"Doors: gateways on every door page, rooms in the menu's order, the Sanctuary as one page","author":"Adi Marie"},{"sha":"7a4117d5","message":"Village: Speaking Engagements as the seventh room and gateway","author":"Adi Marie"},{"sha":"c4232e06","message":"Home: the creek hero with her placed words and painted shade, territories on linen, letters card, closing photograph","author":"Adi Marie"},{"sha":"f5599252","message":"Merge main: version bumps and the Workshops menu commit; the eight-door menu on this branch supersedes it","author":"Adi Marie"},{"sha":"3ef957b1","message":"Workshops address: keep this branch's redirect into the Conservatory's workshops room","author":"Adi Marie"}]
+  "pushedAt": "2026-11-08T16:12:55-08:00",
+  "commits": [{"sha":"03a9df8d","message":"Begin Here opens: the veil's open list gains /inquiry.html; veil script version bumped on every page","author":"Adi Marie"}]
 }
