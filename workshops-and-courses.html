@@ -2,90 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
-  <link rel="shortcut icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Workshops &amp; Courses &middot; The Animist Apothecary</title>
-  <meta name="description" content="The School of The Animist Apothecary: the Training Grounds long program, live online workshops such as How to Journey, virtual gatherings, and the seasonal EntheoEcology course.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@400;500&family=Inter:wght@300;400;500&family=Tangerine&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=v32">
-  <link rel="stylesheet" href="css/site-header.css?v=v29">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://theanimistapothecary.com/training-grounds.html">
+  <meta http-equiv="refresh" content="0; url=training-grounds.html">
+  <script>window.location.replace('training-grounds.html');</script>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="shortcut icon" href="favicon.ico">
   <style>
-    body[data-content-page^="offering-"] { background: #FAF8F3; color: var(--ink-deep, #2D2A26); }
-
-    /* ====== Hero ====== */
-    .po-hero { position: relative; min-height: 74vh; display: flex; align-items: center; justify-content: center; padding: 7rem 3rem; overflow: hidden; }
-    .po-hero-image { position: absolute; inset: 0; background-size: cover; background-position: center; z-index: 1; }
-    .po-hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(18,16,12,0.55), rgba(28,24,18,0.78)); z-index: 2; }
-    .po-hero-inner { position: relative; z-index: 3; max-width: 900px; text-align: center; color: #F5F3ED; }
-    .po-hero-eyebrow { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-pale, #DCC178); margin-bottom: 1rem; }
-    .po-hero-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(3rem, 6.4vw, 5.4rem); line-height: 1.04; margin: 0.4rem 0 1.2rem; letter-spacing: -0.005em; text-shadow: 0 2px 16px rgba(0,0,0,0.3); }
-    .po-hero-title em { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-weight: 400; font-size: 1.45em; line-height: 0.9; color: var(--gold-pale, #DCC178); letter-spacing: 0; }
-    .po-hero-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.18rem, 1.8vw, 1.5rem); line-height: 1.55; color: var(--gold-pale, #DCC178); margin: 0 auto; max-width: 720px; }
-
-    /* ====== Body ====== */
-    .po-body { padding: 6rem 3rem; }
-    .po-body-inner { max-width: 1080px; margin: 0 auto; }
-    .po-invocation { max-width: 760px; margin: 0 auto 5rem; text-align: center; }
-    .po-invocation p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.45rem); line-height: 1.7; color: var(--ink-soft, #3D3A36); margin: 0; }
-
-    /* ====== Doorways head ====== */
-    .po-doors-head { margin-bottom: 2.6rem; text-align: center; }
-    .po-eyebrow-l { display: block; font-family: 'Cormorant SC', serif; font-size: 0.76rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 1rem; }
-    .po-h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.18; color: var(--ink-deep, #2D2A26); margin: 0 0 1.6rem; }
-    .po-h2 em { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-weight: 400; font-size: 1.5em; line-height: 0.9; color: var(--gold, #c9a84c); }
-    .po-rule { display: block; width: 60px; height: 1px; background: var(--gold, #c9a84c); margin: 0 auto 1rem; opacity: 0.55; }
-
-    /* ====== Doorway cards ====== */
-    .po-doors { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem; }
-    @media (max-width: 880px) { .po-doors { grid-template-columns: 1fr; gap: 1.8rem; } }
-    .po-door { display: block; background: #F5F3ED; border: 1px solid rgba(201,168,76,0.18); border-radius: 4px; padding: 0; overflow: hidden; text-decoration: none; transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s; }
-    .po-door-img { aspect-ratio: 16/9; background-size: cover; background-position: center; transition: transform 0.6s cubic-bezier(.22,.61,.36,1); }
-    .po-door:hover .po-door-img { transform: scale(1.035); }
-    .po-door-inner { padding: 2.2rem 2.4rem 2.6rem; }
-    .po-door:hover { border-color: rgba(201,168,76,0.5); box-shadow: 0 10px 34px -16px rgba(20,16,8,0.28); transform: translateY(-2px); }
-    .po-door-eyebrow { display: block; font-family: 'Cormorant SC', serif; font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold, #c9a84c); margin-bottom: 0.7rem; }
-    .po-door-name { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.8rem; line-height: 1.16; color: var(--ink-deep, #2D2A26); margin: 0 0 0.9rem; }
-    .po-door-name em { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-weight: 400; font-size: 1.5em; line-height: 0.9; color: var(--gold, #c9a84c); }
-    .po-door-body { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.7; color: var(--ink-soft, #3D3A36); margin: 0 0 1.4rem; }
-    .po-door-link { font-family: 'Cormorant SC', serif; font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold, #c9a84c); }
-
-
-    /* ====== Luxury motion ====== */
-    body.lux-anim .lux-reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.95s cubic-bezier(.22,.61,.36,1), transform 0.95s cubic-bezier(.22,.61,.36,1); }
-    body.lux-anim .lux-reveal.lux-in { opacity: 1; transform: none; }
-
-    /* ====== Triptych ====== */
-    .po-trip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin: 0 0 4rem; }
-    @media (max-width: 720px) { .po-trip { grid-template-columns: 1fr; } }
-    .po-trip div { aspect-ratio: 4/3; background-size: cover; background-position: center; border-radius: 4px; box-shadow: 0 10px 30px -14px rgba(20,16,8,0.3); }
-
-    /* ====== Interlude ====== */
-    .po-interlude { position: relative; min-height: 380px; display: flex; align-items: center; justify-content: center; padding: 4rem 2rem; background-size: cover; background-position: center; overflow: hidden; }
-    .po-interlude::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(18,16,12,0.4), rgba(24,20,15,0.58)); }
-    .po-interlude p { position: relative; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.5; color: #F7F4EC; max-width: 640px; text-align: center; margin: 0; text-shadow: 0 2px 18px rgba(0,0,0,0.5); }
-
-    /* ====== Legibility pass (2026-07-02) ====== */
-    .po-eyebrow-l, .po-door-eyebrow { color: #8F6F2E; }
-    .po-h2 em, .po-door-name em { color: #A8842F; }
-    .po-door-link { color: #8F6F2E; }
-    .po-interlude::before { background: linear-gradient(rgba(18,16,12,0.48), rgba(24,20,15,0.64)) !important; }
-    .po-final-cta p { color: rgba(245,243,237,0.92); }
-
-    /* ====== Final CTA ====== */
-    .po-final-cta { padding: 6rem 3rem; background: linear-gradient(rgba(30,26,20,0.78), rgba(38,32,24,0.88)), url('images/uploads/pexels-jplenio-1632790.jpg') center/cover no-repeat #2D2A26; color: #F5F3ED; text-align: center; }
-    .po-final-cta .po-eyebrow { display: block; font-family: 'Cormorant SC', serif; font-size: 0.76rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-pale, #DCC178); margin-bottom: 1rem; }
-    .po-final-cta h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(2.2rem, 3.6vw, 3rem); line-height: 1.18; color: #F5F3ED; margin: 0.4rem 0 1.2rem; }
-    .po-final-cta h2 em { font-family: 'Tangerine', serif; font-style: normal; font-weight: 400; font-size: 1.5em; line-height: 0.9; color: var(--gold-pale, #DCC178); }
-    .po-final-cta p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.18rem; line-height: 1.6; color: rgba(245, 243, 237, 0.85); max-width: 640px; margin: 0 auto 2.2rem; }
-    .po-final-cta-btn { display: inline-block; font-family: 'Cormorant SC', 'Cormorant Garamond', serif; font-size: 0.84rem; letter-spacing: 0.26em; text-transform: uppercase; color: #2D2A26; background: var(--gold-pale, #DCC178); padding: 1rem 2.4rem; text-decoration: none; transition: background 0.2s; }
-    .po-final-cta-btn:hover { background: #F5F3ED; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #F7F5F0; color: #2D2A26;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 2rem;
+    }
+    a { color: #886039; }
   </style>
   <link rel="stylesheet" href="css/elevate.css?v=261106">
   <link rel="stylesheet" href="css/luxe.css?v=261106">
@@ -386,7 +319,5 @@
   </script>
   <script src="js/traffic.js" defer></script>
   <script src="js/announce.js" defer></script>
-  <script src="js/site-menu.js?v=261103b" defer></script>
-  <script src="/js/coming-soon.js?v=261104h" defer></script>
 </body>
 </html>

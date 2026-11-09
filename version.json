@@ -1,12 +1,12 @@
 {
-  "version": "v261105.01 12:19a",
+  "version": "v261106.01 11:51p",
   "release": 1,
-  "sha": "d598a3d5",
-  "fullSha": "d598a3d5a65dbe1f2275d6917eb1c43854ca04af",
+  "sha": "80b304fa",
+  "fullSha": "80b304fa11238fffc6522ccc61cabab67ef8215c",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-04T16:18:49-08:00",
-  "commits": [{"sha":"d598a3d5","message":"Veil: stronger cream wash and glow behind the words for legibility","author":"Adi Marie"}]
+  "pushedAt": "2026-11-06T15:51:32-08:00",
+  "commits": [{"sha":"80b304fa","message":"Menu: Workshops & Courses opens the Training Grounds page; old hub address redirects","author":"Adi Marie"}]
 }
