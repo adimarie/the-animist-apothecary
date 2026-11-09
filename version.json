@@ -1,12 +1,12 @@
 {
-  "version": "v261109.10 10:14p",
-  "release": 10,
-  "sha": "677fa8c8",
-  "fullSha": "677fa8c8fd1f8d90b688f6a7f36e701a49e2b2b1",
+  "version": "v261109.11 10:36p",
+  "release": 11,
+  "sha": "f6f10d5e",
+  "fullSha": "f6f10d5e74400198a9a53155285b43547d7cd480",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-09T14:14:12-08:00",
-  "commits": [{"sha":"677fa8c8","message":"Veil: fresh script version on the portal page so the edge serves the new open list","author":"Adi Marie"}]
+  "pushedAt": "2026-11-09T14:36:27-08:00",
+  "commits": [{"sha":"f6f10d5e","message":"Begin Here hero: the words where she placed them with the arrange bar (no strokes painted yet)","author":"Adi Marie"}]
 }
