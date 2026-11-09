@@ -1,12 +1,12 @@
 {
-  "version": "v261109.07 7:58p",
-  "release": 7,
-  "sha": "25b3cf4b",
-  "fullSha": "25b3cf4b6c9409f24ebcd695d691e33d4b7274fa",
+  "version": "v261109.08 8:12p",
+  "release": 8,
+  "sha": "62cd8e13",
+  "fullSha": "62cd8e1393efa6675af609f5fbafb63673bc6e83",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-09T11:58:04-08:00",
-  "commits": [{"sha":"25b3cf4b","message":"Veil: two ways on every woven page — apply for a group first, then the list","author":"Adi Marie"}]
+  "pushedAt": "2026-11-09T12:12:17-08:00",
+  "commits": [{"sha":"62cd8e13","message":"Begin Here: rebuilt from her brief — how to begin, the path, reciprocity, one schedule, thank you, the note","author":"Adi Marie"}]
 }
