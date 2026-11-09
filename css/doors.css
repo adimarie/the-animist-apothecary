@@ -88,7 +88,9 @@
 .dr-schedule .aap-bk-offering--wide::before { content: none; display: none; }
 .dr-schedule .aap-bk-offering--wide:hover, .dr-schedule .aap-bk-offering--wide.is-on { border-color: #C9A84C; box-shadow: 0 0 0 1px #C9A84C inset, 0 18px 42px rgba(45,42,38,.13); }
 .dr-schedule .aap-bk-offering-media { grid-column: 1; grid-row: 1; min-height: 380px; background-size: cover; background-position: center; background-color: #F7F5F0; }
-.dr-schedule .aap-bk-offering[data-svc="intake-inquiry"] .aap-bk-offering-media { background-image: url('../images/uploads/download.jpg'); }
+.dr-schedule .aap-bk-offering[data-svc="intake-inquiry"] .aap-bk-offering-media { background-image: url('../images/uploads/door-village-circle-of-cushions.jpg'); }
+.dr-schedule .aap-bk-offering[data-svc="guidance-counsel"] .aap-bk-offering-media { background-image: url('../images/uploads/the-work-ceremony.jpg'); }
+.dr-schedule .aap-bk-offering[data-svc="divination"] .aap-bk-offering-media { background-image: url('../images/uploads/door-oracle-candles-on-water.jpg'); background-position: 50% 36%; }
 .dr-schedule .aap-bk-offering-body { grid-column: 2; grid-row: 1; display: flex; flex-direction: column; justify-content: center; padding: 3.2rem 3.6rem; }
 .dr-schedule .aap-bk-offering-name { font-size: 34px; line-height: 1.08; margin-top: .5rem; }
 .dr-schedule .aap-bk-offering-desc { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.2rem; line-height: 1.6; color: #3a3530; margin-top: .9rem; }
@@ -258,3 +260,46 @@
 @media (max-width: 900px) { .begin-doorways--three { grid-template-columns: 1fr !important; } }
 /* 2026-11-09: on phones the card picture keeps the same upright shape as on a laptop, so each picture shows the part she chose */
 @media (max-width: 820px) { .dr-terr-fig { aspect-ratio: 4 / 5; } }
+
+
+/* ---- Begin Here, rebuilt 2026-11-09 from her brief: how to begin → who this is for → the path → reciprocity → schedule → prepare → thank you → the note ---- */
+.dr-hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; margin-top: 2.1rem; }
+.dr-hero-actions a { font-family: 'Cinzel', serif; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: #F7F5F0; text-decoration: none; padding: .9rem 1.6rem; border: 1px solid rgba(247,245,240,.72); background: rgba(4,10,7,.42); }
+.dr-hero-actions a:hover { background: #C9A84C; border-color: #C9A84C; color: #2D2A26; }
+.dr-who { scroll-margin-top: 96px; }
+.dr-who h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2rem, 3.4vw, 2.8rem); line-height: 1.15; color: #2D2A26; margin: 0 0 1.5rem; text-wrap: balance; }
+.dr-who h2 em { font-style: italic; color: #8F6F2E; }
+.dr-who--alt { background: #F3EDE0; border-top: 1px solid rgba(201,168,76,.28); }
+.dr-who .dr-who-close { font-style: italic; color: #8F6F2E; margin-top: .4rem; }
+.dr-path li { scroll-margin-top: 96px; }
+.dr-path .go { display: inline-block; margin-top: 1rem; font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: #C9A84C; text-decoration: none; border-bottom: 1px solid rgba(201,168,76,.45); padding-bottom: 3px; }
+.dr-path .go:hover { color: #F4EAD3; border-color: #F4EAD3; }
+.dr-path details { margin-top: 1rem; border-top: 1px solid rgba(201,168,76,.3); padding-top: .8rem; }
+.dr-path summary { font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; color: #C9A84C; cursor: pointer; list-style: none; }
+.dr-path summary::-webkit-details-marker { display: none; }
+.dr-path summary::after { content: '  +'; }
+.dr-path details[open] summary::after { content: '  –'; }
+.dr-path details ul { list-style: none; margin: .7rem 0 0; padding: 0; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; line-height: 1.7; color: rgba(244,234,211,.9); }
+.dr-path .dr-open { max-width: 720px; margin: 2.6rem auto 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.15rem; line-height: 1.6; color: rgba(244,234,211,.8); }
+.dr-path .dr-open a { color: #DCC178; text-decoration: none; border-bottom: 1px solid rgba(220,193,120,.5); padding-bottom: 2px; }
+.dr-path .dr-open a:hover { color: #F4EAD3; border-color: #F4EAD3; }
+.dr-recip { padding: 4.8rem 1.5rem; text-align: center; background: #F3EDE0; border-top: 1px solid rgba(201,168,76,.28); scroll-margin-top: 96px; }
+.dr-recip-inner { max-width: 720px; margin: 0 auto; }
+.dr-recip .section-label { margin-bottom: 1.4rem; }
+.dr-recip p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.15rem, 1.6vw, 1.32rem); line-height: 1.75; color: #2D2A26; margin: 0 0 1.1rem; text-wrap: pretty; }
+.dr-recip .dr-tiers { font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .26em; text-transform: uppercase; color: #8F6F2E; margin: 1.5rem 0; }
+.dr-recip .dr-more { font-style: italic; margin: 0; }
+.dr-recip .dr-more a { color: #8F6F2E; text-decoration: none; border-bottom: 1px solid rgba(143,111,46,.45); padding-bottom: 2px; }
+.dr-recip .dr-more a:hover { color: #1F1A18; border-color: #1F1A18; }
+.dr-schedule { scroll-margin-top: 96px; }
+.dr-schedule .dr-pay-note { max-width: 640px; margin: 2.2rem auto 0; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.1rem; line-height: 1.6; color: rgba(247,245,240,.8); }
+.dr-thanks { padding: 5.5rem 1.5rem; text-align: center; background: #F3EDE0; border-top: 1px solid rgba(201,168,76,.28); border-bottom: 1px solid rgba(201,168,76,.28); }
+.dr-thanks-inner { max-width: 760px; margin: 0 auto; }
+.dr-thanks .section-label { margin-bottom: 1.4rem; }
+.dr-thanks p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(1.2rem, 1.7vw, 1.42rem); line-height: 1.7; color: #2D2A26; margin: 0 0 1.3rem; text-wrap: pretty; }
+.dr-thanks .dr-sign { font-style: italic; color: #8F6F2E; margin: 1.8rem 0 0; }
+#note .form-textarea--letter { min-height: 220px; }
+@media (max-width: 560px) {
+  .dr-recip, .dr-thanks { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .dr-hero-actions a { padding: .8rem 1.2rem; font-size: .62rem; }
+}

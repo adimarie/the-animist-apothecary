@@ -1,6 +1,6 @@
 # Inquiry form page editable content. Saves commit to GitHub via /studio/.
 # js/content-loader.js reads this and patches inquiry.html.
-# Form wiring is queued for Phase 3 (edge function, captcha, contact upsert, email templates).
+# The note posts to the intranet RPC submit_inquiry (wired 2026-05-27); emailing it onward to Adi Marie is the next wiring step (2026-11-09).
 
 hero:
   image: "/images/uploads/hero-inquiry-canopy.jpg"
@@ -13,7 +13,7 @@ hero:
 
 form_intro:
   title: "Tell us what <em>brings you</em>."
-  body: "If you're called to this work, write to us below. Every note is read by hand. We respond within 48 hours to set a quiet hour together."
+  body: "If you would rather write first, you are welcome to. What you write here reaches Adi Marie directly. Every note is read by hand, and we respond within 48 hours."
 
 form_labels:
   first_name: "First Name"

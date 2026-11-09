@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="css/lux.css?v=1">
   <link rel="stylesheet" href="css/elevate.css?v=261106">
   <link rel="stylesheet" href="css/luxe.css?v=261106">
-  <link rel="stylesheet" href="css/doors.css?v=261108">
+  <link rel="stylesheet" href="css/doors.css?v=261109i">
   <link rel="stylesheet" href="css/menu.css?v=261108">
   <link rel="stylesheet" href="css/still.css?v=261106">
 </head>
@@ -127,12 +127,29 @@
       <span class="hero-eyebrow" data-content="hero.eyebrow">Begin Here</span>
       <h1 class="hero-title" data-content="hero.title" data-content-type="html">It begins with <em>sitting together</em>.</h1>
       <p class="hero-subtitle" data-content="hero.subtitle">The Intake &amp; Inquiry is the Conversation &mdash; the threshold every deeper path shares.</p>
+      <!-- Two ways in, named in her brief: schedule, or write first. Labels are Claude's (2026-11-09), for her approval. -->
+      <div class="dr-hero-actions">
+        <a href="#schedule">Schedule to begin</a>
+        <a href="#note">Write first</a>
+      </div>
     </div>
   </section>
 
-  
-  <!-- BEGIN HERE: who this is for (her words, from the Shamanic Coaching page) -->
-  <section class="dr-who">
+  <!-- HOW TO BEGIN: the threshold and the intake process. Her words, dictated 2026-11-09; garble fixed only. -->
+  <section class="dr-who" id="how">
+    <div class="dr-who-inner">
+      <span class="section-label">How to begin</span>
+      <h2>This is a particular <em>threshold</em>.</h2>
+      <p>This is a closed community, and this is why we have the practices that we do to protect it. Each person here is screened, both for preparatory readiness and for an assessment of the orientation of their why, to make sure they will be a good fit for everyone who is affected by the collective that gathers.</p>
+      <p>This is a community that is affected by each member and participant. Many of us spend years together working on some of our most profound and intimate inner experiences, and we as a collective and as a community shape that growth and contribute to each other&rsquo;s lives directly or indirectly, from active engagement or just from sharing presence in the room.</p>
+      <p>And so it is really important for me to maintain a high-quality threshold, to ensure that what we are creating is safe for all those who enter in, and for the many generations to come.</p>
+      <!-- Connecting line, Claude 2026-11-09, for her approval -->
+      <p class="dr-who-close">The intake process is how that threshold is held. It begins with the Conversation.</p>
+    </div>
+  </section>
+
+  <!-- WHO THIS IS FOR (her words, from the Shamanic Coaching page) -->
+  <section class="dr-who dr-who--alt" id="who">
     <div class="dr-who-inner">
       <span class="section-label">Who this is for</span>
       <p>There is a particular threshold &mdash; when the gifts begin to wake, when the calling grows too loud to set down, when the work asks to come through you and into the world. That threshold is rarely meant to be crossed alone.</p>
@@ -140,50 +157,90 @@
     </div>
   </section>
 
-  <!-- BEGIN HERE: the path (connecting copy, Claude 2026-11-07, for Adi Marie's approval) -->
+  <!-- A PLACE WHERE ANYONE CAN BEGIN: layers of readiness, her order (2026-11-09). Card lines are Claude's shaping of her brief, for her approval. -->
   <section class="dr-path" id="path">
     <div class="dr-path-inner">
       <span class="section-label">The Path</span>
       <h2>A place where anyone can <em>begin</em>.</h2>
-      <p class="dr-lede">Every path through this work shares one door. The rest opens in its season.</p>
+      <p class="dr-lede">Layers of readiness, from the lightest touch to the long work. Each one opens on this page.</p>
       <ol>
-        <li><span class="num">I</span><a class="name" href="writings.html#letters">The Letters</a><p class="line">Read, when the season turns.</p></li>
-        <li><span class="num">II</span><a class="name" href="#conversation">The Conversation</a><p class="line">One Intake &amp; Inquiry &mdash; the door every deeper path shares.</p></li>
-        <li><span class="num">III</span><a class="name" href="divination-and-consultation.html">A Session</a><p class="line">A divination, or guidance and counsel.</p></li>
-        <li><span class="num">IV</span><a class="name" href="ceremonial-coaching.html#guidance">A Season</a><p class="line">Seasons of Change, or <a href="ceremonial-coaching.html" style="color:inherit">Shamanic Coaching</a> with ceremony.</p></li>
-        <li><span class="num">V</span><a class="name" href="training-grounds.html">The School</a><p class="line">The Training Grounds, on the wheel of the year.</p></li>
-        <li><span class="num">VI</span><a class="name" href="public-offerings.html">The Village</a><p class="line">Circles and gatherings; the deep work by application.</p></li>
+        <li id="step-letters"><span class="num">I</span><a class="name" href="index.html#subscribe">The Letters</a><p class="line">A place to stay in touch when you are not quite sure, but want to explore more and have more time to feel it out.</p><a class="go" href="index.html#subscribe">Receive the Letters</a></li>
+        <li id="step-session"><span class="num">II</span><a class="name" href="#schedule">A Single Session</a><p class="line">A divination, or one-on-one guidance and counsel. Single sessions that can be booked, a lighter threshold.</p><a class="go" href="#book-divination">Book a divination</a> &nbsp;&middot;&nbsp; <a class="go" href="#book-guidance-counsel">Guidance &amp; Counsel</a></li>
+        <li id="step-intake"><span class="num">III</span><a class="name" href="#book-intake-inquiry">The Intake</a><p class="line">The Intake &amp; Inquiry conversation has to happen for anything that comes next.</p><a class="go" href="#book-intake-inquiry">Schedule your intake</a></li>
+        <li id="step-solo"><span class="num">IV</span><a class="name" href="ceremonial-coaching.html">Solo Work</a><p class="line">The Shamanic Sanctuary. One-on-one containers, after the intake.</p>
+          <details><summary>Some of these offerings include</summary><ul><li>A Season of Change</li><li>The Metamorphic Year</li><li>Dagara Divinations</li><li>Oracular Mediumship</li></ul></details>
+          <a class="go" href="ceremonial-coaching.html">Enter the Sanctuary</a></li>
+        <li id="step-group"><span class="num">V</span><a class="name" href="public-offerings.html">Group Work</a><p class="line">The Village. Gatherings and ceremony in community, after the intake.</p>
+          <details><summary>Some of these offerings include</summary><ul><li>Rites of Passage</li><li>Ritual &amp; Ceremony</li><li>Wellness Gatherings</li><li>Community Firesides</li></ul></details>
+          <a class="go" href="public-offerings.html">Enter the Village</a></li>
+        <li id="step-training"><span class="num">VI</span><a class="name" href="training-grounds.html">The Training Grounds</a><p class="line">The Conservatory. Courses, trainings and workshops, after the intake.</p>
+          <details><summary>Some of these offerings include</summary><ul><li>Spirit Mediation</li><li>Ceremonialist Training</li><li>Mythopoetic Being</li><li>How to Journey</li></ul></details>
+          <a class="go" href="training-grounds.html">Enter the Conservatory</a></li>
       </ol>
+      <p class="dr-open">The Library and The Well are open to all, with no threshold to cross. <a href="writings.html">Enter the Library &amp; The Well</a></p>
     </div>
   </section>
 
-  <!-- BEGIN HERE: the Conversation scheduler (booking widget, Intake & Inquiry) -->
-  <section class="dr-schedule" id="conversation">
+  <!-- SACRED RECIPROCITY, the small section under the path. Her words (2026-11-09); the tier line names her four tiers; no amount anywhere. -->
+  <section class="dr-recip" id="reciprocity">
+    <div class="dr-recip-inner">
+      <span class="section-label">Sacred Reciprocity</span>
+      <p>These are all paid sessions, and they do require financial contribution, for the sustainability and equitability of this work.</p>
+      <p>The work moves on a sliding scale. You choose the tier that is true for you.</p>
+      <p class="dr-tiers">Accessibility &middot; Community &middot; Abundance &middot; Patron</p>
+      <p class="dr-more">To learn more about the valuation of this work and this financial model, <a href="sacred-reciprocity.html">read Sacred Reciprocity</a>.</p>
+    </div>
+  </section>
+
+  <!-- SCHEDULE TO BEGIN: one master widget. Session first, then the day and hour, then the tier, then Venmo. -->
+  <section class="dr-schedule" id="schedule">
     <div class="dr-schedule-inner">
-      <span class="section-label">The Conversation</span>
-      <h2>Begin with the <em>Conversation</em>.</h2>
-      <p class="dr-lede">Find an open hour on Adi Marie&rsquo;s calendar, share what brings you, and offer your reciprocity &mdash; on a sliding scale, whichever tier is true for you.</p>
+      <span class="section-label">Schedule to begin</span>
+      <h2>Choose your session, then your <em>hour</em>.</h2>
+      <p class="dr-lede">Pick the session, find an open hour on Adi Marie&rsquo;s calendar, and choose the tier that is true for you.</p>
       <div id="booking-calendar"
-           data-services="intake-inquiry"
-           data-category-label="The Conversation"
+           data-services="intake-inquiry,guidance-counsel,divination"
+           data-category-label="Your session"
            data-card-layout="wide"
            data-coming-soon=""
            data-venmo="TheAnimistApothecary"></div>
+      <!-- Payment line: her ask is "complete payment at the time of booking"; the one-hour automatic release is not built yet, so the page does not promise it. -->
+      <p class="dr-pay-note">Reciprocity is completed by Venmo at the time of booking. Your hour is confirmed once it arrives.</p>
     </div>
   </section>
 
-  <!-- FORM SECTION: the First Note -->
+  <!-- PREPARATORY INSTRUCTIONS. Her words (2026-11-09). -->
+  <section class="dr-who" id="prepare">
+    <div class="dr-who-inner">
+      <span class="section-label">Preparatory instructions</span>
+      <p>Some of these sessions require follow-up, supplementary intake, or documents. All of it is sent by email once your hour is held.</p>
+    </div>
+  </section>
+
+  <!-- THANK YOU. Her words, dictated 2026-11-09; garble fixed only. -->
+  <section class="dr-thanks" id="thanks">
+    <div class="dr-thanks-inner">
+      <span class="section-label">Thank you</span>
+      <p>Thank you for participating in this great experiment that is present and upon us, impressing itself upon us at these times. Together, as a larger, broader collective, I believe that we can take all of the wisdom and the pains and the lessons that we have individually and collectively learned, and alchemize them, and transmute them, to help heal and mend the great rift and rupture that has been imposed upon and by humankind.</p>
+      <p>And I believe that in you participating in this work, a part of you believes that too.</p>
+      <p>It is my humble, profound honor and gratitude for the part of you that feels, for the depths and fullness of you that feel resonance and a call to be part of this great effort that wishes to express itself through each of us, and us all.</p>
+      <p class="dr-sign">&mdash; Adi Marie</p>
+    </div>
+  </section>
+
+  <!-- ON A MORE PERSONAL NOTE: a correspondence that reaches her. -->
   <section class="booking-section" id="note" style="background: #F7F5F0;">
     <div class="booking-inner">
       <div class="booking-intro">
-        <span class="section-label">Or write first</span>
+        <span class="section-label">On a more personal note</span>
         <h2 class="section-title" data-content="form_intro.title" data-content-type="html">Tell us what <em>brings you</em>.</h2>
         <div class="section-body" style="max-width: 560px; margin: 0 auto;">
-          <p data-content="form_intro.body">If you're called to this work, write to us below. Every note is read by hand. We respond within 48 hours to set a quiet hour together.</p>
+          <!-- Claude 2026-11-09, for her approval -->
+          <p data-content="form_intro.body">If you would rather write first, you are welcome to. What you write here reaches Adi Marie directly. Every note is read by hand, and we respond within 48 hours.</p>
         </div>
       </div>
 
-      <!-- Form is not yet wired. Submit handler in js/main.js currently shows a confirmation only; Phase 3 wiring (edge function, captcha, email templates, contact upsert with do-not-include-in-retreats tag) is queued. -->
+      <!-- The note sends to the intranet's submit_inquiry RPC (see the script below). Emailing it onward to Adi Marie is the next wiring step. -->
       <form id="booking-form">
 
         <div class="form-row">
@@ -211,88 +268,15 @@
         <div class="form-divider"></div>
 
         <div class="form-group">
+          <label class="form-label" for="carrying" data-content="form_labels.carrying_label">What are you carrying? What are you seeking?</label>
+          <textarea class="form-textarea form-textarea--letter" id="carrying" name="carrying" rows="9" placeholder="Where you are, what you're navigating, what you're hoping to find. There is no wrong thing to say — only the true thing."></textarea>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
           <label class="form-label" for="referral" data-content="form_labels.referral_label">How did you find out about The Animist Apothecary?</label>
           <input class="form-input" type="text" id="referral" name="referral" placeholder="Referral, social, search, word of mouth...">
-        </div>
-
-        <div class="form-divider"></div>
-
-        <div class="form-group">
-          <label class="form-label" for="carrying" data-content="form_labels.carrying_label">What are you carrying? What are you seeking?</label>
-          <textarea class="form-textarea" id="carrying" name="carrying" placeholder="Where you are, what you're navigating, what you're hoping to find. There is no wrong thing to say — only the true thing."></textarea>
-        </div>
-
-        <div class="form-divider"></div>
-
-        <div class="form-group">
-          <label class="form-label" for="aligned" data-content="form_labels.aligned_label">What about this work feels aligned for you?</label>
-          <textarea class="form-textarea" id="aligned" name="aligned"></textarea>
-        </div>
-
-        <div class="form-divider"></div>
-
-        <div class="form-group">
-          <label class="form-label" data-content="form_labels.offerings_label">What are you looking for? (Select all that apply.)</label>
-          <div class="checkbox-grid">
-              <label class="check-label"><input type="checkbox" name="offerings" value="divination_consultation"> Divination &amp; Consultation</label>
-              <label class="check-label"><input type="checkbox" name="offerings" value="spiritual_development"> Spiritual Development &mdash; Seasons of Change</label>
-              <label class="check-label"><input type="checkbox" name="offerings" value="shamanic_coaching"> Shamanic Coaching</label>
-              <label class="check-label"><input type="checkbox" name="offerings" value="community"> Community &mdash; circles &amp; gatherings</label>
-              <label class="check-label"><input type="checkbox" name="offerings" value="training_grounds"> Training Grounds &mdash; the School</label>
-              <label class="check-label"><input type="checkbox" name="offerings" value="immersions_retreats"> Immersions &amp; Retreats</label>
-              <label class="check-label"><input type="checkbox" name="offerings" value="not_sure"> Not sure yet &mdash; help me find my entry point</label>
-            </div>
-        </div>
-
-        <div class="form-divider"></div>
-
-        <div class="form-group">
-          <label class="form-label" data-content="form_labels.format_label">How would you like to work?</label>
-          <div class="radio-group">
-            <label class="radio-label">
-              <input type="radio" name="format" value="solo">
-              Solo — just me
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="format" value="group">
-              Group — with others
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="format" value="both">
-              Both — open to either
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="format" value="not_sure">
-              Not sure yet
-            </label>
-          </div>
-        </div>
-
-        <div class="form-divider"></div>
-
-        <div class="form-group">
-          <label class="form-label" data-content="form_labels.timing_label">Time-sensitivity</label>
-          <div class="radio-group">
-            <label class="radio-label">
-              <input type="radio" name="timing" value="steady">
-              Steady, exploring
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="timing" value="active">
-              Actively needing support soon
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="timing" value="other">
-              Other
-            </label>
-          </div>
-        </div>
-
-        <div class="form-divider"></div>
-
-        <div class="form-group">
-          <label class="form-label" for="care" data-content="form_labels.care_label">Anything important to know to meet you with care?</label>
-          <textarea class="form-textarea" id="care" name="care"></textarea>
         </div>
 
         <div class="form-submit">
@@ -353,7 +337,7 @@
   <!-- ============================================================
        INQUIRY FORM WIRING — submits to the intranet Supabase project
        via submit_inquiry() SECURITY DEFINER RPC. Lands in
-       /intranet/participants/inquiries for Adi to read and respond to.
+       /intranet/participants/inquiries for Adi Marie to read and respond to.
        ============================================================ -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/intranet-client.js"></script>
@@ -384,7 +368,7 @@
         var care       = (fd.get('care')       || '').toString().trim();
         var offerings  = fd.getAll('offerings').map(function (v) { return String(v); });
 
-        // Build a readable message that preserves every field for Adi.
+        // Build a readable message that preserves every field for Adi Marie.
         var msgParts = [];
         if (carrying) msgParts.push("What's bringing you here:\n" + carrying);
         if (aligned)  msgParts.push("What feels aligned:\n" + aligned);
@@ -407,7 +391,7 @@
           if (result && result.ok) {
             if (btn) { btn.textContent = 'Message sent ✓'; btn.style.background = '#4A6344'; }
             if (note) {
-              note.textContent = "Thank you. Your note has reached Adi. You'll hear back within 48 hours.";
+              note.textContent = "Thank you. Your note has reached Adi Marie. You'll hear back within 48 hours.";
               note.style.color = '#5B7553';
             }
             // Disable all inputs after success
