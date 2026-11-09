@@ -2143,6 +2143,8 @@
     body[data-content-page="home"] .process-container--split { grid-template-columns: minmax(520px, 2fr) minmax(300px, .8fr) !important; max-width: 1480px !important; }
     body[data-content-page="home"] .process-image-frame { min-height: 0 !important; aspect-ratio: 4 / 3; background-size: cover !important; }
     @media (max-width: 880px) { body[data-content-page="home"] .process-image-frame { aspect-ratio: 4 / 3; min-height: 0 !important; max-height: none !important; } }
+    /* 2026-11-09 fix: the two-column rule above also held on phones, pushing the doorways off the right edge; one column again below 880px */
+    @media (max-width: 880px) { body[data-content-page="home"] .process-container--split { grid-template-columns: minmax(0, 1fr) !important; } }
     /* Water, Milk, and Honey — a full-width linen bar (2026-11-08) */
     body[data-content-page="home"] .section-newsletter.nl-bar { min-height: 0 !important; display: block !important; padding: 0 1.5rem 5.5rem !important; background: var(--parchment-deep, #E8E5DC) !important; border: 0; text-align: center !important; }
     body[data-content-page="home"] .section-process { padding-bottom: 3.5rem !important; }
@@ -2226,8 +2228,87 @@
     body[data-content-page="home"] .section-the-work .section-label, body[data-content-page="home"] .work-path-eyebrow, body[data-content-page="home"] .work-path-cta, body[data-content-page="home"] .testimonial-author, body[data-content-page="home"] .testimonial-author span, body[data-content-page="home"] .begin-doorway-eyebrow, body[data-content-page="home"] .begin-doorway-cta, body[data-content-page="home"] .newsletter-intake-link { color: #7D6126 !important; }
     body[data-content-page="home"] .newsletter-intake-link { border-bottom-color: rgba(125, 97, 38, .45) !important; }
     body[data-content-page="home"] .section-story .story-text .story-evolution strong, body[data-content-page="home"] .section-practitioner .practitioner-serves-quote .practitioner-serves-epigraph { color: #8F6F2E !important; }
+      /* 2026-11-09 — the seam between Begin and the letters card (her ask): the fern photograph's shadow ran past the
+       section's edge and was cut in a hard line where the next section began. The shadow now ends inside its own
+       section, and there is more air before the card. Both sections share one ground, so nothing shows at the join. */
+    body[data-content-page="home"] .process-image-frame { box-shadow: 0 14px 30px rgba(45,42,38,.12), 0 3px 8px rgba(45,42,38,.07) !important; }
+    body[data-content-page="home"] .section-process { padding-bottom: 6.5rem !important; }
+    @media (max-width: 880px) { body[data-content-page="home"] .section-process { padding-bottom: 3.5rem !important; } }
+    /* The three ways (2026-11-09, her ask): her lists, in two columns of points under one fine line; and every part of the
+       three cards (label, title, paragraph, line, points, door) rests on the same line across the row. The cards share
+       the row tracks of the grid they sit in, so the longest paragraph sets where the line falls for all three. */
+    body[data-content-page="home"] .work-path-desc { margin-bottom: 1.5rem !important; }
+    body[data-content-page="home"] .work-path-bullets { display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; grid-auto-flow: column !important; grid-template-rows: repeat(var(--rows, 4), auto) !important; column-gap: 1.25rem !important; row-gap: .55rem !important; align-content: start !important; padding-top: 1.2rem !important; margin: 0 0 1.9rem !important; border-top: 1px solid rgba(201,168,76,.4) !important; flex-grow: 0 !important; }
+    body[data-content-page="home"] .work-path-bullets li { margin: 0 !important; font-size: .97rem !important; line-height: 1.38 !important; color: #3D3A36 !important; }
+    body[data-content-page="home"] .work-path-bullets li::before { top: -.22rem !important; }
+    /* no moving parts: the card no longer lifts, nor its picture swells, under the pointer (the lift also knocked the hovered card off the shared lines) */
+    body[data-content-page="home"] .work-path:hover { transform: none !important; }
+    body[data-content-page="home"] .work-path:hover .work-path-image { transform: none !important; }
+    /* on a phone the cards are too narrow for two columns of names without breaking them; one column there */
+    @media (max-width: 980px) { body[data-content-page="home"] .work-path-bullets { grid-template-columns: minmax(0, 1fr) !important; grid-auto-flow: row !important; grid-template-rows: none !important; } }
+    @supports (grid-template-rows: subgrid) {
+      @media (min-width: 981px) {
+        body[data-content-page="home"] .the-work-paths { row-gap: 0 !important; }
+        body[data-content-page="home"] .work-path { display: grid !important; grid-template-rows: subgrid !important; grid-row: span 6 !important; }
+        body[data-content-page="home"] .work-path > * { min-width: 0; }
+        body[data-content-page="home"] .work-path-desc { align-self: start !important; }
+        body[data-content-page="home"] .work-path-cta { align-self: end !important; margin-top: 0 !important; }
+      }
+    }
+    /* the two sections meet on a fraction of a pixel, which let a hairline of the lighter page ground show through; the letters section now laps one pixel over the one above */
+    body[data-content-page="home"] .section-newsletter.nl-bar { margin-top: -1px !important; padding-top: 1px !important; }
+
+    /* ===== TYPE PASS 261108 (her ask: "the copy, text, and type") — one lettering system for Home. LOCAL until she says go.
+       Faces: Cinzel = the name and the menu only. Cormorant SC = every small label and link label.
+       Cormorant Garamond = headings and reading text. Tangerine = the two script titles.
+       1. The two parallel section heads match (they were 57px/regular and 46px/light).
+       2. Small labels: one face, one size, one weight, one gold (the six cards used Cinzel at 10px in a paler gold).
+       3. Reading text: no sentence under 18px on a laptop or 17.6px on a phone. The two-column lists keep their size on a
+          laptop (any larger and a fourth name wraps) but go from light to regular; in one column they go to 17px. ===== */
+    html body[data-content-page="home"] .the-work-title,
+    html body[data-content-page="home"] .dr-terr-head h2 { font-weight: 300 !important; font-size: clamp(2.25rem, 4.2vw, 3.6rem) !important; line-height: 1.08 !important; letter-spacing: -.008em !important; }
+    html body[data-content-page="home"] .dr-terr-head p { color: #5A554C !important; }
+
+    html body[data-content-page="home"] .work-path-eyebrow,
+    html body[data-content-page="home"] .begin-doorway-eyebrow,
+    html body[data-content-page="home"] .dr-terr-door { font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important; font-size: .75rem !important; font-weight: 500 !important; letter-spacing: .22em !important; text-transform: uppercase !important; color: #7D6126 !important; }
+    html body[data-content-page="home"] .work-path-cta,
+    html body[data-content-page="home"] .begin-doorway-cta,
+    html body[data-content-page="home"] .dr-terr-enter { font-family: 'Cormorant SC', 'Cormorant Garamond', serif !important; font-size: .8rem !important; font-weight: 500 !important; letter-spacing: .2em !important; text-transform: uppercase !important; color: #7D6126 !important; }
+    html body[data-content-page="home"] .dr-terr-enter { border-bottom-color: rgba(125, 97, 38, .45) !important; }
+    html body[data-content-page="home"] .dr-terr-enter:hover { color: #2D2A26 !important; border-bottom-color: #2D2A26 !important; }
+    html body[data-content-page="home"] .section-practitioner .section-label,
+    html body[data-content-page="home"] .section-process .section-label { color: #7D6126 !important; }
+
+    html body[data-content-page="home"] .work-path-desc { font-size: 1.125rem !important; line-height: 1.55 !important; }
+    html body[data-content-page="home"] .work-path-bullets li { font-weight: 400 !important; }
+    @media (max-width: 980px) { html body[data-content-page="home"] .work-path-bullets li { font-size: 1.06rem !important; } }
+    html body[data-content-page="home"] .section-process .section-body { font-size: 1.125rem !important; line-height: 1.65 !important; }
+    html body[data-content-page="home"] .begin-doorway-desc { font-size: 1.1rem !important; line-height: 1.5 !important; }
+    html body[data-content-page="home"] .section-cta .cta-body-text { font-size: 1.125rem !important; }
+    html body[data-content-page="home"] .section-cta .cta-button-note { font-size: .95rem !important; }
+    html body[data-content-page="home"] .nl-bar .newsletter-body { font-size: 1.125rem !important; }
+    html body[data-content-page="home"] .section-newsletter .newsletter-trust,
+    html body[data-content-page="home"] .section-newsletter .newsletter-trust span,
+    html body[data-content-page="home"] .section-newsletter .newsletter-trust .newsletter-intake-link { font-size: .92rem !important; }
+    @media (max-width: 880px) {
+      html body[data-content-page="home"] .section-story .story-text p,
+      html body[data-content-page="home"] .section-practitioner .practitioner-content-home p,
+      html body[data-content-page="home"] .section-practitioner .practitioner-serves-stanza { font-size: 1.1rem !important; }
+    }
+    /* ===== end TYPE PASS 261108 ===== */
+      /* ===== 2026-11-09 morning — the three ways, simplified (her ask): one lead-in line in her words, four offerings each,
+       and "for more" on each Enter line. The hairline now sits above the lead-in. Two columns only where every name
+       fits on one line (wide laptops); one column below that. ===== */
+    html body[data-content-page="home"] .work-path-lead { display: block !important; font-family: 'Cormorant Garamond', serif !important; font-style: italic !important; font-weight: 400 !important; font-size: 1.06rem !important; line-height: 1.4 !important; color: #5A554C !important; border-top: 1px solid rgba(201,168,76,.4) !important; padding-top: 1.2rem !important; margin: 0 0 .8rem !important; }
+    html body[data-content-page="home"] .work-path-bullets { border-top: 0 !important; padding-top: 0 !important; row-gap: .6rem !important; }
+    html body[data-content-page="home"] .work-path-bullets li { font-size: 1.06rem !important; font-weight: 400 !important; }
+    @media (max-width: 1239px) { html body[data-content-page="home"] .work-path-bullets { grid-template-columns: minmax(0, 1fr) !important; grid-auto-flow: row !important; grid-template-rows: none !important; } }
+    @supports (grid-template-rows: subgrid) { @media (min-width: 981px) { html body[data-content-page="home"] .work-path { grid-row: span 7 !important; } } }
+    /* three narrow cards side by side: the longer "for more" line stays on one line */
+    @media (min-width: 981px) and (max-width: 1239px) { html body[data-content-page="home"] .work-path-cta { font-size: .75rem !important; letter-spacing: .1em !important; } }
   </style>
-  <link rel="stylesheet" href="css/doors.css?v=261108">
+  <link rel="stylesheet" href="css/doors.css?v=261109h">
   <link rel="stylesheet" href="css/menu.css?v=261108">
   <link rel="stylesheet" href="css/still.css?v=261106">
 </head>
@@ -2265,6 +2346,7 @@
               <li><a href="divination-and-consultation.html#divination">Dagara Divinations</a></li>
               <li><a href="divination-and-consultation.html#bodywork">Shamanic Bodywork</a></li>
               <li><a href="divination-and-consultation.html#mediumship">Oracular Mediumship</a></li>
+              <li><a href="divination-and-consultation.html#ritual-prescriptions">Ritual Prescriptions</a></li>
             </ul>
           </li>
           <li class="has-sub"><a href="public-offerings.html">The Village</a>
@@ -2343,8 +2425,8 @@
       </div>
     </div>
   </section>
-  <!-- arrange mode (local tool, not shipped): with ?arrange=1 this loads js/hero-arrange.dev.js if it exists on this machine -->
-  <script>if(/[?&]arrange=1\b/.test(location.search)){var s=document.createElement('script');s.src='js/hero-arrange.dev.js?t='+Date.now();document.body.appendChild(s);}</script>
+  <!-- local tools (not shipped; each loads only if its file exists on this machine): ?arrange=1 the hero arrange bar, ?ground=1 the chooser for the picture behind the six cards, ?pictures=1 the picture switcher on the nine cards -->
+  <script>(function(q){[['arrange','js/hero-arrange.dev.js'],['ground','js/terr-ground.dev.js'],['pictures','js/card-pictures.dev.js']].forEach(function(p){if(new RegExp('[?&]'+p[0]+'=1\\b').test(q)){var s=document.createElement('script');s.src=p[1]+'?t='+Date.now();document.body.appendChild(s);}});})(location.search);</script>
 
 
   <!-- &mdash;&mdash;&mdash; METAMORPHOSIS &mdash;&mdash;&mdash; -->
@@ -2390,41 +2472,46 @@
           <span class="work-path-eyebrow">One-on-One Containers</span>
           <h3 class="work-path-title">Solo Work</h3>
           <p class="work-path-desc">The path that is singularly your own. Guidance, mentorship, spiritual development, personal immersions &mdash; a hand on the unique path that is exclusively and singularly your own. Investment in the development of your life, your soul path, and the burgeoning of who and what you are.</p>
-          <ul class="work-path-bullets">
-            <li>Shamanic Sanctuary</li>
-            <li>Oracular Divinations</li>
+          <span class="work-path-lead">Some of these offerings include:</span>
+          <ul class="work-path-bullets" style="--rows:2">
+            <li>A Season of Change</li>
+            <li>The Metamorphic Year</li>
+            <li>Dagara Divinations</li>
+            <li>Oracular Mediumship</li>
           </ul>
-          <span class="work-path-cta">Enter the Sanctuary</span>
+          <span class="work-path-cta">Enter the Sanctuary for more</span>
         </a>
         <a href="public-offerings.html" class="work-path">
           <div class="work-path-image-wrap">
-            <div class="work-path-image" style="background-image: url('images/uploads/the-work-seasons.jpg'); background-position: center center;"></div>
+            <div class="work-path-image" style="background-image: url('images/uploads/the-work-group-embrace.jpg'); background-position: 50% 86% !important;"></div>
           </div>
           <span class="work-path-eyebrow">Communal Containers</span>
           <h3 class="work-path-title">Group Work</h3>
           <p class="work-path-desc">Where the village remembers itself. The work we do in relational fields, in community and in relationship &mdash; because some wounds can only be mended relationally, as that is how they occurred, and some works require the communal field to mend. We are meant to be in community.</p>
-          <ul class="work-path-bullets">
+          <span class="work-path-lead">Some of these offerings include:</span>
+          <ul class="work-path-bullets" style="--rows:2">
             <li>Rites of Passage</li>
             <li>Ritual &amp; Ceremony</li>
-            <li>Community Firesides</li>
             <li>Wellness Gatherings</li>
-            <li>Speaking Engagements</li>
+            <li>Community Firesides</li>
           </ul>
-          <span class="work-path-cta">Enter the Village</span>
+          <span class="work-path-cta">Enter the Village for more</span>
         </a>
         <a href="training-grounds.html" class="work-path">
           <div class="work-path-image-wrap">
             <div class="work-path-image" style="background-image: url('images/uploads/the-work-training.jpg'); background-position: center 55%;"></div>
           </div>
           <span class="work-path-eyebrow">The Conservatory</span>
-          <h3 class="work-path-title">The School</h3>
+          <h3 class="work-path-title">The Training Grounds</h3>
           <p class="work-path-desc">A place of skill and technical development &mdash; for those in devotion to artisan craftsmanship with their spiritual gifts, in relationship to ritual and ceremony; developing as practitioners and technicians, skilled in roles of service, restoration, and practice.</p>
-          <ul class="work-path-bullets">
-            <li>Courses</li>
-            <li>Trainings</li>
-            <li>Workshops</li>
+          <span class="work-path-lead">Some of these offerings include:</span>
+          <ul class="work-path-bullets" style="--rows:2">
+            <li>Spirit Mediation</li>
+            <li>Ceremonialist Training</li>
+            <li>Mythopoetic Being</li>
+            <li>How to Journey</li>
           </ul>
-          <span class="work-path-cta">Enter the Conservatory</span>
+          <span class="work-path-cta">Enter the Conservatory for more</span>
         </a>
       </div>
     </div>
@@ -2495,7 +2582,7 @@
     </script>
   </section>
 
-  <!-- THE TERRITORIES (2026-11-08, her ask): what you'll find inside — one linen card per door, its rooms listed in drop-down order; her lines from each page; lede is mine (flagged) -->
+  <!-- THE TERRITORIES (2026-11-08, her ask): what you'll find inside — one linen card per door. 2026-11-09: headings and lines are her dictation of that evening, arranged (not rewritten) by me; the Village card leaves out Etiquette & Decorum and Speaking Engagements (still in the menu and on the page); lede is mine (flagged) -->
   <div class="dr-terr-wrap">
   <section class="dr-terr-head" id="territories">
     <h2>What you&rsquo;ll find inside.</h2>
@@ -2506,57 +2593,57 @@
     <div class="dr-terr-text">
       <span class="dr-terr-door">About</span>
       <h2>A ministry, a foundation, <em>a conservatory</em>.</h2>
-      <p class="dr-terr-line">Awakening more fully to the ever-present beauty of creation upon this world.</p>
+      <p class="dr-terr-line">Awakening more fully to the ever-present beauty and miracle of creation that exists as and suffuses throughout this world.</p>
       <ul class="dr-terr-rooms"><li><a href="about.html#covenant">The Ministry</a></li><li><a href="about.html#foundation">The Foundation</a></li><li><a href="about.html#school">The Conservatory</a></li><li><a href="about.html#premise">Our Mission</a></li><li><a href="about.html#founder">Our Founder</a></li><li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li></ul>
-      <a class="dr-terr-enter" href="about.html">Enter the Apothecary</a>
+      <a class="dr-terr-enter" href="about.html">Learn About the Animist Apothecary</a>
     </div>
   </section>
   <section class="dr-terr">
-    <figure class="dr-terr-fig" style="--terr-pos:center 55%"><img src="images/worlds/hearth-vista.jpg" alt="Red canyon walls in late light" loading="lazy" decoding="async"></figure>
+    <figure class="dr-terr-fig" style="--terr-pos:50% 98%"><img src="images/uploads/door-sanctuary-spiral-well.jpg" alt="A stone spiral stair descending into an old well, grown over with ivy" loading="lazy" decoding="async"></figure>
     <div class="dr-terr-text">
       <span class="dr-terr-door">Shamanic Sanctuary</span>
-      <h2>A season of change, held for the one you are <em>becoming</em>.</h2>
-      <p class="dr-terr-line">Counsel woven with in-person ceremony, across the seasons of your becoming.</p>
-      <ul class="dr-terr-rooms"><li><a href="ceremonial-coaching.html#season-of-change">A Season of Change</a></li><li><a href="ceremonial-coaching.html#metamorphic-year">The Metamorphic Year</a></li><li><a href="ceremonial-coaching.html#coaching">Ceremonially Assisted Coaching</a></li><li><a href="ceremonial-coaching.html#guidance">Spiritual Guidance &amp; Development</a></li></ul>
+      <h2>Deep transformational containers, held and shaped and made <em>with and for you</em>.</h2>
+      <p class="dr-terr-line">For those who are here for deep, life-altering change. These containers are meant to be quantum leap containers, where the timeline and trajectory of one&rsquo;s life is forever altered for the betterment and well-being of their life.</p>
+      <ul class="dr-terr-rooms"><li><a href="ceremonial-coaching.html#season-of-change">A Season of Change</a></li><li><a href="ceremonial-coaching.html#metamorphic-year">The Metamorphic Year</a></li><li><a href="ceremonial-coaching.html#guidance">Spiritual Guidance &amp; Development</a></li><li><a href="ceremonial-coaching.html#coaching">Ceremonially Assisted Coaching</a></li></ul>
       <a class="dr-terr-enter" href="ceremonial-coaching.html">Enter the Sanctuary</a>
     </div>
   </section>
   <section class="dr-terr">
-    <figure class="dr-terr-fig" style="--terr-pos:center 45%"><img src="images/worlds/oracle-vista.jpg" alt="A night sky over a dark valley" loading="lazy" decoding="async"></figure>
+    <figure class="dr-terr-fig" style="--terr-pos:50% 36%"><img src="images/uploads/door-oracle-candles-on-water.jpg" alt="Candles floating on dark water among moss and petals" loading="lazy" decoding="async"></figure>
     <div class="dr-terr-text">
       <span class="dr-terr-door">Oracular Divinations</span>
-      <h2>It begins with <em>sitting together</em>.</h2>
-      <p class="dr-terr-line">A sacred conversation between you, your Spirit, your Ancestors, and the elemental forces that walk with you.</p>
-      <ul class="dr-terr-rooms"><li><a href="divination-and-consultation.html#divination">Dagara Divinations</a></li><li><a href="divination-and-consultation.html#bodywork">Shamanic Bodywork</a></li><li><a href="divination-and-consultation.html#mediumship">Oracular Mediumship</a></li></ul>
+      <h2>To sit in query and counsel with the ancestral, elemental, and <em>celestial planes</em>.</h2>
+      <p class="dr-terr-line">A sacred conversation between your Spirit, your Ancestors, the elements, the celestials, and your guides. A form of receiving counsel from otherworldly forces.</p>
+      <ul class="dr-terr-rooms"><li><a href="divination-and-consultation.html#divination">Dagara Divinations</a></li><li><a href="divination-and-consultation.html#bodywork">Shamanic Bodywork</a></li><li><a href="divination-and-consultation.html#mediumship">Oracular Mediumship</a></li><li><a href="divination-and-consultation.html#ritual-prescriptions">Ritual Prescriptions</a></li></ul>
       <a class="dr-terr-enter" href="divination-and-consultation.html">Enter the Oracle</a>
     </div>
   </section>
   <section class="dr-terr">
-    <figure class="dr-terr-fig" style="--terr-pos:center 60%"><img src="images/worlds/village-vista.jpg" alt="The roots and branches of an enormous banyan tree" loading="lazy" decoding="async"></figure>
+    <figure class="dr-terr-fig" style="--terr-pos:50% 100%"><img src="images/uploads/door-village-circle-of-cushions.jpg" alt="Cushions set in a circle around candles and a woven mat" loading="lazy" decoding="async"></figure>
     <div class="dr-terr-text">
       <span class="dr-terr-door">The Village</span>
-      <h2>Where the village <em>remembers itself</em>.</h2>
-      <p class="dr-terr-line">The open doorways of the Apothecary: sessions, gatherings, workshops, and divinations.</p>
-      <ul class="dr-terr-rooms"><li><a href="public-offerings.html#kinship">Entheogenically Awakened Society</a></li><li><a href="public-offerings.html#etiquette">Etiquette &amp; Decorum</a></li><li><a href="public-offerings.html#rites">Rites of Passage</a></li><li><a href="public-offerings.html#gather">Ritual &amp; Ceremony</a></li><li><a href="public-offerings.html#firesides">Community Firesides</a></li><li><a href="public-offerings.html#wellness">Wellness Gatherings</a></li><li><a href="public-offerings.html#speaking">Speaking Engagements</a></li></ul>
+      <h2>Where community becomes <em>family</em>.</h2>
+      <p class="dr-terr-line">The work that we do as individuals becomes the work that we do as a community, and informs and shapes our culture for the many generations to come.</p>
+      <ul class="dr-terr-rooms"><li><a href="public-offerings.html#kinship">Entheogenically Awakened Society</a></li><li><a href="public-offerings.html#rites">Rites of Passage</a></li><li><a href="public-offerings.html#gather">Ritual &amp; Ceremony</a></li><li><a href="public-offerings.html#firesides">Community Firesides</a></li><li><a href="public-offerings.html#wellness">Wellness Gatherings</a></li></ul>
       <a class="dr-terr-enter" href="public-offerings.html">Enter the Village</a>
     </div>
   </section>
   <section class="dr-terr">
-    <figure class="dr-terr-fig" style="--terr-pos:center 50%"><img src="images/worlds/school-vista.jpg" alt="Books, candles and stones laid out for study" loading="lazy" decoding="async"></figure>
+    <figure class="dr-terr-fig" style="--terr-pos:50% 0%"><img src="images/uploads/door-conservatory-blue-dome.jpg" alt="A blue and gold painted dome above carved arches" loading="lazy" decoding="async"></figure>
     <div class="dr-terr-text">
       <span class="dr-terr-door">The Conservatory</span>
-      <h2>Three depths of <em>commitment</em>.</h2>
-      <p class="dr-terr-line">Courses are the longest form and the fullest devotion to the craft. Trainings are shorter in term. Workshops are a single day, or two to three.</p>
+      <h2>A place for experiential, embodied <em>learning</em>.</h2>
+      <p class="dr-terr-line">To remember things that were lost, to bring forth the inheritance that is ours, and to carry forward the tools and skills and recoherence to become the elders for future times.</p>
       <ul class="dr-terr-rooms"><li><a href="training-grounds.html#courses">Courses</a></li><li><a href="training-grounds.html#trainings">Trainings</a></li><li><a href="training-grounds.html#workshops-list">Workshops</a></li></ul>
       <a class="dr-terr-enter" href="training-grounds.html">Enter the Conservatory</a>
     </div>
   </section>
   <section class="dr-terr">
-    <figure class="dr-terr-fig" style="--terr-pos:center 40%"><img src="images/worlds/library-vista.jpg" alt="A reading table by a window" loading="lazy" decoding="async"></figure>
+    <figure class="dr-terr-fig" style="--terr-pos:50% 100%"><img src="images/uploads/door-library-hands-and-roots.jpg" alt="Hands lifting roots toward the light in a forest" loading="lazy" decoding="async"></figure>
     <div class="dr-terr-text">
       <span class="dr-terr-door">The Library &amp; The Well</span>
-      <h2>Direct revelation, and all we have made <em>of it</em>.</h2>
-      <p class="dr-terr-line">The Well is direct, first-person revelatory experience; the Library is the aggregate of human interpretation, study and narrative, to which we are contributories.</p>
+      <h2>Where the web grows, and we share the bounty of <em>our harvest</em>.</h2>
+      <p class="dr-terr-line">A place where we collectively gather learning resources and other practitioners. Supplemental resources, and things beyond the Apothecary.</p>
       <ul class="dr-terr-rooms"><li><a href="writings.html#water-milk-honey">Water, Milk, and Honey</a></li><li><a href="writings.html#essays">Essays &amp; Writings</a></li><li><a href="writings.html#shelf">The Library</a></li><li><a href="writings.html#letters">The Well</a></li></ul>
       <a class="dr-terr-enter" href="writings.html">Enter the Library</a>
     </div>

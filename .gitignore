@@ -98,3 +98,11 @@ dist/
 
 # local-only hero arrange tool
 js/hero-arrange.dev.js
+
+# local-only chooser for the picture behind the six territory cards, and its working folder
+js/terr-ground.dev.js
+images/territories/
+
+# local-only picture switcher for the Home cards, and the working folder of candidate pictures
+js/card-pictures.dev.js
+images/candidates/
