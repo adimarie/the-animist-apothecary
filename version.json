@@ -1,12 +1,12 @@
 {
-  "version": "v261109.03 1:40a",
-  "release": 3,
-  "sha": "529d0593",
-  "fullSha": "529d0593be5fa4cb757a3b8768911eb6b3b3c520",
+  "version": "v261109.04 1:59a",
+  "release": 4,
+  "sha": "97b52c68",
+  "fullSha": "97b52c68b4ede32fb9978f82a565dd6a064580d8",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-08T17:40:34-08:00",
-  "commits": [{"sha":"529d0593","message":"Manage-booking page opens so the booking emails' links land on a working page","author":"Adi Marie"}]
+  "pushedAt": "2026-11-08T17:59:29-08:00",
+  "commits": [{"sha":"97b52c68","message":"Home: her deepened hero shade, small fixes in the photograph, gold labels that read","author":"Adi Marie"}]
 }
