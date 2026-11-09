@@ -51,7 +51,23 @@
     dayKey: null,             // "YYYY-MM-DD" in clientTz
     slot: null,               // {start,end}
     tier: null,               // tier object
+    prepared: false,          // the before-your-session step confirmed
+    applyingFor: null,        // "solo" | "group" | "training" when arriving from an apply link
+    applyingLabel: null,      // what they chose, shown on the confirmation
   };
+
+  // What someone has typed into the details step survives a re-render.
+  var formMemo = {};
+  var FORM_IDS = ["bk-first", "bk-last", "bk-email", "bk-phone", "bk-applying", "bk-carrying", "bk-care", "bk-referral"];
+  function keepForm() {
+    FORM_IDS.forEach(function (id) { var el = document.getElementById(id); if (el) formMemo[id] = el.value; });
+  }
+  function restoreForm() {
+    FORM_IDS.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && formMemo[id] != null && formMemo[id] !== "") el.value = formMemo[id];
+    });
+  }
 
   // ---- Boot ----------------------------------------------------------------
   if (document.readyState === "loading") {
@@ -73,26 +89,37 @@
     loadCatalog()
       .then(function () {
         render();
+        fillPrepMount();
         openFromHash();
         window.addEventListener("hashchange", openFromHash);
+        // A second click on the same link changes no hash, so answer the click itself.
+        document.addEventListener("click", function (e) {
+          var a = e.target && e.target.closest ? e.target.closest('a[href^="#apply-"],a[href^="#book-"]') : null;
+          if (a && a.getAttribute("href") === location.hash) { e.preventDefault(); openFromHash(); }
+        });
       })
       .catch(function (err) {
         renderFatal(
-          "The booking calendar couldn't load right now. Please refresh, or write to Adi at hello@theanimistapothecary.com.",
+          "The booking calendar couldn't load right now. Please refresh, or write to Adi Marie at hello@theanimistapothecary.com.",
           err
         );
       });
   }
 
   // A link such as #book-intake-inquiry opens that card (same page or from elsewhere).
+  // A link such as #apply-group opens the Intake & Inquiry with "Group Work" already chosen.
+  var APPLY = { solo: "Solo Work", group: "Group Work", training: "The Training Grounds" };
   function openFromHash() {
-    var m = /^#book-([a-z0-9-]+)$/.exec(location.hash || "");
+    var hash = location.hash || "";
+    var a = /^#apply-(solo|group|training)$/.exec(hash);
+    var m = a ? [hash, "intake-inquiry"] : /^#book-([a-z0-9-]+)$/.exec(hash);
     if (!m) return;
     var s = catalog.find(function (x) { return x.slug === m[1]; });
     if (!s) return;
     var changed = !sel.service || sel.service.id !== s.id;
     sel.service = s;
-    if (changed) { sel.dayKey = null; sel.slot = null; sel.tier = null; }
+    if (changed) { sel.dayKey = null; sel.slot = null; sel.tier = null; sel.prepared = false; }
+    if (a) { sel.applyingFor = a[1]; formMemo["bk-applying"] = APPLY[a[1]]; }
     sel._scroll = false;
     render();
     paintMonthGrid();
@@ -218,6 +245,7 @@
   // ---- Render: shell -------------------------------------------------------
   function render() {
     if (!sel.service && catalog.length === 1) sel.service = catalog[0];
+    keepForm();
     var html = "";
     html += stepOffering();
     if (sel.service) {
@@ -229,12 +257,14 @@
       } else {
         html += stepDay();
         if (sel.dayKey) html += stepHour();
-        if (sel.slot) html += stepTier();
+        if (sel.slot) html += stepPrepare();
+        if (sel.slot && sel.prepared) html += stepTier();
         if (sel.tier) html += stepDetails();
       }
     }
     root.innerHTML = '<div class="aap-bk-card">' + html + "</div>";
     bindShell();
+    restoreForm();
     // Bring the newest revealed step into view (not on first paint).
     if (sel.service) {
       var active = root.querySelector(".aap-bk-step--active:last-of-type");
@@ -320,7 +350,7 @@
   }
 
   function renderMonthGridLoading() {
-    return '<div class="aap-bk-loadrow"><span class="aap-bk-spin"></span> Reading Adi’s calendar…</div>';
+    return '<div class="aap-bk-loadrow"><span class="aap-bk-spin"></span> Reading Adi Marie’s calendar…</div>';
   }
 
   function paintMonthGrid() {
@@ -403,12 +433,76 @@
     return section("hour", head + body, true);
   }
 
-  // ---- Step 4: tier --------------------------------------------------------
-  function stepTier() {
-    var chosen = sel.tier ? sel.tier.tier_name : "";
-    var head = stepHeader(4, "Your reciprocity", chosen, !!sel.slot && !sel.tier);
+  // ---- Step 4: before your session ----------------------------------------
+  // Her ask (2026-11-09): once the hour is chosen, show what must be completed
+  // before the session, with a check mark to confirm, before reciprocity.
+  // Every line below is in her own words: PREP_COMMON from her booking notes,
+  // the Divination lines and the cancellation terms from her Divination page.
+  // Intake & Inquiry and Guidance & Counsel have no lines of their own yet.
+  var PREP_COMMON = [
+    "Please find a space to be comfortable where we may sit and connect in the depth of what brings you to this work, without distraction. Also, it is highly recommended to attend these sessions on a laptop or desktop, and not on a cellular or tablet device.",
+    "Please complete payment in full at the time of booking your session."
+  ];
+  var PREP = {
+    "divination": [
+      "Reflect on two to three areas of life where you seek clarity or support.",
+      "Bring a quarter or .25 cent coin, perhaps a journal, a recording device (we can also record on Zoom), and get comfortable.",
+      "You’re welcome to have nearby any sacred items (stones, photos, heirlooms, etc.) you’d like to keep close."
+    ]
+  };
+  var PREP_DOCS = "Some of these sessions require follow-up, supplementary intake, or documents. All of it is sent by email once your hour is held.";
+  var TERMS = [
+    ["More than 1 week before", "Full cancellation, full refund"],
+    ["Within 3–7 days", "Reschedule only, no cancellation"],
+    ["Within 48 hours or no-show", "Forfeit of session & reciprocity"]
+  ];
+  function prepItems(slug) { return (PREP[slug] || []).concat(PREP_COMMON); }
+  function prepList(slug, cls) {
+    return '<ul class="' + (cls || "aap-bk-prep") + '">' +
+      prepItems(slug).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>";
+  }
+  function termsBlock() {
+    return '<details class="aap-bk-terms"><summary>Cancellation &amp; reschedule</summary>' +
+      "<p>Life moves. Please give as much notice as you’re able.</p><dl>" +
+      TERMS.map(function (t) { return "<dt>" + esc(t[0]) + "</dt><dd>" + esc(t[1]) + "</dd>"; }).join("") +
+      "</dl></details>";
+  }
+
+  // On the page itself: one drop-down per session with what to complete beforehand.
+  function fillPrepMount() {
+    var mount = document.querySelector("[data-aap-prep]");
+    if (!mount) return;
+    mount.innerHTML = catalog.map(function (s) {
+      return "<details><summary>" + esc(s.name) + "</summary>" + prepList(s.slug, "dr-prep-items") + "</details>";
+    }).join("");
+  }
+
+  function stepPrepare() {
+    var head = stepHeader(4, "Before your session", sel.prepared ? "Confirmed" : "", !!sel.slot && !sel.prepared);
     var body =
-      '<p class="aap-bk-quiet aap-bk-tier-intro">A sliding scale, offered in trust. Choose what is true for you now.</p>' +
+      '<p class="aap-bk-quiet aap-bk-prep-intro">Things you must complete before your ' + esc(sel.service.name) + ".</p>" +
+      prepList(sel.service.slug) +
+      '<p class="aap-bk-quiet aap-bk-prep-note">' + esc(PREP_DOCS) + "</p>" +
+      termsBlock() +
+      '<label class="aap-bk-checkrow' + (sel.prepared ? " is-on" : "") + '">' +
+      '<input type="checkbox" id="bk-prepared"' + (sel.prepared ? " checked" : "") + ">" +
+      "<span>I have read this, and I will complete it before my session.</span>" +
+      "</label>";
+    return section("prepare", head + body, true);
+  }
+
+  function fmtAmount(cents) {
+    var n = Math.round((cents || 0) / 100);
+    return "$" + n.toLocaleString("en-US");
+  }
+
+  // ---- Step 5: tier --------------------------------------------------------
+  // Her ask (2026-11-09): the sliding scale shown with its amounts.
+  function stepTier() {
+    var chosen = sel.tier ? sel.tier.tier_name + " · " + fmtAmount(sel.tier.min_amount_cents) : "";
+    var head = stepHeader(5, "Your reciprocity", chosen, sel.prepared && !sel.tier);
+    var body =
+      '<p class="aap-bk-quiet aap-bk-tier-intro">This work is offered through a sliding scale. Choose the tier that’s true for you — considering resources, stability, and the value you feel you’re receiving.</p>' +
       '<div class="aap-bk-tiers">';
     (sel.service.tiers || []).forEach(function (t) {
       var on = sel.tier && sel.tier.id === t.id;
@@ -417,15 +511,39 @@
         '" data-tier="' + esc(t.id) + '">' +
         (t.tier_eyebrow ? '<span class="aap-bk-tier-eyebrow">' + esc(t.tier_eyebrow) + "</span>" : "") +
         '<span class="aap-bk-tier-name">' + esc(t.tier_name) + "</span>" +
+        '<span class="aap-bk-tier-amt">' + fmtAmount(t.min_amount_cents) + "</span>" +
         "</button>";
     });
-    body += "</div>";
+    body += "</div>" +
+      '<div class="aap-bk-tier-notes">' +
+      "<p>You’re welcome to offer within or beyond these rates as feels aligned — balancing accessibility, appreciation, and capacity.</p>" +
+      "<p>Note: I hold a limited number of Accessibility and Community rate sessions each season. These are made possible through Patron and Abundance offerings.</p>" +
+      '<p>If these tiers are currently beyond your means, please take a moment to review the <a href="/sacred-reciprocity.html" target="_blank" rel="noopener">Sacred Reciprocity</a> page, and then ' +
+      (document.getElementById("note") ? '<a href="#note">reach out</a>' : "reach out") +
+      " so we can find a sustainable path together.</p>" +
+      "</div>";
     return section("tier", head + body, true);
   }
 
-  // ---- Step 5: details + intake -------------------------------------------
+  // ---- Step 6: details + intake -------------------------------------------
+  // The Intake & Inquiry is the application to what comes after it; ask which.
+  function applyingField() {
+    if (!sel.service || sel.service.slug !== "intake-inquiry") return "";
+    var chosen = sel.applyingFor ? APPLY[sel.applyingFor] : "";
+    var opts = [APPLY.solo, APPLY.group, APPLY.training, "I’m not sure yet"];
+    return field(
+      "What are you applying for?",
+      '<select class="aap-bk-input aap-bk-select" id="bk-applying">' +
+      '<option value="">Choose one</option>' +
+      opts.map(function (o) {
+        return '<option value="' + esc(o) + '"' + (o === chosen ? " selected" : "") + ">" + esc(o) + "</option>";
+      }).join("") +
+      "</select>"
+    );
+  }
+
   function stepDetails() {
-    var head = stepHeader(5, "Your details", "", true);
+    var head = stepHeader(6, "Your details", "", true);
     var body =
       '<div class="aap-bk-form" id="aap-bk-form">' +
       row(
@@ -436,6 +554,7 @@
         field("Email", '<input class="aap-bk-input" id="bk-email" type="email" autocomplete="email" required>') +
         field("Phone <em>(optional)</em>", '<input class="aap-bk-input" id="bk-phone" type="tel" autocomplete="tel">')
       ) +
+      applyingField() +
       field(
         "What’s bringing you to this session?",
         '<textarea class="aap-bk-textarea" id="bk-carrying" rows="3" placeholder="Where you are, what you’re navigating, what you’re hoping to find. There is no wrong thing to say — only the true thing."></textarea>'
@@ -451,19 +570,22 @@
       '<div class="aap-bk-summary">' + summaryLine() + "</div>" +
       '<div class="aap-bk-err" id="bk-error" hidden></div>' +
       '<button type="button" class="aap-bk-submit" id="bk-submit">Hold this hour &rarr;</button>' +
-      '<p class="aap-bk-fineprint">Your hour is held the moment you confirm — reciprocity is sent by Venmo on the next screen. ' +
-      "A confirmation lands in your inbox right away.</p>" +
+      '<p class="aap-bk-fineprint">You must complete payment at the time of booking, as a personal transfer through Venmo, on the next screen. ' +
+      "If payment is not received within an hour, your appointment is cancelled. A confirmation lands in your inbox right away.</p>" +
       "</div>";
     return section("details", head + body, true);
   }
 
-  function summaryLine() {
+  function summaryLine(withApplying) {
     return (
       '<div class="aap-bk-summary-row"><span>Offering</span><strong>' + esc(sel.service.name) + "</strong></div>" +
       '<div class="aap-bk-summary-row"><span>When</span><strong>' + esc(prettyDay(sel.dayKey)) + ", " + fmtTime(sel.slot.start, clientTz) +
       " &ndash; " + fmtTime(sel.slot.end, clientTz) + "</strong></div>" +
       '<div class="aap-bk-summary-row"><span>Length</span><strong>' + fmtDuration(sel.service.duration_minutes) + "</strong></div>" +
-      '<div class="aap-bk-summary-row"><span>Reciprocity</span><strong>' + esc(sel.tier.tier_name) + "</strong></div>"
+      '<div class="aap-bk-summary-row"><span>Reciprocity</span><strong>' + esc(sel.tier.tier_name) + " · " + fmtAmount(sel.tier.min_amount_cents) + "</strong></div>" +
+      (withApplying && sel.applyingLabel
+        ? '<div class="aap-bk-summary-row"><span>Applying for</span><strong>' + esc(sel.applyingLabel) + "</strong></div>"
+        : "")
     );
   }
 
@@ -527,6 +649,7 @@
   function submit() {
     var first = val("bk-first"), last = val("bk-last"), email = val("bk-email");
     var phone = val("bk-phone"), carrying = val("bk-carrying"), care = val("bk-care"), referral = val("bk-referral");
+    var applying = val("bk-applying");
     var errEl = document.getElementById("bk-error");
 
     function fail(msg) {
@@ -535,9 +658,11 @@
     if (errEl) errEl.hidden = true;
 
     if (!first || !last) return fail("Please share your first and last name.");
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return fail("Please enter a valid email so Adi can reach you.");
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return fail("Please enter a valid email so Adi Marie can reach you.");
 
     var noteParts = [];
+    if (applying) noteParts.push("Applying for: " + applying);
+    sel.applyingLabel = applying || null;
     if (carrying) noteParts.push("What’s bringing them:\n" + carrying);
     if (care) noteParts.push("To meet them with care:\n" + care);
     if (referral) noteParts.push("Found via: " + referral);
@@ -577,7 +702,8 @@
     // Analytics only; wrapped so it can never disturb the booking flow.
     try { if (window.aapTrack) window.aapTrack('booking', { service: sel.service && sel.service.name }); } catch (e) {}
     var amount = sel.tier.min_amount_cents / 100;
-    var memo = who.first + " — " + sel.service.name + " " + shortDate(sel.slot.start, clientTz);
+    // Her structure for the Venmo note: [Session] – [Date] – [Name]
+    var memo = sel.service.name + " – " + shortDate(sel.slot.start, clientTz) + " – " + who.name;
     var venmoUser = cfg.venmo;
     var payLink =
       "https://venmo.com/u/" + encodeURIComponent(venmoUser) +
@@ -595,29 +721,40 @@
       '<div class="aap-bk-confirm-mark">✓</div>' +
       '<p class="aap-bk-confirm-eyebrow">The hour is held</p>' +
       "<h3 class=\"aap-bk-confirm-title\">" + esc(who.first) + ", your <em>" + esc(sel.service.name) + "</em> is set.</h3>" +
-      '<div class="aap-bk-summary aap-bk-summary--confirm">' + summaryLine() + "</div>" +
+      '<div class="aap-bk-summary aap-bk-summary--confirm">' + summaryLine(true) + "</div>" +
       (res.google_event_created
-        ? '<p class="aap-bk-quiet aap-bk-center">It’s on Adi’s calendar, and a confirmation with the meeting link is on its way to your inbox.</p>'
+        ? '<p class="aap-bk-quiet aap-bk-center">It’s on Adi Marie’s calendar, and a confirmation with the meeting link is on its way to your inbox.</p>'
         : '<p class="aap-bk-quiet aap-bk-center">A confirmation with the meeting link is on its way to your inbox.</p>') +
       '<div class="aap-bk-pay">' +
       '<p class="aap-bk-pay-label">Complete your reciprocity</p>' +
-      '<p class="aap-bk-pay-amount">' + esc(sel.tier.tier_name) + "</p>" +
+      '<p class="aap-bk-pay-amount">' + fmtAmount(sel.tier.min_amount_cents) + '<span class="aap-bk-pay-tier">' + esc(sel.tier.tier_name) + "</span></p>" +
+      '<p class="aap-bk-quiet aap-bk-center aap-bk-pay-rule">You must complete payment at the time of booking, as a personal transfer through Venmo. If payment is not received within an hour, your appointment is cancelled.</p>' +
       '<a class="aap-bk-pay-btn" href="' + payLink + '" target="_blank" rel="noopener">Pay with Venmo &nearr;</a>' +
       '<p class="aap-bk-pay-handle">to <strong>@' + esc(venmoUser) + "</strong></p>" +
       '<div class="aap-bk-pay-memo">' +
-      '<span class="aap-bk-pay-memo-label">Please add this note:</span>' +
+      '<span class="aap-bk-pay-memo-label">Please use this exact structure in your note &mdash; Session &ndash; Date &ndash; Your name:</span>' +
       '<span class="aap-bk-pay-memo-val" id="bk-memo">' + esc(memo) + "</span>" +
       '<button type="button" class="aap-bk-copy" data-copy="' + esc(memo) + '">Copy</button>' +
       "</div>" +
       '<details class="aap-bk-qr"><summary>Show QR code</summary>' +
       '<img src="' + qr + '" alt="Venmo QR code to pay @' + esc(venmoUser) + '" width="180" height="180"></details>' +
-      '<p class="aap-bk-quiet aap-bk-center aap-bk-pay-fine">Your place is held now. Adi confirms reciprocity by hand once it arrives.</p>' +
+      '<p class="aap-bk-quiet aap-bk-center aap-bk-pay-fine">Your place is held now. Adi Marie confirms reciprocity by hand once it arrives.</p>' +
+      "</div>" +
+      '<div class="aap-bk-after">' +
+      '<p class="aap-bk-after-label">Before your session</p>' +
+      prepList(sel.service.slug) +
+      '<p class="aap-bk-quiet aap-bk-prep-note">' + esc(PREP_DOCS) + "</p>" +
       "</div>" +
       (manage ? '<a class="aap-bk-manage" href="' + manage + '">Need to change or cancel? Manage your booking</a>' : "") +
       "</div>";
     root.innerHTML = html;
     bindConfirm();
-    root.scrollIntoView({ behavior: "auto", block: "start" });
+    formMemo = {};
+    // The page may answer a booking (Begin Here shows its thank-you beneath).
+    try { document.dispatchEvent(new CustomEvent("aap:booked", { detail: { service: sel.service.slug } })); } catch (e) {}
+    var header = document.querySelector(".site-header");
+    var offset = (header ? header.offsetHeight : 90) + 16;
+    window.scrollTo({ top: root.getBoundingClientRect().top + window.scrollY - offset, behavior: "auto" });
   }
 
   // ---- Event binding -------------------------------------------------------
@@ -628,7 +765,7 @@
         if (!s) return;
         var changed = !sel.service || sel.service.id !== s.id;
         sel.service = s;
-        if (changed) { sel.dayKey = null; sel.slot = null; sel.tier = null; }
+        if (changed) { sel.dayKey = null; sel.slot = null; sel.tier = null; sel.prepared = false; }
         sel._scroll = true;
         render();
         paintMonthGrid();
@@ -656,6 +793,7 @@
 
     if (sel.service) paintMonthGrid();
     bindSlotButtons();
+    bindPrepare();
     bindTierButtons();
     bindDetails();
   }
@@ -666,6 +804,7 @@
         sel.dayKey = b.dataset.day;
         sel.slot = null;
         sel.tier = null;
+        sel.prepared = false;
         sel._scroll = true;
         render();
       });
@@ -678,10 +817,22 @@
         var entry = monthCache[sel.service.slug + ":" + sel.viewYear + "-" + pad(sel.viewMonth + 1)];
         var slots = (entry && entry.byDay[sel.dayKey]) || [];
         sel.slot = slots.find(function (s) { return s.start === b.dataset.slot; }) || null;
+        sel.prepared = false;
         sel.tier = null;
         sel._scroll = true;
         render();
       });
+    });
+  }
+
+  function bindPrepare() {
+    var box = document.getElementById("bk-prepared");
+    if (!box) return;
+    box.addEventListener("change", function () {
+      sel.prepared = !!box.checked;
+      if (!sel.prepared) sel.tier = null;
+      sel._scroll = sel.prepared;
+      render();
     });
   }
 
@@ -857,7 +1008,29 @@
       ".aap-bk-tier.is-on{border-color:var(--bk-gold);box-shadow:0 0 0 1px var(--bk-gold) inset;background:#fff;}",
       ".aap-bk-tier-eyebrow{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bk-gold);font-weight:600;}",
       ".aap-bk-tier-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;font-weight:600;}",
-      ".aap-bk-tier-amt{font-size:20px;font-weight:600;color:var(--bk-bark);}",
+      ".aap-bk-prep{margin:10px 0 0;padding:0 0 0 1.15em;font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;line-height:1.55;color:var(--bk-bark);}",
+      ".aap-bk-prep li{margin:0 0 6px;}",
+      ".aap-bk-checkrow{display:flex;align-items:flex-start;gap:12px;margin-top:16px;padding:14px 16px;border:1px solid var(--bk-line);border-radius:11px;background:var(--bk-paper);cursor:pointer;font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;line-height:1.45;}",
+      ".aap-bk-checkrow.is-on{border-color:var(--bk-gold);box-shadow:0 0 0 1px var(--bk-gold) inset;}",
+      ".aap-bk-checkrow input{width:18px;height:18px;margin:3px 0 0;accent-color:#C9A84C;flex:none;}",
+      ".aap-bk-pay-tier{display:block;font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-family:Inter,system-ui,sans-serif;font-weight:600;margin-top:6px;opacity:.85;}",
+      ".aap-bk-pay-rule{margin:0 auto 14px;max-width:34em;color:var(--bk-gold-pale)!important;}",
+      ".aap-bk-tier-amt{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-weight:600;color:var(--bk-bark);margin-top:2px;}",
+      ".aap-bk-prep-intro{margin:0;}",
+      ".aap-bk-prep-note{margin:12px 0 0;}",
+      ".aap-bk-terms{margin:14px 0 0;border-top:1px solid var(--bk-line);border-bottom:1px solid var(--bk-line);}",
+      ".aap-bk-terms summary{cursor:pointer;padding:12px 0;font-size:12px;letter-spacing:.07em;text-transform:uppercase;font-weight:600;color:var(--bk-quiet);}",
+      ".aap-bk-terms p{margin:0 0 10px;font-family:'Cormorant Garamond',Georgia,serif;font-size:17px;line-height:1.5;color:var(--bk-bark);}",
+      ".aap-bk-terms dl{margin:0 0 14px;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:14px;line-height:1.45;}",
+      ".aap-bk-terms dt{font-weight:600;color:var(--bk-bark);}",
+      ".aap-bk-terms dd{margin:0;color:var(--bk-quiet);}",
+      ".aap-bk-tier-notes{margin:16px 0 0;}",
+      ".aap-bk-tier-notes p{margin:0 0 8px;font-size:14px;line-height:1.55;color:var(--bk-quiet);}",
+      ".aap-bk-tier-notes a{color:var(--bk-bark);text-decoration:underline;text-underline-offset:3px;}",
+      "select.aap-bk-select{appearance:auto;-webkit-appearance:menulist;height:auto;}",
+      ".aap-bk-after{text-align:left;max-width:420px;margin:22px auto 0;padding:18px 20px;border:1px solid var(--bk-line);border-radius:13px;}",
+      ".aap-bk-after-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--bk-gold);font-weight:600;margin:0 0 4px;}",
+      "@media(max-width:560px){.aap-bk-terms dl{grid-template-columns:1fr;gap:0;}.aap-bk-terms dd{margin:0 0 9px;}}",
       // embedded Google appointment scheduler
       ".aap-bk-sched-intro{margin:2px 0 20px;}",
       ".aap-bk-sched-panel{border:1px solid var(--bk-line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 12px 38px rgba(45,42,38,0.11);}",

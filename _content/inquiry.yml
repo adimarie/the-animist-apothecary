@@ -3,13 +3,14 @@
 # The note posts to the intranet RPC submit_inquiry (wired 2026-05-27); emailing it onward to Adi Marie is the next wiring step (2026-11-09).
 
 hero:
-  image: "/images/uploads/hero-inquiry-canopy.jpg"
-  image_alt: "Imagery for the first note, the inquiry page at The Animist Apothecary."
+  image: "/images/uploads/hero-begin-serpent.jpg"
+  image_alt: "The patterned skin of a serpent, close up: cream, gold and brown scales."
   image_position: "center"
   image_size: "cover"
   eyebrow: "Begin Here"
-  title: "It begins with <em>sitting together</em>."
-  subtitle: "The Intake & Inquiry is the Conversation — the threshold every deeper path shares."
+  # The title and subtitle carry the same line spans as the HTML, so the loader keeps the hand-placed line breaks.
+  title: '<span class="ht ht-1">It begins with</span><span class="ht ht-2"><em>sitting together</em>.</span>'
+  subtitle: '<span class="hs">The Intake &amp; Inquiry is the Conversation &mdash;</span> <span class="hs">the threshold every deeper path shares.</span>'
 
 form_intro:
   title: "Tell us what <em>brings you</em>."

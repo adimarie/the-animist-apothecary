@@ -13,15 +13,40 @@
   <title>Begin Here &middot; The Animist Apothecary</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Cinzel:wght@400;500;600;700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/uploads/hero-begin-serpent.jpg?v=1" fetchpriority="high">
   <link rel="stylesheet" href="css/styles.css?v=v32">
   <link rel="stylesheet" href="css/site-header.css?v=v29">
   <link rel="stylesheet" href="css/lux.css?v=1">
   <link rel="stylesheet" href="css/elevate.css?v=261106">
   <link rel="stylesheet" href="css/luxe.css?v=261106">
-  <link rel="stylesheet" href="css/doors.css?v=261109i">
+  <link rel="stylesheet" href="css/doors.css?v=261109j">
   <link rel="stylesheet" href="css/menu.css?v=261108">
   <link rel="stylesheet" href="css/still.css?v=261106">
+  <!-- The hero shows all at once: a plain cover sits over it until the picture is decoded and the five faces are ready (3 s cap), then lifts in one step. No motion. -->
+  <script>
+  (function () {
+    var d = document.documentElement;
+    if (!window.Promise || !document.fonts || !document.fonts.load) return;
+    d.classList.add('hero-hold');
+    var done = false;
+    function lift() { if (done) return; done = true; d.classList.remove('hero-hold'); try { performance.mark('hero-shown'); } catch (e) {} }
+    var pic = new Promise(function (ok) {
+      var i = new Image();
+      i.onerror = ok;
+      i.onload = function () { if (!i.decode) return ok(); i.decode().then(ok, ok); setTimeout(ok, 300); };
+      i.src = 'images/uploads/hero-begin-serpent.jpg?v=1';
+    });
+    var words = 'Begin Here. It begins with sitting together. The Intake & Inquiry is the Conversation, the threshold every deeper path shares. Schedule to begin. Write first.';
+    var faces = ['500 1em Cinzel', '400 1em "Cormorant Garamond"', 'italic 500 1em "Cormorant Garamond"', '400 1em Tangerine', '500 1em "Cormorant SC"']
+      .map(function (f) { return document.fonts.load(f, words).then(null, function () {}); });
+    Promise.all([pic].concat(faces)).then(lift);
+    setTimeout(lift, 3000);
+  })();
+  </script>
+  <style>
+    html.hero-hold body[data-content-page="inquiry"] .bh-hero::before { content: '' !important; display: block !important; position: absolute; inset: 0; z-index: 10; background: rgba(247,245,240,.995); pointer-events: none; }
+  </style>
 </head>
 <body data-content-page="inquiry">
 
@@ -114,26 +139,28 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="lx-hero hero-fullbleed">
-    <span class="lx-frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-    <div class="hero-image" role="img" style="background-image: url('images/uploads/hero-inquiry-canopy.jpg');"
-         aria-label="Imagery for the first note, the inquiry page at The Animist Apothecary."
+  <!-- HERO: her picture (2026-11-09, "for now"), nothing laid over it. Words and buttons are placed by --hx/--hy/--hs and --bx/--by/--bs in doors.css. Button labels are Claude's (2026-11-09), for her approval. -->
+  <section class="hero-fullbleed bh-hero">
+    <div class="hero-image" role="img"
+         aria-label="The patterned skin of a serpent, close up: cream, gold and brown scales."
          data-content="hero.image" data-content-type="image"
          data-content-alt="hero.image_alt"
          data-content-bgpos="hero.image_position"
          data-content-bgsize="hero.image_size"></div>
-    <div class="hero-content">
-      <span class="hero-eyebrow" data-content="hero.eyebrow">Begin Here</span>
-      <h1 class="hero-title" data-content="hero.title" data-content-type="html">It begins with <em>sitting together</em>.</h1>
-      <p class="hero-subtitle" data-content="hero.subtitle">The Intake &amp; Inquiry is the Conversation &mdash; the threshold every deeper path shares.</p>
-      <!-- Two ways in, named in her brief: schedule, or write first. Labels are Claude's (2026-11-09), for her approval. -->
-      <div class="dr-hero-actions">
-        <a href="#schedule">Schedule to begin</a>
-        <a href="#note">Write first</a>
+    <div class="hero-overlay">
+      <div class="hero-overlay-inner">
+        <span class="hero-eyebrow" data-content="hero.eyebrow">Begin Here</span>
+        <h1 class="hero-title" data-content="hero.title" data-content-type="html"><span class="ht ht-1">It begins with</span><span class="ht ht-2"><em>sitting together</em>.</span></h1>
+        <p class="hero-subtitle" data-content="hero.subtitle" data-content-type="html"><span class="hs">The Intake &amp; Inquiry is the Conversation &mdash;</span> <span class="hs">the threshold every deeper path shares.</span></p>
+        <div class="hero-cta-row">
+          <a href="#schedule" class="hero-btn hero-btn-primary">Schedule to begin</a>
+          <a href="#note" class="hero-btn hero-btn-secondary">Write first</a>
+        </div>
       </div>
     </div>
   </section>
+  <!-- local tool (not shipped; loads only if its file exists on this machine): ?arrange=1 the hero arrange bar (words, buttons, darken, highlight) -->
+  <script>(function(q){if(/[?&]arrange=1\b/.test(q)){var s=document.createElement('script');s.src='js/hero-arrange.dev.js?t='+Date.now();document.body.appendChild(s);}})(location.search);</script>
 
   <!-- HOW TO BEGIN: the threshold and the intake process. Her words, dictated 2026-11-09; garble fixed only. -->
   <section class="dr-who" id="how">
@@ -164,18 +191,18 @@
       <h2>A place where anyone can <em>begin</em>.</h2>
       <p class="dr-lede">Layers of readiness, from the lightest touch to the long work. Each one opens on this page.</p>
       <ol>
-        <li id="step-letters"><span class="num">I</span><a class="name" href="index.html#subscribe">The Letters</a><p class="line">A place to stay in touch when you are not quite sure, but want to explore more and have more time to feel it out.</p><a class="go" href="index.html#subscribe">Receive the Letters</a></li>
+        <li id="step-letters"><span class="num">I</span><a class="name" href="#letters">The Letters</a><p class="line">A place to stay in touch when you are not quite sure, but want to explore more and have more time to feel it out.</p><a class="go" href="#letters">Receive the Letters</a></li>
         <li id="step-session"><span class="num">II</span><a class="name" href="#schedule">A Single Session</a><p class="line">A divination, or one-on-one guidance and counsel. Single sessions that can be booked, a lighter threshold.</p><a class="go" href="#book-divination">Book a divination</a> &nbsp;&middot;&nbsp; <a class="go" href="#book-guidance-counsel">Guidance &amp; Counsel</a></li>
         <li id="step-intake"><span class="num">III</span><a class="name" href="#book-intake-inquiry">The Intake</a><p class="line">The Intake &amp; Inquiry conversation has to happen for anything that comes next.</p><a class="go" href="#book-intake-inquiry">Schedule your intake</a></li>
-        <li id="step-solo"><span class="num">IV</span><a class="name" href="ceremonial-coaching.html">Solo Work</a><p class="line">The Shamanic Sanctuary. One-on-one containers, after the intake.</p>
+        <li id="step-solo"><span class="num">IV</span><a class="name" href="#apply-solo">Solo Work</a><p class="line">The Shamanic Sanctuary. One-on-one containers, after the intake.</p>
           <details><summary>Some of these offerings include</summary><ul><li>A Season of Change</li><li>The Metamorphic Year</li><li>Dagara Divinations</li><li>Oracular Mediumship</li></ul></details>
-          <a class="go" href="ceremonial-coaching.html">Enter the Sanctuary</a></li>
-        <li id="step-group"><span class="num">V</span><a class="name" href="public-offerings.html">Group Work</a><p class="line">The Village. Gatherings and ceremony in community, after the intake.</p>
+          <a class="go" href="#apply-solo">Apply for Solo Work</a></li>
+        <li id="step-group"><span class="num">V</span><a class="name" href="#apply-group">Group Work</a><p class="line">The Village. Gatherings and ceremony in community, after the intake.</p>
           <details><summary>Some of these offerings include</summary><ul><li>Rites of Passage</li><li>Ritual &amp; Ceremony</li><li>Wellness Gatherings</li><li>Community Firesides</li></ul></details>
-          <a class="go" href="public-offerings.html">Enter the Village</a></li>
-        <li id="step-training"><span class="num">VI</span><a class="name" href="training-grounds.html">The Training Grounds</a><p class="line">The Conservatory. Courses, trainings and workshops, after the intake.</p>
+          <a class="go" href="#apply-group">Apply for Group Work</a></li>
+        <li id="step-training"><span class="num">VI</span><a class="name" href="#apply-training">The Training Grounds</a><p class="line">The Conservatory. Courses, trainings and workshops, after the intake.</p>
           <details><summary>Some of these offerings include</summary><ul><li>Spirit Mediation</li><li>Ceremonialist Training</li><li>Mythopoetic Being</li><li>How to Journey</li></ul></details>
-          <a class="go" href="training-grounds.html">Enter the Conservatory</a></li>
+          <a class="go" href="#apply-training">Apply for the Training Grounds</a></li>
       </ol>
       <p class="dr-open">The Library and The Well are open to all, with no threshold to cross. <a href="writings.html">Enter the Library &amp; The Well</a></p>
     </div>
@@ -197,15 +224,16 @@
     <div class="dr-schedule-inner">
       <span class="section-label">Schedule to begin</span>
       <h2>Choose your session, then your <em>hour</em>.</h2>
-      <p class="dr-lede">Pick the session, find an open hour on Adi Marie&rsquo;s calendar, and choose the tier that is true for you.</p>
+      <!-- Lede is Claude's (2026-11-09): names the six steps the widget walks. -->
+      <p class="dr-lede">Six short steps: the session, an open hour on Adi Marie&rsquo;s calendar, what to complete beforehand, the tier that is true for you, your details, and reciprocity by Venmo.</p>
       <div id="booking-calendar"
            data-services="intake-inquiry,guidance-counsel,divination"
            data-category-label="Your session"
            data-card-layout="wide"
            data-coming-soon=""
            data-venmo="TheAnimistApothecary"></div>
-      <!-- Payment line: her ask is "complete payment at the time of booking"; the one-hour automatic release is not built yet, so the page does not promise it. -->
-      <p class="dr-pay-note">Reciprocity is completed by Venmo at the time of booking. Your hour is confirmed once it arrives.</p>
+      <!-- Payment line in her words (2026-11-09). The widget's own fineprint carries her one-hour cancellation line; nothing releases an unpaid hour on its own yet (flagged to her). -->
+      <p class="dr-pay-note">You must complete payment at the time of booking, as a personal transfer through Venmo. Your confirmation shows the exact note to use.</p>
     </div>
   </section>
 
@@ -214,6 +242,8 @@
     <div class="dr-who-inner">
       <span class="section-label">Preparatory instructions</span>
       <p>Some of these sessions require follow-up, supplementary intake, or documents. All of it is sent by email once your hour is held.</p>
+      <!-- Filled by js/calendar-booking.js (fillPrepMount): one drop-down per session, the same list the booking steps show. -->
+      <div class="dr-prep-list" data-aap-prep></div>
     </div>
   </section>
 
@@ -284,6 +314,66 @@
           <p class="form-note" data-content="form_labels.submit_note">Every message is read by hand. We respond within 48 hours.</p>
         </div>
 
+      </form>
+    </div>
+  </section>
+
+  <!-- THE LETTERS: step I of the path, on this page (her brief: "the letters are a place where you can stay in touch"). Heading and first
+       sentence are hers from the Home letters section; the form posts to the same intranet list as Home and the veil
+       (contact_upsert_public, tag Newsletter, source "begin-here"). -->
+  <section class="booking-section dr-letters" id="letters" style="background: #F3EDE0;">
+    <div class="booking-inner">
+      <div class="booking-intro">
+        <span class="section-label">The Letters</span>
+        <h2 class="section-title">Water, Milk, and Honey</h2>
+        <div class="section-body" style="max-width: 560px; margin: 0 auto;">
+          <p>A compendium of correspondences. Tender reflections, sacred teachings, and updates from the practice &mdash; workshops, public gatherings, the occasional surprise offering.</p>
+        </div>
+      </div>
+      <form id="letters-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="lt-first">First Name</label>
+            <input class="form-input" type="text" id="lt-first" name="first_name" autocomplete="given-name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lt-last">Last Name</label>
+            <input class="form-input" type="text" id="lt-last" name="last_name" autocomplete="family-name" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="lt-email">Email</label>
+            <input class="form-input" type="email" id="lt-email" name="email" autocomplete="email" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lt-zip">Zip code</label>
+            <input class="form-input" type="text" id="lt-zip" name="zip_code" inputmode="numeric" autocomplete="postal-code">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="lt-from">Where are you coming from?</label>
+            <select class="form-select" id="lt-from" name="referral_source" required>
+              <option value="">Choose one</option>
+              <option value="Gathering">A gathering</option>
+              <option value="Event or workshop">An event or workshop</option>
+              <option value="Class">A class</option>
+              <option value="Ceremony">A ceremony</option>
+              <option value="Referral">A referral from someone</option>
+              <option value="Online">Online (social, search)</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lt-detail">Which one, or who? (optional)</label>
+            <input class="form-input" type="text" id="lt-detail" name="referral_detail">
+          </div>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-primary">Receive the Letters</button>
+          <p class="form-note" id="letters-note">Held with care, never shared.</p>
+        </div>
       </form>
     </div>
   </section>
@@ -415,11 +505,59 @@
       });
     })();
   </script>
+  <!-- THE LETTERS FORM: same list, same checks and same success line as the veil and Home. -->
+  <script>
+    (function () {
+      var form = document.getElementById('letters-form'); if (!form) return;
+      var note = document.getElementById('letters-note'), btn = form.querySelector('button[type="submit"]');
+      function say(kind, msg) { if (!note) return; note.textContent = msg; note.style.color = kind === 'error' ? '#A0533F' : kind === 'ok' ? '#5E6B45' : ''; }
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var fd = new FormData(form);
+        var payload = {
+          email: String(fd.get('email') || '').trim().toLowerCase(),
+          first_name: String(fd.get('first_name') || '').trim(),
+          last_name: String(fd.get('last_name') || '').trim(),
+          zip: String(fd.get('zip_code') || '').trim(),
+          referred_by: String(fd.get('referral_source') || '').trim(),
+          notes: [String(fd.get('referral_source') || '').trim(), String(fd.get('referral_detail') || '').trim()].filter(Boolean).join(' — '),
+          source_list: 'begin-here',
+          tags: ['Newsletter'],
+          is_subscribed: true
+        };
+        if (!payload.first_name || !payload.last_name) return say('error', 'Your full name, please — first and last — so the letters know who they are going to.');
+        if (!payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(payload.email)) return say('error', 'That email address looks incomplete. One more look?');
+        if (!payload.referred_by) return say('error', 'One more thing: where are you coming from?');
+        var orig = btn ? btn.textContent : '';
+        if (btn) { btn.disabled = true; btn.textContent = 'Sending …'; }
+        say('', '');
+        try {
+          var sb = await window.aapIntranet.getIntranetSupabase();
+          var res = await sb.rpc('contact_upsert_public', { p_payload: payload });
+          if (res && res.error) throw res.error;
+          say('ok', 'Held with care. The next letter will arrive with the season.');
+          form.querySelectorAll('input, select, button').forEach(function (el) { el.disabled = true; });
+          if (btn) btn.textContent = '✓ On the list';
+          try { if (window.aapTrack) window.aapTrack('newsletter', { source: 'begin-here' }); } catch (e2) {}
+        } catch (err) {
+          say('error', 'Something went wrong. Please try again, or write to adimarie@theanimistapothecary.com.');
+          if (btn) { btn.disabled = false; btn.textContent = orig || 'Receive the Letters'; }
+        }
+      });
+    })();
+    /* Once an hour is booked, her thank-you moves up under the widget (her brief: "after they've scheduled, just like a thank you"). */
+    document.addEventListener('aap:booked', function () {
+      var s = document.getElementById('schedule'), t = document.getElementById('thanks');
+      if (!s || !t) return;
+      s.classList.add('is-booked');
+      s.parentNode.insertBefore(t, s.nextSibling);
+    });
+  </script>
   <script src="/js/coming-soon.js?v=261109c" defer></script>
   <script src="js/lux.js" defer></script>
   <script src="js/traffic.js" defer></script>
   <script src="js/announce.js" defer></script>
-  <script src="js/calendar-booking.js?v=261103c" defer></script>
+  <script src="js/calendar-booking.js?v=261109a" defer></script>
   <script src="js/site-menu.js?v=261103b" defer></script>
 </body>
 </html>
