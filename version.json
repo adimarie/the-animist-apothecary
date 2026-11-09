@@ -1,12 +1,12 @@
 {
-  "version": "v261109.02 12:13a",
-  "release": 2,
-  "sha": "03a9df8d",
-  "fullSha": "03a9df8dea4784c368b4fdcc9ec99a78756586dc",
+  "version": "v261109.03 1:40a",
+  "release": 3,
+  "sha": "529d0593",
+  "fullSha": "529d0593be5fa4cb757a3b8768911eb6b3b3c520",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-08T16:12:55-08:00",
-  "commits": [{"sha":"03a9df8d","message":"Begin Here opens: the veil's open list gains /inquiry.html; veil script version bumped on every page","author":"Adi Marie"}]
+  "pushedAt": "2026-11-08T17:40:34-08:00",
+  "commits": [{"sha":"529d0593","message":"Manage-booking page opens so the booking emails' links land on a working page","author":"Adi Marie"}]
 }
