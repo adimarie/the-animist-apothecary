@@ -2157,7 +2157,7 @@
     body[data-content-page="home"] .nl-bar .newsletter-trust { font-size: .82rem !important; line-height: 1.5 !important; margin: 1.1rem 0 0 !important; text-align: center !important; }
     body[data-content-page="home"] .nl-bar .newsletter-trust-sep { display: inline !important; opacity: 1 !important; height: auto !important; }
     body[data-content-page="home"] .nl-photo { margin: 0; padding: 0; background: #1b1513; }
-    body[data-content-page="home"] .nl-photo img { display: block; width: 100%; height: auto; }
+    body[data-content-page="home"] .nl-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1916 / 821; }
     @media (max-width: 700px) {
       body[data-content-page="home"] .section-newsletter.nl-bar { padding: 0 1rem 3rem !important; }
       body[data-content-page="home"] .nl-bar-inner { padding: 2rem 1.1rem 1.75rem; }
@@ -2188,7 +2188,7 @@
           radial-gradient(ellipse 27% 12% at 22% 75%, rgba(4,10,7,.58) 0%, rgba(4,10,7,.36) 50%, rgba(4,10,7,0) 100%),
           radial-gradient(ellipse 20% 70% at 0% 42%, rgba(4,10,7,.66) 0%, rgba(4,10,7,.40) 50%, rgba(4,10,7,0) 100%) !important; }
       /* her hand-painted shade (188 brush strokes, 2026-11-08), rendered from hero-lock/hero-strokes-final-261108.json */
-      body[data-content-page="home"] .hero-overlay::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: url('images/uploads/hero-shade-painted.png?v=188') center / 100% 100% no-repeat; }
+      body[data-content-page="home"] .hero-overlay::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: url('images/uploads/hero-shade-painted.png?v=213') center / 100% 100% no-repeat; }
       body[data-content-page="home"] .hero-fullbleed.aa-arranging .hero-overlay::after { display: none; }
       body[data-content-page="home"] .hero-overlay-inner { --hx: 5.463; --hy: 8.709; --hs: 1.46; --u: calc(1vw * var(--hs));
         position: absolute !important; z-index: 2; left: calc(var(--hx) * 1vw); top: calc(var(--hy) * .5625vw); bottom: auto; width: max-content !important; max-width: none !important; padding: calc(var(--u) * 1.2) !important; margin: 0 !important; display: flex !important; flex-direction: column; align-items: flex-start; text-align: left !important; background: none; box-shadow: none; }
@@ -2220,6 +2220,12 @@
       body[data-content-page="home"] .hero-brand, body[data-content-page="home"] .hero-brand-rule { display: none !important; }
       body[data-content-page="home"] .hero-overlay::before { background: linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.08) 30%, rgba(0,0,0,.62) 58%, rgba(0,0,0,.78) 100%) !important; }
     }
+  
+    /* Gold that reads (2026-11-08, her yes): the small gold labels and links that sit on light grounds take a deeper
+       ink-gold (about 5.4:1 on cream; they were 2.1:1). Dark sections (hero, the call, footer) keep the pale gold. */
+    body[data-content-page="home"] .section-the-work .section-label, body[data-content-page="home"] .work-path-eyebrow, body[data-content-page="home"] .work-path-cta, body[data-content-page="home"] .testimonial-author, body[data-content-page="home"] .testimonial-author span, body[data-content-page="home"] .begin-doorway-eyebrow, body[data-content-page="home"] .begin-doorway-cta, body[data-content-page="home"] .newsletter-intake-link { color: #7D6126 !important; }
+    body[data-content-page="home"] .newsletter-intake-link { border-bottom-color: rgba(125, 97, 38, .45) !important; }
+    body[data-content-page="home"] .section-story .story-text .story-evolution strong, body[data-content-page="home"] .section-practitioner .practitioner-serves-quote .practitioner-serves-epigraph { color: #8F6F2E !important; }
   </style>
   <link rel="stylesheet" href="css/doors.css?v=261108">
   <link rel="stylesheet" href="css/menu.css?v=261108">
@@ -2338,7 +2344,7 @@
     </div>
   </section>
   <!-- arrange mode (local tool, not shipped): with ?arrange=1 this loads js/hero-arrange.dev.js if it exists on this machine -->
-  <script>if(/[?&]arrange=1\b/.test(location.search)){var s=document.createElement('script');s.src='js/hero-arrange.dev.js';document.body.appendChild(s);}</script>
+  <script>if(/[?&]arrange=1\b/.test(location.search)){var s=document.createElement('script');s.src='js/hero-arrange.dev.js?t='+Date.now();document.body.appendChild(s);}</script>
 
 
   <!-- &mdash;&mdash;&mdash; METAMORPHOSIS &mdash;&mdash;&mdash; -->
