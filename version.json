@@ -1,12 +1,12 @@
 {
-  "version": "v261109.05 2:28a",
-  "release": 5,
-  "sha": "e5d69f3b",
-  "fullSha": "e5d69f3b1f957acae21bf09db47fa6cc1558b375",
+  "version": "v261109.06 7:36p",
+  "release": 6,
+  "sha": "9f42356c",
+  "fullSha": "9f42356c729eeb7284be7e9577c3460a0b32ce11",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-08T18:28:37-08:00",
-  "commits": [{"sha":"e5d69f3b","message":"Home hero: her final shade, 44 more strokes by her hand","author":"Adi Marie"}]
+  "pushedAt": "2026-11-09T11:36:01-08:00",
+  "commits": [{"sha":"9f42356c","message":"Home: her six card pictures, simpler three ways lists, plain ground, type pass","author":"Adi Marie"}]
 }
