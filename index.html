@@ -686,6 +686,19 @@
       opacity: 1 !important;
       pointer-events: auto !important;
     }
+    /* 2026-11-09, her ask: twelve testimonials. The slides share one grid cell, so the box is as tall as the longest quote and
+       nothing below it moves when she or a visitor steps through; the others are hidden, not faded. No fade, no motion. */
+    body[data-content-page="home"] .testimonial-slides { display: grid !important; min-height: 0 !important; }
+    body[data-content-page="home"] .testimonial-slide { grid-area: 1 / 1 !important; position: static !important; inset: auto !important; opacity: 1 !important; visibility: hidden !important; transition: none !important; pointer-events: none !important; }
+    body[data-content-page="home"] .testimonial-slide.is-active { visibility: visible !important; pointer-events: auto !important; }
+    body[data-content-page="home"] .testimonial-text { font-size: 1.5rem !important; line-height: 1.55 !important; }
+    body[data-content-page="home"] .testimonial-text.testimonial-text--long { font-size: 1.25rem !important; line-height: 1.6 !important; }
+    body[data-content-page="home"] .testimonial-dots { flex-wrap: wrap !important; }
+    body[data-content-page="home"] .testimonial-dot { transition: none !important; }
+    @media (max-width: 720px) {
+      body[data-content-page="home"] .testimonial-text { font-size: 1.18rem !important; }
+      body[data-content-page="home"] .testimonial-text.testimonial-text--long { font-size: 1.05rem !important; }
+    }
     /* Arrows — high-contrast sigil glyphs (❮ ❯) inscribed in deep bark ink.
        No border, no circle — just the mark itself, like a carved petroglyph. */
     body[data-content-page="home"] .testimonial-arrow {
@@ -2566,16 +2579,170 @@
 
       <div class="testimonial-slides">
 
-        <!-- Slide 1 — live testimonial from YAML (testimonial.text + testimonial.author) -->
-        <div class="testimonial-slide is-active">
+        <!-- Slide 1 — from YAML (testimonial.text + testimonial.author). Slides 2–12 live here only. All twelve are other people's own words, cut only at sentence edges; sources and consent status are in the private master list (Command Center/growth/website/testimonials). Initials and role only, no names. -->
+        <div class="testimonial-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 12">
           <div class="testimonial-container">
             <div class="testimonial-quote-mark">&mdash;</div>
-            <blockquote class="testimonial-text" data-content="testimonial.text">
-              Working with Adi is like having the most skilled, loving, ferocious medicine person as your guide. She sees what others miss, holds what others drop, and moves you through the underworld with uncommon grace. My life is unrecognizably more alive.
+            <blockquote class="testimonial-text testimonial-text--long" data-content="testimonial.text">
+              I had the privilege of meeting [Adi Marie] for a bodywork session, and from the very beginning something in me felt a deep trust in her. There was something in her authenticity, her gentleness, her infinite knowledge, her intelligence, and the unique way she perceives things that made me feel safe to listen and follow her guidance. Thanks to her recommendations, I arrived at the ceremony feeling prepared and secure. What I received was a warm, embracing, and deeply safe space that allowed me to open up fully. Now, a month and a half later, I can see clearly that a new path has opened in my life … I am profoundly grateful to have met you, [Adi Marie]. I look forward to continuing this journey together in the coming year, to deepen and discover even more.
             </blockquote>
             <div class="testimonial-author">
               <div class="testimonial-line"></div>
-              <span data-content="testimonial.author">M.K. &mdash; Physician &amp; Medicine Woman, New Mexico</span>
+              <span data-content="testimonial.author">T.Z. — Bodywork and ceremony client, Israel</span>
+              <div class="testimonial-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="2 of 12">
+          <div class="testimonial-container">
+            <div class="testimonial-quote-mark">&mdash;</div>
+            <blockquote class="testimonial-text" >
+              I felt so held and cared for as well as safe in the in-between.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-line"></div>
+              <span >M.D. — Private journey participant</span>
+              <div class="testimonial-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="3 of 12">
+          <div class="testimonial-container">
+            <div class="testimonial-quote-mark">&mdash;</div>
+            <blockquote class="testimonial-text testimonial-text--long" >
+              I just listened to one of our recordings and am so beyond grateful for you guiding me on this journey — wherever it’s taking me… thank you from my heart. Thank you today and for holding a safe space for me to reflect and process and for sharing parts of yourself with me. I appreciate you! Thank you [Adi Marie] for your compassion, and your questions are definitely generative. … I don’t feel overwhelmed and I appreciate your support.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-line"></div>
+              <span >M.H. — Long-term session client</span>
+              <div class="testimonial-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="4 of 12">
+          <div class="testimonial-container">
+            <div class="testimonial-quote-mark">&mdash;</div>
+            <blockquote class="testimonial-text" >
+              Holding what you hold in the way that you hold it is so special and so needed. And there are people who know and understand that.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-line"></div>
+              <span >C.B. — Client and fellow coach</span>
+              <div class="testimonial-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="5 of 12">
+          <div class="testimonial-container">
+            <div class="testimonial-quote-mark">&mdash;</div>
+            <blockquote class="testimonial-text testimonial-text--long" >
+              Thank you so much for the love and care you showed my mom last weekend. We’re both so deeply grateful to you. You have such a beautiful heart, [Adi Marie], and I can’t tell you how much that means to me. Thank you so much for all your hard work and your gifts that you are sharing with all of us. Thank you very much for allowing me to treat you and take care of you — just the way you take care of everyone during the ceremonies.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-line"></div>
+              <span >K.M. — Ceremony participant</span>
+              <div class="testimonial-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="6 of 12">
+          <div class="testimonial-container">
+            <div class="testimonial-quote-mark">&mdash;</div>
+            <blockquote class="testimonial-text" >
+              Deep bow to you and so much gratitude to you, sister, for saying the things my soul and bones most need to be seen in. I no longer feel like I am walking alone at the rim of the volcano.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-line"></div>
+              <span >K.H. — Diviner and fellow practitioner</span>
+              <div class="testimonial-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="7 of 12">
+          <div class="testimonial-container">
+            <div class="testimonial-quote-mark">&mdash;</div>
+            <blockquote class="testimonial-text" >
+              It’s a privilege, [Adi Marie]. Truly. I was remarking to a close friend about our session and how much I felt you see within me. It’s like our old souls touch on some continuum beyond this plane of existence. I trust your gifts and recognize the tremendous power they possess in catalyzing real change.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-line"></div>
+              <span >C.T.B. — Private client</span>
+              <div class="testimonial-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="8 of 12">
+          <div class="testimonial-container">
+            <div class="testimonial-quote-mark">&mdash;</div>
+            <blockquote class="testimonial-text" >
+              Thank you so much for your message in the chat about prep, [Adi Marie]! I already feel so so much less worry and fear just from reading that, and I think it’ll help me sleep too.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-line"></div>
+              <span >D. — Ceremony participant</span>
+              <div class="testimonial-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="9 of 12">
+          <div class="testimonial-container">
+            <div class="testimonial-quote-mark">&mdash;</div>
+            <blockquote class="testimonial-text" >
+              It’s crazy to me that it’s been a year since my ceremony. The ceremony is still very much with me. It was prophetic of the year I’ve had. It’s kinda nuts. I feel like I’m living what I experienced (it’s been difficult), but I feel like my experience has given me a map.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-line"></div>
+              <span >J.S. — Ceremony participant, a year on</span>
+              <div class="testimonial-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="10 of 12">
+          <div class="testimonial-container">
+            <div class="testimonial-quote-mark">&mdash;</div>
+            <blockquote class="testimonial-text" >
+              There was a lot that came through and I didn’t capture all of it in notes. Revisiting and wanting to follow up on rituals and understandings from that session. … So much appreciation for sharing your gifts so beautifully.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-line"></div>
+              <span >M.M. — Divination client and fellow diviner</span>
+              <div class="testimonial-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="11 of 12">
+          <div class="testimonial-container">
+            <div class="testimonial-quote-mark">&mdash;</div>
+            <blockquote class="testimonial-text" >
+              I would absolutely be so honored to work with you, to sit and to turn to you when I am going through all these shifts. I truly connected with how you held space, especially how you held space for me when I was experiencing an overwhelming amount of pure pain, grief and despair.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-line"></div>
+              <span >S.M. — Gathering participant</span>
+              <div class="testimonial-line"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label="12 of 12">
+          <div class="testimonial-container">
+            <div class="testimonial-quote-mark">&mdash;</div>
+            <blockquote class="testimonial-text" >
+              So much honey! alongside clear, powerful and nuanced depth. Gratitude to you and your spirits for the ways you met and tended my tender process with care, beauty and precision.
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="testimonial-line"></div>
+              <span >Ceremony participant</span>
               <div class="testimonial-line"></div>
             </div>
           </div>
@@ -2586,7 +2753,18 @@
       <button type="button" class="testimonial-arrow testimonial-arrow--next" aria-label="Next testimonial">&#10095;</button>
 
       <div class="testimonial-dots" role="tablist" aria-label="Testimonial navigation">
-        <button type="button" class="testimonial-dot is-active" data-slide="0" aria-label="Testimonial 1"></button>
+        <button type="button" class="testimonial-dot is-active" data-slide="0" aria-label="Testimonial 1 of 12"></button>
+        <button type="button" class="testimonial-dot" data-slide="1" aria-label="Testimonial 2 of 12"></button>
+        <button type="button" class="testimonial-dot" data-slide="2" aria-label="Testimonial 3 of 12"></button>
+        <button type="button" class="testimonial-dot" data-slide="3" aria-label="Testimonial 4 of 12"></button>
+        <button type="button" class="testimonial-dot" data-slide="4" aria-label="Testimonial 5 of 12"></button>
+        <button type="button" class="testimonial-dot" data-slide="5" aria-label="Testimonial 6 of 12"></button>
+        <button type="button" class="testimonial-dot" data-slide="6" aria-label="Testimonial 7 of 12"></button>
+        <button type="button" class="testimonial-dot" data-slide="7" aria-label="Testimonial 8 of 12"></button>
+        <button type="button" class="testimonial-dot" data-slide="8" aria-label="Testimonial 9 of 12"></button>
+        <button type="button" class="testimonial-dot" data-slide="9" aria-label="Testimonial 10 of 12"></button>
+        <button type="button" class="testimonial-dot" data-slide="10" aria-label="Testimonial 11 of 12"></button>
+        <button type="button" class="testimonial-dot" data-slide="11" aria-label="Testimonial 12 of 12"></button>
       </div>
 
     </div>

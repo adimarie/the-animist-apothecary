@@ -271,11 +271,18 @@ process:
   cta_url: book.html
   cta_note: The required first conversation for ceremony or cohort enrollment.
 testimonial:
+  # Slide 1 of 12 (the carousel on Home). Slides 2–12 are written in index.html. Private source list: Command Center/growth/website/testimonials/MASTER-LIST.md
   text: >-
-    Working with Adi is like having the most skilled, loving, ferocious medicine person as your
-    guide. She sees what others miss, holds what others drop, and moves you through the underworld
-    with uncommon grace. My life is unrecognizably more alive.
-  author: M.K. — Physician & Medicine Woman, New Mexico
+    I had the privilege of meeting [Adi Marie] for a bodywork session, and from the very beginning
+    something in me felt a deep trust in her. There was something in her authenticity, her
+    gentleness, her infinite knowledge, her intelligence, and the unique way she perceives things
+    that made me feel safe to listen and follow her guidance. Thanks to her recommendations, I
+    arrived at the ceremony feeling prepared and secure. What I received was a warm, embracing, and
+    deeply safe space that allowed me to open up fully. Now, a month and a half later, I can see
+    clearly that a new path has opened in my life … I am profoundly grateful to have met you, [Adi
+    Marie]. I look forward to continuing this journey together in the coming year, to deepen and
+    discover even more.
+  author: T.Z. — Bodywork and ceremony client, Israel
 fern_feature:
   image: images/uploads/tree-of-light-and-life.jpg
   image_position: center
