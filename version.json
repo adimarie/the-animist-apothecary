@@ -1,12 +1,12 @@
 {
-  "version": "v261109.11 10:36p",
-  "release": 11,
-  "sha": "f6f10d5e",
-  "fullSha": "f6f10d5e74400198a9a53155285b43547d7cd480",
+  "version": "v261110.01 4:00a",
+  "release": 1,
+  "sha": "d9a0bdab",
+  "fullSha": "d9a0bdab6a0b75a754fd761571245187fde61e7b",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-09T14:36:27-08:00",
-  "commits": [{"sha":"f6f10d5e","message":"Begin Here hero: the words where she placed them with the arrange bar (no strokes painted yet)","author":"Adi Marie"}]
+  "pushedAt": "2026-11-09T19:59:44-08:00",
+  "commits": [{"sha":"d9a0bdab","message":"Home: twelve testimonials in the carousel, in the writers' own words","author":"Adi Marie"}]
 }
