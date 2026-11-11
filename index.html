@@ -691,13 +691,16 @@
     body[data-content-page="home"] .testimonial-slides { display: grid !important; min-height: 0 !important; }
     body[data-content-page="home"] .testimonial-slide { grid-area: 1 / 1 !important; position: static !important; inset: auto !important; opacity: 1 !important; visibility: hidden !important; transition: none !important; pointer-events: none !important; }
     body[data-content-page="home"] .testimonial-slide.is-active { visibility: visible !important; pointer-events: auto !important; }
-    body[data-content-page="home"] .testimonial-text { font-size: 1.5rem !important; line-height: 1.55 !important; }
-    body[data-content-page="home"] .testimonial-text.testimonial-text--long { font-size: 1.25rem !important; line-height: 1.6 !important; }
+    /* 2026-11-11, her ask: larger and a little bolder, so the testimonials are easy to read. */
+    body[data-content-page="home"] .testimonial-text { font-size: 1.8rem !important; line-height: 1.5 !important; font-weight: 500 !important; }
+    body[data-content-page="home"] .testimonial-text.testimonial-text--long { font-size: 1.5rem !important; line-height: 1.55 !important; }
+    body[data-content-page="home"] .testimonial-author span { font-size: 0.9rem !important; font-weight: 500 !important; }
     body[data-content-page="home"] .testimonial-dots { flex-wrap: wrap !important; }
     body[data-content-page="home"] .testimonial-dot { transition: none !important; }
     @media (max-width: 720px) {
-      body[data-content-page="home"] .testimonial-text { font-size: 1.18rem !important; }
-      body[data-content-page="home"] .testimonial-text.testimonial-text--long { font-size: 1.05rem !important; }
+      body[data-content-page="home"] .testimonial-text { font-size: 1.4rem !important; }
+      body[data-content-page="home"] .testimonial-text.testimonial-text--long { font-size: 1.22rem !important; }
+      body[data-content-page="home"] .testimonial-author span { font-size: 0.8rem !important; }
     }
     /* Arrows — high-contrast sigil glyphs (❮ ❯) inscribed in deep bark ink.
        No border, no circle — just the mark itself, like a carved petroglyph. */
@@ -2579,12 +2582,12 @@
 
       <div class="testimonial-slides">
 
-        <!-- Slide 1 — from YAML (testimonial.text + testimonial.author). Slides 2–12 live here only. Twelve chosen by Adi Marie on 2026-11-11 from the private placement page, with her edits; set in testimonial form (about her, not to her), no brackets or ellipses, at her request. Initials and role only, no names. -->
+        <!-- Slide 1 — from YAML (testimonial.text + testimonial.author). Slides 2–12 live here only. Twelve chosen by Adi Marie on 2026-11-11 from the private placement page, with her edits; set in testimonial form (about her, not to her), no brackets or ellipses, and they call her Adi, at her request. Initials and role only, no names. -->
         <div class="testimonial-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 12">
           <div class="testimonial-container">
             <div class="testimonial-quote-mark">&mdash;</div>
             <blockquote class="testimonial-text testimonial-text--long" data-content="testimonial.text">
-              I had the privilege of meeting Adi Marie for a bodywork session, and from the very beginning, something in me felt a deep trust in her. There was something in her authenticity, her gentleness, her infinite knowledge, her intelligence, and the unique way she perceives things that made me feel safe to listen to and follow her guidance. Thanks to her recommendations, I arrived at the ceremony feeling prepared and secure. What I received was a warm, embracing, and deeply safe space that allowed me to open up fully. Now, a month and a half later, I can see clearly that a new path has opened in my life. I am profoundly grateful to have met her, and I look forward to continuing this journey together in the coming year, to deepen and discover even more.
+              I had the privilege of meeting Adi for a shamanic bodywork session, and from the very beginning, something in me felt a deep trust in her. There was something in her authenticity, her gentleness, her infinite knowledge, her intelligence, and the unique way she perceives things that made me feel safe to listen to and follow her guidance. Thanks to her recommendations, I arrived at the ceremony feeling prepared and secure. What I received was a warm, embracing, and deeply safe space that allowed me to open up fully. Now, a month and a half later, I can see clearly that a new path has opened in my life. I am profoundly grateful to have met her, and I look forward to continuing this journey together in the coming year, to deepen and discover even more.
             </blockquote>
             <div class="testimonial-author">
               <div class="testimonial-line"></div>
@@ -2598,7 +2601,7 @@
           <div class="testimonial-container">
             <div class="testimonial-quote-mark">&mdash;</div>
             <blockquote class="testimonial-text testimonial-text--long" >
-              The amount of care Adi Marie put into creating the container we were part of was really special, and I appreciated it so much. It was so apparent how she held that space. Everyone looks for safety and comfort in different ways, but she was so great at covering all of that. People were able to be themselves in whatever way they wanted to be. I’ve told so many friends about the work we did that week. The way she creates these containers and holds them is really special.
+              The amount of care Adi put into creating the container we were part of was really special, and I appreciated it so much. It was so apparent how she held that space. Everyone looks for safety and comfort in different ways, but she was so great at covering all of that. People were able to be themselves in whatever way they wanted to be. I’ve told so many friends about the work we did that week. The way she creates these containers and holds them is really special.
             </blockquote>
             <div class="testimonial-author">
               <div class="testimonial-line"></div>
@@ -2612,7 +2615,7 @@
           <div class="testimonial-container">
             <div class="testimonial-quote-mark">&mdash;</div>
             <blockquote class="testimonial-text testimonial-text--long" >
-              I am so beyond grateful to Adi Marie for guiding me on this journey, wherever it’s taking me. I thank her from my heart for holding a safe space for me to reflect and process, and for sharing parts of herself with me. I’m thankful for her compassion, and her questions are definitely generative. I don’t feel overwhelmed, and I appreciate her support.
+              I am so beyond grateful to Adi for guiding me on this journey, wherever it’s taking me. I thank her from my heart for holding a safe space for me to reflect and process, and for sharing parts of herself with me. I’m thankful for her compassion, and her questions are definitely generative. I don’t feel overwhelmed, and I appreciate her support.
             </blockquote>
             <div class="testimonial-author">
               <div class="testimonial-line"></div>
@@ -2640,7 +2643,7 @@
           <div class="testimonial-container">
             <div class="testimonial-quote-mark">&mdash;</div>
             <blockquote class="testimonial-text" >
-              Adi Marie is one of the most talented and connected humans I’ve ever met. Her divination helped me open up in ways I really needed at the time I sat with her. Holding what she holds, in the way that she holds it, is so special and so needed. And there are people who know and understand that.
+              Adi is one of the most talented and connected humans I’ve ever met. Her divination helped me open up in ways I really needed at the time I sat with her. Holding what she holds, in the way that she holds it, is so special and so needed. And there are people who know and understand that.
             </blockquote>
             <div class="testimonial-author">
               <div class="testimonial-line"></div>
@@ -2654,7 +2657,7 @@
           <div class="testimonial-container">
             <div class="testimonial-quote-mark">&mdash;</div>
             <blockquote class="testimonial-text" >
-              I feel so safe with Adi Marie in this work because of the way she takes into account where I am, even when I don’t know it myself. I really like the individuality: not just me as a person, but where I am each time I come for ceremony. That’s what makes me feel so safe, because it’s not one-size-fits-all.
+              I feel so safe with Adi in this work because of the way she takes into account where I am, even when I don’t know it myself. I really like the individuality: not just me as a person, but where I am each time I come for ceremony. That’s what makes me feel so safe, because it’s not one-size-fits-all.
             </blockquote>
             <div class="testimonial-author">
               <div class="testimonial-line"></div>
@@ -2668,7 +2671,7 @@
           <div class="testimonial-container">
             <div class="testimonial-quote-mark">&mdash;</div>
             <blockquote class="testimonial-text" >
-              It’s a blessing to have this work, and to have Adi Marie’s support. I always land with so much gratitude. I’m just really impressed. There’s a simultaneous confidence and humility that this process has given me, because I’m becoming more aware of my own power, and I don’t want to shy away from it.
+              It’s a blessing to have this work, and to have Adi’s support. I always land with so much gratitude. I’m just really impressed. There’s a simultaneous confidence and humility that this process has given me, because I’m becoming more aware of my own power, and I don’t want to shy away from it.
             </blockquote>
             <div class="testimonial-author">
               <div class="testimonial-line"></div>
@@ -2682,7 +2685,7 @@
           <div class="testimonial-container">
             <div class="testimonial-quote-mark">&mdash;</div>
             <blockquote class="testimonial-text testimonial-text--long" >
-              I’m moving through things with less hurried action and more directed intention. Not a day has gone by that I haven’t thought of the experiences I shared with Adi Marie. It was so very powerful, and touching on so many levels. My daily meditation practice now includes focusing on the image I had in my mind when she was there with me. I am eternally grateful for her.
+              I’m moving through things with less hurried action and more directed intention. Not a day has gone by that I haven’t thought of the experiences I shared with Adi. It was so very powerful, and touching on so many levels. My daily meditation practice now includes focusing on the image I had in my mind when she was there with me. I am eternally grateful for her.
             </blockquote>
             <div class="testimonial-author">
               <div class="testimonial-line"></div>
@@ -2696,7 +2699,7 @@
           <div class="testimonial-container">
             <div class="testimonial-quote-mark">&mdash;</div>
             <blockquote class="testimonial-text" >
-              A deep bow and so much gratitude to Adi Marie for saying the things my soul and bones most need to be seen in. I no longer feel like I am walking alone at the rim of the volcano.
+              A deep bow and so much gratitude to Adi for saying the things my soul and bones most need to be seen in. I no longer feel like I am walking alone at the rim of the volcano.
             </blockquote>
             <div class="testimonial-author">
               <div class="testimonial-line"></div>
@@ -2710,7 +2713,7 @@
           <div class="testimonial-container">
             <div class="testimonial-quote-mark">&mdash;</div>
             <blockquote class="testimonial-text testimonial-text--long" >
-              I feel more in charge of my life and of the power I possess. I truly feel powerful. It’s in the way I walk, it’s in my movements, it’s in my speech, it’s in the grace I carry welcoming and serving folks. Adi Marie has helped me cross some sort of bridge. Her voice is soothing to listen to, but also very engaging: hallmarks of a great educator! I’m so grateful she’s sharing so much with me.
+              I feel more in charge of my life and of the power I possess. I truly feel powerful. It’s in the way I walk, it’s in my movements, it’s in my speech, it’s in the grace I carry welcoming and serving folks. Adi has helped me cross some sort of bridge. Her voice is soothing to listen to, but also very engaging: hallmarks of a great educator! I’m so grateful she’s sharing so much with me.
             </blockquote>
             <div class="testimonial-author">
               <div class="testimonial-line"></div>
@@ -2724,7 +2727,7 @@
           <div class="testimonial-container">
             <div class="testimonial-quote-mark">&mdash;</div>
             <blockquote class="testimonial-text testimonial-text--long" >
-              I feel there’s more of me that’s open. I’m more open to compassion for myself and for others than before, rather than getting stuck in the hurt, and more open to seeing a little bit of the bigger picture. When I talk with Adi Marie, it makes more sense to me: more of the why rather than how to fix it. That helps a lot, especially the validating of my own feelings through me and not through anybody else. I think that’s just so huge. I feel like I’m hearing it for the first time, though maybe it’s been told to me before. It just wasn’t affecting me the same way it is now.
+              I feel there’s more of me that’s open. I’m more open to compassion for myself and for others than before, rather than getting stuck in the hurt, and more open to seeing a little bit of the bigger picture. When I talk with Adi, it makes more sense to me: more of the why rather than how to fix it. That helps a lot, especially the validating of my own feelings through me and not through anybody else. I think that’s just so huge. I feel like I’m hearing it for the first time, though maybe it’s been told to me before. It just wasn’t affecting me the same way it is now.
             </blockquote>
             <div class="testimonial-author">
               <div class="testimonial-line"></div>
@@ -2738,7 +2741,7 @@
           <div class="testimonial-container">
             <div class="testimonial-quote-mark">&mdash;</div>
             <blockquote class="testimonial-text" >
-              I feel like Adi Marie is uniquely gifted in this. Naturally, this is one of those things where she has it because it’s just who she is. I don’t know anyone else whose eyes and energy I would want on me, calling me forth into my greatness.
+              I feel like Adi is uniquely gifted in this. Naturally, this is one of those things where she has it because it’s just who she is. I don’t know anyone else whose eyes and energy I would want on me, calling me forth into my greatness.
             </blockquote>
             <div class="testimonial-author">
               <div class="testimonial-line"></div>
