@@ -1,12 +1,12 @@
 {
-  "version": "v261110.01 4:00a",
+  "version": "v261111.01 4:54p",
   "release": 1,
-  "sha": "d9a0bdab",
-  "fullSha": "d9a0bdab6a0b75a754fd761571245187fde61e7b",
+  "sha": "be35d9a9",
+  "fullSha": "be35d9a95d20cc8cee3ce037666e5e8db515e068",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-09T19:59:44-08:00",
-  "commits": [{"sha":"d9a0bdab","message":"Home: twelve testimonials in the carousel, in the writers' own words","author":"Adi Marie"}]
+  "pushedAt": "2026-11-11T08:54:33-08:00",
+  "commits": [{"sha":"be35d9a9","message":"Home: the twelve testimonials Adi Marie chose, set in testimonial form; bodywork wording","author":"Adi Marie"}]
 }
