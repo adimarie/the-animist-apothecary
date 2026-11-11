@@ -1,12 +1,12 @@
 {
-  "version": "v261111.01 4:54p",
-  "release": 1,
-  "sha": "be35d9a9",
-  "fullSha": "be35d9a95d20cc8cee3ce037666e5e8db515e068",
+  "version": "v261111.02 5:02p",
+  "release": 2,
+  "sha": "f74663be",
+  "fullSha": "f74663bebc8d3f449ca8c92979b9b2c7c6e5ba30",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-11T08:54:33-08:00",
-  "commits": [{"sha":"be35d9a9","message":"Home: the twelve testimonials Adi Marie chose, set in testimonial form; bodywork wording","author":"Adi Marie"}]
+  "pushedAt": "2026-11-11T09:02:38-08:00",
+  "commits": [{"sha":"f74663be","message":"Home testimonials: larger, slightly bolder text; speakers say Adi; shamanic bodywork","author":"Adi Marie"}]
 }
