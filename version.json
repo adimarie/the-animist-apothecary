@@ -1,12 +1,12 @@
 {
-  "version": "v261112.01 4:36p",
-  "release": 1,
-  "sha": "4068e0cd",
-  "fullSha": "4068e0cd24beb76d915f4d9bcc1c022697e69ab7",
+  "version": "v261112.02 4:52p",
+  "release": 2,
+  "sha": "570a4e26",
+  "fullSha": "570a4e26dbc03b008bfec5ab858d80aea967f98c",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-12T08:36:27-08:00",
-  "commits": [{"sha":"4068e0cd","message":"Home: her six new pictures on the inside cards, framed by her","author":"Adi Marie"}]
+  "machine": "ip-10-0-138-166",
+  "pushedAt": "2026-11-12T08:51:21-08:00",
+  "commits": [{"sha":"570a4e26","message":"Home: her pressed-flower picture beneath the Water, Milk, and Honey card","author":"Adi Marie"}]
 }
