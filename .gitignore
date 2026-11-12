@@ -106,3 +106,5 @@ images/territories/
 # local-only picture switcher for the Home cards, and the working folder of candidate pictures
 js/card-pictures.dev.js
 images/candidates/
+
+js/card-frame.dev.js
