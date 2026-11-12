@@ -1,12 +1,12 @@
 {
-  "version": "v261112.02 4:52p",
-  "release": 2,
-  "sha": "570a4e26",
-  "fullSha": "570a4e26dbc03b008bfec5ab858d80aea967f98c",
+  "version": "v261112.03 4:54p",
+  "release": 3,
+  "sha": "2c1e710f",
+  "fullSha": "2c1e710fb3f858881282dc050faefa083714fd33",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "ip-10-0-138-166",
-  "pushedAt": "2026-11-12T08:51:21-08:00",
-  "commits": [{"sha":"570a4e26","message":"Home: her pressed-flower picture beneath the Water, Milk, and Honey card","author":"Adi Marie"}]
+  "machine": "runnervm7aw5e",
+  "pushedAt": "2026-11-12T08:54:26-08:00",
+  "commits": [{"sha":"2c1e710f","message":"Home: take the pressed-flower background off the letters section for now","author":"Adi Marie"}]
 }
