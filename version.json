@@ -1,12 +1,12 @@
 {
-  "version": "v261111.03 5:46p",
-  "release": 3,
-  "sha": "c7d1cf15",
-  "fullSha": "c7d1cf157858979f5a42a83e1928e7073b3e8452",
+  "version": "v261112.01 4:36p",
+  "release": 1,
+  "sha": "4068e0cd",
+  "fullSha": "4068e0cd24beb76d915f4d9bcc1c022697e69ab7",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-11T09:45:55-08:00",
-  "commits": [{"sha":"c7d1cf15","message":"Home: About, Services and Resources headings; fuller door cards; single sessions; letters invitation; Privacy and Terms","author":"Adi Marie"}]
+  "pushedAt": "2026-11-12T08:36:27-08:00",
+  "commits": [{"sha":"4068e0cd","message":"Home: her six new pictures on the inside cards, framed by her","author":"Adi Marie"}]
 }
