@@ -2327,6 +2327,10 @@
     html body[data-content-page="home"] .the-work-title,
     html body[data-content-page="home"] .dr-terr-head h2 { font-weight: 300 !important; font-size: clamp(2.25rem, 4.2vw, 3.6rem) !important; line-height: 1.08 !important; letter-spacing: -.008em !important; }
     html body[data-content-page="home"] .dr-terr-head p { color: #5A554C !important;text-wrap: balance; }
+    /* 2026-11-12, her ask: her pressed-flower picture (turned on its side) as the ground beneath the Water, Milk, and Honey card,
+       with room above and below so the flowers frame the card */
+    html body[data-content-page="home"] .section-newsletter.nl-bar { background: #E8E5DC url('images/uploads/letters-pressed-flowers.jpg') center / cover no-repeat !important; padding-top: 5.5rem !important; padding-bottom: 5.5rem !important; margin-top: 0 !important; }
+    @media (max-width: 700px) { html body[data-content-page="home"] .section-newsletter.nl-bar { padding-top: 3rem !important; padding-bottom: 3rem !important; } }
     /* 2026-11-11: card pictures can be zoomed as well as positioned (--terr-zoom, set per card in each figure's style) */
     html body[data-content-page="home"] .dr-terr-fig img { transform: scale(var(--terr-zoom, 1)); transform-origin: var(--terr-pos, center); }
     .footer-bottom .footer-legal { white-space: nowrap; margin-left: .75rem; } .footer-bottom .footer-legal a { color: inherit; text-decoration: underline; text-underline-offset: 3px; } @media (max-width: 820px) { .footer-bottom .footer-legal { display: block; margin: .5rem 0 0; } }
