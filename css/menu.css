@@ -2,7 +2,7 @@
    Loads after site-header.css (whose padding is locked) and before still.css. Nothing moves: panels appear, they do not animate. */
 
 /* ---- wide screens: hover / focus drop-downs ---- */
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
   .site-header .main-nav li.has-sub { position: relative; }
   .site-header .main-nav li.has-sub > a::after { content: '\25BE'; font-size: .62em; margin-left: .35em; opacity: .55; vertical-align: .1em; }
   .site-header .main-nav .sub-menu { display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 250px; margin: 0; padding: 1rem 0 .9rem; list-style: none; background: rgba(247,243,234,.985); border: 1px solid rgba(201,168,76,.5); box-shadow: 0 18px 44px rgba(31,26,24,.14); z-index: 80; text-align: left; }
@@ -19,7 +19,7 @@
 }
 
 /* ---- the phone panel: drop-downs open inline, indented under their door ---- */
-@media (max-width: 1199px) {
+@media (max-width: 1023px) {
   .site-header .main-nav li.has-sub > a::after { content: none; }
   body.menu-open .site-header .main-nav .sub-menu { display: block; position: static; list-style: none; margin: 0; padding: 0 0 .7rem 1.25rem; }
   body.menu-open .site-header .main-nav .sub-menu li { border: 0; }
@@ -30,7 +30,7 @@
 }
 
 /* ---- second level: Courses · Trainings · Workshops stay open inside the Conservatory panel, always (no hover toggle, so nothing jumps) ---- */
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
   .site-header .main-nav li.has-sub > .sub-menu:has(.has-sub2) { min-width: 300px; padding-bottom: 1.1rem; }
   .site-header .main-nav .sub-menu li.has-sub2 > a { color: #8F6F2E; }
   .site-header .main-nav .sub-menu li.has-sub2 + li.has-sub2 { margin-top: .35rem; }
@@ -38,7 +38,7 @@
   .site-header .main-nav .sub-menu2 a { display: block; padding: .34rem 1rem .34rem .6rem; font-family: 'Cinzel', serif; font-size: .56rem; letter-spacing: .14em; text-transform: uppercase; color: #3a3530; text-decoration: none; white-space: nowrap; }
   .site-header .main-nav .sub-menu2 a:hover, .site-header .main-nav .sub-menu2 a:focus-visible { color: #8F6F2E; background: rgba(201,168,76,.09); outline: none; }
 }
-@media (max-width: 1199px) {
+@media (max-width: 1023px) {
   body.menu-open .site-header .main-nav .sub-menu2 { display: block; position: static; list-style: none; margin: 0; padding: .1rem 0 .4rem 1.1rem; }
   body.menu-open .site-header .main-nav .sub-menu2 a { display: block; padding: .36rem 0; font-family: 'Cinzel', serif; font-size: .56rem; letter-spacing: .13em; text-transform: uppercase; color: #7a7066; text-decoration: none; }
   .site-header .main-nav .sub-menu2 { display: none; }

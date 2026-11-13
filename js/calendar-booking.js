@@ -451,10 +451,10 @@
     ]
   };
   var PREP_DOCS = "Some of these sessions require follow-up, supplementary intake, or documents. All of it is sent by email once your hour is held.";
+  // Her policy, 2026-11-12: no cancellations; reschedule up to 3 days before; inside that, message her (most likely forfeit).
   var TERMS = [
-    ["More than 1 week before", "Full cancellation, full refund"],
-    ["Within 3–7 days", "Reschedule only, no cancellation"],
-    ["Within 48 hours or no-show", "Forfeit of session & reciprocity"]
+    ["Up to 3 days before", "Reschedule with the link in your confirmation email. There are no cancellations or refunds."],
+    ["Less than 3 days before", "Please reply to your confirmation email. The session is most likely forfeit."]
   ];
   function prepItems(slug) { return (PREP[slug] || []).concat(PREP_COMMON); }
   function prepList(slug, cls) {
@@ -462,7 +462,7 @@
       prepItems(slug).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>";
   }
   function termsBlock() {
-    return '<details class="aap-bk-terms"><summary>Cancellation &amp; reschedule</summary>' +
+    return '<details class="aap-bk-terms"><summary>Rescheduling</summary>' +
       "<p>Life moves. Please give as much notice as you’re able.</p><dl>" +
       TERMS.map(function (t) { return "<dt>" + esc(t[0]) + "</dt><dd>" + esc(t[1]) + "</dd>"; }).join("") +
       "</dl></details>";
@@ -527,6 +527,12 @@
 
   // ---- Step 6: details + intake -------------------------------------------
   // The Intake & Inquiry is the application to what comes after it; ask which.
+  function isGroupIntake() {
+    if (!sel.service || sel.service.slug !== "intake-inquiry") return false;
+    var chosen = (typeof formMemo !== "undefined" && formMemo["bk-applying"]) || (sel.applyingFor ? APPLY[sel.applyingFor] : "");
+    return chosen === APPLY.group;
+  }
+
   function applyingField() {
     if (!sel.service || sel.service.slug !== "intake-inquiry") return "";
     var chosen = sel.applyingFor ? APPLY[sel.applyingFor] : "";
@@ -563,8 +569,11 @@
         "Anything important to know to meet you with care? <em>(optional)</em>",
         '<textarea class="aap-bk-textarea" id="bk-care" rows="2"></textarea>'
       ) +
+      // Group work is by referral (her ask, 2026-11-13): when the intake is for Group Work, the question becomes required.
       field(
-        "How did you find your way here? <em>(optional)</em>",
+        isGroupIntake()
+          ? "Who referred you, or where did you come from? <em>(required for group work)</em>"
+          : "How did you find your way here? <em>(optional)</em>",
         '<input class="aap-bk-input" id="bk-referral" type="text" placeholder="Referral, social, search, word of mouth…">'
       ) +
       '<div class="aap-bk-summary">' + summaryLine() + "</div>" +
@@ -659,6 +668,7 @@
 
     if (!first || !last) return fail("Please share your first and last name.");
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return fail("Please enter a valid email so Adi Marie can reach you.");
+    if (applying === APPLY.group && !referral) return fail("Group work is by referral. Please tell us who referred you, or where you came from.");
 
     var noteParts = [];
     if (applying) noteParts.push("Applying for: " + applying);
@@ -745,7 +755,7 @@
       prepList(sel.service.slug) +
       '<p class="aap-bk-quiet aap-bk-prep-note">' + esc(PREP_DOCS) + "</p>" +
       "</div>" +
-      (manage ? '<a class="aap-bk-manage" href="' + manage + '">Need to change or cancel? Manage your booking</a>' : "") +
+      (manage ? '<a class="aap-bk-manage" href="' + manage + '">Need to reschedule? Manage your booking</a>' : "") +
       "</div>";
     root.innerHTML = html;
     bindConfirm();
@@ -849,6 +859,18 @@
   function bindDetails() {
     var btn = document.getElementById("bk-submit");
     if (btn) btn.addEventListener("click", submit);
+    // Choosing Group Work turns the referral question into the required one, in place.
+    var ap = document.getElementById("bk-applying"), ref = document.getElementById("bk-referral");
+    if (ap && ref) ap.addEventListener("change", function () {
+      formMemo["bk-applying"] = ap.value;
+      var lab = ref.closest("label");
+      if (!lab) return;
+      var txt = ap.value === APPLY.group
+        ? "Who referred you, or where did you come from? <em>(required for group work)</em>"
+        : "How did you find your way here? <em>(optional)</em>";
+      while (lab.firstChild && lab.firstChild !== ref) lab.removeChild(lab.firstChild);
+      lab.insertAdjacentHTML("afterbegin", txt);
+    });
   }
 
   function bindConfirm() {

@@ -28,14 +28,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant+SC:wght@300;400;500&family=Inter:wght@300;400;500;600&family=Cinzel:wght@400;500;600;700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="images/uploads/hero-begin-serpent.jpg?v=1" fetchpriority="high">
+  <link rel="preload" as="image" href="images/uploads/begin-hero-forest-path.jpg?v=1" media="(min-width: 821px)" fetchpriority="high">
+  <link rel="preload" as="image" href="images/uploads/begin-hero-forest-path-phone.jpg?v=1" media="(max-width: 820px)" fetchpriority="high">
   <link rel="stylesheet" href="css/styles.css?v=v32">
-  <link rel="stylesheet" href="css/site-header.css?v=v29">
+  <link rel="stylesheet" href="css/site-header.css?v=v30">
   <link rel="stylesheet" href="css/lux.css?v=1">
   <link rel="stylesheet" href="css/elevate.css?v=261106">
   <link rel="stylesheet" href="css/luxe.css?v=261106">
   <link rel="stylesheet" href="css/doors.css?v=261109k">
-  <link rel="stylesheet" href="css/menu.css?v=261108">
+  <link rel="stylesheet" href="css/menu.css?v=261113">
   <link rel="stylesheet" href="css/still.css?v=261106">
   <!-- The hero shows all at once: a plain cover sits over it until the picture is decoded and the five faces are ready (3 s cap), then lifts in one step. No motion. -->
   <script>
@@ -49,7 +50,7 @@
       var i = new Image();
       i.onerror = ok;
       i.onload = function () { if (!i.decode) return ok(); i.decode().then(ok, ok); setTimeout(ok, 300); };
-      i.src = 'images/uploads/hero-begin-serpent.jpg?v=1';
+      i.src = matchMedia('(max-width: 820px)').matches ? 'images/uploads/begin-hero-forest-path-phone.jpg?v=1' : 'images/uploads/begin-hero-forest-path.jpg?v=1';
     });
     var words = 'Begin Here. It begins with sitting together. The Intake & Inquiry is the Conversation, the threshold every deeper path shares. Schedule to begin. Write first.';
     var faces = ['500 1em Cinzel', '400 1em "Cormorant Garamond"', 'italic 500 1em "Cormorant Garamond"', '400 1em Tangerine', '500 1em "Cormorant SC"']
@@ -62,6 +63,467 @@
     html.hero-hold body[data-content-page="inquiry"] .bh-hero::before { content: '' !important; display: block !important; position: absolute; inset: 0; z-index: 10; background: rgba(247,245,240,.995); pointer-events: none; }
   </style>
   <link rel="stylesheet" href="/css/ministry-disclaimer.css?v=1">
+
+  <style>
+    /* ===== Begin Here, 2026-11-13 (her ask: luxurious, alive, precious; no motion) ===== */
+
+    /* the invitation */
+    body[data-content-page="inquiry"] .bh-invite { background: #F7F5F0; padding: 4.5rem max(16px, env(safe-area-inset-left, 0px)) 3.5rem; text-align: center; }
+    body[data-content-page="inquiry"] .bh-invite-mark { display: block; width: 132px; height: auto; margin: 0 auto 1.6rem; opacity: .92; }
+    body[data-content-page="inquiry"] .bh-invite-line { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.25; color: #2D2A26; max-width: 30ch; margin: 0 auto .9rem; text-wrap: balance; }
+    body[data-content-page="inquiry"] .bh-invite-line em { color: #8F6F2E; }
+    body[data-content-page="inquiry"] .bh-invite-sub { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.2rem; line-height: 1.55; color: #5A554C; max-width: 46ch; margin: 0 auto; text-wrap: balance; }
+
+    /* the doors */
+    body[data-content-page="inquiry"] .bh-doors { background: linear-gradient(#F7F5F0, #EFE9DC); padding: 2.5rem max(16px, env(safe-area-inset-left, 0px)) 5.5rem; border-bottom: 1px solid rgba(201,168,76,.28); }
+    body[data-content-page="inquiry"] .bh-doors-inner { max-width: 1240px; margin: 0 auto; text-align: center; }
+    body[data-content-page="inquiry"] .bh-doors h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 1.1; color: #2D2A26; margin: .6rem 0 .8rem; text-wrap: balance; }
+    body[data-content-page="inquiry"] .bh-doors h2 em { color: #8F6F2E; }
+    body[data-content-page="inquiry"] .bh-lede { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.2rem; color: #5A554C; margin: 0 auto 3rem; }
+    body[data-content-page="inquiry"] .bh-groups { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    body[data-content-page="inquiry"] .bh-group { padding: 0 2.25rem; }
+    body[data-content-page="inquiry"] .bh-group + .bh-group { border-left: 1px solid rgba(201,168,76,.4); }
+    body[data-content-page="inquiry"] .bh-group-label { font-family: 'Cinzel', serif; font-size: .74rem; letter-spacing: .24em; text-transform: uppercase; color: #8F6F2E; margin: 0 0 .5rem; }
+    body[data-content-page="inquiry"] .bh-group-note { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.12rem; color: #5A554C; margin: 0 0 2rem; }
+    body[data-content-page="inquiry"] .bh-group-doors { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+    body[data-content-page="inquiry"] .bh-door { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .55rem; text-decoration: none; color: inherit; }
+    body[data-content-page="inquiry"] .bh-door-arch { position: relative; display: block; width: 100%; aspect-ratio: 3 / 4.3; border-radius: 999px 999px 0 0; overflow: hidden; background: #E8E5DC; box-shadow: 0 18px 40px rgba(45,42,38,.14); margin-bottom: .9rem; }
+    body[data-content-page="inquiry"] .bh-door-img { position: absolute; inset: 0; background-size: cover; }
+    body[data-content-page="inquiry"] .bh-door-arch::after { content: ''; position: absolute; inset: 9px; border: 1px solid rgba(244,234,211,.7); border-radius: 999px 999px 0 0; pointer-events: none; }
+    body[data-content-page="inquiry"] .bh-door:hover .bh-door-arch, body[data-content-page="inquiry"] .bh-door:focus-visible .bh-door-arch { box-shadow: 0 0 0 1px #C9A84C, 0 18px 40px rgba(45,42,38,.18); }
+    body[data-content-page="inquiry"] .bh-door:focus-visible { outline: none; }
+    body[data-content-page="inquiry"] .bh-door-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.55rem; line-height: 1.15; color: #2D2A26; text-wrap: balance; }
+    body[data-content-page="inquiry"] .bh-door-line { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.05rem; line-height: 1.5; color: #5A554C; max-width: 30ch; text-wrap: pretty; }
+    body[data-content-page="inquiry"] .bh-door-meta { font-family: 'Cinzel', serif; font-size: .56rem; letter-spacing: .2em; text-transform: uppercase; color: #6b6357; }
+    body[data-content-page="inquiry"] .bh-door-go { margin-top: .5rem; padding: .7rem 1.6rem; font-family: 'Cinzel', serif; font-size: .64rem; letter-spacing: .22em; text-transform: uppercase; color: #2D2A26; border: 1px solid #C9A84C; }
+    body[data-content-page="inquiry"] .bh-door:hover .bh-door-go, body[data-content-page="inquiry"] .bh-door:focus-visible .bh-door-go { background: #C9A84C; }
+
+    /* the calendar: its first step as three slim tabs (pictures and descriptions live in the doors) */
+    body[data-content-page="inquiry"] #schedule { padding-top: 4.5rem; }
+    body[data-content-page="inquiry"] #schedule .aap-bk-offerings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin-top: .4rem; }
+    body[data-content-page="inquiry"] #schedule .aap-bk-offering { padding: 1rem 1.1rem; gap: .35rem; border-radius: 0; border: 1px solid rgba(201,168,76,.4); background: #FCFBF8; text-align: center; align-items: center; }
+    body[data-content-page="inquiry"] #schedule .aap-bk-offering-desc { display: none; }
+    body[data-content-page="inquiry"] #schedule .aap-bk-offering-name { font-size: 1.3rem; margin: 0; }
+    body[data-content-page="inquiry"] #schedule .aap-bk-offering.is-on { border-color: #C9A84C; box-shadow: 0 0 0 1px #C9A84C inset; background: #F7EFD9; }
+
+    /* why we begin: a candlelit split */
+    body[data-content-page="inquiry"] .bh-why { background: #FCFBF8; padding: 6rem max(16px, env(safe-area-inset-left, 0px)); }
+    body[data-content-page="inquiry"] .bh-why-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 4.5rem; align-items: center; }
+    body[data-content-page="inquiry"] .bh-why-fig { position: relative; margin: 0; aspect-ratio: 4 / 5; overflow: hidden; box-shadow: 0 24px 60px rgba(45,42,38,.18); }
+    body[data-content-page="inquiry"] .bh-why-fig img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 35%; display: block; }
+    body[data-content-page="inquiry"] .bh-why-fig::after { content: ''; position: absolute; inset: 14px; border: 1px solid rgba(244,234,211,.6); pointer-events: none; }
+    body[data-content-page="inquiry"] .bh-why-text h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2rem, 3.4vw, 3rem); line-height: 1.12; color: #2D2A26; margin: .6rem 0 1.4rem; text-wrap: balance; }
+    body[data-content-page="inquiry"] .bh-why-text h2 em { color: #8F6F2E; }
+    body[data-content-page="inquiry"] .bh-why-text p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.22rem; line-height: 1.7; color: #3A352F; margin: 0 0 1.2rem; }
+    body[data-content-page="inquiry"] .bh-quote { margin: 1.8rem 0 1.4rem; padding: 0 0 0 1.4rem; border-left: 1px solid #C9A84C; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: clamp(1.45rem, 2.2vw, 1.85rem); line-height: 1.4; color: #2D2A26; }
+    body[data-content-page="inquiry"] .bh-sign { font-family: 'Tangerine', 'Cormorant Garamond', serif !important; font-size: 3rem !important; line-height: 1 !important; color: #8F6F2E !important; margin: .4rem 0 0 !important; }
+
+    /* who this is for: verses */
+    body[data-content-page="inquiry"] .bh-for { background: radial-gradient(ellipse at top, rgba(201,168,76,.08), transparent 60%), #F3EDE0; padding: 6rem max(16px, env(safe-area-inset-left, 0px)) 5.5rem; text-align: center; border-top: 1px solid rgba(201,168,76,.28); }
+    body[data-content-page="inquiry"] .bh-for-inner { max-width: 980px; margin: 0 auto; }
+    body[data-content-page="inquiry"] .bh-for h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 1.1; color: #2D2A26; margin: .6rem 0 1.2rem; }
+    body[data-content-page="inquiry"] .bh-for h2 em { color: #8F6F2E; }
+    body[data-content-page="inquiry"] .bh-for-intro { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.3rem; line-height: 1.65; color: #3A352F; max-width: 640px; margin: 0 auto 3rem; text-wrap: balance; }
+    body[data-content-page="inquiry"] .bh-verses { list-style: none; margin: 0 0 3rem; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; text-align: center; }
+    body[data-content-page="inquiry"] .bh-verses li { position: relative; padding: 2.4rem 2rem 2rem; background: #FCFBF8; border: 1px solid rgba(201,168,76,.32); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.3rem; line-height: 1.5; color: #2D2A26; text-wrap: balance; }
+    body[data-content-page="inquiry"] .bh-verses li::before { content: '\2727'; display: block; margin: 0 auto .8rem; font-size: .9rem; color: #C9A84C; }
+    body[data-content-page="inquiry"] .bh-for-go { display: inline-block; padding: .9rem 2rem; font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; color: #F7F5F0; background: #2D2A26; text-decoration: none; }
+    body[data-content-page="inquiry"] .bh-for-go:hover, body[data-content-page="inquiry"] .bh-for-go:focus-visible { background: #8F6F2E; }
+
+    /* her thank-you, as a letter */
+    body[data-content-page="inquiry"] .dr-thanks { background: #2D2A26; padding: 6rem max(16px, env(safe-area-inset-left, 0px)); border: 0; }
+    body[data-content-page="inquiry"] .dr-thanks-inner { max-width: 760px; background: #FCFBF8; padding: 4rem clamp(1.5rem, 5vw, 4.5rem) 3.2rem; position: relative; box-shadow: 0 30px 70px rgba(0,0,0,.35); }
+    body[data-content-page="inquiry"] .dr-thanks-inner::after { content: ''; position: absolute; inset: 12px; border: 1px solid rgba(201,168,76,.45); pointer-events: none; }
+    body[data-content-page="inquiry"] .dr-thanks .dr-sign { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-size: 3.2rem; line-height: 1; color: #8F6F2E; }
+
+    /* the letters: two columns */
+    body[data-content-page="inquiry"] #letters .booking-inner { max-width: 1100px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3.5rem; align-items: center; }
+    body[data-content-page="inquiry"] #letters .booking-intro { text-align: left; margin: 0; }
+    body[data-content-page="inquiry"] #letters .booking-intro .section-body { margin: 0 !important; }
+
+    @media (max-width: 1080px) {
+      body[data-content-page="inquiry"] .bh-groups { grid-template-columns: 1fr; gap: 3.5rem; }
+      body[data-content-page="inquiry"] .bh-group { padding: 0; }
+      body[data-content-page="inquiry"] .bh-group + .bh-group { border-left: 0; border-top: 1px solid rgba(201,168,76,.4); padding-top: 3rem; }
+      body[data-content-page="inquiry"] .bh-group-doors { max-width: 760px; margin: 0 auto; }
+    }
+    @media (max-width: 860px) {
+      body[data-content-page="inquiry"] .bh-why-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      body[data-content-page="inquiry"] .bh-why-fig { max-width: 460px; margin: 0 auto; width: 100%; }
+      body[data-content-page="inquiry"] .bh-verses { grid-template-columns: 1fr; }
+      body[data-content-page="inquiry"] #letters .booking-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      body[data-content-page="inquiry"] #letters .booking-intro { text-align: center; }
+    }
+    @media (max-width: 640px) {
+      body[data-content-page="inquiry"] #schedule .aap-bk-offerings { grid-template-columns: 1fr; }
+      body[data-content-page="inquiry"] .bh-group-doors { grid-template-columns: 1fr; gap: 3rem; max-width: 290px; }
+      body[data-content-page="inquiry"] .bh-door-arch { aspect-ratio: 4 / 4.6; }
+      body[data-content-page="inquiry"] .bh-invite { padding-top: 3.5rem; }
+    }
+
+    /* ---- refinement pass 2 ---- */
+    body[data-content-page="inquiry"] .bh-script { font-family: 'Tangerine', 'Cormorant Garamond', serif; font-style: normal; font-weight: 700; font-size: 1.55em; line-height: .6; color: #A98432 !important; padding: 0 .04em; }
+    body[data-content-page="inquiry"] .bh-invite { background: radial-gradient(ellipse 60% 90% at 50% 40%, rgba(220,193,120,.22), transparent 70%), #F7F5F0; padding-top: 5.5rem; padding-bottom: 4rem; }
+    body[data-content-page="inquiry"] .bh-invite-mark { width: 150px; }
+    body[data-content-page="inquiry"] .bh-invite-line { font-size: clamp(1.9rem, 3.4vw, 2.8rem); }
+    body[data-content-page="inquiry"] .bh-orn { display: flex; align-items: center; justify-content: center; gap: .9rem; margin: 2.2rem auto 0; color: #C9A84C; font-size: .95rem; }
+    body[data-content-page="inquiry"] .bh-orn i { display: block; width: 72px; height: 1px; background: linear-gradient(90deg, transparent, #C9A84C); }
+    body[data-content-page="inquiry"] .bh-orn i + i, body[data-content-page="inquiry"] .bh-orn i:last-child { background: linear-gradient(90deg, #C9A84C, transparent); }
+    body[data-content-page="inquiry"] .bh-orn i:first-child { background: linear-gradient(90deg, transparent, #C9A84C); }
+    body[data-content-page="inquiry"] .bh-steps { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; max-width: 920px; margin: 1.4rem auto 3rem; padding: 0; }
+    body[data-content-page="inquiry"] .bh-steps li { display: flex; flex-direction: column; align-items: center; gap: .35rem; padding: 0 1.5rem; text-align: center; }
+    body[data-content-page="inquiry"] .bh-steps li + li { border-left: 1px solid rgba(201,168,76,.35); }
+    body[data-content-page="inquiry"] .bh-step-num { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: .2em; color: #DCC178; }
+    body[data-content-page="inquiry"] .bh-step-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.45rem; color: #F7F5F0; }
+    body[data-content-page="inquiry"] .bh-step-line { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.02rem; line-height: 1.45; color: rgba(247,245,240,.72); }
+    body[data-content-page="inquiry"] .bh-door-name { font-size: 1.7rem; }
+    body[data-content-page="inquiry"] .bh-door-arch { box-shadow: 0 22px 48px rgba(45,42,38,.16), 0 0 0 1px rgba(201,168,76,.25); }
+    body[data-content-page="inquiry"] .bh-verses li { border-top: 2px solid #C9A84C; }
+    @media (max-width: 760px) {
+      body[data-content-page="inquiry"] .bh-steps { grid-template-columns: 1fr; gap: 1.4rem; }
+      body[data-content-page="inquiry"] .bh-steps li + li { border-left: 0; border-top: 1px solid rgba(201,168,76,.3); padding-top: 1.4rem; }
+    }
+
+    /* ---- refinement pass 3: the calendar card in the page's own language; portrait framing; compact steps on phones ---- */
+    body[data-content-page="inquiry"] .bh-why-fig img { object-position: center 18%; }
+    body[data-content-page="inquiry"] #schedule .aap-bk-card { border-radius: 0; background: #FCFBF8; border: 1px solid rgba(201,168,76,.45); box-shadow: 0 34px 80px rgba(0,0,0,.38); position: relative; }
+    body[data-content-page="inquiry"] #schedule .aap-bk-step { padding: 30px 36px; border-top-color: rgba(201,168,76,.22); }
+    body[data-content-page="inquiry"] #schedule .aap-bk-num { font-family: 'Cinzel', serif; background: #F7EFD9; }
+    body[data-content-page="inquiry"] #schedule .aap-bk-label { font-size: 27px; font-weight: 400; }
+    body[data-content-page="inquiry"] #schedule .aap-bk-cat-label, body[data-content-page="inquiry"] #schedule .aap-bk-offering-dur { font-family: 'Cinzel', serif; font-weight: 400; letter-spacing: .2em; color: #8F6F2E; }
+    body[data-content-page="inquiry"] #schedule .aap-bk [class*="aap-bk-"]:not(.aap-bk-num):not(.aap-bk-spin):not([class*="dot"]) { border-radius: 0; }
+    @media (max-width: 760px) {
+      body[data-content-page="inquiry"] .bh-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-bottom: 2.2rem; }
+      body[data-content-page="inquiry"] .bh-steps li { padding: 0 .4rem; }
+      body[data-content-page="inquiry"] .bh-steps li + li { border-top: 0; padding-top: 0; border-left: 1px solid rgba(201,168,76,.3); }
+      body[data-content-page="inquiry"] .bh-step-name { font-size: 1.05rem; line-height: 1.2; }
+      body[data-content-page="inquiry"] .bh-step-line { display: none; }
+      body[data-content-page="inquiry"] #schedule .aap-bk-step { padding: 22px 18px; }
+    }
+
+    /* ---- pass 4 ---- */
+    /* the invitation, with the key */
+    body[data-content-page="inquiry"] .bh-invite-inner { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 4rem; align-items: center; }
+    body[data-content-page="inquiry"] .bh-invite-fig { margin: 0; }
+    body[data-content-page="inquiry"] .bh-invite-img { position: relative; display: block; width: 100%; aspect-ratio: 3 / 4; border-radius: 999px 999px 0 0; background-size: cover; background-position: 40% 45%; box-shadow: 0 24px 54px rgba(45,42,38,.22), 0 0 0 1px rgba(201,168,76,.3); }
+    body[data-content-page="inquiry"] .bh-invite-img::after { content: ''; position: absolute; inset: 9px; border: 1px solid rgba(244,234,211,.6); border-radius: 999px 999px 0 0; }
+    body[data-content-page="inquiry"] .bh-invite-text { text-align: center; }
+    /* the calendar, on the lantern path */
+    body[data-content-page="inquiry"] .dr-schedule { background: linear-gradient(rgba(27,23,19,.86), rgba(27,23,19,.9)), url('images/uploads/begin-lantern-path.jpg') center 60% / cover no-repeat, #2D2A26; }
+    /* what opens after the conversation */
+    body[data-content-page="inquiry"] .bh-after { background: #F7F5F0; padding: 5.5rem max(16px, env(safe-area-inset-left, 0px)); text-align: center; border-top: 1px solid rgba(201,168,76,.22); }
+    body[data-content-page="inquiry"] .bh-after-inner { max-width: 1100px; margin: 0 auto; }
+    body[data-content-page="inquiry"] .bh-after h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2.1rem, 3.8vw, 3.2rem); line-height: 1.1; color: #2D2A26; margin: .6rem 0 .8rem; }
+    body[data-content-page="inquiry"] .bh-after h2 em { color: #8F6F2E; }
+    body[data-content-page="inquiry"] .bh-after-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; margin-top: .5rem; }
+    body[data-content-page="inquiry"] .bh-after-item { display: flex; flex-direction: column; align-items: center; gap: .45rem; }
+    body[data-content-page="inquiry"] .bh-after-img { display: block; width: 190px; height: 190px; border-radius: 50%; background-size: cover; margin-bottom: 1rem; box-shadow: 0 0 0 1px rgba(201,168,76,.45), 0 0 0 7px #F7F5F0, 0 0 0 8px rgba(201,168,76,.35), 0 18px 40px rgba(45,42,38,.14); }
+    body[data-content-page="inquiry"] .bh-after-kind { font-family: 'Cinzel', serif; font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: #8F6F2E; }
+    body[data-content-page="inquiry"] .bh-after-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.55rem; color: #2D2A26; }
+    body[data-content-page="inquiry"] .bh-after-line { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.08rem; line-height: 1.5; color: #5A554C; max-width: 28ch; }
+    /* her letter, beneath the stars */
+    body[data-content-page="inquiry"] .dr-thanks { background: linear-gradient(rgba(20,18,16,.55), rgba(20,18,16,.72)), url('images/uploads/begin-stars-through-trees.jpg') center 30% / cover no-repeat, #2D2A26; padding-top: 8rem; padding-bottom: 8rem; }
+    @media (max-width: 860px) {
+      body[data-content-page="inquiry"] .bh-invite-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      body[data-content-page="inquiry"] .bh-invite-fig { max-width: 280px; margin: 0 auto; width: 100%; }
+      body[data-content-page="inquiry"] .bh-after-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    /* the letters: Home's template, re-scoped rule by rule */
+    body[data-content-page="inquiry"] .section-newsletter {
+      background: #FCFBF8 !important;
+      min-height: 700px !important;
+      padding: 4rem 10% 4rem 0 !important;
+      display: flex !important;
+      justify-content: flex-end !important;
+      align-items: center !important;
+      text-align: left !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-inner {
+      width: 32% !important;
+      min-width: 380px !important;
+      max-width: 460px !important;
+      margin: 0 !important;
+      padding: 3rem 2.4rem !important;
+      background: rgba(245, 243, 237, 0.97) !important;
+      border-radius: 4px !important;
+      text-align: center !important;
+      box-shadow: 0 28px 72px rgba(0, 0, 0, 0.32), 0 4px 12px rgba(0, 0, 0, 0.18) !important;
+    }
+    body[data-content-page="inquiry"] .section-newsletter .newsletter-title {
+      font-size: clamp(2.8rem, 3.8vw, 4.2rem) !important;
+      margin: 0.5rem 0 1rem !important;
+    }
+    body[data-content-page="inquiry"] .section-newsletter .newsletter-body {
+      font-size: 1.1rem !important;
+      max-width: 100% !important;
+      margin: 0 0 1.8rem !important;
+    }
+    body[data-content-page="inquiry"] .section-newsletter .newsletter-form {
+      max-width: 100% !important;
+    }
+    body[data-content-page="inquiry"] .section-newsletter .newsletter-trust {
+      font-size: 0.85rem !important;
+      margin: 1.4rem 0 0 !important;
+    }
+    body[data-content-page="inquiry"] .section-newsletter .section-label {
+      color: var(--gold, #c9a84c) !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-title {
+      font-family: 'Tangerine', 'Cormorant Garamond', serif !important;
+      font-weight: 400 !important;
+      font-size: clamp(4rem, 6vw, 6rem) !important;
+      line-height: 1.05 !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      margin: 1rem 0 1.5rem !important;
+      letter-spacing: 0 !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-body {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 1.25rem !important;
+      line-height: 1.65 !important;
+      color: var(--ink-soft, #3D3A36) !important;
+      margin: 0 auto 2.5rem !important;
+      max-width: 540px !important;
+      text-wrap: balance !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-form {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.85rem !important;
+      max-width: 480px !important;
+      margin: 0 auto !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-form-names {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 0.85rem !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-form input,
+    body[data-content-page="inquiry"] .newsletter-form select {
+      padding: 0.95rem 1.1rem !important;
+      border: 1px solid rgba(45,42,38,0.22) !important;
+      background: rgba(255,255,255,0.85) !important;
+      color: var(--ink-deep, #2D2A26) !important;
+      border-radius: 4px !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.95rem !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      transition: border-color 0.15s, background 0.15s !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-form input:focus,
+    body[data-content-page="inquiry"] .newsletter-form select:focus {
+      outline: none !important;
+      border-color: var(--gold, #c9a84c) !important;
+      background: rgba(255,255,255,0.92) !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-form select {
+      appearance: none !important;
+      -webkit-appearance: none !important;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%232D2A26' d='M6 8L0 0h12z'/></svg>") !important;
+      background-repeat: no-repeat !important;
+      background-position: right 1rem center !important;
+      padding-right: 2.4rem !important;
+      cursor: pointer !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-form select:invalid {
+      color: #8B7A5C !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-form input::placeholder {
+      color: #8B7A5C !important;
+      opacity: 1 !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-form input::-webkit-input-placeholder {
+      color: #8B7A5C !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-form input::-moz-placeholder {
+      color: #8B7A5C !important;
+      opacity: 1 !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-submit {
+      padding: 0.95rem 1.8rem !important;
+      margin-top: 0.5rem !important;
+      cursor: pointer !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-submit:disabled {
+      opacity: 0.6 !important;
+      cursor: wait !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-trust {
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 0.95rem !important;
+      color: var(--ink-quiet, #5A554C) !important;
+      margin: 1.75rem 0 0 !important;
+      opacity: 0.85 !important;
+      line-height: 1.6 !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-trust-sep {
+      color: var(--gold, #c9a84c) !important;
+      margin: 0 0.4rem !important;
+      opacity: 0.7 !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-intake-link {
+      color: var(--gold, #c9a84c) !important;
+      text-decoration: none !important;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.35) !important;
+      transition: border-color 0.15s !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-intake-link:hover {
+      border-bottom-color: var(--gold, #c9a84c) !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-status {
+      margin-top: 1.2rem !important;
+      font-family: 'Cormorant Garamond', serif !important;
+      font-style: italic !important;
+      font-size: 1.1rem !important;
+      min-height: 1.5em !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-status-success {
+      color: var(--gold, #c9a84c) !important;
+    }
+    body[data-content-page="inquiry"] .newsletter-status-error {
+      color: #a04545 !important;
+    }
+    @media (max-width: 720px) {
+      body[data-content-page="inquiry"] .section-newsletter {
+        padding: 3rem 1rem !important;
+        justify-content: center !important;
+        min-height: auto !important;
+        text-align: center !important;
+      }
+      body[data-content-page="inquiry"] .newsletter-inner {
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        padding: 2.2rem 1.4rem !important;
+        margin: 0 auto !important;
+      }
+      body[data-content-page="inquiry"] .newsletter-form-names {
+        grid-template-columns: 1fr !important;
+      }
+      body[data-content-page="inquiry"] .section-newsletter .newsletter-title {
+        font-size: clamp(2.4rem, 9vw, 3rem) !important;
+      }
+      body[data-content-page="inquiry"] .section-newsletter .newsletter-body {
+        font-size: 1rem !important;
+      }
+      body[data-content-page="inquiry"] .newsletter-trust-sep {
+        display: block !important;
+        opacity: 0 !important;
+        height: 0.4rem !important;
+        margin: 0 !important;
+      }
+    }
+    body[data-content-page="inquiry"] .section-newsletter.nl-bar { min-height: 0 !important; display: block !important; padding: 0 1.5rem 5.5rem !important; background: var(--parchment-deep, #E8E5DC) !important; border: 0; text-align: center !important; }
+    body[data-content-page="inquiry"] .nl-bar-inner { max-width: 980px; margin: 0 auto; padding: 3rem clamp(1.5rem, 4vw, 3.5rem) 2.6rem; background: #FAF8F3; border: 1px solid rgba(201,168,76,.28); border-radius: 3px; box-shadow: 0 1px 2px rgba(45,42,38,.03), 0 14px 40px rgba(45,42,38,.06); }
+    body[data-content-page="inquiry"] .nl-bar-head { max-width: 40em; margin: 0 auto 2rem; }
+    body[data-content-page="inquiry"] .nl-bar .newsletter-title { font-size: clamp(2.8rem, 3.6vw, 3.8rem) !important; line-height: 1 !important; margin: 0 0 .8rem !important; }
+    body[data-content-page="inquiry"] .nl-bar .newsletter-body { font-size: 1.05rem !important; line-height: 1.55 !important; margin: 0 auto !important; max-width: 40em !important; color: #3D3A36 !important; }
+    body[data-content-page="inquiry"] .nl-bar .newsletter-form { display: grid !important; grid-template-columns: 1fr 1fr; gap: .7rem .9rem; max-width: 760px !important; margin: 0 auto !important; }
+    body[data-content-page="inquiry"] .nl-bar .newsletter-form-names { display: contents !important; }
+    body[data-content-page="inquiry"] .nl-bar .newsletter-form input, body[data-content-page="inquiry"] .nl-bar .newsletter-form select { width: 100% !important; margin: 0 !important; padding: .75rem .95rem !important; font-size: .92rem !important; min-height: 0 !important; background: rgba(255,255,255,.75) !important; border: 1px solid rgba(90,80,70,.18) !important; }
+    body[data-content-page="inquiry"] .nl-bar .newsletter-submit { grid-column: 1 / -1; justify-self: center; width: 280px !important; max-width: 100% !important; margin: .6rem 0 0 !important; padding: .85rem 1rem !important; }
+    body[data-content-page="inquiry"] .nl-bar .newsletter-trust { font-size: .82rem !important; line-height: 1.5 !important; margin: 1.1rem 0 0 !important; text-align: center !important; }
+    body[data-content-page="inquiry"] .nl-bar .newsletter-trust-sep { display: inline !important; opacity: 1 !important; height: auto !important; }
+    body[data-content-page="inquiry"] .nl-photo { margin: 0; padding: 0; background: #1b1513; }
+    body[data-content-page="inquiry"] .nl-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1916 / 821; }
+    @media (max-width: 700px) {
+      body[data-content-page="inquiry"] .section-newsletter.nl-bar { padding: 0 1rem 3rem !important; }
+      body[data-content-page="inquiry"] .nl-bar-inner { padding: 2rem 1.1rem 1.75rem; }
+      body[data-content-page="inquiry"] .nl-bar .newsletter-form { grid-template-columns: 1fr; }
+      body[data-content-page="inquiry"] .nl-bar .newsletter-submit { width: 100% !important; }
+      body[data-content-page="inquiry"] .nl-bar .newsletter-trust-sep { display: block !important; opacity: 0 !important; height: .4rem !important; }
+      body[data-content-page="inquiry"] .nl-photo img { aspect-ratio: 16 / 9; object-fit: cover; object-position: 42% 40%; }
+    }
+    body[data-content-page="inquiry"] .section-the-work .section-label, body[data-content-page="inquiry"] .work-path-eyebrow, body[data-content-page="inquiry"] .work-path-cta, body[data-content-page="inquiry"] .testimonial-author, body[data-content-page="inquiry"] .testimonial-author span, body[data-content-page="inquiry"] .begin-doorway-eyebrow, body[data-content-page="inquiry"] .begin-doorway-cta, body[data-content-page="inquiry"] .newsletter-intake-link { color: #7D6126 !important; }
+    body[data-content-page="inquiry"] .newsletter-intake-link { border-bottom-color: rgba(125, 97, 38, .45) !important; }
+    body[data-content-page="inquiry"] .section-newsletter.nl-bar { margin-top: -1px !important; padding-top: 1px !important; }
+    html body[data-content-page="inquiry"] .nl-bar .newsletter-body { font-size: 1.125rem !important; }
+    html body[data-content-page="inquiry"] .section-newsletter .newsletter-trust,
+    html body[data-content-page="inquiry"] .section-newsletter .newsletter-trust span,
+    html body[data-content-page="inquiry"] .section-newsletter .newsletter-trust .newsletter-intake-link { font-size: .92rem !important; }
+
+    /* ---- the hero: a forest path (Pexels, free licence: photo by Brester Irina), the way in ---- */
+    body[data-content-page="inquiry"] .bh-hero .hero-image { background-image: linear-gradient(90deg, rgba(12,14,10,0) 30%, rgba(12,14,10,.38) 58%, rgba(12,14,10,.62) 100%), url('images/uploads/begin-hero-forest-path.jpg?v=1') !important; background-position: center, 28% 62% !important; background-size: cover, cover !important; }
+    @media (max-width: 820px) {
+      body[data-content-page="inquiry"] .bh-hero .hero-image { background-image: url('images/uploads/begin-hero-forest-path-phone.jpg?v=1') !important; background-position: 40% 60% !important; background-size: cover !important; }
+    }
+
+    /* ---- 2026-11-13: what-opens-next pictures as arches (the page's shape), and even space around the letters card ---- */
+    body[data-content-page="inquiry"] .bh-after-img { width: 220px; height: auto; aspect-ratio: 3 / 4; border-radius: 999px 999px 0 0; position: relative; box-shadow: 0 18px 40px rgba(45,42,38,.16), 0 0 0 1px rgba(201,168,76,.3); }
+    body[data-content-page="inquiry"] .bh-after-img::after { content: ''; position: absolute; inset: 8px; border: 1px solid rgba(244,234,211,.65); border-radius: 999px 999px 0 0; }
+    body[data-content-page="inquiry"] #letters.section-newsletter.nl-bar { margin-top: 0 !important; padding-top: 5.5rem !important; padding-bottom: 5.5rem !important; }
+    @media (max-width: 700px) { body[data-content-page="inquiry"] #letters.section-newsletter.nl-bar { padding-top: 3rem !important; padding-bottom: 3rem !important; } }
+
+    /* ---- 2026-11-13 late: hero on the left; doors aligned; what-opens-next as a triptych; not-yet; questions ---- */
+    @media (min-width: 821px) {
+      body[data-content-page="inquiry"] .bh-hero .hero-overlay-inner { --hx: 6.5; --hy: 24; }
+      body[data-content-page="inquiry"] .bh-hero .hero-overlay .hero-cta-row { position: static !important; margin-top: calc(var(--u) * 1.6) !important; }
+      body[data-content-page="inquiry"] .bh-hero .hero-image { background-image: linear-gradient(90deg, rgba(12,14,10,.66) 0%, rgba(12,14,10,.42) 34%, rgba(12,14,10,.08) 62%, rgba(12,14,10,0) 80%), url('images/uploads/begin-hero-forest-path.jpg?v=1') !important; background-position: center, 46% 62% !important; }
+    }
+    body[data-content-page="inquiry"] .bh-groups { align-items: stretch; }
+    body[data-content-page="inquiry"] .bh-group { display: flex; flex-direction: column; }
+    body[data-content-page="inquiry"] .bh-group-doors { flex: 1 1 auto; align-items: stretch; }
+    body[data-content-page="inquiry"] .bh-door { height: 100%; }
+    body[data-content-page="inquiry"] .bh-door-name { font-size: 1.55rem; min-height: 2.3em; display: flex; align-items: flex-start; justify-content: center; }
+    body[data-content-page="inquiry"] .bh-door-go { margin-top: 0 !important; }
+    body[data-content-page="inquiry"] .bh-door-meta { margin-top: auto !important; padding-top: .9rem; margin-bottom: 1.1rem; }
+    /* what opens next: a dark triptych */
+    body[data-content-page="inquiry"] .bh-after { background: #1F1A18; border-top: 0; padding: 6rem max(16px, env(safe-area-inset-left, 0px)) 6.5rem; }
+    body[data-content-page="inquiry"] .bh-after .section-label { color: rgba(220,193,120,.85); }
+    body[data-content-page="inquiry"] .bh-after h2 { color: #F7F5F0; }
+    body[data-content-page="inquiry"] .bh-after h2 em { color: #DCC178; }
+    body[data-content-page="inquiry"] .bh-after .bh-lede { color: rgba(247,245,240,.72); }
+    body[data-content-page="inquiry"] .bh-after-inner { max-width: 1320px; }
+    body[data-content-page="inquiry"] .bh-after-grid { gap: 1rem; margin-top: 1rem; }
+    body[data-content-page="inquiry"] .bh-after-item { position: relative; min-height: 560px; justify-content: flex-end; padding: 2.4rem 2rem 2.2rem; overflow: hidden; gap: .4rem; }
+    body[data-content-page="inquiry"] .bh-after-img { position: absolute !important; inset: 0; width: 100% !important; height: 100% !important; aspect-ratio: auto !important; border-radius: 0 !important; margin: 0 !important; box-shadow: none !important; z-index: 0; }
+    body[data-content-page="inquiry"] .bh-after-img::after { content: ''; position: absolute; inset: 0; border: 0; border-radius: 0; background: linear-gradient(180deg, rgba(20,16,12,0) 35%, rgba(20,16,12,.55) 65%, rgba(20,16,12,.9) 100%); }
+    body[data-content-page="inquiry"] .bh-after-item::after { content: ''; position: absolute; inset: 12px; border: 1px solid rgba(244,234,211,.45); pointer-events: none; z-index: 2; }
+    body[data-content-page="inquiry"] .bh-after-kind, body[data-content-page="inquiry"] .bh-after-name, body[data-content-page="inquiry"] .bh-after-line { position: relative; z-index: 1; }
+    body[data-content-page="inquiry"] .bh-after-kind { color: #DCC178; }
+    body[data-content-page="inquiry"] .bh-after-name { color: #F7F5F0; font-size: 1.8rem; }
+    body[data-content-page="inquiry"] .bh-after-line { color: rgba(247,245,240,.85); }
+    /* not for you, yet */
+    body[data-content-page="inquiry"] .bh-notfor { max-width: 760px; margin: 0 auto 3rem; padding: 2.4rem clamp(1.25rem, 4vw, 3rem) 2.2rem; border: 1px solid rgba(45,42,38,.14); background: rgba(252,251,248,.55); text-align: left; }
+    body[data-content-page="inquiry"] .bh-notfor-label { font-family: 'Cinzel', serif; font-size: .7rem; letter-spacing: .22em; text-transform: uppercase; color: #6b6357; text-align: center; margin: 0 0 1.2rem; }
+    body[data-content-page="inquiry"] .bh-notlist { list-style: none; margin: 0; padding: 0; }
+    body[data-content-page="inquiry"] .bh-notlist li { position: relative; padding: .55rem 0 .55rem 1.5rem; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; line-height: 1.5; color: #4A453E; border-top: 1px solid rgba(45,42,38,.08); }
+    body[data-content-page="inquiry"] .bh-notlist li:first-child { border-top: 0; }
+    body[data-content-page="inquiry"] .bh-notlist li::before { content: ''; position: absolute; left: .2rem; top: 1.15rem; width: .55rem; height: 1px; background: #8F6F2E; }
+    body[data-content-page="inquiry"] .bh-notfor-door { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.12rem; color: #5A554C; text-align: center; margin: 1.4rem 0 0; }
+    body[data-content-page="inquiry"] .bh-notfor-door a { color: #8F6F2E; }
+    /* common questions */
+    body[data-content-page="inquiry"] .bh-faq { background: #FCFBF8; padding: 6rem max(16px, env(safe-area-inset-left, 0px)); text-align: center; border-top: 1px solid rgba(201,168,76,.22); }
+    body[data-content-page="inquiry"] .bh-faq-inner { max-width: 820px; margin: 0 auto; }
+    body[data-content-page="inquiry"] .bh-faq h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: clamp(2.1rem, 3.8vw, 3.2rem); color: #2D2A26; margin: .6rem 0 2.4rem; }
+    body[data-content-page="inquiry"] .bh-faq h2 em { color: #8F6F2E; }
+    body[data-content-page="inquiry"] .bh-qs { text-align: left; border-top: 1px solid rgba(201,168,76,.4); }
+    body[data-content-page="inquiry"] .bh-q { border-bottom: 1px solid rgba(201,168,76,.4); }
+    body[data-content-page="inquiry"] .bh-q summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding: 1.25rem .2rem; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.32rem; line-height: 1.35; color: #2D2A26; }
+    body[data-content-page="inquiry"] .bh-q summary::-webkit-details-marker { display: none; }
+    body[data-content-page="inquiry"] .bh-q summary::after { content: '+'; flex: 0 0 auto; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.6rem; color: #8F6F2E; }
+    body[data-content-page="inquiry"] .bh-q[open] summary::after { content: '\2212'; }
+    body[data-content-page="inquiry"] .bh-q summary:focus-visible { outline: 2px solid #C9A84C; outline-offset: 2px; }
+    body[data-content-page="inquiry"] .bh-a { padding: 0 .2rem 1.4rem; }
+    body[data-content-page="inquiry"] .bh-a p { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.15rem; line-height: 1.65; color: #4A453E; margin: 0 0 .8rem; }
+    body[data-content-page="inquiry"] .bh-a a { color: #8F6F2E; }
+    @media (max-width: 860px) {
+      body[data-content-page="inquiry"] .bh-after-item { min-height: 420px; }
+    }
+    /* ---- 2026-11-12 night: intake note as a mutual interview; doors line up across both columns ---- */
+    body[data-content-page="inquiry"] .bh-group-note p { margin: 0; }
+    body[data-content-page="inquiry"] .bh-interview-lead { font-family: 'Cinzel', serif; font-style: normal; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: #8F6F2E; margin: 1.1rem 0 .45rem !important; }
+    body[data-content-page="inquiry"] .bh-interview { list-style: none; margin: 0 auto; padding: 0; }
+    body[data-content-page="inquiry"] .bh-interview li { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.1rem; line-height: 1.4; color: #4A453E; padding: .15rem 0; text-wrap: balance; }
+    @media (min-width: 1081px) {
+      body[data-content-page="inquiry"] .bh-groups { grid-template-rows: auto auto auto; row-gap: 0; }
+      body[data-content-page="inquiry"] .bh-group { display: grid !important; grid-row: span 3; grid-template-rows: subgrid; }
+      body[data-content-page="inquiry"] .bh-group-note { align-self: start; }
+    }
+  </style>
 </head>
 <body data-content-page="inquiry">
 
@@ -157,7 +619,7 @@
   <!-- HERO: her picture (2026-11-09, "for now"), nothing laid over it. Words and buttons are placed by --hx/--hy/--hs and --bx/--by/--bs in doors.css. Button labels are Claude's (2026-11-09), for her approval. -->
   <section class="hero-fullbleed bh-hero">
     <div class="hero-image" role="img"
-         aria-label="The patterned skin of a serpent, close up: cream, gold and brown scales."
+         aria-label="A forest path opening between tall trees and green ferns."
          data-content="hero.image" data-content-type="image"
          data-content-alt="hero.image_alt"
          data-content-bgpos="hero.image_position"
@@ -165,232 +627,272 @@
     <div class="hero-overlay">
       <div class="hero-overlay-inner">
         <span class="hero-eyebrow" data-content="hero.eyebrow">Begin Here</span>
-        <h1 class="hero-title" data-content="hero.title" data-content-type="html"><span class="ht ht-1">It begins with</span><span class="ht ht-2"><em>sitting together</em>.</span></h1>
-        <p class="hero-subtitle" data-content="hero.subtitle" data-content-type="html"><span class="hs">The Intake &amp; Inquiry is the Conversation &mdash;</span> <span class="hs">the threshold every deeper path shares.</span></p>
+        <h1 class="hero-title" data-content="hero.title" data-content-type="html"><span class="ht ht-1">It begins with</span><span class="ht ht-2"><em>a conversation</em>.</span></h1>
+        <p class="hero-subtitle" data-content="hero.subtitle" data-content-type="html"><span class="hs">Schedule your first session: an intake,</span> <span class="hs">or a single session of counsel or divination.</span></p>
         <div class="hero-cta-row">
-          <a href="#schedule" class="hero-btn hero-btn-primary">Schedule to begin</a>
-          <a href="#note" class="hero-btn hero-btn-secondary">Write first</a>
+          <a href="#begin" class="hero-btn hero-btn-primary">Schedule your session</a>
         </div>
       </div>
     </div>
   </section>
   <!-- local tool (not shipped; loads only if its file exists on this machine): ?arrange=1 the hero arrange bar (words, buttons, darken, highlight) -->
-  <script>(function(q){if(/[?&]arrange=1\b/.test(q)){var s=document.createElement('script');s.src='js/hero-arrange.dev.js?t='+Date.now();document.body.appendChild(s);}})(location.search);</script>
+  <script>(function(q){[['arrange','js/hero-arrange.dev.js'],['frame','js/bh-frame.dev.js']].forEach(function(p){if(new RegExp('[?&]'+p[0]+'=1\\b').test(q)){var s=document.createElement('script');s.src=p[1]+'?t='+Date.now();document.body.appendChild(s);}});})(location.search);</script>
 
-  <!-- HOW TO BEGIN: the threshold and the intake process. Her words, dictated 2026-11-09; garble fixed only. -->
-  <section class="dr-who" id="how">
-    <div class="dr-who-inner">
-      <span class="section-label">How to begin</span>
-      <h2>This is a particular <em>threshold</em>.</h2>
-      <p>This is a closed community, and this is why we have the practices that we do to protect it. Each person here is screened, both for preparatory readiness and for an assessment of the orientation of their why, to make sure they will be a good fit for everyone who is affected by the collective that gathers.</p>
-      <p>This is a community that is affected by each member and participant. Many of us spend years together working on some of our most profound and intimate inner experiences, and we as a collective and as a community shape that growth and contribute to each other&rsquo;s lives directly or indirectly, from active engagement or just from sharing presence in the room.</p>
-      <p>And so it is really important for me to maintain a high-quality threshold, to ensure that what we are creating is safe for all those who enter in, and for the many generations to come.</p>
-      <!-- Connecting line, Claude 2026-11-09, for her approval -->
-      <p class="dr-who-close">The intake process is how that threshold is held. It begins with the Conversation.</p>
+  <!-- THE INVITATION (2026-11-13, her ask: they should feel they have found something precious). Lines are Claude's, from her words. -->
+  <section class="bh-invite">
+    <div class="bh-invite-inner">
+      <!-- The key, the lantern path and the stars through trees: cleared by her for public use, 2026-11-13. -->
+      <figure class="bh-invite-fig"><span class="bh-invite-img" style="background-image:url('images/uploads/begin-key-in-moss.jpg');"></span></figure>
+      <div class="bh-invite-text">
+        <img class="bh-invite-mark" src="images/uploads/logo-mark-trio.png" alt="" aria-hidden="true">
+        <p class="bh-invite-line">You have found your way to a closed and carefully <em>tended</em> circle.</p>
+        <p class="bh-invite-sub">Every door here opens the same way: with a conversation, one person at a time.</p>
+        <span class="bh-orn" aria-hidden="true"><i></i>&#10023;<i></i></span>
+      </div>
     </div>
   </section>
 
-  <!-- WHO THIS IS FOR (her words, from the Shamanic Coaching page) -->
-  <section class="dr-who dr-who--alt" id="who">
-    <div class="dr-who-inner">
-      <span class="section-label">Who this is for</span>
-      <p>There is a particular threshold &mdash; when the gifts begin to wake, when the calling grows too loud to set down, when the work asks to come through you and into the world. That threshold is rarely meant to be crossed alone.</p>
-      <p>You may be coming into spiritual gifts you don&rsquo;t yet have language for. You may be feeling the pull of a vocation that won&rsquo;t let you rest. You may already be doing the work, and know it is asking to deepen, to clarify, to become real.</p>
+  <!-- THE DOORS: four starting points as arched doorways, in two pairs (pictures from Home). Each opens the calendar below
+       at its session (#apply-… / #book-… are read by js/calendar-booking.js). -->
+  <section class="bh-doors" id="begin">
+    <div class="bh-doors-inner">
+      <span class="section-label">Schedule your session</span>
+      <h2>Where would you like to <em class="bh-script">begin</em>?</h2>
+      <p class="bh-lede">Choose your door, and the calendar opens just below.</p>
+      <div class="bh-groups">
+        <div class="bh-group">
+          <p class="bh-group-label">The Intake &amp; Inquiry</p>
+          <!-- Her words, 2026-11-12: the intake is a mutual interview, for ongoing or group work; the single session stands alone. -->
+          <div class="bh-group-note">
+            <p>The doorway to ongoing work, one-on-one or in community.</p>
+            <p class="bh-interview-lead">A mutual interview</p>
+            <ul class="bh-interview">
+              <li>Is this work, and this community, right for you?</li>
+              <li>Am I the right practitioner for you?</li>
+              <li>Are you in the right stage of your life, with the right support, for this work?</li>
+            </ul>
+          </div>
+          <div class="bh-group-doors">
+          <a class="bh-door" href="#apply-solo">
+            <span class="bh-door-arch"><span class="bh-door-img" style="background-image:url('images/uploads/door-sanctuary-two-seated.jpg');background-position:50% 58%;"></span></span>
+            <span class="bh-door-name">For Long-Form Work</span>
+            <span class="bh-door-line">The way into one-on-one work that unfolds over a season or a year, or into study at the Conservatory, our school.</span>
+            <span class="bh-door-meta">1 hr 30 min</span>
+            <span class="bh-door-go">Schedule</span>
+          </a>
+          <a class="bh-door" href="#apply-group">
+            <span class="bh-door-arch"><span class="bh-door-img" style="background-image:url('images/uploads/door-village-circle-hands.jpg');background-position:50% 24%;"></span></span>
+            <span class="bh-door-name">For Group Work</span>
+            <span class="bh-door-line">The way into ceremony and gatherings in community. By referral: you will be asked who sent you.</span>
+            <span class="bh-door-meta">By referral &middot; 1 hr 30 min</span>
+            <span class="bh-door-go">Schedule</span>
+          </a>
+          </div>
+        </div>
+        <div class="bh-group">
+          <p class="bh-group-label">A Single Session</p>
+          <div class="bh-group-note">
+            <p>Standalone, and complete in itself. No intake is needed first.</p>
+            <p class="bh-interview-lead">What you might bring</p>
+            <ul class="bh-interview">
+              <li>A question you are carrying now.</li>
+              <li>A crossroads, or a decision waiting to be made.</li>
+              <li>A wish to sit with the work one session at a time.</li>
+            </ul>
+          </div>
+          <div class="bh-group-doors">
+          <a class="bh-door" href="#book-divination">
+            <span class="bh-door-arch"><span class="bh-door-img" style="background-image:url('images/uploads/door-oracle-cowrie-shells.jpg');background-position:center;"></span></span>
+            <span class="bh-door-name">Oracular &amp; Elemental Divination</span>
+            <span class="bh-door-line">A divination for the question you bring, with guidance drawn from Spirit, the Ancestors, and the elements.</span>
+            <span class="bh-door-meta">2 hours</span>
+            <span class="bh-door-go">Schedule</span>
+          </a>
+          <a class="bh-door" href="#book-guidance-counsel">
+            <span class="bh-door-arch"><span class="bh-door-img" style="background-image:url('images/uploads/door-about-candle-niches.jpg');background-position:30% 40%;"></span></span>
+            <span class="bh-door-name">Guidance &amp; Counsel</span>
+            <span class="bh-door-line">One conversation of spiritual guidance and counsel, for the question or crossroads you are carrying now.</span>
+            <span class="bh-door-meta">1 hr 30 min</span>
+            <span class="bh-door-go">Schedule</span>
+          </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- A PLACE WHERE ANYONE CAN BEGIN: layers of readiness, her order (2026-11-09). Card lines are Claude's shaping of her brief, for her approval. -->
-  <section class="dr-path" id="path">
-    <div class="dr-path-inner">
-      <span class="section-label">The Path</span>
-      <h2>A place where anyone can <em>begin</em>.</h2>
-      <p class="dr-lede">Layers of readiness, from the lightest touch to the long work. Each one opens on this page.</p>
-      <ol>
-        <li id="step-letters"><span class="num">I</span><a class="name" href="#letters">The Letters</a><p class="line">A place to stay in touch when you are not quite sure, but want to explore more and have more time to feel it out.</p><a class="go" href="#letters">Receive the Letters</a></li>
-        <li id="step-session"><span class="num">II</span><a class="name" href="#schedule">A Single Session</a><p class="line">A divination, or one-on-one guidance and counsel. Single sessions that can be booked, a lighter threshold.</p><a class="go" href="#book-divination">Book a divination</a> &nbsp;&middot;&nbsp; <a class="go" href="#book-guidance-counsel">Guidance &amp; Counsel</a></li>
-        <li id="step-intake"><span class="num">III</span><a class="name" href="#book-intake-inquiry">The Intake</a><p class="line">The Intake &amp; Inquiry conversation has to happen for anything that comes next.</p><a class="go" href="#book-intake-inquiry">Schedule your intake</a></li>
-        <li id="step-solo"><span class="num">IV</span><a class="name" href="#apply-solo">Solo Work</a><p class="line">The Shamanic Sanctuary. One-on-one containers, after the intake.</p>
-          <details><summary>Some of these offerings include</summary><ul><li>A Season of Change</li><li>The Metamorphic Year</li><li>Dagara Divinations</li><li>Oracular Mediumship</li></ul></details>
-          <a class="go" href="#apply-solo">Apply for Solo Work</a></li>
-        <li id="step-group"><span class="num">V</span><a class="name" href="#apply-group">Group Work</a><p class="line">The Village. Gatherings and ceremony in community, after the intake.</p>
-          <details><summary>Some of these offerings include</summary><ul><li>Rites of Passage</li><li>Ritual &amp; Ceremony</li><li>Wellness Gatherings</li><li>Community Firesides</li></ul></details>
-          <a class="go" href="#apply-group">Apply for Group Work</a></li>
-        <li id="step-training"><span class="num">VI</span><a class="name" href="#apply-training">The Training Grounds</a><p class="line">The Conservatory. Courses, trainings and workshops, after the intake.</p>
-          <details><summary>Some of these offerings include</summary><ul><li>Spirit Mediation</li><li>Ceremonialist Training</li><li>Mythopoetic Being</li><li>How to Journey</li></ul></details>
-          <a class="go" href="#apply-training">Apply for the Training Grounds</a></li>
-      </ol>
-      <p class="dr-open">The Library and The Well are open to all, with no threshold to cross. <a href="writings.html">Enter the Library &amp; The Well</a></p>
-    </div>
-  </section>
-
-  <!-- SACRED RECIPROCITY, the small section under the path. Her words (2026-11-09); the tier line names her four tiers; no amount anywhere. -->
-  <section class="dr-recip" id="reciprocity">
-    <div class="dr-recip-inner">
-      <span class="section-label">Sacred Reciprocity</span>
-      <p>These are all paid sessions, and they do require financial contribution, for the sustainability and equitability of this work.</p>
-      <p>The work moves on a sliding scale. You choose the tier that is true for you.</p>
-      <p class="dr-tiers">Accessibility &middot; Community &middot; Abundance &middot; Patron</p>
-      <p class="dr-more">To learn more about the valuation of this work and this financial model, <a href="sacred-reciprocity.html">read Sacred Reciprocity</a>.</p>
-    </div>
-  </section>
-
-  <!-- SCHEDULE TO BEGIN: one master widget. Session first, then the day and hour, then the tier, then Venmo. -->
+  <!-- THE CALENDAR: the same widget, cards compact here (the pictures live above). -->
   <section class="dr-schedule" id="schedule">
     <div class="dr-schedule-inner">
-      <span class="section-label">Schedule to begin</span>
-      <h2>Choose your session, then your <em>hour</em>.</h2>
-      <!-- Lede is Claude's (2026-11-09): names the six steps the widget walks. -->
-      <p class="dr-lede">Six short steps: the session, an open hour on Adi Marie&rsquo;s calendar, what to complete beforehand, the tier that is true for you, your details, and reciprocity by Venmo.</p>
+      <span class="section-label">Choose your hour</span>
+      <h2>Find an open <em>hour</em>.</h2>
+      <ol class="bh-steps">
+        <li><span class="bh-step-num">I</span><span class="bh-step-name">Choose your door</span><span class="bh-step-line">An intake, or a single session.</span></li>
+        <li><span class="bh-step-num">II</span><span class="bh-step-name">Choose your hour</span><span class="bh-step-line">Gold marks an open day on Adi Marie&rsquo;s calendar.</span></li>
+        <li><span class="bh-step-num">III</span><span class="bh-step-name">We meet</span><span class="bh-step-line">Your confirmation and what to prepare arrive by email.</span></li>
+      </ol>
       <div id="booking-calendar"
-           data-services="intake-inquiry,guidance-counsel,divination"
+           data-services="intake-inquiry,divination,guidance-counsel"
            data-category-label="Your session"
-           data-card-layout="wide"
            data-coming-soon=""
            data-venmo="TheAnimistApothecary"></div>
-      <!-- Payment line in her words (2026-11-09). The widget's own fineprint carries her one-hour cancellation line; nothing releases an unpaid hour on its own yet (flagged to her). -->
-      <p class="dr-pay-note">You must complete payment at the time of booking, as a personal transfer through Venmo. Your confirmation shows the exact note to use.</p>
+      <!-- Her words (2026-11-09), from the Sacred Reciprocity section this replaces. -->
+      <p class="dr-pay-note">These are all paid sessions, and they do require financial contribution, for the sustainability and equitability of this work. The work moves on a sliding scale: Accessibility &middot; Community &middot; Abundance &middot; Patron. Payment is completed at the time of booking, by Venmo. <a href="sacred-reciprocity.html">Read Sacred Reciprocity</a>.</p>
     </div>
   </section>
 
-  <!-- PREPARATORY INSTRUCTIONS. Her words (2026-11-09). -->
-  <section class="dr-who" id="prepare">
-    <div class="dr-who-inner">
-      <span class="section-label">Preparatory instructions</span>
-      <p>Some of these sessions require follow-up, supplementary intake, or documents. All of it is sent by email once your hour is held.</p>
-      <!-- Filled by js/calendar-booking.js (fillPrepMount): one drop-down per session, the same list the booking steps show. -->
-      <div class="dr-prep-list" data-aap-prep></div>
+  <!-- WHY WE BEGIN WITH A CONVERSATION. Her words, dictated 2026-11-13; shaped, garble fixed. Her founder portrait from Home. -->
+  <section class="bh-why" id="how">
+    <div class="bh-why-inner">
+      <figure class="bh-why-fig"><img src="images/uploads/practitioner-midnight-sorceress.jpg" alt="Adi Marie, portrait in low candlelight." loading="lazy"></figure>
+      <div class="bh-why-text">
+        <span class="section-label">How to begin</span>
+        <h2>Why we begin with a <em>conversation</em>.</h2>
+        <p>This is a closed community: that is what keeps it safe for everyone inside it. Much of this work asks that you are well supported, mentally, emotionally, physically, and medically, and that there is a readiness for what you are stepping into. The intake is where that readiness is assessed, together.</p>
+        <blockquote class="bh-quote">I want to know who you are, so I can help you personally and uniquely. And I want you to know who I am.</blockquote>
+        <p>That is important to establish before bringing you into the larger community.</p>
+        <p class="bh-sign">Adi Marie</p>
+      </div>
     </div>
   </section>
 
-  <!-- THANK YOU. Her words, dictated 2026-11-09; garble fixed only. -->
+  <!-- WHAT OPENS AFTER THE CONVERSATION (2026-11-13, her question: "what's the next thing that's available for people?").
+       Pictures are Home's own card pictures; lines drawn from the Home cards. Informational, no links (those pages are still veiled). -->
+  <section class="bh-after" id="after">
+    <div class="bh-after-inner">
+      <span class="section-label">After the conversation</span>
+      <h2>What opens <em>next</em>.</h2>
+      <p class="bh-lede">Once we have met, and we both feel you are ready, these are the paths that open.</p>
+      <div class="bh-after-grid">
+        <div class="bh-after-item"><span class="bh-after-img" style="background-image:url('images/uploads/the-work-ceremony.jpg');background-position:69.4% 35%;"></span><span class="bh-after-kind">Solo Work</span><span class="bh-after-name">The Shamanic Sanctuary</span><span class="bh-after-line">Private spiritual guidance and ceremony, held across the seasons of your becoming.</span></div>
+        <div class="bh-after-item"><span class="bh-after-img" style="background-image:url('images/uploads/the-work-group-embrace.jpg');background-position:100% 70%;"></span><span class="bh-after-kind">Group Work</span><span class="bh-after-name">The Village</span><span class="bh-after-line">Gatherings, ceremonies, and rites of passage, where community becomes family.</span></div>
+        <div class="bh-after-item"><span class="bh-after-img" style="background-image:url('images/uploads/the-work-training.jpg');background-position:69.5% 55%;"></span><span class="bh-after-kind">The Training Grounds</span><span class="bh-after-name">The Conservatory</span><span class="bh-after-line">A school of the old ways, where living traditions are conserved and passed on.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO THIS IS FOR. Her words from the Shamanic Coaching page, set as verses; the fourth is Claude's, for group work. -->
+  <section class="bh-for" id="who">
+    <div class="bh-for-inner">
+      <span class="section-label">Who this is for</span>
+      <h2>This is for <em class="bh-script">you</em>.</h2>
+      <p class="bh-for-intro">There is a particular threshold &mdash; when the gifts begin to wake, when the calling grows too loud to set down, when the work asks to come through you and into the world. That threshold is rarely meant to be crossed alone.</p>
+      <ul class="bh-verses">
+        <li>You are coming into spiritual gifts you don&rsquo;t yet have language for.</li>
+        <li>You are feeling the pull of a vocation that won&rsquo;t let you rest.</li>
+        <li>You are already doing the work, and know it is asking to deepen, to clarify, to become real.</li>
+        <li>You long to gather in ceremony and community, among people who hold this work with care.</li>
+      </ul>
+      <!-- WHO THIS ISN'T FOR, YET (2026-11-13, her ask). Claude's draft for her review; discernment, never exclusion: the not-yet reader gets a doorway. -->
+      <div class="bh-notfor">
+        <p class="bh-notfor-label">This work may not be for you yet if</p>
+        <ul class="bh-notlist">
+          <li>You are looking for a quick fix, a single experience, or someone to fix you.</li>
+          <li>You are seeking medical or psychological treatment, or a cure.</li>
+          <li>You are in acute crisis and need clinical care first.</li>
+          <li>You are drawn by curiosity or recreation, rather than devotion to the work.</li>
+          <li>You are not yet able to prepare beforehand, and to tend what opens afterward.</li>
+        </ul>
+        <p class="bh-notfor-door">If now is not the time, you are welcome to stay close through <a href="#letters">the letters</a>, and to return when you are ready.</p>
+      </div>
+      <a class="bh-for-go" href="#begin">Choose your door</a>
+    </div>
+  </section>
+
+  <!-- COMMON QUESTIONS (2026-11-13, her ask): the questions listed on About ("Still to come"), answered in her words where they exist. -->
+  <section class="bh-faq" id="questions">
+    <div class="bh-faq-inner">
+      <span class="section-label">Common questions</span>
+      <h2>Before you <em>begin</em>.</h2>
+      <div class="bh-qs">
+        <details class="bh-q"><!-- her words, dictated 2026-11-12, shaped by Claude for a first-time reader -->
+          <summary>What is animism, and what does it mean in practice?</summary>
+          <div class="bh-a"><p>Animism is the understanding that the world is alive, and that land, waters, plants, and Ancestors are kin to be known and tended.</p><p>We believe the world is a living membrane, a participatory process. The structures of our lives, and of reality itself, are not static or bound to form. They are living and changeable, and through our engagement, creation can be beckoned and guided alive.</p><p>In practice, this means re-engaging the imaginal realms: the creative part of the mind, conscious and subconscious, that dreams, imagines, and co-creates with the other creative forces of the world. Animism is engaging all of these relationships from a place of co-creative capacity, through ceremony, offering, divination, and the care we bring to all we touch.</p></div>
+        </details>
+        <details class="bh-q"><!-- answer drafted by Claude, for her review -->
+          <summary>Do I need prior experience with ceremony?</summary>
+          <div class="bh-a"><p>No. Many who come have none. The intake is where we meet you exactly where you are, and where readiness is assessed, together.</p></div>
+        </details>
+        <details class="bh-q"><!-- answer drafted by Claude, for her review -->
+          <summary>How do I know which session is right for me?</summary>
+          <div class="bh-a"><p>If you are drawn to deeper work, one-on-one or in community, begin with the Intake &amp; Inquiry. If you are carrying one question or crossroads right now, a single session of Guidance &amp; Counsel or a Divination stands on its own. If you are unsure, the intake is always a good place to begin.</p></div>
+        </details>
+        <details class="bh-q"><!-- her words, dictated 2026-11-12; garble fixed only (last sentence Claude's, plain fact) -->
+          <summary>Where do sessions take place?</summary>
+          <div class="bh-a"><p>The majority of these sessions are held online. In-person events are held predominantly in Southern California, in or adjacent to Los Angeles County, with locations sent to those who have enrolled a few days before the experience.</p><p>For online sessions, the link arrives with your confirmation.</p></div>
+        </details>
+        <details class="bh-q">
+          <summary>How does the sliding scale work?</summary>
+          <div class="bh-a"><p>These are all paid sessions, and they do require financial contribution, for the sustainability and equitability of this work. The work moves on a sliding scale: Accessibility, Community, Abundance, and Patron. You choose the tier that is true for you. <a href="sacred-reciprocity.html">Read Sacred Reciprocity</a>.</p></div>
+        </details>
+        <details class="bh-q">
+          <summary>How do I prepare for my session?</summary>
+          <div class="bh-a"><p>Please find a space to be comfortable where we may sit and connect in the depth of what brings you to this work, without distraction. Also, it is highly recommended to attend these sessions on a laptop or desktop, and not on a cellular or tablet device.</p><p>Some of these sessions require follow-up, supplementary intake, or documents. All of it is sent by email once your hour is held.</p></div>
+        </details>
+        <details class="bh-q">
+          <summary>What if I need to reschedule?</summary>
+          <div class="bh-a"><p>There are no cancellations or refunds. You may reschedule up to three days before your session, with the link in your confirmation email. Less than three days before, please reply to your confirmation email; the session is most likely forfeit.</p></div>
+        </details>
+        <details class="bh-q"><!-- her words, dictated 2026-11-12; garble fixed only -->
+          <summary>Is what I share confidential?</summary>
+          <div class="bh-a"><p>Yes, what you share is held in confidence. When working in larger groups with a guardian or facilitator team, some details about how best to take care of and provide for you will be shared amongst the facilitator leads, to ensure your well-being.</p></div>
+        </details>
+        <details class="bh-q">
+          <summary>Is this therapy or medical care?</summary>
+          <div class="bh-a"><p>No. The Animist Apothecary is a religious and spiritual ministry, not a medical entity or facility. Our ceremonies, sessions, and teachings are religious practice, not medical, psychological, or therapeutic services, and they do not diagnose, treat, or cure ailments. Please continue to see licensed professionals for medical and mental-health care.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- THANK YOU. Her letter, dictated 2026-11-09; made plainer at her ask 2026-11-12 ("something can be improved in the language"). -->
   <section class="dr-thanks" id="thanks">
     <div class="dr-thanks-inner">
       <span class="section-label">Thank you</span>
-      <p>Thank you for participating in this great experiment that is present and upon us, impressing itself upon us at these times. Together, as a larger, broader collective, I believe that we can take all of the wisdom and the pains and the lessons that we have individually and collectively learned, and alchemize them, and transmute them, to help heal and mend the great rift and rupture that has been imposed upon and by humankind.</p>
-      <p>And I believe that in you participating in this work, a part of you believes that too.</p>
-      <p>It is my humble, profound honor and gratitude for the part of you that feels, for the depths and fullness of you that feel resonance and a call to be part of this great effort that wishes to express itself through each of us, and us all.</p>
+      <p>Thank you for taking part in the great experiment of our times, the one we are all living through now. I believe that together, as a larger community, we can take all the wisdom, the pain, and the lessons we have learned, alone and together, and alchemize them, to help mend the great rift and rupture that humankind has both suffered and caused.</p>
+      <p>And I believe that, in choosing this work, a part of you believes that too.</p>
+      <p>To the part of you that feels this, and to all of you that feels the call to join this great effort, which wishes to express itself through each of us and through us all: it is my humble and profound honor. Thank you.</p>
       <p class="dr-sign">&mdash; Adi Marie</p>
     </div>
   </section>
 
-  <!-- ON A MORE PERSONAL NOTE: a correspondence that reaches her. -->
-  <section class="booking-section" id="note" style="background: #F7F5F0;">
-    <div class="booking-inner">
-      <div class="booking-intro">
-        <span class="section-label">On a more personal note</span>
-        <h2 class="section-title" data-content="form_intro.title" data-content-type="html">Tell us what <em>brings you</em>.</h2>
-        <div class="section-body" style="max-width: 560px; margin: 0 auto;">
-          <!-- Claude 2026-11-09, for her approval -->
-          <p data-content="form_intro.body">If you would rather write first, you are welcome to. What you write here reaches Adi Marie directly. Every note is read by hand, and we respond within 48 hours.</p>
-        </div>
+  <!-- THE LETTERS: Home's Water, Milk, and Honey template (her ask 2026-11-13: "use that same template and format"); same js/newsletter.js. -->
+  <section id="letters" class="section-newsletter nl-bar">
+    <div class="nl-bar-inner">
+      <div class="nl-bar-head">
+        <h2 class="newsletter-title">Water, Milk, and Honey</h2>
+        <p class="newsletter-body">Not quite ready, but deeply interested? Whether or not you ever sit with us, we hold the well-being of all as part of tending community. Our weekly letter brings ongoing offerings, teachings, and sharings to your inbox, with news of the community. It is an offering in its own right, sent with care. And perhaps, when you&rsquo;re ready, we&rsquo;ll meet.</p>
       </div>
-
-      <!-- The note sends to the intranet's submit_inquiry RPC (see the script below). Emailing it onward to Adi Marie is the next wiring step. -->
-      <form id="booking-form">
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="first-name" data-content="form_labels.first_name">First Name</label>
-            <input class="form-input" type="text" id="first-name" name="first_name" placeholder="Your first name" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="last-name" data-content="form_labels.last_name">Last Name</label>
-            <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Your last name" required>
-          </div>
+      <form id="newsletter-form" class="newsletter-form" novalidate>
+        <div class="newsletter-form-names">
+          <input type="text" name="first_name" placeholder="First Name" required autocomplete="given-name" aria-label="First Name">
+          <input type="text" name="last_name" placeholder="Last Name" required autocomplete="family-name" aria-label="Last Name">
         </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="email" data-content="form_labels.email">Email Address</label>
-            <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="phone" data-content="form_labels.phone">Phone (optional)</label>
-            <input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
-          </div>
-        </div>
-
-        <div class="form-divider"></div>
-
-        <div class="form-group">
-          <label class="form-label" for="carrying" data-content="form_labels.carrying_label">What are you carrying? What are you seeking?</label>
-          <textarea class="form-textarea form-textarea--letter" id="carrying" name="carrying" rows="9" placeholder="Where you are, what you're navigating, what you're hoping to find. There is no wrong thing to say — only the true thing."></textarea>
-        </div>
-
-        <div class="form-divider"></div>
-
-        <div class="form-group">
-          <label class="form-label" for="referral" data-content="form_labels.referral_label">How did you find out about The Animist Apothecary?</label>
-          <input class="form-input" type="text" id="referral" name="referral" placeholder="Referral, social, search, word of mouth...">
-        </div>
-
-        <div class="form-submit">
-          <button type="submit" class="btn-primary" data-content="form_labels.submit_text">Send the Note</button>
-          <p class="form-note" data-content="form_labels.submit_note">Every message is read by hand. We respond within 48 hours.</p>
-        </div>
-
+        <input type="email" name="email" placeholder="Email Address" required autocomplete="email" aria-label="Email Address">
+        <input type="text" name="zip_code" placeholder="Zip Code" inputmode="numeric" autocomplete="postal-code" maxlength="10" aria-label="Zip code">
+        <select name="referral_source" class="newsletter-select" required aria-label="Where are you coming from?">
+          <option value="" disabled selected>Where are you coming from?</option>
+          <option value="Gathering">A gathering</option>
+          <option value="Event or workshop">An event or workshop</option>
+          <option value="Class">A class</option>
+          <option value="Ceremony">A ceremony</option>
+          <option value="Referral">A referral from someone</option>
+          <option value="Online">Online (social, search)</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="text" name="referral_detail" placeholder="Tell us more" aria-label="Tell us more" maxlength="200">
+        <button type="submit" class="btn-primary newsletter-submit">Subscribe</button>
       </form>
+      <p class="newsletter-trust">
+        <span>Held with care, never shared.</span>
+        <span class="newsletter-trust-sep" aria-hidden="true"> &middot; </span>
+        <a href="#begin" class="newsletter-intake-link">Or choose your door, above</a> &uarr;
+      </p>
+      <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></div>
     </div>
   </section>
-
-  <!-- THE LETTERS: step I of the path, on this page (her brief: "the letters are a place where you can stay in touch"). Heading and first
-       sentence are hers from the Home letters section; the form posts to the same intranet list as Home and the veil
-       (contact_upsert_public, tag Newsletter, source "begin-here"). -->
-  <section class="booking-section dr-letters" id="letters" style="background: #F3EDE0;">
-    <div class="booking-inner">
-      <div class="booking-intro">
-        <span class="section-label">The Letters</span>
-        <h2 class="section-title">Water, Milk, and Honey</h2>
-        <div class="section-body" style="max-width: 560px; margin: 0 auto;">
-          <p>A compendium of correspondences. Tender reflections, sacred teachings, and updates from the practice &mdash; workshops, public gatherings, the occasional surprise offering.</p>
-        </div>
-      </div>
-      <form id="letters-form" novalidate>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="lt-first">First Name</label>
-            <input class="form-input" type="text" id="lt-first" name="first_name" autocomplete="given-name" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="lt-last">Last Name</label>
-            <input class="form-input" type="text" id="lt-last" name="last_name" autocomplete="family-name" required>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="lt-email">Email</label>
-            <input class="form-input" type="email" id="lt-email" name="email" autocomplete="email" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="lt-zip">Zip code</label>
-            <input class="form-input" type="text" id="lt-zip" name="zip_code" inputmode="numeric" autocomplete="postal-code">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="lt-from">Where are you coming from?</label>
-            <select class="form-select" id="lt-from" name="referral_source" required>
-              <option value="">Choose one</option>
-              <option value="Gathering">A gathering</option>
-              <option value="Event or workshop">An event or workshop</option>
-              <option value="Class">A class</option>
-              <option value="Ceremony">A ceremony</option>
-              <option value="Referral">A referral from someone</option>
-              <option value="Online">Online (social, search)</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="lt-detail">Which one, or who? (optional)</label>
-            <input class="form-input" type="text" id="lt-detail" name="referral_detail">
-          </div>
-        </div>
-        <div class="form-submit">
-          <button type="submit" class="btn-primary">Receive the Letters</button>
-          <p class="form-note" id="letters-note">Held with care, never shared.</p>
-        </div>
-      </form>
-    </div>
+  <section class="nl-photo" aria-label="Adi Marie writing in her studio">
+    <img src="images/uploads/newsletter-writing-desk.jpg" alt="Adi Marie writing in a journal at a wooden table in her studio, a shamanic bodywork table and shelves of herbs behind her" loading="lazy" decoding="async">
   </section>
 
   <footer class="site-footer">
@@ -418,15 +920,14 @@
             <li><a href="writings.html#water-milk-honey">Water, Milk, and Honey</a></li>
             <li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li>
             <li><a href="about.html#ethics">Ethics &amp; Consent</a></li>
-            <li><a href="about.html#questions">Common Questions</a></li>
+            <li><a href="inquiry.html#questions">Common Questions</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Begin Here</h4>
           <ul>
             <li><a href="inquiry.html">Begin Here</a></li>
-            <li><a href="divination-and-consultation.html#schedule">The Conversation</a></li>
-            <li><a href="inquiry.html#note">Write a Note</a></li>
+            <li><a href="inquiry.html#begin">The Conversation</a></li>
           </ul>
         </div>
       </nav>
@@ -573,7 +1074,7 @@
   <script src="js/lux.js" defer></script>
   <script src="js/traffic.js" defer></script>
   <script src="js/announce.js" defer></script>
-  <script src="js/calendar-booking.js?v=261109a" defer></script>
+  <script src="js/calendar-booking.js?v=261113b" defer></script>
   <script src="js/site-menu.js?v=261103b" defer></script>
 </body>
 </html>

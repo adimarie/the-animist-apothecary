@@ -504,7 +504,9 @@ body { padding-top: 168px !important; }
 .site-header .nav-toggle[aria-expanded="true"] .nav-toggle-bars i:nth-child(3) { top: 6px; transform: rotate(-45deg); }
 .site-header .nav-toggle:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
-@media (max-width: 1199px) {
+/* 2026-11-13 (her ask: "I want the navigation menu to be fully unfolded"): the full menu stays open down to 1024px;
+   the phone menu (MENU toggle) begins below that. Was 1199px. */
+@media (max-width: 1023px) {
   .site-header .main-nav { display: none !important; }
   .site-header .nav-toggle { display: inline-flex !important; }
   body { padding-top: 112px !important; }
