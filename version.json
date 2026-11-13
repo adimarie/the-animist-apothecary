@@ -1,12 +1,12 @@
 {
-  "version": "v261113.01 1:22a",
-  "release": 1,
-  "sha": "f427d573",
-  "fullSha": "f427d5737a2fce55965f574b58fd53ea757723fb",
+  "version": "v261113.02 1:27a",
+  "release": 2,
+  "sha": "c37f7d26",
+  "fullSha": "c37f7d26026ab9d2f63da89a6677e796c2aa7aa8",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-12T17:22:36-08:00",
-  "commits": [{"sha":"f427d573","message":"Share image: replace the template alpaca picture with the forest canopy seal","author":"Adi Marie"}]
+  "pushedAt": "2026-11-12T17:27:14-08:00",
+  "commits": [{"sha":"c37f7d26","message":"Formal name and description: \"The Animist Apothecary, a Ministry of Living Mysteries\"","author":"Adi Marie"}]
 }
