@@ -1,0 +1,9 @@
+/* Ministry disclaimer, on every public page (2026-11-13, her ask).
+   Per Greg Lake's Entheo Esq marketing course (Lecture 5: disclaim the church as a medical entity, facility,
+   or provider of medical services or diagnosis; Lecture 10: the ceremony is religious, not medical services or diagnoses). */
+.site-footer .footer-bottom:has(.footer-disclaimer) { flex-wrap: wrap; row-gap: 1rem; justify-content: center; }
+.site-footer .footer-bottom p.footer-disclaimer { flex: 0 0 100%; max-width: none; margin: 0; text-align: center; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1rem; line-height: 1.8; letter-spacing: 0; font-style: normal; color: rgba(244,234,211,.8); }
+.site-footer .footer-bottom:has(.footer-disclaimer) p:not(.footer-disclaimer) { flex: 0 0 100%; text-align: center; }
+.footer-disclaimer span, .ministry-note span { display: block; text-wrap: balance; }
+/* footers built in other styles (light pages, letters, pilot pages): same words, quieter setting, colour from the footer */
+.ministry-note { max-width: 72rem; margin: 1.25rem auto 0; padding: 0 1rem; text-align: center; font-family: 'Cormorant Garamond', Georgia, serif; font-size: .95rem; line-height: 1.75; font-style: normal; color: inherit; opacity: .8; }

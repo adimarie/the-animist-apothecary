@@ -2339,6 +2339,9 @@
     html body[data-content-page="home"] .dr-terr-head p { color: #5A554C !important;text-wrap: balance; }
     /* 2026-11-11: card pictures can be zoomed as well as positioned (--terr-zoom, set per card in each figure's style) */
     html body[data-content-page="home"] .dr-terr-fig img { transform: scale(var(--terr-zoom, 1)); transform-origin: var(--terr-pos, center); }
+    /* a card zoomed out past "fills the frame" shows the whole picture; the strips beside it take the picture's own edge colour */
+    html body[data-content-page="home"] .dr-terr-fig { background: var(--terr-fill, transparent); }
+    html body[data-content-page="home"] .dr-terr-fig.fit-whole img { object-fit: contain; }
     .footer-bottom .footer-legal { white-space: nowrap; margin-left: .75rem; } .footer-bottom .footer-legal a { color: inherit; text-decoration: underline; text-underline-offset: 3px; } @media (max-width: 820px) { .footer-bottom .footer-legal { display: block; margin: .5rem 0 0; } }
 
     html body[data-content-page="home"] .work-path-eyebrow,
@@ -2383,6 +2386,7 @@
   <link rel="stylesheet" href="css/doors.css?v=261109h">
   <link rel="stylesheet" href="css/menu.css?v=261108">
   <link rel="stylesheet" href="css/still.css?v=261106">
+  <link rel="stylesheet" href="/css/ministry-disclaimer.css?v=1">
 </head>
 <body data-content-page="home">
 
@@ -2543,7 +2547,7 @@
           </div>
           <span class="work-path-eyebrow">One-on-One Containers</span>
           <h3 class="work-path-title">Solo Work</h3>
-          <p class="work-path-desc">The path that is singularly your own. Guidance, mentorship, spiritual development, personal immersions &mdash; a hand on the unique path that is exclusively and singularly your own. Investment in the development of your life, your soul path, and the burgeoning of who and what you are.</p>
+          <p class="work-path-desc">Containers made entirely for you. In one-on-one work, the whole container is focused on you: your questions, your life, your pace. Guidance and counsel, divination, ceremony, and personal immersions are shaped around the path that is singularly your own, and the becoming of who and what you are.</p>
           <span class="work-path-lead">Some of these offerings include:</span>
           <ul class="work-path-bullets" style="--rows:2">
             <li>A Season of Change</li>
@@ -2559,7 +2563,7 @@
           </div>
           <span class="work-path-eyebrow">Communal Containers</span>
           <h3 class="work-path-title">Group Work</h3>
-          <p class="work-path-desc">Where the village remembers itself. The work we do in relational fields, in community and in relationship &mdash; because some wounds can only be mended relationally, as that is how they occurred, and some works require the communal field to mend. We are meant to be in community.</p>
+          <p class="work-path-desc">Shared containers, held in community, where the village remembers itself. Here you enter a circle with others, gathered around a common intention: a rite of passage, a seasonal ceremony, a shared meal at the fire. The work moves through the whole group, and each person is held by the circle as well as by the guide. We are meant to be in community.</p>
           <span class="work-path-lead">Some of these offerings include:</span>
           <ul class="work-path-bullets" style="--rows:2">
             <li>Rites of Passage</li>
@@ -2575,7 +2579,7 @@
           </div>
           <span class="work-path-eyebrow">The Conservatory</span>
           <h3 class="work-path-title">The Training Grounds</h3>
-          <p class="work-path-desc">A place of skill and technical development &mdash; for those in devotion to artisan craftsmanship with their spiritual gifts, in relationship to ritual and ceremony; developing as practitioners and technicians, skilled in roles of service, restoration, and practice.</p>
+          <p class="work-path-desc">Study and practice for developing your own skill. Here the focus is the craft itself: the technical training, discipline, and alchemical development of a practitioner, learned over time with a teacher, for those devoted to carrying their spiritual gifts into roles of ritual, ceremony, and service.</p>
           <span class="work-path-lead">Some of these offerings include:</span>
           <ul class="work-path-bullets" style="--rows:2">
             <li>Spirit Mediation</li>
@@ -2823,14 +2827,14 @@
   <div class="dr-terr-wrap">
   <section class="dr-terr-head" id="territories">
     <h2>About The Animist Apothecary.</h2>
-    <p>Who and what we are in the world.</p>
+    <p>Who we are and what we do.</p>
   </section>
   <section class="dr-terr">
-    <figure class="dr-terr-fig" style="--terr-pos:100% 29.8%;--terr-zoom:1.05"><img src="images/uploads/door-about-candle-niches.jpg" alt="Clay oil lamps and candles glowing in the carved stone niches of an ancient temple" loading="lazy" decoding="async"></figure>
+    <figure class="dr-terr-fig fit-whole" style="--terr-pos:22% 31.3%;--terr-zoom:1.179;--terr-fill:rgb(71,53,32)"><img src="images/uploads/door-about-candle-niches.jpg" alt="Clay oil lamps and candles glowing in the carved stone niches of an ancient temple" loading="lazy" decoding="async"></figure>
     <div class="dr-terr-text">
       <span class="dr-terr-door">About</span>
-      <h2>A ministry, a foundation, <em>a conservatory</em>.</h2>
-      <p class="dr-terr-line">The Animist Apothecary is a ministry of living mysteries: a foundation that holds ceremony and community, and a conservatory where old ways of knowing are kept, practiced, and passed on. Enter to learn more about who we are in the world and what we do.</p>
+      <h2>A ministry of right relationship with the Earth, our Ancestors, and <em>the unseen</em>.</h2>
+      <p class="dr-terr-line">The Animist Apothecary is a ministry of living mysteries, rooted in animism: the understanding that the world is alive, and that land, waters, plants, and Ancestors are kin to be known and tended. Its foundation holds ceremony and community, and its conservatory is where old ways of knowing are remembered, studied, practiced, and passed on, so that we may become the elders of a more beautiful world to come.</p>
       <ul class="dr-terr-rooms"><li><a href="about.html#premise">Our Mission</a></li><li><a href="about.html#founder">Our Founder</a></li><li><a href="sacred-reciprocity.html">Sacred Reciprocity</a></li><li><a href="about.html#covenant">The Ministry</a></li><li><a href="about.html#foundation">The Foundation</a></li><li><a href="about.html#school">The Conservatory</a></li></ul>
       <a class="dr-terr-enter" href="about.html">Learn About the Animist Apothecary</a>
     </div>
@@ -2838,14 +2842,14 @@
   <!-- 2026-11-11, her ask: a second heading in the same style, above the four service cards. Subtitle drafted from her words, flagged. A div, not a section, so the cards keep their left/right alternation. -->
   <div class="dr-terr-head" id="offerings">
     <h2>Services and Offerings.</h2>
-    <p>Opportunities to participate in your own deep work.</p>
+    <p>Opportunities to participate in your own inner work: one-on-one, in community, and in study.</p>
   </div>
   <section class="dr-terr">
     <figure class="dr-terr-fig" style="--terr-pos:50% 63.7%;--terr-zoom:1"><img src="images/uploads/door-sanctuary-two-seated.jpg" alt="Two people seated on a woven rug, facing each other, hands resting in their laps" loading="lazy" decoding="async"></figure>
     <div class="dr-terr-text">
       <span class="dr-terr-door">Shamanic Sanctuary</span>
-      <h2>Deep transformational containers, held and shaped and made <em>with and for you</em>.</h2>
-      <p class="dr-terr-line">For those who are here for deep, lasting work. These are long-form containers, held across a season, a year, or longer, and shaped around the life you are living. Private sessions, ceremony, and counsel are woven together around you, so the work has room to take root in the timeline and trajectory of your days.</p>
+      <h2>Private spiritual guidance and ceremony, held across the seasons of <em>your becoming</em>.</h2>
+      <p class="dr-terr-line">For those ready for deep, lasting work, often while their own spiritual gifts are waking. These are private, long-form containers, held across a season, a year, or longer, and shaped around the life you are living. Guidance and counsel, ceremony, and divination are woven together around you in a steady cadence, so you are accompanied from where you are toward where you hope and dream to be.</p>
       <ul class="dr-terr-rooms"><li><a href="ceremonial-coaching.html#season-of-change">A Season of Change</a></li><li><a href="ceremonial-coaching.html#metamorphic-year">The Metamorphic Year</a></li><li><a href="ceremonial-coaching.html#guidance">Spiritual Guidance &amp; Development</a></li><li><a href="ceremonial-coaching.html#coaching">Ceremonially Assisted Coaching</a></li></ul>
       <a class="dr-terr-enter" href="ceremonial-coaching.html">Enter the Sanctuary</a>
     </div>
@@ -2854,8 +2858,8 @@
     <figure class="dr-terr-fig" style="--terr-pos:50% 50%;--terr-zoom:1"><img src="images/uploads/door-oracle-cowrie-shells.jpg" alt="A wooden bowl of cowrie shells, with more shells scattered beside it" loading="lazy" decoding="async"></figure>
     <div class="dr-terr-text">
       <span class="dr-terr-door">Oracular Divinations</span>
-      <h2>To sit in query and counsel with the ancestral, elemental, and <em>celestial planes</em>.</h2>
-      <p class="dr-terr-line">A sacred conversation between your Spirit, your Ancestors, the elements, the celestials, and your guides. Bring a question, a crossroads, or a season you are moving through. The counsel that comes from otherworldly forces is carried back in plain words, often with rituals for you to take home and tend.</p>
+      <h2>Divination and mediumship: counsel from the Ancestral, Elemental, and <em>Celestial realms</em>.</h2>
+      <p class="dr-terr-line">Divination is one of the oldest spiritual technologies: a precise way of asking the unseen for guidance. As a lineage-initiated medicine woman, priestess, and diviner, Adi Marie opens a sacred conversation with your Ancestors, the Elementals, the Celestials, and your Spirit Guides. Bring a question, a crossroads, or a season you are moving through. What returns are spiritual diagnostics, a reading of what is at play, and ritual prescriptions to carry home and tend.</p>
       <ul class="dr-terr-rooms"><li><a href="divination-and-consultation.html#divination">Dagara Divinations</a></li><li><a href="divination-and-consultation.html#bodywork">Shamanic Bodywork</a></li><li><a href="divination-and-consultation.html#mediumship">Oracular Mediumship</a></li><li><a href="divination-and-consultation.html#ritual-prescriptions">Ritual Prescriptions</a></li></ul>
       <a class="dr-terr-enter" href="divination-and-consultation.html">Enter the Oracle</a>
     </div>
@@ -2864,8 +2868,8 @@
     <figure class="dr-terr-fig" style="--terr-pos:50% 47.2%;--terr-zoom:1"><img src="images/uploads/door-village-circle-hands.jpg" alt="Women seated in a circle on a pale floor, holding hands, candles glowing among them" loading="lazy" decoding="async"></figure>
     <div class="dr-terr-text">
       <span class="dr-terr-door">The Village</span>
-      <h2>Where community becomes <em>family</em>.</h2>
-      <p class="dr-terr-line">The work that we do as individuals becomes the work that we do as a community, and informs and shapes our culture for the many generations to come. Here we gather in circle: rites of passage for the thresholds of a life, ritual and ceremony through the turning of the seasons, firesides for a shared meal and story, and gatherings that tend the well-being of all who come.</p>
+      <h2>Gatherings, ceremonies, and rites of passage, where community <em>becomes family</em>.</h2>
+      <p class="dr-terr-line">The work we do as individuals becomes the work we do as a collective, and it shapes our culture for generations to come. Here we gather in circle: rites of passage for the thresholds of a life, ritual and ceremony through the turning of the seasons, firesides for a shared meal and stories, and gatherings that tend the well-being of all who come.</p>
       <ul class="dr-terr-rooms"><li><a href="public-offerings.html#rites">Rites of Passage</a></li><li><a href="public-offerings.html#gather">Ritual &amp; Ceremony</a></li><li><a href="public-offerings.html#firesides">Community Firesides</a></li><li><a href="public-offerings.html#wellness">Wellness Gatherings</a></li></ul>
       <a class="dr-terr-enter" href="public-offerings.html">Enter the Village</a>
     </div>
@@ -2874,23 +2878,23 @@
     <figure class="dr-terr-fig" style="--terr-pos:50% 50%;--terr-zoom:1"><img src="images/uploads/door-conservatory-vessel-sea.jpg" alt="A clay amphora resting on a rock as the sea washes around it" loading="lazy" decoding="async"></figure>
     <div class="dr-terr-text">
       <span class="dr-terr-door">The Conservatory</span>
-      <h2>A place for experiential, embodied <em>learning</em>.</h2>
-      <p class="dr-terr-line">To remember things that were lost, to bring forth the inheritance that is ours, and to carry forward the tools and skills and recoherence to become the elders for future times. Courses, trainings, and workshops open the old ways to those who want to study them with hands and heart. Apprenticeship is for those ready to walk a longer road of practice, in relationship with a teacher and a living tradition.</p>
-      <ul class="dr-terr-rooms"><li><a href="training-grounds.html#courses">Courses</a></li><li><a href="training-grounds.html#trainings">Trainings</a></li><li><a href="training-grounds.html#workshops-list">Workshops</a></li><li><a href="training-grounds.html">Apprenticeship</a></li></ul>
+      <h2>A school of the old ways, where living traditions are conserved and <em>passed on</em>.</h2>
+      <p class="dr-terr-line">This is a place of devoted study and practice. Here we remember what was lost, reclaim the spiritual inheritance that is ours, and carry forward the tools and skills to become the elders of future times. Courses, trainings, and workshops open the old ways to all who want to learn them, and mentorship and apprenticeship are for those ready to walk the longer path of becoming a practitioner.</p>
+      <ul class="dr-terr-rooms"><li><a href="training-grounds.html#courses">Courses</a></li><li><a href="training-grounds.html#trainings">Trainings</a></li><li><a href="training-grounds.html#workshops-list">Workshops</a></li><li><a href="training-grounds.html">Mentorship</a></li></ul>
       <a class="dr-terr-enter" href="training-grounds.html">Enter the Conservatory</a>
     </div>
   </section>
   <!-- 2026-11-11, her ask: a third heading in the same style, above The Library & The Well. Subtitle drafted from her words, flagged. A div, not a section, so the cards keep their left/right alternation. -->
   <div class="dr-terr-head" id="resources">
     <h2>Resources and Extended Support.</h2>
-    <p>Beyond the Apothecary, into the larger web: the collective wisdom of fellow practitioners, learning resources, and others doing their part in this great happening.</p>
+    <p>Writings, learning, and the larger web of collective wisdom that supports this work.</p>
   </div>
   <section class="dr-terr">
     <figure class="dr-terr-fig" style="--terr-pos:100% 57.9%;--terr-zoom:1"><img src="images/uploads/door-library-cups-pouring.jpg" alt="Hands pouring water from one clay chalice into the next, against a stone wall" loading="lazy" decoding="async"></figure>
     <div class="dr-terr-text">
       <span class="dr-terr-door">The Library &amp; The Well</span>
-      <h2>Where the web grows, and we share the bounty of <em>our harvest</em>.</h2>
-      <p class="dr-terr-line">A place where we gather learning resources and fellow practitioners, and share what is growing beyond the Apothecary: writings and seasonal letters, teachings to return to, and the wider web of people doing this work in their own ways.</p>
+      <h2>Where the wealth of abundance is wisdom, and we share in the bounty of <em>our harvests</em>.</h2>
+      <p class="dr-terr-line">This is where the writings, resources, and open courses of the Apothecary live, offered for your learning and well-being and in support of this work. Here you will find Water, Milk, and Honey, our seasonal letters; essays and teachings to return to; a shelf of trusted learning; and the wider web of fellow practitioners doing this work in their own way. It is where we share the light of others, from within and beyond the Apothecary: an apothecary of collective wisdom.</p>
       <ul class="dr-terr-rooms"><li><a href="writings.html#water-milk-honey">Water, Milk, and Honey</a></li><li><a href="writings.html#essays">Essays &amp; Writings</a></li><li><a href="writings.html#shelf">The Library</a></li><li><a href="writings.html#letters">The Well</a></li></ul>
       <a class="dr-terr-enter" href="writings.html">Enter the Library</a>
     </div>
@@ -2915,7 +2919,7 @@
 
       <div class="cta-bottom">
         <p class="cta-body-text" data-content="cta_section.body">Some come for their own healing. Some come for the deeper training. Some come because they hold a community in need, a ceremony to be led, or a gathering to be tended. Either way, the season begins at the threshold.</p>
-        <p class="cta-credentials" data-content="cta_section.credentials">Lineage-Initiated Medicine Woman &middot; California-Based</p>
+        <p class="cta-credentials" data-content="cta_section.credentials">California-Based &middot; Lineage-Initiated Medicine Woman-Led</p>
       </div>
 
     </div>
@@ -2951,6 +2955,7 @@
       <a href="about.html#founder" class="btn-outline" data-content="practitioner.cta_text" data-content-href="practitioner.cta_url">Read the longer story</a>
     </div>
   </section>
+
   <section class="section-process" id="begin">
     <div class="process-container process-container--split">
 
@@ -2985,18 +2990,8 @@
     </div>
   </section>
 
-  <!-- &mdash;&mdash;&mdash; PRACTITIONER &mdash;&mdash;&mdash; -->
-
-  <!-- CTA (peak conversion ask — title + buttons stacked top-left, smudge visible right, body + credentials along bottom) -->
-
-  <!-- &mdash;&mdash;&mdash; THE WORK — Unified three-path overview (replaces all individual offering sections) &mdash;&mdash;&mdash; -->
-
-  <!-- &mdash;&mdash;&mdash; TESTIMONIAL (placed between Process and CTA — peak conversion moment) &mdash;&mdash;&mdash; -->
-
-  <!-- &mdash;&mdash;&mdash; PROCESS / CHOOSE HOW YOU BEGIN — 50/50 split: labyrinth fern image on left, title+doorways on right &mdash;&mdash;&mdash; -->
-
   <!-- &mdash;&mdash;&mdash; NEWSLETTER (placed before final CTA — soft entry for warm leads not ready to apply) &mdash;&mdash;&mdash; -->
-  <!-- Water, Milk, and Honey (2026-11-08, her ask): a full-width letters bar after Begin your journey, then her writing-desk photograph closes the page -->
+  <!-- Water, Milk, and Honey (2026-11-08, her ask): a full-width letters bar after Just passing through, then her writing-desk photograph closes the page -->
   <section id="subscribe" class="section-newsletter nl-bar">
     <div class="nl-bar-inner">
       <div class="nl-bar-head">
@@ -3080,6 +3075,8 @@
       </nav>
     </div>
     <div class="footer-bottom">
+      <!-- 2026-11-13, her ask: the work is spiritual, not medical or therapeutic. Wording checked against Greg Lake's Entheo Esq marketing course (Lectures 5 and 10). -->
+      <p class="footer-disclaimer"><span>The Animist Apothecary is a religious and spiritual ministry, not a medical entity or facility.</span> <span>Our ceremonies, sessions, and teachings are religious practice, not medical, psychological, or therapeutic services, and they do not diagnose, treat, or cure ailments.</span> <span>Please continue to see licensed professionals for medical and mental-health care.</span></p>
       <p>&copy; 2026 The Animist Apothecary. All rites reserved. <span class="footer-legal"><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Use</a></span></p>
     </div>
   </footer>
