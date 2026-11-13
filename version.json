@@ -1,12 +1,12 @@
 {
-  "version": "v261113.05 1:36a",
-  "release": 5,
-  "sha": "231e3adb",
-  "fullSha": "231e3adb99dbac7c19728f417fcf63cfdafcc8f9",
+  "version": "v261113.06 4:42a",
+  "release": 6,
+  "sha": "ed274e95",
+  "fullSha": "ed274e95587cc7df9b9f7fd6fb70945a8f8337bc",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-12T17:36:20-08:00",
-  "commits": [{"sha":"231e3adb","message":"Every public page shares the same picture, name and description","author":"Adi Marie"}]
+  "pushedAt": "2026-11-12T20:41:44-08:00",
+  "commits": [{"sha":"ed274e95","message":"Home copy for the stranger-reader, and a ministry disclaimer on every public page","author":"Adi Marie"}]
 }
