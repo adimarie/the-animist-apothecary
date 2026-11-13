@@ -1,12 +1,12 @@
 {
-  "version": "v261113.04 1:32a",
-  "release": 4,
-  "sha": "7e7f7849",
-  "fullSha": "7e7f78493b6108d698f16cb763bb1288275839b7",
+  "version": "v261113.05 1:36a",
+  "release": 5,
+  "sha": "231e3adb",
+  "fullSha": "231e3adb99dbac7c19728f417fcf63cfdafcc8f9",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-12T17:32:35-08:00",
-  "commits": [{"sha":"7e7f7849","message":"Formal name takes a dash: \"The Animist Apothecary — A Ministry of Living Mysteries\"","author":"Adi Marie"}]
+  "pushedAt": "2026-11-12T17:36:20-08:00",
+  "commits": [{"sha":"231e3adb","message":"Every public page shares the same picture, name and description","author":"Adi Marie"}]
 }
