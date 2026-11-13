@@ -1,12 +1,12 @@
 {
-  "version": "v261113.02 1:27a",
-  "release": 2,
-  "sha": "c37f7d26",
-  "fullSha": "c37f7d26026ab9d2f63da89a6677e796c2aa7aa8",
+  "version": "v261113.03 1:28a",
+  "release": 3,
+  "sha": "004c08d8",
+  "fullSha": "004c08d84f0415b5cfb73acfe279c8533323b6b3",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
-  "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-12T17:27:14-08:00",
-  "commits": [{"sha":"c37f7d26","message":"Formal name and description: \"The Animist Apothecary, a Ministry of Living Mysteries\"","author":"Adi Marie"}]
+  "machine": "runnervm8axu0",
+  "pushedAt": "2026-11-12T17:28:39-08:00",
+  "commits": [{"sha":"004c08d8","message":"\"A Ministry of Living Mysteries\" replaces \"Ceremonial & Ritual Stewardship\" everywhere","author":"Adi Marie"}]
 }
