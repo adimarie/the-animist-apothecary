@@ -1,12 +1,12 @@
 {
-  "version": "v261113.06 4:42a",
-  "release": 6,
-  "sha": "ed274e95",
-  "fullSha": "ed274e95587cc7df9b9f7fd6fb70945a8f8337bc",
+  "version": "v261113.07 6:01a",
+  "release": 7,
+  "sha": "8eeae732",
+  "fullSha": "8eeae73273a500302a78415a14d7e52b46a9c44f",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-12T20:41:44-08:00",
-  "commits": [{"sha":"ed274e95","message":"Home copy for the stranger-reader, and a ministry disclaimer on every public page","author":"Adi Marie"}]
+  "pushedAt": "2026-11-12T22:01:01-08:00",
+  "commits": [{"sha":"8eeae732","message":"Begin Here rebuilt: doors, calendar, questions, reschedule policy","author":"Adi Marie"}]
 }
