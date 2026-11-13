@@ -1,12 +1,12 @@
 {
-  "version": "v261112.03 4:54p",
-  "release": 3,
-  "sha": "2c1e710f",
-  "fullSha": "2c1e710fb3f858881282dc050faefa083714fd33",
+  "version": "v261113.01 1:22a",
+  "release": 1,
+  "sha": "f427d573",
+  "fullSha": "f427d5737a2fce55965f574b58fd53ea757723fb",
   "actor": "adimarie",
   "source": "github-main-push",
   "model": "ci",
   "machine": "runnervm7aw5e",
-  "pushedAt": "2026-11-12T08:54:26-08:00",
-  "commits": [{"sha":"2c1e710f","message":"Home: take the pressed-flower background off the letters section for now","author":"Adi Marie"}]
+  "pushedAt": "2026-11-12T17:22:36-08:00",
+  "commits": [{"sha":"f427d573","message":"Share image: replace the template alpaca picture with the forest canopy seal","author":"Adi Marie"}]
 }
